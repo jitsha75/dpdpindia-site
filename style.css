@@ -1,0 +1,88 @@
+
+body{
+font-family: Arial, Helvetica, sans-serif;
+margin:0;
+background:#f5f7fb;
+color:#222;
+line-height:1.6;
+}
+
+header{
+background:#0c1c3d;
+color:white;
+padding:60px 20px;
+text-align:center;
+}
+
+nav{
+background:#1f3b70;
+padding:12px;
+text-align:center;
+}
+
+nav a{
+color:white;
+margin:0 15px;
+text-decoration:none;
+font-weight:bold;
+}
+
+.container{
+max-width:1000px;
+margin:auto;
+padding:40px 20px;
+}
+
+.hero{
+background:url('images/hero-policy.png') center/cover no-repeat;
+color:white;
+padding:120px 20px;
+text-align:center;
+}
+
+.hero h1{
+font-size:46px;
+}
+
+.section{
+margin-bottom:50px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:8px;
+box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+
+.timeline{
+border-left:3px solid #0c1c3d;
+padding-left:20px;
+}
+
+.timeline div{
+margin-bottom:20px;
+}
+
+.button{
+display:inline-block;
+background:#0c1c3d;
+color:white;
+padding:12px 24px;
+text-decoration:none;
+border-radius:5px;
+margin-top:10px;
+}
+
+footer{
+background:#e9edf4;
+text-align:center;
+padding:25px;
+margin-top:60px;
+}
