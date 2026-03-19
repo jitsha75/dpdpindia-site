@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aadhaar eKYC — Complete Technical Reference</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:wght@600&display=swap');
+
+:root {
+  --navy: #0a1628;
+  --navy2: #132040;
+  --navy3: #1c3055;
+  --blue: #1a5cad;
+  --blue-light: #3b82d4;
+  --amber: #d4900a;
+  --amber-light: #f5c842;
+  --teal: #0e7c6b;
+  --teal-light: #14b8a6;
+  --coral: #c2420a;
+  --purple: #5b4bc4;
+  --green: #156c2e;
+  --green-light: #22c55e;
+  --red: #b91c1c;
+  --surface: #f4f6fb;
+  --surface2: #eaeff8;
+  --surface3: #dde4f0;
+  --text: #0d1b2a;
+  --text2: #3a4a5c;
+  --text3: #6b7e94;
+  --border: #c8d4e8;
+  --border2: #b0c0d8;
+  --white: #ffffff;
+  --font-body: 'IBM Plex Sans', sans-serif;
+  --font-display: 'Playfair Display', serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --radius: 8px;
+  --radius-lg: 12px;
+  --shadow: 0 2px 12px rgba(10,22,40,0.08);
+  --shadow-md: 0 4px 24px rgba(10,22,40,0.12);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* ─── HEADER ─── */
+.header {
+  background: var(--navy);
+  color: #fff;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 60px,
+    rgba(255,255,255,0.018) 60px,
+    rgba(255,255,255,0.018) 61px
+  ),
+  repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 60px,
+    rgba(255,255,255,0.018) 60px,
+    rgba(255,255,255,0.018) 61px
+  );
+}
+.header-inner {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 52px 40px 48px;
+}
+.header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255,255,255,0.09);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 20px;
+}
+.header-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--amber-light); }
+.header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 5vw, 44px);
+  font-weight: 600;
+  line-height: 1.15;
+  color: #fff;
+  margin-bottom: 14px;
+  max-width: 720px;
+}
+.header h1 span { color: var(--amber-light); }
+.header-sub {
+  font-size: 15px;
+  color: rgba(255,255,255,0.6);
+  max-width: 620px;
+  line-height: 1.65;
+  margin-bottom: 28px;
+}
+.header-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.meta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.65);
+  font-family: var(--font-mono);
+}
+
+/* ─── SIDEBAR NAV ─── */
+.layout {
+  display: flex;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 20px;
+  gap: 32px;
+  align-items: flex-start;
+}
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 24px;
+}
+.sidebar-nav {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 12px 0;
+  box-shadow: var(--shadow);
+}
+.sidebar-nav h3 {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text3);
+  padding: 6px 18px 10px;
+}
+.sidebar-nav a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  font-size: 13px;
+  color: var(--text2);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: all .15s;
+  line-height: 1.3;
+}
+.sidebar-nav a:hover {
+  background: var(--surface);
+  color: var(--blue);
+  border-left-color: var(--blue-light);
+}
+.sidebar-nav a .nav-num {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text3);
+  min-width: 16px;
+}
+.sidebar-nav hr { border: none; border-top: 1px solid var(--border); margin: 8px 0; }
+
+/* ─── MAIN CONTENT ─── */
+.main { flex: 1; min-width: 0; }
+
+/* ─── SECTION ─── */
+.section {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  margin-bottom: 24px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 28px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+.section-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+.section-header h2 {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -.01em;
+}
+.section-header p {
+  font-size: 13px;
+  color: var(--text3);
+  margin-top: 2px;
+}
+.section-body { padding: 28px; }
+
+/* ─── ENTITY DIAGRAM ─── */
+.diagram-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 16px;
+  overflow-x: auto;
+}
+.diagram-wrap svg { display: block; max-width: 100%; }
+
+/* ─── ENTITY CARDS ─── */
+.entity-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+  margin-top: 20px;
+}
+.entity-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  background: var(--white);
+}
+.entity-card-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.entity-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.entity-card h4 { font-size: 14px; font-weight: 600; }
+.entity-card p { font-size: 13px; color: var(--text2); line-height: 1.55; }
+.entity-card ul { margin-top: 8px; padding-left: 16px; }
+.entity-card li { font-size: 12px; color: var(--text2); margin-bottom: 3px; }
+.tag-list { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+.tag {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  background: var(--surface2);
+  color: var(--text2);
+  border: 1px solid var(--border);
+}
+
+/* ─── STEPPER ─── */
+.step-pills {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.sp {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  padding: 6px 12px 6px 8px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  font-size: 12px;
+  color: var(--text2);
+  transition: all .15s;
+  user-select: none;
+}
+.sp:hover { border-color: var(--blue-light); color: var(--blue); }
+.sp.active { background: var(--navy); color: #fff; border-color: var(--navy); }
+.sp.done { background: #e8f5ee; color: var(--green); border-color: #b4ddc4; }
+.sp-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  font-size: 11px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+}
+.sp.active .sp-num { background: rgba(255,255,255,0.2); }
+.sp:not(.active):not(.done) .sp-num { background: var(--surface2); color: var(--text3); }
+
+.step-panel {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  min-height: 400px;
+}
+.step-panel-head {
+  padding: 18px 24px;
+  background: var(--navy);
+  color: #fff;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.step-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.step-panel-head h3 { font-size: 16px; font-weight: 600; line-height: 1.35; }
+.step-panel-head p { font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 3px; }
+.step-panel-body { padding: 24px; display: grid; gap: 16px; }
+
+.flow-arrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: var(--surface);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.flow-entity {
+  padding: 5px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.flow-line {
+  flex: 1;
+  min-width: 30px;
+  height: 1.5px;
+  background: var(--border2);
+  position: relative;
+}
+.flow-line::after {
+  content: '▶';
+  position: absolute;
+  right: -6px;
+  top: -7px;
+  font-size: 14px;
+  color: var(--text3);
+}
+.flow-line.rev::after { content: '◀'; right: auto; left: -6px; }
+
+.payload-block {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.payload-block-head {
+  padding: 8px 14px;
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--text3);
+}
+.payload-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.5;
+}
+.payload-item:last-child { border-bottom: none; }
+.payload-item::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--blue-light);
+  margin-top: 7px;
+  flex-shrink: 0;
+}
+
+.sec-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.sec-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-size: 11.5px;
+  border: 1px solid;
+}
+.sec-tag.green { background: #e8f5ee; color: var(--green); border-color: #b4ddc4; }
+.sec-tag.amber { background: #fef3cd; color: #854f0b; border-color: #f5c842; }
+.sec-tag.blue { background: #e6f1fb; color: var(--blue); border-color: #b0ccea; }
+.sec-tag.red { background: #fde8e8; color: var(--red); border-color: #f0b4b4; }
+
+.note-box {
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  font-size: 13px;
+  line-height: 1.6;
+  border-left: 3px solid;
+}
+.note-box.warning { background: #fef3cd; border-color: var(--amber); color: #533200; }
+.note-box.info { background: #e6f1fb; border-color: var(--blue); color: #0a2e5e; }
+.note-box.danger { background: #fde8e8; border-color: var(--red); color: #5c0f0f; }
+.note-box.success { background: #e8f5ee; border-color: var(--green); color: #0a3318; }
+.note-box strong { font-weight: 600; }
+
+.step-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+}
+.step-nav button {
+  padding: 8px 20px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  font-size: 13px;
+  font-family: var(--font-body);
+  cursor: pointer;
+  color: var(--text);
+  transition: all .15s;
+}
+.step-nav button:hover:not(:disabled) { background: var(--navy); color: #fff; border-color: var(--navy); }
+.step-nav button:disabled { opacity: .4; cursor: not-allowed; }
+.step-nav .step-counter { margin-left: auto; font-size: 12px; font-family: var(--font-mono); color: var(--text3); }
+
+/* ─── LOG TABLE ─── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.log-col h4 {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+.log-col.allowed h4 { background: #e8f5ee; color: var(--green); }
+.log-col.denied h4 { background: #fde8e8; color: var(--red); }
+.log-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  padding: 7px 10px;
+  border-radius: 5px;
+  font-size: 12.5px;
+  font-family: var(--font-mono);
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+.log-item.ok { background: #f0faf4; color: #0f4620; }
+.log-item.bad { background: #fdf0f0; color: #5c0f0f; }
+.log-item .li-icon { flex-shrink: 0; margin-top: 1px; }
+
+/* ─── ENCRYPTION MATRIX ─── */
+.enc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.enc-table th {
+  padding: 10px 12px;
+  background: var(--navy);
+  color: rgba(255,255,255,0.8);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .05em;
+  text-align: left;
+  white-space: nowrap;
+}
+.enc-table th:first-child { border-radius: 0; }
+.enc-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+.enc-table tr:last-child td { border-bottom: none; }
+.enc-table tr:hover td { background: var(--surface); }
+.enc-table td:first-child { font-weight: 500; color: var(--text); white-space: nowrap; }
+.cell-enc { background: #fef3cd; color: #633806; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-family: var(--font-mono); white-space: nowrap; }
+.cell-ok { background: #e8f5ee; color: var(--green); border-radius: 4px; padding: 2px 8px; font-size: 12px; font-family: var(--font-mono); white-space: nowrap; }
+.cell-no { background: var(--surface2); color: var(--text3); border-radius: 4px; padding: 2px 8px; font-size: 12px; font-family: var(--font-mono); white-space: nowrap; }
+.cell-na { color: var(--text3); font-size: 12px; font-style: italic; }
+
+/* ─── PROSE SECTIONS ─── */
+.prose h3 { font-size: 16px; font-weight: 600; margin: 24px 0 10px; color: var(--text); }
+.prose h3:first-child { margin-top: 0; }
+.prose p { font-size: 14px; color: var(--text2); margin-bottom: 10px; line-height: 1.7; }
+.prose ul { padding-left: 20px; margin-bottom: 10px; }
+.prose li { font-size: 14px; color: var(--text2); margin-bottom: 5px; line-height: 1.6; }
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  background: var(--surface2);
+  padding: 1px 6px;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  color: var(--blue);
+}
+.law-box {
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--purple);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 12px 16px;
+  margin: 12px 0;
+  background: var(--white);
+  font-size: 13px;
+  color: var(--text2);
+}
+.law-box strong { color: var(--purple); font-weight: 600; display: block; margin-bottom: 4px; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+
+/* ─── DOCS TABLE ─── */
+.docs-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.docs-table th {
+  padding: 10px 14px;
+  background: var(--surface2);
+  border-bottom: 2px solid var(--border2);
+  text-align: left;
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.docs-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.docs-table tr:hover td { background: var(--surface); }
+.docs-table a {
+  color: var(--blue);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-decoration: none;
+  word-break: break-all;
+}
+.docs-table a:hover { text-decoration: underline; }
+.doc-type {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  background: #fde8e8;
+  color: var(--red);
+  margin-top: 3px;
+}
+.doc-type.pdf { background: #fde8e8; color: var(--red); }
+.doc-type.web { background: #e6f1fb; color: var(--blue); }
+.doc-type.law { background: #ede8fe; color: var(--purple); }
+
+/* ─── FOOTER ─── */
+.footer {
+  background: var(--navy);
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  padding: 28px 20px;
+  font-size: 12px;
+  margin-top: 40px;
+}
+.footer a { color: rgba(255,255,255,0.6); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 820px) {
+  .layout { flex-direction: column; padding: 16px; }
+  .sidebar { width: 100%; position: static; }
+  .sidebar-nav { display: none; }
+  .section-body { padding: 16px; }
+  .two-col { grid-template-columns: 1fr; }
+  .entity-grid { grid-template-columns: 1fr; }
+  .header-inner { padding: 32px 20px; }
+}
+
+/* Print */
+@media print {
+  .sidebar { display: none; }
+  .layout { display: block; }
+  .main { width: 100%; }
+  .section { break-inside: avoid; }
+}
+
+/* Pill colors */
+.col-navy { border-color: #1c3055; background: #1c3055; color: #e8edf5; }
+.col-teal { border-color: var(--teal); background: #e0f2ef; color: var(--teal); }
+.col-blue { border-color: var(--blue); background: #e6f1fb; color: var(--blue); }
+.col-coral { border-color: var(--coral); background: #faeae0; color: var(--coral); }
+.col-gray { border-color: #8a9ab0; background: #f0f2f5; color: #4a5568; }
+.col-purple { border-color: var(--purple); background: #ede8fe; color: var(--purple); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <div class="header-badge">
+      <span class="dot"></span>
+      UIDAI Technical Reference — Offline Edition
+    </div>
+    <h1>Aadhaar <span>eKYC</span><br>Complete Process Guide</h1>
+    <p class="header-sub">
+      A full technical walkthrough of the eKYC ecosystem — entity roles, message flows, encryption architecture, 
+      bank application log requirements, and data-protection guarantees across every hop.
+    </p>
+    <div class="header-meta">
+      <span class="meta-pill">eKYC API v2.5</span>
+      <span class="meta-pill">Auth API v2.0</span>
+      <span class="meta-pill">Aadhaar Act 2016</span>
+      <span class="meta-pill">Auth Regulations 2021</span>
+      <span class="meta-pill">Offline — No Internet Required</span>
+    </div>
+  </div>
+</header>
+
+<!-- LAYOUT -->
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sidebar-nav">
+      <h3>Contents</h3>
+      <a href="#s1"><span class="nav-num">01</span> Ecosystem overview</a>
+      <a href="#s2"><span class="nav-num">02</span> Entity roles</a>
+      <a href="#s3"><span class="nav-num">03</span> Message flow</a>
+      <a href="#s4"><span class="nav-num">04</span> Bank app logs</a>
+      <a href="#s5"><span class="nav-num">05</span> Encryption matrix</a>
+      <a href="#s6"><span class="nav-num">06</span> Data protection</a>
+      <a href="#s7"><span class="nav-num">07</span> Legal obligations</a>
+      <a href="#s8"><span class="nav-num">08</span> UIDAI documents</a>
+      <hr>
+      <a href="ekyc-trust-chain.html" style="color:var(--blue);border-left-color:var(--blue-light);background:var(--surface2);">
+        <span class="nav-num" style="color:var(--blue);">↗</span> Trust Chain &amp; Sub-KUA
+      </a>
+      <a href="index.html" style="color:var(--text3);">
+        <span class="nav-num">⌂</span> DPDPIndia.in
+      </a>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- ═══ SECTION 1 — ECOSYSTEM ═══ -->
+    <section class="section" id="s1">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <div>
+          <h2>eKYC Ecosystem Overview</h2>
+          <p>Entity hierarchy from UIDAI/CIDR down to the resident</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="diagram-wrap">
+          <svg width="100%" viewBox="0 0 760 480" xmlns="http://www.w3.org/2000/svg" style="font-family:'IBM Plex Sans',sans-serif;">
+            <defs>
+              <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M2 1L8 5L2 9" fill="none" stroke="#6b7e94" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </marker>
+            </defs>
+
+            <!-- Tier labels -->
+            <text x="8" y="70" font-size="11" fill="#9aaabf" font-weight="500">REGULATOR</text>
+            <text x="8" y="168" font-size="11" fill="#9aaabf" font-weight="500">CONNECTIVITY</text>
+            <text x="8" y="264" font-size="11" fill="#9aaabf" font-weight="500">AGENCY</text>
+            <text x="8" y="358" font-size="11" fill="#9aaabf" font-weight="500">SUB-AGENCY</text>
+            <text x="8" y="444" font-size="11" fill="#9aaabf" font-weight="500">RESIDENT</text>
+
+            <!-- Tier lines -->
+            <line x1="100" y1="110" x2="740" y2="110" stroke="#c8d4e8" stroke-width="0.5" stroke-dasharray="5 4"/>
+            <line x1="100" y1="205" x2="740" y2="205" stroke="#c8d4e8" stroke-width="0.5" stroke-dasharray="5 4"/>
+            <line x1="100" y1="300" x2="740" y2="300" stroke="#c8d4e8" stroke-width="0.5" stroke-dasharray="5 4"/>
+            <line x1="100" y1="394" x2="740" y2="394" stroke="#c8d4e8" stroke-width="0.5" stroke-dasharray="5 4"/>
+
+            <!-- UIDAI / CIDR -->
+            <rect x="250" y="44" width="200" height="54" rx="10" fill="#0a1628" stroke="#1c3055" stroke-width="1"/>
+            <text x="350" y="67" font-size="14" font-weight="600" fill="white" text-anchor="middle">UIDAI / CIDR</text>
+            <text x="350" y="84" font-size="11" fill="rgba(255,255,255,0.55)" text-anchor="middle">Central authority &amp; identity vault</text>
+
+            <!-- ASA 1 -->
+            <rect x="120" y="138" width="170" height="52" rx="9" fill="#0e7c6b" stroke="#0a5c4f" stroke-width="0.8"/>
+            <text x="205" y="160" font-size="13" font-weight="600" fill="white" text-anchor="middle">ASA / KSA</text>
+            <text x="205" y="176" font-size="11" fill="rgba(255,255,255,0.65)" text-anchor="middle">Leased-line to CIDR</text>
+
+            <!-- ASA 2 -->
+            <rect x="410" y="138" width="170" height="52" rx="9" fill="#0e7c6b" stroke="#0a5c4f" stroke-width="0.8"/>
+            <text x="495" y="160" font-size="13" font-weight="600" fill="white" text-anchor="middle">ASA 2 / NPCI</text>
+            <text x="495" y="176" font-size="11" fill="rgba(255,255,255,0.65)" text-anchor="middle">Alternative connectivity</text>
+
+            <!-- KUA 1 -->
+            <rect x="120" y="232" width="175" height="52" rx="9" fill="#1a5cad" stroke="#124489" stroke-width="0.8"/>
+            <text x="207" y="254" font-size="13" font-weight="600" fill="white" text-anchor="middle">KUA (Bank / NBFC)</text>
+            <text x="207" y="270" font-size="11" fill="rgba(255,255,255,0.65)" text-anchor="middle">Licensed eKYC user agency</text>
+
+            <!-- KUA 2 -->
+            <rect x="410" y="232" width="175" height="52" rx="9" fill="#1a5cad" stroke="#124489" stroke-width="0.8"/>
+            <text x="497" y="254" font-size="13" font-weight="600" fill="white" text-anchor="middle">KUA (Telecom / NBFC)</text>
+            <text x="497" y="270" font-size="11" fill="rgba(255,255,255,0.65)" text-anchor="middle">Licensed eKYC user agency</text>
+
+            <!-- Sub-KUA 1 -->
+            <rect x="110" y="324" width="148" height="52" rx="9" fill="#c2420a" stroke="#8c2e06" stroke-width="0.8"/>
+            <text x="184" y="346" font-size="13" font-weight="600" fill="white" text-anchor="middle">Sub-KUA A</text>
+            <text x="184" y="362" font-size="11" fill="rgba(255,255,255,0.65)" text-anchor="middle">Via KUA infrastructure</text>
+
+            <!-- Sub-KUA 2 -->
+            <rect x="285" y="324" width="148" height="52" rx="9" fill="#c2420a" stroke="#8c2e06" stroke-width="0.8"/>
+            <text x="359" y="346" font-size="13" font-weight="600" fill="white" text-anchor="middle">Sub-KUA B</text>
+            <text x="359" y="362" font-size="11" fill="rgba(255,255,255,0.65)" text-anchor="middle">e.g. insurer / broker</text>
+
+            <!-- Sub-KUA 3 -->
+            <rect x="462" y="324" width="148" height="52" rx="9" fill="#c2420a" stroke="#8c2e06" stroke-width="0.8"/>
+            <text x="536" y="346" font-size="13" font-weight="600" fill="white" text-anchor="middle">Sub-KUA C</text>
+            <text x="536" y="362" font-size="11" fill="rgba(255,255,255,0.65)" text-anchor="middle">SEBI-registered entity</text>
+
+            <!-- Resident -->
+            <rect x="200" y="418" width="310" height="40" rx="9" fill="#3a4a5c" stroke="#2a3a4c" stroke-width="0.8"/>
+            <text x="355" y="443" font-size="13" font-weight="600" fill="white" text-anchor="middle">Resident (Aadhaar holder) — gives consent</text>
+
+            <!-- Arrows CIDR→ASA -->
+            <line x1="300" y1="98" x2="230" y2="138" stroke="#6b7e94" stroke-width="1" marker-end="url(#arr)" stroke-dasharray="4 3"/>
+            <line x1="400" y1="98" x2="465" y2="138" stroke="#6b7e94" stroke-width="1" marker-end="url(#arr)" stroke-dasharray="4 3"/>
+            <!-- ASA→KUA -->
+            <line x1="200" y1="190" x2="200" y2="232" stroke="#6b7e94" stroke-width="1" marker-end="url(#arr)"/>
+            <line x1="470" y1="190" x2="470" y2="232" stroke="#6b7e94" stroke-width="1" marker-end="url(#arr)"/>
+            <!-- KUA→SubKUA -->
+            <line x1="170" y1="284" x2="170" y2="324" stroke="#6b7e94" stroke-width="1" marker-end="url(#arr)"/>
+            <line x1="220" y1="284" x2="340" y2="324" stroke="#6b7e94" stroke-width="1" marker-end="url(#arr)"/>
+            <line x1="470" y1="284" x2="515" y2="324" stroke="#6b7e94" stroke-width="1" marker-end="url(#arr)"/>
+            <!-- Sub→Resident -->
+            <line x1="200" y1="376" x2="290" y2="418" stroke="#6b7e94" stroke-width="1" marker-end="url(#arr)"/>
+            <line x1="359" y1="376" x2="355" y2="418" stroke="#6b7e94" stroke-width="1" marker-end="url(#arr)"/>
+            <line x1="520" y1="376" x2="420" y2="418" stroke="#6b7e94" stroke-width="1" marker-end="url(#arr)"/>
+
+            <!-- Legend -->
+            <rect x="560" y="44" width="170" height="100" rx="8" fill="white" stroke="#c8d4e8" stroke-width="0.8"/>
+            <text x="570" y="62" font-size="10" font-weight="600" fill="#6b7e94">LEGEND</text>
+            <rect x="570" y="70" width="12" height="12" rx="3" fill="#0a1628"/>
+            <text x="588" y="81" font-size="11" fill="#3a4a5c">UIDAI / Root authority</text>
+            <rect x="570" y="88" width="12" height="12" rx="3" fill="#0e7c6b"/>
+            <text x="588" y="99" font-size="11" fill="#3a4a5c">ASA (Connectivity layer)</text>
+            <rect x="570" y="106" width="12" height="12" rx="3" fill="#1a5cad"/>
+            <text x="588" y="117" font-size="11" fill="#3a4a5c">KUA (User agency)</text>
+            <rect x="570" y="124" width="12" height="12" rx="3" fill="#c2420a"/>
+            <text x="588" y="135" font-size="11" fill="#3a4a5c">Sub-KUA (No direct contract)</text>
+          </svg>
+        </div>
+        <div style="margin-top:14px;" class="note-box info">
+          <strong>Key rule:</strong> A Sub-KUA has no direct agreement with UIDAI. Its KUA is contractually responsible for it. eKYC data received by a KUA may be shared with its Sub-KUAs but cannot be transferred beyond — Rule 16 strictly prohibits further onward sharing.
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ SECTION 2 — ENTITY ROLES ═══ -->
+    <section class="section" id="s2">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <div>
+          <h2>Entity Roles &amp; Responsibilities</h2>
+          <p>What each participant is permitted to do, and what they cannot</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="entity-grid">
+          <div class="entity-card">
+            <div class="entity-card-head">
+              <div class="entity-dot" style="background:#0a1628;"></div>
+              <h4>UIDAI &amp; CIDR</h4>
+            </div>
+            <p>The root regulator and data custodian. Issues all licences, maintains the Central Identities Data Repository, and is the <em>only</em> entity that ever performs biometric matching or decrypts the PID block.</p>
+            <ul>
+              <li>Licences ASAs, KUAs, and approves Sub-KUAs</li>
+              <li>Operates CIDR — stores encrypted biometric templates</li>
+              <li>Returns signed, encrypted eKYC XML to requesting KUA</li>
+              <li>Provides masked Aadhaar (last 4 digits) in response</li>
+            </ul>
+            <div class="tag-list">
+              <span class="tag">Root CA</span>
+              <span class="tag">Biometric vault</span>
+              <span class="tag">Regulator</span>
+            </div>
+          </div>
+
+          <div class="entity-card">
+            <div class="entity-card-head">
+              <div class="entity-dot" style="background:#0e7c6b;"></div>
+              <h4>ASA / KSA (Aadhaar Service Agency / KYC Service Agency)</h4>
+            </div>
+            <p>The physical connectivity layer. Maintains dedicated, registered leased-line connections between KUAs and CIDR. Cannot decrypt any payload — it is a pure routing entity.</p>
+            <ul>
+              <li>Must register its static IP(s) with UIDAI</li>
+              <li>Hosts dedicated server solely for Aadhaar authentication</li>
+              <li>Manages cryptographic key distribution for KUAs</li>
+              <li>Cannot read the PID block or KYC response</li>
+              <li>Is labelled KSA specifically in the eKYC context</li>
+            </ul>
+            <div class="tag-list">
+              <span class="tag">Leased-line only</span>
+              <span class="tag">Cannot decrypt</span>
+              <span class="tag">Key distribution</span>
+            </div>
+          </div>
+
+          <div class="entity-card">
+            <div class="entity-card-head">
+              <div class="entity-dot" style="background:#1a5cad;"></div>
+              <h4>KUA (KYC User Agency)</h4>
+            </div>
+            <p>A licensed entity (bank, NBFC, telecom, insurer) that directly consumes the eKYC service. Holds a private key in an HSM to decrypt the UIDAI-signed eKYC response.</p>
+            <ul>
+              <li>Direct contractual relationship with UIDAI</li>
+              <li>Assigns licence code <code>ac</code> used in every eKYC request</li>
+              <li>Must store Aadhaar number in ADV only</li>
+              <li>Must NOT log raw KYC fields or Aadhaar number</li>
+              <li>Responsible for all its Sub-KUAs</li>
+              <li>Private key held in FIPS 140-2 certified HSM</li>
+            </ul>
+            <div class="tag-list">
+              <span class="tag">HSM private key</span>
+              <span class="tag">ADV required</span>
+              <span class="tag">Regulation 16</span>
+            </div>
+          </div>
+
+          <div class="entity-card">
+            <div class="entity-card-head">
+              <div class="entity-dot" style="background:#c2420a;"></div>
+              <h4>Sub-KUA</h4>
+            </div>
+            <p>An entity that uses the KUA's infrastructure to perform eKYC. No direct UIDAI contract. KUA must get UIDAI prior approval before onboarding any Sub-KUA. Examples: insurers using a bank's eKYC, brokers on an exchange's platform.</p>
+            <ul>
+              <li>Identified in requests via <code>sa</code> attribute</li>
+              <li>Cannot receive eKYC data beyond what KUA passes</li>
+              <li>Cannot onward-share eKYC data to any further party</li>
+              <li>Subject to same data-protection obligations as KUA</li>
+            </ul>
+            <div class="tag-list">
+              <span class="tag">sa attribute</span>
+              <span class="tag">No direct UIDAI contract</span>
+              <span class="tag">No onward sharing</span>
+            </div>
+          </div>
+
+          <div class="entity-card">
+            <div class="entity-card-head">
+              <div class="entity-dot" style="background:#5b4bc4;"></div>
+              <h4>AUA / Sub-AUA (Auth User Agency)</h4>
+            </div>
+            <p>Authentication-only variant. Gets a binary yes/no on identity — no demographic data. A KUA is always an AUA, but an AUA is not necessarily a KUA (no eKYC entitlement).</p>
+            <ul>
+              <li>Authentication response: Y/N only, no name/address/photo</li>
+              <li>Uses Auth API, not eKYC API</li>
+              <li>Sub-AUAs use an AUA's infrastructure identically to Sub-KUA model</li>
+            </ul>
+            <div class="tag-list">
+              <span class="tag">Y/N only</span>
+              <span class="tag">Auth API</span>
+              <span class="tag">No KYC data</span>
+            </div>
+          </div>
+
+          <div class="entity-card">
+            <div class="entity-card-head">
+              <div class="entity-dot" style="background:#3a4a5c;"></div>
+              <h4>Resident (Aadhaar Holder)</h4>
+            </div>
+            <p>The data principal. The eKYC transaction is valid only with explicit, informed, purpose-specific consent. The resident controls what data is shared and for which purpose.</p>
+            <ul>
+              <li>Must explicitly consent: <code>rc='Y'</code> in request</li>
+              <li>Biometric captured only on STQC-certified Registered Device</li>
+              <li>OTP delivered only to Aadhaar-registered mobile</li>
+              <li>Cannot share eKYC data with anyone beyond the KUA/Sub-KUA scope</li>
+            </ul>
+            <div class="tag-list">
+              <span class="tag">rc='Y' consent</span>
+              <span class="tag">Data principal</span>
+              <span class="tag">STQC device</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ SECTION 3 — MESSAGE FLOW ═══ -->
+    <section class="section" id="s3">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div>
+          <h2>eKYC Message Flow — Step by Step</h2>
+          <p>Click through all 7 stages to trace what travels between every entity</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="step-pills" id="stepPills"></div>
+        <div class="step-panel" id="stepPanel"></div>
+        <div class="step-nav">
+          <button id="btnPrev" onclick="stepNav(-1)">← Previous</button>
+          <button id="btnNext" onclick="stepNav(1)">Next →</button>
+          <span class="step-counter" id="stepCounter"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ SECTION 4 — BANK APP LOGS ═══ -->
+    <section class="section" id="s4">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <div>
+          <h2>Bank Application Log Requirements</h2>
+          <p>What a bank (KUA) log must contain — and what is legally prohibited</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <p style="font-size:14px;color:var(--text2);margin-bottom:18px;">Per UIDAI eKYC API specification v2.5 and Aadhaar Authentication Regulations 2021, the following governs what a KUA's application logs may and may not record:</p>
+        <div class="two-col">
+          <div class="log-col allowed">
+            <h4>✓ Required / Permitted in logs</h4>
+            <div class="log-item ok"><span class="li-icon">✓</span>txn — Transaction ID</div>
+            <div class="log-item ok"><span class="li-icon">✓</span>ts — Request timestamp (ISO 8601)</div>
+            <div class="log-item ok"><span class="li-icon">✓</span>ac — KUA licence code</div>
+            <div class="log-item ok"><span class="li-icon">✓</span>sa — Sub-KUA code (if applicable)</div>
+            <div class="log-item ok"><span class="li-icon">✓</span>auth-type: BIO / OTP / DEMO flag</div>
+            <div class="log-item ok"><span class="li-icon">✓</span>uid-token — UIDAI-issued pseudonym, not Aadhaar no.</div>
+            <div class="log-item ok"><span class="li-icon">✓</span>resp-code — UIDAI response/error code</div>
+            <div class="log-item ok"><span class="li-icon">✓</span>err — Error code if failed</div>
+            <div class="log-item ok"><span class="li-icon">✓</span>device-id — Registered Device ID</div>
+            <div class="log-item ok"><span class="li-icon">✓</span>stqc-cert-ref — Device certification ref</div>
+            <div class="log-item ok"><span class="li-icon">✓</span>rc='Y' — Consent captured flag</div>
+            <div class="log-item ok"><span class="li-icon">✓</span>ASA identifier used for routing</div>
+            <div class="log-item ok"><span class="li-icon">✓</span>Customer internal reference number</div>
+            <div class="log-item ok"><span class="li-icon">✓</span>ttl — Time-to-live of response</div>
+          </div>
+          <div class="log-col denied">
+            <h4>✗ Strictly Prohibited in logs</h4>
+            <div class="log-item bad"><span class="li-icon">✗</span>Aadhaar number (12 digits)</div>
+            <div class="log-item bad"><span class="li-icon">✗</span>Biometric data — fingerprint / iris template</div>
+            <div class="log-item bad"><span class="li-icon">✗</span>OTP value</div>
+            <div class="log-item bad"><span class="li-icon">✗</span>Decrypted PID block content</div>
+            <div class="log-item bad"><span class="li-icon">✗</span>Full eKYC XML in application DB</div>
+            <div class="log-item bad"><span class="li-icon">✗</span>Name from eKYC response</div>
+            <div class="log-item bad"><span class="li-icon">✗</span>Date of birth from eKYC response</div>
+            <div class="log-item bad"><span class="li-icon">✗</span>Address details from eKYC response</div>
+            <div class="log-item bad"><span class="li-icon">✗</span>Photo (JPEG) from eKYC response</div>
+            <div class="log-item bad"><span class="li-icon">✗</span>Mobile number (even hashed form in logs)</div>
+            <div class="log-item bad"><span class="li-icon">✗</span>Email address from eKYC response</div>
+            <div class="log-item bad"><span class="li-icon">✗</span>Session AES encryption keys</div>
+            <div class="log-item bad"><span class="li-icon">✗</span>wadh (anti-replay token value)</div>
+          </div>
+        </div>
+        <div style="margin-top:16px;" class="note-box warning">
+          <strong>Aadhaar Data Vault (ADV) rule:</strong> The Aadhaar number itself may only be stored in a separately hardened <strong>Aadhaar Data Vault</strong>. The bank's operational application databases and logs must never contain Aadhaar numbers — only the UIDAI-issued <code>uid-token</code> (a pseudonymous reference unique per KUA) may appear. The eKYC XML signed by UIDAI is stored as-is in the ADV, encrypted with AES-256 and access-controlled via HSM.
+        </div>
+        <div style="margin-top:12px;" class="note-box info">
+          <strong>Practical implication:</strong> A bank's fraud team or compliance officer auditing the transaction log can see that customer reference 12345 completed eKYC at 14:32 IST via biometric, the UIDAI returned success (uid-token XYZ), on device D123 — but cannot retrieve the customer's Aadhaar number, name, or address from those logs. That data exists only in the ADV and the separately secured KYC record store.
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ SECTION 5 — ENCRYPTION MATRIX ═══ -->
+    <section class="section" id="s5">
+      <div class="section-header">
+        <div class="section-num">05</div>
+        <div>
+          <h2>Encryption Matrix — Who Can See What</h2>
+          <p>Data visibility at every entity in the chain</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <div style="overflow-x:auto;">
+          <table class="enc-table">
+            <thead>
+              <tr>
+                <th>Entity</th>
+                <th>Aadhaar number</th>
+                <th>Biometric / OTP</th>
+                <th>KYC data (name, DOB, address, photo)</th>
+                <th>eKYC signed XML</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Device / App (client)</td>
+                <td><span class="cell-enc">Encrypted in PID</span></td>
+                <td><span class="cell-enc">Encrypted in TEE (L1)</span></td>
+                <td><span class="cell-no">Not yet received</span></td>
+                <td><span class="cell-no">Not yet received</span></td>
+              </tr>
+              <tr>
+                <td>Sub-KUA server</td>
+                <td><span class="cell-enc">Encrypted in PID</span></td>
+                <td><span class="cell-enc">Encrypted in PID</span></td>
+                <td><span class="cell-ok">Receives from KUA ¹</span></td>
+                <td><span class="cell-ok">In ADV only</span></td>
+              </tr>
+              <tr>
+                <td>KUA server (HSM)</td>
+                <td><span class="cell-enc">Encrypted in PID</span></td>
+                <td><span class="cell-enc">Encrypted in PID</span></td>
+                <td><span class="cell-ok">Decrypted via HSM</span></td>
+                <td><span class="cell-ok">Decrypted via HSM</span></td>
+              </tr>
+              <tr>
+                <td>ASA / KSA server</td>
+                <td><span class="cell-enc">Encrypted in PID</span></td>
+                <td><span class="cell-enc">Encrypted in PID</span></td>
+                <td><span class="cell-enc">Encrypted to KUA key</span></td>
+                <td><span class="cell-enc">Encrypted to KUA key</span></td>
+              </tr>
+              <tr>
+                <td>UIDAI CIDR</td>
+                <td><span class="cell-ok">Full access (1:1 match)</span></td>
+                <td><span class="cell-ok">Decrypts → matches only²</span></td>
+                <td><span class="cell-ok">Generates + encrypts to KUA</span></td>
+                <td><span class="cell-ok">Signs with UIDAI private key</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="margin-top:14px;font-size:12.5px;color:var(--text3);line-height:1.7;">
+          ¹ Sub-KUA receives demographic data forwarded by KUA after KUA decrypts — KUA acts as the trust boundary. Sub-KUA may NOT receive biometric data under any circumstance.<br>
+          ² CIDR decrypts biometric only for the duration of the matching computation. The biometric is never exported, logged, or stored in decrypted form outside CIDR.
+        </div>
+        <div style="margin-top:16px;" class="note-box success">
+          <strong>Design principle — layered encryption:</strong> The PID block is encrypted with UIDAI's public key (RSA-2048) at the point of capture. This means no intermediary — not the KUA, not the ASA — can decrypt or read the biometric even if they intercept the packet. The eKYC response from UIDAI is encrypted with the KUA's public key, so the ASA cannot read the KYC data in transit. Two independent encryption layers protect two different categories of sensitive data, and each is addressed only to the entity that legitimately needs it.
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ SECTION 6 — DATA PROTECTION ═══ -->
+    <section class="section" id="s6">
+      <div class="section-header">
+        <div class="section-num">06</div>
+        <div>
+          <h2>How Biometric &amp; Aadhaar Leakage Is Prevented</h2>
+          <p>Technical and architectural controls at each point in the chain</p>
+        </div>
+      </div>
+      <div class="section-body prose">
+        <h3>1. Registered Devices (RD) — L1 / L2 specification</h3>
+        <p>Every device used to capture biometrics for Aadhaar authentication must be a STQC-certified Registered Device. L1 devices (higher security tier) perform all encryption operations inside a Trusted Execution Environment (TEE) — the captured biometric never exists in a readable form outside that secure chip. The device embeds a device public certificate, and the <code>wadh</code> anti-replay token is constructed from the device key, session key, and Aadhaar number hash — meaning a replayed packet from a previous session is cryptographically invalid.</p>
+
+        <h3>2. PID Block — the biometric envelope</h3>
+        <p>The Personal Identity Data (PID) block is the container that holds biometric data or OTP before transmission. Construction:</p>
+        <ul>
+          <li>A fresh AES-256 session key is generated per transaction.</li>
+          <li>The biometric (or OTP) is encrypted with this session key.</li>
+          <li>The session key is encrypted with UIDAI's RSA-2048 public key.</li>
+          <li>The combined encrypted PID block (<code>Data</code> + <code>Hmac</code> + <code>SessionKey</code>) is embedded in the Auth XML.</li>
+          <li>Only UIDAI's CIDR, which holds the corresponding private key, can open it.</li>
+        </ul>
+
+        <h3>3. Encryption standards</h3>
+        <p>UIDAI mandates: RSA-2048 for asymmetric (public key) operations, AES-256-GCM for symmetric encryption. All connections use TLS. UIDAI rotates its public key periodically; KUAs must update to the current certificate before it expires.</p>
+
+        <h3>4. HMAC verification</h3>
+        <p>The <code>Hmac</code> field in the PID block contains a SHA-256 HMAC of the PID data using the session key. CIDR verifies this HMAC before attempting decryption, providing integrity assurance — a tampered PID block is rejected before any biometric comparison.</p>
+
+        <h3>5. wadh — anti-replay token</h3>
+        <p>The <code>wadh</code> (Witness Authentication Data Hash) is computed as <code>SHA-256(deviceKey + sessionKey + Aadhaar_hash)</code>. CIDR rejects any request where the <code>wadh</code> does not match, and CIDR maintains a nonce store to detect replayed transactions within the TTL window.</p>
+
+        <h3>6. KUA digital signature on Auth XML</h3>
+        <p>The entire Auth/eKYC XML is digitally signed by the KUA's private key (stored in an HSM). CIDR verifies this signature before processing, ensuring the request originates from the licenced KUA and has not been tampered with in transit via the ASA.</p>
+
+        <h3>7. UIDAI digital signature on eKYC response</h3>
+        <p>The KYC response XML is signed with UIDAI's private key using W3C XML-DSig. The KUA must verify this signature against UIDAI's published public certificate before accepting the response. This allows any downstream party (court, regulator) to independently verify that the eKYC data was issued by UIDAI — the signed XML is the legal equivalent of a notarised document.</p>
+
+        <h3>8. Aadhaar Data Vault (ADV)</h3>
+        <p>KUAs and Sub-KUAs may only store Aadhaar numbers inside an ADV — a separately hardened system from the main application database. The ADV is:</p>
+        <ul>
+          <li>Encrypted with AES-256 with keys held in an HSM</li>
+          <li>Access-controlled on a need-to-know basis with audit logging</li>
+          <li>Physically or logically isolated from operational application servers</li>
+          <li>Permitted hosting: RE's own secure premises, MeitY GCC-empanelled cloud, or ADV-as-a-service from UIDAI-approved provider</li>
+          <li>The application replaces Aadhaar numbers with a <code>uid-token</code> (pseudonym) in all other databases and logs</li>
+        </ul>
+
+        <h3>9. Absolute prohibition on biometric storage</h3>
+        <div class="law-box">
+          <strong>Regulation 17(1)(a) — Aadhaar Authentication Regulations 2021</strong>
+          No requesting entity shall store, use, share or publish biometric data collected from a resident for the purposes of Aadhaar authentication under any circumstance. Violation is a punishable offence under Section 40 of the Aadhaar Act, 2016 (imprisonment up to 3 years and/or fine up to ₹10 lakh).
+        </div>
+
+        <h3>10. Time-to-live (TTL) enforcement</h3>
+        <p>Every eKYC response includes a <code>ttl</code> (time-to-live) value. KUAs must reject any response whose TTL has expired. This prevents stale or cached responses from being replayed in later transactions.</p>
+      </div>
+    </section>
+
+    <!-- ═══ SECTION 7 — LEGAL OBLIGATIONS ═══ -->
+    <section class="section" id="s7">
+      <div class="section-header">
+        <div class="section-num">07</div>
+        <div>
+          <h2>Legal &amp; Regulatory Obligations Summary</h2>
+          <p>Key rules from Aadhaar Act 2016 and Authentication Regulations 2021</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <div style="display:grid;gap:10px;">
+          <div class="law-box">
+            <strong>Section 8 — Consent mandatory</strong>
+            A requesting entity can use the Aadhaar authentication service only after obtaining explicit consent from the resident for the stated purpose. Consent must be captured as <code>rc='Y'</code> in the eKYC XML.
+          </div>
+          <div class="law-box">
+            <strong>Regulation 16 — No onward transfer</strong>
+            eKYC data obtained by a KUA may be shared with authorised Sub-KUAs only. It cannot be transferred, sold, or disclosed to any other entity. Prior UIDAI approval is required for each Sub-KUA relationship.
+          </div>
+          <div class="law-box">
+            <strong>Regulation 17(1)(a) — Biometric prohibition</strong>
+            No biometric data may be stored, shared, published, or used by any requesting entity after the authentication event. Biometrics must be discarded immediately after transmission. Violation: up to 3 years imprisonment and/or ₹10 lakh fine.
+          </div>
+          <div class="law-box">
+            <strong>Regulation 17(1)(b) — Purpose limitation</strong>
+            Authentication and eKYC data must be used only for the stated purpose for which resident consent was obtained. Using KYC data obtained for account opening for credit scoring or marketing without separate consent is prohibited.
+          </div>
+          <div class="law-box">
+            <strong>UIDAI Circular — ADV hosting (2025)</strong>
+            KUAs may host their Aadhaar Data Vault only in three permitted environments: their own secure on-premises infrastructure, MeitY GCC-empanelled cloud, or an UIDAI-approved ADV-as-a-service provider. No other hosting is permitted.
+          </div>
+          <div class="law-box">
+            <strong>Regulation 19 — Audit &amp; reporting</strong>
+            Every KUA must maintain a security audit trail of all eKYC transactions (using the fields listed in Section 4 above) and submit periodic compliance reports to UIDAI. Failure to maintain adequate audit trails is grounds for licence suspension.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ SECTION 8 — DOCUMENTS ═══ -->
+    <section class="section" id="s8">
+      <div class="section-header">
+        <div class="section-num">08</div>
+        <div>
+          <h2>Official UIDAI Reference Documents</h2>
+          <p>Primary source material — all links are to uidai.gov.in</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <table class="docs-table">
+          <thead>
+            <tr>
+              <th>Document</th>
+              <th>Description</th>
+              <th>Type</th>
+              <th>URL</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>eKYC API Spec v2.5</strong></td>
+              <td>Full XML schema, PID block construction, encryption flow, error codes, eKYC response format. Primary technical reference.</td>
+              <td><span class="doc-type pdf">PDF</span></td>
+              <td><a href="https://uidai.gov.in/images/resource/aadhaar_ekyc_api_2_5.pdf" target="_blank">uidai.gov.in/images/resource/aadhaar_ekyc_api_2_5.pdf</a></td>
+            </tr>
+            <tr>
+              <td><strong>eKYC API Spec v2.1</strong></td>
+              <td>Earlier version still referenced by many integrations. Useful for backwards-compatibility notes.</td>
+              <td><span class="doc-type pdf">PDF</span></td>
+              <td><a href="https://uidai.gov.in/images/resource/aadhaar_ekyc_api_2_1.pdf" target="_blank">uidai.gov.in/images/resource/aadhaar_ekyc_api_2_1.pdf</a></td>
+            </tr>
+            <tr>
+              <td><strong>eKYC API Spec v2.0</strong></td>
+              <td>Original v2 specification.</td>
+              <td><span class="doc-type pdf">PDF</span></td>
+              <td><a href="https://uidai.gov.in/images/aadhaar_ekyc_api_2_0.pdf" target="_blank">uidai.gov.in/images/aadhaar_ekyc_api_2_0.pdf</a></td>
+            </tr>
+            <tr>
+              <td><strong>Authentication API v2.0</strong></td>
+              <td>Auth-only (non-eKYC) API spec. Covers AUA/Sub-AUA flows, Auth XML schema, response codes.</td>
+              <td><span class="doc-type pdf">PDF</span></td>
+              <td><a href="https://uidai.gov.in/images/FrontPageUpdates/aadhaar_authentication_api_2_0_1.pdf" target="_blank">uidai.gov.in/.../aadhaar_authentication_api_2_0_1.pdf</a></td>
+            </tr>
+            <tr>
+              <td><strong>Registered Devices Spec v2.0</strong></td>
+              <td>L1/L2 device classification, TEE requirements, STQC certification, RD service API, device key infrastructure.</td>
+              <td><span class="doc-type pdf">PDF</span></td>
+              <td><a href="https://uidai.gov.in/images/resource/aadhaar_registered_devices_2_0_09112016.pdf" target="_blank">uidai.gov.in/.../aadhaar_registered_devices_2_0_09112016.pdf</a></td>
+            </tr>
+            <tr>
+              <td><strong>Authentication Ecosystem (UIDAI)</strong></td>
+              <td>UIDAI's official page on AUAs, KUAs, ASAs — role definitions, licencing process, current approved entities.</td>
+              <td><span class="doc-type web">WEB</span></td>
+              <td><a href="https://uidai.gov.in/en/ecosystem/authentication-ecosystem/authentication-requesting-agency.html" target="_blank">uidai.gov.in/.../authentication-requesting-agency.html</a></td>
+            </tr>
+            <tr>
+              <td><strong>Security in UIDAI System</strong></td>
+              <td>UIDAI's explanation of the security architecture for residents — covers PID block, biometric prohibition, encrypted comms.</td>
+              <td><span class="doc-type web">WEB</span></td>
+              <td><a href="https://uidai.gov.in/en/my-aadhaar/about-your-aadhaar/security-in-uidai-system.html" target="_blank">uidai.gov.in/.../security-in-uidai-system.html</a></td>
+            </tr>
+            <tr>
+              <td><strong>Biometric Devices</strong></td>
+              <td>List of STQC-certified biometric devices, device type specifications, approved manufacturers.</td>
+              <td><span class="doc-type web">WEB</span></td>
+              <td><a href="https://uidai.gov.in/en/ecosystem/authentication-devices-documents/biometric-devices.html" target="_blank">uidai.gov.in/.../biometric-devices.html</a></td>
+            </tr>
+            <tr>
+              <td><strong>Developer Sandbox</strong></td>
+              <td>UIDAI's official developer section — sandbox environment, test credentials, sample code, API integration guides for AUAs, KUAs, and device manufacturers building on the Aadhaar authentication stack.</td>
+              <td><span class="doc-type web">WEB</span></td>
+              <td><a href="https://uidai.gov.in/en/ecosystem/authentication-devices-documents/developer-section.html" target="_blank">uidai.gov.in/.../developer-section.html</a></td>
+            </tr>
+            <tr>
+              <td><strong>ASA / AUA Live Dashboard</strong></td>
+              <td>UIDAI's real-time public dashboard showing ASA transaction volumes, AUA-wise authentication statistics, and ecosystem-level eKYC usage data. Useful for monitoring live traffic and understanding ecosystem scale.</td>
+              <td><span class="doc-type web">WEB</span></td>
+              <td><a href="https://uidai.gov.in/aadhaar_dashboard/asa_transactions.php?asacode=3600" target="_blank">uidai.gov.in/aadhaar_dashboard/asa_transactions.php</a></td>
+            </tr>
+            <tr>
+              <td><strong>Aadhaar Act 2016</strong></td>
+              <td>Primary legislation. Sections 8 (consent), 29 (sharing restrictions), 40 (penalties) are most relevant for KUAs.</td>
+              <td><span class="doc-type law">LAW</span></td>
+              <td><a href="https://uidai.gov.in/en/about-uidai/legal-framework/acts.html" target="_blank">uidai.gov.in/.../acts.html</a></td>
+            </tr>
+            <tr>
+              <td><strong>Aadhaar Auth &amp; Offline Verification Regulations 2021</strong></td>
+              <td>Regulations 16 (no onward sharing), 17 (biometric prohibition), 19 (audit), and ADV requirements for KUAs and Sub-KUAs.</td>
+              <td><span class="doc-type law">LAW</span></td>
+              <td><a href="https://uidai.gov.in/en/about-uidai/legal-framework/regulations.html" target="_blank">uidai.gov.in/.../regulations.html</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="margin-top:16px;" class="note-box info">
+          All links above point to official UIDAI servers (uidai.gov.in). The <strong>Developer Sandbox</strong> is the recommended starting point for technical integration — it provides test Aadhaar numbers, a sandbox CIDR environment, and sample XML payloads. The <strong>ASA / AUA Live Dashboard</strong> shows real-time authentication transaction volumes across the ecosystem. If any document URLs have changed since this guide was prepared, navigate to <strong>uidai.gov.in → Legal Framework</strong>, <strong>uidai.gov.in → Ecosystem</strong>, or <strong>uidai.gov.in → Developer Section</strong> to locate current versions.
+        </div>
+
+        <div style="margin-top:20px;padding:20px 24px;border:1px solid var(--border);border-left:4px solid var(--blue);border-radius:var(--radius);background:var(--surface);">
+          <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:10px;">Further Reading — Advanced Concepts</div>
+          <a href="ekyc-trust-chain.html" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit;padding:12px 0;border-bottom:1px solid var(--border);">
+            <div style="width:40px;height:40px;border-radius:8px;background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;">🔗</div>
+            <div>
+              <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:3px;">The Aadhaar Trust Chain — Entity Segregation &amp; Sub-KUA Governance</div>
+              <div style="font-size:12.5px;color:var(--text3);line-height:1.5;">Why UIDAI enforces strict functional boundaries between ASA, AUA, and KUA — and the step-by-step process for appointing a third-party Sub-KUA in 2026, including CERT-IN audit requirements, joint undertakings, and who actually needs Sub-KUA status.</div>
+            </div>
+            <div style="margin-left:auto;flex-shrink:0;font-size:18px;color:var(--text3);">→</div>
+          </a>
+          <a href="index.html" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit;padding:12px 0;">
+            <div style="width:40px;height:40px;border-radius:8px;background:var(--surface3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;">⌂</div>
+            <div>
+              <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:3px;">DPDPIndia.in — Strategic Policy &amp; Legal Research</div>
+              <div style="font-size:12.5px;color:var(--text3);">Independent research on India's Digital Personal Data Protection Act and digital governance landscape.</div>
+            </div>
+            <div style="margin-left:auto;flex-shrink:0;font-size:18px;color:var(--text3);">→</div>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>Aadhaar eKYC Technical Reference — Compiled from UIDAI official specifications and Aadhaar Act 2016 / Authentication Regulations 2021</p>
+  <p style="margin-top:6px;">This document is an educational reference. For production integrations, always consult the latest official UIDAI specifications at <a href="https://uidai.gov.in" target="_blank">uidai.gov.in</a></p>
+</footer>
+
+<!-- ═══ STEPPER SCRIPT ═══ -->
+<script>
+const steps = [
+  {
+    icon: "👤",
+    title: "Step 1 — Resident provides consent and identity data",
+    subtitle: "On the device (client app) — data never leaves plain text",
+    from: { label: "Resident", col: "col-gray" },
+    to: { label: "Bank App / Client Device", col: "col-coral" },
+    dir: "forward",
+    payload: [
+      "Aadhaar number — entered on-screen (e.g. numeric keypad on app). Immediately hashed for wadh, encrypted in PID block before any network call.",
+      "Biometric — captured by STQC-certified L1 Registered Device. Encrypted inside TEE on-sensor before leaving the biometric chip.",
+      "OR OTP — 6-digit one-time password delivered by UIDAI to the Aadhaar-registered mobile number only.",
+      "Explicit consent — resident is shown the purpose and scope; taps 'I Agree'. This consent is recorded as rc='Y' in the Auth XML.",
+      "Auth type flag — bi (biometric), otp, or demo — determines which PID sub-element is populated."
+    ],
+    tags: [
+      { label: "TEE encryption on-sensor (L1)", cls: "green" },
+      { label: "Biometric never stored raw", cls: "green" },
+      { label: "STQC-certified device only", cls: "blue" },
+      { label: "OTP = Aadhaar-registered mobile", cls: "blue" }
+    ],
+    note: { type: "warning", text: "<strong>Key design guarantee:</strong> The resident's biometric is encrypted inside the Registered Device's Trusted Execution Environment before it is ever accessible to the phone's OS, the bank app, or any network layer. No software on the phone can intercept it in plaintext." },
+    log: null
+  },
+  {
+    icon: "🔐",
+    title: "Step 2 — PID block constructed and Auth XML formed",
+    subtitle: "On the bank app / KUA client — preparing the encrypted request",
+    from: { label: "Client Device / App", col: "col-coral" },
+    to: { label: "KUA Server (Bank Backend)", col: "col-blue" },
+    dir: "forward",
+    payload: [
+      "AES-256 session key generated freshly per transaction — encrypts biometric or OTP to form the PID Data element.",
+      "Session key encrypted with UIDAI's RSA-2048 public key — forms the SessionKey element. Only CIDR can open this.",
+      "SHA-256 HMAC of PID data computed using session key — forms the Hmac element for integrity verification.",
+      "wadh = SHA-256(deviceKey || sessionKey || Aadhaar_hash) — anti-replay token unique to this transaction.",
+      "Auth XML assembled: <Auth ac='KUA_code' sa='Sub-KUA_code' txn='UKC:...' lk='...' ver='2.5'> containing encrypted <Pid> block.",
+      "Entire Auth XML digitally signed by KUA's private key (RSA, held in HSM) — non-repudiation for UIDAI.",
+      "txn ID must begin with 'UKC:' namespace prefix for eKYC transactions (distinguishes from plain auth)."
+    ],
+    tags: [
+      { label: "UIDAI public key used → only CIDR decrypts", cls: "green" },
+      { label: "wadh prevents replay attacks", cls: "green" },
+      { label: "KUA signs with HSM private key", cls: "blue" },
+      { label: "Aadhaar no. in PID is encrypted — KUA cannot read", cls: "amber" }
+    ],
+    note: { type: "success", text: "<strong>Encryption guarantee:</strong> The bank's own backend server assembles the Auth XML but <em>cannot</em> read the biometric or Aadhaar number inside the PID block — those are encrypted to UIDAI's public key. The bank is essentially wrapping an opaque envelope that only UIDAI can open." },
+    log: { type: "info", text: "<strong>Bank log at this step:</strong> txn ID, timestamp, auth type (BIO/OTP), KUA code (ac), Sub-KUA code (sa), device ID, STQC cert reference — and nothing else. Aadhaar number, biometric, OTP are not logged." }
+  },
+  {
+    icon: "🌐",
+    title: "Step 3 — eKYC request sent to ASA over secure channel",
+    subtitle: "KUA server → ASA/KSA → UIDAI CIDR (leased line)",
+    from: { label: "KUA Server (Bank)", col: "col-blue" },
+    to: { label: "ASA / KSA Server", col: "col-teal" },
+    dir: "forward",
+    payload: [
+      "Full eKYC XML posted over HTTPS to ASA endpoint: https://host/kyc/{ver}/{ac}/{uid[0]}/{uid[1]}/{asalk}",
+      "URL path contains: KUA licence code (ac), first two digits of Aadhaar (uid[0]/uid[1]) for routing only, ASA licence key (asalk).",
+      "de attribute (optional): if set to 'Y', instructs UIDAI to encrypt the KYC response to the ASA's public key instead of the KUA's — used when the ASA acts as a decryption proxy.",
+      "ASA receives the packet — it cannot decrypt the PID block (encrypted to UIDAI's key) or the Auth XML (signed by KUA's HSM key).",
+      "ASA forwards packet over dedicated leased line to CIDR — not via public internet."
+    ],
+    tags: [
+      { label: "Leased line — not public internet", cls: "green" },
+      { label: "ASA static IP registered with UIDAI", cls: "green" },
+      { label: "ASA cannot decrypt PID block", cls: "amber" },
+      { label: "TLS on KUA-to-ASA link", cls: "blue" }
+    ],
+    note: { type: "info", text: "<strong>ASA's role:</strong> The ASA is a pure connectivity provider — a bonded courier who cannot open the letter they carry. UIDAI's security model is designed so that even a compromised ASA cannot access any biometric or personal data." },
+    log: null
+  },
+  {
+    icon: "🏛️",
+    title: "Step 4 — UIDAI CIDR authenticates and generates eKYC response",
+    subtitle: "Inside UIDAI's Central Identities Data Repository — the secure vault",
+    from: { label: "ASA / KSA", col: "col-teal" },
+    to: { label: "UIDAI CIDR", col: "col-purple" },
+    dir: "forward",
+    payload: [
+      "CIDR verifies KUA digital signature on Auth XML — confirms the request is from the licenced KUA.",
+      "CIDR decrypts the SessionKey element using UIDAI's RSA private key.",
+      "CIDR decrypts the PID Data element using the recovered AES session key.",
+      "CIDR verifies the HMAC (Hmac element) for PID integrity.",
+      "CIDR performs 1:1 biometric match (fingerprint template / iris template / OTP) against stored record — matching is done only here, never exported.",
+      "On success: CIDR assembles KYC payload — Name, DOB, Gender, Address, Photo (JPEG), masked Aadhaar (last 4 digits), Mobile hash, Email hash.",
+      "CIDR encrypts KYC payload using KUA's public key (or ASA's if de='Y' was requested).",
+      "CIDR signs entire KycRes XML with UIDAI's private key (W3C XML-DSig).",
+      "Returns KycRes with: status, txn, ttl (time-to-live in seconds), encrypted Rar element containing KYC data."
+    ],
+    tags: [
+      { label: "Biometric matching only at CIDR — never exported", cls: "green" },
+      { label: "Biometric never leaves CIDR in decrypted form", cls: "green" },
+      { label: "Response encrypted to KUA public key", cls: "blue" },
+      { label: "UIDAI digital signature for legal validity", cls: "blue" },
+      { label: "Masked Aadhaar only in response (last 4 digits)", cls: "amber" }
+    ],
+    note: { type: "success", text: "<strong>The vault guarantee:</strong> CIDR is the only location where biometric data is ever decrypted, and the decrypted form exists only in-memory for the duration of the comparison computation. No biometric template, in decrypted or encrypted form, is ever sent outside CIDR." },
+    log: { type: "info", text: "<strong>CIDR audit log:</strong> txn ID, KUA code, ASA code, authentication result code, timestamp, auth type — no biometric data, no Aadhaar number in plaintext in any log." }
+  },
+  {
+    icon: "📬",
+    title: "Step 5 — Encrypted eKYC response travels back to KUA",
+    subtitle: "UIDAI CIDR → ASA → KUA (response decrypted only at KUA's HSM)",
+    from: { label: "UIDAI CIDR", col: "col-purple" },
+    to: { label: "ASA → KUA Server (HSM)", col: "col-blue" },
+    dir: "reverse",
+    payload: [
+      "KycRes XML (encrypted + UIDAI-signed) returned by CIDR to ASA over leased line.",
+      "ASA passes KycRes unchanged to KUA over HTTPS — ASA sees only ciphertext, no KYC data leakage at ASA layer.",
+      "KUA receives KycRes and first verifies UIDAI's digital signature against UIDAI's published public certificate (mandatory step).",
+      "KUA verifies the ttl (time-to-live) field — if the response is stale (TTL expired), it is discarded entirely.",
+      "KUA decrypts the Rar element using its RSA private key (held in FIPS 140-2 certified HSM) — demographic KYC data now available.",
+      "KUA now has: Name, DOB, Gender, Address, Photo (JPEG), masked Aadhaar, and optionally hashed Mobile/Email.",
+      "KUA stores the signed KycRes XML in Aadhaar Data Vault (ADV) — not in operational application database.",
+      "Aadhaar number (masked in response) referenced via uid-token in application logs and operational DB."
+    ],
+    tags: [
+      { label: "ASA holds only ciphertext — zero KYC leakage", cls: "green" },
+      { label: "UIDAI signature verified before decryption", cls: "green" },
+      { label: "HSM-only decryption — private key never in RAM unprotected", cls: "blue" },
+      { label: "TTL enforces freshness — stale responses rejected", cls: "amber" }
+    ],
+    note: { type: "warning", text: "<strong>HSM discipline:</strong> The KUA's private key must be held in a FIPS 140-2 certified Hardware Security Module. Decryption of the eKYC response happens inside the HSM — the private key is never extracted into application memory." },
+    log: { type: "info", text: "<strong>Bank log at this step:</strong> txn ID, timestamp, uid-token, KUA code, Sub-KUA code, response status code, ttl — no name, address, photo, or Aadhaar number in application logs." }
+  },
+  {
+    icon: "🔀",
+    title: "Step 6 — KYC data shared with Sub-KUA (with restrictions)",
+    subtitle: "KUA forwards decrypted KYC data to authorised Sub-KUAs only",
+    from: { label: "KUA (Bank Backend)", col: "col-blue" },
+    to: { label: "Sub-KUA (if applicable)", col: "col-coral" },
+    dir: "forward",
+    payload: [
+      "Decrypted demographic KYC data (Name, DOB, Address, Photo) forwarded only to UIDAI-approved Sub-KUAs — no others.",
+      "Sub-KUA identified by its sa code registered with UIDAI and approved for this KUA relationship.",
+      "Sub-KUA is contractually and legally bound by the same data-protection rules as the KUA.",
+      "Sub-KUA cannot pass the KYC data to any further party — Regulation 16 prohibits all onward transfer.",
+      "Biometric data is never forwarded to Sub-KUA under any circumstance — only demographic KYC.",
+      "eKYC signed XML stored in ADV — never in Sub-KUA's operational database.",
+      "KUA must log all Sub-KUA sharing events for UIDAI audit purposes."
+    ],
+    tags: [
+      { label: "UIDAI prior approval required for each Sub-KUA", cls: "green" },
+      { label: "No biometric data to Sub-KUA ever", cls: "green" },
+      { label: "Regulation 16 — no onward transfer", cls: "amber" },
+      { label: "Sub-KUA eKYC XML stored in ADV", cls: "blue" }
+    ],
+    note: { type: "danger", text: "<strong>Hard stop — Regulation 16:</strong> A KUA that shares eKYC data with a party that is not an approved Sub-KUA, or a Sub-KUA that shares data with any third party, is in direct violation of the Aadhaar Act. This is a criminal offence. The KUA is vicariously liable for all its Sub-KUAs." },
+    log: { type: "info", text: "<strong>Bank log at this step:</strong> sharing event timestamp, uid-token, Sub-KUA code (sa), consent flag, customer internal reference — no KYC field values in logs." }
+  },
+  {
+    icon: "🗄️",
+    title: "Step 7 — Aadhaar Data Vault (ADV) and long-term storage",
+    subtitle: "Secure archival of the signed eKYC XML for compliance and audit",
+    from: { label: "KUA (Bank Backend)", col: "col-blue" },
+    to: { label: "Aadhaar Data Vault (ADV)", col: "col-navy" },
+    dir: "forward",
+    payload: [
+      "The UIDAI-signed KycRes XML is stored in the ADV as a complete, immutable record — this serves as the legally valid proof of eKYC.",
+      "ADV uses AES-256 encryption for all stored records. Keys held in HSM.",
+      "ADV is physically or logically isolated from the bank's main application servers.",
+      "Access to ADV is restricted to authorised personnel on need-to-know basis, with full audit logging of every access.",
+      "Permitted hosting environments: bank's own UIDAI-compliant secure premises, MeitY GCC-empanelled cloud provider, or UIDAI-approved ADV-as-a-service.",
+      "Aadhaar numbers are tokenised in all other systems — application DB stores uid-token only.",
+      "Demographic data (Name, DOB, Address) derived from eKYC may be stored in the bank's KYC records separately from the ADV, without the Aadhaar number.",
+      "The signed eKYC XML in ADV must be retained as per applicable RBI/SEBI/IRDAI record-retention requirements."
+    ],
+    tags: [
+      { label: "AES-256 encryption + HSM key management", cls: "green" },
+      { label: "uid-token in app DB — never Aadhaar number", cls: "green" },
+      { label: "Signed XML = legal proof of identity verification", cls: "blue" },
+      { label: "Only 3 permitted hosting environments (2025 Circular)", cls: "amber" }
+    ],
+    note: { type: "success", text: "<strong>Practical separation:</strong> The bank maintains three separate stores — (1) the ADV containing signed eKYC XMLs and tokenised Aadhaar references, (2) the KYC records store with demographic data (no Aadhaar number), and (3) operational application databases with uid-token only. This three-way separation is the UIDAI-mandated architecture for minimising data-breach risk." },
+    log: { type: "info", text: "<strong>Complete transaction lifecycle log:</strong> txn ID → uid-token → auth-type → device-id → UIDAI response code → ADV reference ID → Sub-KUA sharing event (if any). This forms the full, auditable, compliance-grade trail with zero sensitive personal data in the log itself." }
+  }
+];
+
+let cur = 0;
+
+const COLORS = {
+  "col-navy": { bg: "#0a1628", text: "#e8edf5" },
+  "col-teal": { bg: "#0e7c6b", text: "#e0f2ef" },
+  "col-blue": { bg: "#1a5cad", text: "#e6f1fb" },
+  "col-coral": { bg: "#c2420a", text: "#faeae0" },
+  "col-gray": { bg: "#3a4a5c", text: "#f0f2f5" },
+  "col-purple": { bg: "#5b4bc4", text: "#ede8fe" }
+};
+
+function fboxHTML(item) {
+  const c = COLORS[item.col] || { bg: "#3a4a5c", text: "#f0f2f5" };
+  return `<span class="flow-entity" style="background:${c.bg};color:${c.text};">${item.label}</span>`;
+}
+
+function renderPills() {
+  const el = document.getElementById('stepPills');
+  el.innerHTML = steps.map((s, i) => {
+    const cls = i === cur ? 'sp active' : i < cur ? 'sp done' : 'sp';
+    return `<button class="${cls}" onclick="jumpStep(${i})">
+      <span class="sp-num">${i + 1}</span>
+      <span style="display:none;">${s.title.split('—')[1]?.trim() || ''}</span>
+    </button>`;
+  }).join('<span style="width:6px;height:1px;background:var(--border);display:inline-block;margin:0 1px;align-self:center;"></span>');
+}
+
+function noteHTML(n) {
+  if (!n) return '';
+  return `<div class="note-box ${n.type}">${n.text}</div>`;
+}
+
+function logHTML(l) {
+  if (!l) return '';
+  return `<div class="note-box ${l.type}">${l.text}</div>`;
+}
+
+function renderPanel() {
+  const s = steps[cur];
+  const panel = document.getElementById('stepPanel');
+
+  const noteColor = { warning: '#854f0b', info: '#0a2e5e', danger: '#5c0f0f', success: '#0a3318' };
+
+  const flowLine = s.dir === 'forward'
+    ? `<div class="flow-arrow">${fboxHTML(s.from)}<div class="flow-line"></div>${fboxHTML(s.to)}</div>`
+    : `<div class="flow-arrow">${fboxHTML(s.to)}<div class="flow-line rev"></div>${fboxHTML(s.from)}</div>`;
+
+  panel.innerHTML = `
+    <div class="step-panel-head">
+      <div class="step-icon">${s.icon}</div>
+      <div>
+        <h3>${s.title}</h3>
+        <p>${s.subtitle}</p>
+      </div>
+    </div>
+    <div class="step-panel-body">
+      ${flowLine}
+      <div class="payload-block">
+        <div class="payload-block-head">Payload / data in transit</div>
+        ${s.payload.map(p => `<div class="payload-item">${p}</div>`).join('')}
+      </div>
+      <div class="sec-tags">${s.tags.map(t => `<span class="sec-tag ${t.cls}">🔒 ${t.label}</span>`).join('')}</div>
+      ${noteHTML(s.note)}
+      ${logHTML(s.log)}
+    </div>`;
+
+  document.getElementById('btnPrev').disabled = cur === 0;
+  document.getElementById('btnNext').disabled = cur === steps.length - 1;
+  document.getElementById('stepCounter').textContent = `Step ${cur + 1} of ${steps.length}`;
+}
+
+function stepNav(d) {
+  cur = Math.max(0, Math.min(steps.length - 1, cur + d));
+  renderPills();
+  renderPanel();
+}
+
+function jumpStep(i) {
+  cur = i;
+  renderPills();
+  renderPanel();
+}
+
+renderPills();
+renderPanel();
+</script>
+
+</body>
+</html>
