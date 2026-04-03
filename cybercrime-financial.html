@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Financial Cyber Frauds — How They Work & How to Fight Back · DPDP India</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--parchment:#F8F4EC;--cream:#FDFAF5;--paper:#F2EDE2;--ink:#1A1610;--prussian:#1B2B3A;--slate:#2D3D4E;--saffron:#D4760A;--saffron-lt:#F0A840;--mist:#7A7468;--rule:rgba(26,22,16,0.12);--rule-gold:rgba(212,118,10,0.25);--shadow-sm:0 2px 12px rgba(26,22,16,0.06);--shadow-md:0 8px 40px rgba(26,22,16,0.10);--danger:#C0392B;--danger-bg:#FADBD8;--safe:#1A6B3A;--safe-bg:#D5F5E3;--warn:#B8862C;--warn-bg:#FEF9E7;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}body{font-family:'Source Serif 4',Georgia,serif;background:var(--cream);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;}
+.emergency-bar{background:var(--danger);padding:0.7rem 0;text-align:center;}
+.emergency-bar p{font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:#fff;}
+.emergency-bar strong{font-size:1rem;}
+.masthead{background:var(--prussian);padding:10px 0;text-align:center;border-bottom:3px solid var(--saffron);}
+.masthead-text{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.55);}
+.masthead-text span{color:var(--saffron-lt);}
+nav{position:sticky;top:0;z-index:200;background:var(--cream);border-bottom:1px solid var(--rule);box-shadow:var(--shadow-sm);}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:68px;position:relative;}
+.nav-brand{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.nav-brand-seal{width:42px;height:42px;}
+.nav-brand-name{display:flex;flex-direction:column;gap:1px;}
+.nav-brand-name strong{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--prussian);line-height:1;}
+.nav-brand-name span{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);line-height:1;}
+.nav-links{display:flex;align-items:center;gap:1.5rem;list-style:none;}
+.nav-links a{font-family:'Source Serif 4',serif;font-size:0.82rem;color:var(--slate);text-decoration:none;transition:color 0.2s;position:relative;white-space:nowrap;}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--saffron);transform:scaleX(0);transition:transform 0.25s;transform-origin:left;}
+.nav-links a:hover{color:var(--saffron);}
+.nav-links a:hover::after{transform:scaleX(1);}
+.nav-blog-btn{font-family:'JetBrains Mono',monospace!important;font-size:0.65rem!important;letter-spacing:0.1em!important;text-transform:uppercase;background:var(--danger)!important;color:#fff!important;padding:9px 20px;border-radius:1px;transition:background 0.2s!important;}
+.nav-blog-btn::after{display:none!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--prussian);transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-menu{display:none;position:absolute;top:68px;left:0;right:0;background:var(--cream);border-bottom:2px solid var(--saffron);box-shadow:var(--shadow-md);z-index:199;}
+.mobile-menu.open{display:block;}
+.mobile-menu ul{list-style:none;padding:1rem 2rem 1.5rem;}
+.mobile-menu ul li a{display:block;font-size:0.95rem;color:var(--slate);text-decoration:none;padding:0.7rem 0;border-bottom:1px solid var(--rule);}
+.mobile-menu ul li:last-child a{border-bottom:none;}
+.mobile-menu ul li a:hover{color:var(--saffron);}
+.page-header{background:var(--danger);padding:4rem 0 3.5rem;position:relative;overflow:hidden;}
+.page-header::after{content:'';position:absolute;top:0;right:0;width:40%;height:100%;background:radial-gradient(ellipse at right,rgba(0,0,0,0.15) 0%,transparent 70%);pointer-events:none;}
+.page{max-width:1320px;margin:0 auto;padding:0 2rem;}
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:1.5rem;font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.5);position:relative;z-index:1;flex-wrap:wrap;}
+.breadcrumb a{color:rgba(255,255,255,0.5);text-decoration:none;}
+.breadcrumb-sep{color:rgba(255,255,255,0.3);}
+.page-kicker{display:flex;align-items:center;gap:10px;margin-bottom:1.5rem;position:relative;z-index:1;}
+.page-kicker-line{width:32px;height:1px;background:rgba(255,255,255,0.5);}
+.page-kicker-text{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.7);}
+.page-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:700;line-height:1.12;color:#fff;margin-bottom:0.8rem;position:relative;z-index:1;}
+.page-deck{font-size:0.95rem;font-weight:300;line-height:1.85;color:rgba(255,255,255,0.75);max-width:640px;position:relative;z-index:1;}
+
+/* CRIME ENTRY */
+.crimes-body{max-width:1100px;margin:0 auto;padding:4rem 2rem 6rem;}
+.crime-entry{margin-bottom:4rem;padding-bottom:4rem;border-bottom:2px solid var(--rule);}
+.crime-entry:last-child{border-bottom:none;margin-bottom:0;}
+
+.crime-header{display:flex;align-items:flex-start;gap:1.5rem;margin-bottom:2rem;flex-wrap:wrap;}
+.crime-num{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:rgba(192,57,43,0.12);line-height:1;flex-shrink:0;min-width:60px;}
+.crime-header-text{flex:1;}
+.crime-tag{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--danger);margin-bottom:0.4rem;display:flex;align-items:center;gap:6px;}
+.crime-tag::before{content:'';display:inline-block;width:12px;height:1px;background:var(--danger);}
+.crime-name{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,2.5vw,1.9rem);font-weight:700;color:var(--prussian);margin-bottom:0.3rem;line-height:1.2;}
+.crime-aka{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;color:var(--mist);}
+.crime-severity{display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;padding:4px 10px;border:1px solid;margin-left:auto;flex-shrink:0;}
+.sev-high{color:var(--danger);border-color:var(--danger);background:var(--danger-bg);}
+.sev-med{color:var(--warn);border-color:var(--warn);background:var(--warn-bg);}
+
+.crime-panels{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1.5rem;}
+
+.panel{border:1px solid;padding:1.5rem;border-radius:0;}
+.panel.red{border-color:rgba(192,57,43,0.3);background:var(--danger-bg);}
+.panel.green{border-color:rgba(26,107,58,0.3);background:var(--safe-bg);}
+.panel.gold{border-color:var(--rule-gold);background:var(--warn-bg);}
+
+.panel-label{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:0.8rem;display:flex;align-items:center;gap:6px;}
+.panel.red .panel-label{color:var(--danger);}
+.panel.green .panel-label{color:var(--safe);}
+.panel.gold .panel-label{color:var(--warn);}
+
+.panel-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--prussian);margin-bottom:0.6rem;}
+.panel-body{font-size:0.84rem;font-weight:300;line-height:1.8;color:var(--slate);}
+.panel-body strong{font-weight:600;color:var(--prussian);}
+.panel-body ul{list-style:none;margin-top:0.5rem;}
+.panel-body ul li{padding:0.3rem 0;border-bottom:1px solid rgba(26,22,16,0.08);display:flex;align-items:flex-start;gap:6px;font-size:0.82rem;}
+.panel-body ul li:last-child{border-bottom:none;}
+.panel.red .panel-body ul li::before{content:'⚠';font-size:0.6rem;flex-shrink:0;margin-top:3px;}
+.panel.green .panel-body ul li::before{content:'✓';color:var(--safe);font-weight:700;flex-shrink:0;margin-top:1px;}
+.panel.gold .panel-body ul li::before{content:'→';color:var(--warn);font-family:'JetBrains Mono',monospace;font-size:0.65rem;flex-shrink:0;}
+
+/* REMEDY STEPS */
+.remedy-steps{background:var(--prussian);padding:2rem;margin-top:1rem;}
+.rs-label{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--saffron);margin-bottom:1.2rem;}
+.steps-list{display:grid;grid-template-columns:repeat(5,1fr);gap:0.5rem;}
+.step{background:rgba(255,255,255,0.05);padding:1rem;text-align:center;border:1px solid rgba(255,255,255,0.08);}
+.step-num{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--saffron);line-height:1;margin-bottom:0.3rem;}
+.step-time{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--danger);margin-bottom:0.4rem;}
+.step-title{font-family:'Source Serif 4',serif;font-size:0.78rem;font-weight:400;color:var(--parchment);line-height:1.4;}
+.step.urgent{background:rgba(192,57,43,0.15);border-color:rgba(192,57,43,0.3);}
+
+/* LAW BOX */
+.law-box{border:1px solid var(--rule);padding:1rem 1.5rem;margin-top:0.8rem;background:var(--parchment);display:flex;align-items:flex-start;gap:1rem;flex-wrap:wrap;}
+.lb-label{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--mist);flex-shrink:0;padding-top:2px;}
+.lb-laws{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--prussian);line-height:1.8;}
+
+footer{background:var(--ink);padding:4rem 0 2rem;}
+.footer-grid{max-width:1320px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,0.06);}
+.footer-brand-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--parchment);margin-bottom:0.8rem;}
+.footer-brand-desc{font-size:0.85rem;font-weight:300;line-height:1.8;color:rgba(248,244,236,0.4);max-width:280px;}
+.footer-col-title{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);margin-bottom:1rem;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.footer-links a{font-size:0.85rem;font-weight:300;color:rgba(248,244,236,0.45);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--parchment);}
+.footer-bottom{max-width:1320px;margin:0 auto;padding:1.5rem 2rem 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-copy{font-size:0.78rem;font-weight:300;color:rgba(248,244,236,0.25);}
+
+@media(max-width:900px){
+  .nav-links{display:none;}.hamburger{display:flex;}
+  .crime-panels{grid-template-columns:1fr;}
+  .steps-list{grid-template-columns:repeat(3,1fr);}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:600px){
+  .crimes-body{padding:2rem 1.2rem 4rem;}
+  .steps-list{grid-template-columns:1fr 1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+  .footer-bottom{flex-direction:column;align-items:flex-start;}
+  .crime-header{flex-direction:column;gap:0.5rem;}
+  .crime-severity{margin-left:0;}
+}
+</style>
+</head>
+<body>
+<div class="emergency-bar"><p>🚨 Money stolen? Call <strong>1930</strong> right now — freeze the transaction before it's too late</p></div>
+<div class="masthead"><p class="masthead-text">DPDP India · <span>Cyber Fraud Awareness · Financial Crimes</span></p></div>
+
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <svg class="nav-brand-seal" viewBox="0 0 42 42" fill="none"><circle cx="21" cy="21" r="20" stroke="#1B2B3A" stroke-width="1.5"/><circle cx="21" cy="21" r="14" stroke="#D4760A" stroke-width="0.75" stroke-dasharray="2 2"/><text x="21" y="25" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="700" fill="#1B2B3A">§</text></svg>
+      <div class="nav-brand-name"><strong>DPDP India</strong><span>Policy & Legal Research</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="cybercrime-kb.html">← Fraud KB</a></li>
+      <li><a href="cybercrime-financial.html">Financial Frauds</a></li>
+      <li><a href="cybercrime-personal.html">Personal Crimes</a></li>
+      <li><a href="itact-kb.html">IT Act KB</a></li>
+      <li><a href="cybercrime-remedy-guide.html" class="nav-blog-btn">Get Help Now</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li><a href="cybercrime-kb.html">Cyber Fraud KB Home</a></li>
+      <li><a href="cybercrime-financial.html">Financial Frauds</a></li>
+      <li><a href="cybercrime-personal.html">Personal & Social Crimes</a></li>
+      <li><a href="cybercrime-remedy-guide.html">How to Get Help</a></li>
+      <li><a href="index.html">DPDPIndia.in Home</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="page">
+    <div class="breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">›</span><a href="cybercrime-kb.html">Cyber Fraud KB</a><span class="breadcrumb-sep">›</span><span>Financial Frauds</span></div>
+    <div class="page-kicker"><div class="page-kicker-line"></div><div class="page-kicker-text">Category 01 · Most Common · 10 Crimes</div></div>
+    <h1 class="page-title">Financial Cyber Frauds —<br>How They Work & How to Fight Back</h1>
+    <p class="page-deck">10 financial cybercrimes explained: how criminals execute them, the exact laws that protect you, step-by-step remedy procedures, and how to never fall for them again.</p>
+  </div>
+</header>
+
+<div class="crimes-body">
+
+  <!-- CRIME 01: UPI FRAUD -->
+  <div class="crime-entry" id="upi-fraud">
+    <div class="crime-header">
+      <div class="crime-num">01</div>
+      <div class="crime-header-text">
+        <div class="crime-tag">Financial Fraud · Most Reported</div>
+        <div class="crime-name">UPI / QR Code Fraud</div>
+        <div class="crime-aka">Also known as: "Collect Request Scam", "QR Scan Scam", "Money Request Fraud"</div>
+      </div>
+      <div class="crime-severity sev-high">🔴 Very High Risk</div>
+    </div>
+    <div class="crime-panels">
+      <div class="panel red">
+        <div class="panel-label">🎭 How It's Executed</div>
+        <div class="panel-title">The Modus Operandi</div>
+        <div class="panel-body">Criminals pose as buyers on OLX/Facebook Marketplace or as "army officers" wanting to pay for goods. They send a <strong>collect request or a QR code</strong> and say "scan to receive money." The victim enters their UPI PIN — and money leaves, not arrives. Other variant: they send a ₹1 test credit, earn your trust, then send a large collect request. Also done through fake "cashback" links from spoofed Paytm/PhonePe SMS.</div>
+      </div>
+      <div class="panel green">
+        <div class="panel-label">⚖️ Your Remedy</div>
+        <div class="panel-title">What to Do Immediately</div>
+        <div class="panel-body"><ul>
+          <li>Call <strong>1930 within 60 minutes</strong> — provide transaction ID, amount, time</li>
+          <li>File on <strong>cybercrime.gov.in</strong> under "Financial Fraud"</li>
+          <li>Contact your bank's 24×7 helpline — request transaction reversal</li>
+          <li>File FIR at local Cyber Police Station with transaction screenshots</li>
+          <li>Email <strong>pgportal.gov.in</strong> if bank refuses to cooperate</li>
+        </ul></div>
+      </div>
+      <div class="panel gold">
+        <div class="panel-label">🛡️ Prevention</div>
+        <div class="panel-title">How to Never Fall For This</div>
+        <div class="panel-body"><ul>
+          <li>You NEVER need to enter PIN to <strong>receive</strong> money on UPI</li>
+          <li>Never scan a QR code someone else sends you to "pay you"</li>
+          <li>Reject all collect requests from unknown sources</li>
+          <li>Verify buyer identity via video call before sharing UPI ID</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="remedy-steps">
+      <div class="rs-label">Step-by-Step Recovery Procedure</div>
+      <div class="steps-list">
+        <div class="step urgent"><div class="step-num">1</div><div class="step-time">0–60 min</div><div class="step-title">Call 1930 — Give transaction ID & amount</div></div>
+        <div class="step urgent"><div class="step-num">2</div><div class="step-time">0–2 hours</div><div class="step-title">Call your bank — request freeze/reversal</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-time">Within 24 hrs</div><div class="step-title">File on cybercrime.gov.in — Financial Fraud section</div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-time">Within 72 hrs</div><div class="step-title">File FIR at nearest cyber police station</div></div>
+        <div class="step"><div class="step-num">5</div><div class="step-time">If unresolved</div><div class="step-title">RBI Banking Ombudsman complaint</div></div>
+      </div>
+    </div>
+    <div class="law-box">
+      <div class="lb-label">Applicable Law</div>
+      <div class="lb-laws">IT Act 2000: s.66C (Identity Theft) · s.66D (Cheating by Impersonation) · BNS 2023: s.318 (Cheating) · s.319 (Cheating by Impersonation) · RBI Circular on Zero Liability for Unauthorised Transactions</div>
+    </div>
+  </div>
+
+  <!-- CRIME 02: DIGITAL ARREST -->
+  <div class="crime-entry" id="digital-arrest">
+    <div class="crime-header">
+      <div class="crime-num">02</div>
+      <div class="crime-header-text">
+        <div class="crime-tag">Impersonation Fraud · Highest Average Loss</div>
+        <div class="crime-name">Digital Arrest Scam</div>
+        <div class="crime-aka">Also known as: "CBI Call Fraud", "Customs Scam", "FedEx Parcel Drug Scam", "ED Arrest Fraud"</div>
+      </div>
+      <div class="crime-severity sev-high">🔴 Very High Risk — Avg Loss: ₹5–50 Lakh</div>
+    </div>
+    <div class="crime-panels">
+      <div class="panel red">
+        <div class="panel-label">🎭 How It's Executed</div>
+        <div class="panel-title">The Modus Operandi</div>
+        <div class="panel-body">You receive a call from someone claiming to be from TRAI, FedEx, Customs, CBI, ED, or Narcotics Bureau. They say your Aadhaar/mobile number is linked to a parcel containing drugs/fake passports, or a bank account used for money laundering. You are put on a video call with people in fake police/CBI uniforms in a staged "office." They say you are under "digital arrest" — you must stay on the call and cannot tell anyone. They demand money to "settle" the case. PM Modi specifically warned about this scam in November 2024 on Mann Ki Baat.</div>
+      </div>
+      <div class="panel green">
+        <div class="panel-label">⚖️ Your Remedy</div>
+        <div class="panel-title">What to Do</div>
+        <div class="panel-body"><ul>
+          <li><strong>Disconnect immediately</strong> — no real agency arrests over video call</li>
+          <li>Call 1930 and report the scammer's number</li>
+          <li>File on cybercrime.gov.in — Report Cyber Crime → Other Cyber Crime</li>
+          <li>If money was paid: call bank immediately + file FIR</li>
+          <li>Report the number to TRAI's DND/Sanchar Saathi at <strong>sancharsaathi.gov.in</strong></li>
+        </ul></div>
+      </div>
+      <div class="panel gold">
+        <div class="panel-label">🛡️ Prevention</div>
+        <div class="panel-title">The One Rule That Saves You</div>
+        <div class="panel-body"><ul>
+          <li><strong>"Digital Arrest" does not exist in Indian law.</strong> Full stop.</li>
+          <li>No CBI/ED/Police arrests over WhatsApp or video call</li>
+          <li>Always call 100 or visit your nearest police station to verify</li>
+          <li>Tell your family — especially elderly relatives — about this scam</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="remedy-steps">
+      <div class="rs-label">Step-by-Step Recovery Procedure</div>
+      <div class="steps-list">
+        <div class="step urgent"><div class="step-num">1</div><div class="step-time">Immediately</div><div class="step-title">Disconnect the call — hang up now</div></div>
+        <div class="step urgent"><div class="step-num">2</div><div class="step-time">If money paid</div><div class="step-title">Call 1930 with amount and transaction details</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-time">Within 24 hrs</div><div class="step-title">File on cybercrime.gov.in</div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-time">Within 72 hrs</div><div class="step-title">File FIR at cyber police station</div></div>
+        <div class="step"><div class="step-num">5</div><div class="step-time">For awareness</div><div class="step-title">Report caller ID at sancharsaathi.gov.in</div></div>
+      </div>
+    </div>
+    <div class="law-box">
+      <div class="lb-label">Applicable Law</div>
+      <div class="lb-laws">IT Act 2000: s.66D (Cheating by Impersonation using computer resource) · BNS 2023: s.318 (Cheating) · s.319 (Cheating by personating a public servant) · s.140 (Personating public servant) · IPC s.170 (Personating a public servant)</div>
+    </div>
+  </div>
+
+  <!-- CRIME 03: OTP VISHING -->
+  <div class="crime-entry" id="otp-fraud">
+    <div class="crime-header">
+      <div class="crime-num">03</div>
+      <div class="crime-header-text">
+        <div class="crime-tag">Social Engineering · Voice Phishing</div>
+        <div class="crime-name">OTP Fraud / Vishing</div>
+        <div class="crime-aka">Also known as: "Bank KYC Call", "SBI/HDFC Update Call", "Telecom Disconnection Call"</div>
+      </div>
+      <div class="crime-severity sev-high">🔴 High Risk</div>
+    </div>
+    <div class="crime-panels">
+      <div class="panel red">
+        <div class="panel-label">🎭 How It's Executed</div>
+        <div class="panel-title">The Modus Operandi</div>
+        <div class="panel-body">You receive a call from someone impersonating your bank, UIDAI, TRAI, or telecom company. They say: "Your KYC is not updated, your account will be blocked in 24 hours." They ask for your OTP, card number, CVV, or net banking password "to verify your identity." Sometimes they send a fake bank website link. The moment you share the OTP, they drain your account through UPI or net banking transfer.</div>
+      </div>
+      <div class="panel green">
+        <div class="panel-label">⚖️ Your Remedy</div>
+        <div class="panel-title">What to Do</div>
+        <div class="panel-body"><ul>
+          <li>Call 1930 immediately with amount and time</li>
+          <li>Call your bank — block your card and internet banking</li>
+          <li>File on cybercrime.gov.in within 24 hours</li>
+          <li>File FIR — mention "impersonation of bank official" specifically</li>
+          <li>Request chargeback from your bank in writing</li>
+        </ul></div>
+      </div>
+      <div class="panel gold">
+        <div class="panel-label">🛡️ Prevention</div>
+        <div class="panel-title">The Iron Rule</div>
+        <div class="panel-body"><ul>
+          <li><strong>No bank ever calls asking for OTP, PIN, or password</strong></li>
+          <li>Banks do KYC in branch or through their official app — never over phone</li>
+          <li>Hang up. Call your bank's number from the back of your card</li>
+          <li>Enable SMS alert for every transaction</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="law-box">
+      <div class="lb-label">Applicable Law</div>
+      <div class="lb-laws">IT Act 2000: s.66C (Identity Theft) · s.66D (Cheating by Impersonation) · BNS 2023: s.318 · RBI Directions on Customer Protection — Limiting Liability of Customers in Unauthorised Electronic Banking Transactions (2017)</div>
+    </div>
+  </div>
+
+  <!-- CRIME 04: FAKE INVESTMENT -->
+  <div class="crime-entry" id="investment-fraud">
+    <div class="crime-header">
+      <div class="crime-num">04</div>
+      <div class="crime-header-text">
+        <div class="crime-tag">Investment Fraud · Organised Syndicate</div>
+        <div class="crime-name">Fake Investment / Trading Fraud</div>
+        <div class="crime-aka">Also known as: "Pig Butchering Scam", "Stock Market Tip Group", "Forex Trading Scam", "Crypto Investment Fraud"</div>
+      </div>
+      <div class="crime-severity sev-high">🔴 Very High Risk — Avg Loss: ₹10 Lakh–₹1 Crore</div>
+    </div>
+    <div class="crime-panels">
+      <div class="panel red">
+        <div class="panel-label">🎭 How It's Executed</div>
+        <div class="panel-title">The Modus Operandi</div>
+        <div class="panel-body">A stranger (usually an attractive person on WhatsApp or Instagram) becomes your "friend" over weeks. They mention they made huge profits in stock/crypto trading through a "special platform" or "insider tips group." They add you to a WhatsApp/Telegram group with fake "investors" posting profits. You invest small amounts, see fake profits on the app, invest more. When you try to withdraw, you're asked to pay "tax," "RBI clearance fee," or "processing charges." The app is fake. All profits are fabricated. Your money is gone.</div>
+      </div>
+      <div class="panel green">
+        <div class="panel-label">⚖️ Your Remedy</div>
+        <div class="panel-title">What to Do</div>
+        <div class="panel-body"><ul>
+          <li>Stop investing immediately — do not pay any "withdrawal fee"</li>
+          <li>File on cybercrime.gov.in — under "Online Financial Fraud"</li>
+          <li>File FIR — mention "cheating through fake investment platform"</li>
+          <li>Report the fake app/website to MeitY: meity.gov.in</li>
+          <li>Report fake stockbroker to SEBI: scores.sebi.gov.in</li>
+          <li>Check sebi.gov.in for SEBI-registered brokers only</li>
+        </ul></div>
+      </div>
+      <div class="panel gold">
+        <div class="panel-label">🛡️ Prevention</div>
+        <div class="panel-title">How to Spot It</div>
+        <div class="panel-body"><ul>
+          <li>No genuine investment guarantees fixed returns</li>
+          <li>Check if broker is SEBI/NSE/BSE registered before investing</li>
+          <li>If a stranger contacts you about "investment tips" — it's a scam</li>
+          <li>Never pay fees to withdraw your own money</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="law-box">
+      <div class="lb-label">Applicable Law</div>
+      <div class="lb-laws">IT Act 2000: s.66 (Computer Fraud) · s.66D · SEBI Act 1992: s.12A (Prohibition of fraudulent practices) · BNS 2023: s.318 (Cheating) · Prevention of Money Laundering Act 2002</div>
+    </div>
+  </div>
+
+  <!-- CRIME 05: LOAN APP FRAUD -->
+  <div class="crime-entry" id="loan-app-fraud">
+    <div class="crime-header">
+      <div class="crime-num">05</div>
+      <div class="crime-header-text">
+        <div class="crime-tag">Predatory Lending · Privacy Violation</div>
+        <div class="crime-name">Illegal Loan App Fraud</div>
+        <div class="crime-aka">Also known as: "Instant Loan App Scam", "Chinese Loan App", "Micro-loan Harassment"</div>
+      </div>
+      <div class="crime-severity sev-high">🔴 High Risk</div>
+    </div>
+    <div class="crime-panels">
+      <div class="panel red">
+        <div class="panel-label">🎭 How It's Executed</div>
+        <div class="panel-title">The Modus Operandi</div>
+        <div class="panel-body">Apps offer instant personal loans with no documentation. When you install and apply, the app takes permission to access all your contacts, photos, and gallery. They disburse ₹3,000–10,000 but show ₹15,000–20,000 as the "loan amount" in their app. Repayment is demanded in 7 days at 300–500% annual interest. If you delay, they send abusive messages to all your contacts, morphing your photo as a "criminal/defaulter" and sending to your family, employer, and friends. Several suicides have been linked to this harassment.</div>
+      </div>
+      <div class="panel green">
+        <div class="panel-label">⚖️ Your Remedy</div>
+        <div class="panel-title">What to Do</div>
+        <div class="panel-body"><ul>
+          <li>File on cybercrime.gov.in — "Cyber Blackmailing/Threatening"</li>
+          <li>File RBI complaint — only RBI-registered NBFCs can give loans</li>
+          <li>Report the app to Google Play/Apple App Store for removal</li>
+          <li>File FIR mentioning harassment, extortion, privacy violation</li>
+          <li>Check RBI's list of registered digital lenders at rbi.org.in</li>
+        </ul></div>
+      </div>
+      <div class="panel gold">
+        <div class="panel-label">🛡️ Prevention</div>
+        <div class="panel-title">Before Installing Any Loan App</div>
+        <div class="panel-body"><ul>
+          <li>Only use apps from RBI-registered NBFCs or banks</li>
+          <li>Never grant contact/gallery access to any loan app</li>
+          <li>No legitimate lender requests photos for a personal loan</li>
+          <li>Check rbi.org.in/scripts/NBFC for registered companies</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="law-box">
+      <div class="lb-label">Applicable Law</div>
+      <div class="lb-laws">IT Act 2000: s.66E (Privacy Violation) · s.67 (Obscene material) · BNS 2023: s.351 (Criminal Intimidation) · s.74 (Assault/Criminal Force) · RBI Digital Lending Guidelines 2022 · DPDP Act 2023 (unauthorized data access/sharing)</div>
+    </div>
+  </div>
+
+  <!-- CRIME 06: KYC FRAUD -->
+  <div class="crime-entry" id="kyc-fraud">
+    <div class="crime-header">
+      <div class="crime-num">06</div>
+      <div class="crime-header-text">
+        <div class="crime-tag">Impersonation · Aadhaar Misuse</div>
+        <div class="crime-name">KYC Update / Aadhaar Update Fraud</div>
+        <div class="crime-aka">Also known as: "UIDAI Call Fraud", "eKYC Verification Scam", "Aadhaar Linking Fraud"</div>
+      </div>
+      <div class="crime-severity sev-high">🔴 High Risk</div>
+    </div>
+    <div class="crime-panels">
+      <div class="panel red">
+        <div class="panel-label">🎭 How It's Executed</div>
+        <div class="panel-title">The Modus Operandi</div>
+        <div class="panel-body">You receive a call or SMS saying your Aadhaar needs to be updated, or your bank account will be suspended. They ask you to install a screen-sharing app (AnyDesk, TeamViewer, QuickSupport), or share a "KYC verification link." Once you share your screen or click the link, they harvest your Aadhaar OTP, bank credentials, and perform eKYC-based financial transactions, take loans, or open accounts in your name.</div>
+      </div>
+      <div class="panel green">
+        <div class="panel-label">⚖️ Your Remedy</div>
+        <div class="panel-title">What to Do</div>
+        <div class="panel-body"><ul>
+          <li>Call 1930 if financial loss occurred</li>
+          <li>Call UIDAI helpline: <strong>1947</strong> to lock your Aadhaar biometrics</li>
+          <li>Lock Aadhaar at <strong>myaadhaar.uidai.gov.in</strong> → Lock/Unlock Biometrics</li>
+          <li>File FIR mentioning "Aadhaar misuse and identity theft"</li>
+          <li>File on cybercrime.gov.in</li>
+        </ul></div>
+      </div>
+      <div class="panel gold">
+        <div class="panel-label">🛡️ Prevention</div>
+        <div class="panel-title">Aadhaar Safety Rules</div>
+        <div class="panel-body"><ul>
+          <li>UIDAI never calls asking for Aadhaar OTP</li>
+          <li>Never install screen-sharing apps for "KYC"</li>
+          <li>Lock your Aadhaar biometrics permanently — unlock only when needed at a UIDAI centre</li>
+          <li>Use Virtual ID (VID) instead of actual Aadhaar number</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="law-box">
+      <div class="lb-label">Applicable Law</div>
+      <div class="lb-laws">Aadhaar Act 2016: s.29 (No sharing of identity info) · s.40 (Penalty for impersonation) · IT Act 2000: s.66C (Identity Theft) · s.43 (Unauthorized computer access) · BNS 2023: s.319</div>
+    </div>
+  </div>
+
+  <!-- CRIME 07: FAKE CUSTOMER CARE -->
+  <div class="crime-entry" id="fake-customer-care">
+    <div class="crime-header">
+      <div class="crime-num">07</div>
+      <div class="crime-header-text">
+        <div class="crime-tag">Search Engine Fraud · Impersonation</div>
+        <div class="crime-name">Fake Customer Care Number Fraud</div>
+        <div class="crime-aka">Also known as: "Google Top Result Scam", "Fake Helpline Fraud"</div>
+      </div>
+      <div class="crime-severity sev-med">🟡 Medium-High Risk</div>
+    </div>
+    <div class="crime-panels">
+      <div class="panel red">
+        <div class="panel-label">🎭 How It's Executed</div>
+        <div class="panel-title">The Modus Operandi</div>
+        <div class="panel-body">When you have a problem with Amazon, Flipkart, your bank, Zomato, or any service — you Google the customer care number. Scammers use SEO tricks and Google Ad campaigns to get their fake number to appear at the top of search results. When you call, they impersonate the real customer care, ask for your OTP, card number, or ask you to install a screen-sharing app to "fix" the problem. They drain your account during the "troubleshooting" session.</div>
+      </div>
+      <div class="panel green">
+        <div class="panel-label">⚖️ Your Remedy</div>
+        <div class="panel-title">What to Do</div>
+        <div class="panel-body"><ul>
+          <li>Call 1930 immediately for financial loss</li>
+          <li>File on cybercrime.gov.in</li>
+          <li>Report the fake number to Google: google.com/business → flag as fraud</li>
+          <li>File FIR at cyber police station</li>
+        </ul></div>
+      </div>
+      <div class="panel gold">
+        <div class="panel-label">🛡️ Prevention</div>
+        <div class="panel-title">Where to Find Real Numbers</div>
+        <div class="panel-body"><ul>
+          <li>Only use numbers from the official app, the back of your debit card, or official website</li>
+          <li>Never Google customer care numbers — scammers dominate search results</li>
+          <li>No genuine customer care installs apps on your phone to "help" you</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="law-box">
+      <div class="lb-label">Applicable Law</div>
+      <div class="lb-laws">IT Act 2000: s.66D (Cheating by Impersonation using computer resource) · BNS 2023: s.318 · Consumer Protection Act 2019: s.2(9) (Unfair Trade Practice)</div>
+    </div>
+  </div>
+
+  <!-- CRIME 08: PART TIME JOB FRAUD -->
+  <div class="crime-entry" id="job-fraud">
+    <div class="crime-header">
+      <div class="crime-num">08</div>
+      <div class="crime-header-text">
+        <div class="crime-tag">Employment Fraud · Advance Fee</div>
+        <div class="crime-name">Part-Time Job / Task Completion Fraud</div>
+        <div class="crime-aka">Also known as: "Work From Home Scam", "YouTube Like Task Fraud", "Telegram Job Scam"</div>
+      </div>
+      <div class="crime-severity sev-high">🔴 High Risk — Most common among students and job-seekers</div>
+    </div>
+    <div class="crime-panels">
+      <div class="panel red">
+        <div class="panel-label">🎭 How It's Executed</div>
+        <div class="panel-title">The Modus Operandi</div>
+        <div class="panel-body">You receive a WhatsApp/Telegram message: "Part-time job — earn ₹500–₹5,000 per day. Just like YouTube videos and subscribe to channels." The first few tasks pay small amounts — building trust. Then you are invited to a "premium task group" where tasks require you to pay ₹1,000–5,000 as deposit to "unlock higher-value tasks." Each payment leads to another deposit demand. The jobs are fake, the task platform is fake, and all deposits are stolen.</div>
+      </div>
+      <div class="panel green">
+        <div class="panel-label">⚖️ Your Remedy</div>
+        <div class="panel-title">What to Do</div>
+        <div class="panel-body"><ul>
+          <li>File on cybercrime.gov.in — "Job/Employment Fraud"</li>
+          <li>File FIR at cyber police station with all screenshots</li>
+          <li>Report the Telegram/WhatsApp number to the platform</li>
+          <li>Call 1930 if payment was recent</li>
+        </ul></div>
+      </div>
+      <div class="panel gold">
+        <div class="panel-label">🛡️ Prevention</div>
+        <div class="panel-title">Iron Rule for Jobs</div>
+        <div class="panel-body"><ul>
+          <li>Legitimate employers never ask you to pay to get a job</li>
+          <li>No real company recruits via unsolicited WhatsApp messages</li>
+          <li>Liking YouTube videos is never a paid job</li>
+          <li>The moment they ask you to pay — it is fraud. Walk away.</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="law-box">
+      <div class="lb-label">Applicable Law</div>
+      <div class="lb-laws">IT Act 2000: s.66D · BNS 2023: s.318 (Cheating) · Employment Exchanges (Compulsory Notification of Vacancies) Act 1959 (for formal sector) · Consumer Protection Act 2019</div>
+    </div>
+  </div>
+
+  <!-- CRIME 09: ELECTRICITY BILL FRAUD -->
+  <div class="crime-entry" id="electricity-fraud">
+    <div class="crime-header">
+      <div class="crime-num">09</div>
+      <div class="crime-header-text">
+        <div class="crime-tag">Utility Fraud · SMS Phishing</div>
+        <div class="crime-name">Electricity Bill Disconnection Scam</div>
+        <div class="crime-aka">Also known as: "BESCOM Fraud", "MSEB Scam", "Power Cut Fraud"</div>
+      </div>
+      <div class="crime-severity sev-med">🟡 Medium Risk</div>
+    </div>
+    <div class="crime-panels">
+      <div class="panel red">
+        <div class="panel-label">🎭 How It's Executed</div>
+        <div class="panel-title">The Modus Operandi</div>
+        <div class="panel-body">You receive an SMS or WhatsApp saying: "Your electricity connection will be disconnected tonight at 9:30 PM due to non-payment. Call this number immediately." When you call, they impersonate your electricity department, ask you to install a screen-sharing app to "process payment," and drain your account during the session. Or they send a fake payment link that harvests your card details.</div>
+      </div>
+      <div class="panel green">
+        <div class="panel-label">⚖️ Your Remedy</div>
+        <div class="panel-title">What to Do</div>
+        <div class="panel-body"><ul>
+          <li>Call 1930 if you paid money</li>
+          <li>File on cybercrime.gov.in</li>
+          <li>File FIR at local police / cyber cell</li>
+          <li>Verify your actual electricity dues on your discom's official app</li>
+        </ul></div>
+      </div>
+      <div class="panel gold">
+        <div class="panel-label">🛡️ Prevention</div>
+        <div class="panel-title">Quick Check</div>
+        <div class="panel-body"><ul>
+          <li>Electricity departments do not text WhatsApp numbers for payment</li>
+          <li>Check your actual bill status on the official DISCOM app or website</li>
+          <li>Official bill payment links never ask for AnyDesk/TeamViewer installation</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="law-box">
+      <div class="lb-label">Applicable Law</div>
+      <div class="lb-laws">IT Act 2000: s.66D · BNS 2023: s.319 (Personating public servant) · Electricity Act 2003: s.135 (Theft of electricity — not applicable here, but relevant to report impersonation of DISCOM officials)</div>
+    </div>
+  </div>
+
+  <!-- CRIME 10: LOTTERY FRAUD -->
+  <div class="crime-entry" id="lottery-fraud">
+    <div class="crime-header">
+      <div class="crime-num">10</div>
+      <div class="crime-header-text">
+        <div class="crime-tag">Advance Fee Fraud · Classic Scam</div>
+        <div class="crime-name">Lottery, Prize & Lucky Draw Fraud</div>
+        <div class="crime-aka">Also known as: "KBC Lottery Scam", "Amazon Lucky Draw", "Foreign Lottery Scam", "Nigerian Prince"</div>
+      </div>
+      <div class="crime-severity sev-med">🟡 Medium Risk</div>
+    </div>
+    <div class="crime-panels">
+      <div class="panel red">
+        <div class="panel-label">🎭 How It's Executed</div>
+        <div class="panel-title">The Modus Operandi</div>
+        <div class="panel-body">You receive a message: "Congratulations! Your number has won ₹25 Lakh in the KBC/Amazon/Facebook lottery." To claim, you must pay "processing fees," "government tax," "RBI clearance charges," or "legal fees" — each payment is followed by another demand. The prize never arrives. Sometimes a fake "RBI clearance certificate" or "lottery department letter" is produced. These are completely fabricated. No legitimate lottery contacts winners via WhatsApp.</div>
+      </div>
+      <div class="panel green">
+        <div class="panel-label">⚖️ Your Remedy</div>
+        <div class="panel-title">What to Do</div>
+        <div class="panel-body"><ul>
+          <li>File on cybercrime.gov.in — "Online Financial Fraud"</li>
+          <li>Call 1930 if recent payment</li>
+          <li>File FIR at cyber police station</li>
+          <li>Report fake KBC prize to Kaun Banega Crorepati's official channels</li>
+        </ul></div>
+      </div>
+      <div class="panel gold">
+        <div class="panel-label">🛡️ Prevention</div>
+        <div class="panel-title">The Simplest Rule</div>
+        <div class="panel-body"><ul>
+          <li>You cannot win a lottery you never entered</li>
+          <li>Legitimate lotteries never deduct fees from the prize — they deduct TDS from the payment</li>
+          <li>KBC only selects contestants through an on-air phone call — not WhatsApp</li>
+          <li>If it sounds too good to be true — it absolutely is</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="law-box">
+      <div class="lb-label">Applicable Law</div>
+      <div class="lb-laws">IT Act 2000: s.66D · Prize Chits and Money Circulation Schemes (Banning) Act 1978 · BNS 2023: s.318 (Cheating) · Lotteries (Regulation) Act 1998</div>
+    </div>
+  </div>
+
+</div><!-- end crimes-body -->
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">DPDP India — Cyber Fraud Awareness</div>
+      <div class="footer-brand-desc">This guide is for public education only. For legal advice, consult a qualified advocate. Emergency: call 1930 for financial fraud.</div>
+    </div>
+    <div>
+      <div class="footer-col-title">All Crime Pages</div>
+      <ul class="footer-links">
+        <li><a href="cybercrime-kb.html">← Fraud KB Home</a></li>
+        <li><a href="cybercrime-personal.html">Personal & Social Crimes</a></li>
+        <li><a href="cybercrime-remedy-guide.html">Complete Remedy Guide</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Get Help Now</div>
+      <ul class="footer-links">
+        <li><a href="tel:1930">📞 1930 — Cyber Helpline</a></li>
+        <li><a href="https://cybercrime.gov.in" target="_blank">cybercrime.gov.in</a></li>
+        <li><a href="https://sancharsaathi.gov.in" target="_blank">sancharsaathi.gov.in</a></li>
+        <li><a href="https://scores.sebi.gov.in" target="_blank">SEBI SCORES</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 DPDP India · Public Education Resource · Share freely</div>
+  </div>
+</footer>
+<script>
+const h=document.getElementById('hamburger'),m=document.getElementById('mobile-menu');
+h.addEventListener('click',()=>{h.classList.toggle('open');m.classList.toggle('open');});
+document.querySelectorAll('.mobile-menu a').forEach(a=>a.addEventListener('click',()=>{h.classList.remove('open');m.classList.remove('open');}));
+</script>
+</body>
+</html>

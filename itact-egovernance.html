@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-Governance in India: IT Act as Growth Catalyst · DPDP India</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--parchment:#F8F4EC;--cream:#FDFAF5;--paper:#F2EDE2;--ink:#1A1610;--prussian:#1B2B3A;--slate:#2D3D4E;--saffron:#D4760A;--saffron-lt:#F0A840;--ochre:#B8862C;--mist:#7A7468;--rule:rgba(26,22,16,0.12);--rule-gold:rgba(212,118,10,0.25);--shadow-sm:0 2px 12px rgba(26,22,16,0.06);--shadow-md:0 8px 40px rgba(26,22,16,0.10);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:'Source Serif 4',Georgia,serif;background:var(--cream);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;}
+.masthead{background:var(--prussian);padding:10px 0;text-align:center;border-bottom:3px solid var(--saffron);}
+.masthead-text{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.55);}
+.masthead-text span{color:var(--saffron-lt);}
+nav{position:sticky;top:0;z-index:200;background:var(--cream);border-bottom:1px solid var(--rule);box-shadow:var(--shadow-sm);}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:68px;}
+.nav-brand{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.nav-brand-seal{width:42px;height:42px;flex-shrink:0;}
+.nav-brand-name{display:flex;flex-direction:column;gap:1px;}
+.nav-brand-name strong{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--prussian);line-height:1;}
+.nav-brand-name span{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);line-height:1;}
+.nav-links{display:flex;align-items:center;gap:1.5rem;list-style:none;}
+.nav-links a{font-family:'Source Serif 4',serif;font-size:0.82rem;color:var(--slate);text-decoration:none;transition:color 0.2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--saffron);transform:scaleX(0);transition:transform 0.25s;transform-origin:left;}
+.nav-links a:hover{color:var(--saffron);}
+.nav-links a:hover::after{transform:scaleX(1);}
+.nav-blog-btn{font-family:'JetBrains Mono',monospace!important;font-size:0.65rem!important;text-transform:uppercase;background:var(--prussian)!important;color:var(--cream)!important;padding:9px 20px;border-radius:1px;}
+.nav-blog-btn::after{display:none!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--prussian);transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-menu{display:none;position:absolute;top:68px;left:0;right:0;background:var(--cream);border-bottom:2px solid var(--saffron);box-shadow:var(--shadow-md);z-index:199;}
+.mobile-menu.open{display:block;}
+.mobile-menu ul{list-style:none;padding:1rem 2rem 1.5rem;}
+.mobile-menu ul li a{display:block;font-family:'Source Serif 4',serif;font-size:0.95rem;color:var(--slate);text-decoration:none;padding:0.7rem 0;border-bottom:1px solid var(--rule);}
+.mobile-menu ul li:last-child a{border-bottom:none;}
+.mobile-menu ul li a:hover{color:var(--saffron);}
+.page-header{background:var(--prussian);padding:5rem 0 4rem;position:relative;overflow:hidden;}
+.page-header::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
+.page{max-width:1320px;margin:0 auto;padding:0 2rem;}
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:1.5rem;font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);position:relative;z-index:1;flex-wrap:wrap;}
+.breadcrumb a{color:rgba(255,255,255,0.4);text-decoration:none;}
+.breadcrumb a:hover{color:var(--saffron-lt);}
+.breadcrumb-sep{color:rgba(255,255,255,0.25);}
+.page-kicker{display:flex;align-items:center;gap:10px;margin-bottom:1.5rem;position:relative;z-index:1;}
+.page-kicker-line{width:32px;height:1px;background:var(--saffron);}
+.page-kicker-text{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--saffron);}
+.page-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.8vw,3.2rem);font-weight:700;line-height:1.12;color:var(--parchment);margin-bottom:1rem;position:relative;z-index:1;}
+.page-title em{font-style:italic;color:var(--saffron-lt);}
+.page-deck{font-size:1rem;font-weight:300;line-height:1.85;color:rgba(248,244,236,0.65);max-width:640px;position:relative;z-index:1;}
+/* STATS BAND */
+.stats-band{background:var(--ink);border-top:3px solid var(--saffron);}
+.stats-inner{max-width:1320px;margin:0 auto;padding:0;display:grid;grid-template-columns:repeat(4,1fr);}
+.stat-item{padding:1.8rem 2rem;border-right:1px solid rgba(255,255,255,0.07);display:flex;flex-direction:column;gap:0.3rem;}
+.stat-item:last-child{border-right:none;}
+.stat-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--saffron-lt);line-height:1;}
+.stat-label{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);}
+/* ARTICLE LAYOUT */
+.article-layout{display:grid;grid-template-columns:1fr 300px;gap:5rem;padding:5rem 0 6rem;align-items:start;}
+.sidebar-box{background:var(--parchment);border:1px solid var(--rule);padding:2rem;margin-bottom:1.5rem;}
+.sidebar-title{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--saffron);margin-bottom:1.2rem;padding-bottom:0.8rem;border-bottom:1px solid var(--rule);}
+.sidebar-links{list-style:none;display:flex;flex-direction:column;gap:0;}
+.sidebar-links li a{display:flex;align-items:center;gap:8px;font-size:0.85rem;color:var(--slate);text-decoration:none;padding:0.7rem 0;border-bottom:1px solid var(--rule);transition:color 0.2s;}
+.sidebar-links li:last-child a{border-bottom:none;}
+.sidebar-links li a:hover{color:var(--saffron);}
+.sidebar-links li a::before{content:'→';color:var(--saffron);font-size:0.8rem;flex-shrink:0;}
+.sidebar-links li.active a{color:var(--prussian);font-weight:600;}
+.sidebar-links li.active a::before{content:'●';font-size:0.5rem;}
+.cite-box{background:rgba(212,118,10,0.05);border:1px solid var(--rule-gold);border-left:3px solid var(--saffron);padding:1.2rem 1.5rem;}
+.cite-box-title{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.8rem;}
+.cite-box p{font-size:0.8rem;font-weight:300;line-height:1.75;color:var(--slate);}
+/* ARTICLE BODY */
+.article-body h2{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:var(--prussian);margin:3rem 0 1rem;line-height:1.2;padding-top:1rem;border-top:2px solid var(--ink);}
+.article-body h2:first-child{margin-top:0;border-top:none;}
+.article-body h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--prussian);margin:2rem 0 0.8rem;}
+.article-body p{font-size:1rem;font-weight:300;line-height:1.9;color:var(--slate);margin-bottom:1.4rem;}
+.article-body p strong{font-weight:600;color:var(--prussian);}
+.article-body ul,.article-body ol{margin:0 0 1.4rem 1.5rem;}
+.article-body li{font-size:0.95rem;font-weight:300;line-height:1.8;color:var(--slate);margin-bottom:0.5rem;}
+.article-body li strong{font-weight:600;color:var(--prussian);}
+/* STATUS TABLE */
+.status-table{width:100%;border-collapse:collapse;margin:2rem 0;font-size:0.88rem;}
+.status-table th{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--prussian);color:var(--parchment);padding:0.9rem 1rem;text-align:left;border-right:1px solid rgba(255,255,255,0.1);}
+.status-table th:last-child{border-right:none;}
+.status-table td{font-size:0.85rem;font-weight:300;line-height:1.65;color:var(--slate);padding:1rem;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);vertical-align:top;}
+.status-table td:last-child{border-right:none;}
+.status-table tr:last-child td{border-bottom:none;}
+.status-table tr:nth-child(even) td{background:var(--parchment);}
+.status-badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.08em;text-transform:uppercase;padding:3px 8px;border-radius:2px;}
+.badge-live{background:rgba(34,197,94,0.1);color:#16a34a;border:1px solid rgba(34,197,94,0.3);}
+.badge-growing{background:rgba(212,118,10,0.1);color:var(--ochre);border:1px solid var(--rule-gold);}
+.badge-expanding{background:rgba(27,42,58,0.1);color:var(--prussian);border:1px solid rgba(27,42,58,0.2);}
+/* SECTION BLOCK */
+.section-block{background:var(--prussian);padding:2.5rem;margin:2.5rem 0;position:relative;overflow:hidden;}
+.section-block::before{content:'';position:absolute;top:0;right:0;width:40%;height:100%;background:radial-gradient(ellipse at right,rgba(212,118,10,0.1) 0%,transparent 70%);pointer-events:none;}
+.section-block-num{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.5rem;}
+.section-block h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--parchment);margin-bottom:0.8rem;}
+.section-block p{font-size:0.9rem;font-weight:300;line-height:1.8;color:rgba(248,244,236,0.7);margin-bottom:0.8rem;}
+.section-block p:last-child{margin-bottom:0;}
+/* INITIATIVE GRID */
+.initiative-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin:2rem 0;}
+.init-card{background:var(--parchment);border:1px solid var(--rule);padding:2rem;}
+.init-card-label{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.6rem;}
+.init-card-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--prussian);margin-bottom:0.6rem;}
+.init-card-body{font-size:0.85rem;font-weight:300;line-height:1.75;color:var(--slate);}
+/* NAV STRIP */
+.article-nav-strip{background:var(--ink);padding:2rem 0;}
+.ans-inner{max-width:1320px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.ans-btn{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s;}
+.ans-btn:hover{color:var(--saffron-lt);}
+/* FOOTER */
+footer{background:var(--ink);padding:4rem 0 2rem;}
+.footer-grid{max-width:1320px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,0.06);}
+.footer-brand-name{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--parchment);margin-bottom:0.8rem;}
+.footer-brand-desc{font-size:0.82rem;font-weight:300;line-height:1.8;color:rgba(248,244,236,0.4);max-width:280px;}
+.footer-col-title{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);margin-bottom:1rem;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.footer-links a{font-size:0.82rem;font-weight:300;color:rgba(248,244,236,0.45);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--parchment);}
+.footer-bottom{max-width:1320px;margin:0 auto;padding:1.5rem 2rem 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;}
+.footer-copy{font-size:0.75rem;color:rgba(248,244,236,0.25);}
+@media(max-width:1024px){.article-layout{grid-template-columns:1fr;}.sidebar{order:-1;}}
+@media(max-width:900px){.nav-links{display:none;}.hamburger{display:flex;}.stats-inner{grid-template-columns:repeat(2,1fr);}.initiative-grid{grid-template-columns:1fr;}.footer-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.page-header{padding:3rem 0 2.5rem;}.stats-inner{grid-template-columns:1fr 1fr;}.footer-grid{grid-template-columns:1fr;}.footer-bottom{flex-direction:column;align-items:flex-start;}}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <p class="masthead-text">DPDP India · <span>Independent Strategic Policy & Legal Research</span> · Digital Personal Data Protection Act, 2023</p>
+</div>
+
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <svg class="nav-brand-seal" viewBox="0 0 42 42" fill="none"><circle cx="21" cy="21" r="20" stroke="#1B2B3A" stroke-width="1.5"/><circle cx="21" cy="21" r="14" stroke="#D4760A" stroke-width="0.75" stroke-dasharray="2 2"/><text x="21" y="25" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="700" fill="#1B2B3A">§</text></svg>
+      <div class="nav-brand-name"><strong>DPDP India</strong><span>Policy & Legal Research</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#research">Research</a></li>
+      <li><a href="dpdp-kb.html">DPDP KB</a></li>
+      <li><a href="ekyc-kb.html">eKYC KB</a></li>
+      <li><a href="itact-kb.html">IT Act KB</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="https://blog.dpdpindia.in" class="nav-blog-btn">Blog →</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#research">Research</a></li>
+      <li><a href="dpdp-kb.html">DPDP KB</a></li>
+      <li><a href="ekyc-kb.html">eKYC KB</a></li>
+      <li><a href="itact-kb.html">IT Act KB</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="https://blog.dpdpindia.in">Blog →</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="page">
+    <div class="breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">›</span><a href="itact-kb.html">IT Act KB</a><span class="breadcrumb-sep">›</span><span>Article 03 · Special Page</span></div>
+    <div class="page-kicker"><div class="page-kicker-line"></div><span class="page-kicker-text">Article 03 of 05 · ★ Special Feature · E-Governance</span></div>
+    <h1 class="page-title">E-Governance in India:<br><em>IT Act</em> as the Growth Catalyst</h1>
+    <p class="page-deck">How Sections 6, 7, and the CCA digital signature framework gave legal force to paperless government — and powered the Digital India Stack that now processes 150 billion transactions annually.</p>
+  </div>
+</header>
+
+<div class="stats-band">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="stat-num">150B+</div><div class="stat-label">Digital Transactions Annually</div></div>
+    <div class="stat-item"><div class="stat-num">1.4B</div><div class="stat-label">Citizens on Digital India Stack</div></div>
+    <div class="stat-item"><div class="stat-num">32</div><div class="stat-label">Mission Mode Projects (NeGP)</div></div>
+    <div class="stat-item"><div class="stat-num">2000</div><div class="stat-label">Year Legal Foundation Laid</div></div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="article-layout">
+
+    <article class="article-body">
+
+      <h2>The Legal Foundation: Sections 6 & 7</h2>
+      <p>Before the IT Act, 2000, every interaction between a citizen and a government office required physical paper. Applications, licences, certificates, land records, court filings — all existed only in paper form, maintained in physical file rooms, and processed through bureaucratic chains that required physical presence at every step.</p>
+      <p>The IT Act's <strong>Chapter III</strong> fundamentally disrupted this centuries-old model by establishing the legal basis for electronic government — giving government departments the authority to accept, issue, and retain documents electronically with the same legal validity as paper.</p>
+
+      <div class="section-block">
+        <div class="section-block-num">Section 6 · IT Act 2000</div>
+        <h3>Use of Electronic Records and Digital Signatures in Government and its Agencies</h3>
+        <p>Where any law provides for the filing of any form, application, or any other document with any office, authority, body or agency owned or controlled by the appropriate Government in a particular manner — such filing may be done in electronic form and in such manner as may be prescribed by the appropriate Government.</p>
+        <p>This section also authorises: the issue of any licence, permit, sanction or approval in electronic form; the receipt or payment of money in electronic form; and the creation, retention or preservation of any record, register, deed, map, plan, schedule, entry or endorsement in electronic form.</p>
+      </div>
+
+      <div class="section-block">
+        <div class="section-block-num">Section 7 · IT Act 2000</div>
+        <h3>Retention of Electronic Records</h3>
+        <p>Where any law provides that documents, records or information shall be retained for any specific period, then, that requirement shall be deemed to have been satisfied if such documents, records or information are retained in the electronic form — provided that:</p>
+        <p>(a) the information contained therein remains accessible for subsequent reference; (b) the electronic record is retained in the format in which it was originally generated, sent or received or in a format which can be demonstrated to represent accurately the information originally generated, sent or received; (c) the details identifying the origin, destination, date and time of dispatch or receipt of such electronic record are available.</p>
+      </div>
+
+      <h3>The Controller of Certifying Authorities (CCA)</h3>
+      <p>The IT Act, 2000 established the <strong>Controller of Certifying Authorities (CCA)</strong> under Section 17, operating under the Ministry of Electronics and Information Technology (MeitY). The CCA's functions include:</p>
+      <ul>
+        <li>Licensing and supervising Certifying Authorities (CAs) that issue digital certificates;</li>
+        <li>Maintaining a publicly accessible repository of all digital certificates and revocation lists;</li>
+        <li>Certifying public keys of Certifying Authorities;</li>
+        <li>Investigating alleged contraventions of the Act in relation to digital signatures.</li>
+      </ul>
+      <p>Digital certificates issued by CCA-licensed CAs are legally valid for e-tendering, income tax filings, company filings with MCA, and a vast range of government-to-citizen (G2C) transactions. The CCA infrastructure forms the PKI (Public Key Infrastructure) backbone of India's formal digital economy.</p>
+
+      <h2>From NeGP to Digital India: The Policy Arc</h2>
+      <h3>National e-Governance Plan (NeGP) — 2006</h3>
+      <p>Building on the legal foundation created by the IT Act, the Government of India launched the <strong>National e-Governance Plan (NeGP) in 2006</strong>. The NeGP identified 31 Mission Mode Projects (MMPs) across Central, State, and Integrated categories — covering areas from income tax and passport services to land records, courts, and agriculture. The NeGP's vision was to "Make all Government services accessible to the common man in his locality, through common service delivery outlets."</p>
+      <h3>Digital India Programme — 2015</h3>
+      <p>The <strong>Digital India Programme, launched in July 2015</strong>, superseded and expanded upon NeGP, with a vision of transforming India into a digitally empowered society and knowledge economy. Organised around nine pillars, it encompassed BharatNet (rural broadband), DigiLocker (digital document storage), UMANG (universal government service delivery app), e-Courts, e-Hospital, and the broader Digital India Stack.</p>
+
+      <h2>Current State of E-Governance (2026 Perspective)</h2>
+      <p>The following table maps key e-governance initiatives against their IT Act legal basis and their current operational status as of 2026:</p>
+
+      <table class="status-table">
+        <thead>
+          <tr>
+            <th>Initiative</th>
+            <th>IT Act Legal Basis</th>
+            <th>Description & Impact</th>
+            <th>2026 Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Digital India Stack</strong><br><em>UPI, Aadhaar, DigiLocker</em></td>
+            <td>Ss. 4, 5, 6, 7 (electronic records); s. 3A (electronic signatures)</td>
+            <td>API-based authentication and digital locker systems legally enabled. UPI processes over 150 billion transactions annually. Aadhaar-linked authentication for identity across all G2C services.</td>
+            <td><span class="status-badge badge-live">● Live & Scaling</span></td>
+          </tr>
+          <tr>
+            <td><strong>e-Courts Project</strong><br><em>Phase III</em></td>
+            <td>Ss. 65A, 65B of Evidence Act (amended by IT Act); s. 6 IT Act for electronic filings</td>
+            <td>Section 65B certificates for electronic evidence now standard in civil and criminal proceedings. Virtual hearings institutionalised post-COVID. Case status and e-filing available nationally.</td>
+            <td><span class="status-badge badge-live">● Live Nationally</span></td>
+          </tr>
+          <tr>
+            <td><strong>G2C Digital Certificates</strong><br><em>Caste, Income, Birth</em></td>
+            <td>S. 6 IT Act (electronic issuance); s. 7 (electronic retention)</td>
+            <td>State governments now issue legally valid caste certificates, income certificates, birth certificates, and domicile certificates in digital form. Integrated with DigiLocker and UMANG for instant citizen access.</td>
+            <td><span class="status-badge badge-live">● Operational</span></td>
+          </tr>
+          <tr>
+            <td><strong>Bhoomi / RoR Systems</strong><br><em>Land Records Digitisation</em></td>
+            <td>S. 6 IT Act (digital records); s. 7 (retention); s. 65B Evidence Act (admissibility)</td>
+            <td>Karnataka's Bhoomi (2000) pioneered state-wide computerised Records of Rights. Now replicated across states. GIS-integrated maps (BhuNaksha) enable digital land record verification and instant RoR access by revenue departments.</td>
+            <td><span class="status-badge badge-growing">● Scaling Nationally</span></td>
+          </tr>
+          <tr>
+            <td><strong>Income Tax e-Filing</strong><br><em>TRACES / e-Filing Portal</em></td>
+            <td>S. 3A (electronic signatures for CAs); CCA digital certificates</td>
+            <td>100% of income tax returns now filed electronically. CCA-licensed digital certificates enable DSC-based filing. ITR-V acknowledgement replaces physical filing for individual taxpayers.</td>
+            <td><span class="status-badge badge-live">● 100% Digital</span></td>
+          </tr>
+          <tr>
+            <td><strong>GeM (Govt e-Marketplace)</strong><br><em>Public Procurement</em></td>
+            <td>S. 6 IT Act; GFR Rule 154 (GeM mandate); IT Act s. 7 (record retention)</td>
+            <td>Mandatory electronic procurement platform for all central government departments. All bids, contracts, and payments processed digitally. Eliminates physical tender documents entirely for central procurement.</td>
+            <td><span class="status-badge badge-live">● Mandatory Central</span></td>
+          </tr>
+          <tr>
+            <td><strong>SVAMITVA Scheme</strong><br><em>Drone-based land mapping</em></td>
+            <td>Ss. 6, 7 IT Act; DPDP Act 2023 (for resident data); GIS Policy 2022</td>
+            <td>Drone-based Abadi (residential) land mapping in rural areas. Property cards issued to residents, linked to Aadhaar. Enables residents to use property as collateral for institutional credit.</td>
+            <td><span class="status-badge badge-expanding">● Expanding</span></td>
+          </tr>
+          <tr>
+            <td><strong>DigiLocker</strong><br><em>Digital Document Vault</em></td>
+            <td>Ss. 4, 7 IT Act (electronic records equivalent to physical); Aadhaar Act 2016</td>
+            <td>Over 600 million registered users as of 2025. Academic certificates (CBSE, Universities), driving licences, PAN, Aadhaar — all legally valid in DigiLocker. Section 4 of IT Act makes these electronic records legally equivalent to originals.</td>
+            <td><span class="status-badge badge-live">● 600M+ Users</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>E-Courts: Section 65B and the Digital Evidence Revolution</h2>
+      <p>One of the most consequential intersections of the IT Act and the Indian legal system is <strong>Section 65B of the Indian Evidence Act, 1872</strong> — inserted by the IT Act, 2000 amendments. Section 65B specifies the conditions under which electronic records are admissible as evidence in court proceedings, requiring a certificate from the person responsible for the computer system attesting to its proper operation and the reliability of the electronic record.</p>
+      <p>The Supreme Court's ruling in <em>Arjun Panditrao Khotkar v. Kailash Kushanrao Gorantyal</em> (2020) 7 SCC 1 clarified that the Section 65B certificate is a mandatory pre-condition for admissibility of electronic records. This ruling has had profound implications for the admissibility of CCTV footage, electronic communications, and digital banking records in court proceedings — and has driven courts to upgrade their evidence management infrastructure.</p>
+
+      <h2>The GIS Policy 2022 — A New Frontier</h2>
+      <p>The <strong>National Geospatial Policy, 2022</strong> (superseding the National Map Policy, 2005) significantly liberalised India's geospatial data regime, enabling private sector participation in mapping and GIS data. Read alongside the IT Act's electronic records framework and the DPDP Act 2023's data governance provisions, the 2022 Policy enables:</p>
+      <ul>
+        <li>Indian entities to collect, generate, and use geospatial data freely (with national security caveats);</li>
+        <li>Integration of GIS layers with revenue land records (Bhoomi, BhuNaksha) for digital property registration;</li>
+        <li>Municipal GIS for urban planning and property tax under AMRUT and Smart Cities Mission.</li>
+      </ul>
+      <p>The Bhoomi/GIS systems now interface directly with Revenue Departments, enabling citizens to obtain instant Pahani (Record of Rights) documents — a transformation from the earlier system that required physical visits to the Tahsildar's office.</p>
+
+      <h2>Looking Ahead: The DPDP Act's Impact on E-Governance</h2>
+      <p>The Digital Personal Data Protection Act, 2023 introduces a new layer of obligations on government departments that operate digital services. While the DPDP Act's exemption provisions (Section 17) provide significant carve-outs for state entities in matters of national security and law enforcement, government bodies operating as "Data Fiduciaries" for citizen services (like DigiLocker, e-Courts, or tax portals) will increasingly need to comply with:</p>
+      <ul>
+        <li>Purpose limitation principles when collecting citizen data;</li>
+        <li>Notice and consent requirements for data processing;</li>
+        <li>Data principal rights including access, correction, and erasure;</li>
+        <li>Security safeguard obligations for protecting sensitive citizen data.</li>
+      </ul>
+      <p>The interplay between the IT Act's e-governance framework and the DPDP Act's data protection obligations will be one of the defining regulatory challenges for Indian digital government in 2026 and beyond.</p>
+
+      <h2>Sources & Citations</h2>
+      <ul>
+        <li><em>Information Technology Act</em>, 2000, ss. 4, 5, 6, 7, 3A, 17</li>
+        <li>Indian Evidence Act, 1872, s. 65B (inserted by IT Act, 2000)</li>
+        <li>National e-Governance Plan (NeGP), 2006 — Department of Electronics and Information Technology</li>
+        <li>Digital India Programme, 2015 — Ministry of Electronics and Information Technology</li>
+        <li>National Geospatial Policy, 2022 — Ministry of Science and Technology</li>
+        <li>General Financial Rules, 2017, r. 154 (GeM mandate)</li>
+        <li><em>Arjun Panditrao Khotkar v. Kailash Kushanrao Gorantyal</em> (2020) 7 SCC 1 (Section 65B)</li>
+        <li><em>Digital Personal Data Protection Act</em>, 2023, ss. 8, 17</li>
+        <li>MeitY Annual Report 2025–26 (Digital India metrics)</li>
+      </ul>
+      <div style="background:rgba(212,118,10,0.06);border:1px solid var(--rule-gold);border-left:3px solid var(--saffron);padding:1.2rem 1.5rem;margin-top:1.5rem;">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.04em;color:var(--ochre);margin-bottom:0;"><strong>Research Disclaimer:</strong> This article is for educational purposes only. DPDPIndia.in is an intermediary under the IT Act. Independently verify all information. See <a href="legal.html" style="color:var(--saffron);">Safe Harbour Policy</a>.</p>
+      </div>
+    </article>
+
+    <aside class="sidebar">
+      <div class="sidebar-box">
+        <div class="sidebar-title">IT Act KB Articles</div>
+        <ul class="sidebar-links">
+          <li><a href="itact-history.html">01 — Origins & 2008 Pivot</a></li>
+          <li><a href="itact-shreya-singhal.html">02 — Shreya Singhal Verdict</a></li>
+          <li class="active"><a href="itact-egovernance.html">03 — E-Governance</a></li>
+          <li><a href="itact-sections.html">04 — Key Sections Reference</a></li>
+          <li><a href="itact-intermediary.html">05 — IT Rules 2021 Compliance</a></li>
+        </ul>
+      </div>
+      <div class="cite-box">
+        <div class="cite-box-title">Citation</div>
+        <p>DPDP India, 'E-Governance in India: IT Act as Growth Catalyst', <em>IT Act Knowledge Base</em> (2026), Article 03 of 05. dpdpindia.in/itact-egovernance.html</p>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<div class="article-nav-strip">
+  <div class="ans-inner">
+    <a href="itact-shreya-singhal.html" class="ans-btn">← 02 — Shreya Singhal</a>
+    <span><a href="itact-kb.html" style="color:rgba(255,255,255,0.35);font-family:'JetBrains Mono',monospace;font-size:0.6rem;text-decoration:none;">IT Act KB</a></span>
+    <a href="itact-sections.html" class="ans-btn">04 — Key Sections →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-brand-name">DPDP India</div><div class="footer-brand-desc">Independent strategic policy and legal research on India's digital governance landscape.</div></div>
+    <div><div class="footer-col-title">IT Act KB</div><ul class="footer-links"><li><a href="itact-kb.html">KB Index</a></li><li><a href="itact-history.html">Origins & Amendment</a></li><li><a href="itact-shreya-singhal.html">Shreya Singhal</a></li></ul></div>
+    <div><div class="footer-col-title">Legal</div><ul class="footer-links"><li><a href="legal.html">Terms & Privacy</a></li><li><a href="legal.html#safe-harbour">Safe Harbour</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2026 DPDP India · Independent Policy Research · All rights reserved</div></div>
+</footer>
+<script>
+const h=document.getElementById('hamburger'),m=document.getElementById('mobile-menu');
+h.addEventListener('click',()=>{h.classList.toggle('open');m.classList.toggle('open');});
+</script>
+</body>
+</html>

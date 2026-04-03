@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The PM Gati Shakti Data Governance Gap: Where GIS Meets DPDP Compliance | blog.DPDPIndia.in</title>
+<meta name="description" content="PM Gati Shakti aggregates geospatial and infrastructure data from 16+ ministries. But under the DPDP Act 2023, the platform has a critical governance gap: who is the data fiduciary?">
+<meta property="og:title" content="The PM Gati Shakti Data Governance Gap: Where GIS Meets DPDP Compliance">
+<meta property="og:description" content="Analysing the data protection and fiduciary responsibility challenges facing India's multi-modal infrastructure master plan.">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-03-27">
+<meta property="article:section" content="DPDP Act">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --parchment:#F8F4EC;--cream:#FDFAF5;--paper:#F2EDE2;--ink:#1A1610;
+  --prussian:#1B2B3A;--slate:#2D3D4E;--saffron:#D4760A;--saffron-lt:#F0A840;
+  --ochre:#B8862C;--chakra-blue:#1B3A6B;--mist:#7A7468;
+  --rule:rgba(26,22,16,0.12);--rule-gold:rgba(212,118,10,0.25);
+  --shadow-sm:0 2px 12px rgba(26,22,16,0.06);--shadow-md:0 8px 40px rgba(26,22,16,0.10);
+  --danger:#C0392B;--danger-lt:rgba(192,57,43,0.08);
+  --green:#1A6B3A;--green-lt:rgba(26,107,58,0.08);
+  --blue-lt:rgba(27,58,107,0.07);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:'Source Serif 4',Georgia,serif;background:var(--cream);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;}
+
+/* ===== MASTHEAD ===== */
+.masthead{background:var(--prussian);padding:10px 0;text-align:center;border-bottom:3px solid var(--saffron);}
+.masthead-text{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.55);}
+.masthead-text span{color:var(--saffron-lt);}
+
+/* ===== NAV ===== */
+nav{position:sticky;top:0;z-index:200;background:var(--cream);border-bottom:1px solid var(--rule);box-shadow:var(--shadow-sm);}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:68px;}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-brand-name{display:flex;flex-direction:column;gap:2px;}
+.nav-brand-name strong{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--prussian);}
+.nav-brand-name span{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);}
+.nav-links{display:flex;align-items:center;gap:1.5rem;list-style:none;}
+.nav-links a{font-family:'Source Serif 4',serif;font-size:0.82rem;color:var(--slate);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--saffron);}
+.nav-back{font-family:'JetBrains Mono',monospace!important;font-size:0.65rem!important;letter-spacing:0.1em!important;text-transform:uppercase;background:var(--prussian)!important;color:var(--cream)!important;padding:9px 20px;}
+.nav-back:hover{background:var(--saffron)!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--prussian);transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-menu{display:none;position:absolute;top:68px;left:0;right:0;background:var(--cream);border-bottom:2px solid var(--saffron);box-shadow:0 8px 32px rgba(26,22,16,0.10);z-index:499;max-height:80vh;overflow-y:auto;}
+.mobile-menu.open{display:block;}
+.mobile-menu ul{list-style:none;padding:0.5rem 1.5rem 1.2rem;}
+.mobile-menu ul li a{display:block;font-size:0.88rem;color:var(--slate);text-decoration:none;padding:0.5rem 0;border-bottom:1px solid var(--rule);}
+@media(max-width:900px){
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .nav-inner{position:relative;}
+  .article-layout{padding:2.5rem 1.5rem;}
+}
+@media(max-width:640px){
+  .article-layout{padding:2rem 1rem;}
+  .hero-title{font-size:1.7rem;}
+  .hero-deck{font-size:0.95rem;}
+}
+
+/* ===== ARTICLE HERO ===== */
+.article-hero{background:var(--prussian);padding:4.5rem 2rem 3.5rem;border-bottom:4px solid var(--saffron);position:relative;overflow:hidden;}
+.article-hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,255,255,0.018) 40px);pointer-events:none;}
+.article-hero::after{content:'';position:absolute;top:0;right:0;width:40%;height:100%;background:radial-gradient(ellipse at top right,rgba(212,118,10,0.08) 0%,transparent 70%);pointer-events:none;}
+.hero-inner{max-width:860px;margin:0 auto;position:relative;z-index:1;}
+.hero-kicker{display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem;}
+.hero-kicker::before{content:'';display:inline-block;width:28px;height:1px;background:var(--saffron);}
+.hero-kicker-text{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--saffron-lt);}
+.hero-category{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.16em;text-transform:uppercase;background:rgba(212,118,10,0.18);border:1px solid rgba(212,118,10,0.35);color:var(--saffron-lt);padding:4px 12px;margin-left:0.5rem;}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.9rem);font-weight:900;color:var(--parchment);line-height:1.1;margin-bottom:1rem;letter-spacing:-0.01em;}
+.hero-deck{font-family:'Source Serif 4',serif;font-size:1.08rem;font-weight:300;font-style:italic;color:rgba(248,244,236,0.72);line-height:1.8;max-width:720px;margin-bottom:2rem;}
+.hero-meta{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.1);}
+.meta-item{display:flex;flex-direction:column;gap:2px;}
+.meta-label{font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.4);}
+.meta-value{font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:rgba(255,255,255,0.75);}
+.meta-divider{width:1px;height:32px;background:rgba(255,255,255,0.12);}
+.hero-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1.2rem;}
+.hero-tag{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.55);padding:4px 10px;}
+
+/* ===== ARTICLE LAYOUT ===== */
+.article-layout{max-width:1200px;margin:0 auto;padding:3.5rem 2rem;display:grid;grid-template-columns:1fr 300px;gap:4rem;}
+@media(max-width:960px){.article-layout{grid-template-columns:1fr;gap:2.5rem;}}
+
+/* ===== ARTICLE BODY ===== */
+.article-body{}
+.article-lead{font-family:'Source Serif 4',serif;font-size:1.12rem;font-weight:300;line-height:1.9;color:var(--slate);margin-bottom:2.5rem;padding-bottom:2rem;border-bottom:1px solid var(--rule);}
+.article-lead strong{font-weight:600;color:var(--prussian);}
+
+.article-section{margin-bottom:2.8rem;}
+.article-section h2{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;color:var(--prussian);margin-bottom:1.2rem;line-height:1.25;position:relative;padding-left:1.2rem;}
+.article-section h2::before{content:'';position:absolute;left:0;top:0.25em;width:3px;height:1em;background:var(--saffron);}
+.article-section h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--prussian);margin:1.5rem 0 0.75rem;}
+.article-section p{font-size:0.97rem;font-weight:300;line-height:1.9;color:var(--slate);margin-bottom:1rem;}
+.article-section p:last-child{margin-bottom:0;}
+.article-section strong{font-weight:600;color:var(--prussian);}
+
+/* Callout box */
+.callout{background:var(--parchment);border:1px solid var(--rule);border-left:4px solid var(--saffron);padding:1.6rem 1.8rem;margin:2rem 0;}
+.callout.risk{border-left-color:var(--danger);background:var(--danger-lt);}
+.callout.key{border-left-color:var(--chakra-blue);background:var(--blue-lt);}
+.callout-label{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.6rem;}
+.callout.risk .callout-label{color:var(--danger);}
+.callout.key .callout-label{color:var(--chakra-blue);}
+.callout p{font-size:0.9rem;font-weight:400;line-height:1.8;color:var(--slate);}
+.callout p:last-child{margin-bottom:0;}
+.callout p strong{font-weight:600;color:var(--prussian);}
+
+/* Question list */
+.question-list{list-style:none;padding:0;margin:1.2rem 0;}
+.question-list li{display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.2rem;background:var(--parchment);border:1px solid var(--rule);border-left:3px solid var(--ochre);margin-bottom:0.8rem;transition:border-left-color 0.2s;}
+.question-list li:hover{border-left-color:var(--saffron);}
+.q-icon{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--saffron);background:rgba(212,118,10,0.1);border:1px solid var(--rule-gold);width:24px;height:24px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.q-text{font-size:0.9rem;font-weight:300;line-height:1.75;color:var(--slate);}
+
+/* Risk item */
+.risk-list{list-style:none;padding:0;margin:1.2rem 0;}
+.risk-list li{display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.2rem;margin-bottom:0.8rem;background:rgba(192,57,43,0.04);border:1px solid rgba(192,57,43,0.12);border-left:3px solid var(--danger);}
+.risk-icon{font-size:0.85rem;flex-shrink:0;margin-top:3px;color:var(--danger);}
+.risk-text{font-size:0.9rem;font-weight:300;line-height:1.75;color:var(--slate);}
+.risk-text strong{font-weight:600;color:var(--danger);}
+
+/* Solution item */
+.solution-list{list-style:none;padding:0;margin:1.2rem 0;}
+.solution-list li{display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.2rem;margin-bottom:0.8rem;background:rgba(26,107,58,0.04);border:1px solid rgba(26,107,58,0.15);border-left:3px solid var(--green);}
+.solution-icon{font-size:0.85rem;flex-shrink:0;margin-top:3px;color:var(--green);}
+.solution-text{font-size:0.9rem;font-weight:300;line-height:1.75;color:var(--slate);}
+.solution-text strong{font-weight:600;color:var(--green);}
+
+/* Pullquote */
+.pullquote{border-top:2px solid var(--saffron);border-bottom:2px solid var(--saffron);padding:2rem 1.5rem;margin:2.5rem 0;text-align:center;}
+.pullquote p{font-family:'Playfair Display',serif;font-size:1.25rem;font-style:italic;font-weight:500;color:var(--prussian);line-height:1.55;}
+.pullquote cite{display:block;margin-top:0.75rem;font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--mist);}
+
+/* Closing thought */
+.closing-thought{background:var(--prussian);padding:2.5rem 2rem;margin-top:3rem;}
+.closing-thought .closing-label{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--saffron);margin-bottom:1rem;}
+.closing-thought p{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--parchment);line-height:1.65;font-style:italic;}
+.closing-thought p.closing-punch{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;font-style:normal;color:var(--saffron-lt);margin-top:1rem;}
+
+/* Author block */
+.author-block{margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--rule);display:flex;gap:1.2rem;align-items:flex-start;}
+.author-avatar{width:48px;height:48px;background:var(--prussian);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--saffron-lt);}
+.author-info{}
+.author-name{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--prussian);margin-bottom:2px;}
+.author-role{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--mist);}
+.author-bio{font-size:0.82rem;font-weight:300;line-height:1.7;color:var(--slate);margin-top:0.4rem;}
+
+/* ===== SIDEBAR ===== */
+.sidebar{}
+.sidebar-sticky{position:sticky;top:88px;}
+.sidebar-card{background:var(--parchment);border:1px solid var(--rule);padding:1.4rem;margin-bottom:1.5rem;}
+.sidebar-card-label{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--saffron);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;}
+.sidebar-card-label::after{content:'';flex:1;height:1px;background:var(--rule-gold);}
+.sidebar-card h3{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--prussian);margin-bottom:0.75rem;line-height:1.3;}
+.sidebar-card p{font-size:0.82rem;font-weight:300;line-height:1.7;color:var(--slate);}
+.sidebar-links{list-style:none;padding:0;}
+.sidebar-links li{border-bottom:1px solid var(--rule);padding:0.6rem 0;}
+.sidebar-links li:last-child{border-bottom:none;}
+.sidebar-links a{font-size:0.82rem;font-weight:300;color:var(--prussian);text-decoration:none;line-height:1.5;transition:color 0.2s;}
+.sidebar-links a:hover{color:var(--saffron);}
+.sidebar-links .link-tag{font-family:'JetBrains Mono',monospace;font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;background:rgba(212,118,10,0.1);color:var(--ochre);padding:2px 6px;margin-right:0.4rem;vertical-align:middle;}
+.statute-pill{display:inline-flex;align-items:center;gap:0.4rem;font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.08em;background:var(--blue-lt);border:1px solid rgba(27,58,107,0.2);color:var(--chakra-blue);padding:5px 10px;margin:0.3rem 0.3rem 0.3rem 0;}
+.subscribe-form{margin-top:0.75rem;}
+.subscribe-form input{width:100%;padding:9px 12px;border:1px solid var(--rule);background:var(--cream);font-family:'Source Serif 4',serif;font-size:0.82rem;color:var(--ink);margin-bottom:0.5rem;outline:none;}
+.subscribe-form input:focus{border-color:var(--saffron);}
+.subscribe-form button{width:100%;padding:10px;background:var(--prussian);color:var(--cream);border:none;font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;}
+.subscribe-form button:hover{background:var(--saffron);}
+
+/* ===== FOOTER ===== */
+footer{background:var(--prussian);padding:3rem 2rem;margin-top:0;border-top:3px solid var(--saffron);}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:2rem;}
+.footer-brand strong{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--parchment);}
+.footer-brand p{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:0.4rem;}
+.footer-nav{display:flex;gap:2rem;flex-wrap:wrap;}
+.footer-nav a{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s;}
+.footer-nav a:hover{color:var(--saffron);}
+.footer-legal{width:100%;border-top:1px solid rgba(255,255,255,0.08);padding-top:1.5rem;font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.06em;color:rgba(255,255,255,0.3);line-height:1.8;}
+
+@media(max-width:640px){
+  .article-hero{padding:3rem 1.2rem 2.5rem;}
+  .hero-title{font-size:1.7rem;}
+  .article-layout{padding:2rem 1.2rem;}
+  .footer-inner{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <p class="masthead-text">blog.<span>DPDPIndia.in</span> &nbsp;·&nbsp; Independent Legal &amp; Policy Research &nbsp;·&nbsp; DPDP Act · IT Act · Aadhaar &amp; eKYC</p>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-brand-name">
+        <strong>DPDPIndia.in</strong>
+        <span>Research &amp; Policy Blog</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dpdp-kb.html">DPDP Act</a></li>
+      <li><a href="itact-kb.html">IT Act</a></li>
+      <li><a href="ekyc-kb.html">eKYC</a></li>
+      <li><a href="cybercrime-kb.html">Cyber Crime</a></li>
+      <li><a href="for-businesses.html">For Business</a></li>
+      <li><a href="for-individuals.html">For Individuals</a></li>
+      <li><a href="case-tracker.html">Cases</a></li>
+      <li><a href="blog.html">← Articles</a></li>
+      <li><a href="cyber-fraud-hub.html" class="nav-back">🚨 1930</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" onclick="this.classList.toggle('open');document.getElementById('mob-nav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mob-nav">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dpdp-kb.html">DPDP Act Knowledge Base</a></li>
+      <li><a href="itact-kb.html">IT Act Knowledge Base</a></li>
+      <li><a href="ekyc-kb.html">eKYC / UIDAI Knowledge Base</a></li>
+      <li><a href="cybercrime-kb.html">Cyber Crime Knowledge Base</a></li>
+      <li><a href="for-businesses.html">DPDP Compliance for Business</a></li>
+      <li><a href="for-individuals.html">Know Your Rights</a></li>
+      <li><a href="case-tracker.html">Case Tracker</a></li>
+      <li><a href="blog.html">All Articles</a></li>
+      <li><a href="cyber-fraud-hub.html">🚨 Cyber Fraud Hub — 1930</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ARTICLE HERO -->
+<header class="article-hero">
+  <div class="hero-inner">
+    <div class="hero-kicker">
+      <span class="hero-kicker-text">Policy Analysis</span>
+      <span class="hero-category">DPDP Act · Gati Shakti</span>
+    </div>
+    <h1 class="hero-title">The PM Gati Shakti Data Governance Gap:<br>Where GIS Meets DPDP Compliance</h1>
+    <p class="hero-deck">India's multi-modal infrastructure master plan aggregates geospatial data from 16+ ministries on a centralised NIC cloud. But under the DPDP Act 2023, the platform faces a critical and unresolved governance gap: who is accountable as the data fiduciary?</p>
+    <div class="hero-meta">
+      <div class="meta-item">
+        <span class="meta-label">Published</span>
+        <span class="meta-value">27 March 2026</span>
+      </div>
+      <div class="meta-divider"></div>
+      <div class="meta-item">
+        <span class="meta-label">Category</span>
+        <span class="meta-value">DPDP Act · E-Governance</span>
+      </div>
+      <div class="meta-divider"></div>
+      <div class="meta-item">
+        <span class="meta-label">Read time</span>
+        <span class="meta-value">8 min</span>
+      </div>
+    </div>
+    <div class="hero-tags">
+      <span class="hero-tag">Gati Shakti</span>
+      <span class="hero-tag">GIS Policy</span>
+      <span class="hero-tag">DPDP Act 2023</span>
+      <span class="hero-tag">Data Fiduciary</span>
+      <span class="hero-tag">E-Governance</span>
+      <span class="hero-tag">NIC Infrastructure</span>
+    </div>
+  </div>
+</header>
+
+<!-- ARTICLE LAYOUT -->
+<div class="article-layout">
+
+  <!-- MAIN CONTENT -->
+  <main class="article-body">
+
+    <p class="article-lead">
+      When the PM Gati Shakti National Master Plan was launched in October 2021, it represented a landmark moment in Indian infrastructure governance: for the first time, 16 core infrastructure ministries — Railways, Highways, Power, Telecom, Petroleum, Shipping, Aviation, Water Resources, and others — agreed to feed their geospatial and operational data into a unified, purpose-built platform hosted on the NIC cloud. The promise was clear: <strong>coordinated, data-driven infrastructure planning at national scale.</strong> Today, as the DPDP Act enters force, that promise is being tested by a structural governance flaw that the architects of the platform may not have fully anticipated.
+    </p>
+
+    <!-- SECTION 1 -->
+    <div class="article-section">
+      <h2>The Gati Shakti Architecture: Data Without a Fiduciary</h2>
+      <p>The PM Gati Shakti platform operates as an aggregator. Data flows in from multiple sources:</p>
+
+      <ul class="risk-list">
+        <li>
+          <span class="risk-icon">▸</span>
+          <span class="risk-text"><strong>Drone survey data</strong> from the SVAMITVA Scheme (Ministry of Panchayati Raj) showing rural abadi boundaries, property demarcation, and land use patterns</span>
+        </li>
+        <li>
+          <span class="risk-icon">▸</span>
+          <span class="risk-text"><strong>Spatial layers</strong> from railways, highways, power transmission networks, and telecom infrastructure maintained by sector-specific operators</span>
+        </li>
+        <li>
+          <span class="risk-icon">▸</span>
+          <span class="risk-text"><strong>Geospatial datasets</strong> created under the National Geospatial Data Framework, governed by the National Geospatial Policy 2022 (Department of Science &amp; Technology)</span>
+        </li>
+        <li>
+          <span class="risk-icon">▸</span>
+          <span class="risk-text"><strong>Real-time operational feeds</strong> that can include location intelligence from government services and departments</span>
+        </li>
+      </ul>
+
+      <p>The platform was designed with a single, pragmatic objective: enable ministries to visualise, analyse, and coordinate their respective infrastructure plans on a common geospatial canvas. But the DPDP Act — which came into force nearly three years after Gati Shakti's launch — now forces an uncomfortable question that was never formally addressed in the platform's governance framework: <strong>When data from multiple fiduciaries converges on a unified platform, who bears the legal responsibility for ensuring that the combined dataset complies with India's data protection obligations?</strong></p>
+
+      <div class="callout risk">
+        <div class="callout-label">⚠ Legal Exposure</div>
+        <p>Under DPDP Act s. 2(i), a <strong>Data Fiduciary</strong> is defined as "any person, including the State, who alone or in conjunction with others determines the purpose and means of processing of personal data." The definition is broad. But it is also circular in multi-source aggregation contexts: if the NIC hosts the platform, is the NIC the fiduciary? If individual ministries are the sources, are they each fiduciaries? If the DPIIT coordinates the scheme, does accountability attach there? The Act does not yet provide clarity on joint fiduciary responsibility in government platform contexts.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 2 -->
+    <div class="article-section">
+      <h2>The Multi-Source Problem Under the National Geospatial Policy</h2>
+      <p>The National Geospatial Policy 2022 (issued by the Department of Science &amp; Technology) explicitly categorises geospatial datasets into three tiers: <strong>Open</strong> (freely available), <strong>Restricted</strong> (available under specified conditions), and <strong>Confidential</strong> (not publicly available). The policy established the National Geospatial Data Framework (NGDF) to manage this categorisation and to promote responsible data sharing.</p>
+
+      <p>But here is where Gati Shakti's architecture creates vulnerability. The platform ingests data across all three categories — some datasets are geographically precise down to individual properties, others reveal infrastructure vulnerabilities, still others contain sensitive operational intelligence. Once aggregated:</p>
+
+      <ul class="question-list">
+        <li>
+          <span class="q-icon">Q</span>
+          <span class="q-text">Can the <strong>classification tier change when data is integrated</strong> with other datasets? For example, if residential property boundaries (from SVAMITVA) are combined with railway infrastructure data, does the combined layer trigger a reclassification to "Restricted" or "Confidential"?</span>
+        </li>
+        <li>
+          <span class="q-icon">Q</span>
+          <span class="q-text">Who has <strong>authority to reclassify</strong> an open dataset once it has been federated into a platform that holds restricted or confidential data?</span>
+        </li>
+        <li>
+          <span class="q-icon">Q</span>
+          <span class="q-text">Under the DPDP Act s. 5 (purpose limitation), if drone survey data was collected for property tax assessment, is it compliant to use the same data for infrastructure planning on a national scale? Does a fresh consent or statutory basis need to be established?</span>
+        </li>
+        <li>
+          <span class="q-icon">Q</span>
+          <span class="q-text">If a data breach affects Gati Shakti, whose responsibility is it to notify data principals under DPDP Act s. 8(6)? The originating ministry? The platform operator (NIC)? The nodal ministry (DPIIT) that oversees the scheme?</span>
+        </li>
+      </ul>
+
+      <div class="callout key">
+        <div class="callout-label">📌 Design Flaw</div>
+        <p>The Gati Shakti platform was architected as a <strong>data aggregator, not a data governance platform.</strong> The technology enables integration and visualisation; the governance architecture does not clearly assign fiduciary responsibility when data from multiple sources converges. This gap is now material under the DPDP Act.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 3 -->
+    <div class="article-section">
+      <h2>The Drone Rules and the SVAMITVA Data Chain</h2>
+      <p>The Ministry of Civil Aviation's Drone Rules 2021 have liberalised aerial survey data collection. The SVAMITVA Scheme (Pradhan Mantri Scheme for Formalization of Unlisted Workers), administered by the Ministry of Panchayati Raj, uses drone-based surveys to map rural abadi (settlement) boundaries and create verifiable land ownership records for rural property holders.</p>
+
+      <p>SVAMITVA data is now flowing into Gati Shakti as a source layer. This creates a specific compliance chain that is worth examining:</p>
+
+      <ul class="risk-list">
+        <li>
+          <span class="risk-icon">§</span>
+          <span class="risk-text"><strong>Data Collection.</strong> Drone surveys collect high-resolution aerial imagery that can identify individual properties, land use, and settlement patterns. This imagery is inherently <strong>location-linked and inferable</strong> to individuals under the DPDP Act definition of personal data.</span>
+        </li>
+        <li>
+          <span class="risk-icon">§</span>
+          <span class="risk-text"><strong>Processing and Storage.</strong> The Ministry of Panchayati Raj processes this imagery to create abadi boundary maps and property records, which are stored on designated systems. The Ministry is, in this context, a data fiduciary under DPDP Act s. 2(i).</span>
+        </li>
+        <li>
+          <span class="risk-icon">§</span>
+          <span class="risk-text"><strong>Sharing to Gati Shakti.</strong> Processed SVAMITVA layers are shared with Gati Shakti for national infrastructure visualisation. At this point, the NIC (or the platform operator) becomes a <strong>joint processor or secondary fiduciary</strong> — but the exact legal classification remains undefined.</span>
+        </li>
+      </ul>
+
+      <p>The Drone Rules 2021 do not explicitly address the question of data sharing across government schemes or the continuation of data fiduciary obligations once a dataset leaves its originating system. The vacuum is now filled by the DPDP Act — but the Act itself does not yet have published government guidance on how to apply its fiduciary framework in inter-ministry data aggregation scenarios.</p>
+    </div>
+
+    <!-- SECTION 4 -->
+    <div class="article-section">
+      <h2>Critical Infrastructure, IT Act Obligations, and CERT-In Compliance</h2>
+      <p>The IT Act 2000, s. 70, defines <strong>Protected Systems</strong> as "computer resources or communication devices connected to a computer resource of the critical information infrastructure." The scope of this definition may extend to Gati Shakti, especially if the platform hosts infrastructure-critical data (power grid coordinates, pipeline routes, telecommunications backbone).</p>
+
+      <p>If Gati Shakti is designated (or could be argued to be) a protected system, then IT Act compliance obligations become binding:</p>
+
+      <ul class="risk-list">
+        <li>
+          <span class="risk-icon">▸</span>
+          <span class="risk-text"><strong>CERT-In Directions 2022.</strong> Mandatory incident reporting within 6 hours of discovering a security breach; maintenance of logs for 180 days; deployment of intrusion detection systems (IDS) and regular vulnerability assessments.</span>
+        </li>
+        <li>
+          <span class="risk-icon">▸</span>
+          <span class="risk-text"><strong>IT Act s. 43A.</strong> Liability of data fiduciaries for failure to maintain reasonable security measures. This now overlaps with DPDP Act s. 8 (Security Safeguards).</span>
+        </li>
+        <li>
+          <span class="risk-icon">▸</span>
+          <span class="risk-text"><strong>Cross-ministry breach cascade risk.</strong> If a breach in Gati Shakti exposes shared data, all fiduciaries whose data is on the platform may face concurrent liability under both the IT Act and the DPDP Act.</span>
+        </li>
+      </ul>
+
+      <p>The current platform governance does not appear to have formally addressed whether it qualifies as a Protected System under s. 70, or whether it has implemented the specific technical and procedural safeguards required by the CERT-In Directions.</p>
+    </div>
+
+    <div class="pullquote">
+      <p>"When 16 ministries converge their data on a centralised platform without a clear fiduciary framework, a data breach becomes not one ministry's problem — it becomes a national incident."</p>
+      <cite>DPDPIndia.in Policy Analysis · March 2026</cite>
+    </div>
+
+    <!-- SECTION 5 -->
+    <div class="article-section">
+      <h2>Justice Puttaswamy and the Precedent for Aggregated State Data</h2>
+      <p>In <em>Justice K.S. Puttaswamy v Union of India (2017) 10 SCC 1,</em> the Supreme Court recognised that <strong>privacy is a fundamental right</strong> — and it is a right that attaches to individuals' interactions with the State. While the Court was focused on Aadhaar, the reasoning extends directly to large-scale government data aggregation:</p>
+
+      <blockquote style="font-size:0.9rem;font-weight:300;color:var(--slate);border-left:3px solid var(--saffron);padding-left:1rem;margin:1.5rem 0;line-height:1.8;">The collection, collation, retention, analysis and publication of personal information by the State constitutes an invasion of privacy unless authorised by valid legislation which prescribes safeguards, including principles of purpose limitation, data minimisation, and security.
+      </blockquote>
+
+      <p>The implications for Gati Shakti are stark. The platform aggregates personal or inferable data (location-linked, property-linked, infrastructure-sensitive information) collected under diverse statutory authorities (SVAMITVA, the Drone Rules, sector-specific legislation). Unless the platform has been formally constituted under legislative or executive authority that explicitly establishes data protection safeguards, the Court's holding in <em>Puttaswamy</em> suggests the platform may be vulnerable to legal challenge on constitutional privacy grounds — independently of whether it complies with the DPDP Act.</p>
+    </div>
+
+    <!-- SECTION 6 -->
+    <div class="article-section">
+      <h2>The DPDP-Compliant Governance Framework: What Needs to Happen</h2>
+      <p>Bringing Gati Shakti into full DPDP compliance requires a structural reassessment of its data governance architecture. The platform does not need to be dismantled — but it does need to be rebuilt with explicit fiduciary accountability. Here is what a compliant framework would require:</p>
+
+      <ul class="solution-list">
+        <li>
+          <span class="solution-icon">✓</span>
+          <span class="solution-text"><strong>Formal Fiduciary Designation.</strong> A single entity — whether the NIC, a dedicated authority, or a consortium of source ministries — must be formally designated as the data fiduciary for Gati Shakti. This designation must be published in the gazette and must define the fiduciary's obligations under DPDP Act ss. 6–8.</span>
+        </li>
+        <li>
+          <span class="solution-icon">✓</span>
+          <span class="solution-text"><strong>Data Stewardship Agreements.</strong> Each source ministry must enter into a formal Data Stewardship Agreement with the fiduciary, clearly defining purpose, scope, retention, and access controls for each dataset. These agreements must be DPDP-compliant and must be reviewed by legal teams.</span>
+        </li>
+        <li>
+          <span class="solution-icon">✓</span>
+          <span class="solution-text"><strong>Purpose-Bound Access Controls.</strong> The platform must implement granular, role-based access controls so that a ministry accessing the platform for its sector (e.g., railways) cannot by default view sensitive data from another sector. This is essential under DPDP Act s. 5 (purpose limitation).</span>
+        </li>
+        <li>
+          <span class="solution-icon">✓</span>
+          <span class="solution-text"><strong>Audit Logging and Breach Readiness.</strong> The platform must maintain comprehensive audit logs of all data access, queries, and exports. In the event of a breach, the designated fiduciary must have the capability to notify all affected data principals within 72 hours (as required by DPDP Act s. 8(6) and CERT-In Directions 2022).</span>
+        </li>
+        <li>
+          <span class="solution-icon">✓</span>
+          <span class="solution-text"><strong>Statutory Transparency Report.</strong> The fiduciary must publish an annual transparency report detailing data flows, access requests, breaches, and compliance with security safeguards. This is not required by the DPDP Act, but it is essential for constitutional accountability under <em>Puttaswamy.</em></span>
+        </li>
+      </ul>
+
+      <div class="callout">
+        <div class="callout-label">💡 Implementation Priority</div>
+        <p>The most urgent gap to close is <strong>fiduciary designation and responsibility assignment.</strong> Without clarity on who is accountable for what, the entire platform's compliance posture is legally uncertain. This should be addressed through amendment to the Gati Shakti Governance Framework and formal publication of the fiduciary responsibilities under section 8 of the DPDP Act.</p>
+      </div>
+    </div>
+
+    <!-- CLOSING THOUGHT -->
+    <div class="closing-thought">
+      <div class="closing-label">The Central Problem</div>
+      <p>PM Gati Shakti was built to solve a coordination problem: how to break down silos and enable infrastructure ministries to see, plan, and coordinate at national scale. It is a powerful concept. But the DPDP Act has revealed that coordination without clear fiduciary responsibility is now a legal liability, not a policy achievement.</p>
+      <p class="closing-punch">"The question is no longer how to aggregate data faster. It is how to aggregate it responsibly."</p>
+    </div>
+
+    <!-- STATUTORY REFERENCES -->
+    <div class="article-section" style="margin-top:2.5rem;">
+      <h3>Statutory References</h3>
+      <span class="statute-pill">DPDP Act 2023 §2(i)</span>
+      <span class="statute-pill">DPDP Act 2023 §5</span>
+      <span class="statute-pill">DPDP Act 2023 §8</span>
+      <span class="statute-pill">DPDP Act 2023 §8(6)</span>
+      <span class="statute-pill">IT Act 2000 §43A</span>
+      <span class="statute-pill">IT Act 2000 §70</span>
+      <span class="statute-pill">CERT-In Directions 2022</span>
+      <span class="statute-pill">Drone Rules 2021</span>
+      <span class="statute-pill">National Geospatial Policy 2022</span>
+      <span class="statute-pill">Justice K.S. Puttaswamy (2017)</span>
+    </div>
+
+    <!-- AUTHOR -->
+    <div class="author-block">
+      <div class="author-avatar">D</div>
+      <div class="author-info">
+        <div class="author-name">DPDPIndia.in Editorial</div>
+        <div class="author-role">Policy &amp; Legal Research Desk</div>
+        <div class="author-bio">DPDPIndia.in is India's premier independent research platform on the Digital Personal Data Protection Act 2023, the IT Act 2000, and the Aadhaar eKYC framework. Views are analytical and do not constitute legal advice.</div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-sticky">
+
+      <!-- Newsletter -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-label">Weekly Newsletter</div>
+        <h3>Stay ahead of DPDP developments</h3>
+        <p>Get our weekly briefing on DPDP Act, IT Act, and cybercrime policy — delivered to your inbox every Friday.</p>
+        <form class="subscribe-form" id="subscribeForm"
+              action="https://formspree.io/f/mlgodzbr"
+              method="POST">
+          <input type="hidden" name="_subject" value="Newsletter Subscription — DPDPindia.in">
+          <input type="hidden" name="Type" value="Newsletter Subscription">
+          <input type="email" name="Email" placeholder="your@email.com" required>
+          <button type="submit">Subscribe →</button>
+          <p class="subscribe-success" style="display:none;color:green;font-size:0.8rem;margin-top:0.4rem;">✓ Subscribed! Thank you.</p>
+        </form>
+        <script>
+        (function(){
+          var f=document.getElementById('subscribeForm');
+          if(f) f.addEventListener('submit',async function(e){
+            e.preventDefault();
+            var btn=f.querySelector('button');
+            btn.textContent='Subscribing…'; btn.disabled=true;
+            var res=await fetch(f.action,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}});
+            if(res.ok){f.querySelector('.subscribe-success').style.display='block';btn.style.display='none';}
+            else{btn.textContent='Try again'; btn.disabled=false;}
+          });
+        })();
+        </script>
+      </div>
+
+      <!-- Related Articles -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-label">Related Reading</div>
+        <ul class="sidebar-links">
+          <li><a href="dpdp-act.html"><span class="link-tag">DPDP</span>The DPDP Act — Core Framework</a></li>
+          <li><a href="dpdp-rules.html"><span class="link-tag">Rules</span>DPDP Rules 2025 — Analysis</a></li>
+          <li><a href="itact-egovernance.html"><span class="link-tag">IT Act</span>IT Act &amp; E-Governance</a></li>
+          <li><a href="dpdp-exemptions.html"><span class="link-tag">DPDP</span>Government Exemptions</a></li>
+          <li><a href="dpdp-adjudication.html"><span class="link-tag">DPDP</span>Adjudication Mechanism</a></li>
+        </ul>
+      </div>
+
+      <!-- Key Acts -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-label">Key Statutes</div>
+        <p style="font-size:0.8rem;font-weight:300;color:var(--mist);margin-bottom:0.75rem;">Governing framework for this analysis</p>
+        <span class="statute-pill" style="display:block;margin-bottom:0.4rem;">DPDP Act 2023</span>
+        <span class="statute-pill" style="display:block;margin-bottom:0.4rem;">IT Act 2000</span>
+        <span class="statute-pill" style="display:block;margin-bottom:0.4rem;">National Geospatial Policy 2022</span>
+        <span class="statute-pill" style="display:block;">CERT-In Directions 2022</span>
+      </div>
+
+      <!-- Disclaimer -->
+      <div class="sidebar-card" style="background:rgba(192,57,43,0.04);border-color:rgba(192,57,43,0.15);">
+        <div class="sidebar-card-label" style="color:var(--danger);">Disclaimer</div>
+        <p style="font-size:0.78rem;font-weight:300;color:var(--mist);line-height:1.65;">This article is for research and informational purposes only. It does not constitute legal advice. For specific legal questions, consult a qualified advocate.</p>
+      </div>
+
+    </div>
+  </aside>
+
+</div><!-- /.article-layout -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <strong>DPDPIndia.in</strong>
+      <p>Independent Research &amp; Policy Analysis</p>
+    </div>
+    <nav class="footer-nav">
+      <a href="dpdp-kb.html">DPDP Knowledge Base</a>
+      <a href="itact-kb.html">IT Act</a>
+      <a href="ekyc-kb.html">eKYC Framework</a>
+      <a href="cybercrime-kb.html">Cybercrime</a>
+      <a href="blog.html">All Blog Articles</a>
+      <a href="legal.html">Legal Notice</a>
+    </nav>
+    <div class="footer-legal">
+      © 2026 DPDPIndia.in · All content is for research and informational purposes only and does not constitute legal advice. · blog.dpdpindia.in
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

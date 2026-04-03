@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IT Act 2000 — Knowledge Base · DPDP India</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --parchment:#F8F4EC;--cream:#FDFAF5;--paper:#F2EDE2;--ink:#1A1610;
+  --prussian:#1B2B3A;--slate:#2D3D4E;--saffron:#D4760A;--saffron-lt:#F0A840;
+  --ochre:#B8862C;--chakra-blue:#1B3A6B;--mist:#7A7468;
+  --rule:rgba(26,22,16,0.12);--rule-gold:rgba(212,118,10,0.25);
+  --shadow-sm:0 2px 12px rgba(26,22,16,0.06);--shadow-md:0 8px 40px rgba(26,22,16,0.10);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:'Source Serif 4',Georgia,serif;background:var(--cream);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;}
+
+/* MASTHEAD */
+.masthead{background:var(--prussian);padding:10px 0;text-align:center;border-bottom:3px solid var(--saffron);}
+.masthead-text{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.55);}
+.masthead-text span{color:var(--saffron-lt);}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:200;background:var(--cream);border-bottom:1px solid var(--rule);box-shadow:var(--shadow-sm);}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:68px;}
+.nav-brand{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.nav-brand-seal{width:42px;height:42px;flex-shrink:0;}
+.nav-brand-name{display:flex;flex-direction:column;gap:1px;}
+.nav-brand-name strong{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--prussian);letter-spacing:0.01em;line-height:1;}
+.nav-brand-name span{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);line-height:1;}
+.nav-links{display:flex;align-items:center;gap:1.5rem;list-style:none;}
+.nav-links a{font-family:'Source Serif 4',serif;font-size:0.82rem;font-weight:400;color:var(--slate);text-decoration:none;letter-spacing:0.01em;transition:color 0.2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--saffron);transform:scaleX(0);transition:transform 0.25s;transform-origin:left;}
+.nav-links a:hover{color:var(--saffron);}
+.nav-links a:hover::after{transform:scaleX(1);}
+.nav-blog-btn{font-family:'JetBrains Mono',monospace!important;font-size:0.65rem!important;letter-spacing:0.1em!important;text-transform:uppercase;background:var(--prussian)!important;color:var(--cream)!important;padding:9px 20px;border-radius:1px;transition:background 0.2s!important;}
+.nav-blog-btn::after{display:none!important;}
+.nav-blog-btn:hover{background:var(--saffron)!important;color:var(--cream)!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--prussian);transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-menu{display:none;position:absolute;top:68px;left:0;right:0;background:var(--cream);border-bottom:2px solid var(--saffron);box-shadow:var(--shadow-md);z-index:199;}
+.mobile-menu.open{display:block;}
+.mobile-menu ul{list-style:none;padding:1rem 2rem 1.5rem;}
+.mobile-menu ul li a{display:block;font-family:'Source Serif 4',serif;font-size:0.95rem;color:var(--slate);text-decoration:none;padding:0.7rem 0;border-bottom:1px solid var(--rule);}
+.mobile-menu ul li:last-child a{border-bottom:none;}
+.mobile-menu ul li a:hover{color:var(--saffron);}
+
+/* PAGE HEADER */
+.page-header{background:var(--prussian);padding:5rem 0 4rem;position:relative;overflow:hidden;}
+.page-header::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
+.page{max-width:1320px;margin:0 auto;padding:0 2rem;}
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:1.5rem;font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);position:relative;z-index:1;}
+.breadcrumb a{color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s;}
+.breadcrumb a:hover{color:var(--saffron-lt);}
+.breadcrumb-sep{color:rgba(255,255,255,0.25);}
+.page-kicker{display:flex;align-items:center;gap:10px;margin-bottom:1.5rem;position:relative;z-index:1;}
+.page-kicker-line{width:32px;height:1px;background:var(--saffron);}
+.page-kicker-text{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--saffron);}
+.page-title{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4vw,3.5rem);font-weight:700;line-height:1.12;color:var(--parchment);margin-bottom:1rem;position:relative;z-index:1;}
+.page-title em{font-style:italic;color:var(--saffron-lt);}
+.page-deck{font-size:1rem;font-weight:300;line-height:1.85;color:rgba(248,244,236,0.65);max-width:600px;position:relative;z-index:1;}
+
+/* KB META STRIP */
+.kb-meta-strip{background:var(--ink);border-top:3px solid var(--saffron);}
+.kb-meta-inner{max-width:1320px;margin:0 auto;padding:0;display:grid;grid-template-columns:repeat(4,1fr);}
+.km-item{padding:1.5rem 2rem;border-right:1px solid rgba(255,255,255,0.07);display:flex;flex-direction:column;gap:0.3rem;}
+.km-item:last-child{border-right:none;}
+.km-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--saffron-lt);line-height:1;}
+.km-label{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.45);}
+
+/* ARTICLE GRID */
+.articles-section{padding:5rem 0 6rem;}
+.articles-intro{max-width:680px;margin-bottom:3.5rem;}
+.articles-intro p{font-size:1rem;font-weight:300;line-height:1.9;color:var(--slate);}
+.section-kicker{display:flex;align-items:center;gap:12px;font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--saffron);margin-bottom:1rem;}
+.section-kicker::before{content:'';width:28px;height:1px;background:var(--saffron);}
+.section-heading{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;line-height:1.15;color:var(--prussian);margin-bottom:1.2rem;}
+.section-heading em{font-style:italic;color:var(--saffron);}
+
+/* ARTICLE CARDS */
+.article-card-grid{display:grid;grid-template-columns:1fr;gap:0;border:1px solid var(--rule);}
+.article-card{display:grid;grid-template-columns:120px 1fr auto;align-items:center;gap:2rem;padding:2rem 2.5rem;border-bottom:1px solid var(--rule);background:var(--cream);text-decoration:none;color:inherit;transition:background 0.2s;}
+.article-card:last-child{border-bottom:none;}
+.article-card:hover{background:#fff;}
+.article-card.featured{background:var(--prussian);grid-template-columns:1fr auto;}
+.article-card.featured:hover{background:#243547;}
+.ac-num{font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:900;color:rgba(212,118,10,0.15);line-height:1;flex-shrink:0;width:120px;text-align:right;}
+.article-card.featured .ac-num{display:none;}
+.ac-body{flex:1;}
+.ac-cat{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.5rem;display:flex;align-items:center;gap:8px;}
+.ac-cat::before{content:'';display:inline-block;width:12px;height:1px;background:var(--saffron);}
+.article-card.featured .ac-cat{color:var(--saffron-lt);}
+.article-card.featured .ac-cat::before{background:var(--saffron-lt);}
+.ac-title{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;line-height:1.3;color:var(--prussian);margin-bottom:0.5rem;}
+.article-card.featured .ac-title{font-size:1.7rem;color:var(--parchment);}
+.ac-desc{font-size:0.88rem;font-weight:300;line-height:1.75;color:var(--mist);}
+.article-card.featured .ac-desc{color:rgba(248,244,236,0.6);}
+.ac-tags{display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.8rem;}
+.ac-tag{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--saffron);border:1px solid var(--rule-gold);padding:3px 8px;background:rgba(212,118,10,0.04);}
+.article-card.featured .ac-tag{color:var(--saffron-lt);border-color:rgba(240,168,64,0.3);background:rgba(240,168,64,0.08);}
+.ac-arrow{font-family:'JetBrains Mono',monospace;font-size:1.2rem;color:var(--saffron);flex-shrink:0;transition:transform 0.2s;}
+.article-card:hover .ac-arrow{transform:translateX(4px);}
+.article-card.featured .ac-arrow{color:var(--saffron-lt);}
+
+/* SPECIAL PAGE CARD */
+.special-card{background:var(--parchment);border:1px solid var(--rule);padding:3rem;margin-top:2rem;display:grid;grid-template-columns:1fr auto;align-items:center;gap:2rem;text-decoration:none;color:inherit;transition:background 0.2s;}
+.special-card:hover{background:var(--paper);}
+.sc-label{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.8rem;display:flex;align-items:center;gap:8px;}
+.sc-label::before{content:'★';font-size:0.6rem;}
+.sc-title{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--prussian);margin-bottom:0.5rem;line-height:1.25;}
+.sc-desc{font-size:0.9rem;font-weight:300;line-height:1.8;color:var(--slate);max-width:560px;}
+
+/* COMPLIANCE SECTION */
+.compliance-section{background:var(--prussian);padding:5rem 0;position:relative;overflow:hidden;}
+.compliance-section::before{content:'';position:absolute;top:0;right:0;width:50%;height:100%;background:radial-gradient(ellipse at right top,rgba(212,118,10,0.08) 0%,transparent 60%);pointer-events:none;}
+.compliance-section .section-heading{color:var(--parchment);}
+.compliance-section .section-heading em{color:var(--saffron-lt);}
+.compliance-section .section-kicker{color:var(--saffron-lt);}
+.compliance-section .section-kicker::before{background:var(--saffron-lt);}
+.compliance-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:3rem;border-top:1px solid rgba(255,255,255,0.08);}
+.cg-item{padding:2.5rem 2.5rem 2.5rem 0;border-right:1px solid rgba(255,255,255,0.07);}
+.cg-item:last-child{border-right:none;padding:2.5rem 0 2.5rem 2.5rem;}
+.cg-item:nth-child(2){padding:2.5rem;}
+.cg-num{font-family:'Playfair Display',serif;font-size:0.85rem;font-weight:700;color:var(--saffron);margin-bottom:1rem;}
+.cg-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--parchment);margin-bottom:0.7rem;line-height:1.3;}
+.cg-body{font-size:0.85rem;font-weight:300;line-height:1.8;color:rgba(248,244,236,0.55);}
+
+/* FOOTER */
+footer{background:var(--ink);padding:5rem 0 2rem;}
+.footer-grid{max-width:1320px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,0.06);}
+.footer-brand-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--parchment);margin-bottom:1rem;}
+.footer-brand-desc{font-size:0.85rem;font-weight:300;line-height:1.8;color:rgba(248,244,236,0.4);margin-bottom:1.5rem;max-width:280px;}
+.footer-col-title{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);margin-bottom:1.2rem;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
+.footer-links a{font-size:0.85rem;font-weight:300;color:rgba(248,244,236,0.45);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--parchment);}
+.footer-bottom{max-width:1320px;margin:0 auto;padding:1.5rem 2rem 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-copy{font-size:0.78rem;font-weight:300;color:rgba(248,244,236,0.25);}
+.footer-tagline{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(248,244,236,0.2);}
+
+/* INTERMEDIARY NOTICE */
+.intermediary-notice{background:rgba(212,118,10,0.08);border:1px solid var(--rule-gold);border-left:3px solid var(--saffron);padding:1.2rem 1.5rem;margin-bottom:2.5rem;}
+.intermediary-notice p{font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.04em;color:var(--ochre);line-height:1.7;}
+.intermediary-notice strong{color:var(--saffron);}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .kb-meta-inner{grid-template-columns:repeat(2,1fr);}
+  .compliance-grid{grid-template-columns:1fr;}
+  .cg-item,.cg-item:last-child,.cg-item:nth-child(2){padding:2rem 0;border-right:none;border-bottom:1px solid rgba(255,255,255,0.07);}
+  .cg-item:last-child{border-bottom:none;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .special-card{grid-template-columns:1fr;}
+}
+@media(max-width:600px){
+  .page-header{padding:3rem 0 2.5rem;}
+  .article-card{grid-template-columns:1fr;gap:0.5rem;}
+  .ac-num{display:none;}
+  .ac-arrow{align-self:flex-end;}
+  .kb-meta-inner{grid-template-columns:1fr 1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+  .footer-bottom{flex-direction:column;align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <p class="masthead-text">DPDP India · <span>Independent Strategic Policy & Legal Research</span> · Digital Personal Data Protection Act, 2023</p>
+</div>
+
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <svg class="nav-brand-seal" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="21" cy="21" r="20" stroke="#1B2B3A" stroke-width="1.5"/>
+        <circle cx="21" cy="21" r="14" stroke="#D4760A" stroke-width="0.75" stroke-dasharray="2 2"/>
+        <text x="21" y="25" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="700" fill="#1B2B3A">§</text>
+      </svg>
+      <div class="nav-brand-name">
+        <strong>DPDP India</strong>
+        <span>Policy & Legal Research</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dpdp-kb.html">DPDP Act</a></li>
+      <li><a href="itact-kb.html" class="active">IT Act</a></li>
+      <li><a href="ekyc-kb.html">eKYC / UIDAI</a></li>
+      <li><a href="cybercrime-kb.html">Cyber Crime</a></li>
+      <li><a href="for-businesses.html">For Business</a></li>
+      <li><a href="for-individuals.html">For Individuals</a></li>
+      <li><a href="case-tracker.html">Cases</a></li>
+      <li><a href="blog.html">Articles</a></li>
+      <li><a href="cyber-fraud-hub.html" class="nav-blog-btn">🚨 1930</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dpdp-kb.html">DPDP Act Knowledge Base</a></li>
+      <li><a href="itact-kb.html">IT Act Knowledge Base</a></li>
+      <li><a href="ekyc-kb.html">eKYC / UIDAI Knowledge Base</a></li>
+      <li><a href="cybercrime-kb.html">Cyber Crime Knowledge Base</a></li>
+      <li><a href="for-businesses.html">DPDP Compliance for Business</a></li>
+      <li><a href="for-individuals.html">Know Your Rights</a></li>
+      <li><a href="case-tracker.html">Case Tracker</a></li>
+      <li><a href="blog.html">Articles & Research</a></li>
+      <li><a href="cyber-fraud-hub.html">🚨 Cyber Fraud Hub — 1930</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="page">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>Knowledge Bases</span>
+      <span class="breadcrumb-sep">›</span>
+      <span>IT Act 2000</span>
+    </div>
+    <div class="page-kicker"><div class="page-kicker-line"></div><span class="page-kicker-text">KB–03 · Information Technology</span></div>
+    <h1 class="page-title">Information Technology Act <em>2000</em><br>Knowledge Base</h1>
+    <p class="page-deck">From UNCITRAL origins and the 2008 security pivot to the landmark Shreya Singhal verdict — a structured legal reference on India's foundational cyber law, e-governance framework, and intermediary liability regime.</p>
+  </div>
+</header>
+
+<div class="kb-meta-strip">
+  <div class="kb-meta-inner">
+    <div class="km-item"><div class="km-num">5</div><div class="km-label">Research Articles</div></div>
+    <div class="km-item"><div class="km-num">25+</div><div class="km-label">Sections Analysed</div></div>
+    <div class="km-item"><div class="km-num">2000</div><div class="km-label">Original Enactment</div></div>
+    <div class="km-item"><div class="km-num">2026</div><div class="km-label">Updated To</div></div>
+  </div>
+</div>
+
+<section class="articles-section">
+  <div class="page">
+
+    <div class="intermediary-notice">
+      <p><strong>Intermediary Notice:</strong> DPDPIndia.in is an intermediary under s. 2(1)(w) of the Information Technology Act, 2000. Content on this platform is research and educational in nature. Users must independently verify all legal information before relying on it. DPDPIndia.in is not liable for errors — see our <a href="legal.html" style="color:var(--saffron);">Legal Disclaimer & Safe Harbour Policy</a>.</p>
+    </div>
+
+    <div class="articles-intro">
+      <div class="section-kicker">Article Index</div>
+      <h2 class="section-heading">Five Articles on India's <em>Cyber Law</em> Framework</h2>
+      <p>The Information Technology Act, 2000 is India's foundational statute for electronic governance, cybersecurity, and digital commerce. This KB traces its origins in international trade law, its major 2008 security amendment, its landmark judicial reinterpretation, and its continuing relevance in 2026.</p>
+    </div>
+
+    <div class="article-card-grid">
+
+      <a href="itact-history.html" class="article-card featured">
+        <div class="ac-body">
+          <div class="ac-cat">Article 01 of 05 · Historical Evolution</div>
+          <div class="ac-title">IT Act 2000: Origins, Global Genesis & the 2008 Security Pivot</div>
+          <div class="ac-desc">From UNCITRAL Model Law (1996) to India's enactment in May 2000 — the principle of Functional Equivalence, paperless trade, and how the 2008 amendment shifted the Act's focus from e-commerce to cybersecurity and data protection. Sections 43A, 66A (struck down), 69, and technology neutrality explained.</div>
+          <div class="ac-tags">
+            <span class="ac-tag">UNCITRAL 1996</span>
+            <span class="ac-tag">IT Act 2000</span>
+            <span class="ac-tag">2008 Amendment</span>
+            <span class="ac-tag">Section 43A</span>
+            <span class="ac-tag">Section 66A</span>
+          </div>
+        </div>
+        <div class="ac-arrow">→</div>
+      </a>
+
+      <a href="itact-shreya-singhal.html" class="article-card">
+        <div class="ac-num">02</div>
+        <div class="ac-body">
+          <div class="ac-cat">Article 02 of 05 · Landmark Judgment</div>
+          <div class="ac-title">Shreya Singhal v. Union of India (2015) — Free Speech & Intermediary Liability</div>
+          <div class="ac-desc">The Supreme Court's decisive ruling: Section 66A struck down as unconstitutional; Section 79 read down to protect platforms from private takedown demands. Plus the 2025 X Corp v. Union of India challenge to Sahyog portal blocking orders.</div>
+          <div class="ac-tags">
+            <span class="ac-tag">Shreya Singhal 2015</span>
+            <span class="ac-tag">Section 66A</span>
+            <span class="ac-tag">Section 79</span>
+            <span class="ac-tag">Safe Harbour</span>
+          </div>
+        </div>
+        <div class="ac-arrow">→</div>
+      </a>
+
+      <a href="itact-egovernance.html" class="article-card">
+        <div class="ac-num">03</div>
+        <div class="ac-body">
+          <div class="ac-cat">Article 03 of 05 · Special Page · E-Governance</div>
+          <div class="ac-title">E-Governance in India: IT Act as the Growth Catalyst</div>
+          <div class="ac-desc">Sections 6 & 7 gave legal teeth to paperless government. From CCA digital signatures to Digital India Stack — 150 billion annual transactions, DigiLocker, e-Courts, UMANG, and Bhoomi/GIS land records. 2026 status report.</div>
+          <div class="ac-tags">
+            <span class="ac-tag">Section 6 & 7</span>
+            <span class="ac-tag">Digital India</span>
+            <span class="ac-tag">DigiLocker</span>
+            <span class="ac-tag">e-Courts</span>
+          </div>
+        </div>
+        <div class="ac-arrow">→</div>
+      </a>
+
+      <a href="itact-sections.html" class="article-card">
+        <div class="ac-num">04</div>
+        <div class="ac-body">
+          <div class="ac-cat">Article 04 of 05 · Statutory Reference</div>
+          <div class="ac-title">Key Sections of the IT Act — Annotated Reference Guide</div>
+          <div class="ac-desc">A practitioner's annotated guide to Sections 43, 43A, 66, 66C, 69, 69A, 69B, 70, 70B, and 79 — with current status (post-DPDP Act 2023), enforcement context, and crosslinks to the DPDP Act's overlapping provisions.</div>
+          <div class="ac-tags">
+            <span class="ac-tag">Section 43A</span>
+            <span class="ac-tag">Section 69A</span>
+            <span class="ac-tag">Section 79</span>
+            <span class="ac-tag">DPDP Overlap</span>
+          </div>
+        </div>
+        <div class="ac-arrow">→</div>
+      </a>
+
+      <a href="itact-intermediary.html" class="article-card">
+        <div class="ac-num">05</div>
+        <div class="ac-body">
+          <div class="ac-cat">Article 05 of 05 · Compliance & Platform Law</div>
+          <div class="ac-title">IT Rules 2021 & Compliance Architecture for Research Platforms</div>
+          <div class="ac-desc">How the IT (Intermediary Guidelines and Digital Media Ethics Code) Rules 2021 apply to knowledge-base and commentary platforms. Classification, Safe Harbour conditions, grievance redressal obligations, and the Part III digital news publisher framework.</div>
+          <div class="ac-tags">
+            <span class="ac-tag">IT Rules 2021</span>
+            <span class="ac-tag">Intermediary</span>
+            <span class="ac-tag">Safe Harbour</span>
+            <span class="ac-tag">Grievance Officer</span>
+          </div>
+        </div>
+        <div class="ac-arrow">→</div>
+      </a>
+
+    </div>
+
+    <!-- Special Page Callout -->
+    <a href="itact-egovernance.html" class="special-card">
+      <div>
+        <div class="sc-label">Special Feature Page</div>
+        <div class="sc-title">E-Governance in India — Growth Catalyst: The IT Act</div>
+        <div class="sc-desc">A deep-dive into how Sections 6, 7, and the CCA framework powered India's digital government transformation — from the NeGP (2006) to the Digital India Programme (2015) to present-day 150 billion annual transactions. Includes 2026 status table on DigiLocker, e-Courts, UMANG, Bhoomi/GIS, and G2C services.</div>
+      </div>
+      <div class="ac-arrow" style="font-size:2rem;color:var(--saffron);">→</div>
+    </a>
+
+  </div>
+</section>
+
+<section class="compliance-section">
+  <div class="page">
+    <div class="section-kicker" style="color:var(--saffron-lt);"><span></span>Platform Compliance</div>
+    <h2 class="section-heading">IT Act Compliance for <em>Research Platforms</em></h2>
+    <div class="compliance-grid">
+      <div class="cg-item">
+        <div class="cg-num">01</div>
+        <div class="cg-title">Section 79 Safe Harbour</div>
+        <div class="cg-body">DPDPIndia.in claims safe harbour under Section 79 of the IT Act as an intermediary hosting educational research content. Immunity is conditioned on publishing Terms of Use, a Privacy Policy, and acting on court/government takedown orders within 36 hours.</div>
+      </div>
+      <div class="cg-item">
+        <div class="cg-num">02</div>
+        <div class="cg-title">IT Rules 2021 Compliance</div>
+        <div class="cg-body">This platform complies with the IT (Intermediary Guidelines) Rules 2021 — including grievance officer appointment, user content restrictions, and the due diligence framework under Rule 3. A Grievance Officer is reachable via the Contact page.</div>
+      </div>
+      <div class="cg-item">
+        <div class="cg-num">03</div>
+        <div class="cg-title">Research Disclaimer</div>
+        <div class="cg-body">All content on DPDPIndia.in is for educational and research purposes only. It does not constitute legal advice. Users are required to independently verify all information with qualified legal counsel before acting on it.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">DPDP India</div>
+      <div class="footer-brand-desc">Independent strategic policy and legal research on India's Digital Personal Data Protection Act and digital governance landscape. Published at dpdpindia.in.</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(248,244,236,0.25);">🇮🇳 Independent Research · India</div>
+    </div>
+    <div>
+      <div class="footer-col-title">Knowledge Bases</div>
+      <ul class="footer-links">
+        <li><a href="ekyc-kb.html">Aadhaar eKYC KB</a></li>
+        <li><a href="dpdp-kb.html">DPDP Act KB</a></li>
+        <li><a href="itact-kb.html">IT Act 2000 KB</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">IT Act Articles</div>
+      <ul class="footer-links">
+        <li><a href="itact-history.html">Historical Evolution</a></li>
+        <li><a href="itact-shreya-singhal.html">Shreya Singhal Case</a></li>
+        <li><a href="itact-egovernance.html">E-Governance</a></li>
+        <li><a href="itact-sections.html">Key Sections</a></li>
+        <li><a href="itact-intermediary.html">IT Rules 2021</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Legal</div>
+      <ul class="footer-links">
+        <li><a href="legal.html">Terms & Privacy Policy</a></li>
+        <li><a href="legal.html#safe-harbour">Safe Harbour Notice</a></li>
+        <li><a href="legal.html#grievance">Grievance Officer</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 DPDP India · Independent Policy Research Initiative · All rights reserved</div>
+    <div class="footer-tagline">Est. 2024 · New Delhi, India</div>
+  </div>
+</footer>
+
+<script>
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+document.querySelectorAll('.mobile-menu a').forEach(a => {
+  a.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  });
+});
+</script>
+</body>
+</html>

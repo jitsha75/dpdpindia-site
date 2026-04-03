@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DPDP 2023 Era — India's Data Protection Journey in the DPDP Era · DPDP India</title>
+<meta name="description" content="The DPDP Act 2023 and Rules 2025 — consent framework, Data Protection Board, SARAL principles, penalties, cross-border flows, and the road to full enforcement.">
+<style>@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:wght@600&display=swap');
+:root{--navy:#0a1628;--navy2:#132040;--blue:#1a5cad;--blue-light:#3b82d4;--amber:#d4900a;--amber-light:#f5c842;--teal:#0e7c6b;--coral:#c2420a;--purple:#5b4bc4;--green:#156c2e;--red:#b91c1c;--surface:#f4f6fb;--surface2:#eaeff8;--text:#0d1b2a;--text2:#3a4a5c;--text3:#6b7e94;--border:#c8d4e8;--border2:#b0c0d8;--white:#ffffff;--font-body:'IBM Plex Sans',sans-serif;--font-display:'Playfair Display',serif;--font-mono:'IBM Plex Mono',monospace;--radius:8px;--radius-lg:12px;--shadow:0 2px 12px rgba(10,22,40,.08);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--surface);color:var(--text);font-size:15px;line-height:1.7;min-height:100vh;}
+.header{background:var(--navy);color:#fff;position:relative;overflow:hidden;}
+.header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px),repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px);}
+.header-inner{position:relative;max-width:1100px;margin:0 auto;padding:52px 40px 48px;}
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:20px;font-family:var(--font-mono);font-size:11px;flex-wrap:wrap;}
+.breadcrumb a{color:rgba(255,255,255,.5);text-decoration:none;}
+.breadcrumb a:hover{color:var(--amber-light);}
+.breadcrumb .sep{color:rgba(255,255,255,.25);}
+.breadcrumb .cur{color:var(--amber-light);}
+.header-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:4px 14px;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:20px;}
+.header h1{font-family:var(--font-display);font-size:clamp(24px,4vw,38px);font-weight:600;line-height:1.15;color:#fff;margin-bottom:14px;max-width:760px;}
+.header-sub{font-size:15px;color:rgba(255,255,255,.6);max-width:680px;line-height:1.65;margin-bottom:28px;}
+.header-meta{display:flex;flex-wrap:wrap;gap:8px;}
+.meta-pill{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:4px 12px;font-size:12px;color:rgba(255,255,255,.65);font-family:var(--font-mono);}
+.layout{display:flex;max-width:1100px;margin:0 auto;padding:32px 20px;gap:32px;align-items:flex-start;}
+.sidebar{width:220px;flex-shrink:0;position:sticky;top:24px;}
+.sidebar-nav{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:12px 0;box-shadow:var(--shadow);}
+.sidebar-nav h3{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:6px 18px 10px;}
+.sidebar-nav a{display:flex;align-items:center;gap:8px;padding:8px 18px;font-size:13px;color:var(--text2);text-decoration:none;border-left:2px solid transparent;transition:all .15s;line-height:1.3;}
+.sidebar-nav a:hover{background:var(--surface);color:var(--blue);border-left-color:var(--blue-light);}
+.sidebar-nav .nav-num{font-family:var(--font-mono);font-size:10px;color:var(--text3);min-width:16px;}
+.sidebar-nav hr{border:none;border-top:1px solid var(--border);margin:8px 0;}
+.sidebar-nav .nav-sep{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:12px 18px 4px;display:block;}
+.sidebar-related{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px 18px;box-shadow:var(--shadow);margin-top:12px;}
+.sidebar-related h4{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:10px;}
+.sidebar-related a{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);text-decoration:none;padding:5px 0;border-bottom:1px solid var(--border);transition:color .15s;}
+.sidebar-related a:last-child{border-bottom:none;}
+.sidebar-related a:hover{color:var(--blue);}
+.sidebar-related .link-icon{font-size:11px;opacity:.5;}
+.main{flex:1;min-width:0;}
+.section{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:24px;box-shadow:var(--shadow);overflow:hidden;}
+.section-header{display:flex;align-items:center;gap:14px;padding:20px 28px;border-bottom:1px solid var(--border);background:var(--surface);}
+.section-num{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--font-mono);font-size:12px;font-weight:500;flex-shrink:0;}
+.section-header h2{font-size:17px;font-weight:600;color:var(--text);}
+.section-header p{font-size:13px;color:var(--text3);margin-top:2px;}
+.section-body{padding:28px;}
+.prose p{font-size:14px;color:var(--text2);margin-bottom:12px;line-height:1.75;}
+.prose strong{font-weight:600;color:var(--text);}
+.prose ul,.prose ol{padding-left:20px;margin-bottom:12px;}
+.prose li{font-size:14px;color:var(--text2);margin-bottom:6px;line-height:1.65;}
+.note-box{padding:12px 16px;border-radius:var(--radius);font-size:13px;line-height:1.6;border-left:3px solid;margin:14px 0;}
+.note-box.warning{background:#fef3cd;border-color:var(--amber);color:#533200;}
+.note-box.info{background:#e6f1fb;border-color:var(--blue);color:#0a2e5e;}
+.note-box.success{background:#e8f5ee;border-color:var(--green);color:#0a3318;}
+.note-box.danger{background:#fde8e8;border-color:var(--red);color:#5c0f0f;}
+.note-box strong{font-weight:600;}
+.reg-ref{display:inline-flex;align-items:center;gap:4px;padding:2px 8px 2px 6px;border-radius:4px;background:#ede8fe;color:var(--purple);border:1px solid #c4b8f5;font-family:var(--font-mono);font-size:11px;font-weight:500;white-space:nowrap;}
+.reg-ref::before{content:'§';font-family:Georgia,serif;font-size:12px;}
+.principle-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0;}
+.principle-card{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:14px;}
+.principle-card h4{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:5px;}
+.principle-card p{font-size:12px;color:var(--text2);line-height:1.55;}
+.penalty-table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0;}
+.penalty-table th{background:var(--navy);color:#fff;padding:10px 14px;text-align:left;font-weight:500;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;}
+.penalty-table td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top;}
+.penalty-table tr:last-child td{border-bottom:none;}
+.penalty-table tr:nth-child(even) td{background:var(--surface);}
+.penalty-amt{font-family:var(--font-mono);font-weight:500;color:var(--red);white-space:nowrap;}
+.footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:28px 20px;font-size:12px;margin-top:40px;}
+.footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:12px;}
+.footer-links a{color:rgba(255,255,255,.55);text-decoration:none;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;transition:color .15s;}
+.footer-links a:hover{color:var(--amber-light);}
+@media(max-width:820px){.layout{flex-direction:column;padding:16px;}.sidebar{width:100%;position:static;}.sidebar-nav{display:none;}.header-inner{padding:32px 20px;}.section-body{padding:16px;}.principle-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <div class="breadcrumb">
+      <a href="index.html">DPDPIndia.in</a><span class="sep">/</span>
+      <a href="index.html#chakra">Data Ecosystem Chakra</a><span class="sep">/</span>
+      <span class="cur">DPDP 2023 Era</span>
+    </div>
+    <div class="header-badge">🛡 Chakra Spoke · 03 · DPDP 2023 Era</div>
+    <h1>DPDP 2023 Era — India's Data Protection Journey</h1>
+    <p class="header-sub">The Digital Personal Data Protection Act 2023 and Rules 2025 represent India's entry into the era of comprehensive data protection. This spoke covers the SARAL framework, consent architecture, the Data Protection Board, cross-border data flows, penalties, and the implementation roadmap.</p>
+    <div class="header-meta">
+      <span class="meta-pill">DPDP Act 2023</span>
+      <span class="meta-pill">SARAL Framework</span>
+      <span class="meta-pill">Consent Architecture</span>
+      <span class="meta-pill">DPBI</span>
+      <span class="meta-pill">DPDP Rules 2025</span>
+      <span class="meta-pill">Penalties s.33</span>
+    </div>
+  </div>
+</header>
+<div class="layout">
+  <nav class="sidebar">
+    <div class="sidebar-nav">
+      <h3>On this page</h3>
+      <a href="#s1"><span class="nav-num">01</span> Overview & structure</a>
+      <a href="#s2"><span class="nav-num">02</span> SARAL framework</a>
+      <a href="#s3"><span class="nav-num">03</span> Consent & notice</a>
+      <a href="#s4"><span class="nav-num">04</span> Data Protection Board</a>
+      <a href="#s5"><span class="nav-num">05</span> Cross-border data flows</a>
+      <a href="#s6"><span class="nav-num">06</span> Penalties</a>
+      <a href="#s7"><span class="nav-num">07</span> DPDP vs GDPR</a>
+      <hr>
+      <span class="nav-sep">Chakra Spokes</span>
+      <a href="chakra-journey-2011-27.html"><span class="nav-num">←</span> DP Journey 2011–27</a>
+      <a href="index.html#chakra"><span class="nav-num">⌂</span> Back to Chakra</a>
+      <a href="chakra-data-fiduciaries.html"><span class="nav-num">→</span> Data Fiduciaries</a>
+    </div>
+    <div class="sidebar-related">
+      <h4>Related Articles</h4>
+      <a href="dpdp-act.html"><span class="link-icon">↗</span> DPDP Act Core Framework</a>
+      <a href="dpdp-rules.html"><span class="link-icon">↗</span> DPDP Rules 2025</a>
+      <a href="dpdp-adjudication.html"><span class="link-icon">↗</span> Adjudication & DPBI</a>
+      <a href="blog-gdpr-vs-dpdp-comparison.html"><span class="link-icon">↗</span> GDPR vs DPDP</a>
+    </div>
+  </nav>
+  <main class="main">
+
+    <section class="section" id="s1">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <div><h2>Overview &amp; Structural Architecture</h2><p>44 sections, principles-based, with details in Rules</p></div>
+      </div>
+      <div class="section-body prose">
+        <p>The <strong>Digital Personal Data Protection Act, 2023</strong> (No. 22 of 2023) received Presidential assent on 11 August 2023. It is India's first comprehensive, standalone data protection legislation. With 44 sections — deliberately compact — the Act adopts a <strong>principles-based architecture</strong>: broad obligations are set in the Act, with operational details delegated to Rules made by the Central Government.</p>
+        <p><strong>Scope of application (<span class="reg-ref">s. 3</span>):</strong></p>
+        <ul>
+          <li>Processing of digital personal data within India — whether collected digitally or collected in non-digital form and subsequently digitised.</li>
+          <li>Processing of digital personal data outside India, where such processing is in connection with any activity related to offering of goods or services to Data Principals within India.</li>
+          <li><strong>Not applicable to:</strong> personal data processed for personal or domestic purposes; personal data made publicly available by the Data Principal or under law.</li>
+        </ul>
+        <div class="note-box info">
+          <strong>Key structural choice:</strong> Unlike GDPR (which has 99 Articles, 173 Recitals, and subsidiary regulations), the DPDP Act delegates extensively to Rules. This means the Act's practical compliance burden is defined primarily by the DPDP Rules 2025 — which are themselves subject to future amendment without Parliamentary approval.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="s2">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <div><h2>The SARAL Framework</h2><p>Seven core data protection principles embedded in the Act</p></div>
+      </div>
+      <div class="section-body">
+        <p style="font-size:14px;color:var(--text2);margin-bottom:16px;line-height:1.75;">The Act is built on the <strong>SARAL</strong> acronym — a set of data protection principles derived from international standards but tailored for India's context:</p>
+        <div class="principle-grid">
+          <div class="principle-card">
+            <h4>S — Safeguarding (Security)</h4>
+            <p>Data Fiduciaries must implement appropriate technical and organisational measures to ensure security of personal data — including against breach, loss, or unauthorised processing. <span class="reg-ref">s. 8(5)</span></p>
+          </div>
+          <div class="principle-card">
+            <h4>A — Accountability</h4>
+            <p>Data Fiduciaries are accountable for compliance with the Act, including obligations of their Data Processors. Significant Data Fiduciaries face enhanced accountability obligations. <span class="reg-ref">s. 8, s. 10</span></p>
+          </div>
+          <div class="principle-card">
+            <h4>R — Rights of Data Principals</h4>
+            <p>Four fundamental rights — to information, correction/erasure, grievance redressal, and nomination — are enforceable against Data Fiduciaries. <span class="reg-ref">ss. 11–14</span></p>
+          </div>
+          <div class="principle-card">
+            <h4>A — Accuracy &amp; Data Quality</h4>
+            <p>Fiduciaries must make reasonable efforts to ensure personal data is accurate and complete, especially where its use may affect the Data Principal significantly. <span class="reg-ref">s. 8(3)</span></p>
+          </div>
+          <div class="principle-card">
+            <h4>L — Limitation (Purpose &amp; Storage)</h4>
+            <p>Personal data may only be processed for the specified, lawful purpose for which it was collected. Once that purpose is served, the data must be erased. <span class="reg-ref">s. 8(7)</span></p>
+          </div>
+        </div>
+        <div class="note-box amber">
+          <strong>What SARAL is not:</strong> The Act does not expressly codify all GDPR-equivalent principles. Notably, there is no explicit "transparency" principle separate from the notice requirement, and no express "fairness" principle. These gaps have attracted academic criticism but are partially addressed by the broad consent and notice obligations in ss. 5–6.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="s3">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div><h2>Consent &amp; Notice Architecture</h2><p>Sections 4–7 — the lawful basis framework</p></div>
+      </div>
+      <div class="section-body prose">
+        <p>The DPDP Act provides two primary lawful bases for processing personal data:</p>
+        <p><strong>1. Consent (<span class="reg-ref">s. 6</span>):</strong> The Data Principal's free, specific, informed, unconditional and unambiguous consent, signified by a clear affirmative action. Key requirements:</p>
+        <ul>
+          <li>Consent must be preceded by a notice (<span class="reg-ref">s. 5</span>) describing what data will be processed, for what purpose, and the Data Principal's rights.</li>
+          <li>Notice must be in clear, plain language — available in the languages specified in the Eighth Schedule (all 22 official languages).</li>
+          <li>Consent may be withdrawn at any time — withdrawal does not affect the legality of processing already undertaken.</li>
+          <li>Data Fiduciaries must maintain records of consent given.</li>
+          <li>Consent Managers (<span class="reg-ref">s. 2(g)</span>) — registered intermediaries — may act as a single window for a Data Principal to manage consents across multiple Fiduciaries.</li>
+        </ul>
+        <p><strong>2. Legitimate Uses (<span class="reg-ref">s. 7</span>):</strong> Processing without consent is permitted for:</p>
+        <ul>
+          <li>Performance of a function of the State — welfare benefits, issuance of licenses, permits, certificates under law.</li>
+          <li>Compliance with a court/tribunal order or judgment.</li>
+          <li>Responding to a medical emergency or epidemics.</li>
+          <li>Employment purposes — maintaining safety of employees, performing obligations under law.</li>
+          <li>Processing for public interest by the State and its instrumentalities.</li>
+        </ul>
+        <div class="note-box warning">
+          <strong>No "legitimate interests" basis:</strong> Unlike GDPR Article 6(1)(f), the DPDP Act does not include a general "legitimate interests" lawful basis for private-sector processing. Indian companies cannot rely on a balancing test — processing must be based on consent or an express s. 7 category. This is a significant compliance difference.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="s4">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <div><h2>Data Protection Board of India</h2><p>Sections 18–33 — constitution, powers and adjudication</p></div>
+      </div>
+      <div class="section-body prose">
+        <p>The <strong>Data Protection Board of India (DPBI)</strong> — established under <span class="reg-ref">s. 18</span> — is the central enforcement and adjudication body under the Act. It is distinct from the earlier proposed Data Protection Authority (DPA) concept: the DPBI is primarily a <strong>quasi-judicial body</strong> with adjudicatory and enforcement powers, rather than a full regulatory authority with rule-making powers (which are reserved for the Central Government).</p>
+        <p><strong>Constitution (<span class="reg-ref">s. 19</span>):</strong> The Chairperson and other Members are appointed by the Central Government on the recommendation of a Search Committee. Members must have significant expertise in data protection, information technology, law, or governance.</p>
+        <p><strong>Powers of the DPBI:</strong></p>
+        <ul>
+          <li>Receive and inquire into complaints from Data Principals or references from the Central Government.</li>
+          <li>Direct Data Fiduciaries to take remedial measures.</li>
+          <li>Impose financial penalties after giving the Fiduciary an opportunity to be heard.</li>
+          <li>The DPBI may conduct proceedings digitally — complaints can be filed and hearings conducted online.</li>
+        </ul>
+        <div class="note-box success">
+          <strong>Digital-native design:</strong> The DPBI is designed to operate as a digital-first body — all proceedings, notices, orders and appeals are envisaged to be conducted through a technology platform. This reflects India's commitment to making data protection enforcement accessible without physical hearing requirements.
+        </div>
+        <p><strong>Appeals (<span class="reg-ref">s. 29</span>):</strong> Orders of the DPBI may be appealed to the High Court having jurisdiction. This provides judicial oversight over the Board's enforcement actions.</p>
+      </div>
+    </section>
+
+    <section class="section" id="s5">
+      <div class="section-header">
+        <div class="section-num">05</div>
+        <div><h2>Cross-Border Data Flows</h2><p>Section 16 — the whitelist approach</p></div>
+      </div>
+      <div class="section-body prose">
+        <p>Section 16 governs the transfer of personal data outside India. The Act adopts a <strong>whitelist approach</strong> — personal data may be transferred to any country or territory not restricted by the Central Government by notification. This is a significant departure from earlier Bills (which proposed localisation requirements) and from the GDPR's adequacy decision model.</p>
+        <p>The practical implications:</p>
+        <ul>
+          <li>Transfers are permitted to all countries <em>unless</em> the Central Government publishes a restricted list. No restricted countries have been notified as of early 2026.</li>
+          <li>No requirement for standard contractual clauses (SCCs), binding corporate rules (BCRs), or adequacy assessments — unlike GDPR Chapter V.</li>
+          <li>The Central Government retains flexibility to restrict transfers to specific countries based on sovereignty, security, or diplomatic considerations.</li>
+        </ul>
+        <div class="note-box info">
+          <strong>Global trade impact:</strong> The whitelist approach is trade-friendly and addresses concerns raised by the IT/ITES industry about data localisation affecting cloud services and outsourcing. However, it also means Indian Data Principals' data may be transferred to jurisdictions with weaker privacy protections — a gap that may require contractual safeguards in practice.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="s6">
+      <div class="section-header">
+        <div class="section-num">06</div>
+        <div><h2>Penalties &amp; Enforcement</h2><p>Section 33 — financial penalties up to ₹250 crore per breach</p></div>
+      </div>
+      <div class="section-body">
+        <table class="penalty-table">
+          <thead>
+            <tr><th>Breach</th><th>Maximum Penalty</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Failure to implement reasonable security safeguards resulting in a data breach <span class="reg-ref">s. 33(1)</span></td><td class="penalty-amt">₹250 crore</td></tr>
+            <tr><td>Failure to notify the DPBI and affected Data Principals of a data breach <span class="reg-ref">s. 33(2)</span></td><td class="penalty-amt">₹200 crore</td></tr>
+            <tr><td>Non-fulfilment of additional obligations for Significant Data Fiduciaries <span class="reg-ref">s. 33(3)</span></td><td class="penalty-amt">₹150 crore</td></tr>
+            <tr><td>Failure to fulfil children's data obligations <span class="reg-ref">s. 33(3)</span></td><td class="penalty-amt">₹200 crore</td></tr>
+            <tr><td>Non-fulfilment of Data Principal rights obligations <span class="reg-ref">s. 33(3)</span></td><td class="penalty-amt">₹10 crore</td></tr>
+            <tr><td>Breach of Data Principal duties <span class="reg-ref">s. 33(4)</span></td><td class="penalty-amt">₹10,000</td></tr>
+            <tr><td>Any other breach not specified above <span class="reg-ref">s. 33(7)</span></td><td class="penalty-amt">₹50 crore</td></tr>
+          </tbody>
+        </table>
+        <div class="note-box danger">
+          <strong>Penalty principles (<span class="reg-ref">s. 33(5)</span>):</strong> The DPBI must consider: nature, gravity, duration of breach; type of personal data affected; repetitive nature; whether gain was derived; mitigating actions; whether the breach was deliberate or negligent; and timely reporting. The penalties are per-breach — a systemic failure affecting many Data Principals could attract multiple penalty orders.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="s7">
+      <div class="section-header">
+        <div class="section-num">07</div>
+        <div><h2>DPDP Act vs GDPR — Key Differences</h2><p>Understanding where India's law converges and diverges from the EU model</p></div>
+      </div>
+      <div class="section-body prose">
+        <ul>
+          <li><strong>Scope:</strong> GDPR covers any personal data; DPDP Act covers only <em>digital</em> personal data (or data that has been digitised).</li>
+          <li><strong>Lawful basis:</strong> GDPR has six lawful bases including "legitimate interests"; DPDP Act has only consent and enumerated "legitimate uses" — no balancing test.</li>
+          <li><strong>Data Protection Officer:</strong> GDPR requires DPOs in many contexts; DPDP Act requires DPOs only for Significant Data Fiduciaries.</li>
+          <li><strong>Data localisation:</strong> GDPR has adequacy decisions and transfer mechanisms; DPDP Act uses a simpler whitelist (restricted countries) approach.</li>
+          <li><strong>Right to data portability:</strong> GDPR expressly provides this; DPDP Act does not — though it may be introduced via Rules.</li>
+          <li><strong>Fines:</strong> GDPR: up to €20M or 4% of global annual turnover (whichever higher); DPDP Act: up to ₹250 crore (~€28M) — comparable for smaller companies, lower for large multinationals.</li>
+          <li><strong>Enforcement body:</strong> GDPR — independent Data Protection Authorities with rule-making power; DPDP Act — DPBI is primarily adjudicatory, rule-making is with Central Government.</li>
+        </ul>
+        <div class="note-box info">
+          <strong>Adequacy assessment:</strong> The EU has not yet granted India an adequacy decision under GDPR Article 45. This means Indian companies receiving personal data from the EU must rely on SCCs or BCRs for transfer legality. The DPDP Act's enactment strengthens India's case for adequacy, but a formal decision remains pending.
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+<footer class="footer">
+  <div class="footer-links">
+    <a href="index.html">DPDPIndia.in Home</a>
+    <a href="index.html#chakra">Data Ecosystem Chakra</a>
+    <a href="dpdp-kb.html">DPDP KB</a>
+    <a href="legal.html">Legal & Disclaimer</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <p>© 2026 DPDP India · Independent Policy Research · All content is educational only — not legal advice. Verify independently.</p>
+</footer>
+</body>
+</html>

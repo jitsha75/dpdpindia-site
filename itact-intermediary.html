@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IT Rules 2021 & Intermediary Compliance — IT Act KB · DPDP India</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--parchment:#F8F4EC;--cream:#FDFAF5;--paper:#F2EDE2;--ink:#1A1610;--prussian:#1B2B3A;--slate:#2D3D4E;--saffron:#D4760A;--saffron-lt:#F0A840;--ochre:#B8862C;--mist:#7A7468;--rule:rgba(26,22,16,0.12);--rule-gold:rgba(212,118,10,0.25);--shadow-sm:0 2px 12px rgba(26,22,16,0.06);--shadow-md:0 8px 40px rgba(26,22,16,0.10);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:'Source Serif 4',Georgia,serif;background:var(--cream);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;}
+
+.masthead{background:var(--prussian);padding:10px 0;text-align:center;border-bottom:3px solid var(--saffron);}
+.masthead-text{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.55);}
+.masthead-text span{color:var(--saffron-lt);}
+
+nav{position:sticky;top:0;z-index:200;background:var(--cream);border-bottom:1px solid var(--rule);box-shadow:var(--shadow-sm);}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:68px;}
+.nav-brand{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.nav-brand-seal{width:42px;height:42px;flex-shrink:0;}
+.nav-brand-name{display:flex;flex-direction:column;gap:1px;}
+.nav-brand-name strong{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--prussian);letter-spacing:0.01em;line-height:1;}
+.nav-brand-name span{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);line-height:1;}
+.nav-links{display:flex;align-items:center;gap:1.5rem;list-style:none;}
+.nav-links a{font-family:'Source Serif 4',serif;font-size:0.82rem;font-weight:400;color:var(--slate);text-decoration:none;letter-spacing:0.01em;transition:color 0.2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--saffron);transform:scaleX(0);transition:transform 0.25s;transform-origin:left;}
+.nav-links a:hover{color:var(--saffron);}
+.nav-links a:hover::after{transform:scaleX(1);}
+.nav-blog-btn{font-family:'JetBrains Mono',monospace!important;font-size:0.65rem!important;letter-spacing:0.1em!important;text-transform:uppercase;background:var(--prussian)!important;color:var(--cream)!important;padding:9px 20px;border-radius:1px;transition:background 0.2s!important;}
+.nav-blog-btn::after{display:none!important;}
+.nav-blog-btn:hover{background:var(--saffron)!important;color:var(--cream)!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--prussian);transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-menu{display:none;position:absolute;top:68px;left:0;right:0;background:var(--cream);border-bottom:2px solid var(--saffron);box-shadow:var(--shadow-md);z-index:199;}
+.mobile-menu.open{display:block;}
+.mobile-menu ul{list-style:none;padding:1rem 2rem 1.5rem;}
+.mobile-menu ul li a{display:block;font-family:'Source Serif 4',serif;font-size:0.95rem;color:var(--slate);text-decoration:none;padding:0.7rem 0;border-bottom:1px solid var(--rule);}
+.mobile-menu ul li:last-child a{border-bottom:none;}
+.mobile-menu ul li a:hover{color:var(--saffron);}
+
+.page-header{background:var(--prussian);padding:5rem 0 4rem;position:relative;overflow:hidden;}
+.page-header::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
+.page{max-width:1320px;margin:0 auto;padding:0 2rem;}
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:1.5rem;font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);position:relative;z-index:1;}
+.breadcrumb a{color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s;}
+.breadcrumb a:hover{color:var(--saffron-lt);}
+.breadcrumb-sep{color:rgba(255,255,255,0.25);}
+.page-kicker{display:flex;align-items:center;gap:10px;margin-bottom:1.5rem;position:relative;z-index:1;}
+.page-kicker-line{width:32px;height:1px;background:var(--saffron);}
+.page-kicker-text{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--saffron);}
+.page-title{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4vw,3.5rem);font-weight:700;line-height:1.12;color:var(--parchment);margin-bottom:1rem;position:relative;z-index:1;}
+.page-title em{font-style:italic;color:var(--saffron-lt);}
+.page-deck{font-size:1rem;font-weight:300;line-height:1.85;color:rgba(248,244,236,0.65);max-width:600px;position:relative;z-index:1;}
+.page-meta{display:flex;align-items:center;gap:2rem;margin-top:2rem;position:relative;z-index:1;flex-wrap:wrap;}
+.meta-badge{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);display:flex;align-items:center;gap:6px;}
+.meta-badge-dot{width:4px;height:4px;border-radius:50%;background:var(--saffron);}
+
+.article-body{max-width:1320px;margin:0 auto;padding:5rem 2rem 6rem;display:grid;grid-template-columns:1fr 320px;gap:5rem;align-items:start;}
+.article-content h2{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:700;line-height:1.2;color:var(--prussian);margin:3.5rem 0 1.2rem;padding-top:3.5rem;border-top:1px solid var(--rule);}
+.article-content h2:first-of-type{margin-top:0;padding-top:0;border-top:none;}
+.article-content h3{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:var(--prussian);margin:2rem 0 0.8rem;}
+.article-content p{font-size:0.95rem;font-weight:300;line-height:1.95;color:var(--slate);margin-bottom:1.2rem;}
+.article-content strong{font-weight:600;color:var(--prussian);}
+.section-label{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.8rem;display:flex;align-items:center;gap:8px;}
+.section-label::before{content:'';display:inline-block;width:16px;height:1px;background:var(--saffron);}
+
+.intermediary-notice{background:rgba(212,118,10,0.08);border:1px solid var(--rule-gold);border-left:3px solid var(--saffron);padding:1.2rem 1.5rem;margin-bottom:2.5rem;}
+.intermediary-notice p{font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.04em;color:var(--ochre);line-height:1.7;}
+.intermediary-notice strong{color:var(--saffron);}
+
+/* RULE CARDS */
+.rule-card{border:1px solid var(--rule);margin:2rem 0;}
+.rc-header{background:var(--prussian);padding:1.2rem 1.5rem;display:flex;align-items:center;gap:1rem;}
+.rc-num{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;background:var(--saffron);color:#fff;padding:3px 8px;}
+.rc-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--parchment);}
+.rc-body{padding:1.5rem;}
+.rc-body p{font-size:0.88rem;font-weight:300;line-height:1.85;color:var(--slate);margin-bottom:0.8rem;}
+.rc-body p:last-child{margin-bottom:0;}
+
+/* CLASSIFICATION GRID */
+.class-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0;}
+.class-card{border:1px solid var(--rule);padding:2rem;}
+.cc-label{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.8rem;}
+.cc-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--prussian);margin-bottom:0.6rem;}
+.cc-body{font-size:0.85rem;font-weight:300;line-height:1.8;color:var(--slate);}
+.cc-verdict{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;margin-top:0.8rem;padding:4px 10px;border:1px solid;}
+.cc-verdict.yes{color:#1a6b3a;border-color:#1a6b3a;background:rgba(26,107,58,0.06);}
+.cc-verdict.maybe{color:var(--ochre);border-color:var(--ochre);background:rgba(184,134,44,0.06);}
+
+/* OBLIGATION TABLE */
+.obligation-table{width:100%;border-collapse:collapse;margin:2rem 0;font-size:0.84rem;}
+.obligation-table th{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--saffron);background:var(--prussian);padding:0.9rem 1rem;text-align:left;font-weight:500;border-bottom:2px solid var(--saffron);}
+.obligation-table td{padding:0.9rem 1rem;border-bottom:1px solid var(--rule);vertical-align:top;font-weight:300;color:var(--slate);line-height:1.6;}
+.obligation-table tr:last-child td{border-bottom:none;}
+.obligation-table tr:hover td{background:var(--parchment);}
+.ob-rule{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--saffron);font-weight:500;}
+.ob-status{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;padding:3px 7px;border:1px solid;}
+.ob-done{color:#1a6b3a;border-color:#1a6b3a;background:rgba(26,107,58,0.06);}
+.ob-critical{color:#b71c1c;border-color:#b71c1c;background:rgba(183,28,28,0.06);}
+.ob-pending{color:var(--ochre);border-color:var(--ochre);background:rgba(184,134,44,0.06);}
+
+/* TIMELINE */
+.rules-timeline{margin:2rem 0;position:relative;padding-left:2rem;}
+.rules-timeline::before{content:'';position:absolute;left:6px;top:0;bottom:0;width:1px;background:var(--rule-gold);}
+.rt-item{position:relative;margin-bottom:2rem;}
+.rt-item::before{content:'';position:absolute;left:-2rem;top:6px;width:10px;height:10px;border:1px solid var(--saffron);background:var(--cream);border-radius:50%;}
+.rt-date{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.3rem;}
+.rt-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--prussian);margin-bottom:0.3rem;}
+.rt-body{font-size:0.84rem;font-weight:300;line-height:1.7;color:var(--mist);}
+
+/* PART BLOCKS */
+.part-block{background:var(--parchment);border:1px solid var(--rule);padding:2rem;margin:1.5rem 0;border-left:3px solid var(--saffron);}
+.pb-label{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.5rem;}
+.pb-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--prussian);margin-bottom:0.7rem;}
+.pb-body{font-size:0.88rem;font-weight:300;line-height:1.8;color:var(--slate);}
+
+/* SIDEBAR */
+.article-sidebar{position:sticky;top:100px;}
+.sidebar-box{border:1px solid var(--rule);margin-bottom:1.5rem;}
+.sb-header{background:var(--prussian);padding:1rem 1.2rem;}
+.sb-title{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--saffron);}
+.sb-body{padding:1.2rem;}
+.sb-nav-list{list-style:none;}
+.sb-nav-list li{border-bottom:1px solid var(--rule);}
+.sb-nav-list li:last-child{border-bottom:none;}
+.sb-nav-list a{display:block;font-size:0.82rem;font-weight:300;color:var(--slate);text-decoration:none;padding:0.6rem 0;transition:color 0.2s;}
+.sb-nav-list a:hover{color:var(--saffron);}
+.sb-nav-list a.current{color:var(--saffron);font-weight:400;}
+.sb-cite{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--mist);line-height:1.7;}
+.sb-cite strong{color:var(--prussian);display:block;margin-bottom:0.3rem;}
+
+/* COMPLIANCE CHECK LIST */
+.checklist{list-style:none;margin:1.2rem 0;}
+.checklist li{display:flex;gap:0.8rem;align-items:flex-start;font-size:0.88rem;font-weight:300;line-height:1.7;color:var(--slate);margin-bottom:0.6rem;padding-bottom:0.6rem;border-bottom:1px solid var(--rule);}
+.checklist li:last-child{border-bottom:none;margin-bottom:0;}
+.check-icon{flex-shrink:0;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:700;margin-top:2px;}
+.check-yes{background:#1a6b3a;color:#fff;}
+.check-no{background:#b71c1c;color:#fff;}
+.check-pend{background:var(--ochre);color:#fff;}
+
+/* FOOTER */
+footer{background:var(--ink);padding:5rem 0 2rem;}
+.footer-grid{max-width:1320px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,0.06);}
+.footer-brand-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--parchment);margin-bottom:1rem;}
+.footer-brand-desc{font-size:0.85rem;font-weight:300;line-height:1.8;color:rgba(248,244,236,0.4);margin-bottom:1.5rem;max-width:280px;}
+.footer-col-title{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);margin-bottom:1.2rem;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
+.footer-links a{font-size:0.85rem;font-weight:300;color:rgba(248,244,236,0.45);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--parchment);}
+.footer-bottom{max-width:1320px;margin:0 auto;padding:1.5rem 2rem 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-copy{font-size:0.78rem;font-weight:300;color:rgba(248,244,236,0.25);}
+.footer-tagline{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(248,244,236,0.2);}
+
+@media(max-width:1024px){
+  .article-body{grid-template-columns:1fr;gap:3rem;}
+  .article-sidebar{position:static;}
+  .class-grid{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:900px){
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:600px){
+  .page-header{padding:3rem 0 2.5rem;}
+  .page-meta{gap:1rem;}
+  .article-body{padding:3rem 1.2rem 4rem;}
+  .class-grid{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+  .footer-bottom{flex-direction:column;align-items:flex-start;}
+  .obligation-table{font-size:0.78rem;}
+  .obligation-table th,.obligation-table td{padding:0.7rem 0.7rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <p class="masthead-text">DPDP India · <span>Independent Strategic Policy & Legal Research</span> · IT Act 2000 Knowledge Base</p>
+</div>
+
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <svg class="nav-brand-seal" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="21" cy="21" r="20" stroke="#1B2B3A" stroke-width="1.5"/>
+        <circle cx="21" cy="21" r="14" stroke="#D4760A" stroke-width="0.75" stroke-dasharray="2 2"/>
+        <text x="21" y="25" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="700" fill="#1B2B3A">§</text>
+      </svg>
+      <div class="nav-brand-name">
+        <strong>DPDP India</strong>
+        <span>Policy & Legal Research</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#research">Research</a></li>
+      <li><a href="dpdp-kb.html">DPDP KB</a></li>
+      <li><a href="ekyc-kb.html">eKYC KB</a></li>
+      <li><a href="itact-kb.html">IT Act KB</a></li>
+      <li><a href="legal.html">Legal</a></li>
+      <li><a href="contact.html" class="nav-blog-btn">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#research">Research</a></li>
+      <li><a href="dpdp-kb.html">DPDP Knowledge Base</a></li>
+      <li><a href="ekyc-kb.html">eKYC Knowledge Base</a></li>
+      <li><a href="itact-kb.html">IT Act 2000 KB</a></li>
+      <li><a href="legal.html">Terms & Privacy</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="page">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="itact-kb.html">IT Act 2000 KB</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>Article 05</span>
+    </div>
+    <div class="page-kicker">
+      <div class="page-kicker-line"></div>
+      <div class="page-kicker-text">IT Act KB · Article 05 of 05</div>
+    </div>
+    <h1 class="page-title">IT Rules 2021 &amp; <em>Intermediary Compliance</em></h1>
+    <p class="page-deck">The Intermediary Guidelines and Digital Media Ethics Code Rules, 2021 — due diligence obligations, grievance architecture, and the compliance framework for research platforms and knowledge bases operating under India's IT Act.</p>
+    <div class="page-meta">
+      <div class="meta-badge"><div class="meta-badge-dot"></div>IT Rules 2021, r. 3–7</div>
+      <div class="meta-badge"><div class="meta-badge-dot"></div>IT Act 2000, s. 79</div>
+      <div class="meta-badge"><div class="meta-badge-dot"></div>Updated March 2026</div>
+    </div>
+  </div>
+</header>
+
+<div class="article-body page">
+  <main class="article-content">
+
+    <div class="intermediary-notice">
+      <p><strong>Platform Notice:</strong> DPDPIndia.in is an Intermediary under Section 2(1)(w) of the IT Act 2000 and complies with the IT (Intermediary Guidelines and Digital Media Ethics Code) Rules 2021. A Grievance Officer is contactable via our <a href="contact.html" style="color:var(--saffron);">contact page</a>. All content is for educational research only — users must independently verify information before relying on it. See our full <a href="legal.html" style="color:var(--saffron);">Terms &amp; Legal Notices</a>.</p>
+    </div>
+
+    <div class="section-label">Genesis</div>
+    <h2>Background: The Regulatory Journey</h2>
+    <p>India's intermediary liability framework has undergone three significant transformations in twenty-five years — from the bare-bones Section 79 safe harbour enacted in 2000, through the 2011 Intermediary Guidelines, to the comprehensive and controversial IT (Intermediary Guidelines and Digital Media Ethics Code) Rules 2021 notified on 25 February 2021.</p>
+    <p>The 2021 Rules were born from a recognition that the earlier framework — enacted before social media platforms existed at their current scale — was insufficient for regulating misinformation, illegal content, and the conduct of large digital platforms. They impose a tiered compliance architecture based on the nature and scale of the intermediary.</p>
+
+    <div class="rules-timeline">
+      <div class="rt-item">
+        <div class="rt-date">2000</div>
+        <div class="rt-title">Section 79 — The Original Safe Harbour</div>
+        <div class="rt-body">The IT Act 2000 inserted Section 79 granting immunity to "network service providers" from liability for third-party content, conditional on a general due diligence obligation. The provision was broad and under-specified.</div>
+      </div>
+      <div class="rt-item">
+        <div class="rt-date">2008</div>
+        <div class="rt-title">Section 79 Amended — Intermediary Defined</div>
+        <div class="rt-body">The IT (Amendment) Act 2008 significantly rewrote Section 79. The term "Intermediary" was defined in Section 2(1)(w) and the safe harbour was conditioned on observing "due diligence" as prescribed by the Central Government.</div>
+      </div>
+      <div class="rt-item">
+        <div class="rt-date">2011</div>
+        <div class="rt-title">IT (Intermediary Guidelines) Rules 2011</div>
+        <div class="rt-body">The first dedicated rules requiring intermediaries to publish user agreements, respond to takedown requests, and appoint a Grievance Officer. These were struck down in part by <em>Shreya Singhal</em> (2015) to the extent they required action on private complaints without court/government orders.</div>
+      </div>
+      <div class="rt-item">
+        <div class="rt-date">Feb 2021</div>
+        <div class="rt-title">IT Rules 2021 Notified — Major Overhaul</div>
+        <div class="rt-body">The IT (Intermediary Guidelines and Digital Media Ethics Code) Rules 2021 replaced the 2011 Rules. Three-part structure: Part I (general due diligence, applies to all intermediaries), Part II (additional obligations for Significant Social Media Intermediaries with 5M+ users), Part III (digital news, current affairs, OTT publishers).</div>
+      </div>
+      <div class="rt-item">
+        <div class="rt-date">2022–2023</div>
+        <div class="rt-title">Amendments & Grievance Appellate Committees</div>
+        <div class="rt-body">Multiple amendments added Grievance Appellate Committees (GACs) to hear appeals from users aggrieved by intermediary decisions. Three GACs were constituted in 2023 under MeitY.</div>
+      </div>
+      <div class="rt-item">
+        <div class="rt-date">2025–2026</div>
+        <div class="rt-title">Ongoing Litigation — Section 79(3)(b) Challenge</div>
+        <div class="rt-body"><em>X Corp v. Union of India</em> (Karnataka HC) challenges government blocking orders issued under Section 79(3)(b) without following the procedural safeguards of Section 69A. Verdict reserved 19 July 2025; outcome pending as of March 2026.</div>
+      </div>
+    </div>
+
+    <div class="section-label">Classification</div>
+    <h2>How to Classify Your Platform</h2>
+    <p>The first step under the IT Rules 2021 is correctly classifying the nature of your platform. Each category attracts a different set of obligations. A research platform like DPDPIndia.in may fall into multiple categories simultaneously.</p>
+
+    <div class="class-grid">
+      <div class="class-card">
+        <div class="cc-label">Category A</div>
+        <div class="cc-title">Intermediary</div>
+        <div class="cc-body">Any person who receives, stores, transmits, or provides any service with respect to an electronic record on behalf of another person. Defined broadly in IT Act 2000, s. 2(1)(w). Includes web hosts, ISPs, search engines, e-commerce marketplaces, social media platforms — and research websites hosting content.</div>
+        <div class="cc-verdict yes">✓ Applies to DPDPIndia.in</div>
+      </div>
+      <div class="class-card">
+        <div class="cc-label">Category B</div>
+        <div class="cc-title">Significant Social Media Intermediary (SSMI)</div>
+        <div class="cc-body">An intermediary with more than 5 million registered users in India (threshold under IT Rules 2021, r. 2(1)(v)). Attracts additional obligations under Part II: monthly compliance reports, identification of originators of messages on request, Chief Compliance Officer, etc.</div>
+        <div class="cc-verdict maybe">— Not applicable at current scale</div>
+      </div>
+      <div class="class-card">
+        <div class="cc-label">Category C</div>
+        <div class="cc-title">Publisher of News & Current Affairs</div>
+        <div class="cc-body">Publishers of news, current affairs, or analysis through digital means. Under Part III of IT Rules 2021, they must follow a self-regulatory framework, register with the Ministry of Information & Broadcasting, and observe the Press Council of India Code of Ethics.</div>
+        <div class="cc-verdict maybe">~ Monitor — applies if KB content is news/analysis</div>
+      </div>
+      <div class="class-card">
+        <div class="cc-label">Category D</div>
+        <div class="cc-title">OTT / Digital Media Publisher</div>
+        <div class="cc-body">Curated catalogues of audio-visual content offered online. Part III applies with additional content rating and parental lock obligations. MIB has oversight.</div>
+        <div class="cc-verdict maybe">— Not applicable to text research KB</div>
+      </div>
+    </div>
+
+    <div class="section-label">Core Obligations</div>
+    <h2>Part I — Due Diligence Obligations (All Intermediaries)</h2>
+    <p>Every intermediary — regardless of size or category — must observe the due diligence conditions under Rule 3 of the IT Rules 2021 to claim safe harbour protection under Section 79 of the IT Act. These are the baseline requirements.</p>
+
+    <div class="rule-card">
+      <div class="rc-header">
+        <div class="rc-num">Rule 3(1)(a)</div>
+        <div class="rc-title">Publish Terms of Use & Privacy Policy</div>
+      </div>
+      <div class="rc-body">
+        <p>An intermediary shall prominently publish on its website or application — in English or in any language specified in the Eighth Schedule to the Constitution — its rules and regulations, privacy policy, and user agreement. These must inform users not to host, display, upload, modify, publish, transmit, update, or share any information that is harmful, defamatory, obscene, invasive of privacy, or otherwise unlawful.</p>
+        <p>The Terms of Use must also clearly explain the consequences of violation, including suspension or termination of access. For a research platform like DPDPIndia.in, the Terms must additionally include a <strong>research disclaimer</strong> stating that all content is for educational purposes only and does not constitute legal advice.</p>
+      </div>
+    </div>
+
+    <div class="rule-card">
+      <div class="rc-header">
+        <div class="rc-num">Rule 3(1)(b) & (c)</div>
+        <div class="rc-title">Grievance Officer Appointment</div>
+      </div>
+      <div class="rc-body">
+        <p>Every intermediary must designate a Grievance Officer to receive and acknowledge complaints from users or persons affected by the intermediary's content or service. The Grievance Officer's name and contact details must be published on the website.</p>
+        <p>The Grievance Officer must acknowledge receipt of any complaint within 24 hours and resolve it within 15 days. Complaints relating to content that is prima facie in the nature of sexual abuse or depicts minors must be disposed of within 72 hours.</p>
+        <p>DPDPIndia.in has appointed a Grievance Officer reachable via the <a href="contact.html" style="color:var(--saffron);">contact page</a>. The Officer will acknowledge complaints within 24 hours and resolve them within 15 calendar days.</p>
+      </div>
+    </div>
+
+    <div class="rule-card">
+      <div class="rc-header">
+        <div class="rc-num">Rule 3(1)(d)</div>
+        <div class="rc-title">Takedown & Disable Protocol</div>
+      </div>
+      <div class="rc-body">
+        <p>The intermediary must, upon receiving actual knowledge through a court order or notification by the appropriate Government or its agency, act within 36 hours to remove or disable access to unlawful content. The 36-hour clock runs from the moment of receipt of the order or notification.</p>
+        <p>Critically, following <em>Shreya Singhal v. Union of India</em> (2015) 5 SCC 1, an intermediary is not required to take down content solely based on a private complaint — only a court order or government notification triggers the mandatory 36-hour takedown obligation.</p>
+        <p>For content that is prima facie grossly offensive or contains child sexual abuse material, the intermediary must act as expeditiously as possible and in any case within 24 hours, and preserve records for 180 days to assist law enforcement.</p>
+      </div>
+    </div>
+
+    <div class="rule-card">
+      <div class="rc-header">
+        <div class="rc-num">Rule 3(1)(j)</div>
+        <div class="rc-title">Record Retention</div>
+      </div>
+      <div class="rc-body">
+        <p>The intermediary must retain information and associated records for at least 180 days, or such period as may be required by competent authorities in relation to ongoing investigations. For disputes or legal proceedings, records must be preserved for the duration of the proceedings plus 90 days.</p>
+        <p>This obligation is particularly relevant in the context of CERT-In Directions (28 April 2022), which require data centres, cloud providers, and VPS/VPN service providers to maintain logs of system and user activity for five years, synchronized with NTP servers.</p>
+      </div>
+    </div>
+
+    <div class="section-label">Safe Harbour Mechanics</div>
+    <h2>How Section 79 Safe Harbour Works</h2>
+    <p>Section 79 of the IT Act 2000 (as read down by <em>Shreya Singhal</em>) grants network intermediaries immunity from liability for any third-party information, data, or communication links made available or hosted by them, provided the intermediary meets all of the following conditions:</p>
+
+    <div class="part-block">
+      <div class="pb-label">Condition 01 — Function</div>
+      <div class="pb-title">The intermediary does not initiate transmission, select the receiver, or modify the information</div>
+      <div class="pb-body">A research platform like DPDPIndia.in initiates and publishes its own editorial content. This means the safe harbour under Section 79 protects the platform primarily against liability for <em>user-contributed</em> content (such as comments, submissions, or forum posts) — not for errors in the platform's own editorial research. The platform's own published research is subject to editorial and professional responsibility.</div>
+    </div>
+
+    <div class="part-block">
+      <div class="pb-label">Condition 02 — Due Diligence</div>
+      <div class="pb-title">The intermediary observes due diligence as required and published under the IT Rules 2021</div>
+      <div class="pb-body">Compliance with Rules 3(1)(a)–(j) of the IT Rules 2021 — including publishing Terms of Use, Privacy Policy, appointing a Grievance Officer, and maintaining the takedown protocol — is mandatory to maintain safe harbour eligibility. Failure on any single condition can strip the intermediary of Section 79 immunity.</div>
+    </div>
+
+    <div class="part-block">
+      <div class="pb-label">Condition 03 — Actual Knowledge</div>
+      <div class="pb-title">The intermediary acts immediately upon receiving actual knowledge through a court or government order</div>
+      <div class="pb-body">Post-<em>Shreya Singhal</em>, "actual knowledge" is not triggered by private complaints alone. Only a court order or government notification constitutes actual knowledge for the purposes of Section 79. Upon receiving either, the intermediary must act within 36 hours to remove the offending content (Rule 3(1)(d)).</div>
+    </div>
+
+    <div class="section-label">Compliance Checklist</div>
+    <h2>DPDPIndia.in — Compliance Status</h2>
+
+    <table class="obligation-table">
+      <thead>
+        <tr>
+          <th>Rule</th>
+          <th>Obligation</th>
+          <th>How Satisfied</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="ob-rule">Rule 3(1)(a)</td>
+          <td>Publish Terms of Use & Privacy Policy</td>
+          <td>Published at legal.html — accessible from site footer and Safe Harbour modal on first visit</td>
+          <td><span class="ob-status ob-done">Done</span></td>
+        </tr>
+        <tr>
+          <td class="ob-rule">Rule 3(1)(a)</td>
+          <td>Publish user content restrictions</td>
+          <td>Terms of Use prohibit defamatory, invasive, obscene, and unlawful content</td>
+          <td><span class="ob-status ob-done">Done</span></td>
+        </tr>
+        <tr>
+          <td class="ob-rule">Rule 3(1)(b)</td>
+          <td>Appoint Grievance Officer with contact details</td>
+          <td>Grievance Officer details at legal.html#grievance and contact.html</td>
+          <td><span class="ob-status ob-done">Done</span></td>
+        </tr>
+        <tr>
+          <td class="ob-rule">Rule 3(1)(c)</td>
+          <td>Acknowledge complaints within 24 hours</td>
+          <td>Protocol established — contact form auto-acknowledgment + manual follow-up</td>
+          <td><span class="ob-status ob-done">Done</span></td>
+        </tr>
+        <tr>
+          <td class="ob-rule">Rule 3(1)(d)</td>
+          <td>36-hour takedown on court/government order</td>
+          <td>Takedown protocol documented at legal.html#takedown</td>
+          <td><span class="ob-status ob-done">Done</span></td>
+        </tr>
+        <tr>
+          <td class="ob-rule">Rule 3(1)(j)</td>
+          <td>180-day record retention</td>
+          <td>Vercel hosting — server logs retained per platform policy; contact records maintained 180 days</td>
+          <td><span class="ob-status ob-done">Done</span></td>
+        </tr>
+        <tr>
+          <td class="ob-rule">Part III</td>
+          <td>News/Current Affairs registration with MIB</td>
+          <td>DPDPIndia.in is a law and policy research platform, not a news publisher. Monitor if editorial scope expands to breaking news.</td>
+          <td><span class="ob-status ob-pending">Monitor</span></td>
+        </tr>
+        <tr>
+          <td class="ob-rule">Part II</td>
+          <td>SSMI compliance (if 5M+ users reached)</td>
+          <td>Currently not an SSMI — no registered user base. Review if user registration is added.</td>
+          <td><span class="ob-status ob-pending">Future</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="section-label">Research Liability Shield</div>
+    <h2>Limiting Liability for Research Errors</h2>
+    <p>Section 79 safe harbour does not, by itself, protect a research platform from liability for errors in its own editorial content. A separate legal architecture is needed to limit exposure for research mistakes. DPDPIndia.in uses a multi-layered approach:</p>
+
+    <h3>Layer 1 — Disclaimer of Legal Advice</h3>
+    <p>All content is expressly marked as educational and research material only. The Terms of Use state clearly that DPDPIndia.in does not provide legal advice, and that users must independently verify all information and obtain qualified legal counsel before acting on anything published on the platform. This is consistent with the principle in <em>Hedley Byrne &amp; Co. Ltd. v. Heller &amp; Partners Ltd.</em> [1964] AC 465 that a disclaimer can negate a duty of care for negligent misstatement.</p>
+
+    <h3>Layer 2 — Safe Harbour Acceptance Modal</h3>
+    <p>On first visit, every user is presented with a Safe Harbour Notice modal that must be affirmatively accepted before accessing content. The acceptance is recorded in localStorage. The modal clearly states that the user is responsible for independently verifying all research, and that DPDPIndia.in and its researchers bear no liability for errors, omissions, or outdated information.</p>
+
+    <h3>Layer 3 — Intermediary Self-Identification</h3>
+    <p>The platform clearly identifies itself as an Intermediary under Section 2(1)(w) of the IT Act 2000 on every page, via the masthead Intermediary Notice, the footer, and the legal.html page. This transparency fulfils the spirit of the IT Rules 2021 and is a condition of safe harbour eligibility.</p>
+
+    <h3>Layer 4 — Currency Warnings</h3>
+    <p>All articles are dated and carry a "Last Updated" marker. Where law or regulations are subject to ongoing change — particularly DPDP Rules (pending gazette notification), IT Act amendments, and pending judicial decisions — articles carry explicit warnings that the cited position may have changed and users must verify currency before relying on it.</p>
+
+    <div class="section-label">Key Cases</div>
+    <h2>Judicial Landscape: Intermediary Liability 2015–2026</h2>
+
+    <div class="rule-card">
+      <div class="rc-header">
+        <div class="rc-num">2015 · (2015) 5 SCC 1</div>
+        <div class="rc-title">Shreya Singhal v. Union of India — The Foundation</div>
+      </div>
+      <div class="rc-body">
+        <p>The Supreme Court read down Section 79 to hold that intermediaries are obligated to remove content only upon receipt of a <em>court order or government notification</em> — not on the basis of private complaints. This effectively immunised intermediaries from having to police content at the behest of individuals with no judicial oversight.</p>
+        <p>The court also struck down Rule 3(4) of the 2011 Intermediary Guidelines to the extent it required intermediaries to act on private notices without judicial intervention. The 2021 Rules were subsequently designed to address this gap through the Grievance Officer mechanism and Government notification requirement.</p>
+      </div>
+    </div>
+
+    <div class="rule-card">
+      <div class="rc-header">
+        <div class="rc-num">2019 · (2019) Delhi HC</div>
+        <div class="rc-title">Delhi HC Cases — Proactive Monitoring</div>
+      </div>
+      <div class="rc-body">
+        <p>Multiple Delhi High Court orders in defamation and privacy cases required social media intermediaries to proactively identify and remove content after being put on notice. These cases contributed to the Government's rationale for Part II obligations in the 2021 Rules, including the "originator tracing" obligation for SSMIs.</p>
+      </div>
+    </div>
+
+    <div class="rule-card">
+      <div class="rc-header">
+        <div class="rc-num">2025 · Karnataka HC</div>
+        <div class="rc-title">X Corp v. Union of India — Section 79(3)(b) Challenge</div>
+      </div>
+      <div class="rc-body">
+        <p>X Corp (formerly Twitter) challenged government orders issued under Section 79(3)(b) directing it to block specific accounts, arguing that such orders circumvent the procedural safeguards mandated under Section 69A (written orders, review committee, opportunity to be heard). The Karnataka High Court heard extensive arguments. The verdict was reserved on 19 July 2025 and remains pending as of March 2026.</p>
+        <p>The outcome will have significant implications for how government ministries may direct intermediaries — particularly whether Section 79(3)(b) can be used as a back-channel to achieve what would otherwise require compliance with the more exacting Section 69A process.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <aside class="article-sidebar">
+    <div class="sidebar-box">
+      <div class="sb-header"><div class="sb-title">IT Act 2000 · All Articles</div></div>
+      <div class="sb-body">
+        <ul class="sb-nav-list">
+          <li><a href="itact-kb.html">← Back to KB Index</a></li>
+          <li><a href="itact-history.html">01 · Historical Evolution</a></li>
+          <li><a href="itact-shreya-singhal.html">02 · Shreya Singhal Case</a></li>
+          <li><a href="itact-egovernance.html">03 · E-Governance</a></li>
+          <li><a href="itact-sections.html">04 · Key Sections</a></li>
+          <li><a href="itact-intermediary.html" class="current">05 · IT Rules 2021 ★</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sidebar-box">
+      <div class="sb-header"><div class="sb-title">Key Citations</div></div>
+      <div class="sb-body">
+        <div class="sb-cite">
+          <strong>IT Rules 2021</strong>
+          IT (Intermediary Guidelines and Digital Media Ethics Code) Rules 2021, notified 25 February 2021, MeitY
+        </div>
+        <br>
+        <div class="sb-cite">
+          <strong>Section 79 IT Act 2000</strong>
+          Exemption from liability of intermediary — as read down by Shreya Singhal (2015) 5 SCC 1
+        </div>
+        <br>
+        <div class="sb-cite">
+          <strong>Grievance Appellate Committee</strong>
+          Rule 3A, IT Rules 2021 (as amended 2022) — constituted under MeitY, 2023
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-box">
+      <div class="sb-header"><div class="sb-title">Platform Compliance</div></div>
+      <div class="sb-body">
+        <ul class="checklist">
+          <li><div class="check-icon check-yes">✓</div>Terms & Privacy Policy published</li>
+          <li><div class="check-icon check-yes">✓</div>Grievance Officer appointed</li>
+          <li><div class="check-icon check-yes">✓</div>36-hour takedown protocol</li>
+          <li><div class="check-icon check-yes">✓</div>Research disclaimer on all pages</li>
+          <li><div class="check-icon check-yes">✓</div>Safe Harbour modal — first visit</li>
+          <li><div class="check-icon check-yes">✓</div>Intermediary notice on all pages</li>
+          <li><div class="check-icon check-pend">~</div>Part III MIB registration — monitor</li>
+        </ul>
+        <a href="legal.html" style="display:block;margin-top:1rem;font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--saffron);text-decoration:none;">View Full Legal Notices →</a>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">DPDP India</div>
+      <div class="footer-brand-desc">Independent strategic policy and legal research on India's Digital Personal Data Protection Act and digital governance landscape.</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(248,244,236,0.25);">🇮🇳 Independent Research · India</div>
+    </div>
+    <div>
+      <div class="footer-col-title">Knowledge Bases</div>
+      <ul class="footer-links">
+        <li><a href="ekyc-kb.html">Aadhaar eKYC KB</a></li>
+        <li><a href="dpdp-kb.html">DPDP Act KB</a></li>
+        <li><a href="itact-kb.html">IT Act 2000 KB</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">IT Act Articles</div>
+      <ul class="footer-links">
+        <li><a href="itact-history.html">Historical Evolution</a></li>
+        <li><a href="itact-shreya-singhal.html">Shreya Singhal Case</a></li>
+        <li><a href="itact-egovernance.html">E-Governance</a></li>
+        <li><a href="itact-sections.html">Key Sections</a></li>
+        <li><a href="itact-intermediary.html">IT Rules 2021</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Legal</div>
+      <ul class="footer-links">
+        <li><a href="legal.html">Terms & Privacy Policy</a></li>
+        <li><a href="legal.html#safe-harbour">Safe Harbour Notice</a></li>
+        <li><a href="legal.html#grievance">Grievance Officer</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 DPDP India · Independent Policy Research Initiative · Intermediary under IT Act 2000, s. 2(1)(w)</div>
+    <div class="footer-tagline">Est. 2024 · New Delhi, India</div>
+  </div>
+</footer>
+
+<script>
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+document.querySelectorAll('.mobile-menu a').forEach(a => {
+  a.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  });
+});
+</script>
+</body>
+</html>

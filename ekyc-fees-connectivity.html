@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KUA–Sub-KUA Fees, Relationships & Connectivity — eKYC KB</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:wght@600&display=swap');
+:root{
+  --navy:#0a1628;--navy2:#132040;
+  --blue:#1a5cad;--blue-light:#3b82d4;
+  --amber:#d4900a;--amber-light:#f5c842;
+  --teal:#0e7c6b;--coral:#c2420a;--purple:#5b4bc4;
+  --green:#156c2e;--red:#b91c1c;
+  --surface:#f4f6fb;--surface2:#eaeff8;--surface3:#dde4f0;
+  --text:#0d1b2a;--text2:#3a4a5c;--text3:#6b7e94;
+  --border:#c8d4e8;--border2:#b0c0d8;--white:#ffffff;
+  --font-body:'IBM Plex Sans',sans-serif;
+  --font-display:'Playfair Display',serif;
+  --font-mono:'IBM Plex Mono',monospace;
+  --radius:8px;--radius-lg:12px;
+  --shadow:0 2px 12px rgba(10,22,40,.08);
+  --shadow-md:0 4px 24px rgba(10,22,40,.13);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--surface);color:var(--text);font-size:15px;line-height:1.7;min-height:100vh;}
+
+.header{background:var(--navy);color:#fff;position:relative;overflow:hidden;}
+.header::before{content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px),
+             repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px);}
+.header-inner{position:relative;max-width:1100px;margin:0 auto;padding:52px 40px 48px;}
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:20px;font-family:var(--font-mono);font-size:11px;flex-wrap:wrap;}
+.breadcrumb a{color:rgba(255,255,255,.5);text-decoration:none;transition:color .15s;}
+.breadcrumb a:hover{color:var(--amber-light);}
+.breadcrumb .sep{color:rgba(255,255,255,.25);}
+.breadcrumb .cur{color:var(--amber-light);}
+.header-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:4px 14px;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:20px;}
+.header-badge .dot{width:6px;height:6px;border-radius:50%;background:#34d399;}
+.header h1{font-family:var(--font-display);font-size:clamp(24px,4vw,38px);font-weight:600;line-height:1.15;color:#fff;margin-bottom:14px;max-width:760px;}
+.header h1 span{color:#34d399;}
+.header-sub{font-size:15px;color:rgba(255,255,255,.6);max-width:680px;line-height:1.65;margin-bottom:28px;}
+.header-meta{display:flex;flex-wrap:wrap;gap:8px;}
+.meta-pill{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:4px 12px;font-size:12px;color:rgba(255,255,255,.65);font-family:var(--font-mono);}
+
+.layout{display:flex;max-width:1100px;margin:0 auto;padding:32px 20px;gap:32px;align-items:flex-start;}
+.sidebar{width:220px;flex-shrink:0;position:sticky;top:24px;}
+.sidebar-nav{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:12px 0;box-shadow:var(--shadow);}
+.sidebar-nav h3{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:6px 18px 10px;}
+.sidebar-nav a{display:flex;align-items:center;gap:8px;padding:8px 18px;font-size:13px;color:var(--text2);text-decoration:none;border-left:2px solid transparent;transition:all .15s;line-height:1.3;}
+.sidebar-nav a:hover{background:var(--surface);color:var(--blue);border-left-color:var(--blue-light);}
+.sidebar-nav .nav-num{font-family:var(--font-mono);font-size:10px;color:var(--text3);min-width:16px;}
+.sidebar-nav hr{border:none;border-top:1px solid var(--border);margin:8px 0;}
+.sidebar-nav .nav-sep{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:12px 18px 4px;display:block;}
+.sidebar-related{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px 18px;box-shadow:var(--shadow);margin-top:12px;}
+.sidebar-related h4{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:10px;}
+.sidebar-related a{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);text-decoration:none;padding:5px 0;border-bottom:1px solid var(--border);transition:color .15s;}
+.sidebar-related a:last-child{border-bottom:none;}
+.sidebar-related a:hover{color:var(--blue);}
+.sidebar-related .link-icon{font-size:11px;opacity:.5;}
+
+/* Fee calculator widget in sidebar */
+.fee-calc{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px 18px;box-shadow:var(--shadow);margin-top:12px;}
+.fee-calc h4{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:10px;}
+.fee-calc label{font-size:12px;color:var(--text2);display:block;margin-bottom:4px;}
+.fee-calc select,.fee-calc input{width:100%;font-size:12px;font-family:var(--font-mono);padding:5px 8px;border:1px solid var(--border);border-radius:4px;background:var(--surface);color:var(--text);margin-bottom:10px;}
+.fee-result{background:var(--navy);color:#fff;border-radius:6px;padding:10px 12px;font-family:var(--font-mono);font-size:12px;line-height:1.6;}
+.fee-result .amt{font-size:16px;font-weight:500;color:var(--amber-light);}
+
+.main{flex:1;min-width:0;}
+
+.section{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:24px;box-shadow:var(--shadow);overflow:hidden;}
+.section-header{display:flex;align-items:center;gap:14px;padding:20px 28px;border-bottom:1px solid var(--border);background:var(--surface);}
+.section-num{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--font-mono);font-size:12px;font-weight:500;flex-shrink:0;}
+.section-header h2{font-size:17px;font-weight:600;color:var(--text);letter-spacing:-.01em;}
+.section-header p{font-size:13px;color:var(--text3);margin-top:2px;}
+.section-body{padding:28px;}
+
+/* Fee table */
+.fee-table{width:100%;border-collapse:collapse;font-size:13.5px;margin-bottom:16px;}
+.fee-table thead tr{background:var(--navy);}
+.fee-table th{padding:11px 16px;text-align:left;font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.75);}
+.fee-table td{padding:13px 16px;border-bottom:1px solid var(--border);vertical-align:middle;}
+.fee-table tr:last-child td{border-bottom:none;}
+.fee-table tr:hover td{background:var(--surface);}
+.fee-table td:first-child{font-weight:600;color:var(--text);}
+.fee-badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:5px;font-family:var(--font-mono);font-size:12px;font-weight:600;}
+.fee-badge.blue{background:#e6f1fb;color:var(--blue);}
+.fee-badge.teal{background:#e0f2ef;color:var(--teal);}
+.fee-badge.amber{background:#fef3cd;color:#854f0b;}
+.fee-badge.green{background:#e8f5ee;color:var(--green);}
+.fee-badge.gray{background:var(--surface2);color:var(--text3);}
+.fee-badge.coral{background:#faeae0;color:var(--coral);}
+.fee-highlight{font-family:var(--font-mono);font-size:14px;font-weight:600;color:var(--amber);}
+
+/* Transaction fee cards */
+.txn-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;}
+.txn-card{border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);}
+.txn-card-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-bottom:8px;}
+.txn-card-type{font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:8px;line-height:1.3;}
+.txn-card-amt{font-family:var(--font-display);font-size:28px;font-weight:600;color:var(--amber);line-height:1;margin-bottom:6px;}
+.txn-card-note{font-size:12px;color:var(--text3);line-height:1.5;}
+
+/* Connectivity table */
+.conn-table{width:100%;border-collapse:collapse;font-size:13.5px;}
+.conn-table thead tr{background:var(--navy);}
+.conn-table th{padding:11px 16px;text-align:left;font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.75);}
+.conn-table td{padding:14px 16px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.6;}
+.conn-table tr:last-child td{border-bottom:none;}
+.conn-table tr:hover td{background:var(--surface);}
+.conn-table td:first-child{font-weight:600;color:var(--text);white-space:nowrap;border-right:1px solid var(--border);}
+.conn-badge{display:inline-flex;padding:2px 8px;border-radius:4px;font-family:var(--font-mono);font-size:11px;font-weight:500;border:1px solid;}
+
+/* Network rules */
+.network-rules{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;}
+.network-rule{display:flex;align-items:flex-start;gap:14px;padding:14px 18px;border-bottom:1px solid var(--border);}
+.network-rule:last-child{border-bottom:none;}
+.rule-num{width:26px;height:26px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;font-weight:500;flex-shrink:0;margin-top:2px;}
+.rule-title{font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:5px;}
+.rule-body{font-size:13px;color:var(--text2);line-height:1.65;}
+.rule-body code{font-family:var(--font-mono);font-size:12px;background:var(--surface2);padding:1px 5px;border-radius:3px;border:1px solid var(--border);color:var(--blue);}
+.rule-body strong{font-weight:600;color:var(--text);}
+
+/* Process timeline */
+.process-tl{position:relative;padding-left:42px;margin-top:20px;}
+.process-tl::before{content:'';position:absolute;left:15px;top:12px;bottom:12px;width:2px;background:linear-gradient(to bottom,var(--navy),var(--border));}
+.pt-step{position:relative;margin-bottom:28px;}
+.pt-step:last-child{margin-bottom:0;}
+.pt-dot{position:absolute;left:-33px;top:3px;width:22px;height:22px;border-radius:50%;background:var(--navy);border:2px solid var(--border2);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:10px;font-weight:500;color:#fff;z-index:1;}
+.pt-dot.done{background:var(--green);border-color:var(--green);}
+.pt-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px;}
+.pt-body{font-size:13px;color:var(--text2);line-height:1.7;}
+.pt-body strong{font-weight:600;color:var(--text);}
+.pt-body code{font-family:var(--font-mono);font-size:12px;background:var(--surface2);padding:1px 5px;border-radius:3px;border:1px solid var(--border);color:var(--blue);}
+.pt-tag{display:inline-flex;align-items:center;gap:4px;margin-top:6px;padding:3px 9px;border-radius:4px;font-family:var(--font-mono);font-size:11px;background:#e0f2ef;color:var(--teal);border:1px solid #b4ddc4;}
+
+/* Note boxes */
+.note-box{padding:12px 16px;border-radius:var(--radius);font-size:13px;line-height:1.6;border-left:3px solid;margin:12px 0;}
+.note-box.warning{background:#fef3cd;border-color:var(--amber);color:#533200;}
+.note-box.info{background:#e6f1fb;border-color:var(--blue);color:#0a2e5e;}
+.note-box.danger{background:#fde8e8;border-color:var(--red);color:#5c0f0f;}
+.note-box.success{background:#e8f5ee;border-color:var(--green);color:#0a3318;}
+.note-box.tip{background:#e0f2ef;border-color:var(--teal);color:#073d30;}
+.note-box strong{font-weight:600;}
+
+/* Reg ref */
+.reg-ref{display:inline-flex;align-items:center;gap:5px;padding:2px 9px 2px 7px;border-radius:4px;background:#ede8fe;color:var(--purple);border:1px solid #c4b8f5;font-family:var(--font-mono);font-size:11px;font-weight:500;white-space:nowrap;}
+.reg-ref::before{content:'§';font-family:Georgia,serif;font-size:12px;}
+
+/* Section intro */
+.section-intro{font-size:14px;color:var(--text2);line-height:1.75;margin-bottom:20px;}
+.section-intro strong{font-weight:600;color:var(--text);}
+
+/* FOOTER */
+.footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:28px 20px;font-size:12px;margin-top:40px;}
+.footer-links{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:12px;}
+.footer-links a{color:rgba(255,255,255,.55);text-decoration:none;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;transition:color .15s;}
+.footer-links a:hover{color:#34d399;}
+.footer a{color:rgba(255,255,255,.6);}
+
+@media(max-width:820px){
+  .layout{flex-direction:column;padding:16px;}
+  .sidebar{width:100%;position:static;}
+  .sidebar-nav{display:none;}
+  .header-inner{padding:32px 20px;}
+  .section-body{padding:16px;}
+  .txn-cards{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="breadcrumb">
+      <a href="index.html">DPDPindia.in</a>
+      <span class="sep">/</span>
+      <a href="ekyc-kb.html">eKYC Knowledge Base</a>
+      <span class="sep">/</span>
+      <span class="cur">Fees, Relationships &amp; Connectivity</span>
+    </div>
+    <div class="header-badge"><span class="dot"></span>Article 05 · Financial &amp; Technical Reference</div>
+    <h1>KUA–Sub-KUA <span>Fees, Relationships</span><br>&amp; Connectivity Standards</h1>
+    <p class="header-sub">
+      The complete financial and technical framework governing KUA and Sub-KUA relationships as of 2026 — UIDAI's slab-based licence fee structure, per-transaction charges, physical data centre requirements, ADV and HSM obligations, KUA-to-Sub-KUA connectivity standards, and the updated onboarding process.
+    </p>
+    <div class="header-meta">
+      <span class="meta-pill">UIDAI Fee Schedule 2026</span>
+      <span class="meta-pill">Regulation 25</span>
+      <span class="meta-pill">Circular 1 of 2026</span>
+      <span class="meta-pill">Compliance Checklist v2.0</span>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+  <nav class="sidebar">
+    <div class="sidebar-nav">
+      <h3>On this page</h3>
+      <a href="#s1"><span class="nav-num">01</span> Licence fee structure</a>
+      <a href="#s2"><span class="nav-num">02</span> Transaction fees</a>
+      <a href="#s3"><span class="nav-num">03</span> Physical DC requirements</a>
+      <a href="#s4"><span class="nav-num">04</span> ADV &amp; HSM obligations</a>
+      <a href="#s5"><span class="nav-num">05</span> Connectivity standards</a>
+      <a href="#s6"><span class="nav-num">06</span> Network segregation rules</a>
+      <a href="#s7"><span class="nav-num">07</span> Onboarding process 2026</a>
+      <hr>
+      <span class="nav-sep">Knowledge Base</span>
+      <a href="ekyc-kb.html"><span class="nav-num">←</span> Back to KB</a>
+      <a href="index.html"><span class="nav-num">⌂</span> DPDPindia.in</a>
+    </div>
+    <div class="fee-calc">
+      <h4>Fee Estimator</h4>
+      <label>Entity type</label>
+      <select id="entityType" onchange="calcFee()">
+        <option value="kua_low">KUA / AUA — up to 5L txns/yr</option>
+        <option value="kua_mid">KUA / AUA — 5L–20L txns/yr</option>
+        <option value="kua_high">KUA / AUA — above 20L txns/yr</option>
+        <option value="subkua">Sub-KUA — standard commercial</option>
+        <option value="lite">Govt / LITE code (&lt;1L txns/yr)</option>
+      </select>
+      <label>Expected txns / month</label>
+      <input type="number" id="txnCount" value="10000" oninput="calcFee()" min="0">
+      <div class="fee-result" id="feeResult">—</div>
+    </div>
+    <div class="sidebar-related">
+      <h4>Related Articles</h4>
+      <a href="ekyc-datacenter.html"><span class="link-icon">↗</span> CERT-IN Audit Checklist</a>
+      <a href="ekyc-trust-chain.html"><span class="link-icon">↗</span> Trust Chain &amp; Sub-KUA</a>
+      <a href="ekyc-uidai-guide.html"><span class="link-icon">↗</span> Complete eKYC Guide</a>
+    </div>
+  </nav>
+
+  <main class="main">
+
+    <!-- S1 — LICENCE FEES -->
+    <section class="section" id="s1">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <div>
+          <h2>Licence Fee Structure</h2>
+          <p>UIDAI's slab-based model — 2-year licence validity, fees vary by entity type and transaction volume</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <p class="section-intro">UIDAI utilises a <strong>slab-based fee model</strong> to encourage smaller entities while ensuring high-volume users contribute proportionately to infrastructure costs. Licences are valid for two years and must be renewed before expiry to avoid service interruption.</p>
+        <table class="fee-table">
+          <thead>
+            <tr>
+              <th>Entity Type</th>
+              <th>Annual Transaction Slab</th>
+              <th>Licence Fee</th>
+              <th>Validity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="fee-badge blue">KUA / AUA</span></td>
+              <td>Up to 5 Lakh transactions per year</td>
+              <td><span class="fee-highlight">₹5 Lakh + GST</span></td>
+              <td>2 Years</td>
+            </tr>
+            <tr>
+              <td><span class="fee-badge blue">KUA / AUA</span></td>
+              <td>5 Lakh to 20 Lakh transactions per year</td>
+              <td><span class="fee-highlight">₹10 Lakh + GST</span></td>
+              <td>2 Years</td>
+            </tr>
+            <tr>
+              <td><span class="fee-badge blue">KUA / AUA</span></td>
+              <td>Above 20 Lakh transactions per year</td>
+              <td><span class="fee-highlight">₹20 Lakh + GST</span></td>
+              <td>2 Years</td>
+            </tr>
+            <tr>
+              <td><span class="fee-badge coral">Sub-KUA</span></td>
+              <td>Standard — commercial entity</td>
+              <td><span class="fee-highlight">₹3 Lakh + GST</span></td>
+              <td>2 Years</td>
+            </tr>
+            <tr>
+              <td><span class="fee-badge green">LITE Code</span></td>
+              <td>Government entities — fewer than 1 Lakh transactions/year</td>
+              <td><span class="fee-badge green">Exempted</span></td>
+              <td>Annual Review</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="note-box warning">
+          <strong>Important:</strong> Licence fee slabs are assessed at the time of application or renewal based on projected or actual transaction volume. Exceeding your slab volume during the licence period may trigger a fee upgrade notice from UIDAI. Monitor monthly transaction counts against your slab ceiling.
+        </div>
+        <div class="note-box info">
+          <strong>Sub-KUA flat fee:</strong> The ₹3 Lakh fee for Sub-KUAs is a flat commercial rate regardless of transaction volume — unlike the KUA slab structure. This reflects that the Sub-KUA operates under the KUA's infrastructure and the KUA's own licence covers the connectivity and CIDR interaction costs.
+        </div>
+      </div>
+    </section>
+
+    <!-- S2 — TRANSACTION FEES -->
+    <section class="section" id="s2">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <div>
+          <h2>Transaction Fees</h2>
+          <p>Per-successful-transaction charges — and the financial disincentives under Regulation 25</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="txn-cards">
+          <div class="txn-card">
+            <div class="txn-card-label">Full Data Retrieval</div>
+            <div class="txn-card-type">e-KYC Transaction<br>(demographic data returned)</div>
+            <div class="txn-card-amt">₹3.00</div>
+            <div class="txn-card-note">Per successful transaction. Charged when UIDAI returns Name, DOB, Address, and Photo to the KUA.</div>
+          </div>
+          <div class="txn-card">
+            <div class="txn-card-label">Authentication Only</div>
+            <div class="txn-card-type">Yes / No Authentication<br>(no demographic data)</div>
+            <div class="txn-card-amt">₹0.50</div>
+            <div class="txn-card-note">Per successful transaction. Charged when UIDAI returns only a Y/N authentication result with no KYC data.</div>
+          </div>
+          <div class="txn-card" style="border-color:#f0b4b4;background:#fdf8f8;">
+            <div class="txn-card-label" style="color:var(--red);">Failed Transactions</div>
+            <div class="txn-card-type">Authentication or eKYC<br>failure (any reason)</div>
+            <div class="txn-card-amt" style="color:var(--text3);">₹0.00</div>
+            <div class="txn-card-note">Generally not charged. However repeated failures caused by <strong>technical issues</strong> on the AUA/KUA side may attract financial disincentives under Regulation 25.</div>
+          </div>
+        </div>
+        <div class="note-box danger">
+          <strong>Regulation 25 — Financial Disincentives:</strong> UIDAI may levy financial penalties on AUAs/KUAs whose systems generate repeated authentication failures due to technical misconfigurations, incorrect PID block construction, invalid certificate usage, or system errors. This is distinct from genuine resident-side failures (biometric mismatch, wrong OTP). Monitor your failure rate by error code and remediate systemic technical failures promptly.
+        </div>
+      </div>
+    </section>
+
+    <!-- S3 — PHYSICAL DC -->
+    <section class="section" id="s3">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div>
+          <h2>Physical Data Centre Requirements</h2>
+          <p>Infrastructure standards under Compliance Checklist v2.0 — applicable to both Sub-KUA-owned and KUA-shared infrastructure</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <p class="section-intro">A Sub-KUA may either build its own dedicated infrastructure or operate within the KUA's shared infrastructure. Either way, the physical hosting environment must meet the following standards — verified by CERT-IN auditors during the mandatory IS Audit.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+          <div style="border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;">
+            <div style="padding:12px 16px;background:var(--navy);border-bottom:1px solid rgba(255,255,255,.08);">
+              <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px;">Option A</div>
+              <div style="font-size:13px;font-weight:600;color:#fff;">Sub-KUA owns its own infrastructure</div>
+            </div>
+            <div style="padding:14px 16px;font-size:13px;color:var(--text2);line-height:1.65;">Sub-KUA builds and maintains its own data centre, ADV, and HSM. Must meet all physical and logical requirements in this article independently. Higher upfront cost but full control.</div>
+          </div>
+          <div style="border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;">
+            <div style="padding:12px 16px;background:var(--navy);border-bottom:1px solid rgba(255,255,255,.08);">
+              <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px;">Option B</div>
+              <div style="font-size:13px;font-weight:600;color:#fff;">Sub-KUA uses KUA's shared infrastructure</div>
+            </div>
+            <div style="padding:14px 16px;font-size:13px;color:var(--text2);line-height:1.65;">Sub-KUA operates within the KUA's existing secure environment. KUA's data centre, HSM logical partition, and network infrastructure are shared under clear contractual boundaries. Lower cost, faster setup.</div>
+          </div>
+        </div>
+        <div style="border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;">
+          <div style="padding:10px 16px;background:var(--surface2);border-bottom:1px solid var(--border);font-size:11px;font-weight:600;color:var(--text3);letter-spacing:.06em;text-transform:uppercase;">Physical Security Requirements — Either Option</div>
+          <div style="padding:14px 16px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:10px;">
+            <div style="width:24px;height:24px;border-radius:50%;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px;">1</div>
+            <div>
+              <div style="font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:4px;">Isolated Zone — dedicated lockable server cabinet</div>
+              <div style="font-size:13px;color:var(--text2);line-height:1.6;">Servers must be kept in a dedicated, lockable cabinet within a secure data centre. The cabinet must not share space with unrelated workloads without logical isolation controls.</div>
+            </div>
+          </div>
+          <div style="padding:14px 16px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:10px;">
+            <div style="width:24px;height:24px;border-radius:50%;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px;">2</div>
+            <div>
+              <div style="font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:4px;">24/7 Monitoring — security guards and CCTV surveillance</div>
+              <div style="font-size:13px;color:var(--text2);line-height:1.6;">The facility must have round-the-clock physical security guards and CCTV surveillance. CCTV must cover all entry/exit points and all server rack areas with no blind spots.</div>
+            </div>
+          </div>
+          <div style="padding:14px 16px;display:flex;align-items:flex-start;gap:10px;">
+            <div style="width:24px;height:24px;border-radius:50%;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px;">3</div>
+            <div>
+              <div style="font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:4px;">Access Control — biometric or card with timestamped logs</div>
+              <div style="font-size:13px;color:var(--text2);line-height:1.6;">Biometric or card-based access is mandatory with entry/exit logs recording date, time, and stated purpose. Logs must be available for audit review for the preceding 6 months minimum.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S4 — ADV & HSM -->
+    <section class="section" id="s4">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <div>
+          <h2>ADV &amp; HSM Obligations for Sub-KUAs</h2>
+          <p>Critical components required whenever a Sub-KUA stores any Aadhaar data</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="note-box warning" style="margin-bottom:20px;">
+          <strong>Trigger condition:</strong> If a Sub-KUA stores <em>any</em> Aadhaar-related data — including eKYC XML files, tokenised Aadhaar references, or demographic KYC records — they <strong>must</strong> implement both an ADV and an HSM. There is no waiver for smaller Sub-KUAs. The only alternative is to not store any Aadhaar data at all and process it statelessly — which is impractical for most real-world use cases.
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 22px;background:var(--white);">
+            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:10px;">Aadhaar Data Vault (ADV)</div>
+            <p style="font-size:13px;color:var(--text2);line-height:1.65;margin-bottom:10px;">A <strong>logically separate database</strong> where Aadhaar numbers are replaced by Reference Keys (Tokens). The real Aadhaar numbers must never reside in the business application database — the application stores only the token, and looks up the Aadhaar number in the ADV only when absolutely necessary through an authorised API call.</p>
+            <div style="background:var(--surface2);border-radius:6px;padding:10px 12px;font-family:var(--font-mono);font-size:12px;color:var(--text2);">
+              Business DB: <span style="color:var(--blue);">customer_id → token_xyz</span><br>
+              ADV: <span style="color:var(--green);">token_xyz → [encrypted Aadhaar]</span>
+            </div>
+          </div>
+          <div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 22px;background:var(--white);">
+            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);margin-bottom:10px;">Hardware Security Module (HSM)</div>
+            <p style="font-size:13px;color:var(--text2);line-height:1.65;margin-bottom:10px;">A <strong>FIPS 140-2 Level 3 certified device</strong> that holds all encryption keys for the ADV and for signing eKYC requests. Private keys must stay inside the HSM — they may never be extracted to a file, environment variable, or application memory.</p>
+            <div class="note-box tip" style="margin:0;font-size:12px;">
+              <strong>Cost note:</strong> Sub-KUAs are permitted to use a <em>logical partition</em> on the KUA's HSM rather than purchasing their own device — a significant cost saving, provided the KUA agrees and the partition is properly isolated.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S5 — CONNECTIVITY -->
+    <section class="section" id="s5">
+      <div class="section-header">
+        <div class="section-num">05</div>
+        <div>
+          <h2>Connectivity Standards — KUA to Sub-KUA</h2>
+          <p>The link between a KUA's central server and the Sub-KUA's systems must be secured against man-in-the-middle attacks</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <p class="section-intro">The connection between the KUA (e.g., a bank's central server) and the Sub-KUA (e.g., a partner application or regional department) must be a secure, encrypted channel. The appropriate connectivity type depends on the volume, permanence, and architecture of the Sub-KUA's deployment.</p>
+        <table class="conn-table" style="margin-bottom:16px;">
+          <thead>
+            <tr>
+              <th style="width:160px;">Connectivity Type</th>
+              <th>Use Case</th>
+              <th>Security Requirement</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="conn-badge" style="background:#e6f1fb;color:var(--blue);border-color:#b0ccea;">Leased Line</span></td>
+              <td>High-volume, permanent sites — e.g., a Sub-KUA with dedicated premises processing large transaction volumes daily</td>
+              <td>Dedicated point-to-point link with <strong>no public internet exposure</strong>. Equivalent to an ASA leased line. Highest security posture; highest cost.</td>
+            </tr>
+            <tr>
+              <td><span class="conn-badge" style="background:#e0f2ef;color:var(--teal);border-color:#b4ddc4;">VPN</span></td>
+              <td>Small offices, remote applications, or Sub-KUAs with moderate transaction volumes operating from multiple sites</td>
+              <td>Site-to-Site <strong>IPsec VPN</strong> or SSL VPN with strong encryption (AES-256). Pre-shared keys must be rotated periodically. Certificate-based authentication is preferred over PSK.</td>
+            </tr>
+            <tr>
+              <td><span class="conn-badge" style="background:#fef3cd;color:#854f0b;border-color:#f5c842;">HTTPS REST</span></td>
+              <td>Modern cloud-to-cloud integration — e.g., a Sub-KUA SaaS platform calling the KUA's API gateway</td>
+              <td>Must use <strong>TLS 1.3+</strong> and <strong>Mutual Authentication (mTLS)</strong> where both the KUA and Sub-KUA present certificates. One-way TLS is insufficient. Certificate pinning on the client side is strongly recommended.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="note-box info">
+          <strong>Critical regardless of connectivity type:</strong> Even when using a secure VPN or leased line, the PID block (biometric or OTP data) must remain encrypted with UIDAI's public key throughout the entire journey from the Sub-KUA to the KUA to CIDR. The secure channel is not a substitute for PID block encryption — both are required simultaneously.
+        </div>
+      </div>
+    </section>
+
+    <!-- S6 — NETWORK RULES -->
+    <section class="section" id="s6">
+      <div class="section-header">
+        <div class="section-num">06</div>
+        <div>
+          <h2>Network Segregation Rules</h2>
+          <p>IP whitelisting, DMZ placement, and PID block encryption — three non-negotiable requirements</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="network-rules">
+          <div class="network-rule">
+            <div class="rule-num">1</div>
+            <div>
+              <div class="rule-title">IP Whitelisting — KUA server accepts only Sub-KUA's static IPs</div>
+              <div class="rule-body">The KUA server must be configured to <strong>only accept traffic from the specific static IP addresses</strong> registered for the Sub-KUA. Dynamic IPs, IP ranges, or geographic-based allowlists are not acceptable under Compliance Checklist v2.0. Any traffic from an unlisted IP must be silently dropped at the firewall — not rejected with an error that could leak infrastructure information.</div>
+            </div>
+          </div>
+          <div class="network-rule">
+            <div class="rule-num">2</div>
+            <div>
+              <div class="rule-title">Firewall &amp; DMZ — Sub-KUA Aadhaar application in a demilitarised zone</div>
+              <div class="rule-body">The Sub-KUA application that processes Aadhaar transactions must reside in a <strong>DMZ (Demilitarised Zone) separated from the general corporate network</strong> by a dedicated firewall. The DMZ must allow only the specific ports and protocols required for eKYC — all other traffic must be denied by default. Firewall rules must be documented and approved by the CISO.</div>
+            </div>
+          </div>
+          <div class="network-rule">
+            <div class="rule-num">3</div>
+            <div>
+              <div class="rule-title">Encrypted PID Block — encrypted throughout, regardless of channel security</div>
+              <div class="rule-body">Even with a secure VPN or leased line, the <strong>PID block (biometric or OTP data) must remain encrypted with UIDAI's public key</strong> at all times — from the point of capture on the Registered Device through the Sub-KUA system, across the KUA connection, and all the way to CIDR. The channel encryption and the PID encryption are independent layers, and both are mandatory simultaneously. Removing PID encryption "because the channel is secure" is a compliance violation.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S7 — ONBOARDING -->
+    <section class="section" id="s7">
+      <div class="section-header">
+        <div class="section-num">07</div>
+        <div>
+          <h2>Onboarding Process — 2026 Update</h2>
+          <p>The four-step process to appoint a Sub-KUA under the current regulatory framework</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="process-tl">
+          <div class="pt-step">
+            <div class="pt-dot">1</div>
+            <div class="pt-title">Joint Undertaking — legally binding shared liability agreement</div>
+            <div class="pt-body">Both the KUA (e.g., the bank) and the proposed Sub-KUA must <strong>sign a Joint Undertaking</strong> accepting joint and several liability for any data security breach, misuse, or regulatory violation arising from the Sub-KUA's operation. This document is not a standard NDA — it is a specific UIDAI-format agreement. Obtain the current template from the UIDAI ecosystem portal. Both organisations' authorised signatories must sign.</div>
+            <div class="pt-tag">Prerequisite for all subsequent steps</div>
+          </div>
+          <div class="pt-step">
+            <div class="pt-dot">2</div>
+            <div class="pt-title">UIDAI Application — formal "Sub-KUA Appointment Form" submission</div>
+            <div class="pt-body">The KUA submits the <strong>Sub-KUA Appointment Form</strong> to UIDAI, accompanied by the signed Joint Undertaking, the Sub-KUA's business justification for needing eKYC access, and the proposed data architecture. The application must demonstrate a legitimate purpose — UIDAI does not approve Sub-KUA appointments for entities whose business case does not require eKYC data. The applicable licence fee must be submitted with the application.</div>
+          </div>
+          <div class="pt-step">
+            <div class="pt-dot">3</div>
+            <div class="pt-title">CERT-IN Audit — infrastructure verification before any live transaction</div>
+            <div class="pt-body">The Sub-KUA must undergo a full <strong>IS Audit by a CERT-IN empanelled auditor</strong> covering all requirements in <a href="ekyc-datacenter.html" style="color:var(--blue);">Article 04 of this Knowledge Base</a>. The auditor produces a Certificate of Compliance and an Audit Report. Both documents must be submitted to UIDAI — no live transactions are permitted until UIDAI acknowledges receipt and approves. The audit timeline is typically 4–8 weeks from engagement to certificate issuance.</div>
+            <div class="pt-tag">See Article 04 — CERT-IN Audit Checklist for full details</div>
+          </div>
+          <div class="pt-step">
+            <div class="pt-dot done">4</div>
+            <div class="pt-title">Unique Sub-KUA Code — issued by UIDAI, embedded in every transaction</div>
+            <div class="pt-body">Upon approval, UIDAI issues a <strong>unique Sub-KUA code</strong>. Per <span style="display:inline-flex;align-items:center;gap:4px;padding:1px 8px;background:#ede8fe;color:var(--purple);border:1px solid #c4b8f5;border-radius:4px;font-family:var(--font-mono);font-size:11px;margin:0 2px;">§ Circular 1 of 2026</span>, this code must be embedded in the <code>sa</code> attribute of every eKYC request XML. This enables UIDAI to track, at transaction level, exactly which Sub-KUA initiated each request — creating a complete audit trail from resident consent to CIDR and back. Any transaction without a valid Sub-KUA code in the <code>sa</code> field will be rejected by the staging and production environments.</div>
+          </div>
+        </div>
+
+        <!-- Cross-links -->
+        <div style="margin-top:28px;padding:20px;border:1px solid var(--border);border-left:4px solid var(--green);border-radius:var(--radius);background:var(--surface);">
+          <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--green);margin-bottom:14px;">Other Articles in This Knowledge Base</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <a href="ekyc-datacenter.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;padding:12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--white);transition:border-color .15s;" onmouseover="this.style.borderColor='var(--green)'" onmouseout="this.style.borderColor='var(--border)'">
+              <div style="font-size:20px;flex-shrink:0;">🏢</div>
+              <div><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Data Centre &amp; CERT-IN Audit Checklist</div><div style="font-size:12px;color:var(--text3);">24-item interactive audit readiness checklist</div></div>
+            </a>
+            <a href="ekyc-trust-chain.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;padding:12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--white);transition:border-color .15s;" onmouseover="this.style.borderColor='var(--blue-light)'" onmouseout="this.style.borderColor='var(--border)'">
+              <div style="font-size:20px;flex-shrink:0;">🔗</div>
+              <div><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Trust Chain &amp; Sub-KUA Governance</div><div style="font-size:12px;color:var(--text3);">Entity segregation rationale and appointment process</div></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-links">
+    <a href="index.html">DPDPindia.in</a>
+    <a href="ekyc-kb.html">eKYC Knowledge Base</a>
+    <a href="ekyc-datacenter.html">CERT-IN Audit Checklist</a>
+    <a href="ekyc-trust-chain.html">Trust Chain</a>
+    <a href="https://uidai.gov.in" target="_blank">UIDAI Official</a>
+  </div>
+  <p>KUA–Sub-KUA Fees, Relationships &amp; Connectivity — Article 05 of the Aadhaar eKYC Knowledge Base · <a href="ekyc-kb.html">← Back to KB</a></p>
+</footer>
+
+<script>
+function calcFee(){
+  const e = document.getElementById('entityType').value;
+  const t = parseInt(document.getElementById('txnCount').value)||0;
+  const annual = t * 12;
+  let lic = '', txnCost = 0, txnLabel = '';
+  if(e==='lite'){ lic='Exempted (LITE)'; }
+  else if(e==='subkua'){ lic='₹3,00,000 + GST (flat)'; }
+  else if(annual<=500000){ lic='₹5,00,000 + GST'; }
+  else if(annual<=2000000){ lic='₹10,00,000 + GST'; }
+  else { lic='₹20,00,000 + GST'; }
+  const ekyc = t * 3;
+  const auth = t * 0.5;
+  document.getElementById('feeResult').innerHTML =
+    '<div style="margin-bottom:6px;color:rgba(255,255,255,.5);font-size:10px;letter-spacing:.06em;text-transform:uppercase;">2-yr licence fee</div>'+
+    '<div class="amt">'+lic+'</div>'+
+    '<div style="margin-top:8px;color:rgba(255,255,255,.5);font-size:10px;letter-spacing:.06em;text-transform:uppercase;">Est. monthly txn cost</div>'+
+    '<div style="font-size:13px;margin-top:4px;">eKYC: ₹'+ekyc.toLocaleString('en-IN')+' &nbsp;|&nbsp; Auth: ₹'+auth.toLocaleString('en-IN')+'</div>';
+}
+calcFee();
+</script>
+</body>
+</html>

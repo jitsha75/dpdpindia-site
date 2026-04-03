@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Principal Rights — Sections 11–14 — DPDP KB</title>
+<style>@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:wght@600&display=swap');
+:root{--navy:#0a1628;--navy2:#132040;--blue:#1a5cad;--blue-light:#3b82d4;--amber:#d4900a;--amber-light:#f5c842;--teal:#0e7c6b;--coral:#c2420a;--purple:#5b4bc4;--green:#156c2e;--red:#b91c1c;--surface:#f4f6fb;--surface2:#eaeff8;--text:#0d1b2a;--text2:#3a4a5c;--text3:#6b7e94;--border:#c8d4e8;--border2:#b0c0d8;--white:#ffffff;--font-body:'IBM Plex Sans',sans-serif;--font-display:'Playfair Display',serif;--font-mono:'IBM Plex Mono',monospace;--radius:8px;--radius-lg:12px;--shadow:0 2px 12px rgba(10,22,40,.08);--shadow-md:0 4px 24px rgba(10,22,40,.13);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--surface);color:var(--text);font-size:15px;line-height:1.7;min-height:100vh;}
+.header{background:var(--navy);color:#fff;position:relative;overflow:hidden;}
+.header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px),repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px);}
+.header-inner{position:relative;max-width:1100px;margin:0 auto;padding:52px 40px 48px;}
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:20px;font-family:var(--font-mono);font-size:11px;flex-wrap:wrap;}
+.breadcrumb a{color:rgba(255,255,255,.5);text-decoration:none;transition:color .15s;}
+.breadcrumb a:hover{color:var(--amber-light);}
+.breadcrumb .sep{color:rgba(255,255,255,.25);}
+.breadcrumb .cur{color:var(--amber-light);}
+.header-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:4px 14px;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:20px;}
+.header h1{font-family:var(--font-display);font-size:clamp(24px,4vw,38px);font-weight:600;line-height:1.15;color:#fff;margin-bottom:14px;max-width:760px;}
+.header-sub{font-size:15px;color:rgba(255,255,255,.6);max-width:680px;line-height:1.65;margin-bottom:28px;}
+.header-meta{display:flex;flex-wrap:wrap;gap:8px;}
+.meta-pill{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:4px 12px;font-size:12px;color:rgba(255,255,255,.65);font-family:var(--font-mono);}
+.layout{display:flex;max-width:1100px;margin:0 auto;padding:32px 20px;gap:32px;align-items:flex-start;}
+.sidebar{width:220px;flex-shrink:0;position:sticky;top:24px;}
+.sidebar-nav{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:12px 0;box-shadow:var(--shadow);}
+.sidebar-nav h3{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:6px 18px 10px;}
+.sidebar-nav a{display:flex;align-items:center;gap:8px;padding:8px 18px;font-size:13px;color:var(--text2);text-decoration:none;border-left:2px solid transparent;transition:all .15s;line-height:1.3;}
+.sidebar-nav a:hover{background:var(--surface);color:var(--blue);border-left-color:var(--blue-light);}
+.sidebar-nav .nav-num{font-family:var(--font-mono);font-size:10px;color:var(--text3);min-width:16px;}
+.sidebar-nav hr{border:none;border-top:1px solid var(--border);margin:8px 0;}
+.sidebar-nav .nav-sep{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:12px 18px 4px;display:block;}
+.sidebar-related{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px 18px;box-shadow:var(--shadow);margin-top:12px;}
+.sidebar-related h4{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:10px;}
+.sidebar-related a{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);text-decoration:none;padding:5px 0;border-bottom:1px solid var(--border);transition:color .15s;}
+.sidebar-related a:last-child{border-bottom:none;}
+.sidebar-related a:hover{color:var(--blue);}
+.sidebar-related .link-icon{font-size:11px;opacity:.5;}
+.main{flex:1;min-width:0;}
+.section{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:24px;box-shadow:var(--shadow);overflow:hidden;}
+.section-header{display:flex;align-items:center;gap:14px;padding:20px 28px;border-bottom:1px solid var(--border);background:var(--surface);}
+.section-num{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--font-mono);font-size:12px;font-weight:500;flex-shrink:0;}
+.section-header h2{font-size:17px;font-weight:600;color:var(--text);letter-spacing:-.01em;}
+.section-header p{font-size:13px;color:var(--text3);margin-top:2px;}
+.section-body{padding:28px;}
+.prose p{font-size:14px;color:var(--text2);margin-bottom:12px;line-height:1.75;}
+.prose p:last-child{margin-bottom:0;}
+.prose strong{font-weight:600;color:var(--text);}
+.prose ul{padding-left:20px;margin-bottom:12px;}
+.prose li{font-size:14px;color:var(--text2);margin-bottom:5px;line-height:1.65;}
+.prose code{font-family:var(--font-mono);font-size:12px;background:var(--surface2);padding:1px 6px;border-radius:3px;border:1px solid var(--border);color:var(--blue);}
+.note-box{padding:12px 16px;border-radius:var(--radius);font-size:13px;line-height:1.6;border-left:3px solid;margin:12px 0;}
+.note-box.warning{background:#fef3cd;border-color:var(--amber);color:#533200;}
+.note-box.info{background:#e6f1fb;border-color:var(--blue);color:#0a2e5e;}
+.note-box.danger{background:#fde8e8;border-color:var(--red);color:#5c0f0f;}
+.note-box.success{background:#e8f5ee;border-color:var(--green);color:#0a3318;}
+.note-box.amber{background:#fffaed;border-color:var(--amber);color:#533200;}
+.note-box strong{font-weight:600;}
+.reg-ref{display:inline-flex;align-items:center;gap:4px;padding:2px 8px 2px 6px;border-radius:4px;background:#ede8fe;color:var(--purple);border:1px solid #c4b8f5;font-family:var(--font-mono);font-size:11px;font-weight:500;white-space:nowrap;}
+.reg-ref::before{content:'§';font-family:Georgia,serif;font-size:12px;}
+.footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:28px 20px;font-size:12px;margin-top:40px;}
+.footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:12px;}
+.footer-links a{color:rgba(255,255,255,.55);text-decoration:none;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;transition:color .15s;}
+.footer-links a:hover{color:var(--amber-light);}
+.footer a{color:rgba(255,255,255,.6);}
+@media(max-width:820px){.layout{flex-direction:column;padding:16px;}.sidebar{width:100%;position:static;}.sidebar-nav{display:none;}.header-inner{padding:32px 20px;}.section-body{padding:16px;}}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <div class="breadcrumb">
+      <a href="index.html">DPDPindia.in</a><span class="sep">/</span>
+      <a href="dpdp-kb.html">DPDP Knowledge Base</a><span class="sep">/</span>
+      <span class="cur">Data Principal Rights</span>
+    </div>
+    <div class="header-badge"><span style="width:6px;height:6px;border-radius:50%;background:#b0ccea;display:inline-block;"></span>&nbsp;Article 03 · DPDP Knowledge Base</div>
+    <h1><span style="color:#b0ccea;">Data Principal Rights</span> — Sections 11–14</h1>
+    <p class="header-sub">A comprehensive analysis of the four statutory rights granted to individuals under the DPDP Act — access, correction and erasure, grievance redressal, and the right to nominate — with practical guidance on obligations, timelines, and limitations.</p>
+    <div class="header-meta"><span class="meta-pill">Section 11 — Access</span><span class="meta-pill">Section 12 — Correction & Erasure</span><span class="meta-pill">Section 13 — Grievance</span><span class="meta-pill">Section 14 — Nomination</span></div>
+  </div>
+</header>
+<div class="layout">
+  <nav class="sidebar">
+    <div class="sidebar-nav">
+      <h3>On this page</h3>
+      <a href="#s1"><span class="nav-num">01</span> Overview — four rights</a><a href="#s2"><span class="nav-num">02</span> Section 11: Access information</a><a href="#s3"><span class="nav-num">03</span> Section 12: Correction & erasure</a><a href="#s4"><span class="nav-num">04</span> Sections 13 & 14: Grievance & nomination</a>
+      <hr><span class="nav-sep">Knowledge Base</span>
+      <a href="dpdp-kb.html"><span class="nav-num">←</span> Back to DPDP KB</a>
+      <a href="index.html"><span class="nav-num">⌂</span> DPDPindia.in</a>
+    </div>
+    <div class="sidebar-related">
+      <h4>Related Articles</h4><a href="dpdp-act.html"><span class="link-icon">↗</span> The Act — Core Framework</a><a href="dpdp-adjudication.html"><span class="link-icon">↗</span> Adjudication &amp; Penalties</a><a href="dpdp-exemptions.html"><span class="link-icon">↗</span> Exemptions &amp; Gov Powers</a>
+    </div>
+  </nav>
+  <main class="main">
+
+    <section class="section" id="s1">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <div><h2>Overview — Four Rights of Data Principals</h2><p>Sections 11–14 of the DPDP Act</p></div>
+      </div>
+      <div class="section-body"><div class="prose"><p>The DPDP Act grants four statutory rights to data principals — the individuals whose data is being processed. These rights are exercisable against the Data Fiduciary that holds or processes the individual's data, and must be honoured within timeframes specified in the rules. Exercising these rights is free of charge unless the request is excessive or repetitive.</p></div>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:16px;"><div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);"><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:7px;">Section 11</div><div style="font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:7px;line-height:1.3;">Right to Access Information</div><div style="font-size:13px;color:var(--text2);line-height:1.65;">A data principal can request a summary of personal data held about them, details of entities with whom the data has been shared, and information about the purposes for which data is being processed.</div></div><div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);"><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:7px;">Section 12</div><div style="font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:7px;line-height:1.3;">Right to Correction & Erasure</div><div style="font-size:13px;color:var(--text2);line-height:1.65;">A data principal can request correction of inaccurate or misleading data, completion of incomplete data, updating of data, and erasure of data no longer necessary for the purpose for which it was collected.</div></div><div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);"><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:7px;">Section 13</div><div style="font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:7px;line-height:1.3;">Right to Grievance Redressal</div><div style="font-size:13px;color:var(--text2);line-height:1.65;">A data principal can file a grievance with the Data Fiduciary's designated Grievance Officer. If unsatisfied with the response, the data principal can escalate to the Data Protection Board.</div></div><div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);"><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:7px;">Section 14</div><div style="font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:7px;line-height:1.3;">Right to Nominate</div><div style="font-size:13px;color:var(--text2);line-height:1.65;">A data principal may nominate another individual to exercise their data rights in the event of death or incapacity. This is a distinctive provision not found in GDPR, designed for India's demographic context.</div></div></div>
+<div class="note-box info"><strong>Timelines:</strong> The rules specify the timeframes within which Data Fiduciaries must respond to rights requests. Failure to respond within the prescribed period is itself a compliance violation and may be reported directly to the DPB.</div></div>
+    </section>
+    <section class="section" id="s2">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <div><h2>Section 11 — Right to Access Information in Detail</h2><p>What information the Data Fiduciary must provide on request</p></div>
+      </div>
+      <div class="section-body"><div class="prose"><p>When a data principal makes a request under Section 11, the Data Fiduciary must provide:</p></div>
+<div style="border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;">
+  <div style="padding:12px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;"><div style="width:5px;height:5px;border-radius:50%;background:var(--blue);margin-top:7px;flex-shrink:0;"></div><div style="font-size:13.5px;color:var(--text2);">A summary of personal data being processed and the processing activities.</div></div><div style="padding:12px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;"><div style="width:5px;height:5px;border-radius:50%;background:var(--blue);margin-top:7px;flex-shrink:0;"></div><div style="font-size:13.5px;color:var(--text2);">The identities of all other Data Fiduciaries and Data Processors with whom the personal data has been shared, along with a description of the data shared.</div></div><div style="padding:12px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;"><div style="width:5px;height:5px;border-radius:50%;background:var(--blue);margin-top:7px;flex-shrink:0;"></div><div style="font-size:13.5px;color:var(--text2);">Any other information relating to the personal data and its processing — as prescribed in the rules.</div></div><div style="padding:12px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;"><div style="width:5px;height:5px;border-radius:50%;background:var(--blue);margin-top:7px;flex-shrink:0;"></div><div style="font-size:13.5px;color:var(--text2);">The grievance officer's name and contact details.</div></div>
+</div>
+<div class="note-box warning" style="margin-top:12px;"><strong>What Section 11 does NOT require:</strong> The Act does not require the Data Fiduciary to provide a full copy (data portability) of the personal data — only a summary and processing information. Data portability as a standalone right (similar to GDPR Article 20) is not included in the current Act, though the rules may introduce portability obligations for SDFs.</div></div>
+    </section>
+    <section class="section" id="s3">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div><h2>Section 12 — Right to Correction & Erasure</h2><p>Inaccurate data must be corrected; unnecessary data must be erased</p></div>
+      </div>
+      <div class="section-body"><div class="prose"><p>Section 12 grants the right to <strong>correction, completion, updating, and erasure</strong> of personal data. This right has two distinct limbs:</p></div>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:16px;"><div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);"><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);margin-bottom:7px;">Correction & Updating</div><div style="font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:7px;line-height:1.3;">Data Accuracy Rights</div><div style="font-size:13px;color:var(--text2);line-height:1.65;">The data principal can demand correction of inaccurate or misleading personal data, completion of incomplete data, and updating of out-of-date data. The Data Fiduciary must make reasonable efforts to ensure data accuracy.</div></div><div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);"><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-bottom:7px;">Erasure</div><div style="font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:7px;line-height:1.3;">Right to Erasure — With Limits</div><div style="font-size:13px;color:var(--text2);line-height:1.65;">The data principal can request erasure of personal data that is no longer necessary for the purpose it was collected. However, the Data Fiduciary may decline if retention is required by law (e.g. for tax, audit, or regulatory purposes).</div></div></div>
+<div class="note-box amber"><strong>Important constraint on erasure:</strong> The right to erasure under the DPDP Act is significantly narrower than GDPR's 'right to be forgotten'. It applies only where data is no longer necessary for the original processing purpose. There is no general right to demand erasure simply because a data principal withdraws consent — though withdrawal of consent will itself prevent further processing and trigger deletion obligations once the data is no longer needed for any residual purpose.</div></div>
+    </section>
+    <section class="section" id="s4">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <div><h2>Sections 13 & 14 — Grievance Redressal & Nomination</h2><p>Two-tier grievance mechanism and the right to nominate</p></div>
+      </div>
+      <div class="section-body"><div class="prose"><p><strong>Section 13 — Grievance Redressal:</strong> Every Data Fiduciary must establish a mechanism for data principals to register grievances. Designated Grievance Officers must be accessible, and responses must be provided within the timeframes specified in the rules. If the data principal is not satisfied with the Data Fiduciary's response, they may escalate to the Data Protection Board directly — without needing a lawyer or paying a fee.</p>
+<p><strong>Section 14 — Right to Nominate:</strong> A data principal may nominate any other individual to exercise their rights under Sections 11–13 in the event of the data principal's death or incapacity. This provision is distinctive to the DPDP Act and reflects India's need to address digital estates in a country where many individuals may not have formal digital wills or executors.</p></div>
+<div class="note-box success"><strong>Low-barrier access to DPB:</strong> The Act deliberately makes the Data Protection Board accessible without legal representation or fees for individual data principals. This is a significant consumer-protection feature — data principals can file complaints directly against large Data Fiduciaries without needing to engage lawyers.</div>
+<div style="margin-top:24px;padding:20px;border:1px solid var(--border);border-left:4px solid var(--amber);border-radius:var(--radius);background:var(--surface);"><div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-bottom:14px;">Other Articles in This Knowledge Base</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;"><a href="dpdp-adjudication.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;padding:12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--white);transition:border-color .15s;" onmouseover="this.style.borderColor='var(--blue-light)'" onmouseout="this.style.borderColor='var(--border)'"><div style="font-size:20px;flex-shrink:0;">⚖️</div><div><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Adjudication & Penalties</div><div style="font-size:12px;color:var(--text3);">How the DPB enforces these rights</div></div></a><a href="dpdp-act.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;padding:12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--white);transition:border-color .15s;" onmouseover="this.style.borderColor='var(--blue-light)'" onmouseout="this.style.borderColor='var(--border)'"><div style="font-size:20px;flex-shrink:0;">📖</div><div><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">The DPDP Act — Core Framework</div><div style="font-size:12px;color:var(--text3);">Sections 4–10 obligations</div></div></a></div></div></div>
+    </section>
+  </main>
+</div>
+<footer class="footer">
+  <div class="footer-links">
+    <a href="index.html">DPDPindia.in</a><a href="dpdp-kb.html">DPDP KB</a>
+    <a href="dpdp-genesis.html">Genesis</a><a href="dpdp-act.html">The Act</a>
+    <a href="dpdp-rights.html">Rights</a><a href="dpdp-rules.html">Rules</a>
+    <a href="dpdp-adjudication.html">Adjudication</a>
+    <a href="dpdp-exemptions.html">Exemptions</a><a href="dpdp-global.html">Global</a>
+  </div>
+  <p>Article 03 — Part of the DPDP Act Knowledge Base · <a href="dpdp-kb.html">← Back to KB</a></p>
+</footer>
+</body>
+</html>

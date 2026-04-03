@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Intelligence Briefing — Week of 24 March 2026 | DPDPIndia.in</title>
+<meta name="description" content="Weekly briefing covering DPDP Act, IT Act, Aadhaar/UIDAI, e-governance, cybersecurity and court rulings — Week of 24 March 2026. India's premier data protection research portal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --parchment:#F8F4EC;--cream:#FDFAF5;--paper:#F2EDE2;--ink:#1A1610;
+  --prussian:#1B2B3A;--slate:#2D3D4E;--saffron:#D4760A;--saffron-lt:#F0A840;
+  --ochre:#B8862C;--chakra-blue:#1B3A6B;--mist:#7A7468;
+  --rule:rgba(26,22,16,0.12);--rule-gold:rgba(212,118,10,0.25);
+  --shadow-sm:0 2px 12px rgba(26,22,16,0.06);--shadow-md:0 8px 40px rgba(26,22,16,0.10);
+  --danger:#C0392B;--danger-lt:rgba(192,57,43,0.08);
+  --green:#1A6B3A;--green-lt:rgba(26,107,58,0.08);
+  --blue-lt:rgba(27,58,107,0.07);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:'Source Serif 4',Georgia,serif;background:var(--cream);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;}
+
+/* MASTHEAD */
+.masthead{background:var(--prussian);padding:10px 0;text-align:center;border-bottom:3px solid var(--saffron);}
+.masthead-text{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.55);}
+.masthead-text span{color:var(--saffron-lt);}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:200;background:var(--cream);border-bottom:1px solid var(--rule);box-shadow:var(--shadow-sm);}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:68px;}
+.nav-brand{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.nav-brand-seal{width:42px;height:42px;flex-shrink:0;}
+.nav-brand-name{display:flex;flex-direction:column;gap:1px;}
+.nav-brand-name strong{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--prussian);}
+.nav-brand-name span{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);}
+.nav-links{display:flex;align-items:center;gap:1.5rem;list-style:none;}
+.nav-links a{font-family:'Source Serif 4',serif;font-size:0.82rem;color:var(--slate);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--saffron);}
+.nav-back{font-family:'JetBrains Mono',monospace!important;font-size:0.65rem!important;letter-spacing:0.1em!important;text-transform:uppercase;background:var(--prussian)!important;color:var(--cream)!important;padding:9px 20px;}
+
+/* BRIEFING HERO */
+.briefing-hero{background:var(--prussian);padding:4rem 2rem 3rem;border-bottom:4px solid var(--saffron);position:relative;overflow:hidden;}
+.briefing-hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,255,255,0.02) 40px);pointer-events:none;}
+.hero-inner{max-width:1100px;margin:0 auto;}
+.hero-kicker{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--saffron-lt);margin-bottom:1rem;display:flex;align-items:center;gap:1rem;}
+.hero-kicker::before{content:'';display:inline-block;width:28px;height:1px;background:var(--saffron);}
+.hero-date{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:var(--parchment);line-height:1.05;margin-bottom:0.75rem;}
+.hero-subtitle{font-family:'Source Serif 4',serif;font-size:1.05rem;font-weight:300;color:rgba(248,244,236,0.65);line-height:1.75;max-width:640px;margin-bottom:2rem;}
+.hero-tags{display:flex;flex-wrap:wrap;gap:0.5rem;}
+.hero-tag{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;background:rgba(212,118,10,0.15);border:1px solid rgba(212,118,10,0.3);color:var(--saffron-lt);padding:5px 12px;}
+
+/* STAT BAR */
+.stat-bar{background:var(--paper);border-bottom:1px solid var(--rule-gold);padding:1rem 2rem;}
+.stat-bar-inner{max-width:1100px;margin:0 auto;display:flex;gap:2.5rem;flex-wrap:wrap;align-items:center;}
+.stat-item{display:flex;flex-direction:column;gap:2px;}
+.stat-num{font-family:'JetBrains Mono',monospace;font-size:1.2rem;font-weight:500;color:var(--saffron);}
+.stat-label{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--mist);}
+.stat-divider{width:1px;height:40px;background:var(--rule-gold);align-self:center;}
+
+/* LAYOUT */
+.main-layout{max-width:1100px;margin:0 auto;padding:3rem 2rem;display:grid;grid-template-columns:1fr 320px;gap:3rem;}
+@media(max-width:900px){.main-layout{grid-template-columns:1fr;}.sidebar{order:-1;}}
+
+/* SECTION HEADERS */
+.section-gap{margin-bottom:3rem;}
+.section-header{display:flex;align-items:center;gap:1rem;margin-bottom:2rem;padding-bottom:0.75rem;border-bottom:1px solid var(--rule);}
+.section-icon{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.section-kicker{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--mist);}
+.section-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--prussian);}
+
+/* NEWS CARD */
+.news-card{background:var(--parchment);border:1px solid var(--rule);border-left:3px solid var(--saffron);margin-bottom:1.5rem;padding:1.5rem;transition:box-shadow 0.2s;}
+.news-card:hover{box-shadow:var(--shadow-md);}
+.news-card.critical{border-left-color:var(--danger);}
+.news-card.legal{border-left-color:var(--chakra-blue);}
+.news-card.positive{border-left-color:var(--green);}
+.card-meta{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.6rem;flex-wrap:wrap;}
+.card-badge{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;padding:3px 8px;}
+.badge-critical{background:var(--danger-lt);color:var(--danger);border:1px solid rgba(192,57,43,0.2);}
+.badge-update{background:rgba(212,118,10,0.1);color:var(--ochre);border:1px solid var(--rule-gold);}
+.badge-judiciary{background:var(--blue-lt);color:var(--chakra-blue);border:1px solid rgba(27,58,107,0.2);}
+.badge-govt{background:var(--green-lt);color:var(--green);border:1px solid rgba(26,107,58,0.2);}
+.badge-global{background:rgba(139,0,0,0.07);color:#8B0000;border:1px solid rgba(139,0,0,0.15);}
+.card-date{font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--mist);}
+.card-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--prussian);line-height:1.35;margin-bottom:0.5rem;}
+.card-body{font-size:0.88rem;font-weight:300;line-height:1.85;color:var(--slate);}
+.card-body p{margin-bottom:0.5rem;}
+.card-body p:last-child{margin-bottom:0;}
+.card-source{margin-top:0.9rem;padding-top:0.75rem;border-top:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:0.58rem;color:var(--mist);}
+.card-source a{color:var(--saffron);text-decoration:none;}
+.card-source a:hover{text-decoration:underline;}
+.card-implications{margin-top:0.75rem;background:rgba(212,118,10,0.05);border:1px solid var(--rule-gold);padding:0.8rem 1rem;}
+.card-implications-label{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.4rem;}
+.card-implications p{font-size:0.82rem;font-weight:400;line-height:1.7;color:var(--ochre);}
+
+/* SIDEBAR */
+.sidebar-card{background:var(--parchment);border:1px solid var(--rule);padding:1.4rem;margin-bottom:1.5rem;}
+.sidebar-card-title{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);margin-bottom:1rem;padding-bottom:0.6rem;border-bottom:1px solid var(--rule-gold);}
+.timeline-item{display:flex;gap:1rem;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--rule);}
+.timeline-item:last-child{margin-bottom:0;border-bottom:none;padding-bottom:0;}
+.timeline-dot{width:8px;height:8px;border-radius:50%;background:var(--saffron);flex-shrink:0;margin-top:5px;}
+.timeline-dot.active{background:var(--green);}
+.timeline-dot.future{background:var(--mist);}
+.timeline-text{font-size:0.82rem;font-weight:300;line-height:1.65;color:var(--slate);}
+.timeline-text strong{font-weight:600;color:var(--prussian);font-size:0.78rem;}
+.penalty-item{display:flex;justify-content:space-between;align-items:baseline;padding:0.5rem 0;border-bottom:1px solid var(--rule);font-size:0.82rem;}
+.penalty-item:last-child{border-bottom:none;}
+.penalty-label{color:var(--slate);font-weight:300;}
+.penalty-val{font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--danger);font-weight:500;}
+.subscribe-card{background:var(--prussian);padding:1.5rem;border-left:3px solid var(--saffron);}
+.subscribe-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--parchment);margin-bottom:0.5rem;}
+.subscribe-body{font-size:0.82rem;font-weight:300;line-height:1.7;color:rgba(248,244,236,0.65);margin-bottom:1rem;}
+.subscribe-form{display:flex;flex-direction:column;gap:0.6rem;}
+.subscribe-input{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:var(--parchment);padding:10px 12px;font-family:'Source Serif 4',serif;font-size:0.85rem;outline:none;}
+.subscribe-input::placeholder{color:rgba(248,244,236,0.35);}
+.subscribe-btn{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;background:var(--saffron);color:var(--cream);border:none;padding:11px 18px;cursor:pointer;transition:background 0.2s;}
+.subscribe-btn:hover{background:var(--saffron-lt);}
+.quick-link{display:flex;align-items:center;gap:0.75rem;padding:0.6rem 0;border-bottom:1px solid var(--rule);text-decoration:none;transition:color 0.2s;}
+.quick-link:last-child{border-bottom:none;}
+.quick-link-icon{font-size:0.9rem;flex-shrink:0;}
+.quick-link-text{font-size:0.82rem;font-weight:300;color:var(--slate);line-height:1.4;}
+.quick-link:hover .quick-link-text{color:var(--saffron);}
+
+/* ALERT BANNER */
+.alert-banner{background:var(--danger-lt);border:1px solid rgba(192,57,43,0.25);border-left:4px solid var(--danger);padding:1rem 1.4rem;margin-bottom:2rem;display:flex;gap:1rem;align-items:flex-start;}
+.alert-icon{font-size:1rem;flex-shrink:0;margin-top:2px;}
+.alert-content-title{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--danger);margin-bottom:0.3rem;}
+.alert-content-body{font-size:0.82rem;font-weight:300;color:var(--slate);line-height:1.65;}
+
+/* DIVIDER */
+.section-rule{border:none;border-top:1px solid var(--rule);margin:2.5rem 0;}
+
+/* FOOTER */
+footer{background:var(--prussian);padding:2.5rem 2rem;border-top:3px solid var(--saffron);}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-brand{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--parchment);}
+.footer-note{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;color:rgba(255,255,255,0.35);max-width:480px;line-height:1.7;}
+.footer-links{display:flex;gap:1.5rem;}
+.footer-links a{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;}
+.footer-links a:hover{color:var(--saffron-lt);}
+
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--prussian);transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-menu{display:none;position:absolute;top:68px;left:0;right:0;background:var(--cream);border-bottom:2px solid var(--saffron);box-shadow:var(--shadow-md);z-index:499;max-height:80vh;overflow-y:auto;}
+.mobile-menu.open{display:block;}
+.mobile-menu ul{list-style:none;padding:0.5rem 1.5rem 1.2rem;}
+.mobile-menu ul li a{display:block;font-size:0.88rem;color:var(--slate);text-decoration:none;padding:0.5rem 0;border-bottom:1px solid var(--rule);}
+.mm-label{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--saffron);padding:0.8rem 0 0.3rem;display:block;}
+@media(max-width:900px){
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .nav-inner{position:relative;}
+}
+@media(max-width:640px){.hero-date{font-size:2rem;}.stat-bar-inner{gap:1.5rem;}.main-layout{padding:2rem 1rem;}}
+</style>
+</head>
+<body>
+
+<!-- Masthead -->
+<div class="masthead">
+  <p class="masthead-text">DPDPIndia.in &mdash; <span>Independent Research</span> &mdash; IT Act &middot; DPDP Act &middot; UIDAI &middot; Cyber Law &mdash; <span>Est. 2022</span></p>
+</div>
+
+<!-- Nav -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <svg class="nav-brand-seal" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="21" cy="21" r="20" stroke="#1B2B3A" stroke-width="1.5"/>
+        <circle cx="21" cy="21" r="16" stroke="#D4760A" stroke-width="0.75" stroke-dasharray="2 3"/>
+        <text x="21" y="17" font-family="serif" font-size="8" fill="#1B2B3A" text-anchor="middle" font-weight="700">DPDP</text>
+        <text x="21" y="26" font-family="serif" font-size="5.5" fill="#D4760A" text-anchor="middle" letter-spacing="1">INDIA</text>
+        <line x1="10" y1="20" x2="32" y2="20" stroke="#1B2B3A" stroke-width="0.5" opacity="0.3"/>
+      </svg>
+      <div class="nav-brand-name">
+        <strong>DPDPIndia.in</strong>
+        <span>Policy &amp; Legal Research</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="dpdp-kb.html">DPDP Act</a></li>
+      <li><a href="itact-kb.html">IT Act</a></li>
+      <li><a href="ekyc-kb.html">eKYC &amp; UIDAI</a></li>
+      <li><a href="cybercrime-kb.html">Cyber Crime</a></li>
+      <li><a href="for-businesses.html">For Business</a></li>
+      <li><a href="for-individuals.html">For Individuals</a></li>
+      <li><a href="weekly-briefing.html" class="nav-back">All Weekly Briefings</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Menu" onclick="this.classList.toggle('open');document.getElementById('wmob').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="wmob">
+    <ul>
+      <span class="mm-label">Knowledge Bases</span>
+      <li><a href="dpdp-kb.html">DPDP Act Knowledge Base</a></li>
+      <li><a href="itact-kb.html">IT Act Knowledge Base</a></li>
+      <li><a href="ekyc-kb.html">eKYC / UIDAI Knowledge Base</a></li>
+      <li><a href="cybercrime-kb.html">Cyber Crime Knowledge Base</a></li>
+      <span class="mm-label">Sections</span>
+      <li><a href="for-businesses.html">DPDP for Business</a></li>
+      <li><a href="for-individuals.html">Know Your Rights</a></li>
+      <li><a href="case-tracker.html">Case Tracker</a></li>
+      <li><a href="weekly-briefing.html">Weekly Briefings Archive</a></li>
+      <li><a href="blog.html">All Articles</a></li>
+      <li><a href="cyber-fraud-hub.html">🚨 Cyber Fraud Hub — 1930</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="briefing-hero">
+  <div class="hero-inner">
+    <div class="hero-kicker">Weekly Intelligence</div>
+    <h1 class="hero-date">Week of 24 March 2026</h1>
+    <p class="hero-subtitle">Your weekly roundup of critical developments in India&rsquo;s data protection law, e-governance, cybersecurity, and digital rights &mdash; curated for legal and policy professionals.</p>
+    <div class="hero-tags">
+      <span class="hero-tag">DPDP Act</span>
+      <span class="hero-tag">IT Act 2000</span>
+      <span class="hero-tag">UIDAI / eKYC</span>
+      <span class="hero-tag">Cybercrime India</span>
+      <span class="hero-tag">E-Governance</span>
+      <span class="hero-tag">Supreme Court</span>
+      <span class="hero-tag">CERT-In</span>
+      <span class="hero-tag">Global Incidents</span>
+    </div>
+  </div>
+</div>
+
+<!-- Stat Bar -->
+<div class="stat-bar">
+  <div class="stat-bar-inner">
+    <div class="stat-item">
+      <span class="stat-num">9</span>
+      <span class="stat-label">Stories This Week</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-num">3</span>
+      <span class="stat-label">Critical Alerts</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-num">233 days</span>
+      <span class="stat-label">To DPDP Phase 2</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-num">&#8377;22,495 Cr</span>
+      <span class="stat-label">Cybercrime Losses FY25</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-num">6.8M</span>
+      <span class="stat-label">Records at Risk (Crunchyroll)</span>
+    </div>
+  </div>
+</div>
+
+<!-- Main Layout -->
+<div class="main-layout">
+
+  <!-- PRIMARY CONTENT -->
+  <main>
+
+    <!-- ACTIVE ALERT -->
+    <div class="alert-banner">
+      <div class="alert-icon">&#x1F6A8;</div>
+      <div>
+        <div class="alert-content-title">Active Advisory &mdash; CERT-In &mdash; 19 March 2026</div>
+        <div class="alert-content-body">CERT-In issued vulnerability note <strong>CIVN-2026-0150</strong> flagging critical remote-code-execution flaws across Apple iOS, macOS, and Safari. All Indian enterprises and government departments running Apple infrastructure must apply patches immediately. Under DPDP Rules, failure to patch a known critical vulnerability that enables a subsequent data breach could attract Data Protection Board scrutiny.</div>
+      </div>
+    </div>
+
+    <!-- ===== SECTION 1: DPDP ACT ===== -->
+    <div class="section-gap">
+      <div class="section-header">
+        <div class="section-icon">&#x2696;&#xFE0F;</div>
+        <div>
+          <div class="section-kicker">Legislation &amp; Compliance</div>
+          <div class="section-title">DPDP Act &amp; Rules &mdash; Implementation Watch</div>
+        </div>
+      </div>
+
+      <div class="news-card legal">
+        <div class="card-meta">
+          <span class="card-badge badge-judiciary">Supreme Court</span>
+          <span class="card-date">Feb &ndash; Mar 2026</span>
+        </div>
+        <div class="card-title">Constitutional Challenge to DPDP Act Referred to Larger Bench &mdash; Hearings Ongoing in March 2026</div>
+        <div class="card-body">
+          <p>A Bench comprising Chief Justice Surya Kant and Justices Joymalya Bagchi and V.M. Pancholi, hearing on 16 February 2026, refused to grant an interim stay on the Digital Personal Data Protection Act 2023 and referred the constitutional challenge to a larger bench, with hearings scheduled for March 2026.</p>
+          <p>The petitions challenge Sections 17(1)(c), 17(2), 33(1), 36, and 44(3) of the DPDP Act 2023 and Rules 17 and 23(2) of the DPDP Rules 2025, alleging violations of Articles 14, 19(1)(a) and 21 of the Constitution. The challenge centres on broad government exemptions and adequacy of the consent framework, raising civil society concerns about surveillance potential.</p>
+        </div>
+        <div class="card-implications">
+          <div class="card-implications-label">Strategic Implication</div>
+          <p>Businesses in Phase 1 compliance should not pause implementation &mdash; the stay was refused. However, legal teams must track the larger bench proceedings closely, as any adverse ruling could materially alter obligations under Sections 17 and 33. A constitutional reading-down of government exemptions would significantly strengthen data principal rights.</p>
+        </div>
+        <div class="card-source">Source: <a href="https://internetfreedom.in/supreme-court-issues-notice-on-constitutional-challenge-to-the-digital-personal-data-protection-act-2023-and-the-digital-personal-data-protection-rules-2025/" target="_blank" rel="noopener">Internet Freedom Foundation &mdash; Supreme Court Observer</a></div>
+      </div>
+
+      <div class="news-card">
+        <div class="card-meta">
+          <span class="card-badge badge-update">DPDP Phase 2 Countdown</span>
+          <span class="card-date">Active &middot; Updated March 2026</span>
+        </div>
+        <div class="card-title">233 Days to Consent Manager Framework Activation &mdash; Enterprises Must Prepare Now</div>
+        <div class="card-body">
+          <p>With Phase 1 (Data Protection Board constituted, 13 November 2025) now operational, organisations must begin active preparation for <strong>Phase 2 activation on 13 November 2026</strong>, when the consent manager registration framework goes live. Consent Managers must demonstrate a minimum net worth of &#8377;2 crore, be incorporated in India, and meet independent certification requirements for platform interoperability.</p>
+          <p>Full substantive compliance &mdash; notice requirements, Data Principal rights, breach notification obligations, cross-border transfer restrictions, and children&rsquo;s data processing rules &mdash; takes full effect on <strong>13 May 2027</strong>. Penalties up to &#8377;250 crore per violation apply from that date.</p>
+        </div>
+        <div class="card-implications">
+          <div class="card-implications-label">Board-Level Action Points</div>
+          <p>CISOs and General Counsel should treat November 2026 as the hard internal deadline for consent management architecture. Outsourced consent manager vendors must be evaluated now &mdash; the &#8377;2 crore net-worth and certification requirements mean the qualified vendor pool will be limited and could face supply-side constraints.</p>
+        </div>
+        <div class="card-source">Source: <a href="https://iapp.org/news/a/with-rules-finalized-india-s-dpdpa-takes-force" target="_blank" rel="noopener">IAPP</a> &middot; <a href="https://www.fisherphillips.com/en/insights/insights/indias-new-data-privacy-rules-are-here" target="_blank" rel="noopener">Fisher Phillips LLP</a> &middot; <a href="https://secureprivacy.ai/blog/india-dpdp-act-phase-1" target="_blank" rel="noopener">SecurePrivacy</a></div>
+      </div>
+    </div>
+
+    <hr class="section-rule">
+
+    <!-- ===== SECTION 2: COURTS ===== -->
+    <div class="section-gap">
+      <div class="section-header">
+        <div class="section-icon">&#x1F3DB;&#xFE0F;</div>
+        <div>
+          <div class="section-kicker">Judiciary</div>
+          <div class="section-title">Court Rulings &amp; Digital Rights</div>
+        </div>
+      </div>
+
+      <div class="news-card legal">
+        <div class="card-meta">
+          <span class="card-badge badge-judiciary">Supreme Court</span>
+          <span class="card-date">13 March 2026</span>
+        </div>
+        <div class="card-title">SC Clarifies RTI Cannot Override Personal Data Privacy &mdash; Legality-Necessity-Proportionality Test Mandatory</div>
+        <div class="card-body">
+          <p>In a ruling dated 13 March 2026, the Supreme Court clarified that public officials retain privacy rights under Article 21, and that personal data cannot be disclosed under the Right to Information Act 2005 without satisfying a three-part test: <em>legality</em>, <em>necessity</em>, and <em>proportionality</em> &mdash; mirroring the framework established in <em>Justice K.S. Puttaswamy v. Union of India</em> (2017).</p>
+          <p>The ruling creates significant precedent at the intersection of the RTI Act and the emerging DPDP Act regime, reinforcing that no right &mdash; not even transparency &mdash; can operate as an absolute override of privacy.</p>
+        </div>
+        <div class="card-implications">
+          <div class="card-implications-label">Legal Significance</div>
+          <p>Central and State Public Information Officers must now apply this three-pronged test before disclosing personal data of officials in RTI responses. This ruling will directly influence the Data Protection Board&rsquo;s adjudication framework once penalties go live in May 2027, particularly in cases involving government data fiduciaries.</p>
+        </div>
+        <div class="card-source">Source: <a href="https://www.legalserviceindia.com/Legal-Articles/supreme-court-privacy-vs-rti-personal-data-disclosure-ruling/" target="_blank" rel="noopener">Legal Service India</a></div>
+      </div>
+
+      <div class="news-card legal">
+        <div class="card-meta">
+          <span class="card-badge badge-judiciary">Delhi High Court</span>
+          <span class="card-date">March 2026</span>
+        </div>
+        <div class="card-title">Delhi HC Grants Interim Order Against AI Deepfakes &mdash; Personality Rights Upheld Under IT Act</div>
+        <div class="card-body">
+          <p>The Delhi High Court granted an interim order protecting the personality rights of senior journalist Sudhir Chaudhary against AI-generated deepfake videos circulating on YouTube, directing the platform to take down allegedly misleading synthetic content. The order was passed invoking the IT Act&rsquo;s intermediary liability framework alongside civil law remedies for personality rights.</p>
+          <p>This ruling signals India&rsquo;s courts&rsquo; increasing willingness to apply existing legal tools to AI-generated harmful content while the legislature considers dedicated deepfake regulations.</p>
+        </div>
+        <div class="card-implications">
+          <div class="card-implications-label">Policy Watch</div>
+          <p>This ruling accelerates the case for dedicated deepfake or synthetic media regulation under a future IT Act amendment or DPDP subordinate legislation. In the interim, intermediaries face heightened liability under Sections 79 and 85 of the IT Act upon receiving notice of deepfake content &mdash; platforms should update their take-down SLAs accordingly.</p>
+        </div>
+        <div class="card-source">Source: <a href="https://www.scconline.com/blog/post/2026/01/24/real-life-cybercrimes-india-cases-remedies-prevention/" target="_blank" rel="noopener">SCC Online</a></div>
+      </div>
+    </div>
+
+    <hr class="section-rule">
+
+    <!-- ===== SECTION 3: E-GOVERNANCE ===== -->
+    <div class="section-gap">
+      <div class="section-header">
+        <div class="section-icon">&#x1F3DB;&#xFE0F;</div>
+        <div>
+          <div class="section-kicker">Government &amp; Digital Public Infrastructure</div>
+          <div class="section-title">E-Governance, MeitY &amp; UIDAI Updates</div>
+        </div>
+      </div>
+
+      <div class="news-card positive">
+        <div class="card-meta">
+          <span class="card-badge badge-govt">MeitY Initiative</span>
+          <span class="card-date">23 February 2026</span>
+        </div>
+        <div class="card-title">MeitY Launches Blockchain India Challenge 2026 &mdash; Targets Land Records, PDS, Healthcare &amp; Document Verification</div>
+        <div class="card-body">
+          <p>Inaugurated by MeitY Secretary S. Krishnan on 23 February 2026, the <em>Blockchain India Challenge 2026</em> invites Indian startups to develop permissioned-blockchain solutions for digital governance. Priority use cases include land records (integration with DILRMP), Public Distribution System, healthcare records, and tamper-proof document verification. The initiative aligns with Digital India 3.0&rsquo;s goal of immutable, transparent public service delivery.</p>
+          <p>Separately, MeitY has constituted a high-level committee for Harmonisation of the Regulatory Framework for DigiLocker, with terms of reference including legislative review of Digital Locker Rules and a future roadmap for Entity Locker expansion.</p>
+        </div>
+        <div class="card-implications">
+          <div class="card-implications-label">Opportunity &amp; Compliance Note</div>
+          <p>Solutions deployed under this programme handling personal data must build DPDP Act compliance in from day one &mdash; particularly consent management and data minimisation obligations under the DPDP Rules 2025. DPDP-readiness will become a key evaluation criterion for government procurement of data-processing technology.</p>
+        </div>
+        <div class="card-source">Source: <a href="https://edunovations.com/currentaffairs/national/blockchain-india-challenge-2026/" target="_blank" rel="noopener">EduNovations</a> &middot; <a href="https://www.meity.gov.in/" target="_blank" rel="noopener">MeitY.gov.in</a></div>
+      </div>
+
+      <div class="news-card positive">
+        <div class="card-meta">
+          <span class="card-badge badge-govt">UIDAI / Aadhaar</span>
+          <span class="card-date">Annual Report FY 2024&ndash;25</span>
+        </div>
+        <div class="card-title">Aadhaar Authentication Surpasses 2,707 Crore Transactions in FY25 &mdash; New Governance Portal Launched</div>
+        <div class="card-body">
+          <p>UIDAI confirmed that Aadhaar authentication crossed <strong>2,707 crore transactions</strong> in FY 2024&ndash;25, with eKYC alone approaching 45 crore transactions in the month of March. MeitY also launched a new Aadhaar Governance Portal to streamline the inclusion of new use cases in public service delivery, following amendments to the Aadhaar Authentication for Good Governance (Social Welfare, Innovation, Knowledge) Rules 2025.</p>
+          <p>UIDAI Circular 7 of 2025 updated the eKYC XML and PDF response format for foreign nationals enrolled as Aadhaar holders &mdash; a significant operational update for banks, telecom operators, and fintech companies serving NRI customers.</p>
+        </div>
+        <div class="card-source">Source: <a href="https://www.uidai.gov.in/en/media-resources/media/press-releases/18883-aadhaar-authentication-surges-past-2-707-cr-in-2024-25-aadhaar-e-kyc-transactions-close-to-45-cr-in-march.html" target="_blank" rel="noopener">UIDAI Press Release</a> &middot; <a href="https://ddnews.gov.in/en/new-aadhaar-governance-portal-launched-to-enhance-ease-of-living-and-citizen-centric-services/" target="_blank" rel="noopener">DD News</a></div>
+      </div>
+    </div>
+
+    <hr class="section-rule">
+
+    <!-- ===== SECTION 4: INDIA CYBER ===== -->
+    <div class="section-gap">
+      <div class="section-header">
+        <div class="section-icon">&#x1F6E1;&#xFE0F;</div>
+        <div>
+          <div class="section-kicker">Domestic Cyber Threats</div>
+          <div class="section-title">India Cybercrime &amp; CERT-In</div>
+        </div>
+      </div>
+
+      <div class="news-card critical">
+        <div class="card-meta">
+          <span class="card-badge badge-critical">CERT-In Advisory</span>
+          <span class="card-date">19 March 2026</span>
+        </div>
+        <div class="card-title">CERT-In CIVN-2026-0150: Critical RCE Vulnerabilities Across Apple Ecosystem &mdash; Patch Immediately</div>
+        <div class="card-body">
+          <p>CERT-In issued advisory <strong>CIVN-2026-0150</strong> classifying multiple remote-code-execution (RCE) vulnerabilities across Apple iOS, macOS, iPadOS, watchOS, and Safari as <em>critically important</em>. Exploiting these flaws allows attackers to execute unauthorised code remotely on unpatched devices without user interaction in certain attack vectors.</p>
+          <p>The advisory urgently directs all individual consumers, enterprise IT teams, and government departments to install the latest security patches via device software update settings.</p>
+        </div>
+        <div class="card-implications">
+          <div class="card-implications-label">Compliance Action Required</div>
+          <p>Under CERT-In&rsquo;s April 2022 cybersecurity directions, regulated entities must report incidents within 6 hours. A known-unpatched device that is subsequently exploited would constitute gross negligence. CISO teams should document patch deployment timelines as evidence of due diligence for any future Data Protection Board inquiry.</p>
+        </div>
+        <div class="card-source">Source: <a href="https://www.cert-in.org.in/s2cMainServlet?pageid=PUBADVLIST" target="_blank" rel="noopener">CERT-In Advisories</a> &middot; <a href="https://www.prameyanews.com/indian-authorities-issue-critical-cert-in-apple-warning-for-all-iphone-and-mac-users" target="_blank" rel="noopener">Prameya News</a></div>
+      </div>
+
+      <div class="news-card critical">
+        <div class="card-meta">
+          <span class="card-badge badge-critical">Threat Intelligence</span>
+          <span class="card-date">Seqrite Report &middot; March 2026</span>
+        </div>
+        <div class="card-title">Cybercrime Up 24% in FY25: &#8377;22,495 Cr Lost &mdash; Healthcare &amp; Govt Top Ransomware Targets in 2026</div>
+        <div class="card-body">
+          <p>The Seqrite India Cyber Threat Report 2026, drawing on Ministry of Home Affairs data, confirms a <strong>24% spike in cybercrime</strong> with total FY25 losses of &#8377;22,495 crore. Investment scams alone accounted for over 75% of financial losses. Healthcare, Education, and Manufacturing together constituted nearly 47% of all malware detections (Oct 2024 &ndash; Sep 2025).</p>
+          <p>Ransomware surged 31% above prior nine-month averages in January 2026 alone, with healthcare leading at 27 incidents per month, followed by government (11) and manufacturing (10). India accounts for approximately 3% of global ransomware victims. A coordinated hybrid warfare campaign by APT36 and SideCopy threat actors was documented as having infiltrated Indian defence and government networks during this period.</p>
+        </div>
+        <div class="card-implications">
+          <div class="card-implications-label">Policy &amp; Regulatory Implication</div>
+          <p>The APT36/SideCopy campaign targeting defence networks adds urgency to India&rsquo;s Space Cybersecurity Guidelines 2026 (CERT-In/SIA-India) and raises questions about mandatory incident reporting timelines. Healthcare entities must urgently review the 6-hour reporting obligation under CERT-In 2022 directions. The &#8377;22,495 crore loss figure should directly inform the Data Protection Board&rsquo;s penalty calibration discussions ahead of May 2027.</p>
+        </div>
+        <div class="card-source">Source: <a href="https://www.seqrite.com/india-cyber-threat-report-2026/" target="_blank" rel="noopener">Seqrite Threat Report 2026</a> &middot; <a href="https://www.insightsonindia.com/2026/02/21/cybercrime-in-india/" target="_blank" rel="noopener">Insights on India</a> &middot; <a href="https://thecyberexpress.com/cybercrime-in-india-ncrb-report-2023-2025/" target="_blank" rel="noopener">The Cyber Express</a></div>
+      </div>
+    </div>
+
+    <hr class="section-rule">
+
+    <!-- ===== SECTION 5: GLOBAL ===== -->
+    <div class="section-gap">
+      <div class="section-header">
+        <div class="section-icon">&#x1F30D;</div>
+        <div>
+          <div class="section-kicker">Global Intelligence</div>
+          <div class="section-title">International Cybersecurity Incidents &mdash; India Relevance</div>
+        </div>
+      </div>
+
+      <div class="news-card critical">
+        <div class="card-meta">
+          <span class="card-badge badge-global">Global Breach</span>
+          <span class="card-date">12 March 2026</span>
+        </div>
+        <div class="card-title">Crunchyroll Breach: 6.8 Million Users&rsquo; Data Stolen via BPO Okta SSO Compromise</div>
+        <div class="card-body">
+          <p>Anime streaming platform Crunchyroll (Sony Pictures) confirmed investigation of a breach affecting approximately <strong>6.8 million users</strong> after threat actors compromised the Okta Single Sign-On (SSO) account of a Telus International BPO support agent. The intrusion, claimed on 12 March 2026, exposed user email addresses, subscription data, and viewing history.</p>
+          <p>The breach is the latest in a series of Okta supply-chain compromises and highlights the critical vulnerability of outsourced support operations as a privileged entry vector into first-party systems.</p>
+        </div>
+        <div class="card-implications">
+          <div class="card-implications-label">India BPO Sector Alert</div>
+          <p>India&rsquo;s large IT-BPO industry must note: where Indian BPO support agents access data of Indian users on behalf of a foreign principal, the Indian entity may constitute a Data Fiduciary or Data Processor under the DPDP Act. The Crunchyroll breach model &mdash; outsourced support with privileged SSO access &mdash; is endemic in Indian BPO operations. Boards must review third-party access control policies as a DPDP Phase 2 priority.</p>
+        </div>
+        <div class="card-source">Source: <a href="https://www.bleepingcomputer.com/news/security/crunchyroll-probes-breach-after-hacker-claims-to-steal-68m-users-data/" target="_blank" rel="noopener">BleepingComputer</a></div>
+      </div>
+
+      <div class="news-card critical">
+        <div class="card-meta">
+          <span class="card-badge badge-global">UK Government Breach</span>
+          <span class="card-date">16&ndash;20 March 2026</span>
+        </div>
+        <div class="card-title">UK Companies House WebFiling Flaw Exposes Personal Data of 5 Million Company Directors</div>
+        <div class="card-body">
+          <p>A security vulnerability in the UK Government&rsquo;s Companies House WebFiling portal, disclosed around 16&ndash;20 March 2026, exposed personal data &mdash; including email addresses, home addresses, and dates of birth of company directors &mdash; for approximately <strong>5 million registered companies</strong>. The breach highlights systemic risks in legacy government digital service infrastructure worldwide.</p>
+        </div>
+        <div class="card-implications">
+          <div class="card-implications-label">India Parallel: MCA21</div>
+          <p>India&rsquo;s MCA21 portal (Ministry of Corporate Affairs) carries structurally analogous risks as it stores personal data of directors and signatories. With DPDP Rules mandating breach notification and the DigiLocker Harmonisation Committee now active, MCA and NIC should conduct urgent security audits of all public registries containing personal data. The UK incident provides a concrete risk benchmark for the DPDP Board&rsquo;s future guidance on government data fiduciaries.</p>
+        </div>
+        <div class="card-source">Source: <a href="https://www.upguard.com/news/gov-uk-data-breach-2026-03-20" target="_blank" rel="noopener">UpGuard</a></div>
+      </div>
+
+      <div class="news-card">
+        <div class="card-meta">
+          <span class="card-badge badge-global">Supply Chain Attack</span>
+          <span class="card-date">19 March 2026</span>
+        </div>
+        <div class="card-title">Checkmarx GitHub Actions Compromised by TeamPCP &mdash; Credential-Stealing Malware in DevSecOps Pipeline</div>
+        <div class="card-body">
+          <p>Two GitHub Actions CI/CD workflows maintained by supply-chain security vendor Checkmarx were compromised by threat actor <em>TeamPCP</em> via credential-stealing malware, discovered approximately 19 March 2026. The attack targeted a security vendor&rsquo;s own automated build pipelines, demonstrating the &ldquo;hack the defender&rdquo; supply-chain vector that can cascade silently to thousands of downstream software projects.</p>
+        </div>
+        <div class="card-implications">
+          <div class="card-implications-label">India DevSecOps Alert</div>
+          <p>Indian software exporters, SaaS companies, and government IT vendors using GitHub Actions should immediately audit all third-party action dependencies. Given India&rsquo;s CERT-In 2022 directions on supply-chain security and the upcoming MeitY Cloud Policy revision, this incident is likely to accelerate mandatory CI/CD security standards for software suppliers to government.</p>
+        </div>
+        <div class="card-source">Source: <a href="https://www.privacyguides.org/news/2026/03/09/data-breach-roundup-feb-20-feb-26-2026-2/" target="_blank" rel="noopener">Privacy Guides Breach Roundup</a> &middot; <a href="https://www.pkware.com/blog/2026-data-breaches" target="_blank" rel="noopener">PKWARE 2026 Breaches</a></div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">&#x1F4C5; DPDP Implementation Phases</div>
+      <div class="timeline-item">
+        <div class="timeline-dot active"></div>
+        <div class="timeline-text"><strong>Phase 1 &mdash; Active Now</strong><br>Data Protection Board constituted. Adjudicatory functions and complaint mechanisms operational since 13 Nov 2025.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-text"><strong>Phase 2 &mdash; 13 Nov 2026</strong><br>Consent Manager registration framework opens. &#8377;2 Cr net-worth requirement. Board empowered to impose consent-related penalties.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot future"></div>
+        <div class="timeline-text"><strong>Phase 3 &mdash; 13 May 2027</strong><br>Full compliance. Notice, consent, Data Principal rights, breach notification, children&rsquo;s data rules &amp; full penalties live.</div>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">&#x2696;&#xFE0F; DPDP Penalty Scale (from May 2027)</div>
+      <div class="penalty-item">
+        <span class="penalty-label">Security safeguard failure</span>
+        <span class="penalty-val">&#8377;250 Cr</span>
+      </div>
+      <div class="penalty-item">
+        <span class="penalty-label">Child data breach</span>
+        <span class="penalty-val">&#8377;200 Cr</span>
+      </div>
+      <div class="penalty-item">
+        <span class="penalty-label">Breach notification failure</span>
+        <span class="penalty-val">&#8377;200 Cr</span>
+      </div>
+      <div class="penalty-item">
+        <span class="penalty-label">Notice / Consent non-compliance</span>
+        <span class="penalty-val">&#8377;50 Cr</span>
+      </div>
+      <div class="penalty-item">
+        <span class="penalty-label">Data Principal rights denial</span>
+        <span class="penalty-val">&#8377;50 Cr</span>
+      </div>
+    </div>
+
+    <div class="subscribe-card">
+      <div class="subscribe-title">Subscribe — Weekly Intelligence</div>
+      <p class="subscribe-body">Get curated DPDP Act, IT Act &amp; cybercrime developments delivered every Monday. Trusted by lawyers, CISOs, and policy researchers across India.</p>
+      <form class="subscribe-form" id="subscribeForm"
+            action="https://formspree.io/f/mlgodzbr"
+            method="POST">
+        <input type="hidden" name="_subject" value="Newsletter Subscription — DPDPindia.in">
+        <input type="hidden" name="Type" value="Newsletter Subscription">
+        <input type="email" name="Email" class="subscribe-input" placeholder="your@email.com" required>
+        <button type="submit" class="subscribe-btn">Subscribe Free &rarr;</button>
+        <p class="subscribe-success" style="display:none;color:#a8d5a2;font-size:0.82rem;margin-top:0.5rem;">✓ Subscribed! Thank you.</p>
+      </form>
+      <script>
+      (function(){
+        var f=document.getElementById('subscribeForm');
+        if(f) f.addEventListener('submit',async function(e){
+          e.preventDefault();
+          var btn=f.querySelector('button');
+          btn.textContent='Subscribing…'; btn.disabled=true;
+          var res=await fetch(f.action,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}});
+          if(res.ok){f.querySelector('.subscribe-success').style.display='block';btn.style.display='none';}
+          else{btn.textContent='Try again'; btn.disabled=false;}
+        });
+      })();
+      </script>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">&#x1F517; Research Quick Links</div>
+      <a href="dpdp-act.html" class="quick-link">
+        <span class="quick-link-icon">&#x1F4DC;</span>
+        <span class="quick-link-text">DPDP Act 2023 &mdash; Full Text &amp; Analysis</span>
+      </a>
+      <a href="dpdp-rules.html" class="quick-link">
+        <span class="quick-link-icon">&#x1F4CB;</span>
+        <span class="quick-link-text">DPDP Rules 2025 &mdash; Annotated Guide</span>
+      </a>
+      <a href="dpdp-adjudication.html" class="quick-link">
+        <span class="quick-link-icon">&#x2696;&#xFE0F;</span>
+        <span class="quick-link-text">Data Protection Board &mdash; Process Guide</span>
+      </a>
+      <a href="itact-sections.html" class="quick-link">
+        <span class="quick-link-icon">&#x1F4BB;</span>
+        <span class="quick-link-text">IT Act 2000 &mdash; Section-wise Reference</span>
+      </a>
+      <a href="ekyc-uidai-guide.html" class="quick-link">
+        <span class="quick-link-icon">&#x1FAA6;</span>
+        <span class="quick-link-text">UIDAI eKYC &mdash; Compliance Handbook</span>
+      </a>
+      <a href="cybercrime-remedy-guide.html" class="quick-link">
+        <span class="quick-link-icon">&#x1F46E;</span>
+        <span class="quick-link-text">Cybercrime &mdash; Victim Remedy Guide</span>
+      </a>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">&#x2139;&#xFE0F; Research Disclaimer</div>
+      <p style="font-size:0.78rem;font-weight:300;line-height:1.75;color:var(--mist);">This briefing is prepared for research and educational purposes only and does not constitute legal advice. Readers should consult qualified legal counsel before taking compliance or litigation decisions. DPDPIndia.in is an independent research platform with no affiliation to MeitY, UIDAI, or any government body.</p>
+    </div>
+
+  </aside>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">DPDPIndia.in</div>
+      <p class="footer-note" style="margin-top:0.5rem;">India&rsquo;s premier independent research portal on the Digital Personal Data Protection Act 2023, IT Act 2000, Aadhaar eKYC, and Cyber Law. All weekly briefings are research publications and do not constitute legal advice. &copy; 2026 DPDPIndia.in</p>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="dpdp-act.html">DPDP Act</a>
+      <a href="contact.html">Contact</a>
+      <a href="legal.html">Legal</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

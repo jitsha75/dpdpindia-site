@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adjudication & Penalties — The Data Protection Board — DPDP KB</title>
+<style>@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:wght@600&display=swap');
+:root{--navy:#0a1628;--navy2:#132040;--blue:#1a5cad;--blue-light:#3b82d4;--amber:#d4900a;--amber-light:#f5c842;--teal:#0e7c6b;--coral:#c2420a;--purple:#5b4bc4;--green:#156c2e;--red:#b91c1c;--surface:#f4f6fb;--surface2:#eaeff8;--text:#0d1b2a;--text2:#3a4a5c;--text3:#6b7e94;--border:#c8d4e8;--border2:#b0c0d8;--white:#ffffff;--font-body:'IBM Plex Sans',sans-serif;--font-display:'Playfair Display',serif;--font-mono:'IBM Plex Mono',monospace;--radius:8px;--radius-lg:12px;--shadow:0 2px 12px rgba(10,22,40,.08);--shadow-md:0 4px 24px rgba(10,22,40,.13);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--surface);color:var(--text);font-size:15px;line-height:1.7;min-height:100vh;}
+.header{background:var(--navy);color:#fff;position:relative;overflow:hidden;}
+.header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px),repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px);}
+.header-inner{position:relative;max-width:1100px;margin:0 auto;padding:52px 40px 48px;}
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:20px;font-family:var(--font-mono);font-size:11px;flex-wrap:wrap;}
+.breadcrumb a{color:rgba(255,255,255,.5);text-decoration:none;transition:color .15s;}
+.breadcrumb a:hover{color:var(--amber-light);}
+.breadcrumb .sep{color:rgba(255,255,255,.25);}
+.breadcrumb .cur{color:var(--amber-light);}
+.header-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:4px 14px;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:20px;}
+.header h1{font-family:var(--font-display);font-size:clamp(24px,4vw,38px);font-weight:600;line-height:1.15;color:#fff;margin-bottom:14px;max-width:760px;}
+.header-sub{font-size:15px;color:rgba(255,255,255,.6);max-width:680px;line-height:1.65;margin-bottom:28px;}
+.header-meta{display:flex;flex-wrap:wrap;gap:8px;}
+.meta-pill{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:4px 12px;font-size:12px;color:rgba(255,255,255,.65);font-family:var(--font-mono);}
+.layout{display:flex;max-width:1100px;margin:0 auto;padding:32px 20px;gap:32px;align-items:flex-start;}
+.sidebar{width:220px;flex-shrink:0;position:sticky;top:24px;}
+.sidebar-nav{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:12px 0;box-shadow:var(--shadow);}
+.sidebar-nav h3{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:6px 18px 10px;}
+.sidebar-nav a{display:flex;align-items:center;gap:8px;padding:8px 18px;font-size:13px;color:var(--text2);text-decoration:none;border-left:2px solid transparent;transition:all .15s;line-height:1.3;}
+.sidebar-nav a:hover{background:var(--surface);color:var(--blue);border-left-color:var(--blue-light);}
+.sidebar-nav .nav-num{font-family:var(--font-mono);font-size:10px;color:var(--text3);min-width:16px;}
+.sidebar-nav hr{border:none;border-top:1px solid var(--border);margin:8px 0;}
+.sidebar-nav .nav-sep{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:12px 18px 4px;display:block;}
+.sidebar-related{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px 18px;box-shadow:var(--shadow);margin-top:12px;}
+.sidebar-related h4{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:10px;}
+.sidebar-related a{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);text-decoration:none;padding:5px 0;border-bottom:1px solid var(--border);transition:color .15s;}
+.sidebar-related a:last-child{border-bottom:none;}
+.sidebar-related a:hover{color:var(--blue);}
+.sidebar-related .link-icon{font-size:11px;opacity:.5;}
+.main{flex:1;min-width:0;}
+.section{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:24px;box-shadow:var(--shadow);overflow:hidden;}
+.section-header{display:flex;align-items:center;gap:14px;padding:20px 28px;border-bottom:1px solid var(--border);background:var(--surface);}
+.section-num{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--font-mono);font-size:12px;font-weight:500;flex-shrink:0;}
+.section-header h2{font-size:17px;font-weight:600;color:var(--text);letter-spacing:-.01em;}
+.section-header p{font-size:13px;color:var(--text3);margin-top:2px;}
+.section-body{padding:28px;}
+.prose p{font-size:14px;color:var(--text2);margin-bottom:12px;line-height:1.75;}
+.prose p:last-child{margin-bottom:0;}
+.prose strong{font-weight:600;color:var(--text);}
+.prose ul{padding-left:20px;margin-bottom:12px;}
+.prose li{font-size:14px;color:var(--text2);margin-bottom:5px;line-height:1.65;}
+.prose code{font-family:var(--font-mono);font-size:12px;background:var(--surface2);padding:1px 6px;border-radius:3px;border:1px solid var(--border);color:var(--blue);}
+.note-box{padding:12px 16px;border-radius:var(--radius);font-size:13px;line-height:1.6;border-left:3px solid;margin:12px 0;}
+.note-box.warning{background:#fef3cd;border-color:var(--amber);color:#533200;}
+.note-box.info{background:#e6f1fb;border-color:var(--blue);color:#0a2e5e;}
+.note-box.danger{background:#fde8e8;border-color:var(--red);color:#5c0f0f;}
+.note-box.success{background:#e8f5ee;border-color:var(--green);color:#0a3318;}
+.note-box.amber{background:#fffaed;border-color:var(--amber);color:#533200;}
+.note-box strong{font-weight:600;}
+.reg-ref{display:inline-flex;align-items:center;gap:4px;padding:2px 8px 2px 6px;border-radius:4px;background:#ede8fe;color:var(--purple);border:1px solid #c4b8f5;font-family:var(--font-mono);font-size:11px;font-weight:500;white-space:nowrap;}
+.reg-ref::before{content:'§';font-family:Georgia,serif;font-size:12px;}
+.footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:28px 20px;font-size:12px;margin-top:40px;}
+.footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:12px;}
+.footer-links a{color:rgba(255,255,255,.55);text-decoration:none;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;transition:color .15s;}
+.footer-links a:hover{color:var(--amber-light);}
+.footer a{color:rgba(255,255,255,.6);}
+@media(max-width:820px){.layout{flex-direction:column;padding:16px;}.sidebar{width:100%;position:static;}.sidebar-nav{display:none;}.header-inner{padding:32px 20px;}.section-body{padding:16px;}}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <div class="breadcrumb">
+      <a href="index.html">DPDPindia.in</a><span class="sep">/</span>
+      <a href="dpdp-kb.html">DPDP Knowledge Base</a><span class="sep">/</span>
+      <span class="cur">Enforcement</span>
+    </div>
+    <div class="header-badge"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;display:inline-block;"></span>&nbsp;Article 05 · DPDP Knowledge Base</div>
+    <h1><span style="color:#ef4444;">Adjudication & Penalties</span> — The Data Protection Board</h1>
+    <p class="header-sub">The full enforcement machinery of the DPDP Act — the Data Protection Board's structure, powers, and independence, the dispute resolution flow from breach to TDSAT appeal, and the complete Schedule I penalty framework with a comparative analysis of fixed-cap vs GDPR's turnover-based model.</p>
+    <div class="header-meta"><span class="meta-pill">DPB structure</span><span class="meta-pill">Section 33 penalties</span><span class="meta-pill">Schedule I</span><span class="meta-pill">TDSAT appeal</span></div>
+  </div>
+</header>
+<div class="layout">
+  <nav class="sidebar">
+    <div class="sidebar-nav">
+      <h3>On this page</h3>
+      <a href="#s1"><span class="nav-num">01</span> The Data Protection Board (DPB)</a><a href="#s2"><span class="nav-num">02</span> Dispute resolution flow</a><a href="#s3"><span class="nav-num">03</span> Penalty schedule</a>
+      <hr><span class="nav-sep">Knowledge Base</span>
+      <a href="dpdp-kb.html"><span class="nav-num">←</span> Back to DPDP KB</a>
+      <a href="index.html"><span class="nav-num">⌂</span> DPDPindia.in</a>
+    </div>
+    <div class="sidebar-related">
+      <h4>Related Articles</h4><a href="dpdp-rights.html"><span class="link-icon">↗</span> Data Principal Rights</a><a href="dpdp-exemptions.html"><span class="link-icon">↗</span> Exemptions &amp; Gov Powers</a><a href="dpdp-rules.html"><span class="link-icon">↗</span> Rules 2025</a>
+    </div>
+  </nav>
+  <main class="main">
+
+    <section class="section" id="s1">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <div><h2>The Data Protection Board of India (DPB)</h2><p>Structure, powers, and independence considerations</p></div>
+      </div>
+      <div class="section-body"><div class="prose">
+<p>The <strong>Data Protection Board of India (DPB)</strong> is the enforcement and adjudicatory authority created by the DPDP Act. The DPB is established as a digital-by-default body — it receives complaints electronically, conducts proceedings through video conferencing, and issues orders through an online portal.</p>
+<p>The Central Government appoints the DPB's Chairperson and members — a design feature that civil society organisations have criticised as potentially compromising the Board's independence from the government, particularly given Section 17's broad government exemptions.</p>
+</div>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:16px;"><div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);"><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);margin-bottom:7px;">DPB Functions</div><div style="font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:7px;line-height:1.3;">Adjudication & Enforcement</div><div style="font-size:13px;color:var(--text2);line-height:1.65;">The DPB receives and adjudicates complaints from data principals against Data Fiduciaries. It can conduct inquiries, summon evidence, and issue directions and penalties. Its orders are appealable to the Telecom Disputes Settlement and Appellate Tribunal (TDSAT).</div></div><div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);"><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);margin-bottom:7px;">DPB Powers</div><div style="font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:7px;line-height:1.3;">Investigation & Interim Relief</div><div style="font-size:13px;color:var(--text2);line-height:1.65;">The DPB can call for information from any Data Fiduciary, conduct inquiries, and issue interim directions where there is an imminent threat of harm. It can also initiate proceedings suo motu based on information from any source.</div></div><div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);"><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);margin-bottom:7px;">Digital-First</div><div style="font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:7px;line-height:1.3;">Technology-Driven Operations</div><div style="font-size:13px;color:var(--text2);line-height:1.65;">The DPB operates primarily through digital channels — online complaint portal, video-conferenced hearings, and electronic orders. This design aims to reduce procedural delays but requires data principals to have digital access to use the system effectively.</div></div><div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);"><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-bottom:7px;">Independence Concern</div><div style="font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:7px;line-height:1.3;">Government-Appointed Members</div><div style="font-size:13px;color:var(--text2);line-height:1.65;">The Act provides for Central Government appointment of the DPB Chairperson and members. Academic and civil society commentary has noted this may limit institutional independence, particularly in complaints involving government entities that are exempt under Section 17.</div></div></div></div>
+    </section>
+    <section class="section" id="s2">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <div><h2>Dispute Resolution Flow</h2><p>From breach notification to TDSAT appeal — the complete enforcement pathway</p></div>
+      </div>
+      <div class="section-body"><div style="border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;">
+<div style="display:flex;gap:14px;padding:16px 20px;border-bottom:1px solid var(--border);align-items:flex-start;"><div style="width:36px;height:36px;border-radius:50%;background:#1B2B3A;color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:13px;font-weight:500;flex-shrink:0;margin-top:1px;">1</div><div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">Breach / Violation Occurs</div><div style="font-size:13px;color:var(--text2);line-height:1.6;">A personal data breach occurs, or a Data Fiduciary fails to comply with the Act or Rules. The Data Fiduciary has an obligation to self-report breaches to the DPB within prescribed timelines.</div></div></div><div style="display:flex;gap:14px;padding:16px 20px;border-bottom:1px solid var(--border);align-items:flex-start;"><div style="width:36px;height:36px;border-radius:50%;background:var(--amber);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:13px;font-weight:500;flex-shrink:0;margin-top:1px;">2</div><div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">Complaint Filed or Inquiry Initiated</div><div style="font-size:13px;color:var(--text2);line-height:1.6;">A data principal files a complaint with the DPB through the online portal (fee-free), OR the DPB initiates an inquiry suo motu based on information from any source.</div></div></div><div style="display:flex;gap:14px;padding:16px 20px;border-bottom:1px solid var(--border);align-items:flex-start;"><div style="width:36px;height:36px;border-radius:50%;background:var(--amber);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:13px;font-weight:500;flex-shrink:0;margin-top:1px;">3</div><div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">DPB Inquiry</div><div style="font-size:13px;color:var(--text2);line-height:1.6;">The DPB reviews the complaint, may call for information from the Data Fiduciary, and may summon both parties. Proceedings can be conducted via video conference. The Data Fiduciary has an opportunity to be heard.</div></div></div><div style="display:flex;gap:14px;padding:16px 20px;border-bottom:1px solid var(--border);align-items:flex-start;"><div style="width:36px;height:36px;border-radius:50%;background:#b91c1c;color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:13px;font-weight:500;flex-shrink:0;margin-top:1px;">4</div><div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">Adjudicatory Order — Penalties</div><div style="font-size:13px;color:var(--text2);line-height:1.6;">If a violation is established, the DPB issues a reasoned order and may impose a monetary penalty. The order specifies the violation found, the penalty amount, and remediation required.</div></div></div><div style="display:flex;gap:14px;padding:16px 20px;border-bottom:1px solid var(--border);align-items:flex-start;"><div style="width:36px;height:36px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:13px;font-weight:500;flex-shrink:0;margin-top:1px;">5</div><div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">TDSAT Appeal</div><div style="font-size:13px;color:var(--text2);line-height:1.6;">Either party may appeal the DPB's order to the Telecom Disputes Settlement and Appellate Tribunal (TDSAT) within 60 days of the order. TDSAT's order can be further challenged in the High Court.</div></div></div>
+</div>
+<div class="note-box success" style="margin-top:14px;"><strong>Accessibility feature:</strong> Any data principal can file a complaint with the DPB without engaging a lawyer and without paying a fee. This low-barrier access is a deliberate design choice to prevent enforcement being limited to well-resourced complainants.</div></div>
+    </section>
+    <section class="section" id="s3">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div><h2>Penalty Schedule — Fixed Caps, Not Turnover-Based</h2><p>The complete monetary penalty framework under Schedule I of the Act</p></div>
+      </div>
+      <div class="section-body"><div class="prose"><p>The DPDP Act takes a <strong>fixed-cap approach</strong> to monetary penalties — a deliberate departure from GDPR's percentage-of-global-turnover model. The maximum penalties are specified in Schedule I of the Act. The DPB must consider the severity of the breach, repetition, and mitigating factors when determining the actual penalty within the cap.</p></div>
+<div style="border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:16px;">
+  <div style="background:var(--navy);padding:12px 20px;"><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.4);">Schedule I — Maximum Monetary Penalties</div></div>
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid var(--border);"><span style="font-size:13.5px;font-weight:500;color:var(--text);max-width:70%;">Failure to implement reasonable security safeguards (Section 8)</span><span style="font-family:var(--font-display);font-size:22px;font-weight:700;color:#b91c1c;flex-shrink:0;">₹250 Cr</span></div><div style="display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid var(--border);"><span style="font-size:13.5px;font-weight:500;color:var(--text);max-width:70%;">Failure to notify the DPB of a personal data breach (Section 8)</span><span style="font-family:var(--font-display);font-size:22px;font-weight:700;color:#b91c1c;flex-shrink:0;">₹200 Cr</span></div><div style="display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid var(--border);"><span style="font-size:13.5px;font-weight:500;color:var(--text);max-width:70%;">Violation of children's data obligations (Section 9)</span><span style="font-family:var(--font-display);font-size:22px;font-weight:700;color:#b91c1c;flex-shrink:0;">₹200 Cr</span></div><div style="display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid var(--border);"><span style="font-size:13.5px;font-weight:500;color:var(--text);max-width:70%;">Violation of Significant Data Fiduciary obligations (Section 10)</span><span style="font-family:var(--font-display);font-size:22px;font-weight:700;color:#b91c1c;flex-shrink:0;">₹150 Cr</span></div><div style="display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid var(--border);"><span style="font-size:13.5px;font-weight:500;color:var(--text);max-width:70%;">Breach of duties of Data Processor</span><span style="font-family:var(--font-display);font-size:22px;font-weight:700;color:#b91c1c;flex-shrink:0;">₹10 Cr</span></div><div style="display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid var(--border);"><span style="font-size:13.5px;font-weight:500;color:var(--text);max-width:70%;">General violations — non-compliance with any other provision</span><span style="font-family:var(--font-display);font-size:22px;font-weight:700;color:#b91c1c;flex-shrink:0;">₹50 Cr</span></div><div style="display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid var(--border);"><span style="font-size:13.5px;font-weight:500;color:var(--text);max-width:70%;">False / frivolous complaints by data principals</span><span style="font-family:var(--font-display);font-size:22px;font-weight:700;color:#b91c1c;flex-shrink:0;">₹10,000</span></div>
+</div>
+<div class="note-box warning"><strong>Fixed cap vs GDPR:</strong> Under GDPR, the maximum fine is 4% of global annual turnover or €20 million — whichever is higher. For a global tech company with €200B+ annual turnover, this produces a potential €8B maximum fine. The DPDP Act's ₹250 Crore cap (approximately €28 million) is significantly lower in absolute terms for large multinationals, leading critics to argue it lacks deterrent effect for the largest data processors operating in India.</div>
+<div style="margin-top:24px;padding:20px;border:1px solid var(--border);border-left:4px solid var(--amber);border-radius:var(--radius);background:var(--surface);"><div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-bottom:14px;">Other Articles in This Knowledge Base</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;"><a href="dpdp-exemptions.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;padding:12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--white);transition:border-color .15s;" onmouseover="this.style.borderColor='var(--blue-light)'" onmouseout="this.style.borderColor='var(--border)'"><div style="font-size:20px;flex-shrink:0;">⚠️</div><div><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Exemptions & Government Powers</div><div style="font-size:12px;color:var(--text3);">Who is exempt from enforcement</div></div></a><a href="dpdp-rights.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;padding:12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--white);transition:border-color .15s;" onmouseover="this.style.borderColor='var(--blue-light)'" onmouseout="this.style.borderColor='var(--border)'"><div style="font-size:20px;flex-shrink:0;">👤</div><div><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Data Principal Rights</div><div style="font-size:12px;color:var(--text3);">Rights that trigger DPB jurisdiction</div></div></a></div></div></div>
+    </section>
+  </main>
+</div>
+<footer class="footer">
+  <div class="footer-links">
+    <a href="index.html">DPDPindia.in</a><a href="dpdp-kb.html">DPDP KB</a>
+    <a href="dpdp-genesis.html">Genesis</a><a href="dpdp-act.html">The Act</a>
+    <a href="dpdp-rights.html">Rights</a><a href="dpdp-rules.html">Rules</a>
+    <a href="dpdp-adjudication.html">Adjudication</a>
+    <a href="dpdp-exemptions.html">Exemptions</a><a href="dpdp-global.html">Global</a>
+  </div>
+  <p>Article 05 — DPDP Act Knowledge Base · <a href="dpdp-kb.html">← Back to KB</a></p>
+</footer>
+</body>
+</html>

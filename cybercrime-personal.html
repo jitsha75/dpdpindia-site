@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal & Social Cybercrimes — Identity, Harassment & Dignity Crimes · DPDP India</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--parchment:#F8F4EC;--cream:#FDFAF5;--paper:#F2EDE2;--ink:#1A1610;--prussian:#1B2B3A;--slate:#2D3D4E;--saffron:#D4760A;--saffron-lt:#F0A840;--mist:#7A7468;--rule:rgba(26,22,16,0.12);--rule-gold:rgba(212,118,10,0.25);--shadow-sm:0 2px 12px rgba(26,22,16,0.06);--shadow-md:0 8px 40px rgba(26,22,16,0.10);--danger:#C0392B;--danger-bg:#FADBD8;--safe:#1A6B3A;--safe-bg:#D5F5E3;--warn:#B8862C;--warn-bg:#FEF9E7;--purple:#6C3483;--purple-bg:#F5EEF8;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}body{font-family:'Source Serif 4',Georgia,serif;background:var(--cream);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;}
+.emergency-bar{background:var(--purple);padding:0.7rem 0;text-align:center;}
+.emergency-bar p{font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:#fff;}
+.masthead{background:var(--prussian);padding:10px 0;text-align:center;border-bottom:3px solid var(--saffron);}
+.masthead-text{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.55);}
+.masthead-text span{color:var(--saffron-lt);}
+nav{position:sticky;top:0;z-index:200;background:var(--cream);border-bottom:1px solid var(--rule);box-shadow:var(--shadow-sm);}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:68px;position:relative;}
+.nav-brand{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.nav-brand-seal{width:42px;height:42px;}
+.nav-brand-name{display:flex;flex-direction:column;gap:1px;}
+.nav-brand-name strong{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--prussian);line-height:1;}
+.nav-brand-name span{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);line-height:1;}
+.nav-links{display:flex;align-items:center;gap:1.5rem;list-style:none;}
+.nav-links a{font-family:'Source Serif 4',serif;font-size:0.82rem;color:var(--slate);text-decoration:none;transition:color 0.2s;position:relative;white-space:nowrap;}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--saffron);transform:scaleX(0);transition:transform 0.25s;transform-origin:left;}
+.nav-links a:hover{color:var(--saffron);}
+.nav-links a:hover::after{transform:scaleX(1);}
+.nav-blog-btn{font-family:'JetBrains Mono',monospace!important;font-size:0.65rem!important;letter-spacing:0.1em!important;text-transform:uppercase;background:var(--prussian)!important;color:var(--cream)!important;padding:9px 20px;border-radius:1px;transition:background 0.2s!important;}
+.nav-blog-btn::after{display:none!important;}
+.nav-blog-btn:hover{background:var(--saffron)!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--prussian);transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-menu{display:none;position:absolute;top:68px;left:0;right:0;background:var(--cream);border-bottom:2px solid var(--saffron);box-shadow:var(--shadow-md);z-index:199;}
+.mobile-menu.open{display:block;}
+.mobile-menu ul{list-style:none;padding:1rem 2rem 1.5rem;}
+.mobile-menu ul li a{display:block;font-size:0.95rem;color:var(--slate);text-decoration:none;padding:0.7rem 0;border-bottom:1px solid var(--rule);}
+.mobile-menu ul li:last-child a{border-bottom:none;}
+.mobile-menu ul li a:hover{color:var(--saffron);}
+.page-header{background:var(--prussian);padding:4rem 0 3.5rem;position:relative;overflow:hidden;}
+.page-header::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--purple),var(--prussian),var(--safe));}
+.page{max-width:1320px;margin:0 auto;padding:0 2rem;}
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:1.5rem;font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);position:relative;z-index:1;flex-wrap:wrap;}
+.breadcrumb a{color:rgba(255,255,255,0.4);text-decoration:none;}
+.breadcrumb-sep{color:rgba(255,255,255,0.25);}
+.page-kicker{display:flex;align-items:center;gap:10px;margin-bottom:1.5rem;position:relative;z-index:1;}
+.page-kicker-line{width:32px;height:1px;background:rgba(255,255,255,0.4);}
+.page-kicker-text{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.6);}
+.page-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:700;line-height:1.12;color:var(--parchment);margin-bottom:0.8rem;position:relative;z-index:1;}
+.page-title em{font-style:italic;color:var(--saffron-lt);}
+.page-deck{font-size:0.95rem;font-weight:300;line-height:1.85;color:rgba(248,244,236,0.65);max-width:640px;position:relative;z-index:1;}
+
+/* CRIMES */
+.crimes-body{max-width:1100px;margin:0 auto;padding:4rem 2rem 6rem;}
+.crime-entry{margin-bottom:4rem;padding-bottom:4rem;border-bottom:2px solid var(--rule);}
+.crime-entry:last-child{border-bottom:none;margin-bottom:0;}
+.crime-header{display:flex;align-items:flex-start;gap:1.5rem;margin-bottom:2rem;flex-wrap:wrap;}
+.crime-num{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:rgba(108,52,131,0.12);line-height:1;flex-shrink:0;min-width:60px;}
+.crime-header-text{flex:1;}
+.crime-tag{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--purple);margin-bottom:0.4rem;display:flex;align-items:center;gap:6px;}
+.crime-tag::before{content:'';display:inline-block;width:12px;height:1px;background:var(--purple);}
+.crime-name{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,2.5vw,1.9rem);font-weight:700;color:var(--prussian);margin-bottom:0.3rem;line-height:1.2;}
+.crime-aka{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;color:var(--mist);}
+.crime-severity{display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;padding:4px 10px;border:1px solid;margin-left:auto;flex-shrink:0;}
+.sev-high{color:var(--danger);border-color:var(--danger);background:var(--danger-bg);}
+.sev-med{color:var(--warn);border-color:var(--warn);background:var(--warn-bg);}
+
+.crime-panels{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1.5rem;}
+.panel{border:1px solid;padding:1.5rem;}
+.panel.red{border-color:rgba(192,57,43,0.3);background:var(--danger-bg);}
+.panel.green{border-color:rgba(26,107,58,0.3);background:var(--safe-bg);}
+.panel.gold{border-color:var(--rule-gold);background:var(--warn-bg);}
+.panel-label{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:0.8rem;display:flex;align-items:center;gap:6px;}
+.panel.red .panel-label{color:var(--danger);}
+.panel.green .panel-label{color:var(--safe);}
+.panel.gold .panel-label{color:var(--warn);}
+.panel-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--prussian);margin-bottom:0.6rem;}
+.panel-body{font-size:0.84rem;font-weight:300;line-height:1.8;color:var(--slate);}
+.panel-body strong{font-weight:600;color:var(--prussian);}
+.panel-body ul{list-style:none;margin-top:0.5rem;}
+.panel-body ul li{padding:0.3rem 0;border-bottom:1px solid rgba(26,22,16,0.08);display:flex;align-items:flex-start;gap:6px;font-size:0.82rem;}
+.panel-body ul li:last-child{border-bottom:none;}
+.panel.red .panel-body ul li::before{content:'⚠';font-size:0.6rem;flex-shrink:0;margin-top:3px;}
+.panel.green .panel-body ul li::before{content:'✓';color:var(--safe);font-weight:700;flex-shrink:0;}
+.panel.gold .panel-body ul li::before{content:'→';color:var(--warn);font-family:'JetBrains Mono',monospace;font-size:0.65rem;flex-shrink:0;}
+
+.remedy-steps{background:var(--prussian);padding:2rem;margin-top:1rem;}
+.rs-label{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--saffron);margin-bottom:1.2rem;}
+.steps-list{display:grid;grid-template-columns:repeat(5,1fr);gap:0.5rem;}
+.step{background:rgba(255,255,255,0.05);padding:1rem;text-align:center;border:1px solid rgba(255,255,255,0.08);}
+.step-num{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--saffron);line-height:1;margin-bottom:0.3rem;}
+.step-time{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--saffron-lt);margin-bottom:0.4rem;}
+.step-title{font-family:'Source Serif 4',serif;font-size:0.78rem;font-weight:400;color:var(--parchment);line-height:1.4;}
+.step.urgent{background:rgba(192,57,43,0.15);border-color:rgba(192,57,43,0.3);}
+.step-time.red{color:#FFB3AD;}
+
+.law-box{border:1px solid var(--rule);padding:1rem 1.5rem;margin-top:0.8rem;background:var(--parchment);display:flex;align-items:flex-start;gap:1rem;flex-wrap:wrap;}
+.lb-label{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--mist);flex-shrink:0;padding-top:2px;}
+.lb-laws{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--prussian);line-height:1.8;}
+
+/* SUPPORT NOTE */
+.support-note{background:rgba(108,52,131,0.07);border:1px solid rgba(108,52,131,0.2);border-left:3px solid var(--purple);padding:1.2rem 1.5rem;margin:1rem 0;}
+.sn-label{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--purple);margin-bottom:0.4rem;}
+.sn-body{font-size:0.86rem;font-weight:300;line-height:1.8;color:var(--slate);}
+.sn-body strong{font-weight:600;color:var(--prussian);}
+
+footer{background:var(--ink);padding:4rem 0 2rem;}
+.footer-grid{max-width:1320px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,0.06);}
+.footer-brand-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--parchment);margin-bottom:0.8rem;}
+.footer-brand-desc{font-size:0.85rem;font-weight:300;line-height:1.8;color:rgba(248,244,236,0.4);max-width:280px;}
+.footer-col-title{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);margin-bottom:1rem;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.footer-links a{font-size:0.85rem;font-weight:300;color:rgba(248,244,236,0.45);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--parchment);}
+.footer-bottom{max-width:1320px;margin:0 auto;padding:1.5rem 2rem 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-copy{font-size:0.78rem;font-weight:300;color:rgba(248,244,236,0.25);}
+
+@media(max-width:900px){.nav-links{display:none;}.hamburger{display:flex;}.crime-panels{grid-template-columns:1fr;}.steps-list{grid-template-columns:repeat(3,1fr);}.footer-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.crimes-body{padding:2rem 1.2rem 4rem;}.steps-list{grid-template-columns:1fr 1fr;}.footer-grid{grid-template-columns:1fr;}.footer-bottom{flex-direction:column;align-items:flex-start;}.crime-header{flex-direction:column;gap:0.5rem;}.crime-severity{margin-left:0;}}
+</style>
+</head>
+<body>
+<div class="emergency-bar"><p>💜 You are not alone. Cybercrime helpline: <strong>1930</strong> · Women's helpline: <strong>1091</strong> · Report at cybercrime.gov.in</p></div>
+<div class="masthead"><p class="masthead-text">DPDP India · <span>Cyber Fraud Awareness · Personal & Social Crimes</span></p></div>
+
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <svg class="nav-brand-seal" viewBox="0 0 42 42" fill="none"><circle cx="21" cy="21" r="20" stroke="#1B2B3A" stroke-width="1.5"/><circle cx="21" cy="21" r="14" stroke="#D4760A" stroke-width="0.75" stroke-dasharray="2 2"/><text x="21" y="25" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="700" fill="#1B2B3A">§</text></svg>
+      <div class="nav-brand-name"><strong>DPDP India</strong><span>Policy & Legal Research</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="cybercrime-kb.html">← Fraud KB</a></li>
+      <li><a href="cybercrime-financial.html">Financial Frauds</a></li>
+      <li><a href="cybercrime-personal.html">Personal Crimes</a></li>
+      <li><a href="itact-kb.html">IT Act KB</a></li>
+      <li><a href="cybercrime-remedy-guide.html" class="nav-blog-btn">Get Help Now</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li><a href="cybercrime-kb.html">Cyber Fraud KB Home</a></li>
+      <li><a href="cybercrime-financial.html">Financial Frauds</a></li>
+      <li><a href="cybercrime-personal.html">Personal & Social Crimes</a></li>
+      <li><a href="cybercrime-remedy-guide.html">How to Get Help</a></li>
+      <li><a href="index.html">DPDPIndia.in Home</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="page">
+    <div class="breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">›</span><a href="cybercrime-kb.html">Cyber Fraud KB</a><span class="breadcrumb-sep">›</span><span>Personal & Social Crimes</span></div>
+    <div class="page-kicker"><div class="page-kicker-line"></div><div class="page-kicker-text">Category 02 · Identity, Dignity & Harassment · 10 Crimes</div></div>
+    <h1 class="page-title">Personal &amp; Social <em>Cybercrimes</em></h1>
+    <p class="page-deck">Sextortion, SIM swap, deepfakes, cyberbullying, ransomware — crimes that target your identity, privacy, dignity, and safety. Every entry covers how it's done, your legal rights, and exact steps to get justice.</p>
+  </div>
+</header>
+
+<div class="crimes-body">
+
+  <!-- CRIME 01: SEXTORTION -->
+  <div class="crime-entry" id="sextortion">
+    <div class="crime-header">
+      <div class="crime-num">01</div>
+      <div class="crime-header-text">
+        <div class="crime-tag">Sexual Exploitation · Extortion</div>
+        <div class="crime-name">Sextortion & Nude Video Call Scam</div>
+        <div class="crime-aka">Also known as: "WhatsApp Video Call Blackmail", "Honey Trap Video Scam", "Obscene Video Fraud"</div>
+      </div>
+      <div class="crime-severity sev-high">🔴 Extremely High Risk — Targets all genders</div>
+    </div>
+    <div class="support-note">
+      <div class="sn-label">💜 If This Has Happened To You</div>
+      <div class="sn-body"><strong>You have done nothing wrong. This is a crime committed against you.</strong> Do not pay — payment always leads to more demands, never to the content being deleted. You are protected by law. Read the remedy section and take action today.</div>
+    </div>
+    <div class="crime-panels">
+      <div class="panel red">
+        <div class="panel-label">🎭 How It's Executed</div>
+        <div class="panel-title">The Modus Operandi</div>
+        <div class="panel-body">A stranger (profile picture of an attractive person) sends you a WhatsApp/Instagram friend request. After brief chatting, they initiate a video call and display nudity. They use screen recording software to record your face and reactions. Within minutes they send you the recording and demand ₹5,000–₹50,000 or they will share the video with your family/employer/contacts. They often already have your contact list from a data breach or social media scraping. In the "fake police call" variant, a person posing as a cyber police officer joins the call to increase pressure.</div>
+      </div>
+      <div class="panel green">
+        <div class="panel-label">⚖️ Your Remedy</div>
+        <div class="panel-title">What to Do</div>
+        <div class="panel-body"><ul>
+          <li><strong>Do not pay — it will not stop the blackmail</strong></li>
+          <li>Block and report the person on the platform immediately</li>
+          <li>File on cybercrime.gov.in — "Cyber Blackmailing/Threatening"</li>
+          <li>File FIR at cyber police station — bring screenshots of the threat</li>
+          <li>Call Women's Helpline 1091 (if female victim)</li>
+          <li>Report the account to WhatsApp/Instagram — they take CSAM and sextortion seriously and will remove content</li>
+        </ul></div>
+      </div>
+      <div class="panel gold">
+        <div class="panel-label">🛡️ Prevention</div>
+        <div class="panel-title">How to Stay Safe</div>
+        <div class="panel-body"><ul>
+          <li>Never accept video calls from unknown numbers</li>
+          <li>Cover your front camera when not in active use</li>
+          <li>Do not engage with strangers who initiate conversations on social media</li>
+          <li>Set your social media profiles to private and limit friend list visibility</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="remedy-steps">
+      <div class="rs-label">Step-by-Step Recovery Procedure</div>
+      <div class="steps-list">
+        <div class="step urgent"><div class="step-num">1</div><div class="step-time red">DO NOT PAY</div><div class="step-title">Block attacker on all platforms immediately</div></div>
+        <div class="step urgent"><div class="step-num">2</div><div class="step-time">Immediately</div><div class="step-title">Take screenshots of the threats before blocking</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-time">Same day</div><div class="step-title">File on cybercrime.gov.in</div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-time">Within 48 hrs</div><div class="step-title">File FIR at cyber police station with screenshots</div></div>
+        <div class="step"><div class="step-num">5</div><div class="step-time">If uploaded</div><div class="step-title">Request content takedown via cybercrime portal's CSAM/sextortion form</div></div>
+      </div>
+    </div>
+    <div class="law-box">
+      <div class="lb-label">Applicable Law</div>
+      <div class="lb-laws">IT Act 2000: s.66E (Privacy Violation) · s.67 (Obscene electronic material) · s.67A (Sexually explicit content) · BNS 2023: s.74 (Assault/Criminal Force with intent to outrage modesty) · s.351 (Criminal Intimidation) · Protection of Children from Sexual Offences (POCSO) Act 2012 — if victim is a minor</div>
+    </div>
+  </div>
+
+  <!-- CRIME 02: SIM SWAP -->
+  <div class="crime-entry" id="sim-swap">
+    <div class="crime-header">
+      <div class="crime-num">02</div>
+      <div class="crime-header-text">
+        <div class="crime-tag">Identity Theft · Telecom Fraud</div>
+        <div class="crime-name">SIM Swap Fraud</div>
+        <div class="crime-aka">Also known as: "SIM Cloning", "Mobile Number Hijacking", "Port Out Scam"</div>
+      </div>
+      <div class="crime-severity sev-high">🔴 Very High Risk — Empties bank accounts silently</div>
+    </div>
+    <div class="crime-panels">
+      <div class="panel red">
+        <div class="panel-label">🎭 How It's Executed</div>
+        <div class="panel-title">The Modus Operandi</div>
+        <div class="panel-body">The criminal already has your name, Aadhaar number, and bank details (bought from data brokers or harvested from phishing). They visit a telecom retailer with a fake ID matching your name and request a new SIM for "lost phone." Once they get your number, your SIM stops working. They immediately use your mobile number to receive all OTPs and drain your bank accounts, transfer funds, and change banking passwords. You don't realise until your SIM goes dead and you check your balance.</div>
+      </div>
+      <div class="panel green">
+        <div class="panel-label">⚖️ Your Remedy</div>
+        <div class="panel-title">Act the Moment Your SIM Goes Dead</div>
+        <div class="panel-body"><ul>
+          <li>Call your telecom operator <strong>immediately</strong> to block the duplicate SIM</li>
+          <li>Call your bank using another phone — freeze net banking and cards</li>
+          <li>Call 1930 for financial fraud reporting</li>
+          <li>Visit telecom store with ID proof to get SIM reactivated</li>
+          <li>File FIR + cybercrime.gov.in complaint</li>
+          <li>File TRAI complaint: trai.gov.in → Complaint Portal</li>
+        </ul></div>
+      </div>
+      <div class="panel gold">
+        <div class="panel-label">🛡️ Prevention</div>
+        <div class="panel-title">Set Up These Guards Today</div>
+        <div class="panel-body"><ul>
+          <li>Enable SIM lock / SIM PIN on your phone settings</li>
+          <li>Register a secondary email for banking notifications — not just SMS</li>
+          <li>Enable two-factor authentication using an authenticator app, not SMS</li>
+          <li>If your SIM suddenly shows "No Network" — call operator immediately</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="law-box">
+      <div class="lb-label">Applicable Law</div>
+      <div class="lb-laws">IT Act 2000: s.66C (Identity Theft) · s.43 (Unauthorized access) · BNS 2023: s.319 · Indian Wireless Telegraphy Act 1933 · Telecom Regulatory Authority of India Act 1997 · RBI circular on unauthorized banking transactions</div>
+    </div>
+  </div>
+
+  <!-- CRIME 03: AADHAAR IDENTITY THEFT -->
+  <div class="crime-entry" id="aadhaar-theft">
+    <div class="crime-header">
+      <div class="crime-num">03</div>
+      <div class="crime-header-text">
+        <div class="crime-tag">Identity Fraud · Document Misuse</div>
+        <div class="crime-name">Aadhaar / PAN Identity Theft</div>
+        <div class="crime-aka">Also known as: "Document Misuse", "Fake Loan Using Aadhaar", "Ghost Account Fraud"</div>
+      </div>
+      <div class="crime-severity sev-high">🔴 High Risk</div>
+    </div>
+    <div class="crime-panels">
+      <div class="panel red">
+        <div class="panel-label">🎭 How It's Executed</div>
+        <div class="panel-title">The Modus Operandi</div>
+        <div class="panel-body">Criminals use your Aadhaar number (obtained from data leaks, photocopies left at shops, or scam calls) to open bank accounts, take loans, get SIM cards, or register businesses in your name. In the eKYC variant, they use an OTP they trick you into sharing to complete eKYC authentication. You discover this months later when loan recovery agents contact you, or when CIBIL shows unknown loans, or when police contact you for crimes committed by someone using your identity.</div>
+      </div>
+      <div class="panel green">
+        <div class="panel-label">⚖️ Your Remedy</div>
+        <div class="panel-title">Damage Control Steps</div>
+        <div class="panel-body"><ul>
+          <li>Lock Aadhaar biometrics immediately at <strong>myaadhaar.uidai.gov.in</strong></li>
+          <li>Call UIDAI helpline <strong>1947</strong> to report misuse</li>
+          <li>Check Aadhaar authentication history at myaadhaar.uidai.gov.in</li>
+          <li>File FIR for identity theft with Aadhaar details</li>
+          <li>File complaint with RBI/bank if loan was taken</li>
+          <li>Check CIBIL report (free once/year) and raise dispute for unknown accounts</li>
+        </ul></div>
+      </div>
+      <div class="panel gold">
+        <div class="panel-label">🛡️ Prevention</div>
+        <div class="panel-title">Protect Your Aadhaar Now</div>
+        <div class="panel-body"><ul>
+          <li>Lock your Aadhaar biometrics permanently — unlock only at a UIDAI centre when needed</li>
+          <li>Use Masked Aadhaar (shows only last 4 digits) for document submission</li>
+          <li>Write the purpose and date on any photocopy: "For [Bank Name] KYC only — [Date]"</li>
+          <li>Regularly check your Aadhaar authentication history</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="law-box">
+      <div class="lb-label">Applicable Law</div>
+      <div class="lb-laws">Aadhaar Act 2016: s.29 (Prohibition on sharing) · s.40 (Penalty for impersonation) · IT Act 2000: s.66C (Identity Theft — up to 3 years imprisonment + ₹1 lakh fine) · BNS 2023: s.319</div>
+    </div>
+  </div>
+
+  <!-- CRIME 04: DEEPFAKE / MORPHING -->
+  <div class="crime-entry" id="deepfake">
+    <div class="crime-header">
+      <div class="crime-num">04</div>
+      <div class="crime-header-text">
+        <div class="crime-tag">AI-Enabled Crime · Privacy Violation</div>
+        <div class="crime-name">Morphed Images & Deepfake Abuse</div>
+        <div class="crime-aka">Also known as: "Fake Nude Photo Blackmail", "AI Deepfake Pornography", "Face Swap Abuse"</div>
+      </div>
+      <div class="crime-severity sev-high">🔴 High Risk — Rising rapidly in 2024–26</div>
+    </div>
+    <div class="crime-panels">
+      <div class="panel red">
+        <div class="panel-label">🎭 How It's Executed</div>
+        <div class="panel-title">The Modus Operandi</div>
+        <div class="panel-body">Criminals download photos from social media profiles and use AI deepfake tools to morph faces onto explicit images or videos. These are used to blackmail the victim, shared on pornographic websites, sent to employers/family, or used as harassment in personal disputes. Some cases involve ex-partners creating revenge porn using deepfake tools. AI voice cloning is also being used — cloning a family member's voice to fake a kidnapping and demand ransom.</div>
+      </div>
+      <div class="panel green">
+        <div class="panel-label">⚖️ Your Remedy</div>
+        <div class="panel-title">What to Do</div>
+        <div class="panel-body"><ul>
+          <li>File on cybercrime.gov.in — "Online Cyber Trafficking / CSAM / MMS" category</li>
+          <li>Use Google's "Remove non-consensual explicit images" tool: support.google.com/websearch</li>
+          <li>Report to each platform hosting the content (Meta, X, pornographic sites have takedown teams)</li>
+          <li>File FIR — mention "deepfake pornography" explicitly</li>
+          <li>Document all URLs with timestamps as evidence</li>
+        </ul></div>
+      </div>
+      <div class="panel gold">
+        <div class="panel-label">🛡️ Prevention</div>
+        <div class="panel-title">Limit Your Digital Footprint</div>
+        <div class="panel-body"><ul>
+          <li>Set all social media photo albums to "Friends Only" or Private</li>
+          <li>Limit high-resolution public photos — profile picture does not need to be high-res</li>
+          <li>Google yourself periodically and set up Google Alerts for your name</li>
+          <li>Report suspicious accounts downloading or mirroring your content</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="law-box">
+      <div class="lb-label">Applicable Law</div>
+      <div class="lb-laws">IT Act 2000: s.66E (Privacy Violation — up to 3 years + ₹2 lakh) · s.67 (Obscene material — up to 5 years) · s.67A (Sexually explicit content) · BNS 2023: s.74 · DPDP Act 2023 (unauthorized use of biometric/facial data) · IT Rules 2021: Rule 3(1)(b) — intermediaries must remove such content within 24 hours of notice</div>
+    </div>
+  </div>
+
+  <!-- CRIME 05: CYBERBULLYING -->
+  <div class="crime-entry" id="cyberbullying">
+    <div class="crime-header">
+      <div class="crime-num">05</div>
+      <div class="crime-header-text">
+        <div class="crime-tag">Online Harassment · Mental Harm</div>
+        <div class="crime-name">Cyberbullying & Online Harassment</div>
+        <div class="crime-aka">Also known as: "Trolling", "Online Defamation", "Coordinated Harassment Campaign"</div>
+      </div>
+      <div class="crime-severity sev-med">🟡 Medium-High Risk — Significant mental health impact</div>
+    </div>
+    <div class="crime-panels">
+      <div class="panel red">
+        <div class="panel-label">🎭 How It's Executed</div>
+        <div class="panel-title">The Modus Operandi</div>
+        <div class="panel-body">Cyberbullying includes sending repeated abusive messages, public humiliation on social media, creating fake profiles to impersonate, doxxing (publishing private information like home address), coordinated harassment campaigns where multiple accounts mass-report or abuse a target, sharing embarrassing or private content without consent, and making threats of physical violence. Workplace cyberbullying via email/Slack and school cyberbullying via class WhatsApp groups are increasingly reported.</div>
+      </div>
+      <div class="panel green">
+        <div class="panel-label">⚖️ Your Remedy</div>
+        <div class="panel-title">Your Rights & Remedies</div>
+        <div class="panel-body"><ul>
+          <li>File on cybercrime.gov.in — "Cyber Bullying/Stalking/Sexting"</li>
+          <li>File FIR — you can file for criminal intimidation and defamation</li>
+          <li>Report fake profiles to the platform — platforms are required to act within 36 hours (IT Rules 2021)</li>
+          <li>If under 18: contact National Commission for Protection of Child Rights (NCPCR): ncpcr.gov.in</li>
+          <li>Seek an injunction from a civil court to stop harassment</li>
+        </ul></div>
+      </div>
+      <div class="panel gold">
+        <div class="panel-label">🛡️ Prevention</div>
+        <div class="panel-title">Protect Yourself Online</div>
+        <div class="panel-body"><ul>
+          <li>Enable privacy settings — restrict who can comment on/share your posts</li>
+          <li>Document everything before blocking — screenshots with timestamps</li>
+          <li>Don't engage with trolls — report and block immediately</li>
+          <li>Talk to a trusted adult or counsellor — mental health support is available</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="law-box">
+      <div class="lb-label">Applicable Law</div>
+      <div class="lb-laws">IT Act 2000: s.66A (struck down but conduct still punishable under BNS) · s.67 (obscene content) · BNS 2023: s.351 (Criminal Intimidation) · s.356 (Defamation) · s.78 (Stalking) · IT Rules 2021: Rule 3(1)(b) — platforms must address harassment complaints within 24 hours</div>
+    </div>
+  </div>
+
+  <!-- CRIME 06: CYBERSTALKING -->
+  <div class="crime-entry" id="cyberstalking">
+    <div class="crime-header">
+      <div class="crime-num">06</div>
+      <div class="crime-header-text">
+        <div class="crime-tag">Stalking · Surveillance Crime</div>
+        <div class="crime-name">Cyberstalking</div>
+        <div class="crime-aka">Also known as: "Online Tracking", "Digital Surveillance", "GPS Monitoring Without Consent"</div>
+      </div>
+      <div class="crime-severity sev-high">🔴 High Risk — Often precedes physical violence</div>
+    </div>
+    <div class="crime-panels">
+      <div class="panel red">
+        <div class="panel-label">🎭 How It's Executed</div>
+        <div class="panel-title">The Modus Operandi</div>
+        <div class="panel-body">Cyberstalking includes monitoring all social media activity, creating fake profiles to send friend requests and monitor your posts, tracking your location through shared location features, installing spyware (spy apps like mSpy, FlexiSPY) on victim's phone to read messages and track GPS, sending repeated unwanted messages, showing up at locations mentioned online, hacking into email/social accounts to read private messages.</div>
+      </div>
+      <div class="panel green">
+        <div class="panel-label">⚖️ Your Remedy</div>
+        <div class="panel-title">What to Do</div>
+        <div class="panel-body"><ul>
+          <li>File FIR immediately — stalking is a cognizable offence under BNS s.78</li>
+          <li>File on cybercrime.gov.in — "Cyber Bullying/Stalking"</li>
+          <li>Women can file complaint at One Stop Centre (1800-11-0007)</li>
+          <li>Seek a Protection Order from a Magistrate under CrPC/BNSS</li>
+          <li>Factory-reset your phone to remove spyware; change all passwords</li>
+        </ul></div>
+      </div>
+      <div class="panel gold">
+        <div class="panel-label">🛡️ Prevention</div>
+        <div class="panel-title">Digital Safety Steps</div>
+        <div class="panel-body"><ul>
+          <li>Review app permissions — revoke location access for all non-essential apps</li>
+          <li>Check phone for unfamiliar apps — spyware often hides as utility apps</li>
+          <li>Turn off "Location Sharing" on Google Maps/WhatsApp if you shared it previously</li>
+          <li>Use a different email and phone number for social media vs banking</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="law-box">
+      <div class="lb-label">Applicable Law</div>
+      <div class="lb-laws">BNS 2023: s.78 (Stalking — up to 5 years for repeat offence) · IT Act 2000: s.66E (Privacy Violation) · s.43 (Unauthorized computer access — installing spyware) · Protection of Women from Domestic Violence Act 2005 (if by intimate partner)</div>
+    </div>
+  </div>
+
+  <!-- CRIME 07: PHISHING / SMISHING -->
+  <div class="crime-entry" id="phishing">
+    <div class="crime-header">
+      <div class="crime-num">07</div>
+      <div class="crime-header-text">
+        <div class="crime-tag">Social Engineering · Link-Based Fraud</div>
+        <div class="crime-name">Phishing & Smishing</div>
+        <div class="crime-aka">Also known as: "Fake Website Link", "SMS Fraud Link", "Email Spoofing"</div>
+      </div>
+      <div class="crime-severity sev-high">🔴 High Risk</div>
+    </div>
+    <div class="crime-panels">
+      <div class="panel red">
+        <div class="panel-label">🎭 How It's Executed</div>
+        <div class="panel-title">The Modus Operandi</div>
+        <div class="panel-body">Phishing uses fake emails; Smishing uses fake SMS. You receive a message looking exactly like it's from SBI, HDFC, IRDAI, Amazon, or UIDAI — with their logo, fonts, and formatting. The link takes you to a website that looks identical to the real one. You enter your login credentials or card details. The criminals harvest this and immediately access your account. Some links install malware automatically when clicked.</div>
+      </div>
+      <div class="panel green">
+        <div class="panel-label">⚖️ Your Remedy</div>
+        <div class="panel-title">What to Do</div>
+        <div class="panel-body"><ul>
+          <li>Change all passwords immediately from a clean device</li>
+          <li>Call 1930 if financial loss occurred</li>
+          <li>File on cybercrime.gov.in</li>
+          <li>Report the phishing URL to MeitY at cybercrime.gov.in/report-phishing</li>
+          <li>Report the phishing email to Google/Microsoft spam reporting</li>
+        </ul></div>
+      </div>
+      <div class="panel gold">
+        <div class="panel-label">🛡️ Prevention</div>
+        <div class="panel-title">URL Verification</div>
+        <div class="panel-body"><ul>
+          <li>Always check the URL carefully before entering credentials — fake sites use sbi-bank.com instead of sbi.co.in</li>
+          <li>Look for the padlock (HTTPS) — but note fake sites also have HTTPS now</li>
+          <li>Banks never send password reset links via SMS</li>
+          <li>Install a browser extension that detects phishing sites (Netcraft, Windows Defender)</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="law-box">
+      <div class="lb-label">Applicable Law</div>
+      <div class="lb-laws">IT Act 2000: s.66 (Hacking/Computer fraud) · s.66C (Identity Theft) · s.66D (Cheating by impersonation) · s.43 (Unauthorized access) · BNS 2023: s.318 · TRAI Unsolicited Commercial Communication Regulations 2018</div>
+    </div>
+  </div>
+
+  <!-- CRIME 08: RANSOMWARE -->
+  <div class="crime-entry" id="ransomware">
+    <div class="crime-header">
+      <div class="crime-num">08</div>
+      <div class="crime-header-text">
+        <div class="crime-tag">Malware · Data Extortion</div>
+        <div class="crime-name">Ransomware & Malware Attacks</div>
+        <div class="crime-aka">Also known as: "File Encryption Extortion", "Crypto Locker", "Data Kidnapping"</div>
+      </div>
+      <div class="crime-severity sev-high">🔴 High Risk for businesses and individuals</div>
+    </div>
+    <div class="crime-panels">
+      <div class="panel red">
+        <div class="panel-label">🎭 How It's Executed</div>
+        <div class="panel-title">The Modus Operandi</div>
+        <div class="panel-body">You click on a link or download an email attachment. Malware silently installs on your device. Ransomware encrypts all your files and shows a screen demanding payment in cryptocurrency to "unlock" them. Even if you pay, decryption is not guaranteed. Spyware steals banking credentials, browsing history, and saved passwords. For individuals, ransomware enters via pirated software, fake app downloads, or email attachments. For businesses, it enters via unpatched servers or phishing of employees.</div>
+      </div>
+      <div class="panel green">
+        <div class="panel-label">⚖️ Your Remedy</div>
+        <div class="panel-title">Immediate Response</div>
+        <div class="panel-body"><ul>
+          <li><strong>Disconnect from the internet immediately</strong> — prevent further encryption/exfiltration</li>
+          <li>Do not pay the ransom — no guarantee of recovery</li>
+          <li>Report to CERT-In: <strong>incident@cert-in.org.in</strong> or call 1800-11-4949</li>
+          <li>File on cybercrime.gov.in</li>
+          <li>File FIR — bring your device to the cyber police station</li>
+          <li>Check nomoreransom.org — free decryption tools for many ransomware families</li>
+        </ul></div>
+      </div>
+      <div class="panel gold">
+        <div class="panel-label">🛡️ Prevention</div>
+        <div class="panel-title">Basic Cyber Hygiene</div>
+        <div class="panel-body"><ul>
+          <li>Keep regular offline backups (external hard drive not connected to internet)</li>
+          <li>Never open email attachments from unknown senders</li>
+          <li>Keep OS and antivirus updated — patch known vulnerabilities</li>
+          <li>Never use pirated software — it is the most common delivery mechanism</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="law-box">
+      <div class="lb-label">Applicable Law</div>
+      <div class="lb-laws">IT Act 2000: s.43 (Damage to computer — compensation) · s.66 (Computer-related offence — up to 3 years) · s.70 (Attacking protected systems — up to 10 years) · CERT-In Directions 2022 (mandatory 6-hour incident reporting for organisations) · BNS 2023: s.351 (Criminal Intimidation)</div>
+    </div>
+  </div>
+
+  <!-- CRIME 09: ROMANCE SCAM -->
+  <div class="crime-entry" id="romance-scam">
+    <div class="crime-header">
+      <div class="crime-num">09</div>
+      <div class="crime-header-text">
+        <div class="crime-tag">Social Engineering · Emotional Manipulation</div>
+        <div class="crime-name">Romance Scam / Honey Trap</div>
+        <div class="crime-aka">Also known as: "Matrimonial Fraud", "Dating App Scam", "Fake NRI/Army Officer Fraud"</div>
+      </div>
+      <div class="crime-severity sev-high">🔴 High Risk — Average loss: ₹3–15 Lakh</div>
+    </div>
+    <div class="crime-panels">
+      <div class="panel red">
+        <div class="panel-label">🎭 How It's Executed</div>
+        <div class="panel-title">The Modus Operandi</div>
+        <div class="panel-body">A person — often posing as an NRI, army officer, or doctor — contacts you on a matrimonial site, dating app, or social media. They invest weeks or months building an emotional relationship. Then an "emergency" happens: they're stuck at customs, there's a medical emergency, they need you to receive a parcel. They ask you to pay "clearance fees," send money via Western Union/crypto, or share your bank account to "transfer funds." Some variations involve sending you expensive fake gifts that you must pay customs to receive — there's no gift.</div>
+      </div>
+      <div class="panel green">
+        <div class="panel-label">⚖️ Your Remedy</div>
+        <div class="panel-title">What to Do</div>
+        <div class="panel-body"><ul>
+          <li>Call 1930 if money was transferred</li>
+          <li>File on cybercrime.gov.in</li>
+          <li>File FIR — include all chat history, transaction details, profile screenshots</li>
+          <li>Report the profile to the platform and matrimonial site</li>
+          <li>Reverse Google Image Search the profile picture — scammers reuse stolen photos</li>
+        </ul></div>
+      </div>
+      <div class="panel gold">
+        <div class="panel-label">🛡️ Prevention</div>
+        <div class="panel-title">Verify Before You Trust</div>
+        <div class="panel-body"><ul>
+          <li>Reverse image search all profile photos before engaging emotionally</li>
+          <li>Video call early — AI filters can't fully replicate real conversation yet</li>
+          <li>Never send money to anyone you haven't met in person</li>
+          <li>Share with a trusted friend or family member before making any financial decision</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="law-box">
+      <div class="lb-label">Applicable Law</div>
+      <div class="lb-laws">IT Act 2000: s.66D (Cheating by impersonation using computer resource) · BNS 2023: s.318 (Cheating) · s.319 (Cheating by personation) · For army impersonation: s.140 BNS · Army Act 1950</div>
+    </div>
+  </div>
+
+  <!-- CRIME 10: BEC -->
+  <div class="crime-entry" id="bec">
+    <div class="crime-header">
+      <div class="crime-num">10</div>
+      <div class="crime-header-text">
+        <div class="crime-tag">Corporate Fraud · Email Spoofing</div>
+        <div class="crime-name">Business Email Compromise (BEC)</div>
+        <div class="crime-aka">Also known as: "CEO Fraud", "Vendor Payment Fraud", "Invoice Redirect Scam"</div>
+      </div>
+      <div class="crime-severity sev-high">🔴 Very High Risk for businesses — average loss: ₹15–50 Lakh</div>
+    </div>
+    <div class="crime-panels">
+      <div class="panel red">
+        <div class="panel-label">🎭 How It's Executed</div>
+        <div class="panel-title">The Modus Operandi</div>
+        <div class="panel-body">Criminals study a company's internal email structure. They spoof or hack the CEO's/CFO's email and send urgent payment instructions to the finance team: "Transfer ₹50 lakh to this new vendor account for a confidential deal — do it today and don't tell anyone." In the vendor variant, they intercept an ongoing procurement email thread and subtly change the bank account number in the invoice. The payment goes to the criminal's account. A single successful BEC can bankrupt an SME.</div>
+      </div>
+      <div class="panel green">
+        <div class="panel-label">⚖️ Your Remedy</div>
+        <div class="panel-title">Recovery Steps</div>
+        <div class="panel-body"><ul>
+          <li>Call 1930 within minutes of realising</li>
+          <li>Call your bank — request SWIFT/NEFT transaction recall immediately</li>
+          <li>File on cybercrime.gov.in under "Business Email Compromise"</li>
+          <li>File FIR — specifically mention the spoofed email and transaction details</li>
+          <li>Report to CERT-In: incident@cert-in.org.in</li>
+        </ul></div>
+      </div>
+      <div class="panel gold">
+        <div class="panel-label">🛡️ Prevention</div>
+        <div class="panel-title">Process Controls That Prevent BEC</div>
+        <div class="panel-body"><ul>
+          <li>Any payment above a threshold must be verified by phone call to a known number — not a number in the email</li>
+          <li>Verify bank account changes through a separate communication channel</li>
+          <li>Enable DMARC/SPF/DKIM on your company email domain</li>
+          <li>Train finance staff to verify unusual payment requests via phone, always</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="law-box">
+      <div class="lb-label">Applicable Law</div>
+      <div class="lb-laws">IT Act 2000: s.66 (Computer fraud) · s.66C (Identity Theft via email spoofing) · s.66D (Cheating by impersonation) · BNS 2023: s.318 · CERT-In Directions 2022 (mandatory incident reporting for organisations) · Companies Act 2013: Board liability for cyber risk management</div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">DPDP India — Cyber Fraud Awareness</div>
+      <div class="footer-brand-desc">Public education resource. Share with anyone who needs it. For legal advice consult a qualified advocate. Emergency: 1930.</div>
+    </div>
+    <div>
+      <div class="footer-col-title">All Crime Pages</div>
+      <ul class="footer-links">
+        <li><a href="cybercrime-kb.html">← Fraud KB Home</a></li>
+        <li><a href="cybercrime-financial.html">Financial Frauds</a></li>
+        <li><a href="cybercrime-remedy-guide.html">Complete Remedy Guide</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Emergency Help</div>
+      <ul class="footer-links">
+        <li><a href="tel:1930">📞 1930 — Cyber Helpline</a></li>
+        <li><a href="tel:1091">📞 1091 — Women Helpline</a></li>
+        <li><a href="https://cybercrime.gov.in" target="_blank">cybercrime.gov.in</a></li>
+        <li><a href="tel:1947">📞 1947 — UIDAI Helpline</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 DPDP India · Public Education Resource · Share freely</div>
+  </div>
+</footer>
+<script>
+const h=document.getElementById('hamburger'),m=document.getElementById('mobile-menu');
+h.addEventListener('click',()=>{h.classList.toggle('open');m.classList.toggle('open');});
+document.querySelectorAll('.mobile-menu a').forEach(a=>a.addEventListener('click',()=>{h.classList.remove('open');m.classList.remove('open');}));
+</script>
+</body>
+</html>

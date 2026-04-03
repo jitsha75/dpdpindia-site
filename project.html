@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project History — DPDPindia.in Site Development</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Matches index.html design system exactly */
+:root{
+  --parchment:#F8F4EC;--cream:#FDFAF5;--paper:#F2EDE2;
+  --ink:#1A1610;--prussian:#1B2B3A;--slate:#2D3D4E;
+  --saffron:#D4760A;--saffron-lt:#F0A840;--ochre:#B8862C;
+  --chakra-blue:#1B3A6B;--mist:#7A7468;
+  --rule:rgba(26,22,16,0.12);--rule-gold:rgba(212,118,10,0.25);
+  --shadow-sm:0 2px 12px rgba(26,22,16,0.06);
+  --shadow-md:0 8px 40px rgba(26,22,16,0.10);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:'Source Serif 4',Georgia,serif;background:var(--cream);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+/* Masthead */
+.masthead{background:var(--prussian);padding:10px 0;text-align:center;border-bottom:3px solid var(--saffron);}
+.masthead-text{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.55);}
+.masthead-text span{color:var(--saffron-lt);}
+
+/* Nav */
+nav{position:sticky;top:0;z-index:200;background:var(--cream);border-bottom:1px solid var(--rule);box-shadow:var(--shadow-sm);}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 3rem;display:flex;align-items:center;justify-content:space-between;height:68px;}
+.nav-brand{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.nav-brand-name{display:flex;flex-direction:column;gap:1px;}
+.nav-brand-name strong{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--prussian);letter-spacing:.01em;line-height:1;}
+.nav-brand-name span{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--saffron);line-height:1;}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none;}
+.nav-links a{font-family:'Source Serif 4',serif;font-size:.82rem;font-weight:400;color:var(--slate);text-decoration:none;letter-spacing:.01em;transition:color .2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--saffron);transform:scaleX(0);transition:transform .25s;transform-origin:left;}
+.nav-links a:hover{color:var(--saffron);}
+.nav-links a:hover::after{transform:scaleX(1);}
+.nav-active{color:var(--saffron) !important;}
+.nav-active::after{transform:scaleX(1) !important;}
+
+/* Page wrapper */
+.page{max-width:1320px;margin:0 auto;padding:0 3rem;}
+
+/* Section kicker */
+.section-kicker{display:flex;align-items:center;gap:12px;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--saffron);margin-bottom:1rem;}
+.section-kicker::before{content:'';width:28px;height:1px;background:var(--saffron);}
+.section-heading{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,2.9rem);font-weight:700;line-height:1.15;color:var(--prussian);margin-bottom:1.2rem;}
+.section-heading em{font-style:italic;color:var(--saffron);}
+
+/* HERO */
+.project-hero{background:var(--prussian);padding:5rem 0;position:relative;overflow:hidden;border-bottom:3px solid var(--saffron);}
+.project-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:48px 48px;}
+.hero-inner{position:relative;max-width:1320px;margin:0 auto;padding:0 3rem;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:4px 14px;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:1.5rem;}
+.hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--saffron-lt);}
+.hero-inner h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4vw,3.5rem);font-weight:700;line-height:1.12;color:var(--parchment);margin-bottom:1rem;}
+.hero-inner h1 em{font-style:italic;color:var(--saffron-lt);}
+.hero-sub{font-size:1rem;font-weight:300;line-height:1.8;color:rgba(248,244,236,.6);max-width:600px;margin-bottom:2.5rem;}
+.hero-stats{display:flex;gap:3rem;flex-wrap:wrap;}
+.hero-stat{display:flex;flex-direction:column;gap:3px;}
+.hero-stat-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:var(--saffron-lt);line-height:1;}
+.hero-stat-label{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);}
+
+/* SITE MAP */
+.sitemap-section{padding:6rem 0;background:var(--cream);}
+.sitemap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--rule);margin-top:3rem;}
+.sitemap-col{padding:2.5rem;border-right:1px solid var(--rule);}
+.sitemap-col:last-child{border-right:none;}
+.sitemap-col-title{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--saffron);margin-bottom:1.5rem;display:flex;align-items:center;gap:8px;}
+.sitemap-col-title::before{content:'';width:16px;height:1px;background:var(--saffron);}
+.sitemap-page{padding:1rem 0;border-bottom:1px solid var(--rule);}
+.sitemap-page:last-child{border-bottom:none;}
+.sitemap-page-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--prussian);margin-bottom:.25rem;}
+.sitemap-page-file{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.08em;color:var(--saffron);margin-bottom:.4rem;}
+.sitemap-page-desc{font-size:.82rem;font-weight:300;line-height:1.65;color:var(--mist);}
+.sitemap-page-link{display:inline-flex;align-items:center;gap:5px;font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--saffron);text-decoration:none;margin-top:.5rem;transition:letter-spacing .2s;}
+.sitemap-page-link:hover{letter-spacing:.14em;}
+
+/* CHANGELOG */
+.changelog-section{padding:6rem 0;background:var(--parchment);border-top:1px solid var(--rule);}
+.changelog-layout{display:grid;grid-template-columns:200px 1fr;gap:0;margin-top:3rem;}
+.changelog-index{position:sticky;top:100px;align-self:start;}
+.changelog-index-list{display:flex;flex-direction:column;gap:0;border-right:2px solid var(--rule);}
+.cl-index-item{padding:.6rem 1.2rem .6rem 0;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);text-decoration:none;border-left:none;transition:color .15s;cursor:pointer;}
+.cl-index-item:hover,.cl-index-item.active{color:var(--saffron);}
+.changelog-entries{padding-left:4rem;}
+.version-block{margin-bottom:4rem;padding-bottom:4rem;border-bottom:1px solid var(--rule);}
+.version-block:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.version-header{display:flex;align-items:flex-start;gap:2rem;margin-bottom:2rem;flex-wrap:wrap;}
+.version-tag{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.1em;background:var(--prussian);color:var(--parchment);padding:4px 14px;display:inline-flex;align-items:center;}
+.version-tag.current{background:var(--saffron);}
+.version-date{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-top:4px;}
+.version-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--prussian);margin-bottom:.4rem;line-height:1.25;}
+.version-desc{font-size:.9rem;font-weight:300;line-height:1.8;color:var(--mist);max-width:560px;}
+.version-changes{margin-top:1.5rem;display:flex;flex-direction:column;gap:0;border-top:1px solid var(--rule);}
+.change-item{display:flex;align-items:flex-start;gap:1rem;padding:.9rem 0;border-bottom:1px solid var(--rule);}
+.change-item:last-child{border-bottom:none;}
+.change-type{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border:1px solid;flex-shrink:0;margin-top:3px;}
+.type-new{color:var(--saffron);border-color:rgba(212,118,10,.3);background:rgba(212,118,10,.05);}
+.type-update{color:#1B3A6B;border-color:rgba(27,58,107,.3);background:rgba(27,58,107,.05);}
+.type-fix{color:var(--mist);border-color:rgba(122,116,104,.3);background:rgba(122,116,104,.05);}
+.type-structure{color:#0e7c6b;border-color:rgba(14,124,107,.3);background:rgba(14,124,107,.05);}
+.change-text{font-size:.88rem;font-weight:300;line-height:1.7;color:var(--slate);}
+.change-text strong{font-weight:600;color:var(--prussian);}
+.change-text code{font-family:'JetBrains Mono',monospace;font-size:.78rem;background:rgba(26,22,16,.06);padding:1px 5px;border-radius:2px;color:var(--prussian);}
+
+/* FOOTER */
+footer{background:var(--ink);padding:5rem 0 2rem;}
+.footer-grid{max-width:1320px;margin:0 auto;padding:0 3rem;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.06);}
+.footer-brand-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--parchment);margin-bottom:1rem;}
+.footer-brand-desc{font-size:.85rem;font-weight:300;line-height:1.8;color:rgba(248,244,236,.4);margin-bottom:1.5rem;max-width:280px;}
+.footer-col-title{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--saffron);margin-bottom:1.2rem;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.6rem;}
+.footer-links a{font-size:.85rem;font-weight:300;color:rgba(248,244,236,.45);text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:var(--parchment);}
+.footer-bottom{max-width:1320px;margin:0 auto;padding:1.5rem 3rem 0;display:flex;justify-content:space-between;align-items:center;}
+.footer-copy{font-size:.78rem;font-weight:300;color:rgba(248,244,236,.25);}
+.footer-tagline{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(248,244,236,.2);}
+
+@media(max-width:960px){
+  .nav-inner{padding:0 1.5rem;}
+  .nav-links{display:none;}
+  .page{padding:0 1.5rem;}
+  .hero-inner{padding:0 1.5rem;}
+  .sitemap-grid{grid-template-columns:1fr;}
+  .sitemap-col{border-right:none;border-bottom:1px solid var(--rule);}
+  .changelog-layout{grid-template-columns:1fr;}
+  .changelog-index{display:none;}
+  .changelog-entries{padding-left:0;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .footer-bottom{flex-direction:column;gap:.5rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <span class="masthead-text"><span>DPDP India</span> · Site Development History · <span>Project Reference</span></span>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+        <circle cx="21" cy="21" r="20" stroke="#1B2B3A" stroke-width="1.2"/>
+        <circle cx="21" cy="21" r="15" stroke="#1B2B3A" stroke-opacity=".3" stroke-width=".8"/>
+        <g stroke="#D4760A" stroke-width=".8" opacity=".6">
+          <line x1="21" y1="7" x2="21" y2="35"/><line x1="7" y1="21" x2="35" y2="21"/>
+          <line x1="11.1" y1="11.1" x2="30.9" y2="30.9"/><line x1="30.9" y1="11.1" x2="11.1" y2="30.9"/>
+        </g>
+        <circle cx="21" cy="21" r="4" stroke="#1B2B3A" stroke-width="1.5" fill="none"/>
+        <circle cx="21" cy="21" r="1.5" fill="#D4760A"/>
+      </svg>
+      <div class="nav-brand-name">
+        <strong>DPDP India</strong>
+        <span>Policy &amp; Legal Research</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#research">Research</a></li>
+      <li><a href="ekyc-kb.html">Knowledge Base</a></li>
+      <li><a href="index.html#blog">Commentary</a></li>
+      <li><a href="project.html" class="nav-active">Project History</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="https://blog.dpdpindia.in" style="background:var(--prussian);color:var(--cream) !important;padding:9px 20px;font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;">Blog →</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="project-hero">
+  <div class="hero-inner">
+    <div class="hero-badge"><span class="dot"></span>Internal Reference · Site Development</div>
+    <h1>DPDPindia.in<br><em>Project History</em></h1>
+    <p class="hero-sub">A living record of the site's development — every version, every addition, and the structural decisions behind the DPDPindia.in knowledge platform. Updated with each publication cycle.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">6</div>
+        <div class="hero-stat-label">HTML pages published</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">5</div>
+        <div class="hero-stat-label">KB articles</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">v2.1</div>
+        <div class="hero-stat-label">Current version</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">2026</div>
+        <div class="hero-stat-label">Active development</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SITE MAP -->
+<section class="sitemap-section">
+  <div class="page">
+    <div class="section-kicker">Current Structure</div>
+    <h2 class="section-heading">Complete <em>Site Map</em></h2>
+    <p style="font-size:1rem;font-weight:300;line-height:1.8;color:var(--mist);max-width:560px;">All pages currently published as part of the DPDPindia.in project. The site uses flat-file HTML — no CMS, no server-side rendering.</p>
+    <div class="sitemap-grid">
+
+      <!-- Core pages -->
+      <div class="sitemap-col">
+        <div class="sitemap-col-title">Core Pages</div>
+        <div class="sitemap-page">
+          <div class="sitemap-page-name">Homepage</div>
+          <div class="sitemap-page-file">index.html</div>
+          <div class="sitemap-page-desc">Hero, research areas, policy timeline, eKYC process overview section, Knowledge Base section, blog commentary, about, and researcher profile.</div>
+          <a href="index.html" class="sitemap-page-link">Open page →</a>
+        </div>
+        <div class="sitemap-page">
+          <div class="sitemap-page-name">Contact</div>
+          <div class="sitemap-page-file">contact.html</div>
+          <div class="sitemap-page-desc">Contact form and researcher details for DPDPindia.in. Matches index.html design system.</div>
+          <a href="contact.html" class="sitemap-page-link">Open page →</a>
+        </div>
+        <div class="sitemap-page">
+          <div class="sitemap-page-name">Project History</div>
+          <div class="sitemap-page-file">project.html</div>
+          <div class="sitemap-page-desc">This page. Full development changelog, site map, and version history for internal reference.</div>
+          <a href="project.html" class="sitemap-page-link">Open page →</a>
+        </div>
+      </div>
+
+      <!-- KB hub -->
+      <div class="sitemap-col">
+        <div class="sitemap-col-title">Knowledge Base Hub</div>
+        <div class="sitemap-page">
+          <div class="sitemap-page-name">eKYC Knowledge Base</div>
+          <div class="sitemap-page-file">ekyc-kb.html</div>
+          <div class="sitemap-page-desc">Hub page for the Aadhaar eKYC knowledge base. Links all 5 articles, provides quick-access resource links, and contextualises the KB within the DPDPindia.in research mission.</div>
+          <a href="ekyc-kb.html" class="sitemap-page-link">Open page →</a>
+        </div>
+      </div>
+
+      <!-- KB articles -->
+      <div class="sitemap-col">
+        <div class="sitemap-col-title">KB Articles (5)</div>
+        <div class="sitemap-page">
+          <div class="sitemap-page-name">Article 01 — eKYC Complete Guide</div>
+          <div class="sitemap-page-file">ekyc-uidai-guide.html</div>
+          <div class="sitemap-page-desc">Process flow, entity roles, message steps, encryption matrix, bank log requirements, UIDAI documents.</div>
+          <a href="ekyc-uidai-guide.html" class="sitemap-page-link">Open →</a>
+        </div>
+        <div class="sitemap-page">
+          <div class="sitemap-page-name">Article 02 — Trust Chain &amp; Sub-KUA</div>
+          <div class="sitemap-page-file">ekyc-trust-chain.html</div>
+          <div class="sitemap-page-desc">Entity segregation rationale, ASA vs AUA vs KUA, Sub-KUA appointment process, dev company rules.</div>
+          <a href="ekyc-trust-chain.html" class="sitemap-page-link">Open →</a>
+        </div>
+        <div class="sitemap-page">
+          <div class="sitemap-page-name">Article 03 — Developer Sandbox</div>
+          <div class="sitemap-page-file">ekyc-sandbox.html</div>
+          <div class="sitemap-page-desc">Staging endpoints, open vs registered access, SDK setup, test UIDs, error codes, security practices.</div>
+          <a href="ekyc-sandbox.html" class="sitemap-page-link">Open →</a>
+        </div>
+        <div class="sitemap-page">
+          <div class="sitemap-page-name">Article 04 — CERT-IN Audit Checklist</div>
+          <div class="sitemap-page-file">ekyc-datacenter.html</div>
+          <div class="sitemap-page-desc">Interactive 24-item audit readiness checklist for Sub-KUAs under Compliance Checklist v2.0 (2025–26).</div>
+          <a href="ekyc-datacenter.html" class="sitemap-page-link">Open →</a>
+        </div>
+        <div class="sitemap-page">
+          <div class="sitemap-page-name">Article 05 — Fees &amp; Connectivity</div>
+          <div class="sitemap-page-file">ekyc-fees-connectivity.html</div>
+          <div class="sitemap-page-desc">Licence fee slabs, transaction charges, physical DC requirements, ADV/HSM obligations, connectivity standards.</div>
+          <a href="ekyc-fees-connectivity.html" class="sitemap-page-link">Open →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CHANGELOG -->
+<section class="changelog-section" id="changelog">
+  <div class="page">
+    <div class="section-kicker">Development History</div>
+    <h2 class="section-heading">Version <em>Changelog</em></h2>
+    <p style="font-size:1rem;font-weight:300;line-height:1.8;color:var(--mist);max-width:560px;margin-bottom:1rem;">A complete record of every version — what was built, why, and what changed. This site is actively maintained and updated as UIDAI regulations evolve.</p>
+    <div class="changelog-layout">
+
+      <!-- Index (sticky) -->
+      <div class="changelog-index">
+        <div class="changelog-index-list">
+          <a class="cl-index-item" href="#v2-1">v2.1 — Current</a>
+          <a class="cl-index-item" href="#v2-0">v2.0 — KB launch</a>
+          <a class="cl-index-item" href="#v1-2">v1.2 — Sandbox + links</a>
+          <a class="cl-index-item" href="#v1-1">v1.1 — eKYC guide</a>
+          <a class="cl-index-item" href="#v1-0">v1.0 — Site launch</a>
+          <a class="cl-index-item" href="#v0-1">v0.1 — Foundation</a>
+        </div>
+      </div>
+
+      <!-- Entries -->
+      <div class="changelog-entries">
+
+        <!-- v2.1 -->
+        <div class="version-block" id="v2-1">
+          <div class="version-header">
+            <div>
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:.6rem;">
+                <span class="version-tag current">v2.1</span>
+                <span class="version-date">March 2026 · Current</span>
+              </div>
+              <div class="version-title">Five-Article Knowledge Base &amp; Project Infrastructure</div>
+              <div class="version-desc">Expanded the eKYC KB from three to five articles with deep-dive compliance content; added the Project History page establishing version control discipline for the site.</div>
+            </div>
+          </div>
+          <div class="version-changes">
+            <div class="change-item"><span class="change-type type-new">New</span><div class="change-text"><strong>Article 04 — Data Centre &amp; CERT-IN Audit Checklist</strong> (<code>ekyc-datacenter.html</code>): Interactive 24-item audit readiness checklist covering physical security, logical hardening, ADV compliance, HSM operations, application security, and governance documentation under Compliance Checklist v2.0. Sidebar shows live audit readiness progress percentage as items are checked.</div></div>
+            <div class="change-item"><span class="change-type type-new">New</span><div class="change-text"><strong>Article 05 — Fees, Relationships &amp; Connectivity</strong> (<code>ekyc-fees-connectivity.html</code>): Complete financial and technical framework including UIDAI's slab-based licence fee structure (₹3L–₹20L), per-transaction charges (₹0.50 and ₹3.00), Regulation 25 financial disincentives, physical DC requirements, ADV/HSM obligations, three connectivity type standards (leased line, VPN, HTTPS/mTLS), network segregation rules, and the 2026 onboarding process. Sidebar includes an interactive fee estimator.</div></div>
+            <div class="change-item"><span class="change-type type-new">New</span><div class="change-text"><strong>Project History page</strong> (<code>project.html</code>): This page. Establishes a structured development record with full site map, version changelog, and design system documentation. Serves as the authoritative reference for what has been built and why.</div></div>
+            <div class="change-item"><span class="change-type type-update">Update</span><div class="change-text"><strong>eKYC Knowledge Base hub</strong> (<code>ekyc-kb.html</code>): Added Article 04 and Article 05 cards. Updated article count in header from 3 to 5. Updated footer and quick-links to include new articles.</div></div>
+            <div class="change-item"><span class="change-type type-update">Update</span><div class="change-text"><strong>Homepage</strong> (<code>index.html</code>): KB section article count updated to "5 articles." Counts badge updated from "3 Articles" to "5 Articles." Nav updated with Project History link.</div></div>
+            <div class="change-item"><span class="change-type type-structure">Structure</span><div class="change-text">All five KB articles now cross-link to each other via "Other articles in this KB" panels at the bottom of each page, and the sidebar "Related Articles" section. Every page has a consistent breadcrumb: <code>DPDPindia.in / Knowledge Base / [Article title]</code>.</div></div>
+          </div>
+        </div>
+
+        <!-- v2.0 -->
+        <div class="version-block" id="v2-0">
+          <div class="version-header">
+            <div>
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:.6rem;">
+                <span class="version-tag">v2.0</span>
+                <span class="version-date">March 2026</span>
+              </div>
+              <div class="version-title">Knowledge Base Architecture &amp; eKYC Hub Launch</div>
+              <div class="version-desc">Introduced the Knowledge Base as a structured content section — creating the KB hub page and linking all three initial articles. Added the Knowledge Base section to the homepage with dark-theme article grid.</div>
+            </div>
+          </div>
+          <div class="version-changes">
+            <div class="change-item"><span class="change-type type-new">New</span><div class="change-text"><strong>eKYC Knowledge Base hub</strong> (<code>ekyc-kb.html</code>): Dedicated KB index page with article cards showing type, reading time, full description, and topic tags. Includes quick-links to all major UIDAI reference documents and an "About this KB" attribution panel. Stats bar: 3 articles, 8 sections, 2025–26 regulation coverage.</div></div>
+            <div class="change-item"><span class="change-type type-new">New</span><div class="change-text"><strong>Homepage Knowledge Base section</strong> (<code>index.html #knowledge-base</code>): Dark Prussian-themed section matching the Approach section aesthetic. KB card showing all three articles as a horizontal grid with type badges, summaries, and read-article links. "Open Knowledge Base" CTA links to ekyc-kb.html.</div></div>
+            <div class="change-item"><span class="change-type type-update">Update</span><div class="change-text"><strong>Nav bar</strong>: Added "Knowledge Base" link pointing to <code>#knowledge-base</code> anchor on homepage. Footer Resources column updated to include KB hub link.</div></div>
+            <div class="change-item"><span class="change-type type-structure">Structure</span><div class="change-text">Established the KB naming convention: <code>ekyc-{slug}.html</code>. All KB pages use the IBM Plex Sans design system (navy/blue/teal/amber palette, sidebar navigation, section cards). The homepage uses the Source Serif 4 / Playfair Display editorial system — both design systems coexist.</div></div>
+          </div>
+        </div>
+
+        <!-- v1.2 -->
+        <div class="version-block" id="v1-2">
+          <div class="version-header">
+            <div>
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:.6rem;">
+                <span class="version-tag">v1.2</span>
+                <span class="version-date">March 2026</span>
+              </div>
+              <div class="version-title">Developer Sandbox Guide, Official UIDAI Links &amp; eKYC Offline Page Expansion</div>
+              <div class="version-desc">Added the third KB article covering the UIDAI developer sandbox. Updated the eKYC guide with the ASA/AUA Live Dashboard link and Developer Sandbox URL. Updated index.html eKYC section with enriched content.</div>
+            </div>
+          </div>
+          <div class="version-changes">
+            <div class="change-item"><span class="change-type type-new">New</span><div class="change-text"><strong>Article 03 — Developer Sandbox Guide</strong> (<code>ekyc-sandbox.html</code>): 10-section comprehensive guide covering staging endpoints (Auth, eKYC, OTP), dual-access model, configuration parameters, SDK setup, test UID reference, response/error codes, security best practices, five-step quick-start checklist, and essential links grid. Interactive sidebar checklist tracker.</div></div>
+            <div class="change-item"><span class="change-type type-update">Update</span><div class="change-text"><strong>eKYC guide documents table</strong>: Added two new rows — <strong>Developer Sandbox</strong> (<code>uidai.gov.in/.../developer-section.html</code>) and <strong>ASA/AUA Live Dashboard</strong> (<code>uidai.gov.in/aadhaar_dashboard/asa_transactions.php?asacode=3600</code>). Updated the note below the table to reference both new resources.</div></div>
+            <div class="change-item"><span class="change-type type-update">Update</span><div class="change-text"><strong>Trust Chain &amp; Sub-KUA page</strong>: Added sidebar related links pointing to Developer Sandbox. Footer updated with new links.</div></div>
+            <div class="change-item"><span class="change-type type-update">Update</span><div class="change-text"><strong>Homepage eKYC section</strong>: Added security guarantees band with three core protection principles. CTA row links to full technical guide. Section now self-contained as a complete overview without requiring the guide page.</div></div>
+          </div>
+        </div>
+
+        <!-- v1.1 -->
+        <div class="version-block" id="v1-1">
+          <div class="version-header">
+            <div>
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:.6rem;">
+                <span class="version-tag">v1.1</span>
+                <span class="version-date">March 2026</span>
+              </div>
+              <div class="version-title">Trust Chain Deep-Dive &amp; eKYC Process Flow on Homepage</div>
+              <div class="version-desc">Expanded the eKYC content to two pages; introduced the eKYC process flow section on the homepage; added the Trust Chain article as a governance companion to the main technical guide.</div>
+            </div>
+          </div>
+          <div class="version-changes">
+            <div class="change-item"><span class="change-type type-new">New</span><div class="change-text"><strong>Article 02 — Trust Chain &amp; Sub-KUA Governance</strong> (<code>ekyc-trust-chain.html</code>): Five sections covering the Trust Chain model with layered entity diagram, ASA/AUA/KUA function comparison table with real-world analogies, three-card segregation rationale grid, five-step Sub-KUA appointment process timeline, and the dev-company hosting/processing distinction with two-scenario card layout. Breadcrumb linking back to ekyc-uidai-guide.html and index.html.</div></div>
+            <div class="change-item"><span class="change-type type-new">New</span><div class="change-text"><strong>eKYC process flow section on homepage</strong> (<code>index.html #ekyc</code>): Five-entity strip (UIDAI → ASA → KUA → Sub-KUA → Resident), eight-card step grid covering all seven transaction stages plus bank log summary, security guarantees band, and CTA linking to ekyc-uidai-guide.html. Nav link "eKYC Flow" added.</div></div>
+            <div class="change-item"><span class="change-type type-update">Update</span><div class="change-text"><strong>eKYC guide</strong>: Added "Further Reading" panel at the bottom of Section 08 linking to the Trust Chain article. Sidebar updated with Trust Chain link and DPDPindia.in home link. Breadcrumb not yet present at this version.</div></div>
+            <div class="change-item"><span class="change-type type-update">Update</span><div class="change-text"><strong>Footer Resources column</strong>: Added eKYC Process Flow and eKYC Technical Guide links. Removed redundant Researcher link from resources list.</div></div>
+          </div>
+        </div>
+
+        <!-- v1.0 -->
+        <div class="version-block" id="v1-0">
+          <div class="version-header">
+            <div>
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:.6rem;">
+                <span class="version-tag">v1.0</span>
+                <span class="version-date">March 2026</span>
+              </div>
+              <div class="version-title">Site Launch &amp; eKYC Complete Technical Guide</div>
+              <div class="version-desc">Initial public launch of DPDPindia.in with the full homepage and the first Knowledge Base article — the Aadhaar eKYC Complete Process Guide.</div>
+            </div>
+          </div>
+          <div class="version-changes">
+            <div class="change-item"><span class="change-type type-new">New</span><div class="change-text"><strong>Homepage</strong> (<code>index.html</code>): Full editorial design — Prussian/Saffron/Parchment palette, Playfair Display + Source Serif 4 typography. Sections: hero with animated Ashoka Chakra, authority bar stats, about/mandate, four research cards (DPDP Act, Digital Governance, AI Policy, Cybersecurity), policy timeline (2017–2025), blog commentary grid, methodology columns, researcher profile, CTA band, and footer.</div></div>
+            <div class="change-item"><span class="change-type type-new">New</span><div class="change-text"><strong>Article 01 — eKYC Complete Process Guide</strong> (<code>ekyc-uidai-guide.html</code>): Eight sections — ecosystem overview SVG diagram, entity role cards, seven-stage interactive message flow stepper, bank log requirements two-column table, encryption matrix, data protection deep-dive (10 technical controls), legal obligations with regulation boxes, and UIDAI documents reference table.</div></div>
+            <div class="change-item"><span class="change-type type-new">New</span><div class="change-text"><strong>Contact page</strong> (<code>contact.html</code>): Contact form and researcher details. Matches homepage design system.</div></div>
+            <div class="change-item"><span class="change-type type-structure">Structure</span><div class="change-text">Design system established: two coexisting systems — (1) Editorial homepage system: Source Serif 4 body, Playfair Display headings, JetBrains Mono labels, Prussian/Saffron/Parchment/Cream palette; (2) KB article system: IBM Plex Sans body, IBM Plex Mono code, Playfair Display headings, Navy/Blue/Teal/Amber palette. Both are offline-capable, self-contained single HTML files.</div></div>
+          </div>
+        </div>
+
+        <!-- v0.1 -->
+        <div class="version-block" id="v0-1">
+          <div class="version-header">
+            <div>
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:.6rem;">
+                <span class="version-tag">v0.1</span>
+                <span class="version-date">Early 2026 · Pre-launch</span>
+              </div>
+              <div class="version-title">Foundation &amp; Research Scope</div>
+              <div class="version-desc">Project inception — definition of research scope, design system selection, and content architecture.</div>
+            </div>
+          </div>
+          <div class="version-changes">
+            <div class="change-item"><span class="change-type type-structure">Structure</span><div class="change-text"><strong>Research mandate defined</strong>: DPDPindia.in established as an independent policy and legal research initiative tracking the Digital Personal Data Protection Act 2023, its draft rules, regulatory developments, and India's digital governance ecosystem. Focus on doctrinal legal analysis, comparative research, regulatory monitoring, and public commentary.</div></div>
+            <div class="change-item"><span class="change-type type-structure">Structure</span><div class="change-text"><strong>Content architecture</strong>: Decision to publish as flat-file HTML (no CMS dependency, fully offline-capable). Primary content areas: DPDP Act analysis, Digital Governance, AI Policy, Cybersecurity, Privacy Rights, Legal Analysis. Knowledge Base as a separate technical reference strand covering India's digital identity infrastructure where it intersects with DPDP.</div></div>
+            <div class="change-item"><span class="change-type type-structure">Structure</span><div class="change-text"><strong>Design direction</strong>: "Editorial Luxury Law Review" aesthetic selected — editorial serif typography (Playfair Display + Source Serif 4), Prussian blue with saffron accent, parchment backgrounds. Deliberately references traditional legal and academic publication aesthetics to signal rigour and independence.</div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">DPDP India</div>
+      <p class="footer-brand-desc">Independent strategic policy and legal research on India's Digital Personal Data Protection Act and digital governance landscape. Published at dpdpindia.in.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Site Pages</div>
+      <ul class="footer-links">
+        <li><a href="index.html">Homepage</a></li>
+        <li><a href="ekyc-kb.html">eKYC Knowledge Base</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="project.html">Project History</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">KB Articles</div>
+      <ul class="footer-links">
+        <li><a href="ekyc-uidai-guide.html">eKYC Complete Guide</a></li>
+        <li><a href="ekyc-trust-chain.html">Trust Chain</a></li>
+        <li><a href="ekyc-sandbox.html">Developer Sandbox</a></li>
+        <li><a href="ekyc-datacenter.html">CERT-IN Audit</a></li>
+        <li><a href="ekyc-fees-connectivity.html">Fees &amp; Connectivity</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Connect</div>
+      <ul class="footer-links">
+        <li><a href="https://dpdpindia.in">dpdpindia.in</a></li>
+        <li><a href="https://blog.dpdpindia.in">blog.dpdpindia.in</a></li>
+        <li><a href="https://www.linkedin.com/in/jitendra-sharma-16242a9/">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 DPDP India · Project History · All rights reserved</span>
+    <span class="footer-tagline">Est. 2024 · New Delhi, India</span>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — DPDP India | Strategic Policy & Legal Research</title>
+<meta name="description" content="Get in touch with DPDP India — independent strategic policy and legal research on India's Digital Personal Data Protection Act.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════
+   DPDP INDIA — DESIGN SYSTEM
+   Shared with index.html (keep in sync)
+═══════════════════════════════════════════ */
+:root {
+  --parchment:   #F8F4EC;
+  --cream:       #FDFAF5;
+  --paper:       #F2EDE2;
+  --ink:         #1A1610;
+  --prussian:    #1B2B3A;
+  --slate:       #2D3D4E;
+  --saffron:     #D4760A;
+  --saffron-lt:  #F0A840;
+  --ochre:       #B8862C;
+  --mist:        #7A7468;
+  --rule:        rgba(26,22,16,0.12);
+  --rule-gold:   rgba(212,118,10,0.25);
+  --error:       #B03A2E;
+  --success:     #1A6B3A;
+  --shadow-sm:   0 2px 12px rgba(26,22,16,0.06);
+  --shadow-md:   0 8px 40px rgba(26,22,16,0.10);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: 'Source Serif 4', Georgia, serif;
+  background: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Paper texture */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* ── MASTHEAD ── */
+.masthead {
+  background: var(--prussian);
+  padding: 10px 0;
+  text-align: center;
+  border-bottom: 3px solid var(--saffron);
+}
+.masthead-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+}
+.masthead-text span { color: var(--saffron-lt); }
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 200;
+  background: var(--cream);
+  border-bottom: 1px solid var(--rule);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.3s;
+}
+.nav-inner {
+  max-width: 1320px; margin: 0 auto;
+  padding: 0 3rem;
+  display: flex; align-items: center;
+  justify-content: space-between;
+  height: 68px;
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 14px;
+  text-decoration: none;
+}
+.nav-brand-seal { width: 42px; height: 42px; flex-shrink: 0; }
+.nav-brand-name { display: flex; flex-direction: column; gap: 1px; }
+.nav-brand-name strong {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem; font-weight: 700;
+  color: var(--prussian); letter-spacing: 0.01em; line-height: 1;
+}
+.nav-brand-name span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--saffron); line-height: 1;
+}
+.nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.82rem; font-weight: 400;
+  color: var(--slate); text-decoration: none;
+  transition: color 0.2s;
+  position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute;
+  bottom: -4px; left: 0; right: 0;
+  height: 1px; background: var(--saffron);
+  transform: scaleX(0); transition: transform 0.25s;
+  transform-origin: left;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--saffron); }
+.nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+.nav-blog-btn {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.65rem !important; letter-spacing: 0.1em !important;
+  text-transform: uppercase;
+  background: var(--prussian) !important; color: var(--cream) !important;
+  padding: 9px 20px; border-radius: 1px;
+  transition: background 0.2s !important;
+}
+.nav-blog-btn::after { display: none !important; }
+.nav-blog-btn:hover { background: var(--saffron) !important; color: var(--cream) !important; }
+
+/* ── PAGE WRAPPER ── */
+.page { max-width: 1320px; margin: 0 auto; padding: 0 3rem; }
+
+/* ── SECTION KICKER ── */
+.section-kicker {
+  display: flex; align-items: center; gap: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--saffron);
+  margin-bottom: 1rem;
+}
+.section-kicker::before {
+  content: ''; width: 28px; height: 1px; background: var(--saffron);
+}
+
+/* ══════════════════════════════════════════
+   CONTACT PAGE SPECIFIC STYLES
+══════════════════════════════════════════ */
+
+/* ── CONTACT HERO ── */
+.contact-hero {
+  background: var(--prussian);
+  padding: 6rem 0 5rem;
+  position: relative;
+  overflow: hidden;
+}
+.contact-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+  background-size: 52px 52px;
+}
+.contact-hero::after {
+  content: '';
+  position: absolute; top: 0; right: 0;
+  width: 50%; height: 100%;
+  background: radial-gradient(ellipse at right center, rgba(212,118,10,0.1) 0%, transparent 60%);
+  pointer-events: none;
+}
+.contact-hero-inner {
+  max-width: 1320px; margin: 0 auto; padding: 0 3rem;
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+}
+.contact-hero-left {}
+.contact-eyebrow {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 2rem;
+}
+.contact-eyebrow-line { width: 28px; height: 1px; background: var(--saffron); }
+.contact-eyebrow-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--saffron);
+}
+.contact-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 4vw, 3.6rem);
+  font-weight: 700; line-height: 1.1;
+  color: var(--parchment); margin-bottom: 1.5rem;
+}
+.contact-headline em { font-style: italic; color: var(--saffron-lt); }
+.contact-standfirst {
+  font-size: 1rem; font-weight: 300;
+  line-height: 1.85; color: rgba(248,244,236,0.6);
+  max-width: 440px;
+}
+
+/* Right side contact info cards */
+.contact-hero-right {
+  display: flex; flex-direction: column; gap: 1px;
+}
+.contact-info-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  padding: 1.8rem 2rem;
+  display: flex; align-items: flex-start; gap: 1.2rem;
+  transition: background 0.2s;
+}
+.contact-info-card:hover { background: rgba(212,118,10,0.06); }
+.cic-icon {
+  width: 40px; height: 40px; flex-shrink: 0;
+  background: rgba(212,118,10,0.12);
+  border: 1px solid rgba(212,118,10,0.25);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--saffron);
+}
+.cic-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--saffron);
+  margin-bottom: 0.3rem;
+}
+.cic-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem; color: var(--parchment);
+  line-height: 1.4;
+}
+.cic-sub {
+  font-size: 0.78rem; font-weight: 300;
+  color: rgba(248,244,236,0.45); margin-top: 0.2rem;
+}
+
+/* ── CONTACT FORM SECTION ── */
+.contact-body {
+  padding: 7rem 0;
+  background: var(--cream);
+}
+.contact-layout {
+  display: grid; grid-template-columns: 1fr 1.35fr;
+  gap: 6rem; align-items: start;
+}
+
+/* Left: context */
+.contact-context {}
+.context-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem; font-weight: 700;
+  color: var(--prussian); margin-bottom: 1.2rem;
+  line-height: 1.25;
+}
+.context-heading em { font-style: italic; color: var(--saffron); }
+.context-body {
+  font-size: 0.95rem; font-weight: 300;
+  line-height: 1.85; color: var(--slate);
+  margin-bottom: 2rem;
+}
+
+.inquiry-types {
+  list-style: none;
+  border-top: 1px solid var(--rule);
+}
+.inquiry-item {
+  display: flex; align-items: flex-start; gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.inquiry-bullet {
+  width: 6px; height: 6px;
+  background: var(--saffron); border-radius: 50%;
+  flex-shrink: 0; margin-top: 7px;
+}
+.inquiry-text {
+  font-size: 0.88rem; font-weight: 300;
+  line-height: 1.7; color: var(--slate);
+}
+.inquiry-text strong { font-weight: 600; color: var(--prussian); }
+
+.response-note {
+  margin-top: 2rem;
+  padding: 1.2rem 1.5rem;
+  background: var(--parchment);
+  border-left: 3px solid var(--saffron);
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.response-note-icon { color: var(--saffron); flex-shrink: 0; margin-top: 1px; }
+.response-note-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem; letter-spacing: 0.04em;
+  color: var(--mist); line-height: 1.65;
+}
+
+/* ── THE FORM ── */
+.contact-form-wrap {
+  background: var(--cream);
+  border: 1px solid var(--rule);
+}
+.form-header {
+  background: var(--prussian);
+  padding: 1.5rem 2.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.form-header-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem; font-weight: 700;
+  color: var(--parchment);
+}
+.form-header-ref {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem; letter-spacing: 0.1em;
+  color: rgba(248,244,236,0.35);
+}
+.form-body { padding: 2.5rem; }
+
+.form-row {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1.5rem; margin-bottom: 1.5rem;
+}
+.form-group { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 0; }
+.form-group.full { grid-column: 1 / -1; margin-bottom: 1.5rem; }
+
+.form-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--slate);
+  display: flex; align-items: center; gap: 6px;
+}
+.form-label .required {
+  color: var(--saffron); font-size: 0.7rem;
+}
+
+.form-control {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.9rem; font-weight: 300;
+  color: var(--ink);
+  background: var(--parchment);
+  border: 1px solid var(--rule);
+  padding: 12px 14px;
+  border-radius: 0;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.form-control:focus {
+  border-color: var(--saffron);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(212,118,10,0.08);
+}
+.form-control::placeholder { color: var(--mist); opacity: 0.7; font-style: italic; }
+
+textarea.form-control {
+  resize: vertical; min-height: 140px;
+  line-height: 1.7;
+}
+
+select.form-control {
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A7468' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px; cursor: pointer;
+}
+
+/* Character count */
+.char-counter {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem; letter-spacing: 0.08em;
+  color: var(--mist); text-align: right;
+  margin-top: 4px;
+}
+
+/* Checkbox */
+.form-check {
+  display: flex; align-items: flex-start; gap: 10px;
+  margin-bottom: 2rem;
+}
+.form-check input[type="checkbox"] {
+  width: 16px; height: 16px; flex-shrink: 0;
+  margin-top: 2px; cursor: pointer;
+  accent-color: var(--saffron);
+}
+.form-check-label {
+  font-size: 0.82rem; font-weight: 300;
+  color: var(--mist); line-height: 1.65;
+}
+
+/* Submit button */
+.form-submit-row {
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+}
+.form-submit-note {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem; letter-spacing: 0.08em;
+  color: var(--mist); line-height: 1.6;
+  max-width: 200px;
+}
+.form-submit-note svg { vertical-align: middle; margin-right: 4px; }
+
+.btn-submit {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--prussian);
+  color: var(--cream);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem; letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 14px 28px;
+  border: none; border-radius: 0;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  position: relative; overflow: hidden;
+}
+.btn-submit:hover { background: var(--saffron); transform: translateY(-1px); }
+.btn-submit:active { transform: translateY(0); }
+.btn-submit:disabled {
+  background: var(--mist); cursor: not-allowed; transform: none;
+}
+.btn-submit .spinner {
+  width: 14px; height: 14px;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  border-top-color: rgba(255,255,255,0.9);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: none;
+}
+.btn-submit.loading .spinner { display: block; }
+.btn-submit.loading .btn-text { display: none; }
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── VALIDATION STATES ── */
+.form-group.has-error .form-control {
+  border-color: var(--error);
+  background: rgba(176,58,46,0.03);
+}
+.form-group.has-error .form-control:focus {
+  box-shadow: 0 0 0 3px rgba(176,58,46,0.08);
+}
+.form-error-msg {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem; letter-spacing: 0.08em;
+  color: var(--error); margin-top: 4px;
+  display: none;
+}
+.form-group.has-error .form-error-msg { display: block; }
+
+/* ── SUCCESS STATE ── */
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 4rem 2.5rem;
+}
+.form-success.visible { display: block; }
+.success-icon {
+  width: 64px; height: 64px;
+  background: rgba(26,107,58,0.08);
+  border: 2px solid var(--success);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1.5rem;
+  color: var(--success);
+}
+.success-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem; font-weight: 700;
+  color: var(--prussian); margin-bottom: 0.8rem;
+}
+.success-body {
+  font-size: 0.9rem; font-weight: 300;
+  line-height: 1.8; color: var(--mist);
+  max-width: 380px; margin: 0 auto 2rem;
+}
+.success-ref {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem; letter-spacing: 0.1em;
+  color: var(--saffron); text-transform: uppercase;
+  background: var(--parchment); padding: 8px 16px;
+  display: inline-block; margin-bottom: 2rem;
+}
+.back-home {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem; letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--prussian); text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.back-home:hover { color: var(--saffron); border-color: var(--saffron); }
+
+/* ── PRIVACY NOTICE ── */
+.privacy-band {
+  background: var(--parchment);
+  border-top: 1px solid var(--rule);
+  padding: 4rem 0;
+}
+.privacy-inner {
+  max-width: 1320px; margin: 0 auto; padding: 0 3rem;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+}
+.privacy-col h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem; font-weight: 700;
+  color: var(--prussian); margin-bottom: 0.8rem;
+}
+.privacy-col p {
+  font-size: 0.85rem; font-weight: 300;
+  line-height: 1.8; color: var(--mist);
+}
+.privacy-col p + p { margin-top: 0.8rem; }
+
+/* ── FAQ ── */
+.faq-section {
+  padding: 7rem 0;
+  background: var(--cream);
+  border-top: 1px solid var(--rule);
+}
+.faq-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--rule);
+  margin-top: 3.5rem;
+}
+.faq-item {
+  padding: 2rem 2.5rem;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.faq-item:nth-child(2n) { border-right: none; }
+.faq-item:nth-last-child(-n+2) { border-bottom: none; }
+.faq-q {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem; font-weight: 700;
+  color: var(--prussian); margin-bottom: 0.6rem;
+  line-height: 1.3;
+}
+.faq-a {
+  font-size: 0.85rem; font-weight: 300;
+  line-height: 1.8; color: var(--mist);
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink); padding: 5rem 0 2rem;
+}
+.footer-grid {
+  max-width: 1320px; margin: 0 auto; padding: 0 3rem;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem; padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.footer-brand-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem; font-weight: 700;
+  color: var(--parchment); margin-bottom: 1rem;
+}
+.footer-brand-desc {
+  font-size: 0.85rem; font-weight: 300;
+  line-height: 1.8; color: rgba(248,244,236,0.4);
+  margin-bottom: 1.5rem; max-width: 280px;
+}
+.footer-flag {
+  display: flex; align-items: center; gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(248,244,236,0.25);
+}
+.footer-col-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--saffron); margin-bottom: 1.2rem;
+}
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.footer-links a {
+  font-size: 0.85rem; font-weight: 300;
+  color: rgba(248,244,236,0.45); text-decoration: none; transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--parchment); }
+.footer-bottom {
+  max-width: 1320px; margin: 0 auto; padding: 1.5rem 3rem 0;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-copy { font-size: 0.78rem; font-weight: 300; color: rgba(248,244,236,0.25); }
+.footer-tagline {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: rgba(248,244,236,0.2);
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.6s ease both; }
+.fade-up-1 { animation-delay: 0.1s; }
+.fade-up-2 { animation-delay: 0.2s; }
+.fade-up-3 { animation-delay: 0.3s; }
+.fade-up-4 { animation-delay: 0.4s; }
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0; transform: translateY(16px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── MOBILE ── */
+@media (max-width: 900px) {
+  .nav-inner { padding: 0 1.5rem; }
+  .nav-links { display: none; }
+  .page { padding: 0 1.5rem; }
+  .contact-hero-inner { grid-template-columns: 1fr; }
+  .contact-hero-right { display: none; }
+  .contact-layout { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .form-body { padding: 1.5rem; }
+  .form-header { padding: 1.2rem 1.5rem; }
+  .privacy-inner { grid-template-columns: 1fr; }
+  .faq-grid { grid-template-columns: 1fr; }
+  .faq-item { border-right: none; }
+  .faq-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--rule); }
+  .faq-item:last-child { border-bottom: none; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .form-submit-row { flex-direction: column; align-items: stretch; }
+  .form-submit-note { max-width: 100%; }
+  .btn-submit { justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <span class="masthead-text">
+    <span>DPDP India</span> · Independent Strategic Policy & Legal Research ·
+    <span>Digital Personal Data Protection Act, 2023</span>
+  </span>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <svg class="nav-brand-seal" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="21" cy="21" r="20" stroke="#1B2B3A" stroke-width="1.2"/>
+        <circle cx="21" cy="21" r="15" stroke="#1B2B3A" stroke-opacity="0.3" stroke-width="0.8"/>
+        <g stroke="#D4760A" stroke-width="0.8" opacity="0.6">
+          <line x1="21" y1="7" x2="21" y2="35"/><line x1="7" y1="21" x2="35" y2="21"/>
+          <line x1="11.1" y1="11.1" x2="30.9" y2="30.9"/><line x1="30.9" y1="11.1" x2="11.1" y2="30.9"/>
+          <line x1="21" y1="7" x2="21" y2="10"/><line x1="28.5" y1="8.5" x2="27" y2="11.2"/>
+          <line x1="34" y1="14" x2="31.3" y2="15.5"/><line x1="35" y1="21" x2="32" y2="21"/>
+          <line x1="34" y1="28" x2="31.3" y2="26.5"/><line x1="28.5" y1="33.5" x2="27" y2="30.8"/>
+          <line x1="21" y1="35" x2="21" y2="32"/><line x1="13.5" y1="33.5" x2="15" y2="30.8"/>
+          <line x1="8" y1="28" x2="10.7" y2="26.5"/><line x1="7" y1="21" x2="10" y2="21"/>
+          <line x1="8" y1="14" x2="10.7" y2="15.5"/><line x1="13.5" y1="8.5" x2="15" y2="11.2"/>
+        </g>
+        <circle cx="21" cy="21" r="4" stroke="#1B2B3A" stroke-width="1.5" fill="none"/>
+        <circle cx="21" cy="21" r="1.5" fill="#D4760A"/>
+      </svg>
+      <div class="nav-brand-name">
+        <strong>DPDP India</strong>
+        <span>Policy &amp; Legal Research</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#research">Research</a></li>
+      <li><a href="index.html#timeline">Timeline</a></li>
+      <li><a href="index.html#blog">Commentary</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+      <li><a href="https://blog.dpdpindia.in" class="nav-blog-btn">Blog →</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ══════════════ CONTACT HERO ══════════════ -->
+<div class="contact-hero">
+  <div class="contact-hero-inner">
+
+    <div class="contact-hero-left">
+      <div class="contact-eyebrow fade-up">
+        <div class="contact-eyebrow-line"></div>
+        <span class="contact-eyebrow-text">Get In Touch</span>
+      </div>
+      <h1 class="contact-headline fade-up fade-up-1">
+        Start a <em>Conversation</em><br>on Digital Governance
+      </h1>
+      <p class="contact-standfirst fade-up fade-up-2">
+        Whether you have a research enquiry, wish to collaborate, or want to engage on matters of data protection policy — this is the right place to reach out.
+      </p>
+    </div>
+
+    <div class="contact-hero-right fade-up fade-up-3">
+      <div class="contact-info-card">
+        <div class="cic-icon">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M9 2 C5.13 2 2 5.13 2 9 C2 12.87 5.13 16 9 16 C12.87 16 16 12.87 16 9 C16 5.13 12.87 2 9 2Z" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M9 5 v4 l3 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="cic-label">Response Time</div>
+          <div class="cic-value">2–5 Business Days</div>
+          <div class="cic-sub">All enquiries receive a personal reply</div>
+        </div>
+      </div>
+      <div class="contact-info-card">
+        <div class="cic-icon">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <rect x="2" y="4" width="14" height="10" rx="1.5" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M2 7 l7 4 7-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="cic-label">Correspondence</div>
+          <div class="cic-value">Secure Contact Form</div>
+          <div class="cic-sub">Your message is handled confidentially</div>
+        </div>
+      </div>
+      <div class="contact-info-card">
+        <div class="cic-icon">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M6 9 h6 M9 6 v6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="cic-label">Also Reachable Via</div>
+          <div class="cic-value">LinkedIn Profile</div>
+          <div class="cic-sub">
+            <a href="https://www.linkedin.com/in/jitendra-sharma-16242a9/"
+               style="color:var(--saffron-lt); text-decoration:none;"
+               target="_blank" rel="noopener">Connect with Jitendra Sharma →</a>
+          </div>
+        </div>
+      </div>
+      <div class="contact-info-card">
+        <div class="cic-icon">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <rect x="2" y="4" width="14" height="10" rx="1.5" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M2 7 l7 4 7-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="cic-label">Email</div>
+          <div class="cic-value">
+            <a href="mailto:jitsha@dpdpindia.in"
+               style="color:inherit; text-decoration:none;">jitsha@dpdpindia.in</a>
+          </div>
+          <div class="cic-sub">Direct correspondence welcome</div>
+        </div>
+      </div>
+      <div class="contact-info-card">
+        <div class="cic-icon">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M9 2 L3 5 v5 c0 4 2.5 7 6 8 3.5-1 6-4 6-8 V5 Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="cic-label">Based In</div>
+          <div class="cic-value">India</div>
+          <div class="cic-sub">Independent Research Initiative</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ MAIN CONTACT BODY ══════════════ -->
+<div class="contact-body">
+  <div class="page">
+    <div class="contact-layout">
+
+      <!-- Left: Context panel -->
+      <div class="contact-context reveal">
+        <div class="section-kicker">What to Expect</div>
+        <h2 class="context-heading">What Kinds of<br><em>Enquiries</em> Are Welcome</h2>
+        <p class="context-body">DPDP India is an independent research initiative. The contact form is the best way to reach out — all submissions are reviewed personally and responded to with care.</p>
+
+        <ul class="inquiry-types">
+          <li class="inquiry-item">
+            <div class="inquiry-bullet"></div>
+            <div class="inquiry-text"><strong>Research Collaboration</strong> — Joint research projects, academic partnerships, or policy paper contributions on data protection, privacy law, or digital governance.</div>
+          </li>
+          <li class="inquiry-item">
+            <div class="inquiry-bullet"></div>
+            <div class="inquiry-text"><strong>Media & Press Enquiries</strong> — Requests for comment, expert quotes, or interviews on matters related to the DPDP Act, data governance, or privacy regulation in India.</div>
+          </li>
+          <li class="inquiry-item">
+            <div class="inquiry-bullet"></div>
+            <div class="inquiry-text"><strong>Speaking & Panels</strong> — Invitations to conferences, academic seminars, policy roundtables, or webinars on digital governance topics.</div>
+          </li>
+          <li class="inquiry-item">
+            <div class="inquiry-bullet"></div>
+            <div class="inquiry-text"><strong>Policy Feedback</strong> — Comments on published research, factual corrections, or substantive engagement with analysis published on this site or the blog.</div>
+          </li>
+          <li class="inquiry-item">
+            <div class="inquiry-bullet"></div>
+            <div class="inquiry-text"><strong>General Correspondence</strong> — Any other queries related to DPDP India's research mission, publications, or the state of India's digital governance landscape.</div>
+          </li>
+        </ul>
+
+        <div class="response-note">
+          <div class="response-note-icon">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <circle cx="7" cy="7" r="6" stroke="#D4760A" stroke-width="1.2"/>
+              <path d="M7 4 v3.5 l2 1.5" stroke="#D4760A" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <span class="response-note-text">
+            All messages are reviewed personally. Expect a response within 2–5 business days.
+            Complex research queries may take a little longer.
+          </span>
+        </div>
+      </div>
+
+      <!-- Right: The form -->
+      <div class="contact-form-wrap reveal">
+        <div class="form-header">
+          <span class="form-header-title">Contact Form</span>
+          <span class="form-header-ref" id="formRef">REF: —</span>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════
+             FORMSPREE SETUP INSTRUCTIONS (for site owner):
+             ────────────────────────────────────────────────────
+             1. Go to https://formspree.io and create a free account
+             2. Click "New Form" → enter "DPDP India Contact"
+             3. Enter your email: jitsha@dpdpindia.in
+             4. Copy the form endpoint — looks like:
+                https://formspree.io/f/xyzabcde
+             5. Replace the action URL below with your endpoint
+             6. Your email address is NEVER stored in this HTML file.
+                Only the opaque form ID is visible to visitors.
+             ═════════════════════════════════════════════════════ -->
+        <form
+          id="contactForm"
+          action="https://formspree.io/f/mlgodzbr"
+          method="POST"
+          novalidate
+        >
+          <!-- Honeypot anti-spam (hidden from real users) -->
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+          <!-- Redirect to thank-you state (handled by JS, not Formspree redirect) -->
+          <input type="hidden" name="_subject" value="New enquiry via DPDP India — dpdpindia.in">
+          <input type="hidden" name="_format" value="plain">
+
+          <div class="form-body">
+
+            <!-- Row 1: Name + Organisation -->
+            <div class="form-row">
+              <div class="form-group" id="grp-name">
+                <label class="form-label" for="name">
+                  Full Name <span class="required">*</span>
+                </label>
+                <input
+                  type="text" id="name" name="Full Name"
+                  class="form-control"
+                  placeholder="Your full name"
+                  autocomplete="name"
+                  maxlength="100"
+                >
+                <span class="form-error-msg">Please enter your name.</span>
+              </div>
+              <div class="form-group" id="grp-org">
+                <label class="form-label" for="organisation">
+                  Organisation / Affiliation
+                </label>
+                <input
+                  type="text" id="organisation" name="Organisation"
+                  class="form-control"
+                  placeholder="Organisation (if applicable)"
+                  autocomplete="organization"
+                  maxlength="120"
+                >
+              </div>
+            </div>
+
+            <!-- Row 2: Email + Phone -->
+            <div class="form-row">
+              <div class="form-group" id="grp-email">
+                <label class="form-label" for="email">
+                  Email Address <span class="required">*</span>
+                </label>
+                <input
+                  type="email" id="email" name="Email"
+                  class="form-control"
+                  placeholder="your@email.com"
+                  autocomplete="email"
+                  maxlength="150"
+                >
+                <span class="form-error-msg">Please enter a valid email address.</span>
+              </div>
+              <div class="form-group" id="grp-phone">
+                <label class="form-label" for="phone">
+                  Phone Number
+                </label>
+                <input
+                  type="tel" id="phone" name="Phone"
+                  class="form-control"
+                  placeholder="+91 XXXXX XXXXX (optional)"
+                  autocomplete="tel"
+                  maxlength="20"
+                >
+              </div>
+            </div>
+
+            <!-- Row 3: Enquiry type (full width) -->
+            <div class="form-group full" id="grp-type">
+              <label class="form-label" for="enquiry-type">
+                Nature of Enquiry <span class="required">*</span>
+              </label>
+              <select id="enquiry-type" name="Enquiry Type" class="form-control">
+                <option value="" disabled selected>— Select the type of enquiry —</option>
+                <option value="Research Collaboration">Research Collaboration</option>
+                <option value="Media / Press Enquiry">Media / Press Enquiry</option>
+                <option value="Speaking / Panel Invitation">Speaking / Panel Invitation</option>
+                <option value="Policy Feedback">Policy Feedback on Published Research</option>
+                <option value="Academic / Student Enquiry">Academic / Student Enquiry</option>
+                <option value="General Correspondence">General Correspondence</option>
+                <option value="Other">Other</option>
+              </select>
+              <span class="form-error-msg">Please select an enquiry type.</span>
+            </div>
+
+            <!-- Row 4: Subject -->
+            <div class="form-group full" id="grp-subject">
+              <label class="form-label" for="subject">
+                Subject / Topic <span class="required">*</span>
+              </label>
+              <input
+                type="text" id="subject" name="Subject"
+                class="form-control"
+                placeholder="Brief subject line for your enquiry"
+                maxlength="200"
+              >
+              <span class="form-error-msg">Please provide a subject.</span>
+            </div>
+
+            <!-- Row 5: Message -->
+            <div class="form-group full" id="grp-message">
+              <label class="form-label" for="message">
+                Message <span class="required">*</span>
+              </label>
+              <textarea
+                id="message" name="Message"
+                class="form-control"
+                placeholder="Please describe your enquiry, question, or proposal in as much detail as you'd like..."
+                maxlength="3000"
+                rows="7"
+              ></textarea>
+              <div class="char-counter"><span id="charCount">0</span> / 3000 characters</div>
+              <span class="form-error-msg">Please enter your message (min. 20 characters).</span>
+            </div>
+
+            <!-- How did you hear -->
+            <div class="form-group full">
+              <label class="form-label" for="source">How did you find DPDP India?</label>
+              <select id="source" name="How they found us" class="form-control">
+                <option value="" disabled selected>— Optional —</option>
+                <option value="Web Search">Web Search (Google, etc.)</option>
+                <option value="LinkedIn">LinkedIn</option>
+                <option value="Blog">Via the blog (blog.dpdpindia.in)</option>
+                <option value="Colleague / Referral">Colleague or Referral</option>
+                <option value="Social Media">Social Media</option>
+                <option value="Academic Citation">Academic Paper / Citation</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <!-- Consent checkbox -->
+            <div class="form-check" id="grp-consent">
+              <input type="checkbox" id="consent" name="Consent" value="yes">
+              <label class="form-check-label" for="consent">
+                I understand that the information I submit will be used solely to respond to my enquiry
+                and will not be shared with third parties or used for marketing purposes.
+                <span class="required" style="color:var(--saffron);"> *</span>
+              </label>
+            </div>
+
+            <!-- Submit row -->
+            <div class="form-submit-row">
+              <div class="form-submit-note">
+                <svg width="11" height="12" viewBox="0 0 11 12" fill="none">
+                  <rect x="1" y="5" width="9" height="7" rx="1" stroke="#7A7468" stroke-width="1.2"/>
+                  <path d="M3 5 V3.5 a2.5 2.5 0 0 1 5 0 V5" stroke="#7A7468" stroke-width="1.2" stroke-linecap="round"/>
+                </svg>
+                Submitted securely. Your contact details are never published.
+              </div>
+              <button type="submit" class="btn-submit" id="submitBtn">
+                <div class="spinner"></div>
+                <span class="btn-text">
+                  Submit Enquiry
+                  <svg width="13" height="10" viewBox="0 0 13 10" fill="none" style="display:inline;vertical-align:middle;margin-left:6px;">
+                    <path d="M1 5h11M7.5 1l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </button>
+            </div>
+
+          </div><!-- /.form-body -->
+        </form><!-- /#contactForm -->
+
+        <!-- SUCCESS STATE (shown after submission) -->
+        <div class="form-success" id="formSuccess">
+          <div class="success-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <path d="M6 14 l5 5 11-10" stroke="#1A6B3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="success-heading">Enquiry Submitted</div>
+          <p class="success-body">Thank you for reaching out. Your message has been received and will be reviewed personally. You can expect a response within 2–5 business days.</p>
+          <div class="success-ref" id="successRef">—</div>
+          <br>
+          <a href="index.html" class="back-home">
+            ← Return to DPDP India
+          </a>
+        </div>
+
+      </div><!-- /.contact-form-wrap -->
+
+    </div><!-- /.contact-layout -->
+  </div><!-- /.page -->
+</div><!-- /.contact-body -->
+
+<!-- ══════════════ PRIVACY NOTICE ══════════════ -->
+<div class="privacy-band">
+  <div class="privacy-inner">
+    <div class="privacy-col reveal">
+      <h3>How Your Information Is Used</h3>
+      <p>Information you submit through this form is used solely to respond to your enquiry. It is not shared with any third party, used for marketing communications, or stored in any publicly accessible system.</p>
+      <p>DPDP India is an independent research initiative committed to the very principles it studies — including the responsible handling of personal data.</p>
+    </div>
+    <div class="privacy-col reveal">
+      <h3>Data Handling Principles</h3>
+      <p>In the spirit of the Digital Personal Data Protection Act 2023, this form collects only the information necessary to process your enquiry (<em>data minimisation</em>). Your contact details are never sold, rented, or shared. You may request deletion of your information at any time by writing in.</p>
+      <p>This site does not use tracking cookies or third-party analytics scripts on the contact page.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ FAQ ══════════════ -->
+<section class="faq-section">
+  <div class="page">
+    <div class="reveal">
+      <div class="section-kicker">Common Questions</div>
+      <h2 style="font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3vw,2.5rem); font-weight:700; color:var(--prussian); line-height:1.15;">
+        Frequently Asked <em style="font-style:italic; color:var(--saffron);">Questions</em>
+      </h2>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item reveal">
+        <div class="faq-q">Is DPDP India affiliated with the government or any regulatory body?</div>
+        <div class="faq-a">No. DPDP India is a fully independent research initiative. It has no formal affiliation with the Ministry of Electronics and Information Technology (MeitY), the Data Protection Board of India, or any government body. All research and commentary represents the independent views of the researcher.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">Can I cite research or articles from DPDP India in my own work?</div>
+        <div class="faq-a">Yes, research published on dpdpindia.in and blog.dpdpindia.in may be cited with appropriate attribution. Please use the full URL, author name (Jitendra Sharma), and publication date. For academic citations, please use the standard citation format applicable to your discipline.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">Do you offer legal advice or compliance services?</div>
+        <div class="faq-a">DPDP India is a policy and legal research platform — it does not provide legal advice, legal opinions, or compliance consulting services. Content published here is for informational and academic purposes only and should not be relied upon as legal advice. For compliance needs, please consult a qualified legal practitioner.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">I have a correction or factual update to share. How should I submit it?</div>
+        <div class="faq-a">Corrections and factual updates are welcome and taken seriously. Please use the contact form and select "Policy Feedback on Published Research" as the enquiry type. Include the specific article URL, the passage in question, and your suggested correction with supporting references.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">Can students or researchers request an informational interview?</div>
+        <div class="faq-a">Requests from students and academic researchers are welcomed where time permits. Please use the contact form, select "Academic / Student Enquiry", describe your research question or thesis topic, and indicate your institutional affiliation. Requests are reviewed on a case-by-case basis.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">How can I stay updated on new research and commentary?</div>
+        <div class="faq-a">The best way to stay current is to regularly visit blog.dpdpindia.in for policy commentary and analysis, and dpdpindia.in for research updates. You can also connect with Jitendra Sharma on LinkedIn to see new publications in your professional feed.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">DPDP India</div>
+      <p class="footer-brand-desc">Independent strategic policy and legal research on India's Digital Personal Data Protection Act and digital governance landscape.</p>
+      <div class="footer-flag">
+        <svg width="18" height="12" viewBox="0 0 18 12" fill="none">
+          <rect width="18" height="4" fill="#FF9933"/>
+          <rect y="4" width="18" height="4" fill="white"/>
+          <rect y="8" width="18" height="4" fill="#138808"/>
+          <circle cx="9" cy="6" r="1.8" fill="none" stroke="#000080" stroke-width="0.7"/>
+        </svg>
+        Independent Research · India
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Research</div>
+      <ul class="footer-links">
+        <li><a href="index.html#research">Data Protection</a></li>
+        <li><a href="index.html#research">Digital Governance</a></li>
+        <li><a href="index.html#research">Cybersecurity Policy</a></li>
+        <li><a href="index.html#research">AI Governance</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Resources</div>
+      <ul class="footer-links">
+        <li><a href="index.html#timeline">Policy Timeline</a></li>
+        <li><a href="https://blog.dpdpindia.in">Blog</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Connect</div>
+      <ul class="footer-links">
+        <li><a href="https://dpdpindia.in">dpdpindia.in</a></li>
+        <li><a href="https://blog.dpdpindia.in">blog.dpdpindia.in</a></li>
+        <li><a href="https://www.linkedin.com/in/jitendra-sharma-16242a9/">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 DPDP India · Independent Policy Research Initiative · All rights reserved</span>
+    <span class="footer-tagline">Est. 2024 · India</span>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════
+     JAVASCRIPT: Validation, Submission, UX
+══════════════════════════════════════════ -->
+<script>
+/* ── GENERATE REFERENCE NUMBER ── */
+function generateRef() {
+  const d = new Date();
+  const pad = n => String(n).padStart(2,'0');
+  return `DPDP-${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}-${Math.floor(1000 + Math.random()*9000)}`;
+}
+const ref = generateRef();
+document.getElementById('formRef').textContent = `REF: ${ref}`;
+
+/* ── CHARACTER COUNTER ── */
+const msgField = document.getElementById('message');
+const counter  = document.getElementById('charCount');
+msgField.addEventListener('input', () => {
+  counter.textContent = msgField.value.length;
+  counter.style.color = msgField.value.length > 2800 ? 'var(--saffron)' : 'var(--mist)';
+});
+
+/* ── SCROLL REVEAL ── */
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal').forEach((el, i) => {
+  el.style.transitionDelay = `${(i % 4) * 0.1}s`;
+  ro.observe(el);
+});
+
+/* ── FORM VALIDATION ── */
+function validateField(id, condition) {
+  const grp = document.getElementById(`grp-${id}`);
+  if (!grp) return condition;
+  if (condition) {
+    grp.classList.remove('has-error');
+  } else {
+    grp.classList.add('has-error');
+  }
+  return condition;
+}
+
+function validateForm() {
+  const name    = document.getElementById('name').value.trim();
+  const email   = document.getElementById('email').value.trim();
+  const type    = document.getElementById('enquiry-type').value;
+  const subject = document.getElementById('subject').value.trim();
+  const message = document.getElementById('message').value.trim();
+  const consent = document.getElementById('consent').checked;
+
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  let valid = true;
+  valid = validateField('name',    name.length >= 2)        && valid;
+  valid = validateField('email',   emailRe.test(email))     && valid;
+  valid = validateField('type',    type !== '')             && valid;
+  valid = validateField('subject', subject.length >= 3)     && valid;
+  valid = validateField('message', message.length >= 20)    && valid;
+
+  // Consent — show inline error on the checkbox wrapper
+  const consentGrp = document.getElementById('grp-consent');
+  if (consentGrp) {
+    if (!consent) {
+      consentGrp.style.outline = '1px solid var(--error)';
+      consentGrp.style.outlineOffset = '4px';
+      valid = false;
+    } else {
+      consentGrp.style.outline = 'none';
+    }
+  }
+
+  return valid;
+}
+
+/* ── HANDLE FORM SUBMIT ── */
+const form    = document.getElementById('contactForm');
+const btn     = document.getElementById('submitBtn');
+const success = document.getElementById('formSuccess');
+
+form.addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  /* Honeypot check */
+  if (this._gotcha && this._gotcha.value) return;
+
+  if (!validateForm()) {
+    /* Scroll to first error */
+    const firstError = form.querySelector('.has-error');
+    if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+
+  /* Loading state */
+  btn.disabled = true;
+  btn.classList.add('loading');
+
+  try {
+    const data = new FormData(this);
+    /* Append reference number so it shows in the email */
+    data.append('Reference Number', ref);
+    data.append('Submitted At', new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) + ' IST');
+
+    const res = await fetch(this.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (res.ok) {
+      /* Show success state */
+      form.style.display = 'none';
+      success.classList.add('visible');
+      document.getElementById('successRef').textContent = `Reference: ${ref}`;
+      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } else {
+      /* Formspree error */
+      const json = await res.json().catch(() => ({}));
+      const msg  = (json.errors || []).map(e => e.message).join(', ') || 'Submission error. Please try again.';
+      alert(`There was a problem submitting the form: ${msg}`);
+      btn.disabled = false;
+      btn.classList.remove('loading');
+    }
+  } catch (err) {
+    /* Network error */
+    alert('Network error. Please check your connection and try again.');
+    btn.disabled = false;
+    btn.classList.remove('loading');
+  }
+});
+
+/* ── CLEAR ERRORS ON INPUT ── */
+form.querySelectorAll('.form-control').forEach(el => {
+  el.addEventListener('input', () => {
+    const grp = el.closest('.form-group');
+    if (grp) grp.classList.remove('has-error');
+  });
+  el.addEventListener('change', () => {
+    const grp = el.closest('.form-group');
+    if (grp) grp.classList.remove('has-error');
+  });
+});
+
+/* ── NAV SCROLL ── */
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  nav.style.boxShadow = window.scrollY > 40
+    ? '0 4px 24px rgba(26,22,16,0.1)'
+    : '0 2px 12px rgba(26,22,16,0.06)';
+});
+</script>
+
+</body>
+</html>

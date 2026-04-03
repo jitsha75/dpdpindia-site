@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DPDPIndia.in — India's Data Protection & Cyber Fraud Intelligence Platform</title>
+<meta name="description" content="India's premier platform on DPDP Act 2023 compliance, IT Act 2000, Aadhaar eKYC, and cyber fraud intelligence. For individuals, businesses, legal professionals, and government.">
+<meta name="keywords" content="DPDP Act 2023, data protection India, cyber fraud India, DPDP compliance, digital personal data protection, IT Act 2000, cybercrime India, data fiduciary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --parchment:#F8F4EC;--cream:#FDFAF5;--paper:#F2EDE2;--ink:#1A1610;
+  --prussian:#1B2B3A;--slate:#2D3D4E;--saffron:#D4760A;--saffron-lt:#F0A840;
+  --ochre:#B8862C;--chakra-blue:#1B3A6B;--mist:#7A7468;
+  --rule:rgba(26,22,16,0.12);--rule-gold:rgba(212,118,10,0.25);
+  --shadow-sm:0 2px 12px rgba(26,22,16,0.06);--shadow-md:0 8px 40px rgba(26,22,16,0.10);
+  --danger:#C0392B;--danger-lt:rgba(192,57,43,0.08);
+  --success:#1A6B3A;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:'Source Serif 4',Georgia,serif;background:var(--cream);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;}
+
+/* ===== SAFE HARBOUR MODAL ===== */
+.sh-modal-overlay{position:fixed;inset:0;background:rgba(27,22,16,0.85);z-index:10000;display:flex;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(4px);}
+.sh-modal-overlay.hidden{display:none;}
+.sh-modal{background:var(--cream);max-width:680px;width:100%;max-height:90vh;overflow-y:auto;border-top:4px solid var(--saffron);box-shadow:0 24px 80px rgba(26,22,16,0.4);position:relative;}
+.sh-modal-header{background:var(--prussian);padding:2rem 2.5rem 1.5rem;}
+.sh-modal-kicker{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.8rem;}
+.sh-modal-title{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--parchment);line-height:1.2;}
+.sh-modal-body{padding:2rem 2.5rem;}
+.sh-modal-body p{font-size:0.88rem;font-weight:300;line-height:1.9;color:var(--slate);margin-bottom:1rem;}
+.sh-modal-body p:last-child{margin-bottom:0;}
+.sh-modal-body strong{font-weight:600;color:var(--prussian);}
+.sh-modal-warning{background:rgba(212,118,10,0.07);border:1px solid var(--rule-gold);border-left:3px solid var(--saffron);padding:1.2rem 1.4rem;margin:1.2rem 0;}
+.sh-modal-warning p{font-size:0.82rem;font-weight:400;line-height:1.75;color:var(--ochre)!important;}
+.sh-modal-warning strong{color:var(--saffron)!important;}
+.sh-modal-footer{padding:1.5rem 2.5rem 2rem;border-top:1px solid var(--rule);display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
+.sh-accept-btn{font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;background:var(--prussian);color:var(--cream);border:none;padding:14px 28px;cursor:pointer;transition:background 0.2s;flex-shrink:0;}
+.sh-accept-btn:hover{background:var(--saffron);}
+.sh-modal-note{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.06em;color:var(--mist);line-height:1.6;flex:1;}
+.sh-modal-links{font-size:0.78rem;font-weight:300;color:var(--mist);margin-top:0.5rem;}
+.sh-modal-links a{color:var(--saffron);text-decoration:none;}
+
+/* ===== MASTHEAD ===== */
+.masthead{background:var(--prussian);padding:9px 0;text-align:center;border-bottom:2px solid var(--saffron);}
+.masthead-text{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.5);}
+.masthead-text span{color:var(--saffron-lt);}
+
+/* ===== MEGA-NAV ===== */
+nav{position:sticky;top:0;z-index:500;background:var(--cream);border-bottom:1px solid var(--rule);box-shadow:var(--shadow-sm);}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:relative;}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0;}
+.nav-brand-seal{width:38px;height:38px;flex-shrink:0;}
+.nav-brand-name{display:flex;flex-direction:column;gap:1px;}
+.nav-brand-name strong{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--prussian);letter-spacing:0.01em;line-height:1;}
+.nav-brand-name span{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);line-height:1;}
+
+/* Primary nav items */
+.nav-menu{display:flex;align-items:center;gap:0;list-style:none;}
+.nav-item{position:relative;}
+.nav-item>a{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--slate);text-decoration:none;padding:0 14px;height:64px;display:flex;align-items:center;transition:color 0.2s;white-space:nowrap;border-bottom:2px solid transparent;}
+.nav-item>a:hover,.nav-item.active>a{color:var(--saffron);border-bottom-color:var(--saffron);}
+.nav-item.has-dropdown>a::after{content:'▾';font-size:0.5rem;margin-left:5px;opacity:0.6;}
+
+/* Dropdown */
+.nav-dropdown{display:none;position:absolute;top:100%;left:0;min-width:260px;background:var(--cream);border:1px solid var(--rule);border-top:3px solid var(--saffron);box-shadow:var(--shadow-md);z-index:600;}
+.nav-item:hover .nav-dropdown{display:block;}
+.nav-dropdown-section{padding:0.6rem 0;}
+.nav-dropdown-label{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--saffron);padding:0.5rem 1.2rem 0.3rem;}
+.nav-dropdown a{display:block;font-family:'Source Serif 4',serif;font-size:0.82rem;font-weight:300;color:var(--slate);text-decoration:none;padding:0.5rem 1.2rem;transition:background 0.15s,color 0.15s;}
+.nav-dropdown a:hover{background:var(--parchment);color:var(--prussian);}
+.nav-dropdown hr{border:none;border-top:1px solid var(--rule);margin:0.4rem 0;}
+.nav-cta{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--danger);color:#fff!important;padding:9px 18px;margin-left:12px;border-bottom:none!important;transition:background 0.2s!important;}
+.nav-cta:hover{background:#a93226!important;}
+
+/* Hamburger */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;z-index:201;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--prussian);transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-menu{display:none;position:absolute;top:64px;left:0;right:0;background:var(--cream);border-bottom:2px solid var(--saffron);box-shadow:var(--shadow-md);z-index:499;max-height:80vh;overflow-y:auto;}
+.mobile-menu.open{display:block;}
+.mobile-menu ul{list-style:none;padding:0.5rem 1.5rem 1.5rem;}
+.mobile-menu ul li a{display:block;font-family:'Source Serif 4',serif;font-size:0.92rem;color:var(--slate);text-decoration:none;padding:0.6rem 0;border-bottom:1px solid var(--rule);}
+.mobile-menu ul li:last-child a{border-bottom:none;}
+.mobile-menu ul li a:hover{color:var(--saffron);}
+.mm-label{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--saffron);padding:1rem 0 0.3rem;display:block;}
+
+/* ===== PAGE WRAPPER ===== */
+.page{max-width:1320px;margin:0 auto;padding:0 2rem;}
+
+/* ===== LIVE UPDATES TICKER ===== */
+.ticker-bar{background:var(--prussian);border-bottom:2px solid var(--saffron);padding:0;overflow:hidden;}
+.ticker-inner{display:flex;align-items:stretch;}
+.ticker-label{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;background:var(--saffron);color:#fff;padding:10px 16px;white-space:nowrap;flex-shrink:0;display:flex;align-items:center;}
+.ticker-track{overflow:hidden;flex:1;}
+.ticker-content{display:flex;gap:4rem;animation:ticker 38s linear infinite;white-space:nowrap;padding:10px 2rem;}
+.ticker-content:hover{animation-play-state:paused;}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ticker-item{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.05em;color:rgba(255,255,255,0.75);white-space:nowrap;}
+.ticker-item a{color:var(--saffron-lt);text-decoration:none;}
+.ticker-item a:hover{text-decoration:underline;}
+.ticker-dot{color:var(--saffron);margin:0 0.5rem;}
+
+/* ===== HERO ===== */
+.hero{background:var(--prussian);padding:6rem 0 5rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
+.hero::after{content:'';position:absolute;top:0;right:0;width:55%;height:100%;background:radial-gradient(ellipse at right top,rgba(212,118,10,0.12) 0%,transparent 60%);pointer-events:none;}
+.hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.hero-left{}
+.hero-kicker{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem;}
+.hero-kicker-line{width:40px;height:1px;background:var(--saffron);}
+.hero-kicker-text{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--saffron);}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4vw,3.6rem);font-weight:900;line-height:1.1;color:var(--parchment);margin-bottom:1.2rem;}
+.hero-title em{font-style:italic;color:var(--saffron-lt);}
+.hero-deck{font-size:1rem;font-weight:300;line-height:1.85;color:rgba(248,244,236,0.65);margin-bottom:2rem;}
+.hero-pills{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:2.5rem;}
+.hero-pill{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid rgba(212,118,10,0.4);color:var(--saffron-lt);padding:5px 12px;}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;}
+.hero-cta-primary{font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;background:var(--saffron);color:#fff;padding:14px 28px;text-decoration:none;transition:background 0.2s;display:inline-flex;align-items:center;gap:8px;}
+.hero-cta-primary:hover{background:var(--saffron-lt);}
+.hero-cta-secondary{font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(255,255,255,0.25);color:rgba(248,244,236,0.75);padding:14px 28px;text-decoration:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;}
+.hero-cta-secondary:hover{border-color:var(--saffron);color:var(--saffron);}
+.hero-cta-danger{font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;background:var(--danger);color:#fff;padding:14px 28px;text-decoration:none;transition:background 0.2s;display:inline-flex;align-items:center;gap:8px;}
+.hero-cta-danger:hover{background:#a93226;}
+
+/* Hero right: stat cards */
+.hero-right{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.hero-stat-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);padding:1.5rem 1.5rem;}
+.hero-stat-card:hover{border-color:rgba(212,118,10,0.4);}
+.hero-stat-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:var(--saffron-lt);line-height:1;margin-bottom:0.3rem;}
+.hero-stat-label{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.45);}
+.hero-stat-card.danger-card{border-color:rgba(192,57,43,0.3);background:rgba(192,57,43,0.06);}
+.hero-stat-card.danger-card .hero-stat-num{color:#e74c3c;}
+
+/* ===== USER SEGMENTATION ===== */
+.segment-section{padding:5rem 0;background:var(--parchment);border-bottom:1px solid var(--rule);}
+.segment-kicker{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.8rem;display:flex;align-items:center;gap:12px;}
+.segment-kicker::before{content:'';width:28px;height:1px;background:var(--saffron);}
+.segment-heading{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.4rem);font-weight:700;line-height:1.15;color:var(--prussian);margin-bottom:0.6rem;}
+.segment-heading em{font-style:italic;color:var(--saffron);}
+.segment-deck{font-size:0.92rem;font-weight:300;line-height:1.85;color:var(--mist);margin-bottom:3rem;max-width:580px;}
+.segment-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
+.seg-card{background:var(--cream);border:1px solid var(--rule);border-top:4px solid var(--prussian);padding:2rem 1.8rem;text-decoration:none;color:inherit;transition:transform 0.2s,box-shadow 0.2s,border-top-color 0.2s;display:flex;flex-direction:column;gap:1rem;}
+.seg-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-top-color:var(--saffron);}
+.seg-card.danger{border-top-color:var(--danger);}
+.seg-card.danger:hover{border-top-color:var(--danger);}
+.seg-icon{font-size:2rem;line-height:1;}
+.seg-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--prussian);line-height:1.2;}
+.seg-desc{font-size:0.82rem;font-weight:300;line-height:1.75;color:var(--mist);}
+.seg-links{list-style:none;margin-top:auto;}
+.seg-links li{display:flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:300;color:var(--slate);padding:0.3rem 0;border-bottom:1px solid var(--rule);}
+.seg-links li:last-child{border-bottom:none;}
+.seg-links li::before{content:'→';font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--saffron);}
+.seg-cta{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--saffron);margin-top:0.5rem;}
+
+/* ===== KNOWLEDGE ARCHITECTURE ===== */
+.kb-arch-section{padding:6rem 0;background:var(--ink);position:relative;overflow:hidden;}
+.kb-arch-section::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.015) 1px,transparent 1px);background-size:56px 56px;pointer-events:none;}
+.kb-arch-header{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:3.5rem;flex-wrap:wrap;}
+.kb-arch-kicker{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.8rem;display:flex;align-items:center;gap:12px;}
+.kb-arch-kicker::before{content:'';width:28px;height:1px;background:var(--saffron);}
+.kb-arch-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:900;color:var(--parchment);line-height:1.1;}
+.kb-arch-title em{font-style:italic;color:var(--saffron-lt);}
+.kb-arch-deck{font-size:0.88rem;font-weight:300;color:rgba(248,244,236,0.4);line-height:1.8;max-width:320px;text-align:right;}
+/* 2×2 grid desktop, 2×1 tablet, 1 mobile */
+.kb-grid-4{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;}
+.kb-card-new{position:relative;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);overflow:hidden;transition:transform 0.25s,border-color 0.25s,box-shadow 0.25s;display:flex;flex-direction:column;}
+.kb-card-new:hover{transform:translateY(-4px);border-color:var(--kb-accent,var(--saffron));box-shadow:0 16px 48px rgba(0,0,0,0.35);}
+/* Diagonal colour slash */
+.kb-card-new::before{content:'';position:absolute;top:0;right:0;width:120px;height:120px;background:var(--kb-accent,var(--saffron));clip-path:polygon(100% 0,0 0,100% 100%);opacity:0.12;pointer-events:none;transition:opacity 0.25s;}
+.kb-card-new:hover::before{opacity:0.22;}
+/* Top accent bar */
+.kb-card-new::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--kb-accent,var(--saffron));opacity:0.8;}
+.kb-card-inner{padding:2rem 2rem 1.5rem;flex:1;display:flex;flex-direction:column;}
+.kb-card-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;}
+.kb-num-badge{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:var(--kb-accent,var(--saffron));opacity:0.18;line-height:1;}
+.kb-pill{font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.14em;text-transform:uppercase;background:rgba(255,255,255,0.06);color:rgba(248,244,236,0.5);padding:4px 10px;border:1px solid rgba(255,255,255,0.08);}
+.kb-card-icon{font-size:1.8rem;margin-bottom:0.6rem;}
+.kb-card-label{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--kb-accent,var(--saffron));margin-bottom:0.4rem;}
+.kb-card-name{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--parchment);line-height:1.2;margin-bottom:0.4rem;}
+.kb-card-sub{font-size:0.8rem;font-weight:300;color:rgba(248,244,236,0.4);line-height:1.6;margin-bottom:1.5rem;}
+/* Article list */
+.kb-articles{list-style:none;border-top:1px solid rgba(255,255,255,0.06);padding-top:1rem;margin-bottom:1.5rem;flex:1;}
+.kb-article-item{display:flex;align-items:center;gap:0;border-bottom:1px solid rgba(255,255,255,0.04);}
+.kb-article-item:last-child{border-bottom:none;}
+.kb-article-link{display:flex;align-items:center;gap:10px;font-family:'Source Serif 4',serif;font-size:0.8rem;font-weight:300;color:rgba(248,244,236,0.55);text-decoration:none;padding:0.55rem 0;flex:1;transition:color 0.15s;}
+.kb-article-link:hover{color:var(--kb-accent,var(--saffron));}
+.kb-article-num{font-family:'JetBrains Mono',monospace;font-size:0.5rem;color:rgba(255,255,255,0.2);flex-shrink:0;width:18px;}
+.kb-article-arrow{font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:rgba(255,255,255,0.15);margin-left:auto;transition:color 0.15s;}
+.kb-article-link:hover .kb-article-arrow{color:var(--kb-accent,var(--saffron));}
+/* Card footer */
+.kb-card-footer-new{padding:1rem 2rem;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;background:rgba(0,0,0,0.15);}
+.kb-count-badge{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.25);}
+.kb-enter-btn{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--kb-accent,var(--saffron));text-decoration:none;display:flex;align-items:center;gap:6px;transition:gap 0.2s;}
+.kb-card-new:hover .kb-enter-btn{gap:10px;}
+/* KB colour accents */
+.kb-dpdp{--kb-accent:#D4760A;}
+.kb-itact{--kb-accent:#3B82C4;}
+.kb-ekyc{--kb-accent:#2ECC71;}
+.kb-cyber{--kb-accent:#E74C3C;}
+/* Blog + Newsletter band */
+.kb-band{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;margin-top:1.5rem;border:1px solid rgba(255,255,255,0.06);}
+.kb-band-item{padding:2rem;border-right:1px solid rgba(255,255,255,0.06);}
+.kb-band-item:last-child{border-right:none;}
+.kb-band-kicker{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.6rem;display:flex;align-items:center;gap:8px;}
+.kb-band-kicker::before{content:'';width:16px;height:1px;background:var(--saffron);}
+.kb-band-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--parchment);margin-bottom:0.5rem;}
+.kb-band-desc{font-size:0.8rem;font-weight:300;color:rgba(248,244,236,0.4);line-height:1.7;margin-bottom:1.2rem;}
+.kb-band-links{display:flex;flex-direction:column;gap:0.4rem;}
+.kb-band-link{font-family:'Source Serif 4',serif;font-size:0.82rem;font-weight:300;color:rgba(248,244,236,0.5);text-decoration:none;padding:0.4rem 0;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;align-items:center;gap:8px;transition:color 0.15s;}
+.kb-band-link:hover{color:var(--saffron);}
+.kb-band-link::before{content:'→';font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--saffron);flex-shrink:0;}
+.kb-band-link:last-child{border-bottom:none;}
+.kb-nl-form{display:flex;flex-direction:column;gap:0.5rem;margin-top:0.2rem;}
+.kb-nl-input{font-family:'Source Serif 4',serif;font-size:0.82rem;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:var(--parchment);padding:9px 12px;outline:none;transition:border-color 0.2s;}
+.kb-nl-input:focus{border-color:var(--saffron);}
+.kb-nl-input::placeholder{color:rgba(255,255,255,0.2);}
+.kb-nl-btn{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--saffron);color:#fff;border:none;padding:10px 16px;cursor:pointer;transition:background 0.2s;align-self:flex-start;}
+.kb-nl-btn:hover{background:var(--saffron-lt);}
+/* ===== QUICK ACCESS CARDS ===== */
+.quick-section{padding:5rem 0;}
+.section-kicker{display:flex;align-items:center;gap:12px;font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--saffron);margin-bottom:1rem;}
+.section-kicker::before{content:'';width:28px;height:1px;background:var(--saffron);}
+.section-heading{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.4rem);font-weight:700;line-height:1.15;color:var(--prussian);margin-bottom:0.6rem;}
+.section-heading em{font-style:italic;color:var(--saffron);}
+.section-deck{font-size:0.92rem;font-weight:300;line-height:1.85;color:var(--mist);margin-bottom:3rem;max-width:580px;}
+.quick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.quick-card{background:var(--cream);border:1px solid var(--rule);padding:2rem;text-decoration:none;color:inherit;transition:box-shadow 0.2s,transform 0.2s;display:flex;flex-direction:column;gap:0.8rem;}
+.quick-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);}
+.quick-card.featured{grid-column:span 2;background:var(--prussian);}
+.quick-card-tag{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--saffron);}
+.quick-card.featured .quick-card-tag{color:var(--saffron-lt);}
+.quick-card-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--prussian);line-height:1.3;}
+.quick-card.featured .quick-card-title{color:var(--parchment);font-size:1.5rem;}
+.quick-card-desc{font-size:0.82rem;font-weight:300;line-height:1.75;color:var(--mist);}
+.quick-card.featured .quick-card-desc{color:rgba(248,244,236,0.65);}
+.quick-card-arrow{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--saffron);margin-top:auto;}
+.quick-card-badge{display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;background:rgba(192,57,43,0.15);color:#e74c3c;padding:4px 10px;border:1px solid rgba(192,57,43,0.3);width:fit-content;}
+
+/* ===== TOOLS SECTION ===== */
+.tools-section{padding:5rem 0;background:var(--parchment);}
+.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.tool-card{background:var(--cream);border:1px solid var(--rule);border-left:4px solid var(--saffron);padding:2rem;display:flex;flex-direction:column;gap:0.8rem;transition:box-shadow 0.2s;}
+.tool-card:hover{box-shadow:var(--shadow-md);}
+.tool-card.coming-soon{opacity:0.7;border-left-color:var(--mist);}
+.tool-card-tag{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--saffron);}
+.tool-card.coming-soon .tool-card-tag{color:var(--mist);}
+.tool-card-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--prussian);}
+.tool-card-desc{font-size:0.82rem;font-weight:300;line-height:1.75;color:var(--mist);}
+.tool-btn{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--prussian);color:var(--cream);border:none;padding:10px 20px;cursor:pointer;margin-top:auto;align-self:flex-start;transition:background 0.2s;}
+.tool-btn:hover{background:var(--saffron);}
+.tool-btn.disabled{background:var(--mist);cursor:not-allowed;}
+.tool-badge{font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--saffron);color:#fff;padding:2px 8px;width:fit-content;}
+.tool-badge.coming{background:var(--mist);}
+
+/* ===== FRAUD ALERT BAR ===== */
+.fraud-bar{background:var(--danger);padding:1.2rem 0;}
+.fraud-bar-inner{max-width:1320px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;}
+.fraud-bar-title{font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:#fff;font-weight:500;}
+.fraud-bar-text{font-family:'Source Serif 4',serif;font-size:0.85rem;font-weight:300;color:rgba(255,255,255,0.85);flex:1;}
+.fraud-bar-cta{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;background:#fff;color:var(--danger);padding:8px 18px;text-decoration:none;white-space:nowrap;transition:opacity 0.2s;flex-shrink:0;}
+.fraud-bar-cta:hover{opacity:0.9;}
+.fraud-helpline{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:#fff;}
+
+/* ===== BLOG SECTION ===== */
+.blog-section{padding:5rem 0;}
+.blog-grid{display:grid;grid-template-columns:2fr 1fr;gap:2rem;}
+.blog-main{display:flex;flex-direction:column;gap:1.5rem;}
+.blog-feature{background:var(--cream);border:1px solid var(--rule);border-top:4px solid var(--saffron);text-decoration:none;color:inherit;transition:box-shadow 0.2s;}
+.blog-feature:hover{box-shadow:var(--shadow-md);}
+.blog-feature-body{padding:2rem;}
+.blog-feature-meta{display:flex;align-items:center;gap:1rem;margin-bottom:0.8rem;}
+.blog-tag{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.12em;text-transform:uppercase;background:var(--prussian);color:var(--cream);padding:3px 8px;}
+.blog-date{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.08em;color:var(--mist);}
+.blog-feature-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--prussian);line-height:1.25;margin-bottom:0.6rem;}
+.blog-feature-deck{font-size:0.88rem;font-weight:300;line-height:1.8;color:var(--mist);}
+.blog-list{display:flex;flex-direction:column;gap:1rem;}
+.blog-list-item{background:var(--cream);border:1px solid var(--rule);padding:1.2rem 1.5rem;text-decoration:none;color:inherit;transition:box-shadow 0.2s;display:flex;flex-direction:column;gap:0.4rem;}
+.blog-list-item:hover{box-shadow:var(--shadow-sm);}
+.blog-list-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:600;color:var(--prussian);line-height:1.3;}
+.blog-list-meta{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.08em;color:var(--mist);}
+.blog-sidebar{display:flex;flex-direction:column;gap:1.5rem;}
+
+/* ===== NEWSLETTER ===== */
+.newsletter-card{background:var(--prussian);padding:2rem;}
+.newsletter-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--parchment);margin-bottom:0.5rem;}
+.newsletter-desc{font-size:0.82rem;font-weight:300;color:rgba(248,244,236,0.6);line-height:1.7;margin-bottom:1.2rem;}
+.newsletter-form{display:flex;flex-direction:column;gap:0.6rem;}
+.newsletter-input{font-family:'Source Serif 4',serif;font-size:0.85rem;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);color:var(--parchment);padding:10px 14px;outline:none;transition:border-color 0.2s;}
+.newsletter-input:focus{border-color:var(--saffron);}
+.newsletter-input::placeholder{color:rgba(255,255,255,0.3);}
+.newsletter-btn{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--saffron);color:#fff;border:none;padding:11px 20px;cursor:pointer;transition:background 0.2s;}
+.newsletter-btn:hover{background:var(--saffron-lt);}
+.newsletter-note{font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.06em;color:rgba(255,255,255,0.3);margin-top:0.3rem;}
+
+/* ===== CASE TRACKER PREVIEW ===== */
+.cases-preview{background:var(--cream);border:1px solid var(--rule);padding:1.5rem;}
+.cases-preview-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--prussian);margin-bottom:1rem;padding-bottom:0.8rem;border-bottom:1px solid var(--rule);}
+.case-item{padding:0.8rem 0;border-bottom:1px solid var(--rule);}
+.case-item:last-child{border-bottom:none;}
+.case-court{font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.2rem;}
+.case-name{font-family:'Source Serif 4',serif;font-size:0.85rem;font-weight:600;color:var(--prussian);line-height:1.3;}
+.case-issue{font-size:0.75rem;font-weight:300;color:var(--mist);}
+
+/* ===== STATS STRIP ===== */
+.stats-strip{background:var(--ink);border-top:3px solid var(--saffron);}
+.stats-inner{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);}
+.stat-item{padding:1.5rem 2rem;border-right:1px solid rgba(255,255,255,0.07);display:flex;flex-direction:column;gap:0.3rem;}
+.stat-item:last-child{border-right:none;}
+.stat-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--saffron-lt);line-height:1;}
+.stat-label{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);}
+
+/* ===== INTERMEDIARY BAR ===== */
+.intermediary-bar{background:rgba(212,118,10,0.07);border-bottom:1px solid var(--rule-gold);padding:0.8rem 0;}
+.ib-tag{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.14em;text-transform:uppercase;background:var(--saffron);color:#fff;padding:3px 8px;flex-shrink:0;}
+.ib-text{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.04em;color:var(--ochre);line-height:1.6;}
+.ib-text a{color:var(--saffron);text-decoration:none;}
+
+/* ===== FOOTER ===== */
+footer{background:var(--prussian);padding:4rem 0 2rem;border-top:3px solid var(--saffron);}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+.footer-brand-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--parchment);margin-bottom:0.5rem;}
+.footer-brand-desc{font-size:0.82rem;font-weight:300;color:rgba(248,244,236,0.5);line-height:1.8;}
+.footer-heading{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--saffron);margin-bottom:1rem;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.footer-links a{font-size:0.82rem;font-weight:300;color:rgba(248,244,236,0.5);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--parchment);}
+.footer-divider{border:none;border-top:1px solid rgba(255,255,255,0.08);margin-bottom:2rem;}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.footer-copy{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.1em;color:rgba(255,255,255,0.3);}
+.footer-legal-links{display:flex;gap:1.5rem;}
+.footer-legal-links a{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.08em;color:rgba(255,255,255,0.3);text-decoration:none;}
+.footer-legal-links a:hover{color:var(--saffron);}
+.footer-helpline{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--danger);margin:0.3rem 0;}
+.footer-helpline-label{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);}
+
+/* ===== COMPLIANCE SCORE TOOL (INLINE) ===== */
+.compliance-tool{background:var(--cream);border:1px solid var(--rule);}
+.compliance-tool-header{background:var(--prussian);padding:1.5rem 1.8rem;}
+.compliance-tool-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--parchment);}
+.compliance-tool-body{padding:1.5rem 1.8rem;}
+.compliance-q{font-size:0.85rem;font-weight:400;color:var(--slate);margin-bottom:0.5rem;}
+.compliance-options{display:flex;flex-direction:column;gap:0.4rem;margin-bottom:1rem;}
+.compliance-option{display:flex;align-items:center;gap:8px;font-size:0.82rem;font-weight:300;color:var(--slate);cursor:pointer;}
+.compliance-option input{accent-color:var(--saffron);}
+.compliance-result{background:var(--parchment);border:1px solid var(--rule-gold);border-left:3px solid var(--saffron);padding:1rem 1.2rem;margin-top:1rem;display:none;}
+.compliance-result.show{display:block;}
+.compliance-result-score{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--saffron);}
+.compliance-result-text{font-size:0.82rem;font-weight:300;color:var(--slate);line-height:1.7;}
+
+/* ===== DPDP CHAKRA ===== */
+.chakra-section{padding:6rem 0;background:var(--prussian);position:relative;overflow:hidden;}
+.chakra-section::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
+.chakra-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.chakra-left{}
+.chakra-kicker{display:flex;align-items:center;gap:12px;font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--saffron);margin-bottom:1rem;}
+.chakra-kicker::before{content:'';width:28px;height:1px;background:var(--saffron);}
+.chakra-heading{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.4rem);font-weight:700;line-height:1.15;color:var(--parchment);margin-bottom:0.6rem;}
+.chakra-heading em{font-style:italic;color:var(--saffron-lt);}
+.chakra-deck{font-size:0.92rem;font-weight:300;line-height:1.85;color:rgba(248,244,236,0.55);margin-bottom:2rem;}
+.chakra-spokes{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;}
+.chakra-spoke-link{display:block;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);padding:1rem 1.2rem;text-decoration:none;transition:border-color 0.2s,background 0.2s;}
+.chakra-spoke-link:hover{border-color:rgba(212,118,10,0.4);background:rgba(212,118,10,0.06);}
+.chakra-spoke-num{font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.3rem;}
+.chakra-spoke-title{font-family:'Source Serif 4',serif;font-size:0.88rem;font-weight:400;color:var(--parchment);line-height:1.3;}
+.chakra-spoke-arrow{font-family:'JetBrains Mono',monospace;font-size:0.52rem;color:rgba(255,255,255,0.3);margin-top:0.3rem;}
+.chakra-right{display:flex;justify-content:center;align-items:center;}
+.chakra-svg-wrap{width:100%;max-width:480px;cursor:pointer;}
+.chakra-svg-wrap svg{width:100%;height:auto;filter:drop-shadow(0 0 40px rgba(212,118,10,0.15));}
+/* Segment hover */
+.chakra-seg{transition:opacity 0.2s;}
+.chakra-seg:hover{opacity:0.85;cursor:pointer;}
+/* ===== RESPONSIVE ===== */
+/* === TABLET (≤1100px) === */
+@media(max-width:1100px){
+  .nav-menu{display:none;}
+  .hamburger{display:flex;}
+  .hero-inner{grid-template-columns:1fr;}
+  .hero-right{display:none;}
+  .segment-grid{grid-template-columns:repeat(2,1fr);}
+  .quick-grid{grid-template-columns:1fr;}
+  .quick-card.featured{grid-column:span 1;}
+  .tools-grid{grid-template-columns:1fr 1fr;}
+  .blog-grid{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .stats-inner{grid-template-columns:repeat(3,1fr);}
+  /* KB Architecture */
+  .kb-arch-header{flex-direction:column;align-items:flex-start;}
+  .kb-arch-deck{text-align:left;max-width:100%;}
+  .kb-band{grid-template-columns:1fr 1fr;}
+  .kb-band-item:nth-child(3){grid-column:span 2;border-right:none;border-top:1px solid rgba(255,255,255,0.06);}
+  .chakra-inner{grid-template-columns:1fr;}
+}
+/* === MOBILE (≤768px) === */
+@media(max-width:768px){
+  /* KB 2-col on tablet, 1-col on mobile */
+  .kb-grid-4{grid-template-columns:1fr;}
+  .kb-band{grid-template-columns:1fr;}
+  .kb-band-item{border-right:none;border-bottom:1px solid rgba(255,255,255,0.06);}
+  .kb-band-item:last-child{border-bottom:none;}
+  .kb-band-item:nth-child(3){grid-column:span 1;border-top:none;}
+  .kb-arch-section{padding:4rem 0;}
+}
+/* === SMALL MOBILE (≤640px) === */
+@media(max-width:640px){
+  .segment-grid{grid-template-columns:1fr;}
+  .tools-grid{grid-template-columns:1fr;}
+  .hero{padding:4rem 0 3rem;}
+  .stats-inner{grid-template-columns:1fr 1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+  .kb-card-name{font-size:1.2rem;}
+  .kb-arch-title{font-size:1.6rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== SAFE HARBOUR MODAL ===== -->
+<div class="sh-modal-overlay" id="shModal">
+  <div class="sh-modal">
+    <div class="sh-modal-header">
+      <div class="sh-modal-kicker">Legal Notice — Please Read</div>
+      <div class="sh-modal-title">Safe Harbour & Research Disclaimer</div>
+    </div>
+    <div class="sh-modal-body">
+      <p>DPDPIndia.in is an independent research and intelligence platform. All content on this website is published in good faith for educational and informational purposes only.</p>
+      <div class="sh-modal-warning">
+        <p><strong>Not Legal Advice:</strong> Nothing on this platform constitutes legal advice, professional compliance guidance, or a legal opinion. Always consult a qualified advocate or DPDP compliance professional before taking any action based on this material.</p>
+      </div>
+      <p>This platform operates as an <strong>Intermediary</strong> under Section 2(1)(w) of the IT Act 2000 and claims Safe Harbour protection under Section 79 of that Act. We do not store personal data beyond what is necessary for your session.</p>
+      <p>Content relating to cyber fraud is curated from publicly available information and official sources. We do not verify individual fraud reports. <strong>For emergencies, call 1930 directly.</strong></p>
+      <div class="sh-modal-links">By continuing, you agree to our <a href="legal.html">Terms of Use</a>, <a href="legal.html#privacy">Privacy Policy</a>, and <a href="legal.html#safe-harbour">Safe Harbour Notice</a>.</div>
+    </div>
+    <div class="sh-modal-footer">
+      <button class="sh-accept-btn" onclick="acceptModal()">I Understand — Continue →</button>
+      <div class="sh-modal-note">This notice appears once per session. DPDPIndia.in does not use tracking cookies.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MASTHEAD ===== -->
+<div class="masthead">
+  <span class="masthead-text">Independent Research Platform — <span>DPDP Act 2023 · IT Act 2000 · Aadhaar eKYC · Cyber Fraud Intelligence</span> — Not Legal Advice</span>
+</div>
+
+<!-- ===== NAVIGATION ===== -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <svg class="nav-brand-seal" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="21" cy="21" r="20" fill="#1B2B3A" stroke="#D4760A" stroke-width="1.5"/>
+        <text x="21" y="17" text-anchor="middle" font-family="Playfair Display,serif" font-size="7" font-weight="700" fill="#F0A840" letter-spacing="0.05em">DPDP</text>
+        <text x="21" y="26" text-anchor="middle" font-family="Playfair Display,serif" font-size="5" font-weight="400" fill="rgba(248,244,236,0.6)" letter-spacing="0.05em">INDIA</text>
+        <circle cx="21" cy="21" r="10" stroke="#D4760A" stroke-width="0.75" fill="none" opacity="0.4"/>
+      </svg>
+      <div class="nav-brand-name">
+        <strong>DPDPIndia.in</strong>
+        <span>Data Protection Intelligence</span>
+      </div>
+    </a>
+
+    <ul class="nav-menu" id="desktop-nav">
+
+      <!-- 1. DPDP Simplified -->
+      <li class="nav-item has-dropdown">
+        <a href="dpdp-kb.html">DPDP Act</a>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-section">
+            <div class="nav-dropdown-label">Simplified</div>
+            <a href="dpdp-kb.html">DPDP Act — Overview</a>
+            <a href="dpdp-act.html">Plain Language Guide</a>
+            <a href="dpdp-rights.html">Your Rights as Principal</a>
+            <a href="dpdp-genesis.html">How the Law Came to Be</a>
+          </div>
+          <hr>
+          <div class="nav-dropdown-section">
+            <div class="nav-dropdown-label">Deep Dive</div>
+            <a href="dpdp-rules.html">DPDP Rules 2025</a>
+            <a href="dpdp-exemptions.html">Exemptions Explained</a>
+            <a href="dpdp-adjudication.html">Adjudication & Penalties</a>
+            <a href="dpdp-global.html">DPDP vs GDPR</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- 2. For Businesses -->
+      <li class="nav-item has-dropdown">
+        <a href="for-businesses.html">For Business</a>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-section">
+            <div class="nav-dropdown-label">By Organisation Size</div>
+            <a href="for-businesses.html#startup">Startup Compliance</a>
+            <a href="for-businesses.html#sme">SME Compliance Kit</a>
+            <a href="for-businesses.html#enterprise">Enterprise Framework</a>
+          </div>
+          <hr>
+          <div class="nav-dropdown-section">
+            <div class="nav-dropdown-label">Tools & Templates</div>
+            <a href="for-businesses.html#checklist">Compliance Checklist</a>
+            <a href="for-businesses.html#privacy-policy">Privacy Policy Template</a>
+            <a href="for-businesses.html#consent">Consent Notice Generator</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- 3. For Individuals -->
+      <li class="nav-item has-dropdown">
+        <a href="for-individuals.html">For Individuals</a>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-section">
+            <a href="for-individuals.html#rights">Know Your Rights</a>
+            <a href="for-individuals.html#grievance">File a Grievance</a>
+            <a href="for-individuals.html#consent">Revoke Consent</a>
+            <a href="dpdp-rights.html">Rights Under DPDP Act</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- 4. Cyber Fraud -->
+      <li class="nav-item has-dropdown active">
+        <a href="cyber-fraud-hub.html">🚨 Cyber Fraud</a>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-section">
+            <div class="nav-dropdown-label">Fraud Types</div>
+            <a href="cybercrime-financial.html">Financial Fraud (UPI, OTP, Digital Arrest)</a>
+            <a href="cybercrime-personal.html">Personal & Social Crimes</a>
+            <a href="cyber-fraud-hub.html">All Fraud Alerts</a>
+          </div>
+          <hr>
+          <div class="nav-dropdown-section">
+            <div class="nav-dropdown-label">Take Action</div>
+            <a href="cybercrime-remedy-guide.html">How to Report — Step by Step</a>
+            <a href="cybercrime-kb.html">Cybercrime Knowledge Base</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- 5. Case Tracker -->
+      <li class="nav-item has-dropdown">
+        <a href="case-tracker.html">Cases</a>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-section">
+            <a href="case-tracker.html">All Cases</a>
+            <a href="case-tracker.html#sc">Supreme Court</a>
+            <a href="case-tracker.html#hc">High Courts</a>
+            <a href="case-tracker.html#dpb">Data Protection Board</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- 6. Resources -->
+      <li class="nav-item has-dropdown">
+        <a href="blog.html">Resources</a>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-section">
+            <div class="nav-dropdown-label">Knowledge Bases</div>
+            <a href="dpdp-kb.html">DPDP Act 2023 KB</a>
+            <a href="itact-kb.html">IT Act 2000 KB</a>
+            <a href="ekyc-kb.html">Aadhaar & eKYC KB</a>
+            <a href="cybercrime-kb.html">Cybercrime KB</a>
+          </div>
+          <hr>
+          <div class="nav-dropdown-section">
+            <div class="nav-dropdown-label">Thought Leadership</div>
+            <a href="blog.html">All Articles</a>
+            <a href="blog-gdpr-vs-dpdp-comparison.html">GDPR vs DPDP</a>
+            <a href="blog-dpdp-geospatial-data-governance.html">Geospatial Data & DPDP</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a href="cyber-fraud-hub.html" class="nav-cta">📞 1930 Helpline</a>
+      </li>
+    </ul>
+
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <span class="mm-label">DPDP Act</span>
+      <li><a href="dpdp-kb.html">DPDP Act Overview</a></li>
+      <li><a href="dpdp-rights.html">Your Rights</a></li>
+      <li><a href="dpdp-rules.html">DPDP Rules 2025</a></li>
+      <span class="mm-label">For You</span>
+      <li><a href="for-businesses.html">For Businesses</a></li>
+      <li><a href="for-individuals.html">For Individuals</a></li>
+      <span class="mm-label">🚨 Cyber Fraud</span>
+      <li><a href="cyber-fraud-hub.html">Fraud Intelligence Hub</a></li>
+      <li><a href="cybercrime-financial.html">Financial Frauds</a></li>
+      <li><a href="cybercrime-remedy-guide.html">How to Report</a></li>
+      <span class="mm-label">Resources</span>
+      <li><a href="itact-kb.html">IT Act 2000 KB</a></li>
+      <li><a href="ekyc-kb.html">Aadhaar & eKYC KB</a></li>
+      <li><a href="blog.html">All Articles</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== LIVE UPDATES TICKER ===== -->
+<div class="ticker-bar">
+  <div class="ticker-inner">
+    <div class="ticker-label">🔴 Live</div>
+    <div class="ticker-track">
+      <div class="ticker-content" id="tickerContent">
+        <span class="ticker-item">DPDP Rules 2025 notified — Data Fiduciaries have 6-month implementation window <span class="ticker-dot">◆</span></span>
+        <span class="ticker-item">Digital Arrest scams surge 340% — <a href="cybercrime-financial.html">How to identify & report →</a> <span class="ticker-dot">◆</span></span>
+        <span class="ticker-item">DPDPB (Data Protection Board) operationalisation timeline released <span class="ticker-dot">◆</span></span>
+        <span class="ticker-item">UPI fraud losses cross ₹2,300 Cr in Q1 2026 — <a href="cybercrime-financial.html">Protect yourself →</a> <span class="ticker-dot">◆</span></span>
+        <span class="ticker-item">New consent framework guidelines for healthcare sector notified <span class="ticker-dot">◆</span></span>
+        <span class="ticker-item">Supreme Court: Right to be forgotten upheld in landmark data case <span class="ticker-dot">◆</span></span>
+        <span class="ticker-item">Significant Data Fiduciary list to be notified by Q3 2026 — MeitY <span class="ticker-dot">◆</span></span>
+        <!-- duplicated for seamless loop -->
+        <span class="ticker-item">DPDP Rules 2025 notified — Data Fiduciaries have 6-month implementation window <span class="ticker-dot">◆</span></span>
+        <span class="ticker-item">Digital Arrest scams surge 340% — <a href="cybercrime-financial.html">How to identify & report →</a> <span class="ticker-dot">◆</span></span>
+        <span class="ticker-item">DPDPB (Data Protection Board) operationalisation timeline released <span class="ticker-dot">◆</span></span>
+        <span class="ticker-item">UPI fraud losses cross ₹2,300 Cr in Q1 2026 — <a href="cybercrime-financial.html">Protect yourself →</a> <span class="ticker-dot">◆</span></span>
+        <span class="ticker-item">New consent framework guidelines for healthcare sector notified <span class="ticker-dot">◆</span></span>
+        <span class="ticker-item">Supreme Court: Right to be forgotten upheld in landmark data case <span class="ticker-dot">◆</span></span>
+        <span class="ticker-item">Significant Data Fiduciary list to be notified by Q3 2026 — MeitY <span class="ticker-dot">◆</span></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="page">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-kicker">
+          <div class="hero-kicker-line"></div>
+          <div class="hero-kicker-text">India's Premier Data Protection Platform</div>
+        </div>
+        <h1 class="hero-title">India's Data Protection &amp; <em>Cyber Fraud</em> Intelligence Platform</h1>
+        <p class="hero-deck">Understand the DPDP Act 2023, implement compliance, and stay protected from digital fraud — for individuals, businesses, legal professionals, and government.</p>
+        <div class="hero-pills">
+          <span class="hero-pill">DPDP Act 2023</span>
+          <span class="hero-pill">IT Act 2000</span>
+          <span class="hero-pill">Aadhaar eKYC</span>
+          <span class="hero-pill">Cyber Fraud</span>
+          <span class="hero-pill">Data Rights</span>
+        </div>
+        <div class="hero-ctas">
+          <a href="for-businesses.html" class="hero-cta-primary">Check Compliance →</a>
+          <a href="cyber-fraud-hub.html" class="hero-cta-danger">🚨 Report Fraud →</a>
+          <a href="for-individuals.html" class="hero-cta-secondary">Know Your Rights →</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-stat-card">
+          <div class="hero-stat-num">₹500Cr</div>
+          <div class="hero-stat-label">Max DPDP Penalty per breach</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="hero-stat-num">40+</div>
+          <div class="hero-stat-label">Research articles published</div>
+        </div>
+        <div class="hero-stat-card danger-card">
+          <div class="hero-stat-num">1930</div>
+          <div class="hero-stat-label">National Cyber Helpline</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="hero-stat-num">4</div>
+          <div class="hero-stat-label">Comprehensive Knowledge Bases</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DPDP ACT CHAKRA VISUALIZATION ===== -->
+<section class="chakra-section" id="chakra">
+  <div class="page">
+    <div class="chakra-inner">
+      <div class="chakra-left">
+        <div class="chakra-kicker">DPDP Act 2023 — Structure</div>
+        <h2 class="chakra-heading">The <em>DPDP Act</em> Chakra</h2>
+        <p class="chakra-deck">India's Digital Personal Data Protection Act 2023 is structured around six interconnected pillars — from the constitutional right to privacy that gave it birth, to the obligations of data fiduciaries, the rights of data principals, and the enforcement framework. Explore each spoke of the Chakra.</p>
+        <div class="chakra-spokes">
+          <a href="chakra-privacy-history.html" class="chakra-spoke-link">
+            <div class="chakra-spoke-num">Spoke · 01</div>
+            <div class="chakra-spoke-title">Constitutional Roots of Privacy in India</div>
+            <div class="chakra-spoke-arrow">→ Explore</div>
+          </a>
+          <a href="chakra-journey-2011-27.html" class="chakra-spoke-link">
+            <div class="chakra-spoke-num">Spoke · 02</div>
+            <div class="chakra-spoke-title">The Legislative Journey 2011–2027</div>
+            <div class="chakra-spoke-arrow">→ Explore</div>
+          </a>
+          <a href="chakra-dpdp-2023.html" class="chakra-spoke-link">
+            <div class="chakra-spoke-num">Spoke · 03</div>
+            <div class="chakra-spoke-title">DPDP Act 2023 — The Framework</div>
+            <div class="chakra-spoke-arrow">→ Explore</div>
+          </a>
+          <a href="chakra-data-principals.html" class="chakra-spoke-link">
+            <div class="chakra-spoke-num">Spoke · 04</div>
+            <div class="chakra-spoke-title">Data Principals — Your Rights</div>
+            <div class="chakra-spoke-arrow">→ Explore</div>
+          </a>
+          <a href="chakra-data-fiduciaries.html" class="chakra-spoke-link">
+            <div class="chakra-spoke-num">Spoke · 05</div>
+            <div class="chakra-spoke-title">Data Fiduciaries — Obligations</div>
+            <div class="chakra-spoke-arrow">→ Explore</div>
+          </a>
+          <a href="chakra-data-processors.html" class="chakra-spoke-link">
+            <div class="chakra-spoke-num">Spoke · 06</div>
+            <div class="chakra-spoke-title">Data Processors — Responsibilities</div>
+            <div class="chakra-spoke-arrow">→ Explore</div>
+          </a>
+        </div>
+      </div>
+      <div class="chakra-right">
+        <div class="chakra-svg-wrap" id="chakraWrap">
+          <svg id="chakraSvg" viewBox="0 0 520 520" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DPDP Act Chakra — Interactive Wheel">
+            <defs>
+              <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+            <!-- Outer ring -->
+            <circle cx="260" cy="260" r="240" stroke="#D4760A" stroke-width="1.5" fill="none" opacity="0.25"/>
+            <circle cx="260" cy="260" r="225" stroke="rgba(248,244,236,0.06)" stroke-width="0.75" fill="none"/>
+            <!-- 6 Segments — interactive -->
+            <g id="chakraSegments"></g>
+            <!-- Inner ring -->
+            <circle cx="260" cy="260" r="80" fill="#1B2B3A" stroke="#D4760A" stroke-width="1.5"/>
+            <circle cx="260" cy="260" r="65" stroke="rgba(212,118,10,0.3)" stroke-width="0.75" fill="none"/>
+            <!-- 24 Ashoka spokes -->
+            <g id="ashokaSpokes" stroke="#D4760A" stroke-width="0.8" opacity="0.5"></g>
+            <!-- Centre hub -->
+            <circle cx="260" cy="260" r="12" fill="#D4760A" filter="url(#glow)"/>
+            <circle cx="260" cy="260" r="5" fill="#0D1E35"/>
+            <!-- Centre text -->
+            <text x="260" y="253" text-anchor="middle" font-family="'Playfair Display',Georgia,serif" font-size="11" font-weight="700" fill="#F0A840" letter-spacing="0.1em">DPDP</text>
+            <text x="260" y="268" text-anchor="middle" font-family="'Playfair Display',Georgia,serif" font-size="11" font-weight="700" fill="#F0A840" letter-spacing="0.1em">2023</text>
+            <!-- Labels group — drawn on top -->
+            <g id="chakraLabels"></g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== USER SEGMENTATION — 4 PATHS ===== -->
+<section class="segment-section" id="start-here">
+  <div class="page">
+    <div class="segment-kicker">Start Here</div>
+    <h2 class="segment-heading">What brings you here <em>today</em>?</h2>
+    <p class="segment-deck">Choose your path — we've organised everything around what you need to do, not the sections of an Act.</p>
+    <div class="segment-grid">
+
+      <!-- Individual -->
+      <a href="for-individuals.html" class="seg-card">
+        <div class="seg-icon">👤</div>
+        <div class="seg-title">I'm an Individual</div>
+        <div class="seg-desc">Know your rights under the DPDP Act, how to withdraw consent, and what to do if your data is misused.</div>
+        <ul class="seg-links">
+          <li>What data can companies collect?</li>
+          <li>How to withdraw my consent</li>
+          <li>File a complaint against an app</li>
+          <li>Fraud happened — what next?</li>
+        </ul>
+        <div class="seg-cta">Explore Individual Rights →</div>
+      </a>
+
+      <!-- Business -->
+      <a href="for-businesses.html" class="seg-card">
+        <div class="seg-icon">🏢</div>
+        <div class="seg-title">I'm a Business</div>
+        <div class="seg-desc">Compliance checklists, templates, and implementation guides — sized for startup, SME, or enterprise.</div>
+        <ul class="seg-links">
+          <li>Am I a Data Fiduciary?</li>
+          <li>DPDP compliance checklist</li>
+          <li>Privacy policy template</li>
+          <li>Consent notice generator</li>
+        </ul>
+        <div class="seg-cta">Compliance Toolkit →</div>
+      </a>
+
+      <!-- Legal / Consultant -->
+      <a href="dpdp-kb.html" class="seg-card">
+        <div class="seg-icon">⚖️</div>
+        <div class="seg-title">Legal / Consultant</div>
+        <div class="seg-desc">Deep-dive case analysis, regulatory interpretation, and expert commentary on India's data law landscape.</div>
+        <ul class="seg-links">
+          <li>Case tracker & judgements</li>
+          <li>DPDP vs GDPR comparative</li>
+          <li>Expert commentary & blogs</li>
+          <li>Adjudication framework</li>
+        </ul>
+        <div class="seg-cta">Legal Research →</div>
+      </a>
+
+      <!-- Government -->
+      <a href="itact-kb.html" class="seg-card">
+        <div class="seg-icon">🏛</div>
+        <div class="seg-title">Government / Policy</div>
+        <div class="seg-desc">Policy landscape, governance frameworks, DPDPB structure, and e-governance implications of the Act.</div>
+        <ul class="seg-links">
+          <li>DPDPB structure & functions</li>
+          <li>Exemptions for government</li>
+          <li>e-Governance & IT Act</li>
+          <li>Policy research & papers</li>
+        </ul>
+        <div class="seg-cta">Policy Framework →</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== KNOWLEDGE ARCHITECTURE ===== -->
+<section class="kb-arch-section" id="knowledge">
+  <div class="page">
+
+    <!-- Section Header -->
+    <div class="kb-arch-header">
+      <div>
+        <div class="kb-arch-kicker">Research Intelligence</div>
+        <h2 class="kb-arch-title">Four Knowledge <em>Bases</em></h2>
+      </div>
+      <p class="kb-arch-deck">India's most comprehensive research library on data protection law, cyber law, Aadhaar infrastructure, and cybercrime intelligence — fully open, always updated.</p>
+    </div>
+
+    <!-- 4 KB Cards — 2×2 grid -->
+    <div class="kb-grid-4">
+
+      <!-- KB 01 — DPDP Act -->
+      <div class="kb-card-new kb-dpdp">
+        <div class="kb-card-inner">
+          <div class="kb-card-meta">
+            <div class="kb-num-badge">01</div>
+            <span class="kb-pill">7 Articles</span>
+          </div>
+          <div class="kb-card-icon">📗</div>
+          <div class="kb-card-label">KB · 01 · DPDP Act 2023</div>
+          <div class="kb-card-name">Digital Personal Data Protection Act</div>
+          <div class="kb-card-sub">India's landmark data privacy legislation — enacted August 2023. Consent, fiduciary obligations, Data Principal rights, DPDPB, cross-border flows.</div>
+          <ul class="kb-articles">
+            <li class="kb-article-item"><a href="dpdp-genesis.html" class="kb-article-link"><span class="kb-article-num">01</span>Genesis & Legislative Journey<span class="kb-article-arrow">→</span></a></li>
+            <li class="kb-article-item"><a href="dpdp-act.html" class="kb-article-link"><span class="kb-article-num">02</span>The Act — Plain Language Guide<span class="kb-article-arrow">→</span></a></li>
+            <li class="kb-article-item"><a href="dpdp-rights.html" class="kb-article-link"><span class="kb-article-num">03</span>Data Principal Rights (§§11–14)<span class="kb-article-arrow">→</span></a></li>
+            <li class="kb-article-item"><a href="dpdp-rules.html" class="kb-article-link"><span class="kb-article-num">04</span>DPDP Rules 2025 — Full Analysis<span class="kb-article-arrow">→</span></a></li>
+            <li class="kb-article-item"><a href="dpdp-adjudication.html" class="kb-article-link"><span class="kb-article-num">05</span>Adjudication, DPDPB & Penalties<span class="kb-article-arrow">→</span></a></li>
+            <li class="kb-article-item"><a href="dpdp-exemptions.html" class="kb-article-link"><span class="kb-article-num">06</span>Exemptions & Government Powers<span class="kb-article-arrow">→</span></a></li>
+            <li class="kb-article-item"><a href="dpdp-global.html" class="kb-article-link"><span class="kb-article-num">07</span>GDPR vs DPDP — Global Comparison<span class="kb-article-arrow">→</span></a></li>
+          </ul>
+        </div>
+        <div class="kb-card-footer-new">
+          <span class="kb-count-badge">7 Articles · Est. 2024</span>
+          <a href="dpdp-kb.html" class="kb-enter-btn">Enter Knowledge Base →</a>
+        </div>
+      </div>
+
+      <!-- KB 02 — IT Act 2000 -->
+      <div class="kb-card-new kb-itact">
+        <div class="kb-card-inner">
+          <div class="kb-card-meta">
+            <div class="kb-num-badge">02</div>
+            <span class="kb-pill">5 Articles</span>
+          </div>
+          <div class="kb-card-icon">📘</div>
+          <div class="kb-card-label">KB · 02 · IT Act 2000</div>
+          <div class="kb-card-name">Information Technology Act 2000</div>
+          <div class="kb-card-sub">India's foundational cyber law — from UNCITRAL roots to the Shreya Singhal ruling. Intermediary liability, e-governance, Section 66 offences, IT Rules 2021.</div>
+          <ul class="kb-articles">
+            <li class="kb-article-item"><a href="itact-history.html" class="kb-article-link"><span class="kb-article-num">01</span>Historical Evolution — 1996 to 2026<span class="kb-article-arrow">→</span></a></li>
+            <li class="kb-article-item"><a href="itact-shreya-singhal.html" class="kb-article-link"><span class="kb-article-num">02</span>Shreya Singhal v. Union of India (2015)<span class="kb-article-arrow">→</span></a></li>
+            <li class="kb-article-item"><a href="itact-egovernance.html" class="kb-article-link"><span class="kb-article-num">03</span>E-Governance & Digital India Stack<span class="kb-article-arrow">→</span></a></li>
+            <li class="kb-article-item"><a href="itact-sections.html" class="kb-article-link"><span class="kb-article-num">04</span>Key Sections Annotated Reference<span class="kb-article-arrow">→</span></a></li>
+            <li class="kb-article-item"><a href="itact-intermediary.html" class="kb-article-link"><span class="kb-article-num">05</span>IT Rules 2021 — Intermediary Compliance<span class="kb-article-arrow">→</span></a></li>
+          </ul>
+        </div>
+        <div class="kb-card-footer-new">
+          <span class="kb-count-badge">5 Articles · Launched March 2026</span>
+          <a href="itact-kb.html" class="kb-enter-btn">Enter Knowledge Base →</a>
+        </div>
+      </div>
+
+      <!-- KB 03 — Aadhaar eKYC -->
+      <div class="kb-card-new kb-ekyc">
+        <div class="kb-card-inner">
+          <div class="kb-card-meta">
+            <div class="kb-num-badge">03</div>
+            <span class="kb-pill">5 Articles</span>
+          </div>
+          <div class="kb-card-icon">📙</div>
+          <div class="kb-card-label">KB · 03 · Aadhaar & eKYC</div>
+          <div class="kb-card-name">Aadhaar eKYC Framework</div>
+          <div class="kb-card-sub">End-to-end technical and legal analysis of India's Aadhaar eKYC system — UIDAI trust architecture, authentication APIs, sandbox, data centre standards, and fees.</div>
+          <ul class="kb-articles">
+            <li class="kb-article-item"><a href="ekyc-uidai-guide.html" class="kb-article-link"><span class="kb-article-num">01</span>UIDAI eKYC — Complete Process Guide<span class="kb-article-arrow">→</span></a></li>
+            <li class="kb-article-item"><a href="ekyc-trust-chain.html" class="kb-article-link"><span class="kb-article-num">02</span>Authentication Trust Chain Architecture<span class="kb-article-arrow">→</span></a></li>
+            <li class="kb-article-item"><a href="ekyc-sandbox.html" class="kb-article-link"><span class="kb-article-num">03</span>eKYC Sandbox & Testing Environment<span class="kb-article-arrow">→</span></a></li>
+            <li class="kb-article-item"><a href="ekyc-datacenter.html" class="kb-article-link"><span class="kb-article-num">04</span>Data Centre Standards & Requirements<span class="kb-article-arrow">→</span></a></li>
+            <li class="kb-article-item"><a href="ekyc-fees-connectivity.html" class="kb-article-link"><span class="kb-article-num">05</span>Fees, Connectivity & AUA/KUA Framework<span class="kb-article-arrow">→</span></a></li>
+          </ul>
+        </div>
+        <div class="kb-card-footer-new">
+          <span class="kb-count-badge">5 Articles · Technical Reference</span>
+          <a href="ekyc-kb.html" class="kb-enter-btn">Enter Knowledge Base →</a>
+        </div>
+      </div>
+
+      <!-- KB 04 — Cybercrime -->
+      <div class="kb-card-new kb-cyber">
+        <div class="kb-card-inner">
+          <div class="kb-card-meta">
+            <div class="kb-num-badge">04</div>
+            <span class="kb-pill">3 Articles + Alerts</span>
+          </div>
+          <div class="kb-card-icon">🚨</div>
+          <div class="kb-card-label">KB · 04 · Cybercrime</div>
+          <div class="kb-card-name">Cybercrime Awareness & Remedies</div>
+          <div class="kb-card-sub">From digital arrest to UPI fraud — a practical intelligence knowledge base on India's most common cyber crimes, with step-by-step reporting guides and legal remedies.</div>
+          <ul class="kb-articles">
+            <li class="kb-article-item"><a href="cybercrime-financial.html" class="kb-article-link"><span class="kb-article-num">01</span>Financial Frauds — UPI, Digital Arrest, OTP<span class="kb-article-arrow">→</span></a></li>
+            <li class="kb-article-item"><a href="cybercrime-personal.html" class="kb-article-link"><span class="kb-article-num">02</span>Personal & Social Engineering Crimes<span class="kb-article-arrow">→</span></a></li>
+            <li class="kb-article-item"><a href="cybercrime-remedy-guide.html" class="kb-article-link"><span class="kb-article-num">03</span>How to Report — Step-by-Step Guide<span class="kb-article-arrow">→</span></a></li>
+            <li class="kb-article-item"><a href="cyber-fraud-hub.html" class="kb-article-link"><span class="kb-article-num">🔴</span>Live Fraud Alerts & Intelligence Hub<span class="kb-article-arrow">→</span></a></li>
+          </ul>
+        </div>
+        <div class="kb-card-footer-new">
+          <span class="kb-count-badge">📞 1930 · National Helpline</span>
+          <a href="cybercrime-kb.html" class="kb-enter-btn">Enter Knowledge Base →</a>
+        </div>
+      </div>
+
+    </div><!-- end kb-grid-4 -->
+
+    <!-- Blog + Weekly Brief + Newsletter Band -->
+    <div class="kb-band">
+
+      <div class="kb-band-item">
+        <div class="kb-band-kicker">Thought Leadership</div>
+        <div class="kb-band-title">Research Articles & Blogs</div>
+        <p class="kb-band-desc">Expert commentary, comparative analysis, and policy insights from India's data protection and cyber law landscape.</p>
+        <div class="kb-band-links">
+          <a href="blog-gdpr-vs-dpdp-comparison.html" class="kb-band-link">GDPR vs DPDP Act — Full Comparison</a>
+          <a href="blog-dpdp-consent-frameworks.html" class="kb-band-link">Consent Frameworks Under DPDP Act</a>
+          <a href="blog-dpdp-dpbi-enforcement.html" class="kb-band-link">DPBI Enforcement Framework</a>
+          <a href="blog-dpdp-geospatial-data-governance.html" class="kb-band-link">Geospatial Data & DPDP Act</a>
+          <a href="blog-dpdp-data-fiduciary-vs-processor.html" class="kb-band-link">Fiduciary vs Processor — The Key Distinction</a>
+          <a href="blog-itact-section-66c-identity-theft.html" class="kb-band-link">IT Act §66C — Identity Theft & Aadhaar</a>
+          <a href="blog.html" class="kb-band-link" style="color:var(--saffron-lt);margin-top:0.3rem;font-weight:400;">View All Articles →</a>
+        </div>
+      </div>
+
+      <div class="kb-band-item">
+        <div class="kb-band-kicker">Weekly Intelligence</div>
+        <div class="kb-band-title">Weekly Briefings</div>
+        <p class="kb-band-desc">Curated weekly roundups on DPDP Act developments, cyber fraud alerts, government notifications, and case law — published every Monday.</p>
+        <div class="kb-band-links">
+          <a href="weekly-briefing-2026-03-30.html" class="kb-band-link">Weekly Brief — Week of 30 March 2026</a>
+          <a href="weekly-briefing-2026-03-24.html" class="kb-band-link">Weekly Brief — Week of 24 March 2026</a>
+          <a href="weekly-briefing.html" class="kb-band-link">All Weekly Briefings Archive →</a>
+          <a href="case-tracker.html" class="kb-band-link">Case Tracker — Latest Judgements</a>
+        </div>
+        <div style="margin-top:1rem;padding:0.8rem 1rem;background:rgba(212,118,10,0.07);border:1px solid rgba(212,118,10,0.15);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.3rem;">Platform Status</div>
+          <div style="font-size:0.78rem;font-weight:300;color:rgba(248,244,236,0.4);line-height:1.6;">4 Knowledge Bases · 40+ Articles · Published every Monday · Safe Harbour compliant</div>
+        </div>
+      </div>
+
+      <div class="kb-band-item">
+        <div class="kb-band-kicker">Weekly Newsletter</div>
+        <div class="kb-band-title">Intelligence Brief</div>
+        <p class="kb-band-desc">DPDP Act updates, fraud alerts, case law, and compliance tips — delivered every Monday. Free.</p>
+        <form class="kb-nl-form" onsubmit="handleKBSubscribe(event)">
+          <input type="email" class="kb-nl-input" placeholder="your@email.com" id="kbEmail" required>
+          <select class="kb-nl-input" id="kbRole" style="font-family:'Source Serif 4',serif;font-size:0.82rem;cursor:pointer;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(248,244,236,0.6);padding:9px 12px;outline:none;">
+            <option value="">I am a… (optional)</option>
+            <option>Business / Compliance Officer</option>
+            <option>Legal Professional</option>
+            <option>Individual / Citizen</option>
+            <option>Government / Policy</option>
+            <option>Researcher / Academic</option>
+          </select>
+          <button type="submit" class="kb-nl-btn">Subscribe Free →</button>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.5rem;letter-spacing:0.06em;color:rgba(255,255,255,0.2);">No spam · Unsubscribe anytime</div>
+        </form>
+        <div id="kbSubSuccess" style="display:none;margin-top:0.8rem;padding:0.8rem 1rem;background:rgba(46,204,113,0.08);border:1px solid rgba(46,204,113,0.2);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.08em;color:#2ecc71;">✓ Subscribed — first brief next Monday</div>
+        </div>
+      </div>
+
+    </div><!-- end kb-band -->
+
+  </div>
+</section>
+
+<!-- ===== FRAUD ALERT BAR ===== -->
+<div class="fraud-bar">
+  <div class="fraud-bar-inner">
+    <div class="fraud-bar-title">🚨 Cyber Emergency?</div>
+    <div class="fraud-helpline">1930</div>
+    <div class="fraud-bar-text">National Cyber Crime Helpline. Report UPI fraud, digital arrest scam, OTP theft, or any online crime — available 24×7. Report online at <strong>cybercrime.gov.in</strong></div>
+    <a href="cybercrime-remedy-guide.html" class="fraud-bar-cta">Step-by-Step Guide →</a>
+    <a href="cyber-fraud-hub.html" class="fraud-bar-cta">Fraud Intelligence Hub →</a>
+  </div>
+</div>
+
+<!-- ===== QUICK ACCESS CARDS ===== -->
+<section class="quick-section" id="quick-access">
+  <div class="page">
+    <div class="section-kicker">Quick Access</div>
+    <h2 class="section-heading">Most Accessed <em>Resources</em></h2>
+    <p class="section-deck">Jump straight to what you need — our most accessed content, organised for action.</p>
+    <div class="quick-grid">
+
+      <a href="for-businesses.html#checklist" class="quick-card featured">
+        <div class="quick-card-tag">Business · Compliance</div>
+        <div class="quick-card-title">DPDP Compliance Checklist for Indian Businesses</div>
+        <div class="quick-card-desc">A complete, phased checklist covering consent management, data fiduciary obligations, DSR handling, breach notification, and vendor contracts — mapped to the DPDP Rules 2025.</div>
+        <div class="quick-card-arrow">Start Compliance Check →</div>
+      </a>
+
+      <a href="dpdp-act.html" class="quick-card">
+        <div class="quick-card-tag">DPDP Act · Simplified</div>
+        <div class="quick-card-title">DPDP Act in Plain Language</div>
+        <div class="quick-card-desc">The full Act explained without legalese — section by section, with examples.</div>
+        <div class="quick-card-arrow">Read Simplified Act →</div>
+      </a>
+
+      <a href="cyber-fraud-hub.html" class="quick-card">
+        <div class="quick-card-badge">🚨 High Priority</div>
+        <div class="quick-card-tag">Cyber Fraud · Alerts</div>
+        <div class="quick-card-title">Latest Fraud Alerts & Patterns</div>
+        <div class="quick-card-desc">Updated fraud intelligence — current scam patterns, modus operandi, and how to identify them before you're targeted.</div>
+        <div class="quick-card-arrow">View Fraud Alerts →</div>
+      </a>
+
+      <a href="dpdp-rights.html" class="quick-card">
+        <div class="quick-card-tag">Individual · Rights</div>
+        <div class="quick-card-title">Your Rights as a Data Principal</div>
+        <div class="quick-card-desc">Access, correction, erasure, and grievance — how to exercise your DPDP rights.</div>
+        <div class="quick-card-arrow">Know My Rights →</div>
+      </a>
+
+      <a href="blog-gdpr-vs-dpdp-comparison.html" class="quick-card">
+        <div class="quick-card-tag">Research · Comparative</div>
+        <div class="quick-card-title">GDPR vs DPDP Act — Full Comparison</div>
+        <div class="quick-card-desc">Key differences, similarities, and what Indian businesses with EU operations need to know.</div>
+        <div class="quick-card-arrow">Read Comparison →</div>
+      </a>
+
+      <a href="cybercrime-remedy-guide.html" class="quick-card">
+        <div class="quick-card-tag">Cyber Fraud · Action</div>
+        <div class="quick-card-title">How to Report Cybercrime — Step by Step</div>
+        <div class="quick-card-desc">Exact steps to file a complaint on 1930 and cybercrime.gov.in, what evidence to gather, and what to expect.</div>
+        <div class="quick-card-arrow">Get Step-by-Step Guide →</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== TOOLS SECTION ===== -->
+<section class="tools-section" id="tools">
+  <div class="page">
+    <div class="section-kicker">Tools</div>
+    <h2 class="section-heading">Compliance <em>Tools</em></h2>
+    <p class="section-deck">Practical instruments to assess, implement, and maintain your DPDP compliance posture.</p>
+    <div class="tools-grid">
+
+      <div class="tool-card">
+        <div class="tool-badge">Free</div>
+        <div class="tool-card-tag">Compliance Assessment</div>
+        <div class="tool-card-title">Compliance Score Calculator</div>
+        <div class="tool-card-desc">Answer 15 questions about your data practices and get an instant compliance score with prioritised action items.</div>
+        <!-- Inline mini-tool -->
+        <div class="compliance-tool" style="margin-top:0.8rem;">
+          <div class="compliance-tool-header">
+            <div class="compliance-tool-title">Quick Score — 3 Questions</div>
+          </div>
+          <div class="compliance-tool-body">
+            <div class="compliance-q">1. Does your app/website collect personal data?</div>
+            <div class="compliance-options">
+              <label class="compliance-option"><input type="radio" name="q1" value="yes"> Yes</label>
+              <label class="compliance-option"><input type="radio" name="q1" value="no"> No</label>
+            </div>
+            <div class="compliance-q">2. Do you have a privacy policy in place?</div>
+            <div class="compliance-options">
+              <label class="compliance-option"><input type="radio" name="q2" value="yes"> Yes</label>
+              <label class="compliance-option"><input type="radio" name="q2" value="no"> No</label>
+            </div>
+            <div class="compliance-q">3. Do you have explicit consent before collecting data?</div>
+            <div class="compliance-options">
+              <label class="compliance-option"><input type="radio" name="q3" value="yes"> Yes</label>
+              <label class="compliance-option"><input type="radio" name="q3" value="no"> No</label>
+            </div>
+            <button class="tool-btn" onclick="calcScore()">Calculate Score →</button>
+            <div class="compliance-result" id="scoreResult">
+              <div class="compliance-result-score" id="scoreNum"></div>
+              <div class="compliance-result-text" id="scoreText"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-badge">Free</div>
+        <div class="tool-card-tag">Templates</div>
+        <div class="tool-card-title">Privacy Policy Generator</div>
+        <div class="tool-card-desc">Generate a DPDP-compliant privacy policy template for your business. Fill in your details, download as Word or PDF.</div>
+        <a href="for-businesses.html#privacy-policy" class="tool-btn" style="display:inline-block;text-decoration:none;text-align:center;margin-top:auto;">Generate Policy →</a>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-badge">Free</div>
+        <div class="tool-card-tag">Consent Management</div>
+        <div class="tool-card-title">Consent Notice Builder</div>
+        <div class="tool-card-desc">Build DPDP-compliant consent notices with the right language, itemised purpose, and withdrawal mechanism — ready to copy into your app or website.</div>
+        <a href="for-businesses.html#consent" class="tool-btn" style="display:inline-block;text-decoration:none;text-align:center;margin-top:auto;">Build Consent Notice →</a>
+      </div>
+
+      <div class="tool-card coming-soon">
+        <div class="tool-badge coming">Coming Soon</div>
+        <div class="tool-card-tag">Risk Assessment</div>
+        <div class="tool-card-title">Data Risk Analyzer</div>
+        <div class="tool-card-desc">Upload your data flow diagram and get a risk assessment mapped to DPDP Act obligations and breach probability score.</div>
+        <button class="tool-btn disabled">Coming Soon</button>
+      </div>
+
+      <div class="tool-card coming-soon">
+        <div class="tool-badge coming">Coming Soon</div>
+        <div class="tool-card-tag">Vendor Management</div>
+        <div class="tool-card-title">Data Processor Agreement Template</div>
+        <div class="tool-card-desc">DPDP-compliant data processing agreements (DPA) for vendor contracts — covers all mandatory clauses under DPDP Rules 2025.</div>
+        <button class="tool-btn disabled">Coming Soon</button>
+      </div>
+
+      <div class="tool-card coming-soon">
+        <div class="tool-badge coming">Coming Soon</div>
+        <div class="tool-card-tag">Breach Response</div>
+        <div class="tool-card-title">Breach Notification Toolkit</div>
+        <div class="tool-card-desc">72-hour breach notification checklist, template notifications for DPDPB and affected Data Principals, and evidence preservation guide.</div>
+        <button class="tool-btn disabled">Coming Soon</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS STRIP ===== -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Knowledge Bases</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">40+</div>
+      <div class="stat-label">Research Articles</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">₹500Cr</div>
+      <div class="stat-label">Max DPDP Penalty</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">1930</div>
+      <div class="stat-label">Cyber Helpline</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">§ 79</div>
+      <div class="stat-label">Safe Harbour Compliant</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BLOG + NEWSLETTER ===== -->
+<section class="blog-section" id="insights">
+  <div class="page">
+    <div class="section-kicker">Thought Leadership</div>
+    <h2 class="section-heading">Latest <em>Insights</em></h2>
+    <p class="section-deck">Expert commentary, policy analysis, and practical guidance from India's data protection and cyber law landscape.</p>
+
+    <div class="blog-grid">
+      <div class="blog-main">
+
+        <a href="blog-gdpr-vs-dpdp-comparison.html" class="blog-feature">
+          <div class="blog-feature-body">
+            <div class="blog-feature-meta">
+              <span class="blog-tag">Comparative Law</span>
+              <span class="blog-date">March 2026</span>
+            </div>
+            <div class="blog-feature-title">GDPR vs DPDP Act: What Indian Businesses with EU Operations Must Know</div>
+            <div class="blog-feature-deck">A comprehensive comparison of key differences in consent, data principal rights, penalty structures, and cross-border data transfer rules — with practical implications for Indian businesses operating globally.</div>
+          </div>
+        </a>
+
+        <div class="blog-list">
+          <a href="blog-dpdp-consent-frameworks.html" class="blog-list-item">
+            <div class="blog-list-title">Consent Frameworks Under DPDP Act: What 'Free, Specific, Informed' Actually Means</div>
+            <div class="blog-list-meta">DPDP Act · Consent · February 2026</div>
+          </a>
+          <a href="blog-dpdp-dpbi-enforcement.html" class="blog-list-item">
+            <div class="blog-list-title">DPBI Enforcement Framework: How the Data Protection Board Will Operate</div>
+            <div class="blog-list-meta">Enforcement · DPDPB · January 2026</div>
+          </a>
+          <a href="blog-dpdp-geospatial-data-governance.html" class="blog-list-item">
+            <div class="blog-list-title">Geospatial Data Governance Under DPDP Act: What GIS Professionals Need to Know</div>
+            <div class="blog-list-meta">Geospatial · Data Governance · March 2026</div>
+          </a>
+          <a href="blog-dpdp-data-fiduciary-vs-processor.html" class="blog-list-item">
+            <div class="blog-list-title">Data Fiduciary vs Data Processor: The Critical Distinction Under DPDP Act 2023</div>
+            <div class="blog-list-meta">DPDP Act · Obligations · December 2025</div>
+          </a>
+          <a href="blog-itact-section-66c-identity-theft.html" class="blog-list-item">
+            <div class="blog-list-title">IT Act Section 66C: Identity Theft in the Age of Aadhaar and Digital Payments</div>
+            <div class="blog-list-meta">IT Act · Cybercrime · November 2025</div>
+          </a>
+        </div>
+
+        <div style="margin-top:1.5rem;">
+          <a href="blog.html" style="font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;background:var(--prussian);color:var(--cream);padding:12px 24px;text-decoration:none;display:inline-block;transition:background 0.2s;" onmouseover="this.style.background='var(--saffron)'" onmouseout="this.style.background='var(--prussian)'">View All Articles →</a>
+        </div>
+      </div>
+
+      <div class="blog-sidebar">
+
+        <!-- Newsletter -->
+        <div class="newsletter-card">
+          <div class="newsletter-title">Weekly Intelligence Brief</div>
+          <div class="newsletter-desc">DPDP updates, fraud alerts, case law, and compliance tips — delivered every Monday. Free, no spam.</div>
+          <form class="newsletter-form" onsubmit="handleSubscribe(event)">
+            <input type="text" class="newsletter-input" placeholder="Your name" id="subName" required>
+            <input type="email" class="newsletter-input" placeholder="Work email address" id="subEmail" required>
+            <select class="newsletter-input" id="subRole" style="font-family:'Source Serif 4',serif;font-size:0.85rem;cursor:pointer;">
+              <option value="">I am a... (select)</option>
+              <option>Business / Compliance Officer</option>
+              <option>Legal Professional / Advocate</option>
+              <option>Individual / Citizen</option>
+              <option>Government / Policy</option>
+              <option>Researcher / Academic</option>
+            </select>
+            <button type="submit" class="newsletter-btn">Subscribe to Weekly Brief →</button>
+            <div class="newsletter-note">No spam · Unsubscribe anytime · Covered by our Privacy Policy</div>
+          </form>
+          <div id="subSuccess" style="display:none;background:rgba(26,107,58,0.15);border:1px solid rgba(26,107,58,0.3);padding:1rem;margin-top:0.8rem;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;color:#2ecc71;">✓ Subscribed Successfully</div>
+            <div style="font-size:0.8rem;color:rgba(248,244,236,0.6);margin-top:0.3rem;">First brief arrives next Monday. Check your inbox.</div>
+          </div>
+        </div>
+
+        <!-- Case Tracker Preview -->
+        <div class="cases-preview">
+          <div class="cases-preview-title">📋 Recent Cases</div>
+          <div class="case-item">
+            <div class="case-court">Supreme Court · 2024</div>
+            <div class="case-name">Justice K.S. Puttaswamy (Retd.) v. Union of India</div>
+            <div class="case-issue">Right to Privacy as Fundamental Right — foundational case for DPDP Act</div>
+          </div>
+          <div class="case-item">
+            <div class="case-court">Delhi HC · 2025</div>
+            <div class="case-name">X v. State of Delhi — Digital Arrest Fraud</div>
+            <div class="case-issue">Landmark: FIR maintainability in cross-state digital fraud cases</div>
+          </div>
+          <div class="case-item">
+            <div class="case-court">Data Protection Board · 2026</div>
+            <div class="case-name">Consent Withdrawal — First DPDPB Order</div>
+            <div class="case-issue">Company directed to process withdrawal within 3 working days</div>
+          </div>
+          <div style="margin-top:1rem;">
+            <a href="case-tracker.html" style="font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--saffron);text-decoration:none;">View All Cases →</a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div style="background:var(--parchment);border:1px solid var(--rule);padding:1.5rem;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--saffron);margin-bottom:1rem;">Knowledge Bases</div>
+          <div style="display:flex;flex-direction:column;gap:0.6rem;">
+            <a href="dpdp-kb.html" style="display:flex;align-items:center;gap:8px;font-size:0.85rem;font-weight:300;color:var(--slate);text-decoration:none;padding:0.6rem;border:1px solid var(--rule);transition:background 0.15s;" onmouseover="this.style.background='var(--cream)'" onmouseout="this.style.background='transparent'">📗 DPDP Act 2023 Knowledge Base</a>
+            <a href="itact-kb.html" style="display:flex;align-items:center;gap:8px;font-size:0.85rem;font-weight:300;color:var(--slate);text-decoration:none;padding:0.6rem;border:1px solid var(--rule);transition:background 0.15s;" onmouseover="this.style.background='var(--cream)'" onmouseout="this.style.background='transparent'">📘 IT Act 2000 Knowledge Base</a>
+            <a href="ekyc-kb.html" style="display:flex;align-items:center;gap:8px;font-size:0.85rem;font-weight:300;color:var(--slate);text-decoration:none;padding:0.6rem;border:1px solid var(--rule);transition:background 0.15s;" onmouseover="this.style.background='var(--cream)'" onmouseout="this.style.background='transparent'">📙 Aadhaar & eKYC Knowledge Base</a>
+            <a href="cybercrime-kb.html" style="display:flex;align-items:center;gap:8px;font-size:0.85rem;font-weight:300;color:var(--slate);text-decoration:none;padding:0.6rem;border:1px solid var(--rule);transition:background 0.15s;" onmouseover="this.style.background='var(--cream)'" onmouseout="this.style.background='transparent'">🚨 Cybercrime Knowledge Base</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INTERMEDIARY NOTICE ===== -->
+<div class="intermediary-bar">
+  <div class="page" style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+    <span class="ib-tag">Notice</span>
+    <span class="ib-text">DPDPIndia.in operates as an Intermediary under IT Act 2000, §2(1)(w). All content is for educational purposes only. Not legal advice — always consult a qualified advocate. <a href="legal.html">Full Legal Notices →</a></span>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="page">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">DPDPIndia.in</div>
+        <div class="footer-brand-desc">India's independent research platform on the Digital Personal Data Protection Act 2023, IT Act 2000, Aadhaar eKYC framework, and cyber fraud intelligence. Published for educational purposes under Safe Harbour.</div>
+        <div style="margin-top:1.5rem;">
+          <div class="footer-helpline-label">National Cyber Helpline</div>
+          <div class="footer-helpline">1930</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.08em;color:rgba(255,255,255,0.3);margin-top:0.3rem;">cybercrime.gov.in · Available 24×7</div>
+        </div>
+      </div>
+      <div>
+        <div class="footer-heading">DPDP Act</div>
+        <ul class="footer-links">
+          <li><a href="dpdp-kb.html">DPDP Overview</a></li>
+          <li><a href="dpdp-act.html">Plain Language Guide</a></li>
+          <li><a href="dpdp-rules.html">DPDP Rules 2025</a></li>
+          <li><a href="dpdp-rights.html">Your Rights</a></li>
+          <li><a href="dpdp-exemptions.html">Exemptions</a></li>
+          <li><a href="dpdp-adjudication.html">Penalties</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Cyber Fraud</div>
+        <ul class="footer-links">
+          <li><a href="cyber-fraud-hub.html">Fraud Hub</a></li>
+          <li><a href="cybercrime-financial.html">Financial Frauds</a></li>
+          <li><a href="cybercrime-personal.html">Personal Crimes</a></li>
+          <li><a href="cybercrime-remedy-guide.html">How to Report</a></li>
+          <li><a href="cybercrime-kb.html">Cybercrime KB</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Resources</div>
+        <ul class="footer-links">
+          <li><a href="for-businesses.html">For Businesses</a></li>
+          <li><a href="for-individuals.html">For Individuals</a></li>
+          <li><a href="itact-kb.html">IT Act 2000 KB</a></li>
+          <li><a href="ekyc-kb.html">Aadhaar eKYC KB</a></li>
+          <li><a href="blog.html">All Articles</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="legal.html">Legal Notices</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 DPDPIndia.in · Independent Research Platform · Not Legal Advice · Safe Harbour: IT Act 2000 §79</div>
+      <div class="footer-legal-links">
+        <a href="legal.html">Terms of Use</a>
+        <a href="legal.html#privacy">Privacy Policy</a>
+        <a href="legal.html#safe-harbour">Safe Harbour</a>
+        <a href="contact.html">Grievance Officer</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ===== DPDP CHAKRA WHEEL =====
+(function(){
+  var spokes=[
+    {url:'chakra-privacy-history.html',label:'Constitutional\nRoots of Privacy',short:'Privacy\nHistory',color:'#1B5E7A'},
+    {url:'chakra-journey-2011-27.html',label:'Legislative\nJourney 2011–27',short:'Legislative\nJourney',color:'#1A6B3A'},
+    {url:'chakra-dpdp-2023.html',label:'DPDP Act\n2023 Framework',short:'DPDP Act\n2023',color:'#6B3A1A'},
+    {url:'chakra-data-principals.html',label:'Data Principals\n& Rights',short:'Data\nPrincipals',color:'#3A1A6B'},
+    {url:'chakra-data-fiduciaries.html',label:'Data Fiduciaries\n& Obligations',short:'Data\nFiduciaries',color:'#1A3A6B'},
+    {url:'chakra-data-processors.html',label:'Data Processors\n& Duties',short:'Data\nProcessors',color:'#6B1A3A'}
+  ];
+  var n=spokes.length;
+  var cx=260,cy=260,r=220,ri=82,rl=235;
+  var svg=document.getElementById('chakraSvg');
+  var segs=document.getElementById('chakraSegments');
+  var lbls=document.getElementById('chakraLabels');
+  var ashokaG=document.getElementById('ashokaSpokes');
+  var TAU=Math.PI*2;
+  var gap=0.03;
+  var hovered=null;
+
+  function polar(angle,radius){return{x:cx+radius*Math.cos(angle),y:cy+radius*Math.sin(angle)};}
+  function describeArc(startAngle,endAngle,outerR,innerR){
+    var s1=polar(startAngle,outerR),e1=polar(endAngle,outerR);
+    var s2=polar(endAngle,innerR),e2=polar(startAngle,innerR);
+    var large=endAngle-startAngle>Math.PI?1:0;
+    return['M',s1.x,s1.y,'A',outerR,outerR,0,large,1,e1.x,e1.y,'L',s2.x,s2.y,'A',innerR,innerR,0,large,0,e2.x,e2.y,'Z'].join(' ');
+  }
+
+  // Draw 24 Ashoka spokes
+  for(var i=0;i<24;i++){
+    var a=i*(TAU/24)-Math.PI/2;
+    var p1=polar(a,85);var p2=polar(a,218);
+    var line=document.createElementNS('http://www.w3.org/2000/svg','line');
+    line.setAttribute('x1',p1.x);line.setAttribute('y1',p1.y);
+    line.setAttribute('x2',p2.x);line.setAttribute('y2',p2.y);
+    ashokaG.appendChild(line);
+  }
+
+  // Draw 6 segments
+  spokes.forEach(function(spoke,i){
+    var startA=i*(TAU/n)-Math.PI/2+gap;
+    var endA=(i+1)*(TAU/n)-Math.PI/2-gap;
+    var path=document.createElementNS('http://www.w3.org/2000/svg','path');
+    path.setAttribute('d',describeArc(startA,endA,r,ri));
+    path.setAttribute('fill',spoke.color);
+    path.setAttribute('fill-opacity','0.65');
+    path.setAttribute('stroke','rgba(212,118,10,0.35)');
+    path.setAttribute('stroke-width','1');
+    path.setAttribute('class','chakra-seg');
+    path.style.cursor='pointer';
+    path.setAttribute('tabindex','0');
+    path.setAttribute('role','link');
+    path.setAttribute('aria-label',spoke.label.replace('\n',' '));
+    path.addEventListener('mouseenter',function(){path.setAttribute('fill-opacity','0.9');});
+    path.addEventListener('mouseleave',function(){path.setAttribute('fill-opacity','0.65');});
+    path.addEventListener('click',function(){window.location.href=spoke.url;});
+    path.addEventListener('keydown',function(e){if(e.key==='Enter')window.location.href=spoke.url;});
+    segs.appendChild(path);
+
+    // Label
+    var midA=(startA+endA)/2;
+    var lp=polar(midA,rl+10);
+    var lines=spoke.short.split('\n');
+    var g=document.createElementNS('http://www.w3.org/2000/svg','g');
+    g.style.pointerEvents='none';
+    lines.forEach(function(ln,li){
+      var t=document.createElementNS('http://www.w3.org/2000/svg','text');
+      t.setAttribute('x',lp.x);
+      t.setAttribute('y',lp.y+(li-lines.length/2+0.5)*13);
+      t.setAttribute('text-anchor','middle');
+      t.setAttribute('dominant-baseline','middle');
+      t.setAttribute('font-family','\'JetBrains Mono\',monospace');
+      t.setAttribute('font-size','8.5');
+      t.setAttribute('font-weight','500');
+      t.setAttribute('letter-spacing','0.06em');
+      t.setAttribute('fill','rgba(248,244,236,0.85)');
+      t.textContent=ln;
+      g.appendChild(t);
+    });
+    lbls.appendChild(g);
+  });
+
+  // Slow rotation animation
+  var angle=0;
+  function rotate(){
+    angle+=0.08;
+    if(angle>=360)angle=0;
+    svg.style.transform='rotate('+angle+'deg)';
+    // Keep labels upright
+    Array.from(lbls.children).forEach(function(g,i){
+      g.setAttribute('transform','rotate('+(-angle)+','+polar((i+0.5)*(TAU/n)-Math.PI/2,rl+10).x+','+polar((i+0.5)*(TAU/n)-Math.PI/2,rl+10).y+')');
+    });
+    raf=requestAnimationFrame(rotate);
+  }
+  var raf;
+  var wrap=document.getElementById('chakraWrap');
+  svg.style.transformOrigin='260px 260px';
+  svg.style.transformBox='fill-box';
+
+  // Pause on hover
+  wrap.addEventListener('mouseenter',function(){cancelAnimationFrame(raf);});
+  wrap.addEventListener('mouseleave',function(){raf=requestAnimationFrame(rotate);});
+  raf=requestAnimationFrame(rotate);
+})();
+
+// Safe Harbour Modal
+function acceptModal(){
+  document.getElementById('shModal').classList.add('hidden');
+  sessionStorage.setItem('sh_accepted','1');
+}
+window.addEventListener('DOMContentLoaded',function(){
+  if(sessionStorage.getItem('sh_accepted')==='1'){
+    document.getElementById('shModal').classList.add('hidden');
+  }
+});
+
+// Hamburger
+document.getElementById('hamburger').addEventListener('click',function(){
+  this.classList.toggle('open');
+  document.getElementById('mobileMenu').classList.toggle('open');
+});
+
+// Newsletter
+function handleSubscribe(e){
+  e.preventDefault();
+  var name=document.getElementById('subName').value;
+  var email=document.getElementById('subEmail').value;
+  if(name && email){
+    e.target.style.display='none';
+    document.getElementById('subSuccess').style.display='block';
+    // In production: POST to your mailing list API
+    console.log('Subscribe:',name,email);
+  }
+}
+
+// Compliance Score Calculator
+function calcScore(){
+  var q1=document.querySelector('input[name="q1"]:checked');
+  var q2=document.querySelector('input[name="q2"]:checked');
+  var q3=document.querySelector('input[name="q3"]:checked');
+  if(!q1||!q2||!q3){alert('Please answer all 3 questions.');return;}
+  var score=0;
+  if(q1.value==='no') score+=100; // doesn't collect data — no obligation
+  if(q2.value==='yes') score+=40;
+  if(q3.value==='yes') score+=60;
+  var level,text,colour;
+  if(score>=100){level='Good Start';colour='#2ecc71';text='You have the basics in place. Use our full 50-point checklist to identify gaps in consent records, DSR handling, and breach response. <a href="for-businesses.html#checklist" style="color:var(--saffron)">Full Checklist →</a>';}
+  else if(score>=40){level='Partial';colour=var_saffron();text='You have some foundations but critical gaps. A privacy policy without consent mechanism is insufficient under DPDP Act. <a href="for-businesses.html" style="color:var(--saffron)">Compliance Guide →</a>';}
+  else{level='High Risk';colour='#e74c3c';text='You are collecting personal data without a privacy policy or consent — this is a direct DPDP Act violation. Immediate action required. <a href="for-businesses.html#checklist" style="color:var(--saffron)">Fix This Now →</a>';}
+  document.getElementById('scoreNum').innerHTML='<span style="color:'+colour+'">'+level+'</span>';
+  document.getElementById('scoreText').innerHTML=text;
+  document.getElementById('scoreResult').classList.add('show');
+}
+function var_saffron(){return '#D4760A';}
+</script>
+
+</body>
+</html>

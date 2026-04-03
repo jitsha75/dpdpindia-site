@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Aadhaar Trust Chain — Entity Segregation &amp; Sub-KUA Appointment</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:wght@600&display=swap');
+
+:root {
+  --navy:#0a1628;--navy2:#132040;--navy3:#1c3055;
+  --blue:#1a5cad;--blue-light:#3b82d4;
+  --amber:#d4900a;--amber-light:#f5c842;
+  --teal:#0e7c6b;--coral:#c2420a;--purple:#5b4bc4;
+  --green:#156c2e;--red:#b91c1c;
+  --surface:#f4f6fb;--surface2:#eaeff8;--surface3:#dde4f0;
+  --text:#0d1b2a;--text2:#3a4a5c;--text3:#6b7e94;
+  --border:#c8d4e8;--border2:#b0c0d8;--white:#ffffff;
+  --font-body:'IBM Plex Sans',sans-serif;
+  --font-display:'Playfair Display',serif;
+  --font-mono:'IBM Plex Mono',monospace;
+  --radius:8px;--radius-lg:12px;
+  --shadow:0 2px 12px rgba(10,22,40,0.08);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--surface);color:var(--text);font-size:15px;line-height:1.7;min-height:100vh;}
+
+/* HEADER */
+.header{background:var(--navy);color:#fff;position:relative;overflow:hidden;}
+.header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px),repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px);}
+.header-inner{position:relative;max-width:1100px;margin:0 auto;padding:52px 40px 48px;}
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:20px;font-family:var(--font-mono);font-size:11px;}
+.breadcrumb a{color:rgba(255,255,255,.5);text-decoration:none;transition:color .15s;}
+.breadcrumb a:hover{color:var(--amber-light);}
+.breadcrumb .sep{color:rgba(255,255,255,.25);}
+.breadcrumb .cur{color:var(--amber-light);}
+.header-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:4px 14px;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:20px;}
+.header-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--amber-light);}
+.header h1{font-family:var(--font-display);font-size:clamp(24px,4vw,38px);font-weight:600;line-height:1.15;color:#fff;margin-bottom:14px;max-width:740px;}
+.header h1 span{color:var(--amber-light);}
+.header-sub{font-size:15px;color:rgba(255,255,255,.6);max-width:660px;line-height:1.65;margin-bottom:28px;}
+.header-meta{display:flex;flex-wrap:wrap;gap:8px;}
+.meta-pill{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:4px 12px;font-size:12px;color:rgba(255,255,255,.65);font-family:var(--font-mono);}
+
+/* LAYOUT */
+.layout{display:flex;max-width:1100px;margin:0 auto;padding:32px 20px;gap:32px;align-items:flex-start;}
+.sidebar{width:220px;flex-shrink:0;position:sticky;top:24px;}
+.sidebar-nav{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:12px 0;box-shadow:var(--shadow);}
+.sidebar-nav h3{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:6px 18px 10px;}
+.sidebar-nav a{display:flex;align-items:center;gap:8px;padding:8px 18px;font-size:13px;color:var(--text2);text-decoration:none;border-left:2px solid transparent;transition:all .15s;line-height:1.3;}
+.sidebar-nav a:hover{background:var(--surface);color:var(--blue);border-left-color:var(--blue-light);}
+.sidebar-nav .nav-num{font-family:var(--font-mono);font-size:10px;color:var(--text3);min-width:16px;}
+.sidebar-nav hr{border:none;border-top:1px solid var(--border);margin:8px 0;}
+.sidebar-nav .nav-sep{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:12px 18px 4px;display:block;}
+.sidebar-related{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px 18px;box-shadow:var(--shadow);margin-top:12px;}
+.sidebar-related h4{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:10px;}
+.sidebar-related a{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);text-decoration:none;padding:5px 0;border-bottom:1px solid var(--border);transition:color .15s;}
+.sidebar-related a:last-child{border-bottom:none;}
+.sidebar-related a:hover{color:var(--blue);}
+.sidebar-related .link-icon{font-size:11px;opacity:.5;}
+
+/* MAIN */
+.main{flex:1;min-width:0;}
+
+/* SECTION */
+.section{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:24px;box-shadow:var(--shadow);overflow:hidden;}
+.section-header{display:flex;align-items:center;gap:14px;padding:20px 28px;border-bottom:1px solid var(--border);background:var(--surface);}
+.section-num{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--font-mono);font-size:12px;font-weight:500;flex-shrink:0;}
+.section-header h2{font-size:17px;font-weight:600;color:var(--text);letter-spacing:-.01em;}
+.section-header p{font-size:13px;color:var(--text3);margin-top:2px;}
+.section-body{padding:28px;}
+
+/* TRUST CHAIN */
+.trust-chain{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:24px;}
+.tc-layer{display:grid;grid-template-columns:190px 1fr;border-bottom:1px solid var(--border);}
+.tc-layer:last-child{border-bottom:none;}
+.tc-label{padding:20px;display:flex;flex-direction:column;justify-content:center;gap:4px;}
+.tc-label-tier{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);}
+.tc-label-name{font-size:14px;font-weight:600;color:#fff;line-height:1.25;}
+.tc-label-sub{font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,.3);margin-top:2px;}
+.tc-content{padding:18px 22px;background:var(--white);display:flex;flex-direction:column;justify-content:center;gap:6px;}
+.tc-content p{font-size:13px;color:var(--text2);line-height:1.6;}
+.tc-boundary{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px;}
+.tc-tag{font-family:var(--font-mono);font-size:11px;padding:2px 8px;border-radius:4px;border:1px solid var(--border);color:var(--text3);background:var(--surface);}
+.tc-tag.legal{background:#ede8fe;color:var(--purple);border-color:#c4b8f5;}
+.tc-tag.tech{background:#e6f1fb;color:var(--blue);border-color:#b0ccea;}
+.tc-tag.data{background:#e8f5ee;color:var(--green);border-color:#b4ddc4;}
+.tc-tag.warn{background:#fef3cd;color:#854f0b;border-color:#f5c842;}
+.tc-arrow{background:var(--navy2);padding:7px 20px;font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,.35);letter-spacing:.03em;border-bottom:1px solid rgba(255,255,255,.06);}
+
+/* COMPARISON TABLE */
+.cmp-table{width:100%;border-collapse:collapse;font-size:13.5px;margin-bottom:20px;}
+.cmp-table thead tr{background:var(--navy);}
+.cmp-table th{padding:12px 16px;text-align:left;font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.75);}
+.cmp-table td{padding:14px 16px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.6;}
+.cmp-table tr:last-child td{border-bottom:none;}
+.cmp-table tr:hover td{background:var(--surface);}
+.cmp-table td:first-child{font-weight:600;color:var(--text);white-space:nowrap;border-right:1px solid var(--border);}
+.entity-badge{display:inline-block;padding:3px 10px;border-radius:5px;font-family:var(--font-mono);font-size:11.5px;font-weight:500;white-space:nowrap;}
+.badge-teal{background:#e0f2ef;color:var(--teal);}
+.badge-blue{background:#e6f1fb;color:var(--blue);}
+.badge-amber{background:#fef3cd;color:#854f0b;}
+.analogy-box{display:flex;align-items:flex-start;gap:8px;padding:8px 12px;border-radius:6px;background:var(--surface2);border:1px solid var(--border);font-size:12px;color:var(--text2);line-height:1.5;margin-top:8px;}
+.analogy-icon{font-size:15px;flex-shrink:0;margin-top:1px;}
+
+/* REASONS GRID */
+.reasons-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-top:20px;}
+.reason-card{padding:24px 22px;border-right:1px solid var(--border);background:var(--white);transition:background .2s;}
+.reason-card:last-child{border-right:none;}
+.reason-card:hover{background:var(--surface);}
+.reason-num{font-family:var(--font-mono);font-size:11px;font-weight:500;color:var(--amber);letter-spacing:.06em;margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+.reason-num::before{content:'';width:20px;height:1px;background:var(--amber);}
+.reason-title{font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:8px;line-height:1.3;}
+.reason-body{font-size:13px;color:var(--text2);line-height:1.65;}
+.reason-body ul{padding-left:16px;margin-top:6px;}
+.reason-body li{margin-bottom:5px;}
+
+/* PROCESS TIMELINE */
+.process-timeline{position:relative;padding-left:42px;margin-top:24px;}
+.process-timeline::before{content:'';position:absolute;left:15px;top:12px;bottom:12px;width:2px;background:linear-gradient(to bottom,var(--navy),var(--border));}
+.pt-step{position:relative;margin-bottom:32px;}
+.pt-step:last-child{margin-bottom:0;}
+.pt-dot{position:absolute;left:-33px;top:3px;width:22px;height:22px;border-radius:50%;background:var(--navy);border:2px solid var(--border2);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:10px;font-weight:500;color:#fff;z-index:1;}
+.pt-dot.done{background:var(--green);border-color:var(--green);}
+.pt-dot.warn{background:var(--amber);border-color:var(--amber);}
+.pt-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:8px;line-height:1.3;}
+.pt-body{font-size:13px;color:var(--text2);line-height:1.7;}
+.pt-body code{font-family:var(--font-mono);font-size:12px;background:var(--surface2);padding:1px 6px;border-radius:3px;border:1px solid var(--border);color:var(--blue);}
+.pt-body strong{font-weight:600;color:var(--text);}
+.pt-body ul{padding-left:18px;margin-top:6px;}
+.pt-body li{margin-bottom:5px;}
+.pt-callout{margin-top:10px;padding:10px 14px;border-radius:6px;font-size:12.5px;border-left:3px solid;}
+.pt-callout.blue{background:#e6f1fb;border-color:var(--blue);color:#0a2e5e;}
+.pt-callout.amber{background:#fef3cd;border-color:var(--amber);color:#533200;}
+.pt-callout.green{background:#e8f5ee;border-color:var(--green);color:#0a3318;}
+.pt-callout strong{font-weight:600;}
+
+/* IMPORTANT BOX */
+.important-box{border:1.5px solid var(--amber);border-radius:var(--radius-lg);overflow:hidden;margin:20px 0;}
+.important-header{background:var(--amber);padding:10px 18px;display:flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#fff;}
+.important-body{padding:18px;background:#fffaed;font-size:13.5px;color:#3d2a00;line-height:1.75;}
+.important-body strong{font-weight:600;color:#1a0e00;}
+.important-body p+p{margin-top:10px;}
+
+/* NOTE BOXES */
+.note-box{padding:12px 16px;border-radius:var(--radius);font-size:13px;line-height:1.6;border-left:3px solid;margin:12px 0;}
+.note-box.warning{background:#fef3cd;border-color:var(--amber);color:#533200;}
+.note-box.info{background:#e6f1fb;border-color:var(--blue);color:#0a2e5e;}
+.note-box.danger{background:#fde8e8;border-color:var(--red);color:#5c0f0f;}
+.note-box.success{background:#e8f5ee;border-color:var(--green);color:#0a3318;}
+.note-box strong{font-weight:600;}
+
+/* PROSE */
+.prose p{font-size:14px;color:var(--text2);margin-bottom:12px;line-height:1.75;}
+.prose p:last-child{margin-bottom:0;}
+.prose strong{font-weight:600;color:var(--text);}
+
+/* REG REF */
+.reg-ref{display:inline-flex;align-items:center;gap:5px;padding:2px 9px 2px 7px;border-radius:4px;background:#ede8fe;color:var(--purple);border:1px solid #c4b8f5;font-family:var(--font-mono);font-size:11px;font-weight:500;white-space:nowrap;}
+.reg-ref::before{content:'§';font-family:Georgia,serif;font-size:12px;}
+
+/* SCENARIO GRID */
+.scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;}
+.scenario-card{border-radius:var(--radius-lg);overflow:hidden;}
+.scenario-head{padding:12px 16px;}
+.scenario-head .label{font-size:12px;font-weight:600;font-family:var(--font-mono);letter-spacing:.04em;}
+.scenario-body{padding:16px;font-size:13px;color:var(--text2);line-height:1.65;}
+.scenario-body ul{padding-left:16px;}
+.scenario-body li{margin-bottom:6px;}
+
+/* FOOTER */
+.footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:28px 20px;font-size:12px;margin-top:40px;}
+.footer a{color:rgba(255,255,255,.6);}
+.footer-links{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:12px;}
+.footer-links a{color:rgba(255,255,255,.55);text-decoration:none;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;transition:color .15s;}
+.footer-links a:hover{color:var(--amber-light);}
+
+/* RESPONSIVE */
+@media(max-width:820px){
+  .layout{flex-direction:column;padding:16px;}
+  .sidebar{width:100%;position:static;}
+  .sidebar-nav{display:none;}
+  .header-inner{padding:32px 20px;}
+  .section-body{padding:16px;}
+  .reasons-grid{grid-template-columns:1fr;}
+  .reason-card{border-right:none;border-bottom:1px solid var(--border);}
+  .reason-card:last-child{border-bottom:none;}
+  .tc-layer{grid-template-columns:120px 1fr;}
+  .cmp-table{font-size:12px;}
+  .scenario-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <div class="breadcrumb">
+      <a href="index.html">DPDPindia.in</a>
+      <span class="sep">/</span>
+      <a href="ekyc-uidai-guide.html">eKYC Technical Guide</a>
+      <span class="sep">/</span>
+      <span class="cur">Trust Chain &amp; Sub-KUA Appointment</span>
+    </div>
+    <div class="header-badge"><span class="dot"></span>Deep Dive — Entity Architecture</div>
+    <h1>The Aadhaar <span>Trust Chain</span><br>Entity Segregation &amp; Sub-KUA Appointment</h1>
+    <p class="header-sub">Why UIDAI deliberately fragments the eKYC ecosystem into separate legal and technical tiers — and the precise regulatory process for appointing a Sub-KUA under the 2021 Regulations and 2025–26 Circulars.</p>
+    <div class="header-meta">
+      <span class="meta-pill">Auth Regulations 2021</span>
+      <span class="meta-pill">Regulation 14(1)(ga)</span>
+      <span class="meta-pill">Circular 2 of 2025</span>
+      <span class="meta-pill">Circular 1 of 2026</span>
+      <span class="meta-pill">CERT-IN Audit Required</span>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sidebar-nav">
+      <h3>On this page</h3>
+      <a href="#s1"><span class="nav-num">01</span> The Trust Chain model</a>
+      <a href="#s2"><span class="nav-num">02</span> ASA vs AUA vs KUA</a>
+      <a href="#s3"><span class="nav-num">03</span> Why segregate?</a>
+      <a href="#s4"><span class="nav-num">04</span> Sub-KUA appointment</a>
+      <a href="#s5"><span class="nav-num">05</span> Dev companies — when to register</a>
+      <hr>
+      <span class="nav-sep">Navigation</span>
+      <a href="ekyc-uidai-guide.html"><span class="nav-num">←</span> Back to eKYC guide</a>
+      <a href="index.html"><span class="nav-num">⌂</span> DPDPindia.in</a>
+    </div>
+    <div class="sidebar-related">
+      <h4>Key References</h4>
+      <a href="https://uidai.gov.in/en/about-uidai/legal-framework/regulations.html" target="_blank"><span class="link-icon">↗</span> Auth Regulations 2021</a>
+      <a href="https://uidai.gov.in/en/ecosystem/authentication-ecosystem/authentication-requesting-agency.html" target="_blank"><span class="link-icon">↗</span> UIDAI Ecosystem</a>
+      <a href="https://uidai.gov.in/en/ecosystem/authentication-devices-documents/developer-section.html" target="_blank"><span class="link-icon">↗</span> Developer Sandbox</a>
+      <a href="https://uidai.gov.in/aadhaar_dashboard/asa_transactions.php?asacode=3600" target="_blank"><span class="link-icon">↗</span> ASA Live Dashboard</a>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- S1 — TRUST CHAIN MODEL -->
+    <section class="section" id="s1">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <div>
+          <h2>The Aadhaar Ecosystem as a Trust Chain</h2>
+          <p>Each tier has a distinct legal boundary — no single point of failure can compromise the national database</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="prose" style="margin-bottom:24px;">
+          <p>To understand why the eKYC entities are structured the way they are, it helps to look at the Aadhaar ecosystem as a <strong>Trust Chain</strong>. Each entity occupies a specific legal and technical tier, with carefully defined boundaries between them. The design goal is simple but critical: <strong>no single point of failure should be capable of compromising the entire national biometric database</strong> — a database holding the identity records of 1.4 billion people.</p>
+          <p>The Trust Chain is not merely an architectural convenience. It is a deliberate regulatory instrument. Each boundary is backed by a specific regulation, a contractual obligation, and a technical control — so that even if one tier is breached, the attacker gains only what that tier was permitted to hold, and no more.</p>
+        </div>
+
+        <div class="trust-chain">
+          <div class="tc-layer">
+            <div class="tc-label" style="background:#0a1628;">
+              <div class="tc-label-tier">Tier 0 — Root</div>
+              <div class="tc-label-name">UIDAI / CIDR</div>
+              <div class="tc-label-sub">Central Authority</div>
+            </div>
+            <div class="tc-content">
+              <p>Holds the master biometric database. Issues all licences. The only entity that can decrypt biometric data or perform identity matching. Cannot be bypassed at any step.</p>
+              <div class="tc-boundary">
+                <span class="tc-tag legal">Root certificate authority</span>
+                <span class="tc-tag tech">RSA-2048 private key holder</span>
+                <span class="tc-tag data">All biometric templates</span>
+                <span class="tc-tag legal">Aadhaar Act 2016</span>
+              </div>
+            </div>
+          </div>
+          <div class="tc-arrow">▼&nbsp;&nbsp;Licences ASA via formal agreement · leased-line only · registered static IPs</div>
+          <div class="tc-layer">
+            <div class="tc-label" style="background:#0e7c6b;">
+              <div class="tc-label-tier">Tier 1 — Pipe</div>
+              <div class="tc-label-name">ASA / KSA</div>
+              <div class="tc-label-sub">Connectivity layer</div>
+            </div>
+            <div class="tc-content">
+              <p>Provides the secure physical connection between requesting entities and UIDAI. Handles only encrypted, opaque packets. Cannot open any payload it carries.</p>
+              <div class="tc-boundary">
+                <span class="tc-tag legal">Formal ASA agreement</span>
+                <span class="tc-tag tech">Leased line, no public internet</span>
+                <span class="tc-tag tech">Static IP registered with UIDAI</span>
+                <span class="tc-tag data">Zero plaintext data access</span>
+              </div>
+            </div>
+          </div>
+          <div class="tc-arrow">▼&nbsp;&nbsp;Licences AUA / KUA · assigns ac (licence code) · KUA holds HSM private key</div>
+          <div class="tc-layer">
+            <div class="tc-label" style="background:#1a5cad;">
+              <div class="tc-label-tier">Tier 2 — Agency</div>
+              <div class="tc-label-name">AUA / KUA</div>
+              <div class="tc-label-sub">Auth / KYC User Agency</div>
+            </div>
+            <div class="tc-content">
+              <p>The licensed business consuming identity verification. AUAs receive a Y/N only. KUAs also receive demographic data (name, DOB, address, photo). Both must sign a formal agreement with UIDAI.</p>
+              <div class="tc-boundary">
+                <span class="tc-tag legal">Direct UIDAI agreement</span>
+                <span class="tc-tag tech">FIPS 140-2 HSM mandatory</span>
+                <span class="tc-tag tech">Aadhaar Data Vault mandatory</span>
+                <span class="tc-tag data">Y/N only (AUA) · Demographics (KUA)</span>
+              </div>
+            </div>
+          </div>
+          <div class="tc-arrow">▼&nbsp;&nbsp;Prior UIDAI approval required · Joint Undertaking mandatory · Sub-KUA code issued by UIDAI</div>
+          <div class="tc-layer">
+            <div class="tc-label" style="background:#c2420a;">
+              <div class="tc-label-tier">Tier 3 — Sub-Agency</div>
+              <div class="tc-label-name">Sub-AUA / Sub-KUA</div>
+              <div class="tc-label-sub">Third-party via parent's infrastructure</div>
+            </div>
+            <div class="tc-content">
+              <p>Uses the AUA or KUA's infrastructure under that entity's contractual liability. No direct UIDAI relationship. Every transaction carries the Sub-KUA's unique code for full audit tracing.</p>
+              <div class="tc-boundary">
+                <span class="tc-tag legal">No direct UIDAI contract</span>
+                <span class="tc-tag legal">Regulation 14(1)(ga)</span>
+                <span class="tc-tag warn">CERT-IN audit before go-live</span>
+                <span class="tc-tag tech">Unique Sub-KUA code (Circular 1/2026)</span>
+              </div>
+            </div>
+          </div>
+          <div class="tc-arrow">▼&nbsp;&nbsp;Explicit consent — rc='Y' — on STQC-certified Registered Device only</div>
+          <div class="tc-layer">
+            <div class="tc-label" style="background:#3a4a5c;">
+              <div class="tc-label-tier">Principal</div>
+              <div class="tc-label-name">Resident</div>
+              <div class="tc-label-sub">Aadhaar holder · data principal</div>
+            </div>
+            <div class="tc-content">
+              <p>The data principal whose rights the entire Trust Chain is designed to protect. Every transaction requires explicit, purpose-specific, informed consent and a STQC-certified Registered Device.</p>
+              <div class="tc-boundary">
+                <span class="tc-tag legal">Section 8 — Aadhaar Act 2016</span>
+                <span class="tc-tag legal">Regulation 17 — biometric rights</span>
+                <span class="tc-tag tech">STQC-certified device only</span>
+                <span class="tc-tag data">Consent purpose-limited</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="note-box info">
+          <strong>Design principle:</strong> Each downward boundary in the Trust Chain is a one-way information valve — data flows from UIDAI outward in the minimum amount needed by each tier, encrypted specifically for that tier. No tier can escalate its own privileges to access the data held by the tier above it.
+        </div>
+      </div>
+    </section>
+
+    <!-- S2 — ENTITY DIFFERENTIATION -->
+    <section class="section" id="s2">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <div>
+          <h2>Differentiation of Functions: ASA vs AUA vs KUA</h2>
+          <p>Three entities, three distinct roles, three fundamentally different data boundaries</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th style="width:80px;">Entity</th>
+              <th>Primary Function</th>
+              <th>Data Handled</th>
+              <th>Real-World Analogy</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="entity-badge badge-teal">ASA</span></td>
+              <td><strong>Infrastructure &amp; Connectivity.</strong> Acts as a secure "pipe" between Requesting Entities and UIDAI. Maintains dedicated leased-line access to CIDR, distributes cryptographic keys to its KUAs, and forwards encrypted packets without any ability to inspect their contents.</td>
+              <td>
+                <strong>Encrypted packets only.</strong> The ASA cannot see, decrypt, or store any biometric or KYC data. To the ASA, every transaction is an opaque ciphertext envelope addressed to UIDAI.
+                <div class="analogy-box"><span class="analogy-icon">📡</span><span>Like an ISP or a secure VPN tunnel — it carries the message at high speed with guaranteed delivery, but cannot read what is inside.</span></div>
+              </td>
+              <td>The Internet Service Provider or the secure tunnel. A bonded courier van between the requestor and the vault — the driver has no key to the package.</td>
+            </tr>
+            <tr>
+              <td><span class="entity-badge badge-blue">AUA</span></td>
+              <td><strong>Identity Verification (Yes / No).</strong> Asks UIDAI: <em>"Is this person who they claim to be?"</em> Uses the Aadhaar Authentication API. Receives only a binary pass/fail response plus a reference ID — no demographic data is returned.</td>
+              <td>
+                <strong>Auth response only.</strong> A <code>Y</code> (verified) or <code>N</code> (failed) and an error code. No name, no address, no photo, no date of birth.
+                <div class="analogy-box"><span class="analogy-icon">🛡️</span><span>The Security Guard at a gate who checks an ID — knows "this person is on the list" but does not record the visitor's home address.</span></div>
+              </td>
+              <td>An attendance terminal, a building access system, or a utility verifying account ownership — it needs only a "yes, this person is genuine," nothing more.</td>
+            </tr>
+            <tr>
+              <td><span class="entity-badge badge-amber">KUA</span></td>
+              <td><strong>Data Retrieval (e-KYC).</strong> Asks UIDAI: <em>"Please provide the verified demographic details of this person."</em> Uses the eKYC API. Receives a digitally signed KYC record encrypted specifically for the KUA's public key.</td>
+              <td>
+                <strong>Demographic data.</strong> Name, Date of Birth, Gender, Address, Photograph (JPEG), and optionally hashed Mobile and Email — as a UIDAI-signed XML with legal equivalence to an Aadhaar letter.
+                <div class="analogy-box"><span class="analogy-icon">📋</span><span>The Registration Desk filling out a form for you — the bank's KYC desk that completes an account-opening form using verified government records.</span></div>
+              </td>
+              <td>A bank opening an account, a telecom registering a SIM, or an insurer onboarding a policyholder — entities with a regulatory obligation to collect and verify full identity details.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="note-box warning">
+          <strong>Key distinction:</strong> A KUA is always also an AUA — it can perform both plain authentication and eKYC. But an AUA is <em>not</em> automatically a KUA. A business must apply specifically for KUA status and demonstrate a legitimate need to receive demographic data. UIDAI's approval is required for each use case category.
+        </div>
+      </div>
+    </section>
+
+    <!-- S3 — WHY SEGREGATE -->
+    <section class="section" id="s3">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div>
+          <h2>Why Are They Segregated?</h2>
+          <p>Three regulatory rationales behind UIDAI's layered entity architecture</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="prose" style="margin-bottom:20px;">
+          <p>The segregation of ASA, AUA, and KUA is not an accident of implementation — it is deliberate policy design. UIDAI enforces this structure for three core reasons, each backed by both a legal and a technical rationale.</p>
+        </div>
+        <div class="reasons-grid">
+          <div class="reason-card">
+            <div class="reason-num">01 / Security</div>
+            <div class="reason-title">Reducing the Attack Surface</div>
+            <div class="reason-body">
+              <p>If every bank, insurer, and local agency connected directly to UIDAI, there would be thousands of independent entry points into the national identity infrastructure — each a potential target.</p>
+              <p style="margin-top:8px;">By requiring all traffic to route through a small number of high-security, dedicated ASAs on registered leased lines, UIDAI reduces the "gateways" it must defend to a manageable few. The ASA model converts a thousand potential attack surfaces into a handful of hardened choke points — what information-security professionals call a <strong>Security Perimeter</strong> design.</p>
+            </div>
+          </div>
+          <div class="reason-card">
+            <div class="reason-num">02 / Compliance</div>
+            <div class="reason-title">Specialisation of Regulatory Duty</div>
+            <div class="reason-body">
+              <p>Each tier is responsible for a fundamentally different compliance domain:</p>
+              <ul>
+                <li><strong>ASAs</strong> focus on 24×7 network uptime, hardware security (HSM modules), leased-line SLAs, and physical infrastructure protection.</li>
+                <li><strong>AUAs and KUAs</strong> focus on user consent management, purpose limitation, the legal right to request identity verification, and the handling of data they receive.</li>
+              </ul>
+              <p style="margin-top:8px;">Combining both responsibilities in one entity would create conflicts of interest and dilute accountability when something goes wrong.</p>
+            </div>
+          </div>
+          <div class="reason-card">
+            <div class="reason-num">03 / Privacy</div>
+            <div class="reason-title">Data Minimisation by Design</div>
+            <div class="reason-body">
+              <p>By separating AUA (Yes/No) from KUA (full demographic data), UIDAI structurally enforces <strong>data minimisation</strong> — the principle that organisations should only access the minimum personal data necessary for their specific purpose.</p>
+              <p style="margin-top:8px;">A simple attendance system only needs "is this the right person?" — it has no legitimate need for the employee's home address. The AUA model makes it technically impossible for such a system to receive that data, even if the operator wanted it. The law says no, and the architecture enforces it.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S4 — SUB-KUA APPOINTMENT -->
+    <section class="section" id="s4">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <div>
+          <h2>Appointing a Sub-KUA — The Regulatory Process</h2>
+          <p>Permitted with strict prior UIDAI approval and multiple mandatory compliance gates</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="prose" style="margin-bottom:20px;">
+          <p>A KUA (for example, a bank) may permit a third-party entity — an insurer, a fintech partner, or a specific department — to use its Aadhaar integration infrastructure. That third party is designated as a <strong>Sub-KUA</strong>. Yes, a KUA can do this — but the regulatory bar is high and the process is detailed.</p>
+        </div>
+
+        <div class="note-box info" style="margin-bottom:24px;">
+          <strong>Legal basis:</strong>&nbsp;<span class="reg-ref">Regulation 14(1)(ga)</span> of the Aadhaar (Authentication and Offline Verification) Regulations, 2021, reinforced by <span class="reg-ref">Circular 2 of 2025</span> and <span class="reg-ref">Circular 1 of 2026</span>, requires a KUA to obtain <em>prior approval</em> from UIDAI before appointing any third-party entity as a Sub-KUA. There is no self-declaration or post-facto registration — approval must precede any live Sub-KUA transaction.
+        </div>
+
+        <div class="process-timeline">
+
+          <div class="pt-step">
+            <div class="pt-dot">1</div>
+            <div class="pt-title">Joint Undertaking — Shared Liability</div>
+            <div class="pt-body">
+              <p>Both the KUA (e.g., the bank) and the proposed Sub-KUA must sign a <strong>Joint Undertaking</strong> before submitting an application to UIDAI. This document holds both parties jointly and severally liable for any data breach, misuse, or regulatory violation arising from the Sub-KUA's use of the eKYC infrastructure.</p>
+              <p style="margin-top:8px;">The Joint Undertaking is not a formality — UIDAI may proceed against either party independently in the event of a breach. The KUA cannot escape liability by pointing to the Sub-KUA as the responsible party.</p>
+              <div class="pt-callout blue"><strong>Implication:</strong> A bank must conduct thorough technical and legal due diligence on any proposed Sub-KUA before signing, because it will bear legal responsibility for the Sub-KUA's data-handling practices going forward.</div>
+            </div>
+          </div>
+
+          <div class="pt-step">
+            <div class="pt-dot">2</div>
+            <div class="pt-title">Formal Application &amp; Licence Fee</div>
+            <div class="pt-body">
+              <p>The KUA submits a formal application to UIDAI for Sub-KUA approval, accompanied by the signed Joint Undertaking and documentation describing the Sub-KUA's business case, intended use of eKYC data, and data-handling architecture.</p>
+              <p style="margin-top:8px;">As of 2026, a <strong>Licence Fee</strong> — recently revised upward under UIDAI circulars — is payable for each Sub-KUA appointment. The fee structure distinguishes between Sub-KUA categories based on transaction volume and sector.</p>
+              <div class="pt-callout amber"><strong>Note:</strong> UIDAI's fee schedule is updated periodically. KUAs must verify the current fee on the UIDAI ecosystem portal before submitting, as incorrect fees may result in the application being returned.</div>
+            </div>
+          </div>
+
+          <div class="pt-step">
+            <div class="pt-dot warn">3</div>
+            <div class="pt-title">IS Audit by CERT-IN Empanelled Auditor</div>
+            <div class="pt-body">
+              <p>Before the Sub-KUA can go live, it must undergo an <strong>Information Security (IS) Audit</strong> conducted by a CERT-IN empanelled auditor. This gate is mandatory — no waiver is available.</p>
+              <p style="margin-top:8px;">The audit must verify, at minimum:</p>
+              <ul>
+                <li>The Sub-KUA's systems do <strong>not</strong> store biometric data at any point in the transaction flow.</li>
+                <li>Application and system logs do <strong>not</strong> record Aadhaar numbers, biometric templates, OTP values, or demographic KYC fields.</li>
+                <li>The Sub-KUA maintains an Aadhaar Data Vault (ADV) meeting UIDAI's AES-256 and HSM requirements.</li>
+                <li>Network and access controls are adequate to prevent unauthorised access to eKYC data in transit and at rest.</li>
+                <li>Incident response procedures are documented and tested.</li>
+              </ul>
+              <div class="pt-callout green"><strong>Practical note:</strong> Audit preparation typically takes 4–8 weeks for an organisation new to the Aadhaar compliance framework. Findings must be remediated and re-verified before UIDAI will issue a Sub-KUA code. Plan accordingly.</div>
+            </div>
+          </div>
+
+          <div class="pt-step">
+            <div class="pt-dot done">4</div>
+            <div class="pt-title">UIDAI Issues Unique Sub-KUA Code</div>
+            <div class="pt-body">
+              <p>Once UIDAI is satisfied — application approved, fee paid, IS audit passed — it issues a <strong>unique Sub-KUA code</strong> to the newly registered entity.</p>
+              <p style="margin-top:8px;">Under <strong>Circular 1 of 2026</strong>, every eKYC transaction initiated by a Sub-KUA must carry this unique code in the <code>sa</code> attribute of the Auth XML. This gives UIDAI the ability to track, at the individual transaction level, exactly which sub-entity initiated each request — creating a complete, auditable chain of accountability from resident through to CIDR.</p>
+              <div class="pt-callout blue"><strong>Audit trail:</strong> UIDAI's public ASA transaction dashboard allows authorised parties to view Sub-KUA-level transaction volumes, providing ecosystem-wide visibility into how each Sub-KUA licence is being used.</div>
+            </div>
+          </div>
+
+          <div class="pt-step">
+            <div class="pt-dot done">5</div>
+            <div class="pt-title">Ongoing Obligations Post-Appointment</div>
+            <div class="pt-body">
+              <p>Sub-KUA appointment is not a one-time event. Ongoing obligations apply to both the Sub-KUA and its parent KUA:</p>
+              <ul>
+                <li>Periodic IS re-audits at intervals specified by UIDAI.</li>
+                <li>Reporting of any security incidents involving eKYC data to UIDAI within prescribed timelines.</li>
+                <li>Compliance with any revised circulars or regulations — which supersede earlier guidance automatically.</li>
+                <li>The KUA must notify UIDAI of any material change in the Sub-KUA's business, ownership, or technical architecture.</li>
+                <li>If the Sub-KUA relationship is terminated, the KUA must inform UIDAI and revoke the Sub-KUA's infrastructure access immediately.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- S5 — DEV COMPANIES -->
+    <section class="section" id="s5">
+      <div class="section-header">
+        <div class="section-num">05</div>
+        <div>
+          <h2>Development Companies — When Does Sub-KUA Registration Apply?</h2>
+          <p>The crucial distinction between writing the code and processing the transactions</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="prose" style="margin-bottom:20px;">
+          <p>This is one of the most frequently misunderstood points in the eKYC ecosystem. Whether a development or technology company requires Sub-KUA registration depends entirely on <strong>where the application runs and who controls the transaction pipeline</strong> — not on who wrote the code.</p>
+        </div>
+
+        <div class="important-box">
+          <div class="important-header">
+            <span style="font-size:16px;">⚠</span>
+            Important — The Hosting and Processing Distinction
+          </div>
+          <div class="important-body">
+            <p>A <strong>development company that is solely writing code for a bank does not need Sub-KUA status.</strong> If the bank's own servers receive and process the eKYC transactions — and the development company merely delivered the software — no Sub-KUA registration is required for the developer.</p>
+            <p>However, if that same company <strong>hosts the application on its own servers</strong> and those servers receive, process, or relay eKYC transactions for the bank's customers — even as a managed service or SaaS platform — then the development company is <strong>functionally acting as a Sub-KUA and must be registered as one</strong> before processing any live transaction.</p>
+          </div>
+        </div>
+
+        <div class="scenario-grid">
+          <div class="scenario-card" style="border:1px solid #b4ddc4;">
+            <div class="scenario-head" style="background:#e8f5ee;border-bottom:1px solid #b4ddc4;">
+              <div class="label" style="color:var(--green);">✓ Sub-KUA Registration NOT Required</div>
+            </div>
+            <div class="scenario-body">
+              <ul>
+                <li>Dev company builds the eKYC integration module and delivers it to the bank.</li>
+                <li>The module runs on the bank's own infrastructure (on-premises or bank-controlled cloud).</li>
+                <li>The bank's servers receive all eKYC traffic from UIDAI directly.</li>
+                <li>The dev company has no access to live transaction data.</li>
+                <li>Updates and maintenance are delivered as code releases, not through direct system access.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="scenario-card" style="border:1px solid #f0b4b4;">
+            <div class="scenario-head" style="background:#fde8e8;border-bottom:1px solid #f0b4b4;">
+              <div class="label" style="color:var(--red);">✗ Sub-KUA Registration Required</div>
+            </div>
+            <div class="scenario-body">
+              <ul>
+                <li>Dev company hosts the eKYC application on its own servers (cloud or on-premises).</li>
+                <li>The company's servers receive, process, or relay eKYC transactions for the bank's customers.</li>
+                <li>Even if it is a "pass-through" or "relay" arrangement — traffic flows through the company's infrastructure.</li>
+                <li>The company has operational visibility into transaction data in transit.</li>
+                <li>The company could technically inspect, log, or intercept eKYC data from its position in the pipeline.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="note-box warning" style="margin-top:20px;">
+          <strong>The test to apply:</strong> At any point in the transaction lifecycle, does the company's infrastructure sit in the data path between the end user's device and UIDAI's CIDR — or between CIDR and the KUA? If yes, even briefly, that company is processing eKYC data and requires Sub-KUA registration before going live.
+        </div>
+
+        <div class="note-box danger">
+          <strong>Non-compliance consequence:</strong> Operating as an unregistered Sub-KUA — even unintentionally — is a violation of the Aadhaar Act 2016 and the Authentication Regulations 2021. UIDAI may suspend the parent KUA's licence, impose financial penalties, and refer the matter for prosecution under Section 40 of the Act (imprisonment up to 3 years and/or fine up to ₹10 lakh).
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-links">
+    <a href="index.html">DPDPindia.in</a>
+    <a href="ekyc-uidai-guide.html">eKYC Complete Guide</a>
+    <a href="https://uidai.gov.in" target="_blank">UIDAI Official</a>
+    <a href="https://uidai.gov.in/en/about-uidai/legal-framework/regulations.html" target="_blank">Auth Regulations 2021</a>
+    <a href="https://uidai.gov.in/en/ecosystem/authentication-devices-documents/developer-section.html" target="_blank">Developer Sandbox</a>
+  </div>
+  <p>The Aadhaar Trust Chain &amp; Sub-KUA Reference — Part of the eKYC Technical Guide at DPDPindia.in</p>
+  <p style="margin-top:6px;">
+    <a href="ekyc-uidai-guide.html">← Back to eKYC Complete Guide</a>
+    &nbsp;·&nbsp;
+    <a href="index.html">DPDPindia.in Home</a>
+    &nbsp;·&nbsp;
+    For production integrations always consult the latest UIDAI specifications at <a href="https://uidai.gov.in" target="_blank">uidai.gov.in</a>
+  </p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rules & Implementation — DPDP Rules 2025 — DPDP KB</title>
+<style>@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:wght@600&display=swap');
+:root{--navy:#0a1628;--navy2:#132040;--blue:#1a5cad;--blue-light:#3b82d4;--amber:#d4900a;--amber-light:#f5c842;--teal:#0e7c6b;--coral:#c2420a;--purple:#5b4bc4;--green:#156c2e;--red:#b91c1c;--surface:#f4f6fb;--surface2:#eaeff8;--text:#0d1b2a;--text2:#3a4a5c;--text3:#6b7e94;--border:#c8d4e8;--border2:#b0c0d8;--white:#ffffff;--font-body:'IBM Plex Sans',sans-serif;--font-display:'Playfair Display',serif;--font-mono:'IBM Plex Mono',monospace;--radius:8px;--radius-lg:12px;--shadow:0 2px 12px rgba(10,22,40,.08);--shadow-md:0 4px 24px rgba(10,22,40,.13);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--surface);color:var(--text);font-size:15px;line-height:1.7;min-height:100vh;}
+.header{background:var(--navy);color:#fff;position:relative;overflow:hidden;}
+.header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px),repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px);}
+.header-inner{position:relative;max-width:1100px;margin:0 auto;padding:52px 40px 48px;}
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:20px;font-family:var(--font-mono);font-size:11px;flex-wrap:wrap;}
+.breadcrumb a{color:rgba(255,255,255,.5);text-decoration:none;transition:color .15s;}
+.breadcrumb a:hover{color:var(--amber-light);}
+.breadcrumb .sep{color:rgba(255,255,255,.25);}
+.breadcrumb .cur{color:var(--amber-light);}
+.header-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:4px 14px;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:20px;}
+.header h1{font-family:var(--font-display);font-size:clamp(24px,4vw,38px);font-weight:600;line-height:1.15;color:#fff;margin-bottom:14px;max-width:760px;}
+.header-sub{font-size:15px;color:rgba(255,255,255,.6);max-width:680px;line-height:1.65;margin-bottom:28px;}
+.header-meta{display:flex;flex-wrap:wrap;gap:8px;}
+.meta-pill{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:4px 12px;font-size:12px;color:rgba(255,255,255,.65);font-family:var(--font-mono);}
+.layout{display:flex;max-width:1100px;margin:0 auto;padding:32px 20px;gap:32px;align-items:flex-start;}
+.sidebar{width:220px;flex-shrink:0;position:sticky;top:24px;}
+.sidebar-nav{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:12px 0;box-shadow:var(--shadow);}
+.sidebar-nav h3{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:6px 18px 10px;}
+.sidebar-nav a{display:flex;align-items:center;gap:8px;padding:8px 18px;font-size:13px;color:var(--text2);text-decoration:none;border-left:2px solid transparent;transition:all .15s;line-height:1.3;}
+.sidebar-nav a:hover{background:var(--surface);color:var(--blue);border-left-color:var(--blue-light);}
+.sidebar-nav .nav-num{font-family:var(--font-mono);font-size:10px;color:var(--text3);min-width:16px;}
+.sidebar-nav hr{border:none;border-top:1px solid var(--border);margin:8px 0;}
+.sidebar-nav .nav-sep{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:12px 18px 4px;display:block;}
+.sidebar-related{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px 18px;box-shadow:var(--shadow);margin-top:12px;}
+.sidebar-related h4{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:10px;}
+.sidebar-related a{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);text-decoration:none;padding:5px 0;border-bottom:1px solid var(--border);transition:color .15s;}
+.sidebar-related a:last-child{border-bottom:none;}
+.sidebar-related a:hover{color:var(--blue);}
+.sidebar-related .link-icon{font-size:11px;opacity:.5;}
+.main{flex:1;min-width:0;}
+.section{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:24px;box-shadow:var(--shadow);overflow:hidden;}
+.section-header{display:flex;align-items:center;gap:14px;padding:20px 28px;border-bottom:1px solid var(--border);background:var(--surface);}
+.section-num{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--font-mono);font-size:12px;font-weight:500;flex-shrink:0;}
+.section-header h2{font-size:17px;font-weight:600;color:var(--text);letter-spacing:-.01em;}
+.section-header p{font-size:13px;color:var(--text3);margin-top:2px;}
+.section-body{padding:28px;}
+.prose p{font-size:14px;color:var(--text2);margin-bottom:12px;line-height:1.75;}
+.prose p:last-child{margin-bottom:0;}
+.prose strong{font-weight:600;color:var(--text);}
+.prose ul{padding-left:20px;margin-bottom:12px;}
+.prose li{font-size:14px;color:var(--text2);margin-bottom:5px;line-height:1.65;}
+.prose code{font-family:var(--font-mono);font-size:12px;background:var(--surface2);padding:1px 6px;border-radius:3px;border:1px solid var(--border);color:var(--blue);}
+.note-box{padding:12px 16px;border-radius:var(--radius);font-size:13px;line-height:1.6;border-left:3px solid;margin:12px 0;}
+.note-box.warning{background:#fef3cd;border-color:var(--amber);color:#533200;}
+.note-box.info{background:#e6f1fb;border-color:var(--blue);color:#0a2e5e;}
+.note-box.danger{background:#fde8e8;border-color:var(--red);color:#5c0f0f;}
+.note-box.success{background:#e8f5ee;border-color:var(--green);color:#0a3318;}
+.note-box.amber{background:#fffaed;border-color:var(--amber);color:#533200;}
+.note-box strong{font-weight:600;}
+.reg-ref{display:inline-flex;align-items:center;gap:4px;padding:2px 8px 2px 6px;border-radius:4px;background:#ede8fe;color:var(--purple);border:1px solid #c4b8f5;font-family:var(--font-mono);font-size:11px;font-weight:500;white-space:nowrap;}
+.reg-ref::before{content:'§';font-family:Georgia,serif;font-size:12px;}
+.footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:28px 20px;font-size:12px;margin-top:40px;}
+.footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:12px;}
+.footer-links a{color:rgba(255,255,255,.55);text-decoration:none;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;transition:color .15s;}
+.footer-links a:hover{color:var(--amber-light);}
+.footer a{color:rgba(255,255,255,.6);}
+@media(max-width:820px){.layout{flex-direction:column;padding:16px;}.sidebar{width:100%;position:static;}.sidebar-nav{display:none;}.header-inner{padding:32px 20px;}.section-body{padding:16px;}}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <div class="breadcrumb">
+      <a href="index.html">DPDPindia.in</a><span class="sep">/</span>
+      <a href="dpdp-kb.html">DPDP Knowledge Base</a><span class="sep">/</span>
+      <span class="cur">Implementation</span>
+    </div>
+    <div class="header-badge"><span style="width:6px;height:6px;border-radius:50%;background:#14b8a6;display:inline-block;"></span>&nbsp;Article 04 · DPDP Knowledge Base</div>
+    <h1><span style="color:#14b8a6;">Rules & Implementation</span> — DPDP Rules 2025</h1>
+    <p class="header-sub">The DPDP Rules 2025 translate the Act's principles into operational compliance requirements — covering the Consent Manager framework, breach notification timelines, the phased implementation roadmap, and data localisation considerations.</p>
+    <div class="header-meta"><span class="meta-pill">DPDP Rules 2025</span><span class="meta-pill">Consent Managers</span><span class="meta-pill">Breach notification</span><span class="meta-pill">18-month timeline</span></div>
+  </div>
+</header>
+<div class="layout">
+  <nav class="sidebar">
+    <div class="sidebar-nav">
+      <h3>On this page</h3>
+      <a href="#s1"><span class="nav-num">01</span> Overview — why rules matter</a><a href="#s2"><span class="nav-num">02</span> Consent Managers</a><a href="#s3"><span class="nav-num">03</span> Breach notification protocol</a><a href="#s4"><span class="nav-num">04</span> Phased implementation & legacy data</a>
+      <hr><span class="nav-sep">Knowledge Base</span>
+      <a href="dpdp-kb.html"><span class="nav-num">←</span> Back to DPDP KB</a>
+      <a href="index.html"><span class="nav-num">⌂</span> DPDPindia.in</a>
+    </div>
+    <div class="sidebar-related">
+      <h4>Related Articles</h4><a href="dpdp-act.html"><span class="link-icon">↗</span> The Act — Core Framework</a><a href="dpdp-adjudication.html"><span class="link-icon">↗</span> Adjudication &amp; Penalties</a><a href="dpdp-rights.html"><span class="link-icon">↗</span> Data Principal Rights</a>
+    </div>
+  </nav>
+  <main class="main">
+
+    <section class="section" id="s1">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <div><h2>Overview — Why Rules Matter as Much as the Act</h2><p>The DPDP Act delegates most operational detail to the Central Government through rules</p></div>
+      </div>
+      <div class="section-body"><div class="prose">
+<p>The DPDP Act 2023 is deliberately short — 44 sections covering 30 pages. The detailed operational requirements that compliance professionals and technology teams actually need to implement are contained in the <strong>Digital Personal Data Protection Rules 2025</strong>, notified by the Ministry of Electronics and Information Technology (MeitY).</p>
+<p>This delegation of power to the executive is both a strength (flexibility to adapt) and a vulnerability (rules can be changed without Parliamentary scrutiny). The three most significant areas addressed by the Rules are: the Consent Manager framework, the data breach notification protocol, and the compliance transition timeline.</p>
+</div>
+<div class="note-box warning"><strong>Rules evolve:</strong> The DPDP Rules are secondary legislation and can be amended by the Central Government more readily than the parent Act. Compliance teams must monitor MeitY notifications regularly — this article reflects the framework as published in 2025.</div></div>
+    </section>
+    <section class="section" id="s2">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <div><h2>Consent Managers — A New Digital Infrastructure</h2><p>Third-party platforms authorised to manage consent tokens across services</p></div>
+      </div>
+      <div class="section-body"><div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:16px;"><div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);"><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);margin-bottom:7px;">What they are</div><div style="font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:7px;line-height:1.3;">Consent Managers Defined</div><div style="font-size:13px;color:var(--text2);line-height:1.65;">A Consent Manager is a third-party platform registered with the DPB that acts as a single interface for data principals to give, manage, review, and withdraw consent across multiple Data Fiduciaries. Think of them as a dashboard for your digital consents.</div></div><div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);"><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);margin-bottom:7px;">How they work</div><div style="font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:7px;line-height:1.3;">Consent Token Architecture</div><div style="font-size:13px;color:var(--text2);line-height:1.65;">When a data principal consents through a Consent Manager, a structured consent token is generated and shared with the Data Fiduciary. The Data Fiduciary must honour withdrawal of consent signalled through the same Consent Manager.</div></div><div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);"><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:7px;">Registration</div><div style="font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:7px;line-height:1.3;">DPB Registration Required</div><div style="font-size:13px;color:var(--text2);line-height:1.65;">Consent Managers must register with the Data Protection Board and meet prescribed technical and financial standards. The rules specify capital requirements, technical specifications for consent tokens, and interoperability standards.</div></div><div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);"><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:7px;">Purpose</div><div style="font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:7px;line-height:1.3;">Solving Consent Fatigue</div><div style="font-size:13px;color:var(--text2);line-height:1.65;">The Consent Manager model is designed to reduce consent fatigue — the phenomenon where users click 'Accept' on every consent request without reading them. By centralising consent management, data principals gain meaningful control.</div></div></div>
+<div class="note-box info"><strong>Comparison with GDPR:</strong> GDPR does not have a direct equivalent to India's Consent Manager model. The closest analogue is Article 26 joint controllers and the concept of consent management platforms — but India's model is more structured, with DPB oversight and registration requirements.</div></div>
+    </section>
+    <section class="section" id="s3">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div><h2>Breach Notification Protocol</h2><p>Standardised timelines and procedures for reporting data security incidents</p></div>
+      </div>
+      <div class="section-body"><div class="prose"><p>The DPDP Rules 2025 prescribe a mandatory breach notification framework. A "Personal Data Breach" means any unauthorised processing, disclosure, acquisition, sharing, copying, modification, disposal, or loss of personal data that compromises the confidentiality, integrity, or availability of data.</p></div>
+<div style="border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;">
+  <div style="background:var(--navy);padding:12px 20px;">
+    <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.4);">Breach Notification Flow</div>
+  </div>
+  <div style="padding:14px 20px;border-bottom:1px solid var(--border);display:flex;gap:14px;align-items:flex-start;"><div style="width:26px;height:26px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;font-weight:500;flex-shrink:0;margin-top:2px;">1</div><div><div style="font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:4px;">Detection — Incident identified</div><div style="font-size:13px;color:var(--text2);line-height:1.6;">The Data Fiduciary or Data Processor detects or becomes aware of a personal data breach affecting any number of data principals.</div></div></div><div style="padding:14px 20px;border-bottom:1px solid var(--border);display:flex;gap:14px;align-items:flex-start;"><div style="width:26px;height:26px;border-radius:50%;background:var(--amber);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;font-weight:500;flex-shrink:0;margin-top:2px;">2</div><div><div style="font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:4px;">Notification to DPB — Within prescribed timeline</div><div style="font-size:13px;color:var(--text2);line-height:1.6;">The Data Fiduciary must notify the Data Protection Board using the prescribed format within the timeline specified in the rules. Notification must describe the nature of the breach, data affected, likely consequences, and remedial measures taken.</div></div></div><div style="padding:14px 20px;border-bottom:1px solid var(--border);display:flex;gap:14px;align-items:flex-start;"><div style="width:26px;height:26px;border-radius:50%;background:var(--amber);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;font-weight:500;flex-shrink:0;margin-top:2px;">3</div><div><div style="font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:4px;">Notification to affected data principals</div><div style="font-size:13px;color:var(--text2);line-height:1.6;">If the breach is likely to cause harm to data principals, each affected individual must be informed — in plain language, in a manner accessible to them.</div></div></div><div style="padding:14px 20px;border-bottom:1px solid var(--border);display:flex;gap:14px;align-items:flex-start;"><div style="width:26px;height:26px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;font-weight:500;flex-shrink:0;margin-top:2px;">4</div><div><div style="font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:4px;">Remediation and follow-up report</div><div style="font-size:13px;color:var(--text2);line-height:1.6;">The Data Fiduciary must submit a follow-up report to the DPB describing the full extent of the breach, its root cause, and measures implemented to prevent recurrence.</div></div></div>
+</div>
+<div class="note-box danger" style="margin-top:12px;"><strong>No threshold for notification:</strong> Unlike some international frameworks, the DPDP Act does not set a minimum threshold (number of individuals affected, sensitivity of data) below which breach notification is not required. Any breach of personal data must be assessed for notification obligations.</div></div>
+    </section>
+    <section class="section" id="s4">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <div><h2>Phased Implementation & Legacy Data</h2><p>18-month roadmap for aligning existing data infrastructure</p></div>
+      </div>
+      <div class="section-body"><div class="prose"><p>The DPDP Rules 2025 recognise that organisations have significant legacy data holdings that were collected before the Act came into force. The rules provide for an <strong>18-month phased compliance roadmap</strong> — though the specific timelines vary by obligation type and entity size.</p></div>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:16px;"><div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);"><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:7px;">Phase 1</div><div style="font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:7px;line-height:1.3;">Notice & Consent for New Data</div><div style="font-size:13px;color:var(--text2);line-height:1.65;">From the compliance date, all new data collection must be accompanied by compliant notices and valid consent. Existing data processing relationships must be reviewed and, where necessary, fresh consent obtained.</div></div><div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);"><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:7px;">Phase 2</div><div style="font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:7px;line-height:1.3;">Rights Infrastructure</div><div style="font-size:13px;color:var(--text2);line-height:1.65;">Grievance Officer appointment, rights request handling systems, and consent withdrawal mechanisms must be operational. SDFs must also have DPO appointment and audit processes in place.</div></div><div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);"><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);margin-bottom:7px;">Phase 3</div><div style="font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:7px;line-height:1.3;">Legacy Data Alignment</div><div style="font-size:13px;color:var(--text2);line-height:1.65;">Organisations must align their existing data stores with the Act's requirements — implementing encryption standards, data minimisation, and retention policies for data held before the compliance date.</div></div><div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);"><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);margin-bottom:7px;">Phase 4</div><div style="font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:7px;line-height:1.3;">Cross-Border & Processor Contracts</div><div style="font-size:13px;color:var(--text2);line-height:1.65;">Data processing agreements with Data Processors and cross-border transfer arrangements must be reviewed and updated to include the mandatory clauses required by the rules.</div></div></div>
+<div style="margin-top:24px;padding:20px;border:1px solid var(--border);border-left:4px solid var(--amber);border-radius:var(--radius);background:var(--surface);"><div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-bottom:14px;">Other Articles in This Knowledge Base</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;"><a href="dpdp-adjudication.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;padding:12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--white);transition:border-color .15s;" onmouseover="this.style.borderColor='var(--blue-light)'" onmouseout="this.style.borderColor='var(--border)'"><div style="font-size:20px;flex-shrink:0;">⚖️</div><div><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Adjudication & Penalties</div><div style="font-size:12px;color:var(--text3);">Consequences for non-compliance</div></div></a><a href="dpdp-rights.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;padding:12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--white);transition:border-color .15s;" onmouseover="this.style.borderColor='var(--blue-light)'" onmouseout="this.style.borderColor='var(--border)'"><div style="font-size:20px;flex-shrink:0;">👤</div><div><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Data Principal Rights</div><div style="font-size:12px;color:var(--text3);">What the rules operationalise for individuals</div></div></a></div></div></div>
+    </section>
+  </main>
+</div>
+<footer class="footer">
+  <div class="footer-links">
+    <a href="index.html">DPDPindia.in</a><a href="dpdp-kb.html">DPDP KB</a>
+    <a href="dpdp-genesis.html">Genesis</a><a href="dpdp-act.html">The Act</a>
+    <a href="dpdp-rights.html">Rights</a><a href="dpdp-rules.html">Rules</a>
+    <a href="dpdp-adjudication.html">Adjudication</a>
+    <a href="dpdp-exemptions.html">Exemptions</a><a href="dpdp-global.html">Global</a>
+  </div>
+  <p>Article 04 — DPDP Act Knowledge Base · <a href="dpdp-kb.html">← Back to KB</a></p>
+</footer>
+</body>
+</html>

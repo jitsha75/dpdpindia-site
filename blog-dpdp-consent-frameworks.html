@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consent Frameworks Under the DPDP Act: What Compliance Really Looks Like | blog.DPDPIndia.in</title>
+<meta name="description" content="A practitioner's guide to DPDP Act consent requirements: itemised notice, informed consent, withdrawal mechanisms, and real-world compliance obligations for product and legal teams.">
+<meta property="og:title" content="Consent Frameworks Under the DPDP Act: What Compliance Really Looks Like">
+<meta property="og:description" content="Understanding DPDP Act §6 consent requirements, deemed consent under §7, and the operational compliance obligations that separate theory from practice.">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-03-27">
+<meta property="article:section" content="DPDP Act">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --parchment:#F8F4EC;--cream:#FDFAF5;--paper:#F2EDE2;--ink:#1A1610;
+  --prussian:#1B2B3A;--slate:#2D3D4E;--saffron:#D4760A;--saffron-lt:#F0A840;
+  --ochre:#B8862C;--chakra-blue:#1B3A6B;--mist:#7A7468;
+  --rule:rgba(26,22,16,0.12);--rule-gold:rgba(212,118,10,0.25);
+  --shadow-sm:0 2px 12px rgba(26,22,16,0.06);--shadow-md:0 8px 40px rgba(26,22,16,0.10);
+  --danger:#C0392B;--danger-lt:rgba(192,57,43,0.08);
+  --green:#1A6B3A;--green-lt:rgba(26,107,58,0.08);
+  --blue-lt:rgba(27,58,107,0.07);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:'Source Serif 4',Georgia,serif;background:var(--cream);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;}
+
+/* ===== MASTHEAD ===== */
+.masthead{background:var(--prussian);padding:10px 0;text-align:center;border-bottom:3px solid var(--saffron);}
+.masthead-text{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.55);}
+.masthead-text span{color:var(--saffron-lt);}
+
+/* ===== NAV ===== */
+nav{position:sticky;top:0;z-index:200;background:var(--cream);border-bottom:1px solid var(--rule);box-shadow:var(--shadow-sm);}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:68px;}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-brand-name{display:flex;flex-direction:column;gap:2px;}
+.nav-brand-name strong{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--prussian);}
+.nav-brand-name span{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);}
+.nav-links{display:flex;align-items:center;gap:1.5rem;list-style:none;}
+.nav-links a{font-family:'Source Serif 4',serif;font-size:0.82rem;color:var(--slate);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--saffron);}
+.nav-back{font-family:'JetBrains Mono',monospace!important;font-size:0.65rem!important;letter-spacing:0.1em!important;text-transform:uppercase;background:var(--prussian)!important;color:var(--cream)!important;padding:9px 20px;}
+.nav-back:hover{background:var(--saffron)!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--prussian);transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-menu{display:none;position:absolute;top:68px;left:0;right:0;background:var(--cream);border-bottom:2px solid var(--saffron);box-shadow:0 8px 32px rgba(26,22,16,0.10);z-index:499;max-height:80vh;overflow-y:auto;}
+.mobile-menu.open{display:block;}
+.mobile-menu ul{list-style:none;padding:0.5rem 1.5rem 1.2rem;}
+.mobile-menu ul li a{display:block;font-size:0.88rem;color:var(--slate);text-decoration:none;padding:0.5rem 0;border-bottom:1px solid var(--rule);}
+@media(max-width:900px){
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .nav-inner{position:relative;}
+  .article-layout{padding:2.5rem 1.5rem;}
+}
+@media(max-width:640px){
+  .article-layout{padding:2rem 1rem;}
+  .hero-title{font-size:1.7rem;}
+  .hero-deck{font-size:0.95rem;}
+}
+
+/* ===== ARTICLE HERO ===== */
+.article-hero{background:var(--prussian);padding:4.5rem 2rem 3.5rem;border-bottom:4px solid var(--saffron);position:relative;overflow:hidden;}
+.article-hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,255,255,0.018) 40px);pointer-events:none;}
+.article-hero::after{content:'';position:absolute;top:0;right:0;width:40%;height:100%;background:radial-gradient(ellipse at top right,rgba(212,118,10,0.08) 0%,transparent 70%);pointer-events:none;}
+.hero-inner{max-width:860px;margin:0 auto;position:relative;z-index:1;}
+.hero-kicker{display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem;}
+.hero-kicker::before{content:'';display:inline-block;width:28px;height:1px;background:var(--saffron);}
+.hero-kicker-text{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--saffron-lt);}
+.hero-category{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.16em;text-transform:uppercase;background:rgba(212,118,10,0.18);border:1px solid rgba(212,118,10,0.35);color:var(--saffron-lt);padding:4px 12px;margin-left:0.5rem;}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.9rem);font-weight:900;color:var(--parchment);line-height:1.1;margin-bottom:1rem;letter-spacing:-0.01em;}
+.hero-deck{font-family:'Source Serif 4',serif;font-size:1.08rem;font-weight:300;font-style:italic;color:rgba(248,244,236,0.72);line-height:1.8;max-width:720px;margin-bottom:2rem;}
+.hero-meta{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.1);}
+.meta-item{display:flex;flex-direction:column;gap:2px;}
+.meta-label{font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.4);}
+.meta-value{font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:rgba(255,255,255,0.75);}
+.meta-divider{width:1px;height:32px;background:rgba(255,255,255,0.12);}
+.hero-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1.2rem;}
+.hero-tag{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.55);padding:4px 10px;}
+
+/* ===== ARTICLE LAYOUT ===== */
+.article-layout{max-width:1200px;margin:0 auto;padding:3.5rem 2rem;display:grid;grid-template-columns:1fr 300px;gap:4rem;}
+@media(max-width:960px){.article-layout{grid-template-columns:1fr;gap:2.5rem;}}
+
+/* ===== ARTICLE BODY ===== */
+.article-body{}
+.article-lead{font-family:'Source Serif 4',serif;font-size:1.12rem;font-weight:300;line-height:1.9;color:var(--slate);margin-bottom:2.5rem;padding-bottom:2rem;border-bottom:1px solid var(--rule);}
+.article-lead strong{font-weight:600;color:var(--prussian);}
+
+.article-section{margin-bottom:2.8rem;}
+.article-section h2{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;color:var(--prussian);margin-bottom:1.2rem;line-height:1.25;position:relative;padding-left:1.2rem;}
+.article-section h2::before{content:'';position:absolute;left:0;top:0.25em;width:3px;height:1em;background:var(--saffron);}
+.article-section h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--prussian);margin:1.5rem 0 0.75rem;}
+.article-section p{font-size:0.97rem;font-weight:300;line-height:1.9;color:var(--slate);margin-bottom:1rem;}
+.article-section p:last-child{margin-bottom:0;}
+.article-section strong{font-weight:600;color:var(--prussian);}
+
+/* Callout box */
+.callout{background:var(--parchment);border:1px solid var(--rule);border-left:4px solid var(--saffron);padding:1.6rem 1.8rem;margin:2rem 0;}
+.callout.risk{border-left-color:var(--danger);background:var(--danger-lt);}
+.callout.key{border-left-color:var(--chakra-blue);background:var(--blue-lt);}
+.callout-label{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.6rem;}
+.callout.risk .callout-label{color:var(--danger);}
+.callout.key .callout-label{color:var(--chakra-blue);}
+.callout p{font-size:0.9rem;font-weight:400;line-height:1.8;color:var(--slate);}
+.callout p:last-child{margin-bottom:0;}
+.callout p strong{font-weight:600;color:var(--prussian);}
+
+/* Question list */
+.question-list{list-style:none;padding:0;margin:1.2rem 0;}
+.question-list li{display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.2rem;background:var(--parchment);border:1px solid var(--rule);border-left:3px solid var(--ochre);margin-bottom:0.8rem;transition:border-left-color 0.2s;}
+.question-list li:hover{border-left-color:var(--saffron);}
+.q-icon{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--saffron);background:rgba(212,118,10,0.1);border:1px solid var(--rule-gold);width:24px;height:24px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.q-text{font-size:0.9rem;font-weight:300;line-height:1.75;color:var(--slate);}
+
+/* Risk item */
+.risk-list{list-style:none;padding:0;margin:1.2rem 0;}
+.risk-list li{display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.2rem;margin-bottom:0.8rem;background:rgba(192,57,43,0.04);border:1px solid rgba(192,57,43,0.12);border-left:3px solid var(--danger);}
+.risk-icon{font-size:0.85rem;flex-shrink:0;margin-top:3px;color:var(--danger);}
+.risk-text{font-size:0.9rem;font-weight:300;line-height:1.75;color:var(--slate);}
+.risk-text strong{font-weight:600;color:var(--danger);}
+
+/* Solution item */
+.solution-list{list-style:none;padding:0;margin:1.2rem 0;}
+.solution-list li{display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.2rem;margin-bottom:0.8rem;background:rgba(26,107,58,0.04);border:1px solid rgba(26,107,58,0.15);border-left:3px solid var(--green);}
+.solution-icon{font-size:0.85rem;flex-shrink:0;margin-top:3px;color:var(--green);}
+.solution-text{font-size:0.9rem;font-weight:300;line-height:1.75;color:var(--slate);}
+.solution-text strong{font-weight:600;color:var(--green);}
+
+/* Pullquote */
+.pullquote{border-top:2px solid var(--saffron);border-bottom:2px solid var(--saffron);padding:2rem 1.5rem;margin:2.5rem 0;text-align:center;}
+.pullquote p{font-family:'Playfair Display',serif;font-size:1.25rem;font-style:italic;font-weight:500;color:var(--prussian);line-height:1.55;}
+.pullquote cite{display:block;margin-top:0.75rem;font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--mist);}
+
+/* Closing thought */
+.closing-thought{background:var(--prussian);padding:2.5rem 2rem;margin-top:3rem;}
+.closing-thought .closing-label{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--saffron);margin-bottom:1rem;}
+.closing-thought p{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--parchment);line-height:1.65;font-style:italic;}
+.closing-thought p.closing-punch{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;font-style:normal;color:var(--saffron-lt);margin-top:1rem;}
+
+/* Author block */
+.author-block{margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--rule);display:flex;gap:1.2rem;align-items:flex-start;}
+.author-avatar{width:48px;height:48px;background:var(--prussian);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--saffron-lt);}
+.author-info{}
+.author-name{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--prussian);margin-bottom:2px;}
+.author-role{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--mist);}
+.author-bio{font-size:0.82rem;font-weight:300;line-height:1.7;color:var(--slate);margin-top:0.4rem;}
+
+/* ===== SIDEBAR ===== */
+.sidebar{}
+.sidebar-sticky{position:sticky;top:88px;}
+.sidebar-card{background:var(--parchment);border:1px solid var(--rule);padding:1.4rem;margin-bottom:1.5rem;}
+.sidebar-card-label{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--saffron);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;}
+.sidebar-card-label::after{content:'';flex:1;height:1px;background:var(--rule-gold);}
+.sidebar-card h3{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--prussian);margin-bottom:0.75rem;line-height:1.3;}
+.sidebar-card p{font-size:0.82rem;font-weight:300;line-height:1.7;color:var(--slate);}
+.sidebar-links{list-style:none;padding:0;}
+.sidebar-links li{border-bottom:1px solid var(--rule);padding:0.6rem 0;}
+.sidebar-links li:last-child{border-bottom:none;}
+.sidebar-links a{font-size:0.82rem;font-weight:300;color:var(--prussian);text-decoration:none;line-height:1.5;transition:color 0.2s;}
+.sidebar-links a:hover{color:var(--saffron);}
+.sidebar-links .link-tag{font-family:'JetBrains Mono',monospace;font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;background:rgba(212,118,10,0.1);color:var(--ochre);padding:2px 6px;margin-right:0.4rem;vertical-align:middle;}
+.statute-pill{display:inline-flex;align-items:center;gap:0.4rem;font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.08em;background:var(--blue-lt);border:1px solid rgba(27,58,107,0.2);color:var(--chakra-blue);padding:5px 10px;margin:0.3rem 0.3rem 0.3rem 0;}
+.subscribe-form{margin-top:0.75rem;}
+.subscribe-form input{width:100%;padding:9px 12px;border:1px solid var(--rule);background:var(--cream);font-family:'Source Serif 4',serif;font-size:0.82rem;color:var(--ink);margin-bottom:0.5rem;outline:none;}
+.subscribe-form input:focus{border-color:var(--saffron);}
+.subscribe-form button{width:100%;padding:10px;background:var(--prussian);color:var(--cream);border:none;font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;}
+.subscribe-form button:hover{background:var(--saffron);}
+
+/* ===== FOOTER ===== */
+footer{background:var(--prussian);padding:3rem 2rem;margin-top:0;border-top:3px solid var(--saffron);}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:2rem;}
+.footer-brand strong{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--parchment);}
+.footer-brand p{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:0.4rem;}
+.footer-nav{display:flex;gap:2rem;flex-wrap:wrap;}
+.footer-nav a{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s;}
+.footer-nav a:hover{color:var(--saffron);}
+.footer-legal{width:100%;border-top:1px solid rgba(255,255,255,0.08);padding-top:1.5rem;font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.06em;color:rgba(255,255,255,0.3);line-height:1.8;}
+
+@media(max-width:640px){
+  .article-hero{padding:3rem 1.2rem 2.5rem;}
+  .hero-title{font-size:1.7rem;}
+  .article-layout{padding:2rem 1.2rem;}
+  .footer-inner{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <p class="masthead-text">blog.<span>DPDPIndia.in</span> &nbsp;·&nbsp; Independent Legal &amp; Policy Research &nbsp;·&nbsp; DPDP Act · IT Act · Aadhaar &amp; eKYC</p>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-brand-name">
+        <strong>DPDPIndia.in</strong>
+        <span>Research &amp; Policy Blog</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dpdp-kb.html">DPDP Act</a></li>
+      <li><a href="itact-kb.html">IT Act</a></li>
+      <li><a href="ekyc-kb.html">eKYC</a></li>
+      <li><a href="cybercrime-kb.html">Cyber Crime</a></li>
+      <li><a href="for-businesses.html">For Business</a></li>
+      <li><a href="for-individuals.html">For Individuals</a></li>
+      <li><a href="case-tracker.html">Cases</a></li>
+      <li><a href="blog.html">← Articles</a></li>
+      <li><a href="cyber-fraud-hub.html" class="nav-back">🚨 1930</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" onclick="this.classList.toggle('open');document.getElementById('mob-nav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mob-nav">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dpdp-kb.html">DPDP Act Knowledge Base</a></li>
+      <li><a href="itact-kb.html">IT Act Knowledge Base</a></li>
+      <li><a href="ekyc-kb.html">eKYC / UIDAI Knowledge Base</a></li>
+      <li><a href="cybercrime-kb.html">Cyber Crime Knowledge Base</a></li>
+      <li><a href="for-businesses.html">DPDP Compliance for Business</a></li>
+      <li><a href="for-individuals.html">Know Your Rights</a></li>
+      <li><a href="case-tracker.html">Case Tracker</a></li>
+      <li><a href="blog.html">All Articles</a></li>
+      <li><a href="cyber-fraud-hub.html">🚨 Cyber Fraud Hub — 1930</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ARTICLE HERO -->
+<header class="article-hero">
+  <div class="hero-inner">
+    <div class="hero-kicker">
+      <span class="hero-kicker-text">Practitioner Guide</span>
+      <span class="hero-category">DPDP Act · Consent</span>
+    </div>
+    <h1 class="hero-title">Consent Frameworks Under the DPDP Act:<br>What Compliance Really Looks Like</h1>
+    <p class="hero-deck">The DPDP Act redefines what "consent" means in Indian data protection law. For product and legal teams, this means rebuilding consent architecture from notice through withdrawal. Here's what actually has to happen.</p>
+    <div class="hero-meta">
+      <div class="meta-item">
+        <span class="meta-label">Published</span>
+        <span class="meta-value">27 March 2026</span>
+      </div>
+      <div class="meta-divider"></div>
+      <div class="meta-item">
+        <span class="meta-label">Category</span>
+        <span class="meta-value">DPDP Act · Compliance</span>
+      </div>
+      <div class="meta-divider"></div>
+      <div class="meta-item">
+        <span class="meta-label">Read time</span>
+        <span class="meta-value">8 min</span>
+      </div>
+    </div>
+    <div class="hero-tags">
+      <span class="hero-tag">DPDP Act 2023</span>
+      <span class="hero-tag">Consent</span>
+      <span class="hero-tag">Data Principal</span>
+      <span class="hero-tag">Compliance</span>
+      <span class="hero-tag">Legal Notice</span>
+      <span class="hero-tag">Product Design</span>
+    </div>
+  </div>
+</header>
+
+<!-- ARTICLE LAYOUT -->
+<div class="article-layout">
+
+  <!-- MAIN CONTENT -->
+  <main class="article-body">
+
+    <p class="article-lead">
+      Under the DPDP Act 2023, consent is not a checkbox. <strong>It is a legal architecture</strong> — a framework that spans notice design, specification of purpose, mechanism of withdrawal, and record-keeping. When it fails, penalties go up to ₹250 crore. For product teams, this is the difference between compliance and liability.
+    </p>
+
+    <!-- SECTION 1 -->
+    <div class="article-section">
+      <h2>The Five Core Requirements of DPDP Consent</h2>
+      <p>Section 6 of the DPDP Act establishes the foundation. Consent under the Act must be:</p>
+
+      <ul class="solution-list">
+        <li>
+          <span class="solution-icon">1.</span>
+          <span class="solution-text"><strong>Itemised</strong> — the data fiduciary must specify, clearly and distinctly, what personal data will be processed and for what purpose.</span>
+        </li>
+        <li>
+          <span class="solution-icon">2.</span>
+          <span class="solution-text"><strong>Specific</strong> — consent given for one purpose cannot be reused for another; purpose creep is not permitted.</span>
+        </li>
+        <li>
+          <span class="solution-icon">3.</span>
+          <span class="solution-text"><strong>Clear</strong> — the language must be unambiguous, free of technical jargon that obscures meaning, and expressed so that the data principal understands what they are consenting to.</span>
+        </li>
+        <li>
+          <span class="solution-icon">4.</span>
+          <span class="solution-text"><strong>Informed</strong> — the data principal must have all material information about processing, risks, and their rights before consent is sought.</span>
+        </li>
+        <li>
+          <span class="solution-icon">5.</span>
+          <span class="solution-text"><strong>Freely Given</strong> — consent cannot be a condition of service where withdrawal would deny the principal a core benefit to which they are entitled.</span>
+        </li>
+      </ul>
+
+      <p>Read that list again. Most consent interfaces today fail at least three of these requirements.</p>
+
+      <div class="callout key">
+        <div class="callout-label">📌 Notice Language</div>
+        <p><strong>Section 6(1)</strong> specifies that consent notice must be in <strong>English or any language specified in the Eighth Schedule</strong> of the Indian Constitution. This is not optional. Notice in a vendor's preferred language, or notice translated by automated tools without expert review, does not satisfy statutory requirement.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 2 -->
+    <div class="article-section">
+      <h2>What "Itemised" and "Specific" Actually Mean in Practice</h2>
+      <p>Itemisation is where compliance breaks down in real applications. A consent interface that says "we will process your data to provide services" fails this test entirely.</p>
+
+      <p>The DPDP Act requires that you specify:</p>
+
+      <ul class="question-list">
+        <li>
+          <span class="q-icon">?</span>
+          <span class="q-text"><strong>Which categories of personal data?</strong> Not "user data" — but names, location data, transaction history, behavioural signals, each itemised separately.</span>
+        </li>
+        <li>
+          <span class="q-icon">?</span>
+          <span class="q-text"><strong>What exact purposes?</strong> Not "service improvement" — but account authentication, fraud prevention, marketing, analytics, each with its own consent toggle.</span>
+        </li>
+        <li>
+          <span class="q-icon">?</span>
+          <span class="q-text"><strong>How long will it be retained?</strong> "As long as necessary" is too vague. Specify a timeframe or clear deletion triggers.</span>
+        </li>
+        <li>
+          <span class="q-icon">?</span>
+          <span class="q-text"><strong>Who will have access?</strong> If data flows to third parties, processors, or government agencies, that must be disclosed upfront.</span>
+        </li>
+        <li>
+          <span class="q-icon">?</span>
+          <span class="q-text"><strong>What are the risks?</strong> Where profiling or automated decision-making occurs, the principal must understand the consequences.</span>
+        </li>
+      </ul>
+
+      <p>This is not theoretical. Under Section 6, each purpose requires separate consent. You cannot bundle consent for marketing, analytics, and service improvement into a single toggle. The legal position is unambiguous: one purpose per consent interaction.</p>
+
+      <div class="callout risk">
+        <div class="callout-label">⚠ Design Failure</div>
+        <p>A common pattern: "I agree to our Terms" + a single toggle. This violates DPDP consent on four counts — it is not itemised, not specific, not clear, and attempts to bundle unrelated purposes. The fiduciary exposure is direct.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 3 -->
+    <div class="article-section">
+      <h2>The Withdrawal Right: As Easy to Withdraw as to Give</h2>
+      <p>Section 6(4) of the DPDP Act is deceptively simple: <strong>"consent must be as easy to withdraw as to give."</strong></p>
+
+      <p>What this means:</p>
+
+      <ul class="solution-list">
+        <li>
+          <span class="solution-icon">✓</span>
+          <span class="solution-text">If consent is given via a one-click button on the signup form, withdrawal cannot require navigating six menu layers or contacting support.</span>
+        </li>
+        <li>
+          <span class="solution-icon">✓</span>
+          <span class="solution-text">If the data principal requests withdrawal via email, the data fiduciary must process it within the prescribed timelines (typically 5-10 working days per DPDP Rules draft).</span>
+        </li>
+        <li>
+          <span class="solution-icon">✓</span>
+          <span class="solution-text">Withdrawal of consent for one purpose does not require the principal to withdraw consent for all purposes — they must remain granular.</span>
+        </li>
+        <li>
+          <span class="solution-icon">✓</span>
+          <span class="solution-text">Upon withdrawal, data collection must stop immediately. Existing data must be deleted or anonymised per retention policies (Section 5).</span>
+        </li>
+      </ul>
+
+      <p>This has immediate product implications. Account settings must expose a withdrawal interface at parity with the consent interface. If your consent flow is three steps, withdrawal cannot be buried in a support ticket system.</p>
+    </div>
+
+    <div class="pullquote">
+      <p>"Consent that is hard to withdraw is not legally given consent — it is coerced permission, and coercion is not lawful under the DPDP Act."</p>
+      <cite>DPDPIndia.in Policy Analysis · March 2026</cite>
+    </div>
+
+    <!-- SECTION 4 -->
+    <div class="article-section">
+      <h2>When Consent Is Not Required: The Seven Lawful Bases</h2>
+      <p>Section 7 of the DPDP Act establishes seven categories where processing is lawful even without explicit consent. Understanding these is critical because they change the compliance calculus entirely.</p>
+
+      <p>The Act deems consent unnecessary when:</p>
+
+      <ul class="solution-list">
+        <li>
+          <span class="solution-icon">1.</span>
+          <span class="solution-text"><strong>Employment</strong> — Processing employee personal data for employment purposes, statutory compliance, payroll, and workplace administration.</span>
+        </li>
+        <li>
+          <span class="solution-icon">2.</span>
+          <span class="solution-text"><strong>Medical emergency</strong> — Immediate processing to prevent harm or loss of life, without time to obtain consent.</span>
+        </li>
+        <li>
+          <span class="solution-icon">3.</span>
+          <span class="solution-text"><strong>State functions</strong> — Government processing personal data in exercise of statutory or constitutional powers (subject to exemptions under Section 35-37).</span>
+        </li>
+        <li>
+          <span class="solution-icon">4.</span>
+          <span class="solution-text"><strong>Legal proceedings</strong> — Processing required to establish, defend, or enforce legal claims.</span>
+        </li>
+        <li>
+          <span class="solution-icon">5.</span>
+          <span class="solution-text"><strong>Legitimate uses by government</strong> — Other lawful state functions as may be specified in rules.</span>
+        </li>
+        <li>
+          <span class="solution-icon">6.</span>
+          <span class="solution-text"><strong>Consent previously obtained</strong> — Processing within the scope of prior consent already recorded (but not beyond).</span>
+        </li>
+        <li>
+          <span class="solution-icon">7.</span>
+          <span class="solution-text"><strong>Other lawful bases</strong> — As may be notified by the Data Protection Board via rule-making.</span>
+        </li>
+      </ul>
+
+      <p>The critical trap: Just because consent is not required does not mean processing is unmonitored. Under Section 8, even without consent-based processing, the data fiduciary must still comply with purpose limitation, storage limitation, and all other fiduciary obligations.</p>
+
+      <div class="callout key">
+        <div class="callout-label">📌 Legal Classification</div>
+        <p>If your processing falls under Section 7, you must explicitly classify it as such and document the legal basis. Simply saying "we don't need consent" without identifying which lawful basis applies is not sufficient. The fiduciary bears the burden of proof that the lawful basis actually applies.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 5 -->
+    <div class="article-section">
+      <h2>Purpose Limitation and Storage Limitation: The Boundaries</h2>
+      <p>Section 5 of the DPDP Act establishes two non-negotiable principles that define the entire consent framework:</p>
+
+      <h3>Purpose Limitation</h3>
+      <p>Personal data collected for a specified purpose cannot be processed for any unrelated purpose, <strong>even if that data is available in your system.</strong> If you collected location data for delivery routing, you cannot use that same data to build a profile for targeted marketing without fresh, specific consent.</p>
+
+      <h3>Storage Limitation</h3>
+      <p>Data must not be retained longer than necessary to serve the purpose for which it was collected. This is not discretionary. The data fiduciary must establish and enforce clear deletion schedules. "We delete after a reasonable time" does not meet statutory requirement — you must define what "reasonable" means for each category of data.</p>
+
+      <p>These two principles directly constrain what consent can achieve. Consent is not a license to collect data once and use it forever. It is permission to process for a specific purpose, for a defined period, under defined conditions.</p>
+
+      <div class="callout risk">
+        <div class="callout-label">⚠ Common Violation</div>
+        <p>Consent for "improving services" followed by data use for building customer profiles, training recommendation engines, or selling aggregated insights to third parties. This violates purpose limitation even if the principal gave "general" consent. Purpose must be specific, and deviation requires new consent.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 6 -->
+    <div class="article-section">
+      <h2>Contrast with GDPR Article 7: India's Stricter Standard</h2>
+      <p>The European GDPR (Article 7) places the burden of proving valid consent on the controller. The DPDP Act goes further: it prescribes detailed statutory requirements that consent must satisfy independent of what the fiduciary documents.</p>
+
+      <p>Under GDPR, consent must be "freely given, specific, informed, and unambiguous." Under DPDP, it must additionally be "itemised" and "as easy to withdraw as to give." India's standard is stricter on withdrawal mechanism and on itemisation specificity.</p>
+
+      <p>The implication: If your consent interface barely satisfies GDPR, it almost certainly fails DPDP. The Act does not import GDPR-style flexibility on consent mechanism. Indian law prescribes a more prescriptive standard.</p>
+    </div>
+
+    <!-- SECTION 7 -->
+    <div class="article-section">
+      <h2>Building Compliant Consent Architecture: What Teams Must Build</h2>
+      <p>For product and engineering teams, DPDP consent compliance translates into specific technical and UX requirements:</p>
+
+      <ul class="solution-list">
+        <li>
+          <span class="solution-icon">✓</span>
+          <span class="solution-text"><strong>Granular consent toggles.</strong> One toggle per purpose. Marketing, analytics, profiling, third-party sharing, each requires separate consent interaction.</span>
+        </li>
+        <li>
+          <span class="solution-icon">✓</span>
+          <span class="solution-text"><strong>Plain language notices.</strong> Not T&Cs. Clear, structured disclosure of data categories, purposes, retention periods, third parties, and risks. Jargon-free.</span>
+        </li>
+        <li>
+          <span class="solution-icon">✓</span>
+          <span class="solution-text"><strong>Consent records.</strong> Backend logging of when consent was given, for what purposes, under what version of the notice. This log is your defense if challenged.</span>
+        </li>
+        <li>
+          <span class="solution-icon">✓</span>
+          <span class="solution-text"><strong>Withdrawal flows.</strong> Account settings must allow withdrawal with one or two clicks, matching the friction of giving consent.</span>
+        </li>
+        <li>
+          <span class="solution-icon">✓</span>
+          <span class="solution-text"><strong>Deletion pipelines.</strong> When consent is withdrawn, systems must delete or anonymise the relevant data within the prescribed timelines. This requires data mapping and deletion orchestration.</span>
+        </li>
+        <li>
+          <span class="solution-icon">✓</span>
+          <span class="solution-text"><strong>Version control.</strong> When notice terms change, the system must track which version the principal consented to and allow re-consent if necessary.</span>
+        </li>
+      </ul>
+
+      <div class="callout key">
+        <div class="callout-label">📌 Engineer's Responsibility</div>
+        <p>Engineering teams must implement consent as a core data governance function, not as a compliance sidebar. This means consent state flows through your data pipeline — when processing occurs, the system checks whether valid consent exists for that specific purpose. Without this, compliance is assertion without mechanism.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 8 -->
+    <div class="article-section">
+      <h2>Penalties for Breach: The Scale of Exposure</h2>
+      <p>Section 33 and the DPDP Act Schedule set out penalty tiers:</p>
+
+      <ul class="risk-list">
+        <li>
+          <span class="risk-icon">₹</span>
+          <span class="risk-text">Up to <strong>₹250 crore</strong> or 6% of global turnover (whichever is higher) for failure to obtain valid consent, or misuse of consent once given.</span>
+        </li>
+        <li>
+          <span class="risk-icon">₹</span>
+          <span class="risk-text">Up to <strong>₹100 crore</strong> for breach of purpose limitation or storage limitation obligations.</span>
+        </li>
+        <li>
+          <span class="risk-icon">₹</span>
+          <span class="risk-text">Proportionate reductions for first-time breaches and corrective steps, but the ceiling remains the same.</span>
+        </li>
+      </ul>
+
+      <p>For a mid-sized tech company with ₹500 crore annual revenue, a 6% cap is ₹30 crore. For companies larger than ₹4,000 crore, the ceiling is ₹250 crore outright. These are not theoretical risks.</p>
+    </div>
+
+    <!-- CLOSING THOUGHT -->
+    <div class="closing-thought">
+      <div class="closing-label">Final Word</div>
+      <p>Consent under the DPDP Act is not a legal box to check during signup. It is an ongoing compliance obligation that spans notice design, withdrawal mechanism, consent records, and data deletion. When it is done correctly, it protects both the data principal and the fiduciary. When it fails, the exposure is substantial.</p>
+      <p class="closing-punch">"Build consent as a core feature. The alternative is betting against ₹250 crore in penalties."</p>
+    </div>
+
+    <!-- STATUTORY REFERENCES -->
+    <div class="article-section" style="margin-top:2.5rem;">
+      <h3>Statutory References</h3>
+      <span class="statute-pill">DPDP Act 2023 §6</span>
+      <span class="statute-pill">DPDP Act 2023 §7</span>
+      <span class="statute-pill">DPDP Act 2023 §5</span>
+      <span class="statute-pill">DPDP Act 2023 §8</span>
+      <span class="statute-pill">DPDP Act 2023 §33</span>
+      <span class="statute-pill">DPDP Rules 2025 (Draft)</span>
+    </div>
+
+    <!-- AUTHOR -->
+    <div class="author-block">
+      <div class="author-avatar">J</div>
+      <div class="author-info">
+        <div class="author-name">DPDPIndia.in Editorial</div>
+        <div class="author-role">Policy &amp; Legal Research Desk</div>
+        <div class="author-bio">DPDPIndia.in is India's premier independent research platform on the Digital Personal Data Protection Act 2023, the IT Act 2000, and the Aadhaar eKYC framework. Views are analytical and do not constitute legal advice.</div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-sticky">
+
+      <!-- Newsletter -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-label">Weekly Newsletter</div>
+        <h3>Stay ahead of DPDP developments</h3>
+        <p>Get our weekly briefing on DPDP Act, IT Act, and cybercrime policy — delivered to your inbox every Friday.</p>
+        <form class="subscribe-form" id="subscribeForm"
+              action="https://formspree.io/f/mlgodzbr"
+              method="POST">
+          <input type="hidden" name="_subject" value="Newsletter Subscription — DPDPindia.in">
+          <input type="hidden" name="Type" value="Newsletter Subscription">
+          <input type="email" name="Email" placeholder="your@email.com" required>
+          <button type="submit">Subscribe →</button>
+          <p class="subscribe-success" style="display:none;color:green;font-size:0.8rem;margin-top:0.4rem;">✓ Subscribed! Thank you.</p>
+        </form>
+        <script>
+        (function(){
+          var f=document.getElementById('subscribeForm');
+          if(f) f.addEventListener('submit',async function(e){
+            e.preventDefault();
+            var btn=f.querySelector('button');
+            btn.textContent='Subscribing…'; btn.disabled=true;
+            var res=await fetch(f.action,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}});
+            if(res.ok){f.querySelector('.subscribe-success').style.display='block';btn.style.display='none';}
+            else{btn.textContent='Try again'; btn.disabled=false;}
+          });
+        })();
+        </script>
+      </div>
+
+      <!-- Related Articles -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-label">Related Reading</div>
+        <ul class="sidebar-links">
+          <li><a href="dpdp-act.html"><span class="link-tag">DPDP</span>The DPDP Act — Core Framework &amp; Key Sections</a></li>
+          <li><a href="dpdp-rules.html"><span class="link-tag">Rules</span>DPDP Rules 2025 — An Analysis</a></li>
+          <li><a href="itact-egovernance.html"><span class="link-tag">IT Act</span>IT Act &amp; E-Governance Framework</a></li>
+          <li><a href="dpdp-exemptions.html"><span class="link-tag">DPDP</span>Government Exemptions under the DPDP Act</a></li>
+          <li><a href="dpdp-adjudication.html"><span class="link-tag">DPDP</span>Adjudication &amp; Enforcement Mechanism</a></li>
+        </ul>
+      </div>
+
+      <!-- Key Acts -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-label">Key Statutes</div>
+        <p style="font-size:0.8rem;font-weight:300;color:var(--mist);margin-bottom:0.75rem;">Governing framework for this analysis</p>
+        <span class="statute-pill" style="display:block;margin-bottom:0.4rem;">Digital Personal Data Protection Act 2023</span>
+        <span class="statute-pill" style="display:block;margin-bottom:0.4rem;">Information Technology Act 2000</span>
+        <span class="statute-pill" style="display:block;margin-bottom:0.4rem;">DPDP Rules 2025 (Draft)</span>
+        <span class="statute-pill" style="display:block;">Constitution Eighth Schedule</span>
+      </div>
+
+      <!-- Disclaimer -->
+      <div class="sidebar-card" style="background:rgba(192,57,43,0.04);border-color:rgba(192,57,43,0.15);">
+        <div class="sidebar-card-label" style="color:var(--danger);">Disclaimer</div>
+        <p style="font-size:0.78rem;font-weight:300;color:var(--mist);line-height:1.65;">This article is for research and informational purposes only. It does not constitute legal advice. For specific legal questions, consult a qualified advocate.</p>
+      </div>
+
+    </div>
+  </aside>
+
+</div><!-- /.article-layout -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <strong>DPDPIndia.in</strong>
+      <p>Independent Research &amp; Policy Analysis</p>
+    </div>
+    <nav class="footer-nav">
+      <a href="dpdp-kb.html">DPDP Knowledge Base</a>
+      <a href="itact-kb.html">IT Act</a>
+      <a href="ekyc-kb.html">eKYC Framework</a>
+      <a href="cybercrime-kb.html">Cybercrime</a>
+      <a href="blog.html">All Blog Articles</a>
+      <a href="legal.html">Legal Notice</a>
+    </nav>
+    <div class="footer-legal">
+      © 2026 DPDPIndia.in · All content is for research and informational purposes only and does not constitute legal advice. · blog.dpdpindia.in
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

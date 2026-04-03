@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DPDP Compliance for Businesses — Startup, SME & Enterprise | DPDPIndia.in</title>
+<meta name="description" content="DPDP Act 2023 compliance toolkit for Indian businesses. Checklists, privacy policy templates, consent notice generator, and implementation guides for startups, SMEs, and enterprises.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --parchment:#F8F4EC;--cream:#FDFAF5;--paper:#F2EDE2;--ink:#1A1610;
+  --prussian:#1B2B3A;--slate:#2D3D4E;--saffron:#D4760A;--saffron-lt:#F0A840;
+  --ochre:#B8862C;--mist:#7A7468;
+  --rule:rgba(26,22,16,0.12);--rule-gold:rgba(212,118,10,0.25);
+  --shadow-sm:0 2px 12px rgba(26,22,16,0.06);--shadow-md:0 8px 40px rgba(26,22,16,0.10);
+  --danger:#C0392B;--success:#1A6B3A;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:'Source Serif 4',Georgia,serif;background:var(--cream);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+/* NAV — shared across site */
+.masthead{background:var(--prussian);padding:9px 0;text-align:center;border-bottom:2px solid var(--saffron);}
+.masthead-text{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.5);}
+.masthead-text span{color:var(--saffron-lt);}
+nav{position:sticky;top:0;z-index:500;background:var(--cream);border-bottom:1px solid var(--rule);box-shadow:var(--shadow-sm);}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:relative;}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0;}
+.nav-brand-name{display:flex;flex-direction:column;gap:1px;}
+.nav-brand-name strong{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--prussian);}
+.nav-brand-name span{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);}
+.nav-menu{display:flex;align-items:center;gap:0;list-style:none;}
+.nav-item{position:relative;}
+.nav-item>a{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--slate);text-decoration:none;padding:0 14px;height:64px;display:flex;align-items:center;transition:color 0.2s;white-space:nowrap;border-bottom:2px solid transparent;}
+.nav-item>a:hover,.nav-item.active>a{color:var(--saffron);border-bottom-color:var(--saffron);}
+.nav-item.has-dropdown>a::after{content:'▾';font-size:0.5rem;margin-left:5px;opacity:0.6;}
+.nav-dropdown{display:none;position:absolute;top:100%;left:0;min-width:260px;background:var(--cream);border:1px solid var(--rule);border-top:3px solid var(--saffron);box-shadow:var(--shadow-md);z-index:600;}
+.nav-item:hover .nav-dropdown{display:block;}
+.nav-dropdown-section{padding:0.6rem 0;}
+.nav-dropdown-label{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--saffron);padding:0.5rem 1.2rem 0.3rem;}
+.nav-dropdown a{display:block;font-family:'Source Serif 4',serif;font-size:0.82rem;font-weight:300;color:var(--slate);text-decoration:none;padding:0.5rem 1.2rem;transition:background 0.15s,color 0.15s;}
+.nav-dropdown a:hover{background:var(--parchment);color:var(--prussian);}
+.nav-dropdown hr{border:none;border-top:1px solid var(--rule);margin:0.4rem 0;}
+.nav-cta{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--danger);color:#fff!important;padding:9px 18px;margin-left:12px;border-bottom:none!important;transition:background 0.2s!important;}
+.nav-cta:hover{background:#a93226!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--prussian);transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-menu{display:none;position:absolute;top:64px;left:0;right:0;background:var(--cream);border-bottom:2px solid var(--saffron);box-shadow:var(--shadow-md);z-index:499;max-height:80vh;overflow-y:auto;}
+.mobile-menu.open{display:block;}
+.mobile-menu ul{list-style:none;padding:0.5rem 1.5rem 1.5rem;}
+.mobile-menu ul li a{display:block;font-size:0.92rem;color:var(--slate);text-decoration:none;padding:0.6rem 0;border-bottom:1px solid var(--rule);}
+.mm-label{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--saffron);padding:1rem 0 0.3rem;display:block;}
+
+/* PAGE */
+.page{max-width:1320px;margin:0 auto;padding:0 2rem;}
+
+/* PAGE HERO */
+.page-hero{background:var(--prussian);padding:4rem 0 3.5rem;position:relative;overflow:hidden;}
+.page-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:1.5rem;}
+.breadcrumb a{color:var(--saffron);text-decoration:none;}
+.breadcrumb span{color:rgba(255,255,255,0.25);}
+.page-hero-kicker{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--saffron);margin-bottom:1rem;display:flex;align-items:center;gap:12px;}
+.page-hero-kicker::before{content:'';width:28px;height:1px;background:var(--saffron);}
+.page-hero-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:1.1;color:var(--parchment);margin-bottom:1rem;}
+.page-hero-title em{font-style:italic;color:var(--saffron-lt);}
+.page-hero-deck{font-size:1rem;font-weight:300;line-height:1.85;color:rgba(248,244,236,0.6);max-width:700px;margin-bottom:2rem;}
+.page-hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;background:var(--saffron);color:#fff;padding:13px 26px;text-decoration:none;transition:background 0.2s;display:inline-block;}
+.btn-primary:hover{background:var(--saffron-lt);}
+.btn-outline{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(255,255,255,0.25);color:rgba(248,244,236,0.75);padding:13px 26px;text-decoration:none;transition:all 0.2s;display:inline-block;}
+.btn-outline:hover{border-color:var(--saffron);color:var(--saffron);}
+
+/* SEGMENT TABS */
+.segment-tabs{background:var(--parchment);border-bottom:1px solid var(--rule);position:sticky;top:64px;z-index:100;}
+.segment-tabs-inner{max-width:1320px;margin:0 auto;padding:0 2rem;display:flex;gap:0;}
+.seg-tab{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--slate);padding:1rem 2rem;border-bottom:3px solid transparent;text-decoration:none;transition:all 0.2s;white-space:nowrap;}
+.seg-tab:hover{color:var(--prussian);border-bottom-color:var(--rule);}
+.seg-tab.active{color:var(--saffron);border-bottom-color:var(--saffron);}
+
+/* SECTION */
+.content-section{padding:5rem 0;}
+.content-section.alt{background:var(--parchment);}
+.section-kicker{display:flex;align-items:center;gap:12px;font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.8rem;}
+.section-kicker::before{content:'';width:28px;height:1px;background:var(--saffron);}
+.section-heading{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.4rem);font-weight:700;line-height:1.15;color:var(--prussian);margin-bottom:0.6rem;}
+.section-heading em{font-style:italic;color:var(--saffron);}
+.section-deck{font-size:0.92rem;font-weight:300;line-height:1.85;color:var(--mist);margin-bottom:3rem;max-width:600px;}
+
+/* SIZING CARDS */
+.size-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.size-card{background:var(--cream);border:1px solid var(--rule);border-top:4px solid var(--prussian);padding:2rem;}
+.size-card.startup{border-top-color:var(--success);}
+.size-card.sme{border-top-color:var(--saffron);}
+.size-card.enterprise{border-top-color:var(--prussian);}
+.size-badge{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;padding:3px 10px;margin-bottom:1rem;display:inline-block;}
+.size-badge.startup{background:rgba(26,107,58,0.1);color:var(--success);}
+.size-badge.sme{background:rgba(212,118,10,0.1);color:var(--saffron);}
+.size-badge.enterprise{background:rgba(27,43,58,0.1);color:var(--prussian);}
+.size-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--prussian);margin-bottom:0.5rem;}
+.size-desc{font-size:0.85rem;font-weight:300;line-height:1.8;color:var(--mist);margin-bottom:1.5rem;}
+.size-actions{list-style:none;display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1.5rem;}
+.size-actions li{display:flex;align-items:flex-start;gap:8px;font-size:0.82rem;font-weight:300;color:var(--slate);line-height:1.5;}
+.size-actions li::before{content:'✓';font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--saffron);flex-shrink:0;margin-top:2px;}
+.size-penalty{background:rgba(192,57,43,0.06);border:1px solid rgba(192,57,43,0.15);border-left:3px solid var(--danger);padding:0.8rem 1rem;margin-bottom:1.2rem;}
+.size-penalty-label{font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--danger);margin-bottom:0.2rem;}
+.size-penalty-text{font-size:0.8rem;font-weight:300;color:var(--slate);}
+.size-cta{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--prussian);color:var(--cream);padding:10px 20px;text-decoration:none;display:inline-block;transition:background 0.2s;}
+.size-cta:hover{background:var(--saffron);}
+
+/* COMPLIANCE CHECKLIST */
+.checklist-layout{display:grid;grid-template-columns:1fr 1fr;gap:3rem;}
+.checklist-block{margin-bottom:2.5rem;}
+.checklist-phase{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.5rem;}
+.checklist-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--prussian);margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid var(--rule);}
+.checklist{list-style:none;display:flex;flex-direction:column;gap:0;}
+.checklist li{display:flex;align-items:flex-start;gap:12px;padding:0.7rem 0;border-bottom:1px solid var(--rule);cursor:pointer;}
+.checklist li:last-child{border-bottom:none;}
+.checklist li:hover{background:var(--parchment);margin:0 -0.5rem;padding:0.7rem 0.5rem;}
+.check-box{width:18px;height:18px;border:1.5px solid var(--rule);border-radius:2px;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all 0.15s;}
+.checklist li.done .check-box{background:var(--saffron);border-color:var(--saffron);}
+.checklist li.done .check-box::after{content:'✓';font-size:0.65rem;color:#fff;}
+.checklist li.done .check-text{text-decoration:line-through;color:var(--mist);}
+.check-text{font-size:0.85rem;font-weight:300;color:var(--slate);line-height:1.5;flex:1;}
+.check-priority{font-family:'JetBrains Mono',monospace;font-size:0.5rem;letter-spacing:0.08em;text-transform:uppercase;padding:2px 6px;flex-shrink:0;margin-top:3px;}
+.check-priority.high{background:rgba(192,57,43,0.1);color:var(--danger);}
+.check-priority.med{background:rgba(212,118,10,0.1);color:var(--saffron);}
+.check-priority.low{background:rgba(122,116,104,0.1);color:var(--mist);}
+.checklist-progress{margin-bottom:1.5rem;padding:1rem;background:var(--cream);border:1px solid var(--rule);}
+.progress-bar-wrap{height:6px;background:var(--rule);border-radius:3px;overflow:hidden;margin:0.5rem 0;}
+.progress-bar{height:100%;background:var(--saffron);border-radius:3px;transition:width 0.4s;}
+.progress-text{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.08em;color:var(--mist);}
+
+/* TEMPLATES */
+.templates-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.template-card{background:var(--cream);border:1px solid var(--rule);border-left:4px solid var(--saffron);padding:1.8rem;}
+.template-icon{font-size:1.8rem;margin-bottom:0.8rem;}
+.template-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--prussian);margin-bottom:0.5rem;}
+.template-desc{font-size:0.82rem;font-weight:300;color:var(--mist);line-height:1.75;margin-bottom:1.2rem;}
+.template-includes{list-style:none;margin-bottom:1.2rem;}
+.template-includes li{font-size:0.78rem;font-weight:300;color:var(--slate);padding:0.3rem 0;display:flex;align-items:center;gap:6px;}
+.template-includes li::before{content:'→';font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--saffron);}
+.template-btn{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--prussian);color:var(--cream);border:none;padding:10px 18px;cursor:pointer;transition:background 0.2s;display:inline-block;}
+.template-btn:hover{background:var(--saffron);}
+
+/* CONSENT GENERATOR */
+.consent-tool{background:var(--cream);border:1px solid var(--rule);}
+.consent-tool-header{background:var(--prussian);padding:1.8rem 2rem;}
+.consent-tool-title{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--parchment);}
+.consent-tool-desc{font-size:0.85rem;font-weight:300;color:rgba(248,244,236,0.6);margin-top:0.4rem;}
+.consent-tool-body{padding:2rem;display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+.consent-form{display:flex;flex-direction:column;gap:1rem;}
+.form-group{display:flex;flex-direction:column;gap:0.4rem;}
+.form-label{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--mist);}
+.form-input{font-family:'Source Serif 4',serif;font-size:0.88rem;background:var(--parchment);border:1px solid var(--rule);color:var(--ink);padding:10px 14px;outline:none;transition:border-color 0.2s;}
+.form-input:focus{border-color:var(--saffron);}
+.form-select{font-family:'Source Serif 4',serif;font-size:0.88rem;background:var(--parchment);border:1px solid var(--rule);color:var(--ink);padding:10px 14px;cursor:pointer;}
+.consent-checkboxes{display:flex;flex-direction:column;gap:0.5rem;}
+.consent-checkbox-item{display:flex;align-items:center;gap:8px;font-size:0.82rem;font-weight:300;color:var(--slate);}
+.consent-checkbox-item input{accent-color:var(--saffron);}
+.gen-btn{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;background:var(--saffron);color:#fff;border:none;padding:13px 26px;cursor:pointer;transition:background 0.2s;align-self:flex-start;}
+.gen-btn:hover{background:var(--saffron-lt);}
+.consent-preview{background:var(--parchment);border:1px solid var(--rule-gold);padding:1.5rem;}
+.consent-preview-label{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.8rem;}
+.consent-preview-text{font-size:0.85rem;font-weight:300;line-height:1.85;color:var(--slate);min-height:180px;}
+.consent-copy-btn{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--prussian);color:var(--cream);border:none;padding:9px 18px;cursor:pointer;margin-top:1rem;transition:background 0.2s;}
+.consent-copy-btn:hover{background:var(--saffron);}
+
+/* PENALTY CALCULATOR */
+.penalty-box{background:rgba(192,57,43,0.04);border:1px solid rgba(192,57,43,0.2);border-left:4px solid var(--danger);padding:2rem;margin-bottom:2rem;}
+.penalty-box-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--danger);margin-bottom:0.5rem;}
+.penalty-table{width:100%;border-collapse:collapse;margin-top:1rem;}
+.penalty-table th{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--mist);text-align:left;padding:0.5rem 1rem;background:var(--parchment);border-bottom:1px solid var(--rule);}
+.penalty-table td{font-size:0.85rem;font-weight:300;color:var(--slate);padding:0.8rem 1rem;border-bottom:1px solid var(--rule);}
+.penalty-table td:last-child{font-family:'Playfair Display',serif;font-weight:700;color:var(--danger);}
+.penalty-table tr:last-child td{border-bottom:none;}
+
+/* FOOTER */
+footer{background:var(--prussian);padding:3rem 0 2rem;border-top:3px solid var(--saffron);}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.footer-copy{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.1em;color:rgba(255,255,255,0.3);}
+.footer-legal-links{display:flex;gap:1.5rem;}
+.footer-legal-links a{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.08em;color:rgba(255,255,255,0.3);text-decoration:none;}
+.footer-legal-links a:hover{color:var(--saffron);}
+
+/* === TABLET (≤1100px) === */
+@media(max-width:1100px){
+  .nav-menu{display:none;}
+  .hamburger{display:flex;}
+  .size-grid{grid-template-columns:1fr 1fr;}
+  .checklist-layout{grid-template-columns:1fr;}
+  .templates-grid{grid-template-columns:1fr 1fr;}
+  .consent-tool-body{grid-template-columns:1fr;}
+  .content-section{padding:3.5rem 0;}
+  .page{padding:0 1.5rem;}
+  .segment-tabs-inner{padding:0 1.5rem;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .seg-tab{flex-shrink:0;}
+}
+/* === MOBILE (≤768px) === */
+@media(max-width:768px){
+  .size-grid{grid-template-columns:1fr;}
+  .templates-grid{grid-template-columns:1fr;}
+  .page-hero{padding:3rem 0 2.5rem;}
+  .page-hero-title{font-size:1.8rem;}
+  .page-hero-ctas{flex-direction:column;align-items:flex-start;}
+  .btn-primary,.btn-outline{width:100%;text-align:center;}
+  .checklist-layout{gap:1.5rem;}
+  .penalty-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .penalty-table{min-width:520px;}
+  .footer-bottom{flex-direction:column;align-items:flex-start;gap:0.8rem;}
+  .breadcrumb{display:none;}
+  .content-section{padding:3rem 0;}
+  .page{padding:0 1rem;}
+}
+/* === SMALL MOBILE (≤640px) === */
+@media(max-width:640px){
+  .seg-tab{padding:0.75rem 0.85rem;font-size:0.55rem;letter-spacing:0.06em;}
+  .section-heading{font-size:1.5rem;}
+  .page-hero-title{font-size:1.6rem;}
+  .size-card{padding:1.4rem;}
+  .consent-tool-body{padding:1.2rem;}
+  .checklist-progress{padding:0.8rem;}
+  .penalty-box{padding:1.2rem;}
+  .template-card{padding:1.4rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <span class="masthead-text">Independent Research Platform — <span>DPDP Act 2023 Compliance for Businesses</span> — Not Legal Advice</span>
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-brand-name">
+        <strong>DPDPIndia.in</strong>
+        <span>Data Protection Intelligence</span>
+      </div>
+    </a>
+    <ul class="nav-menu">
+      <li class="nav-item has-dropdown">
+        <a href="dpdp-kb.html">DPDP Act</a>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-section">
+            <a href="dpdp-kb.html">DPDP Act — Overview</a>
+            <a href="dpdp-act.html">Plain Language Guide</a>
+            <a href="dpdp-rights.html">Your Rights as Principal</a>
+            <a href="dpdp-rules.html">DPDP Rules 2025</a>
+            <a href="dpdp-exemptions.html">Exemptions Explained</a>
+            <a href="dpdp-adjudication.html">Adjudication & Penalties</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item active has-dropdown">
+        <a href="for-businesses.html">For Business</a>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-section">
+            <div class="nav-dropdown-label">By Size</div>
+            <a href="#startup">Startup Compliance</a>
+            <a href="#sme">SME Compliance Kit</a>
+            <a href="#enterprise">Enterprise Framework</a>
+          </div>
+          <hr>
+          <div class="nav-dropdown-section">
+            <div class="nav-dropdown-label">Tools</div>
+            <a href="#checklist">Compliance Checklist</a>
+            <a href="#privacy-policy">Privacy Policy Template</a>
+            <a href="#consent">Consent Notice Generator</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item has-dropdown">
+        <a href="for-individuals.html">For Individuals</a>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-section">
+            <a href="for-individuals.html#rights">Know Your Rights</a>
+            <a href="for-individuals.html#grievance">File a Grievance</a>
+            <a href="dpdp-rights.html">Rights Under DPDP Act</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item has-dropdown">
+        <a href="cyber-fraud-hub.html">🚨 Cyber Fraud</a>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-section">
+            <a href="cybercrime-financial.html">Financial Fraud</a>
+            <a href="cybercrime-personal.html">Personal Crimes</a>
+            <a href="cybercrime-remedy-guide.html">How to Report</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item has-dropdown">
+        <a href="blog.html">Resources</a>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-section">
+            <a href="dpdp-kb.html">DPDP Act 2023 KB</a>
+            <a href="itact-kb.html">IT Act 2000 KB</a>
+            <a href="ekyc-kb.html">Aadhaar & eKYC KB</a>
+            <a href="case-tracker.html">Case Tracker</a>
+            <a href="blog.html">All Articles</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="cyber-fraud-hub.html" class="nav-cta">📞 1930 Helpline</a>
+      </li>
+    </ul>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="index.html">← Home</a></li>
+      <span class="mm-label">For Business</span>
+      <li><a href="#startup">Startup Compliance</a></li>
+      <li><a href="#sme">SME Compliance</a></li>
+      <li><a href="#enterprise">Enterprise Framework</a></li>
+      <li><a href="#checklist">Compliance Checklist</a></li>
+      <li><a href="#privacy-policy">Privacy Policy Template</a></li>
+      <li><a href="#consent">Consent Notice Generator</a></li>
+      <span class="mm-label">Other</span>
+      <li><a href="for-individuals.html">For Individuals</a></li>
+      <li><a href="cyber-fraud-hub.html">🚨 Cyber Fraud Hub</a></li>
+      <li><a href="blog.html">All Articles</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- SEGMENT TABS -->
+<div class="segment-tabs">
+  <div class="segment-tabs-inner">
+    <a href="#startup" class="seg-tab">🚀 Startup</a>
+    <a href="#sme" class="seg-tab">🏢 SME</a>
+    <a href="#enterprise" class="seg-tab">🏗 Enterprise</a>
+    <a href="#checklist" class="seg-tab active">✅ Checklist</a>
+    <a href="#privacy-policy" class="seg-tab">📄 Privacy Policy</a>
+    <a href="#consent" class="seg-tab">📝 Consent Generator</a>
+  </div>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page">
+    <div class="breadcrumb"><a href="index.html">Home</a> <span>›</span> For Businesses</div>
+    <div class="page-hero-kicker">Business Compliance</div>
+    <h1 class="page-hero-title">DPDP Act Compliance <em>for Indian Businesses</em></h1>
+    <p class="page-hero-deck">The Digital Personal Data Protection Act 2023 imposes legal obligations on any entity that collects, processes, or stores personal data of Indian citizens. Non-compliance risks penalties up to ₹500 Crore. Here is your complete toolkit — sized for your organisation.</p>
+    <div class="page-hero-ctas">
+      <a href="#checklist" class="btn-primary">Start Compliance Checklist →</a>
+      <a href="#consent" class="btn-outline">Generate Consent Notice →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PENALTY WARNING -->
+<div style="background:rgba(192,57,43,0.07);border-bottom:2px solid rgba(192,57,43,0.2);padding:1rem 0;">
+  <div class="page" style="display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;background:var(--danger);color:#fff;padding:4px 10px;flex-shrink:0;">DPDP Penalties</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:var(--danger);letter-spacing:0.04em;">Up to ₹250 Cr for breach without adequate security safeguards · Up to ₹200 Cr for non-fulfilment of Data Principal rights · Up to ₹500 Cr maximum per adjudication</span>
+    <a href="dpdp-adjudication.html" style="font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--danger);text-decoration:none;white-space:nowrap;flex-shrink:0;">Full Penalty Schedule →</a>
+  </div>
+</div>
+
+<!-- ORGANISATION SIZE -->
+<section class="content-section" id="startup">
+  <div class="page">
+    <div class="section-kicker">By Organisation Type</div>
+    <h2 class="section-heading">Pick Your <em>Compliance Path</em></h2>
+    <p class="section-deck">The DPDP Act applies to all businesses processing personal data — but your implementation priority and complexity scales with your size and data volume.</p>
+    <div class="size-grid">
+
+      <div class="size-card startup" id="startup">
+        <span class="size-badge startup">Startup · &lt;50 employees</span>
+        <div class="size-title">Startup Compliance</div>
+        <div class="size-desc">If you run an app, website, or SaaS product that collects any personal data from Indian users — you are a Data Fiduciary under DPDP Act. Here's what you must do first.</div>
+        <div class="size-penalty">
+          <div class="size-penalty-label">Your Exposure</div>
+          <div class="size-penalty-text">Up to ₹50 Cr for failure to notify breach. Up to ₹200 Cr for ignoring user rights requests. These apply regardless of company size.</div>
+        </div>
+        <ul class="size-actions">
+          <li>Audit every data collection point in your product</li>
+          <li>Add a compliant privacy policy (use our template)</li>
+          <li>Implement explicit consent before data collection</li>
+          <li>Build a DSR (Data Subject Request) handling process</li>
+          <li>Appoint a Data Protection Officer (if applicable)</li>
+          <li>Set up a breach detection + 72-hour notification process</li>
+        </ul>
+        <a href="#checklist" class="size-cta">Startup Checklist →</a>
+      </div>
+
+      <div class="size-card sme" id="sme">
+        <span class="size-badge sme">SME · 50–500 employees</span>
+        <div class="size-title">SME Compliance Kit</div>
+        <div class="size-desc">For SMEs with customer databases, HR data, and vendor relationships — DPDP compliance requires a structured approach across data categories and departments.</div>
+        <div class="size-penalty">
+          <div class="size-penalty-label">Your Exposure</div>
+          <div class="size-penalty-text">Customer data breaches can trigger ₹250 Cr penalty. HR data mishandling opens both DPDP and labour law liability.</div>
+        </div>
+        <ul class="size-actions">
+          <li>Data inventory — map all personal data flows</li>
+          <li>Classify data by category (customer, HR, vendor)</li>
+          <li>Update all consent notices and privacy policies</li>
+          <li>Vendor/processor contracts with DPDP clauses</li>
+          <li>Staff training on data handling basics</li>
+          <li>Incident response plan for data breaches</li>
+          <li>Internal grievance mechanism for DSRs</li>
+        </ul>
+        <a href="#checklist" class="size-cta">SME Compliance Kit →</a>
+      </div>
+
+      <div class="size-card enterprise" id="enterprise">
+        <span class="size-badge enterprise">Enterprise · 500+ employees</span>
+        <div class="size-title">Enterprise Framework</div>
+        <div class="size-desc">Large enterprises may qualify as Significant Data Fiduciaries (SDF), attracting additional obligations including mandatory DPO, DPIA, and data localisation considerations.</div>
+        <div class="size-penalty">
+          <div class="size-penalty-label">Your Exposure</div>
+          <div class="size-penalty-text">As a potential SDF: mandatory annual data audit, DPIA for high-risk processing, DPO requirement, and enhanced breach obligations. Non-compliance = up to ₹500 Cr.</div>
+        </div>
+        <ul class="size-actions">
+          <li>SDF assessment — volume and sensitivity criteria</li>
+          <li>Appoint a Data Protection Officer (mandatory for SDF)</li>
+          <li>Conduct Data Protection Impact Assessments (DPIA)</li>
+          <li>Cross-border data transfer framework</li>
+          <li>Annual data audit by independent auditor</li>
+          <li>Board-level data governance policy</li>
+          <li>Data localisation readiness for restricted categories</li>
+          <li>Legal basis mapping for all processing activities</li>
+        </ul>
+        <a href="#checklist" class="size-cta">Enterprise Framework →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- COMPLIANCE CHECKLIST -->
+<section class="content-section alt" id="checklist">
+  <div class="page">
+    <div class="section-kicker">Interactive Checklist</div>
+    <h2 class="section-heading">DPDP Compliance <em>Checklist</em></h2>
+    <p class="section-deck">A phased, prioritised checklist mapped to DPDP Act 2023 and DPDP Rules 2025. Click each item to mark complete and track your progress.</p>
+
+    <div class="checklist-progress">
+      <div class="progress-text" id="progressText">0 of 20 items completed</div>
+      <div class="progress-bar-wrap"><div class="progress-bar" id="progressBar" style="width:0%"></div></div>
+    </div>
+
+    <div class="checklist-layout">
+      <div>
+        <div class="checklist-block">
+          <div class="checklist-phase">Phase 1 — Foundation (Week 1–2)</div>
+          <div class="checklist-title">Understand Your Obligations</div>
+          <ul class="checklist" id="cl1">
+            <li onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-text">Determine if you are a Data Fiduciary (you collect/process personal data of Indian citizens)</span><span class="check-priority high">Critical</span></li>
+            <li onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-text">Identify all data collection points (web forms, app, cookies, APIs, third-party SDKs)</span><span class="check-priority high">Critical</span></li>
+            <li onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-text">Classify personal data by category (general, children's data, sensitive categories)</span><span class="check-priority high">Critical</span></li>
+            <li onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-text">Assess if you may qualify as Significant Data Fiduciary (SDF) and what additional obligations apply</span><span class="check-priority med">Important</span></li>
+            <li onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-text">Map your data processors — any vendors or partners you share data with</span><span class="check-priority med">Important</span></li>
+          </ul>
+        </div>
+
+        <div class="checklist-block">
+          <div class="checklist-phase">Phase 2 — Documentation (Week 3–4)</div>
+          <div class="checklist-title">Get Your Documents Right</div>
+          <ul class="checklist" id="cl2">
+            <li onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-text">Draft or update Privacy Policy to be DPDP-compliant (use our template below)</span><span class="check-priority high">Critical</span></li>
+            <li onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-text">Create DPDP-compliant Consent Notice — itemised purpose, no bundled consent</span><span class="check-priority high">Critical</span></li>
+            <li onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-text">Add consent mechanism before data collection begins (not buried in T&Cs)</span><span class="check-priority high">Critical</span></li>
+            <li onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-text">Update vendor/partner contracts to include Data Processing Agreements (DPA)</span><span class="check-priority med">Important</span></li>
+            <li onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-text">Document your lawful basis for each data processing activity</span><span class="check-priority med">Important</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <div class="checklist-block">
+          <div class="checklist-phase">Phase 3 — Operationalise (Month 2)</div>
+          <div class="checklist-title">Build Operational Processes</div>
+          <ul class="checklist" id="cl3">
+            <li onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-text">Build a Data Subject Request (DSR) handling process — 30-day response window</span><span class="check-priority high">Critical</span></li>
+            <li onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-text">Implement consent withdrawal mechanism — as easy as giving consent</span><span class="check-priority high">Critical</span></li>
+            <li onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-text">Create internal grievance mechanism with named Grievance Officer</span><span class="check-priority med">Important</span></li>
+            <li onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-text">Implement data breach detection and 72-hour notification process</span><span class="check-priority high">Critical</span></li>
+            <li onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-text">Staff training on DPDP Act basics for all employees handling personal data</span><span class="check-priority med">Important</span></li>
+          </ul>
+        </div>
+
+        <div class="checklist-block">
+          <div class="checklist-phase">Phase 4 — Ongoing (Month 3+)</div>
+          <div class="checklist-title">Maintain Compliance</div>
+          <ul class="checklist" id="cl4">
+            <li onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-text">Quarterly review of data collection practices and vendor list</span><span class="check-priority low">Ongoing</span></li>
+            <li onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-text">Annual data audit (mandatory for SDFs, best practice for all)</span><span class="check-priority med">Important</span></li>
+            <li onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-text">Monitor DPDPB notifications and update practices accordingly</span><span class="check-priority low">Ongoing</span></li>
+            <li onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-text">Register on DPDPB portal when operational and submit required records</span><span class="check-priority med">Important</span></li>
+            <li onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-text">Subscribe to DPDPIndia.in Weekly Brief for regulatory updates</span><span class="check-priority low">Recommended</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PENALTY SCHEDULE -->
+<section class="content-section" style="padding-top:0;padding-bottom:4rem;">
+  <div class="page">
+    <div class="penalty-box">
+      <div class="penalty-box-title">⚠️ DPDP Act Penalty Schedule — Know What's at Stake</div>
+      <div style="font-size:0.85rem;font-weight:300;color:var(--slate);margin-bottom:1rem;">Penalties under Schedule I of the DPDP Act 2023 — levied by the Data Protection Board of India (DPDPB):</div>
+      <div class="penalty-table-wrap">
+      <table class="penalty-table">
+        <thead><tr><th>Violation</th><th>Section</th><th>Maximum Penalty</th></tr></thead>
+        <tbody>
+          <tr><td>Failure to implement reasonable data security safeguards (leading to breach)</td><td>§8(5)</td><td>₹250 Crore</td></tr>
+          <tr><td>Failure to notify DPDPB and affected Data Principals of a data breach</td><td>§8(6)</td><td>₹200 Crore</td></tr>
+          <tr><td>Non-fulfilment of duties relating to children's data</td><td>§9</td><td>₹200 Crore</td></tr>
+          <tr><td>Non-compliance by Significant Data Fiduciary with special obligations</td><td>§10</td><td>₹150 Crore</td></tr>
+          <tr><td>Non-fulfilment of Data Principal rights (access, correction, erasure, grievance)</td><td>§11–13</td><td>₹50 Crore</td></tr>
+          <tr><td>Breach of any other provision of the Act or Rules</td><td>General</td><td>₹50 Crore</td></tr>
+          <tr><td>Non-compliance with DPDPB orders</td><td>§28</td><td>₹50 Crore</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+    <div style="font-size:0.8rem;font-weight:300;color:var(--mist);font-style:italic;">* Penalties are per contravention and may accumulate. The DPDPB will assess quantum based on gravity, duration, type of data, and remedial action taken. Not legal advice — consult a qualified DPDP practitioner.</div>
+  </div>
+</section>
+
+<!-- TEMPLATES -->
+<section class="content-section alt" id="privacy-policy">
+  <div class="page">
+    <div class="section-kicker">Templates & Documents</div>
+    <h2 class="section-heading">DPDP-Ready <em>Templates</em></h2>
+    <p class="section-deck">Download and customise these templates for immediate use. All templates are aligned with DPDP Act 2023 and DPDP Rules 2025 — but always have them reviewed by a qualified advocate before publishing.</p>
+    <div class="templates-grid">
+
+      <div class="template-card">
+        <div class="template-icon">📄</div>
+        <div class="template-title">Privacy Policy Template</div>
+        <div class="template-desc">A complete DPDP-compliant privacy policy template for websites and apps — covers all mandatory disclosures under Section 5 of the DPDP Act.</div>
+        <ul class="template-includes">
+          <li>What data you collect and why</li>
+          <li>Lawful basis for each processing</li>
+          <li>Data retention and deletion policy</li>
+          <li>Data Principal rights and how to exercise them</li>
+          <li>Contact details for Grievance Officer</li>
+          <li>Cross-border transfer disclosures</li>
+        </ul>
+        <button class="template-btn" onclick="downloadTemplate('privacy-policy')">Download Template →</button>
+      </div>
+
+      <div class="template-card">
+        <div class="template-icon">✅</div>
+        <div class="template-title">Consent Notice Template</div>
+        <div class="template-desc">DPDP-compliant consent notices for web forms, app onboarding, and marketing communications — with separate notices for each processing purpose.</div>
+        <ul class="template-includes">
+          <li>Itemised purpose statements</li>
+          <li>No pre-ticked boxes or bundled consent</li>
+          <li>Clear withdrawal mechanism</li>
+          <li>Children's data extra safeguards (under 18)</li>
+          <li>Language options (English + Hindi)</li>
+        </ul>
+        <button class="template-btn" onclick="downloadTemplate('consent-notice')">Download Template →</button>
+      </div>
+
+      <div class="template-card">
+        <div class="template-icon">📋</div>
+        <div class="template-title">Data Processing Agreement (DPA)</div>
+        <div class="template-desc">Use this between you (Data Fiduciary) and your vendors/partners (Data Processors) — covers mandatory DPDP Act processor obligations.</div>
+        <ul class="template-includes">
+          <li>Processor obligations and restrictions</li>
+          <li>Sub-processor approval mechanism</li>
+          <li>Data breach notification chain</li>
+          <li>Return/deletion of data on termination</li>
+          <li>Audit rights for Data Fiduciary</li>
+        </ul>
+        <button class="template-btn" onclick="downloadTemplate('dpa')">Download Template →</button>
+      </div>
+
+      <div class="template-card">
+        <div class="template-icon">🔔</div>
+        <div class="template-title">Breach Notification Template</div>
+        <div class="template-desc">Ready-to-use notification templates for informing the DPDPB and affected Data Principals within the mandatory timeframe following a data breach.</div>
+        <ul class="template-includes">
+          <li>DPDPB notification (72-hour requirement)</li>
+          <li>Data Principal notification letter</li>
+          <li>Internal incident report format</li>
+          <li>Evidence preservation checklist</li>
+        </ul>
+        <button class="template-btn" onclick="downloadTemplate('breach-notification')">Download Template →</button>
+      </div>
+
+      <div class="template-card">
+        <div class="template-icon">📑</div>
+        <div class="template-title">DSR Response Templates</div>
+        <div class="template-desc">Templates for responding to Data Subject Requests (access, correction, erasure, nomination) within the 30-day statutory window.</div>
+        <ul class="template-includes">
+          <li>Access request acknowledgement & response</li>
+          <li>Correction/erasure request response</li>
+          <li>Consent withdrawal confirmation</li>
+          <li>Grievance acknowledgement letter</li>
+        </ul>
+        <button class="template-btn" onclick="downloadTemplate('dsr-templates')">Download Templates →</button>
+      </div>
+
+      <div class="template-card">
+        <div class="template-icon">🗺️</div>
+        <div class="template-title">Data Inventory Template (RoPA)</div>
+        <div class="template-desc">Record of Processing Activities — map all your data flows, processing purposes, legal bases, retention periods, and data processors in one structured register.</div>
+        <ul class="template-includes">
+          <li>Data category mapping</li>
+          <li>Processing purpose register</li>
+          <li>Legal basis documentation</li>
+          <li>Third-party data processor list</li>
+          <li>Retention schedule</li>
+        </ul>
+        <button class="template-btn" onclick="downloadTemplate('ropa')">Download Template →</button>
+      </div>
+
+    </div>
+    <div style="margin-top:2rem;padding:1.2rem 1.5rem;background:rgba(212,118,10,0.07);border:1px solid var(--rule-gold);border-left:3px solid var(--saffron);">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--saffron);">Important Disclaimer: </span>
+      <span style="font-size:0.82rem;font-weight:300;color:var(--ochre);">These templates are starting points only. They do not constitute legal advice. Always have your privacy policy, consent notices, and agreements reviewed by a qualified advocate or DPDP compliance specialist before use.</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONSENT GENERATOR -->
+<section class="content-section" id="consent">
+  <div class="page">
+    <div class="section-kicker">Interactive Tool</div>
+    <h2 class="section-heading">Consent Notice <em>Generator</em></h2>
+    <p class="section-deck">Fill in your details below and get a DPDP-compliant consent notice to copy directly into your app or website. Customise and have reviewed by legal counsel before use.</p>
+    <div class="consent-tool">
+      <div class="consent-tool-header">
+        <div class="consent-tool-title">DPDP-Compliant Consent Notice Builder</div>
+        <div class="consent-tool-desc">Generates a consent notice aligned with Section 6 of the DPDP Act 2023</div>
+      </div>
+      <div class="consent-tool-body">
+        <div class="consent-form">
+          <div class="form-group">
+            <label class="form-label">Your Organisation Name</label>
+            <input class="form-input" id="orgName" placeholder="e.g. Acme Technologies Pvt. Ltd." type="text">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Data being collected</label>
+            <input class="form-input" id="dataType" placeholder="e.g. Name, email address, phone number" type="text">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Purpose of collection (be specific)</label>
+            <input class="form-input" id="purpose" placeholder="e.g. To process your order and send shipping updates" type="text">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Grievance Officer contact</label>
+            <input class="form-input" id="grievanceEmail" placeholder="e.g. grievance@yourcompany.com" type="email">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Data retention period</label>
+            <select class="form-select" id="retention">
+              <option>Until your account is deleted</option>
+              <option>3 years from collection</option>
+              <option>5 years from collection</option>
+              <option>As required by law</option>
+              <option>Duration of contract only</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Additional conditions (check all that apply)</label>
+            <div class="consent-checkboxes">
+              <label class="consent-checkbox-item"><input type="checkbox" id="chk_children"> Involves children's data (under 18)</label>
+              <label class="consent-checkbox-item"><input type="checkbox" id="chk_crossborder"> Cross-border data transfer</label>
+              <label class="consent-checkbox-item"><input type="checkbox" id="chk_thirdparty"> Data shared with third parties</label>
+              <label class="consent-checkbox-item"><input type="checkbox" id="chk_marketing"> Marketing / promotional use</label>
+            </div>
+          </div>
+          <button class="gen-btn" onclick="generateConsent()">Generate Consent Notice →</button>
+        </div>
+        <div>
+          <div class="consent-preview">
+            <div class="consent-preview-label">Generated Consent Notice</div>
+            <div class="consent-preview-text" id="consentOutput">Fill in the form on the left and click "Generate Consent Notice" to create your DPDP-compliant consent text.</div>
+          </div>
+          <button class="consent-copy-btn" onclick="copyConsent()">Copy to Clipboard →</button>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.06em;color:var(--mist);margin-top:0.8rem;line-height:1.6;">This generated text is a starting template only. Have it reviewed by legal counsel before publishing. Not legal advice.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="page">
+    <div style="margin-bottom:2rem;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.8rem;">Related Resources</div>
+      <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+        <a href="dpdp-kb.html" style="font-size:0.85rem;font-weight:300;color:rgba(248,244,236,0.5);text-decoration:none;">DPDP Act Overview</a>
+        <a href="dpdp-adjudication.html" style="font-size:0.85rem;font-weight:300;color:rgba(248,244,236,0.5);text-decoration:none;">Penalties & Adjudication</a>
+        <a href="dpdp-rights.html" style="font-size:0.85rem;font-weight:300;color:rgba(248,244,236,0.5);text-decoration:none;">Data Principal Rights</a>
+        <a href="blog-dpdp-data-fiduciary-vs-processor.html" style="font-size:0.85rem;font-weight:300;color:rgba(248,244,236,0.5);text-decoration:none;">Fiduciary vs Processor</a>
+        <a href="blog-dpdp-consent-frameworks.html" style="font-size:0.85rem;font-weight:300;color:rgba(248,244,236,0.5);text-decoration:none;">Consent Frameworks</a>
+      </div>
+    </div>
+    <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin-bottom:1.5rem;">
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 DPDPIndia.in · Not Legal Advice · Safe Harbour: IT Act 2000 §79 · Always consult a qualified advocate</div>
+      <div class="footer-legal-links">
+        <a href="legal.html">Terms</a>
+        <a href="legal.html#privacy">Privacy</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('hamburger').addEventListener('click',function(){
+  this.classList.toggle('open');
+  document.getElementById('mobileMenu').classList.toggle('open');
+});
+
+var totalItems=20,completed=0;
+function toggleCheck(li){
+  li.classList.toggle('done');
+  completed=document.querySelectorAll('.checklist li.done').length;
+  var pct=Math.round((completed/totalItems)*100);
+  document.getElementById('progressBar').style.width=pct+'%';
+  document.getElementById('progressText').textContent=completed+' of '+totalItems+' items completed — '+pct+'% complete';
+}
+
+function generateConsent(){
+  var org=document.getElementById('orgName').value||'[Your Organisation]';
+  var data=document.getElementById('dataType').value||'[data types]';
+  var purpose=document.getElementById('purpose').value||'[purpose]';
+  var email=document.getElementById('grievanceEmail').value||'[grievance@yourcompany.com]';
+  var retention=document.getElementById('retention').value;
+  var children=document.getElementById('chk_children').checked;
+  var crossborder=document.getElementById('chk_crossborder').checked;
+  var thirdparty=document.getElementById('chk_thirdparty').checked;
+  var marketing=document.getElementById('chk_marketing').checked;
+
+  var text='CONSENT NOTICE\n'+org.toUpperCase()+'\n\n';
+  text+='PURPOSE OF COLLECTION\nWe, '+org+', are requesting your consent to collect and process the following personal data: '+data+'.\n\n';
+  text+='WHY WE NEED THIS DATA\n'+purpose+'.\n\n';
+  if(thirdparty) text+='SHARING WITH THIRD PARTIES\nYour data may be shared with our authorised service providers and processors who are bound by data processing agreements. We do not sell your personal data.\n\n';
+  if(crossborder) text+='CROSS-BORDER TRANSFER\nYour data may be transferred to countries outside India. We ensure equivalent data protection safeguards are in place for all international transfers.\n\n';
+  if(children) text+='CHILDREN\'S DATA\nIf you are under 18 years of age, we require verified parental or guardian consent before collecting your personal data. By proceeding, you confirm you are 18 or older, or that a parent/guardian has provided consent on your behalf.\n\n';
+  if(marketing) text+='MARKETING USE\nWith your separate consent, we may use your contact details to send you promotional communications. This consent is optional and separate from the service consent above.\n\n';
+  text+='DATA RETENTION\nYour personal data will be retained for: '+retention+'. After this period, your data will be securely deleted.\n\n';
+  text+='YOUR RIGHTS UNDER DPDP ACT 2023\nYou have the right to: (a) access your personal data; (b) correct inaccurate data; (c) erase your data; (d) withdraw this consent at any time; (e) nominate another person to exercise rights on your behalf.\n\n';
+  text+='HOW TO WITHDRAW CONSENT\nYou may withdraw this consent at any time by contacting our Grievance Officer at '+email+'. Withdrawal does not affect the lawfulness of processing before withdrawal.\n\n';
+  text+='GRIEVANCE OFFICER\nFor any concerns about how your data is handled, contact: '+email;
+
+  document.getElementById('consentOutput').innerText=text;
+}
+
+function copyConsent(){
+  var text=document.getElementById('consentOutput').innerText;
+  navigator.clipboard.writeText(text).then(function(){
+    alert('Consent notice copied to clipboard!');
+  }).catch(function(){
+    // fallback
+    var ta=document.createElement('textarea');
+    ta.value=text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    alert('Copied!');
+  });
+}
+
+function downloadTemplate(type){
+  alert('Template download for "'+type+'" will be available shortly. Subscribe to our weekly brief to be notified when templates are published.');
+}
+</script>
+</body>
+</html>

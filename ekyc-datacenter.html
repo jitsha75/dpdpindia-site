@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Centre & CERT-IN Audit Checklist for Sub-KUAs — eKYC KB</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:wght@600&display=swap');
+:root{
+  --navy:#0a1628;--navy2:#132040;--navy3:#1c3055;
+  --blue:#1a5cad;--blue-light:#3b82d4;
+  --amber:#d4900a;--amber-light:#f5c842;
+  --teal:#0e7c6b;--coral:#c2420a;--purple:#5b4bc4;
+  --green:#156c2e;--red:#b91c1c;
+  --surface:#f4f6fb;--surface2:#eaeff8;--surface3:#dde4f0;
+  --text:#0d1b2a;--text2:#3a4a5c;--text3:#6b7e94;
+  --border:#c8d4e8;--border2:#b0c0d8;--white:#ffffff;
+  --font-body:'IBM Plex Sans',sans-serif;
+  --font-display:'Playfair Display',serif;
+  --font-mono:'IBM Plex Mono',monospace;
+  --radius:8px;--radius-lg:12px;
+  --shadow:0 2px 12px rgba(10,22,40,.08);
+  --shadow-md:0 4px 24px rgba(10,22,40,.13);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--surface);color:var(--text);font-size:15px;line-height:1.7;min-height:100vh;}
+
+/* ── HEADER ── */
+.header{background:var(--navy);color:#fff;position:relative;overflow:hidden;}
+.header::before{content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px),
+             repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px);}
+.header-inner{position:relative;max-width:1100px;margin:0 auto;padding:52px 40px 48px;}
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:20px;font-family:var(--font-mono);font-size:11px;flex-wrap:wrap;}
+.breadcrumb a{color:rgba(255,255,255,.5);text-decoration:none;transition:color .15s;}
+.breadcrumb a:hover{color:var(--amber-light);}
+.breadcrumb .sep{color:rgba(255,255,255,.25);}
+.breadcrumb .cur{color:var(--amber-light);}
+.header-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:4px 14px;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:20px;}
+.header-badge .dot{width:6px;height:6px;border-radius:50%;background:#a78bfa;}
+.header h1{font-family:var(--font-display);font-size:clamp(24px,4vw,38px);font-weight:600;line-height:1.15;color:#fff;margin-bottom:14px;max-width:760px;}
+.header h1 span{color:#a78bfa;}
+.header-sub{font-size:15px;color:rgba(255,255,255,.6);max-width:680px;line-height:1.65;margin-bottom:28px;}
+.header-meta{display:flex;flex-wrap:wrap;gap:8px;}
+.meta-pill{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:4px 12px;font-size:12px;color:rgba(255,255,255,.65);font-family:var(--font-mono);}
+
+/* ── LAYOUT ── */
+.layout{display:flex;max-width:1100px;margin:0 auto;padding:32px 20px;gap:32px;align-items:flex-start;}
+.sidebar{width:220px;flex-shrink:0;position:sticky;top:24px;}
+.sidebar-nav{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:12px 0;box-shadow:var(--shadow);}
+.sidebar-nav h3{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:6px 18px 10px;}
+.sidebar-nav a{display:flex;align-items:center;gap:8px;padding:8px 18px;font-size:13px;color:var(--text2);text-decoration:none;border-left:2px solid transparent;transition:all .15s;line-height:1.3;}
+.sidebar-nav a:hover{background:var(--surface);color:var(--blue);border-left-color:var(--blue-light);}
+.sidebar-nav .nav-num{font-family:var(--font-mono);font-size:10px;color:var(--text3);min-width:16px;}
+.sidebar-nav hr{border:none;border-top:1px solid var(--border);margin:8px 0;}
+.sidebar-nav .nav-sep{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:12px 18px 4px;display:block;}
+.sidebar-related{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px 18px;box-shadow:var(--shadow);margin-top:12px;}
+.sidebar-related h4{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:10px;}
+.sidebar-related a{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);text-decoration:none;padding:5px 0;border-bottom:1px solid var(--border);transition:color .15s;}
+.sidebar-related a:last-child{border-bottom:none;}
+.sidebar-related a:hover{color:var(--blue);}
+.sidebar-related .link-icon{font-size:11px;opacity:.5;}
+
+/* Interactive checklist in sidebar */
+.audit-progress{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px 18px;box-shadow:var(--shadow);margin-top:12px;}
+.audit-progress h4{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:10px;}
+.progress-bar-wrap{background:var(--surface2);border-radius:4px;height:6px;margin-bottom:8px;overflow:hidden;}
+.progress-bar-fill{height:100%;background:linear-gradient(to right,var(--teal),var(--blue));border-radius:4px;transition:width .4s;}
+.progress-label{font-family:var(--font-mono);font-size:11px;color:var(--text3);}
+
+/* MAIN */
+.main{flex:1;min-width:0;}
+
+/* SECTION */
+.section{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:24px;box-shadow:var(--shadow);overflow:hidden;}
+.section-header{display:flex;align-items:center;gap:14px;padding:20px 28px;border-bottom:1px solid var(--border);background:var(--surface);}
+.section-num{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--font-mono);font-size:12px;font-weight:500;flex-shrink:0;}
+.section-header h2{font-size:17px;font-weight:600;color:var(--text);letter-spacing:-.01em;}
+.section-header p{font-size:13px;color:var(--text3);margin-top:2px;}
+.section-body{padding:28px;}
+
+/* CHECKLIST */
+.checklist{display:flex;flex-direction:column;gap:0;}
+.cl-item{display:flex;align-items:flex-start;gap:14px;padding:14px 16px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s;user-select:none;}
+.cl-item:last-child{border-bottom:none;}
+.cl-item:hover{background:var(--surface);}
+.cl-item.checked{background:#f0faf4;}
+.cl-item.checked .cl-box{background:var(--green);border-color:var(--green);}
+.cl-item.checked .cl-box::after{content:'✓';color:#fff;font-size:11px;font-weight:700;}
+.cl-item.checked .cl-title{text-decoration:line-through;color:var(--text3);}
+.cl-box{width:20px;height:20px;border:2px solid var(--border2);border-radius:4px;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all .2s;background:var(--white);}
+.cl-content{flex:1;}
+.cl-title{font-size:13.5px;font-weight:500;color:var(--text);margin-bottom:4px;line-height:1.4;}
+.cl-body{font-size:12.5px;color:var(--text2);line-height:1.6;}
+.cl-body strong{font-weight:600;color:var(--text);}
+.cl-body code{font-family:var(--font-mono);font-size:11.5px;background:var(--surface2);padding:1px 5px;border-radius:3px;border:1px solid var(--border);color:var(--blue);}
+
+/* Section intro text */
+.section-intro{font-size:14px;color:var(--text2);line-height:1.75;margin-bottom:20px;}
+.section-intro strong{font-weight:600;color:var(--text);}
+
+/* Note boxes */
+.note-box{padding:12px 16px;border-radius:var(--radius);font-size:13px;line-height:1.6;border-left:3px solid;margin:16px 0;}
+.note-box.warning{background:#fef3cd;border-color:var(--amber);color:#533200;}
+.note-box.info{background:#e6f1fb;border-color:var(--blue);color:#0a2e5e;}
+.note-box.danger{background:#fde8e8;border-color:var(--red);color:#5c0f0f;}
+.note-box.success{background:#e8f5ee;border-color:var(--green);color:#0a3318;}
+.note-box.purple{background:#ede8fe;border-color:var(--purple);color:#2d1b7a;}
+.note-box strong{font-weight:600;}
+
+/* Outcome card */
+.outcome-card{background:var(--navy);border-radius:var(--radius-lg);padding:28px 32px;display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;}
+.outcome-left h3{font-family:var(--font-display);font-size:18px;font-weight:600;color:#fff;margin-bottom:8px;line-height:1.3;}
+.outcome-left p{font-size:13px;color:rgba(255,255,255,.55);line-height:1.65;}
+.outcome-right{display:flex;flex-direction:column;gap:10px;}
+.outcome-doc{display:flex;align-items:center;gap:10px;padding:12px 14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);}
+.outcome-doc-icon{font-size:18px;flex-shrink:0;}
+.outcome-doc-title{font-size:13px;font-weight:500;color:#fff;margin-bottom:2px;}
+.outcome-doc-desc{font-size:11.5px;color:rgba(255,255,255,.45);}
+
+/* Reg badge */
+.reg-ref{display:inline-flex;align-items:center;gap:5px;padding:2px 9px 2px 7px;border-radius:4px;background:#ede8fe;color:var(--purple);border:1px solid #c4b8f5;font-family:var(--font-mono);font-size:11px;font-weight:500;white-space:nowrap;}
+.reg-ref::before{content:'§';font-family:Georgia,serif;font-size:12px;}
+
+/* FOOTER */
+.footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:28px 20px;font-size:12px;margin-top:40px;}
+.footer-links{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:12px;}
+.footer-links a{color:rgba(255,255,255,.55);text-decoration:none;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;transition:color .15s;}
+.footer-links a:hover{color:#a78bfa;}
+.footer a{color:rgba(255,255,255,.6);}
+
+@media(max-width:820px){
+  .layout{flex-direction:column;padding:16px;}
+  .sidebar{width:100%;position:static;}
+  .sidebar-nav{display:none;}
+  .header-inner{padding:32px 20px;}
+  .section-body{padding:16px;}
+  .outcome-card{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="breadcrumb">
+      <a href="index.html">DPDPindia.in</a>
+      <span class="sep">/</span>
+      <a href="ekyc-kb.html">eKYC Knowledge Base</a>
+      <span class="sep">/</span>
+      <span class="cur">Data Centre &amp; CERT-IN Audit Checklist</span>
+    </div>
+    <div class="header-badge"><span class="dot"></span>Article 04 · Compliance Reference</div>
+    <h1>Data Centre &amp; <span>CERT-IN Audit</span><br>Checklist for Sub-KUAs</h1>
+    <p class="header-sub">
+      The complete technical verification checklist used by CERT-IN empanelled auditors under Compliance Checklist v2.0 (May 2025, updated March 2026) — covering physical security, infrastructure hardening, ADV compliance, HSM operations, application security, and governance documentation.
+    </p>
+    <div class="header-meta">
+      <span class="meta-pill">Compliance Checklist v2.0</span>
+      <span class="meta-pill">CERT-IN Empanelled Auditors</span>
+      <span class="meta-pill">FIPS 140-2 Level 3</span>
+      <span class="meta-pill">Updated March 2026</span>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+  <nav class="sidebar">
+    <div class="sidebar-nav">
+      <h3>Audit Sections</h3>
+      <a href="#s1"><span class="nav-num">01</span> Physical &amp; environmental</a>
+      <a href="#s2"><span class="nav-num">02</span> Logical &amp; infrastructure</a>
+      <a href="#s3"><span class="nav-num">03</span> Aadhaar Data Vault (ADV)</a>
+      <a href="#s4"><span class="nav-num">04</span> HSM operations</a>
+      <a href="#s5"><span class="nav-num">05</span> Application &amp; API security</a>
+      <a href="#s6"><span class="nav-num">06</span> Governance &amp; documentation</a>
+      <a href="#s7"><span class="nav-num">07</span> Auditor's final output</a>
+      <hr>
+      <span class="nav-sep">Knowledge Base</span>
+      <a href="ekyc-kb.html"><span class="nav-num">←</span> Back to KB</a>
+      <a href="index.html"><span class="nav-num">⌂</span> DPDPindia.in</a>
+    </div>
+    <div class="audit-progress" id="progressBox">
+      <h4>Audit Readiness</h4>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progressFill" style="width:0%"></div></div>
+      <div class="progress-label" id="progressLabel">0 of 24 items checked</div>
+    </div>
+    <div class="sidebar-related">
+      <h4>Related Articles</h4>
+      <a href="ekyc-fees-connectivity.html"><span class="link-icon">↗</span> Fees &amp; Connectivity</a>
+      <a href="ekyc-trust-chain.html"><span class="link-icon">↗</span> Trust Chain &amp; Sub-KUA</a>
+      <a href="ekyc-sandbox.html"><span class="link-icon">↗</span> Developer Sandbox</a>
+      <a href="ekyc-uidai-guide.html"><span class="link-icon">↗</span> Complete eKYC Guide</a>
+    </div>
+  </nav>
+
+  <main class="main">
+
+    <!-- Context note -->
+    <div class="note-box purple" style="margin-bottom:8px;">
+      <strong>About this checklist:</strong> The technical verification performed by CERT-IN empanelled auditors is based on the <span class="reg-ref">Compliance Checklist v2.0</span> issued in May 2025 and updated through March 2026 circulars. For a Sub-KUA, the audit is not just about the code — it covers the entire ecosystem, from the physical server rack to the way keys are stored in an HSM. Use the interactive checklist below to track your preparation. Click any item to mark it complete.
+    </div>
+
+    <!-- S1 — PHYSICAL -->
+    <section class="section" id="s1">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <div>
+          <h2>Physical &amp; Environmental Security</h2>
+          <p>Data centre inspection — auditors physically visit the hosting facility</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <p class="section-intro">Auditors will physically inspect the hosting facility — whether on-premise or a MeitY-empanelled cloud provider's data centre. The facility must demonstrate controlled access, surveillance, and environmental resilience specifically for the Aadhaar infrastructure.</p>
+        <div class="checklist" id="cl1">
+          <div class="cl-item" onclick="toggleItem(this)">
+            <div class="cl-box"></div>
+            <div class="cl-content">
+              <div class="cl-title">Isolated Housing — dedicated lockable cabinet</div>
+              <div class="cl-body">Servers must be placed in a dedicated, lockable cabinet. Cabinets must be labelled as <strong>"Restricted Area"</strong> and must not share space with non-Aadhaar workloads unless logically separated. The auditor will verify the label and physical lock mechanism.</div>
+            </div>
+          </div>
+          <div class="cl-item" onclick="toggleItem(this)">
+            <div class="cl-box"></div>
+            <div class="cl-content">
+              <div class="cl-title">Access Control — biometric or card with entry/exit logs</div>
+              <div class="cl-body">Biometric or card-based access to the DC floor is mandatory. The auditor will check <strong>Entry/Exit Logs for the last 6 months</strong> — including date, time, and stated purpose of each visit. Tailgating prevention measures must be demonstrable.</div>
+            </div>
+          </div>
+          <div class="cl-item" onclick="toggleItem(this)">
+            <div class="cl-box"></div>
+            <div class="cl-content">
+              <div class="cl-title">CCTV Coverage — 24/7 with 90-day retention, no blind spots</div>
+              <div class="cl-body">Round-the-clock CCTV surveillance with <strong>at least 90 days of video retention</strong>. There must be no blind spots over the Aadhaar server racks. Auditor may request a live demonstration and playback of a specific past timestamp.</div>
+            </div>
+          </div>
+          <div class="cl-item" onclick="toggleItem(this)">
+            <div class="cl-box"></div>
+            <div class="cl-content">
+              <div class="cl-title">Environmental Controls — fire suppression, redundant cooling, UPS/DG</div>
+              <div class="cl-body">Functional <strong>Fire Suppression system</strong> (FM200 or equivalent clean-agent system). Redundant cooling units (N+1 minimum). UPS and DG backup with maintenance records and test logs. Auditor will inspect service records, not just the equipment.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S2 — LOGICAL -->
+    <section class="section" id="s2">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <div>
+          <h2>Logical &amp; Infrastructure Security</h2>
+          <p>System hardening for all servers that communicate with the AUA/KUA</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <p class="section-intro">This section focuses on the "hardening" of systems that interact with the AUA/KUA stack. The auditor will review configuration baselines, patch levels, and access control settings — not just policies, but evidence that those policies are implemented.</p>
+        <div class="checklist" id="cl2">
+          <div class="cl-item" onclick="toggleItem(this)">
+            <div class="cl-box"></div>
+            <div class="cl-content">
+              <div class="cl-title">OS Hardening — removal of unnecessary services, ports, default accounts</div>
+              <div class="cl-body">All non-essential services, ports, and default accounts must be disabled or removed. Auditors look for a <strong>Hardening Certificate signed by the CISO</strong> — a documented sign-off that the hardening baseline has been applied and validated. Reference against CIS Benchmarks is advisable.</div>
+            </div>
+          </div>
+          <div class="cl-item" onclick="toggleItem(this)">
+            <div class="cl-box"></div>
+            <div class="cl-content">
+              <div class="cl-title">Endpoint Security — restricted USB, latest OS patches</div>
+              <div class="cl-body">USB access must be restricted or disabled on all servers and admin terminals. OS must be fully patched — <strong>Windows Server 2022+ or Linux Kernel 5.x+</strong> is the baseline. Patch management logs and scheduled patching evidence will be reviewed.</div>
+            </div>
+          </div>
+          <div class="cl-item" onclick="toggleItem(this)">
+            <div class="cl-box"></div>
+            <div class="cl-content">
+              <div class="cl-title">Multi-Factor Authentication (MFA) — mandatory for all admin access</div>
+              <div class="cl-body"><strong>MFA is mandatory for any administrative access</strong> to the Aadhaar application or database — including remote desktop, SSH, and database consoles. Single-factor authentication, even with strong passwords, will fail this check.</div>
+            </div>
+          </div>
+          <div class="cl-item" onclick="toggleItem(this)">
+            <div class="cl-box"></div>
+            <div class="cl-content">
+              <div class="cl-title">Account Lockout — automatic lock after 3 successive failed logins</div>
+              <div class="cl-body">System must automatically lock accounts after <strong>3 successive failed login attempts</strong>. The lockout policy must be demonstrable, with evidence that it applies to all authentication interfaces — not just the primary login screen.</div>
+            </div>
+          </div>
+          <div class="cl-item" onclick="toggleItem(this)">
+            <div class="cl-box"></div>
+            <div class="cl-content">
+              <div class="cl-title">Network Segregation — Aadhaar environment in dedicated VLAN/DMZ</div>
+              <div class="cl-body">The Aadhaar environment must reside in a <strong>separate VLAN or DMZ</strong> with a dedicated firewall. Traffic between the Aadhaar zone and other corporate networks must be explicitly controlled via firewall rules — implicit permit-all rules will fail the audit.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S3 — ADV -->
+    <section class="section" id="s3">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div>
+          <h2>Aadhaar Data Vault (ADV) Compliance</h2>
+          <p>The most critical section of the 2026 audit — no Aadhaar numbers in clear text anywhere</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="note-box warning" style="margin-bottom:20px;">
+          <strong>2026 audit priority:</strong> UIDAI auditors treat ADV compliance as the primary gate. A failure on any ADV requirement will result in an audit failure regardless of scores elsewhere. Prepare evidence for each item well in advance of the audit date.
+        </div>
+        <div class="checklist" id="cl3">
+          <div class="cl-item" onclick="toggleItem(this)">
+            <div class="cl-box"></div>
+            <div class="cl-content">
+              <div class="cl-title">Tokenisation — every Aadhaar number replaced by a Reference Key</div>
+              <div class="cl-body">Verify that <strong>every Aadhaar number in the business database has been replaced by a Reference Key (token)</strong>. Auditors may query the business database directly and check that no 12-digit UIDs appear. Spot-checking is common — any Aadhaar number in the main DB is an automatic finding.</div>
+            </div>
+          </div>
+          <div class="cl-item" onclick="toggleItem(this)">
+            <div class="cl-box"></div>
+            <div class="cl-content">
+              <div class="cl-title">Storage Separation — ADV logically or physically separate from main DB</div>
+              <div class="cl-body">The Aadhaar Data Vault must be a <strong>logically or physically separate database</strong> from the main application database. The ADV must have its own access controls — the application DB credentials must not grant access to the ADV, and vice versa.</div>
+            </div>
+          </div>
+          <div class="cl-item" onclick="toggleItem(this)">
+            <div class="cl-box"></div>
+            <div class="cl-content">
+              <div class="cl-title">Encryption Standard — AES-256 for all data at rest in the vault</div>
+              <div class="cl-body">All data in the vault must be encrypted using <strong>AES-256</strong>. Encryption keys must be managed by the HSM (not stored in config files or environment variables). Auditor will verify the encryption configuration and key storage location.</div>
+            </div>
+          </div>
+          <div class="cl-item" onclick="toggleItem(this)">
+            <div class="cl-box"></div>
+            <div class="cl-content">
+              <div class="cl-title">Vault Access — only authorised APIs, not human users, can query ADV</div>
+              <div class="cl-body">Only <strong>authorised APIs</strong> (not direct human database access) should be able to query the ADV to resolve tokens. There must be no mechanism for a DBA or admin to run a SELECT * on the ADV and retrieve Aadhaar numbers in bulk. API call logs must be maintained.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S4 — HSM -->
+    <section class="section" id="s4">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <div>
+          <h2>HSM (Hardware Security Module) Operations</h2>
+          <p>FIPS 140-2 Level 3 certification and key management discipline</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <p class="section-intro">The HSM is the most critical piece of hardware in the Aadhaar infrastructure. It stores all private keys for signing and decryption, and must be configured so that keys can never be extracted. Sub-KUAs may use a logical partition on the KUA's HSM rather than a dedicated device.</p>
+        <div class="checklist" id="cl4">
+          <div class="cl-item" onclick="toggleItem(this)">
+            <div class="cl-box"></div>
+            <div class="cl-content">
+              <div class="cl-title">FIPS 140-2 Level 3 — certification verified by serial number</div>
+              <div class="cl-body">The HSM must meet <strong>FIPS 140-2 Level 3</strong> certification. The auditor will verify the HSM's serial number against the NIST certificate database. A Level 2 device, or an HSM with a lapsed certification, will fail this requirement. Have the FIPS certificate documentation printed and ready.</div>
+            </div>
+          </div>
+          <div class="cl-item" onclick="toggleItem(this)">
+            <div class="cl-box"></div>
+            <div class="cl-content">
+              <div class="cl-title">Logical Partitioning — dedicated partition for Sub-KUA if sharing KUA's HSM</div>
+              <div class="cl-body">If the Sub-KUA is using the KUA's HSM, verify that a <strong>dedicated logical partition exists for the Sub-KUA</strong> with its own set of keys. The Sub-KUA's keys must not be accessible from other partitions, including the KUA's own partition. Partition boundary configuration evidence is required.</div>
+            </div>
+          </div>
+          <div class="cl-item" onclick="toggleItem(this)">
+            <div class="cl-box"></div>
+            <div class="cl-content">
+              <div class="cl-title">Key Management — private keys never leave the HSM, Exportable = No</div>
+              <div class="cl-body">Private keys for digital signing and decryption must <strong>never leave the HSM</strong>. Auditors specifically check whether the "Exportable" or "Extractable" flag is set to No for all key objects. Any key with an exportable flag set to Yes — even if never actually exported — is an automatic finding.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S5 — APPLICATION -->
+    <section class="section" id="s5">
+      <div class="section-header">
+        <div class="section-num">05</div>
+        <div>
+          <h2>Application &amp; API Security</h2>
+          <p>VAPT, SAST/DAST, API controls, and 2026 face authentication requirements</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="checklist" id="cl5">
+          <div class="cl-item" onclick="toggleItem(this)">
+            <div class="cl-box"></div>
+            <div class="cl-content">
+              <div class="cl-title">VAPT Report — fresh, zero High/Critical open vulnerabilities</div>
+              <div class="cl-body">A <strong>Vulnerability Assessment and Penetration Testing (VAPT) report not older than 6 months</strong> is required, with zero High or Critical open vulnerabilities. Closed findings must have evidence of remediation — a finding marked "closed" without proof of the fix will be re-opened during audit.</div>
+            </div>
+          </div>
+          <div class="cl-item" onclick="toggleItem(this)">
+            <div class="cl-box"></div>
+            <div class="cl-content">
+              <div class="cl-title">SAST / DAST — static and dynamic testing on latest build</div>
+              <div class="cl-body">Proof of <strong>Static Application Security Testing (SAST) and Dynamic Application Security Testing (DAST)</strong> performed on the latest production build. Tool names, scan dates, and summary reports are required. SAST/DAST must cover the Aadhaar-specific code paths, not just the general application.</div>
+            </div>
+          </div>
+          <div class="cl-item" onclick="toggleItem(this)">
+            <div class="cl-box"></div>
+            <div class="cl-content">
+              <div class="cl-title">API Whitelisting — requests only from registered static IPs</div>
+              <div class="cl-body">The application must <strong>only allow requests from whitelisted IP addresses</strong>. Dynamic or range-based whitelists are not acceptable. The whitelist must include the KUA's static IPs and any registered Registered Device service IPs. Auditor will attempt a connection from an unlisted IP.</div>
+            </div>
+          </div>
+          <div class="cl-item" onclick="toggleItem(this)">
+            <div class="cl-box"></div>
+            <div class="cl-content">
+              <div class="cl-title">SSL Pinning — implemented in mobile apps to prevent MITM</div>
+              <div class="cl-body">For mobile applications, <strong>SSL/certificate pinning must be implemented</strong> to prevent Man-in-the-Middle (MITM) attacks. Pinning must be against the UIDAI's current certificate chain. Auditor may perform a proxy interception test to verify pinning is active.</div>
+            </div>
+          </div>
+          <div class="cl-item" onclick="toggleItem(this)">
+            <div class="cl-box"></div>
+            <div class="cl-content">
+              <div class="cl-title">Face Auth Liveness Detection — new requirement for 2026 (Circular 2/2026)</div>
+              <div class="cl-body">If using Face Authentication, the auditor will check for <strong>Liveness Detection compliance as per Circular 2 of 2026</strong>. Passive liveness detection is the minimum; active challenge-response liveness is preferred. Spoofing resistance test results from a CERT-IN approved tool are required.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S6 — GOVERNANCE -->
+    <section class="section" id="s6">
+      <div class="section-header">
+        <div class="section-num">06</div>
+        <div>
+          <h2>Governance &amp; Documentation</h2>
+          <p>People, process, and paper — the organisational controls auditors examine</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <p class="section-intro">Technical controls alone are insufficient. Auditors spend significant time reviewing organisational governance — who is responsible, what agreements exist, how consent is captured, and whether the people handling Aadhaar data have been background-verified.</p>
+        <div class="checklist" id="cl6">
+          <div class="cl-item" onclick="toggleItem(this)">
+            <div class="cl-box"></div>
+            <div class="cl-content">
+              <div class="cl-title">CISO Appointment — designated and documented Chief Information Security Officer</div>
+              <div class="cl-body">Documented proof of a designated <strong>Chief Information Security Officer (CISO)</strong> — name, appointment letter, and scope of responsibility. The CISO must have Aadhaar infrastructure in their explicit remit. The CISO's signature is required on several other compliance documents checked during the audit.</div>
+            </div>
+          </div>
+          <div class="cl-item" onclick="toggleItem(this)">
+            <div class="cl-box"></div>
+            <div class="cl-content">
+              <div class="cl-title">Joint Undertaking — signed legal agreement between KUA and Sub-KUA</div>
+              <div class="cl-body">Signed copy of the <strong>Joint Undertaking</strong> executed between the KUA and Sub-KUA — holding both parties jointly and severally liable for data breaches. The agreement must be current and countersigned by authorised signatories of both organisations. The auditor verifies the original signed copy, not a photocopy.</div>
+            </div>
+          </div>
+          <div class="cl-item" onclick="toggleItem(this)">
+            <div class="cl-box"></div>
+            <div class="cl-content">
+              <div class="cl-title">Consent Logs — random sample of 10–20 transactions verified</div>
+              <div class="cl-body">The auditor will <strong>randomly sample 10–20 transactions</strong> and request the corresponding Electronic Consent Log for each — including timestamp, purpose stated, language of consent, and the resident's acknowledgement. Consent logs must be immutable and stored separately from the main application logs.</div>
+            </div>
+          </div>
+          <div class="cl-item" onclick="toggleItem(this)">
+            <div class="cl-box"></div>
+            <div class="cl-content">
+              <div class="cl-title">Background Verification (BGV) — for all IT staff handling Aadhaar infrastructure</div>
+              <div class="cl-body"><strong>BGV reports for all IT staff</strong> who have any form of access to the Aadhaar infrastructure — including developers, database administrators, network engineers, and security personnel. BGV must include criminal record check, previous employment verification, and identity verification. Reports must not be older than 2 years.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S7 — OUTCOME -->
+    <section class="section" id="s7">
+      <div class="section-header">
+        <div class="section-num">07</div>
+        <div>
+          <h2>Auditor's Final Output</h2>
+          <p>What the CERT-IN auditor produces — and what you must submit to UIDAI</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <p class="section-intro" style="margin-bottom:24px;">Upon completing the site visit and systems review, the CERT-IN empanelled auditor prepares two documents. Both must be submitted by the KUA to the UIDAI portal to activate or renew the Sub-KUA licence.</p>
+        <div class="outcome-card">
+          <div class="outcome-left">
+            <h3>Two documents are produced by the auditor</h3>
+            <p>These documents are produced by the CERT-IN empanelled auditor — not self-certified by the Sub-KUA. They must be uploaded by the KUA to the UIDAI portal to activate or renew the Sub-KUA licence. The audit cycle repeats periodically as specified by UIDAI.</p>
+          </div>
+          <div class="outcome-right">
+            <div class="outcome-doc">
+              <div class="outcome-doc-icon">📋</div>
+              <div>
+                <div class="outcome-doc-title">Certificate of Compliance</div>
+                <div class="outcome-doc-desc">A signed, dated certificate from the auditor confirming the Sub-KUA meets all requirements of Compliance Checklist v2.0. This is the "pass" document.</div>
+              </div>
+            </div>
+            <div class="outcome-doc">
+              <div class="outcome-doc-icon">📄</div>
+              <div>
+                <div class="outcome-doc-title">Detailed Audit Report</div>
+                <div class="outcome-doc-desc">A full report covering every checklist item — findings, evidence reviewed, exceptions noted, and remediation dates for any conditional pass items. Uploaded to UIDAI portal by the KUA.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="note-box info" style="margin-top:20px;">
+          <strong>Practical timeline:</strong> Allow 4–8 weeks between initial auditor engagement and receiving the final Certificate of Compliance. This includes: pre-audit questionnaire (1–2 weeks), site visit scheduling (1–2 weeks), site visit and systems review (1–3 days), findings discussion (1 week), remediation of minor findings (1–2 weeks), and certificate issuance. Plan your go-live date around this timeline, not the other way round.
+        </div>
+
+        <!-- Link to other KB articles -->
+        <div style="margin-top:24px;padding:20px;border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius);background:var(--surface);">
+          <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--purple);margin-bottom:14px;">Other Articles in This Knowledge Base</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <a href="ekyc-fees-connectivity.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;padding:12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--white);transition:border-color .15s;" onmouseover="this.style.borderColor='var(--purple)'" onmouseout="this.style.borderColor='var(--border)'">
+              <div style="font-size:20px;flex-shrink:0;">💰</div>
+              <div><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Fees, Relationships &amp; Connectivity</div><div style="font-size:12px;color:var(--text3);">Licence fee slabs, transaction charges, connectivity standards</div></div>
+            </a>
+            <a href="ekyc-trust-chain.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;padding:12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--white);transition:border-color .15s;" onmouseover="this.style.borderColor='var(--blue-light)'" onmouseout="this.style.borderColor='var(--border)'">
+              <div style="font-size:20px;flex-shrink:0;">🔗</div>
+              <div><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Trust Chain &amp; Sub-KUA Governance</div><div style="font-size:12px;color:var(--text3);">Entity segregation rationale and Sub-KUA appointment process</div></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-links">
+    <a href="index.html">DPDPindia.in</a>
+    <a href="ekyc-kb.html">eKYC Knowledge Base</a>
+    <a href="ekyc-fees-connectivity.html">Fees &amp; Connectivity</a>
+    <a href="ekyc-trust-chain.html">Trust Chain</a>
+    <a href="https://uidai.gov.in" target="_blank">UIDAI Official</a>
+  </div>
+  <p>Data Centre &amp; CERT-IN Audit Checklist — Article 04 of the Aadhaar eKYC Knowledge Base · <a href="ekyc-kb.html">← Back to KB</a></p>
+</footer>
+
+<script>
+const allItems = document.querySelectorAll('.cl-item');
+const total = allItems.length;
+function toggleItem(el){
+  el.classList.toggle('checked');
+  updateProgress();
+}
+function updateProgress(){
+  const checked = document.querySelectorAll('.cl-item.checked').length;
+  const pct = Math.round((checked/total)*100);
+  document.getElementById('progressFill').style.width = pct+'%';
+  document.getElementById('progressLabel').textContent = checked+' of '+total+' items checked';
+}
+updateProgress();
+</script>
+</body>
+</html>

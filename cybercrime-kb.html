@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyber Fraud Awareness — Know Your Rights · DPDP India</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --parchment:#F8F4EC;--cream:#FDFAF5;--paper:#F2EDE2;--ink:#1A1610;
+  --prussian:#1B2B3A;--slate:#2D3D4E;--saffron:#D4760A;--saffron-lt:#F0A840;
+  --mist:#7A7468;--rule:rgba(26,22,16,0.12);--rule-gold:rgba(212,118,10,0.25);
+  --shadow-sm:0 2px 12px rgba(26,22,16,0.06);--shadow-md:0 8px 40px rgba(26,22,16,0.10);
+  --danger:#C0392B;--danger-lt:#FADBD8;--safe:#1A6B3A;--safe-lt:#D5F5E3;
+  --warn:#B8862C;--warn-lt:#FEF9E7;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Source Serif 4',Georgia,serif;background:var(--cream);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;}
+
+/* EMERGENCY BANNER */
+.emergency-bar{background:var(--danger);padding:0.7rem 0;text-align:center;}
+.emergency-bar p{font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:#fff;}
+.emergency-bar strong{font-size:1rem;letter-spacing:0.05em;}
+.emergency-bar a{color:#FFD0CC;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.4);}
+
+.masthead{background:var(--prussian);padding:10px 0;text-align:center;border-bottom:3px solid var(--saffron);}
+.masthead-text{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.55);}
+.masthead-text span{color:var(--saffron-lt);}
+
+nav{position:sticky;top:0;z-index:200;background:var(--cream);border-bottom:1px solid var(--rule);box-shadow:var(--shadow-sm);}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:68px;position:relative;}
+.nav-brand{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.nav-brand-seal{width:42px;height:42px;}
+.nav-brand-name{display:flex;flex-direction:column;gap:1px;}
+.nav-brand-name strong{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--prussian);line-height:1;}
+.nav-brand-name span{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);line-height:1;}
+.nav-links{display:flex;align-items:center;gap:1.5rem;list-style:none;}
+.nav-links a{font-family:'Source Serif 4',serif;font-size:0.82rem;color:var(--slate);text-decoration:none;transition:color 0.2s;position:relative;white-space:nowrap;}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--saffron);transform:scaleX(0);transition:transform 0.25s;transform-origin:left;}
+.nav-links a:hover{color:var(--saffron);}
+.nav-links a:hover::after{transform:scaleX(1);}
+.nav-blog-btn{font-family:'JetBrains Mono',monospace!important;font-size:0.65rem!important;letter-spacing:0.1em!important;text-transform:uppercase;background:var(--prussian)!important;color:var(--cream)!important;padding:9px 20px;border-radius:1px;transition:background 0.2s!important;}
+.nav-blog-btn::after{display:none!important;}
+.nav-blog-btn:hover{background:var(--saffron)!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--prussian);transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-menu{display:none;position:absolute;top:68px;left:0;right:0;background:var(--cream);border-bottom:2px solid var(--saffron);box-shadow:var(--shadow-md);z-index:199;}
+.mobile-menu.open{display:block;}
+.mobile-menu ul{list-style:none;padding:1rem 2rem 1.5rem;}
+.mobile-menu ul li a{display:block;font-size:0.95rem;color:var(--slate);text-decoration:none;padding:0.7rem 0;border-bottom:1px solid var(--rule);}
+.mobile-menu ul li:last-child a{border-bottom:none;}
+.mobile-menu ul li a:hover{color:var(--saffron);}
+
+/* HERO */
+.page-header{background:var(--prussian);padding:5rem 0 4rem;position:relative;overflow:hidden;}
+.page-header::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--danger),var(--saffron),var(--safe));}
+.page-header::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
+.page{max-width:1320px;margin:0 auto;padding:0 2rem;}
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:1.5rem;font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);position:relative;z-index:1;flex-wrap:wrap;}
+.breadcrumb a{color:rgba(255,255,255,0.4);text-decoration:none;}
+.breadcrumb-sep{color:rgba(255,255,255,0.25);}
+.page-kicker{display:flex;align-items:center;gap:10px;margin-bottom:1.5rem;position:relative;z-index:1;}
+.page-kicker-line{width:32px;height:1px;background:var(--danger);}
+.page-kicker-text{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--danger);opacity:0.85;}
+.page-title{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4vw,3.8rem);font-weight:700;line-height:1.1;color:var(--parchment);margin-bottom:1rem;position:relative;z-index:1;}
+.page-title em{font-style:italic;color:var(--saffron-lt);}
+.page-deck{font-size:1rem;font-weight:300;line-height:1.85;color:rgba(248,244,236,0.65);max-width:640px;position:relative;z-index:1;}
+
+/* HELPLINE STRIP */
+.helpline-strip{background:var(--danger);padding:0;}
+.helpline-inner{max-width:1320px;margin:0 auto;padding:0;display:grid;grid-template-columns:repeat(3,1fr);}
+.hl-item{padding:1.2rem 2rem;border-right:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;gap:1rem;}
+.hl-item:last-child{border-right:none;}
+.hl-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:#fff;line-height:1;}
+.hl-info{display:flex;flex-direction:column;gap:2px;}
+.hl-label{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.7);}
+.hl-desc{font-size:0.8rem;font-weight:300;color:rgba(255,255,255,0.85);}
+
+/* STATS */
+.stats-strip{background:var(--ink);border-top:3px solid var(--saffron);}
+.stats-inner{max-width:1320px;margin:0 auto;padding:0;display:grid;grid-template-columns:repeat(4,1fr);}
+.stat-item{padding:1.5rem 2rem;border-right:1px solid rgba(255,255,255,0.07);display:flex;flex-direction:column;gap:0.3rem;}
+.stat-item:last-child{border-right:none;}
+.stat-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--saffron-lt);line-height:1;}
+.stat-label{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);}
+
+/* CRIME CATEGORY GRID */
+.crimes-section{padding:5rem 0;}
+.section-kicker{display:flex;align-items:center;gap:12px;font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--saffron);margin-bottom:1rem;}
+.section-kicker::before{content:'';width:28px;height:1px;background:var(--saffron);}
+.section-heading{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;line-height:1.15;color:var(--prussian);margin-bottom:0.8rem;}
+.section-heading em{font-style:italic;color:var(--saffron);}
+.section-deck{font-size:0.95rem;font-weight:300;line-height:1.85;color:var(--mist);max-width:640px;margin-bottom:3rem;}
+
+.category-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:1.5rem;}
+
+.cat-card{border:1px solid var(--rule);text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:box-shadow 0.2s,transform 0.2s;}
+.cat-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);}
+.cc-header{padding:1.8rem;position:relative;overflow:hidden;}
+.cc-header.red{background:var(--danger);}
+.cc-header.gold{background:var(--prussian);}
+.cc-header.green{background:#1A5276;}
+.cc-header::after{content:attr(data-icon);position:absolute;right:1rem;bottom:-0.5rem;font-size:5rem;opacity:0.1;line-height:1;}
+.cc-tag{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:0.6rem;}
+.cc-title{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:#fff;line-height:1.2;margin-bottom:0.4rem;}
+.cc-subtitle{font-size:0.82rem;font-weight:300;color:rgba(255,255,255,0.6);line-height:1.5;}
+.cc-body{padding:1.5rem;flex:1;display:flex;flex-direction:column;gap:0.8rem;}
+.cc-crimes-list{list-style:none;}
+.cc-crimes-list li{display:flex;align-items:flex-start;gap:8px;font-size:0.84rem;font-weight:300;color:var(--slate);padding:0.4rem 0;border-bottom:1px solid var(--rule);line-height:1.5;}
+.cc-crimes-list li:last-child{border-bottom:none;}
+.cc-crimes-list li::before{content:'→';font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--saffron);flex-shrink:0;margin-top:2px;}
+.cc-footer{padding:1.2rem 1.5rem;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;}
+.cc-count{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--mist);}
+.cc-link{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--saffron);}
+
+/* REMEDY GUIDE CARD */
+.remedy-card{background:var(--safe);padding:3rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;text-decoration:none;color:inherit;transition:background 0.2s;margin-top:1.5rem;}
+.remedy-card:hover{background:#155c31;}
+.rc-label{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:0.8rem;}
+.rc-title{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:#fff;margin-bottom:0.5rem;}
+.rc-desc{font-size:0.92rem;font-weight:300;line-height:1.8;color:rgba(255,255,255,0.75);max-width:560px;}
+.rc-arrow{font-family:'JetBrains Mono',monospace;font-size:2rem;color:rgba(255,255,255,0.5);}
+
+/* GOLDEN HOUR */
+.golden-hour{background:var(--warn-lt);border:2px solid var(--warn);padding:2.5rem;margin:3rem 0;}
+.gh-kicker{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--warn);margin-bottom:0.8rem;display:flex;align-items:center;gap:8px;}
+.gh-kicker::before{content:'⚡';}
+.gh-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--prussian);margin-bottom:0.8rem;}
+.gh-body{font-size:0.92rem;font-weight:300;line-height:1.8;color:var(--slate);}
+.gh-body strong{font-weight:600;color:var(--prussian);}
+.gh-number{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:var(--danger);line-height:1;margin-top:0.5rem;}
+.gh-number-label{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--mist);}
+
+/* QUICK TIPS */
+.tips-section{background:var(--parchment);padding:4rem 0;}
+.tips-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2.5rem;}
+.tip-card{background:var(--cream);border:1px solid var(--rule);padding:1.5rem;}
+.tip-icon{font-size:1.8rem;margin-bottom:0.8rem;}
+.tip-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--prussian);margin-bottom:0.5rem;}
+.tip-body{font-size:0.82rem;font-weight:300;line-height:1.7;color:var(--mist);}
+
+footer{background:var(--ink);padding:5rem 0 2rem;}
+.footer-grid{max-width:1320px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,0.06);}
+.footer-brand-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--parchment);margin-bottom:1rem;}
+.footer-brand-desc{font-size:0.85rem;font-weight:300;line-height:1.8;color:rgba(248,244,236,0.4);max-width:280px;}
+.footer-col-title{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);margin-bottom:1.2rem;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
+.footer-links a{font-size:0.85rem;font-weight:300;color:rgba(248,244,236,0.45);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--parchment);}
+.footer-bottom{max-width:1320px;margin:0 auto;padding:1.5rem 2rem 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-copy{font-size:0.78rem;font-weight:300;color:rgba(248,244,236,0.25);}
+.footer-tagline{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(248,244,236,0.2);}
+
+@media(max-width:900px){
+  .nav-links{display:none;}.hamburger{display:flex;}
+  .helpline-inner{grid-template-columns:1fr;}
+  .hl-item{border-right:none;border-bottom:1px solid rgba(255,255,255,0.15);}
+  .category-grid{grid-template-columns:1fr;}
+  .stats-inner{grid-template-columns:1fr 1fr;}
+  .tips-grid{grid-template-columns:1fr 1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .remedy-card{grid-template-columns:1fr;}
+}
+@media(max-width:600px){
+  .tips-grid{grid-template-columns:1fr;}
+  .stats-inner{grid-template-columns:1fr 1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+  .footer-bottom{flex-direction:column;align-items:flex-start;}
+  .page-header{padding:3rem 0 2.5rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="emergency-bar">
+  <p>🚨 Financial Fraud? Call <strong>1930</strong> immediately — every minute counts. Report at <a href="https://cybercrime.gov.in" target="_blank">cybercrime.gov.in</a></p>
+</div>
+
+<div class="masthead">
+  <p class="masthead-text">DPDP India · <span>Cyber Fraud Awareness — Know Your Rights & Remedies</span></p>
+</div>
+
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <svg class="nav-brand-seal" viewBox="0 0 42 42" fill="none"><circle cx="21" cy="21" r="20" stroke="#1B2B3A" stroke-width="1.5"/><circle cx="21" cy="21" r="14" stroke="#D4760A" stroke-width="0.75" stroke-dasharray="2 2"/><text x="21" y="25" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="700" fill="#1B2B3A">§</text></svg>
+      <div class="nav-brand-name"><strong>DPDP India</strong><span>Policy & Legal Research</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dpdp-kb.html">DPDP Act</a></li>
+      <li><a href="itact-kb.html">IT Act</a></li>
+      <li><a href="ekyc-kb.html">eKYC / UIDAI</a></li>
+      <li><a href="cybercrime-kb.html" class="active">Cyber Crime</a></li>
+      <li><a href="for-businesses.html">For Business</a></li>
+      <li><a href="for-individuals.html">For Individuals</a></li>
+      <li><a href="case-tracker.html">Cases</a></li>
+      <li><a href="blog.html">Articles</a></li>
+      <li><a href="cyber-fraud-hub.html" class="nav-blog-btn">🚨 1930</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dpdp-kb.html">DPDP Act Knowledge Base</a></li>
+      <li><a href="itact-kb.html">IT Act Knowledge Base</a></li>
+      <li><a href="ekyc-kb.html">eKYC / UIDAI Knowledge Base</a></li>
+      <li><a href="cybercrime-kb.html">Cyber Crime Knowledge Base</a></li>
+      <li><a href="for-businesses.html">DPDP Compliance for Business</a></li>
+      <li><a href="for-individuals.html">Know Your Rights</a></li>
+      <li><a href="case-tracker.html">Case Tracker</a></li>
+      <li><a href="blog.html">Articles & Research</a></li>
+      <li><a href="cyber-fraud-hub.html">🚨 Cyber Fraud Hub — 1930</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="page">
+    <div class="breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">›</span><span>Cyber Fraud Awareness</span></div>
+    <div class="page-kicker"><div class="page-kicker-line"></div><div class="page-kicker-text">Citizen Awareness · Know Your Rights</div></div>
+    <h1 class="page-title">Cyber Fraud in India —<br><em>Know It. Report It. Recover.</em></h1>
+    <p class="page-deck">India reported over 17 lakh cybercrime complaints in 2024 — one every 18 seconds. This Knowledge Base explains every major cybercrime in plain language: how criminals execute it, what law protects you, and exactly how to file a complaint and recover your money.</p>
+  </div>
+</header>
+
+<div class="helpline-strip">
+  <div class="helpline-inner page">
+    <div class="hl-item">
+      <div class="hl-num">1930</div>
+      <div class="hl-info"><div class="hl-label">National Cyber Crime Helpline</div><div class="hl-desc">Call 24×7 for financial fraud — freeze transaction immediately</div></div>
+    </div>
+    <div class="hl-item">
+      <div class="hl-num">🌐</div>
+      <div class="hl-info"><div class="hl-label">cybercrime.gov.in</div><div class="hl-desc">File online complaint — financial fraud, harassment, CSAM</div></div>
+    </div>
+    <div class="hl-item">
+      <div class="hl-num">100</div>
+      <div class="hl-info"><div class="hl-label">Police Emergency / Local Cyber Cell</div><div class="hl-desc">For threats to life, physical safety, or urgent FIR filing</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="stats-strip">
+  <div class="stats-inner page">
+    <div class="stat-item"><div class="stat-num">17L+</div><div class="stat-label">Complaints in 2024 (MHA)</div></div>
+    <div class="stat-item"><div class="stat-num">₹22,812Cr</div><div class="stat-label">Lost to cyber fraud in 2024</div></div>
+    <div class="stat-item"><div class="stat-num">1 in 18s</div><div class="stat-label">New cybercrime reported every 18 seconds</div></div>
+    <div class="stat-item"><div class="stat-num">85%</div><div class="stat-label">Are financial frauds — recoverable if reported fast</div></div>
+  </div>
+</div>
+
+<section class="crimes-section">
+  <div class="page">
+    <div class="golden-hour">
+      <div class="gh-kicker">Golden Hour Rule — Financial Fraud</div>
+      <div class="gh-title">If money just left your account — act in the next 60 minutes</div>
+      <div class="gh-body">Cybercrime cells can <strong>freeze the destination account and reverse the transaction</strong> if reported within 1–2 hours. After 24 hours, money is usually withdrawn and recovery chances drop sharply. Do not waste time gathering evidence first — call immediately.</div>
+      <div class="gh-number">1930</div>
+      <div class="gh-number-label">National Cyber Crime Helpline · Available 24×7</div>
+    </div>
+
+    <div class="section-kicker">Crime Categories</div>
+    <h2 class="section-heading">Every Cybercrime — <em>Explained Simply</em></h2>
+    <p class="section-deck">We've organised all known cybercrimes into two categories. Each article gives you the modus operandi criminals use, the exact legal remedy, step-by-step complaint procedure, and how to protect yourself.</p>
+
+    <div class="category-grid">
+
+      <a href="cybercrime-financial.html" class="cat-card">
+        <div class="cc-header red" data-icon="💸">
+          <div class="cc-tag">Category 01 · Most Common</div>
+          <div class="cc-title">Financial & Payment Frauds</div>
+          <div class="cc-subtitle">UPI, OTP, Digital Arrest, Investment scams — money-targeted crimes</div>
+        </div>
+        <div class="cc-body">
+          <ul class="cc-crimes-list">
+            <li>UPI / QR Code Fraud</li>
+            <li>OTP & Vishing Fraud</li>
+            <li>Digital Arrest Scam</li>
+            <li>Fake Investment / Trading Fraud (Pig Butchering)</li>
+            <li>Loan App Fraud</li>
+            <li>KYC Update Fraud</li>
+            <li>Fake Customer Care Fraud</li>
+            <li>Part-Time Job / Task Fraud</li>
+            <li>Electricity Bill Disconnection Scam</li>
+            <li>Lottery & Prize Fraud</li>
+          </ul>
+        </div>
+        <div class="cc-footer">
+          <span class="cc-count">10 Crimes Explained</span>
+          <span class="cc-link">Read All →</span>
+        </div>
+      </a>
+
+      <a href="cybercrime-personal.html" class="cat-card">
+        <div class="cc-header gold" data-icon="🔒">
+          <div class="cc-tag">Category 02 · Personal & Social</div>
+          <div class="cc-title">Identity, Social & Personal Crimes</div>
+          <div class="cc-subtitle">Sextortion, cyberbullying, SIM swap, deepfakes — dignity & identity crimes</div>
+        </div>
+        <div class="cc-body">
+          <ul class="cc-crimes-list">
+            <li>Sextortion & Nude Video Call Scam</li>
+            <li>SIM Swap Fraud</li>
+            <li>Aadhaar / PAN Identity Theft</li>
+            <li>Morphed Images & Deepfake Abuse</li>
+            <li>Cyberbullying & Online Harassment</li>
+            <li>Romance Scam / Honey Trap</li>
+            <li>Cyberstalking</li>
+            <li>Phishing & Smishing</li>
+            <li>Ransomware & Malware</li>
+            <li>Business Email Compromise (BEC)</li>
+          </ul>
+        </div>
+        <div class="cc-footer">
+          <span class="cc-count">10 Crimes Explained</span>
+          <span class="cc-link">Read All →</span>
+        </div>
+      </a>
+
+      <a href="cybercrime-remedy-guide.html" class="cat-card">
+        <div class="cc-header green" data-icon="⚖️">
+          <div class="cc-tag">Remedy Guide · Step by Step</div>
+          <div class="cc-title">How to File a Complaint & Recover</div>
+          <div class="cc-subtitle">1930 helpline, cybercrime portal, FIR, bank reversal, RBI Ombudsman</div>
+        </div>
+        <div class="cc-body">
+          <ul class="cc-crimes-list">
+            <li>Call 1930 — What happens when you call</li>
+            <li>File on cybercrime.gov.in — complete walkthrough</li>
+            <li>How to file FIR at cyber police station</li>
+            <li>Bank complaint & chargeback process</li>
+            <li>RBI Banking Ombudsman — when & how to use</li>
+            <li>How to preserve digital evidence</li>
+            <li>Legal sections that protect you (IT Act + BNS)</li>
+            <li>What to do if police refuse your FIR</li>
+          </ul>
+        </div>
+        <div class="cc-footer">
+          <span class="cc-count">Complete Remedy Handbook</span>
+          <span class="cc-link">Read Guide →</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section class="tips-section">
+  <div class="page">
+    <div class="section-kicker">Universal Prevention</div>
+    <h2 class="section-heading">Four Rules That <em>Prevent Most Frauds</em></h2>
+    <div class="tips-grid">
+      <div class="tip-card">
+        <div class="tip-icon">🔴</div>
+        <div class="tip-title">Never Share OTP</div>
+        <div class="tip-body">No bank, UIDAI, TRAI, police, or government agency will ever call you asking for an OTP, PIN, or password. If anyone asks — it is fraud. Hang up immediately.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🟡</div>
+        <div class="tip-title">Request = Red Flag</div>
+        <div class="tip-body">Receiving money on UPI does not require entering your PIN. If someone tells you to "enter your PIN to accept money" — they are stealing from you.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🟢</div>
+        <div class="tip-title">Verify Before You Pay</div>
+        <div class="tip-body">Fake customer care numbers rank on Google. Always get contact numbers from the official app or the back of your card — never from a search result or forwarded message.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🔵</div>
+        <div class="tip-title">"Digital Arrest" Is Not Real</div>
+        <div class="tip-body">No court, CBI, ED, police, or Narcotics Bureau conducts arrests over video call. If you receive such a call — it is 100% fraud. Disconnect and call 1930.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">DPDP India</div>
+      <div class="footer-brand-desc">Independent research on India's data protection and digital law. This cyber fraud awareness section is a public service — share it with anyone who needs it.</div>
+    </div>
+    <div>
+      <div class="footer-col-title">Cyber Fraud KB</div>
+      <ul class="footer-links">
+        <li><a href="cybercrime-financial.html">Financial Frauds</a></li>
+        <li><a href="cybercrime-personal.html">Personal & Social Crimes</a></li>
+        <li><a href="cybercrime-remedy-guide.html">Remedy Guide</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Emergency Help</div>
+      <ul class="footer-links">
+        <li><a href="tel:1930">1930 — Cyber Helpline</a></li>
+        <li><a href="https://cybercrime.gov.in" target="_blank">cybercrime.gov.in</a></li>
+        <li><a href="https://bankingombudsman.rbi.org.in" target="_blank">RBI Ombudsman</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Legal Research</div>
+      <ul class="footer-links">
+        <li><a href="dpdp-kb.html">DPDP Act KB</a></li>
+        <li><a href="uidai-kb.html">UIDAI Act KB</a></li>
+        <li><a href="itact-kb.html">IT Act 2000 KB</a></li>
+        <li><a href="legal.html">Terms & Privacy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 DPDP India · This awareness content is for public education only. For legal advice consult a qualified advocate.</div>
+    <div class="footer-tagline">Est. 2024 · New Delhi, India</div>
+  </div>
+</footer>
+<script>
+const h=document.getElementById('hamburger'),m=document.getElementById('mobile-menu');
+h.addEventListener('click',()=>{h.classList.toggle('open');m.classList.toggle('open');});
+document.querySelectorAll('.mobile-menu a').forEach(a=>a.addEventListener('click',()=>{h.classList.remove('open');m.classList.remove('open');}));
+</script>
+</body>
+</html>

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Principals — Rights, Duties & Children's Data Under DPDP Act 2023 · DPDP India</title>
+<meta name="description" content="A complete guide to the rights of Data Principals under the DPDP Act 2023 — right to information, correction, erasure, grievance redressal, nomination, and duties.">
+<style>@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:wght@600&display=swap');
+:root{--navy:#0a1628;--navy2:#132040;--blue:#1a5cad;--blue-light:#3b82d4;--amber:#d4900a;--amber-light:#f5c842;--teal:#0e7c6b;--coral:#c2420a;--purple:#5b4bc4;--green:#156c2e;--red:#b91c1c;--surface:#f4f6fb;--surface2:#eaeff8;--text:#0d1b2a;--text2:#3a4a5c;--text3:#6b7e94;--border:#c8d4e8;--border2:#b0c0d8;--white:#ffffff;--font-body:'IBM Plex Sans',sans-serif;--font-display:'Playfair Display',serif;--font-mono:'IBM Plex Mono',monospace;--radius:8px;--radius-lg:12px;--shadow:0 2px 12px rgba(10,22,40,.08);--shadow-md:0 4px 24px rgba(10,22,40,.13);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--surface);color:var(--text);font-size:15px;line-height:1.7;min-height:100vh;}
+.header{background:var(--navy);color:#fff;position:relative;overflow:hidden;}
+.header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px),repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px);}
+.header-inner{position:relative;max-width:1100px;margin:0 auto;padding:52px 40px 48px;}
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:20px;font-family:var(--font-mono);font-size:11px;flex-wrap:wrap;}
+.breadcrumb a{color:rgba(255,255,255,.5);text-decoration:none;transition:color .15s;}
+.breadcrumb a:hover{color:var(--amber-light);}
+.breadcrumb .sep{color:rgba(255,255,255,.25);}
+.breadcrumb .cur{color:var(--amber-light);}
+.header-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:4px 14px;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:20px;}
+.header h1{font-family:var(--font-display);font-size:clamp(24px,4vw,38px);font-weight:600;line-height:1.15;color:#fff;margin-bottom:14px;max-width:760px;}
+.header-sub{font-size:15px;color:rgba(255,255,255,.6);max-width:680px;line-height:1.65;margin-bottom:28px;}
+.header-meta{display:flex;flex-wrap:wrap;gap:8px;}
+.meta-pill{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:4px 12px;font-size:12px;color:rgba(255,255,255,.65);font-family:var(--font-mono);}
+.layout{display:flex;max-width:1100px;margin:0 auto;padding:32px 20px;gap:32px;align-items:flex-start;}
+.sidebar{width:220px;flex-shrink:0;position:sticky;top:24px;}
+.sidebar-nav{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:12px 0;box-shadow:var(--shadow);}
+.sidebar-nav h3{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:6px 18px 10px;}
+.sidebar-nav a{display:flex;align-items:center;gap:8px;padding:8px 18px;font-size:13px;color:var(--text2);text-decoration:none;border-left:2px solid transparent;transition:all .15s;line-height:1.3;}
+.sidebar-nav a:hover{background:var(--surface);color:var(--blue);border-left-color:var(--blue-light);}
+.sidebar-nav .nav-num{font-family:var(--font-mono);font-size:10px;color:var(--text3);min-width:16px;}
+.sidebar-nav hr{border:none;border-top:1px solid var(--border);margin:8px 0;}
+.sidebar-nav .nav-sep{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:12px 18px 4px;display:block;}
+.sidebar-related{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px 18px;box-shadow:var(--shadow);margin-top:12px;}
+.sidebar-related h4{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:10px;}
+.sidebar-related a{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);text-decoration:none;padding:5px 0;border-bottom:1px solid var(--border);transition:color .15s;}
+.sidebar-related a:last-child{border-bottom:none;}
+.sidebar-related a:hover{color:var(--blue);}
+.sidebar-related .link-icon{font-size:11px;opacity:.5;}
+.main{flex:1;min-width:0;}
+.section{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:24px;box-shadow:var(--shadow);overflow:hidden;}
+.section-header{display:flex;align-items:center;gap:14px;padding:20px 28px;border-bottom:1px solid var(--border);background:var(--surface);}
+.section-num{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--font-mono);font-size:12px;font-weight:500;flex-shrink:0;}
+.section-header h2{font-size:17px;font-weight:600;color:var(--text);letter-spacing:-.01em;}
+.section-header p{font-size:13px;color:var(--text3);margin-top:2px;}
+.section-body{padding:28px;}
+.prose p{font-size:14px;color:var(--text2);margin-bottom:12px;line-height:1.75;}
+.prose p:last-child{margin-bottom:0;}
+.prose strong{font-weight:600;color:var(--text);}
+.prose ul,.prose ol{padding-left:20px;margin-bottom:12px;}
+.prose li{font-size:14px;color:var(--text2);margin-bottom:6px;line-height:1.65;}
+.note-box{padding:12px 16px;border-radius:var(--radius);font-size:13px;line-height:1.6;border-left:3px solid;margin:14px 0;}
+.note-box.warning{background:#fef3cd;border-color:var(--amber);color:#533200;}
+.note-box.info{background:#e6f1fb;border-color:var(--blue);color:#0a2e5e;}
+.note-box.success{background:#e8f5ee;border-color:var(--green);color:#0a3318;}
+.note-box.danger{background:#fde8e8;border-color:var(--red);color:#5c0f0f;}
+.note-box strong{font-weight:600;}
+.reg-ref{display:inline-flex;align-items:center;gap:4px;padding:2px 8px 2px 6px;border-radius:4px;background:#ede8fe;color:var(--purple);border:1px solid #c4b8f5;font-family:var(--font-mono);font-size:11px;font-weight:500;white-space:nowrap;}
+.reg-ref::before{content:'§';font-family:Georgia,serif;font-size:12px;}
+.right-card{border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin:12px 0;border-left:4px solid var(--blue);}
+.right-card h4{font-size:14px;font-weight:600;color:var(--navy);margin-bottom:6px;display:flex;align-items:center;gap:8px;}
+.right-card .sec{font-family:var(--font-mono);font-size:11px;color:var(--text3);}
+.right-card p{font-size:13px;color:var(--text2);line-height:1.6;}
+.duty-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);}
+.duty-item:last-child{border-bottom:none;}
+.duty-icon{font-size:18px;min-width:28px;}
+.duty-body h4{font-size:14px;font-weight:600;color:var(--text);margin-bottom:3px;}
+.duty-body p{font-size:13px;color:var(--text2);line-height:1.6;}
+.comp-table{width:100%;border-collapse:collapse;font-size:13px;margin:14px 0;}
+.comp-table th{background:var(--navy);color:#fff;padding:9px 14px;text-align:left;font-weight:500;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;}
+.comp-table td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top;line-height:1.6;}
+.comp-table tr:last-child td{border-bottom:none;}
+.comp-table td:first-child{font-weight:600;color:var(--text);width:28%;background:var(--surface);}
+.comp-table td.win{background:#edf7f0;color:#0a3318;}
+.comp-table td.loss{background:#fde8e8;color:#5c0f0f;}
+.verdict-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0;}
+.verdict-card{border-radius:var(--radius);padding:14px;}
+.verdict-card.pro{background:#e8f5ee;border:1px solid #a3d9b8;border-top:3px solid var(--green);}
+.verdict-card.con{background:#fde8e8;border:1px solid #f0b8b8;border-top:3px solid var(--red);}
+.verdict-card h4{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;}
+.verdict-card.pro h4{color:var(--green);}
+.verdict-card.con h4{color:var(--red);}
+.verdict-card ul{list-style:none;padding:0;}
+.verdict-card li{font-size:12px;color:var(--text2);padding:4px 0;border-bottom:1px solid rgba(0,0,0,.06);display:flex;gap:7px;}
+.verdict-card li:last-child{border-bottom:none;}
+.footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:28px 20px;font-size:12px;margin-top:40px;}
+.footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:12px;}
+.footer-links a{color:rgba(255,255,255,.55);text-decoration:none;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;transition:color .15s;}
+.footer-links a:hover{color:var(--amber-light);}
+@media(max-width:820px){.layout{flex-direction:column;padding:16px;}.sidebar{width:100%;position:static;}.sidebar-nav{display:none;}.header-inner{padding:32px 20px;}.section-body{padding:16px;}}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <div class="breadcrumb">
+      <a href="index.html">DPDPIndia.in</a><span class="sep">/</span>
+      <a href="index.html#chakra">Data Ecosystem Chakra</a><span class="sep">/</span>
+      <span class="cur">Data Principals</span>
+    </div>
+    <div class="header-badge">👤 Chakra Spoke · 06 · Data Principals</div>
+    <h1>Data Principals — Rights, Duties &amp; Children's Data</h1>
+    <p class="header-sub">Under the DPDP Act 2023, every individual whose personal data is processed is a Data Principal. This spoke covers the full rights framework — from the right to access information to the right to nominate — as well as the duties imposed on Data Principals and the special protections for children's data.</p>
+    <div class="header-meta">
+      <span class="meta-pill">s. 2(j) Definition</span>
+      <span class="meta-pill">s. 11 Right to Information</span>
+      <span class="meta-pill">s. 12 Correction & Erasure</span>
+      <span class="meta-pill">s. 13 Grievance Redressal</span>
+      <span class="meta-pill">s. 14 Nomination</span>
+      <span class="meta-pill">s. 15 Duties</span>
+    </div>
+  </div>
+</header>
+<div class="layout">
+  <nav class="sidebar">
+    <div class="sidebar-nav">
+      <h3>On this page</h3>
+      <a href="#s1"><span class="nav-num">01</span> Who is a Data Principal?</a>
+      <a href="#s2"><span class="nav-num">02</span> Right to information (s.11)</a>
+      <a href="#s3"><span class="nav-num">03</span> Right to correction & erasure (s.12)</a>
+      <a href="#s4"><span class="nav-num">04</span> Grievance redressal (s.13)</a>
+      <a href="#s5"><span class="nav-num">05</span> Right to nominate (s.14)</a>
+      <a href="#s6"><span class="nav-num">06</span> Duties (s.15)</a>
+      <a href="#s7"><span class="nav-num">07</span> Children's data (s.9)</a>
+      <a href="#s8"><span class="nav-num">08</span> DPDP vs IT Rules 2011</a>
+      <hr>
+      <span class="nav-sep">Chakra Spokes</span>
+      <a href="index.html#chakra"><span class="nav-num">⌂</span> Back to Chakra</a>
+      <a href="chakra-data-fiduciaries.html"><span class="nav-num">→</span> Data Fiduciaries</a>
+    </div>
+    <div class="sidebar-related">
+      <h4>Related Articles</h4>
+      <a href="dpdp-rights.html"><span class="link-icon">↗</span> Data Principal Rights — Full Analysis</a>
+      <a href="dpdp-act.html"><span class="link-icon">↗</span> DPDP Act Core Framework</a>
+    </div>
+  </nav>
+  <main class="main">
+
+    <section class="section" id="s1">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <div><h2>Who is a Data Principal?</h2><p>Section 2(j) definition and scope</p></div>
+      </div>
+      <div class="section-body prose">
+        <p>Under <span class="reg-ref">s. 2(j)</span> of the Digital Personal Data Protection Act, 2023, a <strong>Data Principal</strong> means "the individual to whom the personal data relates." Where the individual is a child, the parents or the lawful guardian shall be considered the Data Principal. Where the individual is a person with disability, their lawful guardian shall be considered the Data Principal.</p>
+        <p>This definition has several key features:</p>
+        <ul>
+          <li><strong>Natural persons only:</strong> Only individual human beings are Data Principals. Companies, trusts, and other legal entities are not — their data (if any) falls outside the DPDP Act's scope.</li>
+          <li><strong>Residency-agnostic:</strong> The Act protects personal data processed within India, and personal data processed outside India if it is in connection with offering goods or services in India — regardless of where the Data Principal is resident.</li>
+          <li><strong>Proxy for incapacity:</strong> Parents/guardians act as Data Principals for children and persons with disabilities, ensuring that vulnerable individuals are not left without protection.</li>
+        </ul>
+        <div class="note-box info">
+          <strong>Contrast with GDPR:</strong> The GDPR uses the term "data subject." The DPDP Act's choice of "Data Principal" is deliberate — it signals agency and authority, not merely subject-status. A Data Principal actively exercises rights; a data subject is passively protected. This reflects the Act's more rights-empowering philosophy.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="s2">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <div><h2>Right to Information — Section 11</h2><p>What a Data Principal can demand to know</p></div>
+      </div>
+      <div class="section-body">
+        <div class="right-card">
+          <h4>Right to Summary of Personal Data <span class="sec">s. 11(1)(a)</span></h4>
+          <p>Every Data Principal has the right to obtain from the Data Fiduciary a summary of the personal data being processed and the processing activities undertaken in respect of such personal data.</p>
+        </div>
+        <div class="right-card">
+          <h4>Right to Identities of Other Fiduciaries <span class="sec">s. 11(1)(b)</span></h4>
+          <p>The Data Principal may demand the identities of all Data Fiduciaries and Data Processors with whom the personal data has been shared, together with a description of the personal data so shared.</p>
+        </div>
+        <div class="right-card">
+          <h4>Right to Any Other Prescribed Information <span class="sec">s. 11(1)(c)</span></h4>
+          <p>Any other information related to personal data and its processing, as may be prescribed by the Central Government in Rules. The DPDP Rules 2025 will specify this category.</p>
+        </div>
+        <div class="note-box warning">
+          <strong>Response timeline:</strong> The DPDP Rules 2025 prescribe specific timelines within which Data Fiduciaries must respond to information requests. Failure to respond within the prescribed period is itself a breach that may be reported to the DPBI.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="s3">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div><h2>Right to Correction, Completion &amp; Erasure — Section 12</h2><p>The right to control data quality and exercise the right to be forgotten</p></div>
+      </div>
+      <div class="section-body prose">
+        <div class="right-card">
+          <h4>Correction &amp; Completion <span class="sec">s. 12(1)</span></h4>
+          <p>Every Data Principal may request the Data Fiduciary to correct inaccurate or misleading personal data, complete incomplete personal data, and update personal data that is out of date — subject to verification of the request.</p>
+        </div>
+        <div class="right-card">
+          <h4>Erasure <span class="sec">s. 12(3)</span></h4>
+          <p>A Data Principal may request erasure of personal data — where that data is no longer necessary for the purpose for which it was collected, or where consent has been withdrawn and no other legal ground for processing exists. The Fiduciary must erase the data unless retention is required by law or is necessary for legal claims.</p>
+        </div>
+        <div class="note-box info">
+          <strong>Right to be Forgotten:</strong> Section 12(3) implements India's "right to be forgotten" — a right expressly recognised in Justice Kaul's concurrence in <em>Puttaswamy</em> (2017). The right is qualified — it operates where no overriding legal obligation to retain the data exists. Search engine de-indexing, as in EU case law, may require separate regulatory guidance.
+        </div>
+        <p>Importantly, the correction/erasure right is <strong>not unlimited</strong>. Where the Data Fiduciary is required by law to retain the data (e.g., under the Prevention of Money Laundering Act, Companies Act, or tax laws), the erasure request can be legitimately refused. The Fiduciary must inform the Data Principal of the grounds for refusal.</p>
+      </div>
+    </section>
+
+    <section class="section" id="s4">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <div><h2>Right to Grievance Redressal — Section 13</h2><p>The two-tier enforcement mechanism</p></div>
+      </div>
+      <div class="section-body prose">
+        <p>Section 13 establishes a two-tier grievance redressal mechanism for Data Principals:</p>
+        <p><strong>Tier 1 — Data Fiduciary's Grievance Officer:</strong> Every Data Fiduciary must establish a grievance redressal mechanism. A Data Principal may file a complaint with the Data Fiduciary's designated grievance officer. The Fiduciary must address the complaint within the prescribed period — typically 30 days under the DPDP Rules 2025.</p>
+        <p><strong>Tier 2 — Data Protection Board of India:</strong> If the Data Fiduciary fails to resolve the complaint within the prescribed period, or if the Data Principal is dissatisfied with the resolution, the complaint may be filed with the Data Protection Board of India (DPBI) under <span class="reg-ref">s. 27</span>. The DPBI has powers to inquire, direct compliance, and impose financial penalties.</p>
+        <div class="note-box success">
+          <strong>Digital-First Redressal:</strong> The DPDP Rules 2025 prescribe that grievance mechanisms must be digital and accessible. The government has signalled that a unified digital portal will allow Data Principals to file complaints against any registered Data Fiduciary — tracking the complaint through both tiers.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="s5">
+      <div class="section-header">
+        <div class="section-num">05</div>
+        <div><h2>Right to Nominate — Section 14</h2><p>A uniquely Indian provision for succession of digital rights</p></div>
+      </div>
+      <div class="section-body prose">
+        <p>Section 14 introduces an important right with no direct equivalent in GDPR: the <strong>right to nominate</strong>. Every Data Principal may nominate any other individual who shall, in the event of the Data Principal's death or incapacity, exercise the rights of the Data Principal under the Act.</p>
+        <p>This provision addresses a critical gap in data governance — what happens to a deceased or incapacitated person's data? Under the DPDP Act, the nominee steps into the shoes of the Data Principal and can:</p>
+        <ul>
+          <li>Request information about what personal data is held</li>
+          <li>Demand correction or erasure of data</li>
+          <li>Withdraw consent given by the deceased Data Principal</li>
+          <li>File grievances and complaints</li>
+        </ul>
+        <div class="note-box amber">
+          <strong>Indian Context:</strong> The right to nominate reflects India's legal tradition of managing affairs through nominated representatives — seen in nomination under insurance policies, provident funds, and bank accounts. Extending this to data rights aligns the DPDP Act with existing Indian legal frameworks familiar to citizens.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="s6">
+      <div class="section-header">
+        <div class="section-num">06</div>
+        <div><h2>Duties of Data Principals — Section 15</h2><p>Responsibilities that accompany rights</p></div>
+      </div>
+      <div class="section-body">
+        <div class="duty-item">
+          <div class="duty-icon">✓</div>
+          <div class="duty-body">
+            <h4>Duty to provide accurate information</h4>
+            <p>A Data Principal must not register a false grievance or complaint with a Data Fiduciary or the DPBI. Furnishing false information or impersonating another person is a breach of duty under <span class="reg-ref">s. 15(b)</span>.</p>
+          </div>
+        </div>
+        <div class="duty-item">
+          <div class="duty-icon">✓</div>
+          <div class="duty-body">
+            <h4>Duty not to impersonate</h4>
+            <p>A Data Principal must not impersonate another individual while providing personal data — even with their consent — where such impersonation would harm that individual.</p>
+          </div>
+        </div>
+        <div class="duty-item">
+          <div class="duty-icon">✓</div>
+          <div class="duty-body">
+            <h4>Duty not to suppress material information</h4>
+            <p>Where personal data relates to a specified purpose and the Data Principal is aware of inaccuracy, the Data Principal has a duty not to suppress information that is material to the Data Fiduciary's lawful processing.</p>
+          </div>
+        </div>
+        <div class="note-box danger">
+          <strong>Penalty for breach of duties:</strong> Breach of a Data Principal's duties can attract a financial penalty under <span class="reg-ref">s. 33(4)</span> — up to ₹10,000. While modest compared to penalties on Data Fiduciaries, this signals that the Act is not one-sided — both parties in the data relationship carry responsibilities.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="s7">
+      <div class="section-header">
+        <div class="section-num">07</div>
+        <div><h2>Children's Data — Section 9</h2><p>Heightened protections for persons under 18</p></div>
+      </div>
+      <div class="section-body prose">
+        <p>Section 9 imposes special obligations on Data Fiduciaries processing the data of children (defined as individuals below 18 years of age, pending government notification of a different age for specific sectors or classes of Data Fiduciary).</p>
+        <p><strong>Verifiable parental consent:</strong> Before processing a child's data, the Data Fiduciary must obtain verifiable consent from the parent or lawful guardian. The DPDP Rules 2025 prescribe the mechanism for verifying that the consent provider is indeed a parent/guardian — using existing digital identity infrastructure (Aadhaar-based or DigiLocker verification is expected).</p>
+        <p><strong>No harmful processing:</strong> Data Fiduciaries must not process children's data in a manner that is likely to cause harm to the child — including behavioural tracking, targeted advertising, and processing that monitors, profiles, or targets children based on their online activities.</p>
+        <p><strong>Age-gating obligation:</strong> Fiduciaries offering services to children must implement age verification mechanisms before processing their data.</p>
+        <p><strong>Significant Data Fiduciary exemption:</strong> The Central Government may, by notification, exempt certain categories of Data Fiduciaries from the verifiable parental consent requirement for children — where processing is for educational or protective purposes.</p>
+        <div class="note-box info">
+          <strong>Global comparison:</strong> Section 9 mirrors the UK's Age Appropriate Design Code (Children's Code) and the U.S. COPPA (Children's Online Privacy Protection Act), though the Indian provision is more principles-based. GDPR sets the age threshold at 16 (with Member States permitted to lower it to 13) — India's 18-year threshold is higher, offering broader protection.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="s8">
+      <div class="section-header">
+        <div class="section-num">08</div>
+        <div><h2>DPDP Act 2023 vs IT Rules 2011 — A Data Principal's Lens</h2><p>What changed, what improved, and what was lost</p></div>
+      </div>
+      <div class="section-body prose">
+
+        <p>India's data protection framework has undergone a fundamental shift — from the narrowly-scoped IT (SPDI) Rules, 2011 to the comprehensive DPDP Act, 2023. For ordinary citizens, the change brings both stronger rights and some notable trade-offs.</p>
+
+        <!-- 1. PERSONAL DATA DEFINITION -->
+        <h3 style="font-size:15px;font-weight:600;color:var(--navy);margin:20px 0 8px;">1. Definition of Personal Data</h3>
+        <table class="comp-table">
+          <thead><tr><th>Dimension</th><th>IT Rules 2011</th><th>DPDP Act 2023</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Term used</td>
+              <td>"Personal information" — data that directly or indirectly identifies a natural person when combined with other available information.</td>
+              <td>"Personal data" — any data about an individual who is identifiable by or in relation to such data. Broader and more modern formulation.</td>
+            </tr>
+            <tr>
+              <td>Medium covered</td>
+              <td>Electronic records only (consistent with IT Act scope). Paper records excluded.</td>
+              <td>Digital personal data — including data collected offline and subsequently digitised. Offline-only records remain outside scope.</td>
+            </tr>
+            <tr>
+              <td>Applies to</td>
+              <td>Bodies corporate (private companies) only. Government agencies entirely excluded.</td>
+              <td>All Data Fiduciaries — private and public — subject to <span class="reg-ref">s. 17</span> government exemptions.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- 2. SENSITIVE DATA -->
+        <h3 style="font-size:15px;font-weight:600;color:var(--navy);margin:20px 0 8px;">2. Sensitive Personal Data — Category Abolished</h3>
+        <table class="comp-table">
+          <thead><tr><th>Dimension</th><th>IT Rules 2011 (SPDI)</th><th>DPDP Act 2023</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Separate category?</td>
+              <td class="win">Yes — exhaustive list: passwords, financial info, health data, sexual orientation, medical records, biometrics.</td>
+              <td class="loss">No statutory "sensitive" category. All personal data treated under a single, uniform standard.</td>
+            </tr>
+            <tr>
+              <td>Practical effect</td>
+              <td>SPDI attracted stricter consent, transfer, and disclosure controls above ordinary personal data.</td>
+              <td>Sensitivity is a factor only when the government designates a Significant Data Fiduciary (SDF) under <span class="reg-ref">s. 10</span> — not a direct right of the individual.</td>
+            </tr>
+            <tr>
+              <td>Assessment</td>
+              <td colspan="2" style="background:#fffaed;color:#533200;font-style:italic;">A step back in explicit protection for health, financial and biometric data — though the Act's uniform high standard may compensate in practice once SDF categories are notified.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- 3. DISCLOSURE -->
+        <h3 style="font-size:15px;font-weight:600;color:var(--navy);margin:20px 0 8px;">3. Disclosure by Fiduciaries &amp; Processors</h3>
+        <table class="comp-table">
+          <thead><tr><th>Scenario</th><th>IT Rules 2011</th><th>DPDP Act 2023</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Third-party disclosure</td>
+              <td>Required prior permission unless disclosed in a contract or required by law. Government agencies could obtain SPDI by written request for identity verification or crime investigation.</td>
+              <td>Permitted only for the consented purpose, or for enumerated "legitimate uses" under <span class="reg-ref">s. 7</span> (legal obligations, medical emergencies, State benefits, employment). No general balancing test.</td>
+            </tr>
+            <tr>
+              <td>Role of Processors</td>
+              <td>Not separately defined — contractors and outsourcing vendors had no specific obligations.</td>
+              <td>Data Processors explicitly defined (<span class="reg-ref">s. 2(k)</span>). Must operate under a valid contract; may only process as instructed by the Fiduciary. Fiduciary remains accountable for Processor acts.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- 4. REMEDIES -->
+        <h3 style="font-size:15px;font-weight:600;color:var(--navy);margin:20px 0 8px;">4. Remedy for Data Breaches — The Critical Shift</h3>
+        <div class="note-box danger">
+          <strong>Key regression for individuals:</strong> The DPDP Act 2023 removes the individual's right to claim direct financial compensation that existed under the IT Act 2000 regime. This is the most significant trade-off for Data Principals.
+        </div>
+        <table class="comp-table">
+          <thead><tr><th>Dimension</th><th>IT Rules 2011 / IT Act s. 43A</th><th>DPDP Act 2023</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Direct compensation</td>
+              <td class="win">Yes — individuals could claim compensation for "wrongful loss" caused by a body corporate's negligence in maintaining security. No upper cap on compensation amount.</td>
+              <td class="loss">Removed. No right to sue for individual damages. Penalties imposed by DPBI go to the Consolidated Fund of India — not the affected individual.</td>
+            </tr>
+            <tr>
+              <td>Primary remedy</td>
+              <td>Civil suit for compensation + complaint to adjudicating officer under IT Act.</td>
+              <td>File grievance with Fiduciary's Grievance Officer → escalate to Data Protection Board of India (DPBI) if unresolved.</td>
+            </tr>
+            <tr>
+              <td>Enforcement body</td>
+              <td>IT Act Adjudicating Officers (state-level, inconsistent enforcement).</td>
+              <td class="win">DPBI — a dedicated national quasi-judicial body with digital-first proceedings and penalty powers up to ₹250 crore.</td>
+            </tr>
+            <tr>
+              <td>Deterrence</td>
+              <td>Compensation to individual — theoretically unlimited but practically difficult to quantify and litigate.</td>
+              <td class="win">Massive institutional fines (₹250 crore for security failures) create stronger corporate deterrence — but benefit accrues to the State, not the victim.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- 5. VERDICT -->
+        <h3 style="font-size:15px;font-weight:600;color:var(--navy);margin:20px 0 8px;">5. Overall Assessment for Data Principals</h3>
+        <div class="verdict-grid">
+          <div class="verdict-card pro">
+            <h4>✓ Improvements</h4>
+            <ul>
+              <li><span>→</span>Broader scope — all digital personal data protected, not just SPDI</li>
+              <li><span>→</span>Explicit, enforceable rights: access, correction, erasure, nomination</li>
+              <li><span>→</span>Dedicated enforcement body (DPBI) with real penalty powers</li>
+              <li><span>→</span>Consent Managers enable unified consent management</li>
+              <li><span>→</span>Children's data gets heightened statutory protection</li>
+              <li><span>→</span>Right to nominate — unique to Indian law, no GDPR equivalent</li>
+            </ul>
+          </div>
+          <div class="verdict-card con">
+            <h4>✗ Concerns</h4>
+            <ul>
+              <li><span>→</span>No direct compensation — victims of breaches cannot sue for damages</li>
+              <li><span>→</span>No "sensitive data" category — health, financial &amp; biometric data lose explicit extra protection</li>
+              <li><span>→</span>New duties with penalties — false grievances can cost ₹10,000</li>
+              <li><span>→</span>Wide government exemptions (<span class="reg-ref">s. 17</span>) reduce privacy protection against State surveillance</li>
+              <li><span>→</span>No right to data portability (unlike GDPR Art. 20)</li>
+              <li><span>→</span>Penalty funds go to State, not affected individuals</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="note-box info">
+          <strong>Bottom line:</strong> The DPDP Act 2023 represents a net positive for Data Principals in terms of institutional strength, scope, and enforceable rights — but it extracts a real cost: the removal of individual compensation and the dilution of explicit sensitive-data protections. Citizens gain a powerful regulator but lose a personal legal remedy. Whether the DPBI's deterrence effect adequately substitutes for private compensation rights will be tested as enforcement begins.
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+</div>
+<footer class="footer">
+  <div class="footer-links">
+    <a href="index.html">DPDPIndia.in Home</a>
+    <a href="index.html#chakra">Data Ecosystem Chakra</a>
+    <a href="dpdp-kb.html">DPDP KB</a>
+    <a href="legal.html">Legal & Disclaimer</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <p>© 2026 DPDP India · Independent Policy Research · All content is educational only — not legal advice. Verify independently.</p>
+</footer>
+</body>
+</html>

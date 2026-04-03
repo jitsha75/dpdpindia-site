@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyber Fraud Intelligence Hub — India | DPDPIndia.in</title>
+<meta name="description" content="India's cyber fraud intelligence hub. Latest fraud alerts, scam patterns, how to report cybercrime on 1930, UPI fraud, digital arrest, OTP theft, and recovery steps.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --parchment:#F8F4EC;--cream:#FDFAF5;--ink:#1A1610;
+  --prussian:#1B2B3A;--slate:#2D3D4E;--saffron:#D4760A;--saffron-lt:#F0A840;
+  --ochre:#B8862C;--mist:#7A7468;
+  --rule:rgba(26,22,16,0.12);--rule-gold:rgba(212,118,10,0.25);
+  --shadow-sm:0 2px 12px rgba(26,22,16,0.06);--shadow-md:0 8px 40px rgba(26,22,16,0.10);
+  --danger:#C0392B;--danger-dark:#922b21;--danger-lt:rgba(192,57,43,0.08);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:'Source Serif 4',Georgia,serif;background:var(--cream);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+.masthead{background:#1a0404;padding:9px 0;text-align:center;border-bottom:2px solid var(--danger);}
+.masthead-text{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.5);}
+.masthead-text span{color:#e57373;}
+
+nav{position:sticky;top:0;z-index:500;background:var(--cream);border-bottom:1px solid var(--rule);box-shadow:var(--shadow-sm);}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:relative;}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0;}
+.nav-brand-name{display:flex;flex-direction:column;gap:1px;}
+.nav-brand-name strong{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--prussian);}
+.nav-brand-name span{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);}
+.nav-menu{display:flex;align-items:center;gap:0;list-style:none;}
+.nav-item>a{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--slate);text-decoration:none;padding:0 14px;height:64px;display:flex;align-items:center;transition:color 0.2s;white-space:nowrap;border-bottom:2px solid transparent;}
+.nav-item>a:hover,.nav-item.active>a{color:var(--danger);border-bottom-color:var(--danger);}
+.nav-item.has-dropdown>a::after{content:'▾';font-size:0.5rem;margin-left:5px;opacity:0.6;}
+.nav-dropdown{display:none;position:absolute;top:100%;left:0;min-width:260px;background:var(--cream);border:1px solid var(--rule);border-top:3px solid var(--danger);box-shadow:var(--shadow-md);z-index:600;}
+.nav-item:hover .nav-dropdown{display:block;}
+.nav-dropdown a{display:block;font-family:'Source Serif 4',serif;font-size:0.82rem;font-weight:300;color:var(--slate);text-decoration:none;padding:0.5rem 1.2rem;transition:background 0.15s;}
+.nav-dropdown a:hover{background:var(--parchment);}
+.nav-dropdown-label{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--danger);padding:0.5rem 1.2rem 0.3rem;}
+.nav-dropdown hr{border:none;border-top:1px solid var(--rule);margin:0.4rem 0;}
+.nav-cta{background:var(--danger)!important;color:#fff!important;padding:9px 18px;margin-left:12px;border-bottom:none!important;}
+.nav-cta:hover{background:var(--danger-dark)!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--prussian);transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-menu{display:none;position:absolute;top:64px;left:0;right:0;background:var(--cream);border-bottom:2px solid var(--danger);box-shadow:var(--shadow-md);z-index:499;max-height:80vh;overflow-y:auto;}
+.mobile-menu.open{display:block;}
+.mobile-menu ul{list-style:none;padding:0.5rem 1.5rem 1.5rem;}
+.mobile-menu ul li a{display:block;font-size:0.92rem;color:var(--slate);text-decoration:none;padding:0.6rem 0;border-bottom:1px solid var(--rule);}
+.mm-label{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--danger);padding:1rem 0 0.3rem;display:block;}
+
+.page{max-width:1320px;margin:0 auto;padding:0 2rem;}
+
+/* EMERGENCY HERO */
+.emergency-hero{background:var(--danger);padding:3rem 0;position:relative;overflow:hidden;}
+.emergency-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:32px 32px;pointer-events:none;}
+.helpline-block{display:flex;align-items:center;gap:3rem;flex-wrap:wrap;}
+.helpline-num{font-family:'Playfair Display',serif;font-size:clamp(4rem,8vw,7rem);font-weight:900;color:#fff;line-height:1;}
+.helpline-label{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:0.5rem;}
+.helpline-desc{font-size:1.05rem;font-weight:300;color:rgba(255,255,255,0.85);line-height:1.7;max-width:500px;margin-bottom:1.2rem;}
+.helpline-steps{display:flex;gap:1rem;flex-wrap:wrap;}
+.helpline-step{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;background:rgba(255,255,255,0.15);color:#fff;padding:8px 16px;border:1px solid rgba(255,255,255,0.25);}
+.emergency-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem;}
+.btn-white{font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;background:#fff;color:var(--danger);padding:14px 28px;text-decoration:none;transition:opacity 0.2s;display:inline-block;font-weight:500;}
+.btn-white:hover{opacity:0.9;}
+.btn-outline-white{font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(255,255,255,0.4);color:#fff;padding:14px 28px;text-decoration:none;transition:border-color 0.2s;display:inline-block;}
+.btn-outline-white:hover{border-color:#fff;}
+
+/* FRAUD TYPE NAV */
+.fraud-type-nav{background:var(--prussian);border-bottom:2px solid rgba(192,57,43,0.4);}
+.fraud-type-nav-inner{max-width:1320px;margin:0 auto;padding:0 2rem;display:flex;gap:0;overflow-x:auto;}
+.fraud-type-tab{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);padding:1rem 1.5rem;border-bottom:3px solid transparent;text-decoration:none;transition:all 0.2s;white-space:nowrap;cursor:pointer;}
+.fraud-type-tab:hover,.fraud-type-tab.active{color:#fff;border-bottom-color:var(--danger);}
+
+/* FRAUD ALERT CARDS */
+.section{padding:4rem 0;}
+.section.dark{background:var(--prussian);}
+.section.alt{background:var(--parchment);}
+.section-kicker{display:flex;align-items:center;gap:12px;font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--danger);margin-bottom:0.8rem;}
+.section-kicker::before{content:'';width:28px;height:1px;background:var(--danger);}
+.section-heading{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.4rem);font-weight:700;line-height:1.15;color:var(--prussian);margin-bottom:0.6rem;}
+.section-heading em{font-style:italic;color:var(--danger);}
+.section-heading.light{color:var(--parchment);}
+.section-deck{font-size:0.92rem;font-weight:300;line-height:1.85;color:var(--mist);margin-bottom:2.5rem;max-width:600px;}
+.section-deck.light{color:rgba(248,244,236,0.6);}
+
+.alert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.alert-card{background:var(--cream);border:1px solid rgba(192,57,43,0.2);border-top:4px solid var(--danger);padding:0;transition:box-shadow 0.2s,transform 0.2s;}
+.alert-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);}
+.alert-card-header{background:var(--danger);padding:1.2rem 1.5rem;position:relative;}
+.alert-severity{font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.14em;text-transform:uppercase;background:rgba(255,255,255,0.15);color:#fff;padding:2px 8px;margin-bottom:0.5rem;display:inline-block;}
+.alert-severity.critical{background:rgba(0,0,0,0.3);}
+.alert-severity.high{background:rgba(212,118,10,0.4);}
+.alert-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:#fff;line-height:1.2;}
+.alert-card-body{padding:1.2rem 1.5rem;}
+.alert-howit{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--danger);margin-bottom:0.3rem;}
+.alert-desc{font-size:0.82rem;font-weight:300;line-height:1.75;color:var(--slate);margin-bottom:1rem;}
+.alert-redflags{list-style:none;margin-bottom:1rem;}
+.alert-redflags li{display:flex;align-items:flex-start;gap:6px;font-size:0.78rem;font-weight:300;color:var(--slate);padding:0.25rem 0;}
+.alert-redflags li::before{content:'⚠';font-size:0.65rem;color:var(--danger);flex-shrink:0;margin-top:2px;}
+.alert-card-footer{padding:0.8rem 1.5rem;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;}
+.alert-date{font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.08em;color:var(--mist);}
+.alert-link{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--danger);text-decoration:none;}
+.alert-link:hover{text-decoration:underline;}
+
+/* FRAUD TYPE CARDS */
+.fraud-types-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;}
+.fraud-type-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);padding:2rem;text-decoration:none;color:inherit;transition:border-color 0.2s,background 0.2s;display:block;}
+.fraud-type-card:hover{border-color:rgba(192,57,43,0.5);background:rgba(192,57,43,0.06);}
+.ft-icon{font-size:2.2rem;margin-bottom:0.8rem;}
+.ft-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--parchment);margin-bottom:0.5rem;}
+.ft-desc{font-size:0.85rem;font-weight:300;color:rgba(248,244,236,0.55);line-height:1.7;margin-bottom:1rem;}
+.ft-examples{list-style:none;}
+.ft-examples li{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.04em;color:rgba(248,244,236,0.5);padding:0.2rem 0;display:flex;align-items:center;gap:6px;}
+.ft-examples li::before{content:'→';color:var(--danger);}
+.ft-link{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--danger);margin-top:1rem;display:block;}
+
+/* REPORT STEPS */
+.report-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;}
+.report-step{background:var(--cream);border:1px solid var(--rule);border-right:none;padding:2rem 1.5rem;position:relative;}
+.report-step:last-child{border-right:1px solid var(--rule);}
+.report-step::after{content:'→';position:absolute;right:-12px;top:50%;transform:translateY(-50%);font-family:'JetBrains Mono',monospace;font-size:1rem;color:var(--danger);z-index:1;background:var(--cream);padding:0 2px;}
+.report-step:last-child::after{display:none;}
+.step-num{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:var(--danger);opacity:0.15;line-height:1;margin-bottom:0.5rem;}
+.step-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--prussian);margin-bottom:0.5rem;}
+.step-desc{font-size:0.82rem;font-weight:300;color:var(--mist);line-height:1.7;}
+.step-time{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--danger);margin-top:0.8rem;}
+
+/* PROTECT YOURSELF */
+.protect-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.protect-card{background:var(--cream);border:1px solid var(--rule);border-left:4px solid var(--danger);padding:1.5rem;}
+.protect-icon{font-size:1.5rem;margin-bottom:0.6rem;}
+.protect-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--prussian);margin-bottom:0.5rem;}
+.protect-tips{list-style:none;}
+.protect-tips li{font-size:0.8rem;font-weight:300;color:var(--slate);padding:0.3rem 0;border-bottom:1px solid var(--rule);display:flex;align-items:flex-start;gap:6px;}
+.protect-tips li:last-child{border-bottom:none;}
+.protect-tips li::before{content:'✓';font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--success,#1A6B3A);flex-shrink:0;margin-top:2px;}
+
+/* RESOURCES STRIP */
+.resources-strip{background:var(--prussian);padding:3rem 0;}
+.resources-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
+.resource-item{padding:1.5rem;border:1px solid rgba(255,255,255,0.07);text-decoration:none;transition:border-color 0.2s;}
+.resource-item:hover{border-color:rgba(192,57,43,0.4);}
+.resource-tag{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--danger);margin-bottom:0.5rem;}
+.resource-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--parchment);line-height:1.3;}
+.resource-arrow{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:0.8rem;}
+
+footer{background:var(--prussian);padding:3rem 0 2rem;border-top:3px solid var(--danger);}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.footer-copy{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.1em;color:rgba(255,255,255,0.3);}
+.footer-legal-links{display:flex;gap:1.5rem;}
+.footer-legal-links a{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.08em;color:rgba(255,255,255,0.3);text-decoration:none;}
+.footer-legal-links a:hover{color:var(--danger);}
+
+/* === TABLET (≤1100px) === */
+@media(max-width:1100px){
+  .nav-menu{display:none;}
+  .hamburger{display:flex;}
+  .alert-grid{grid-template-columns:1fr 1fr;}
+  .fraud-types-grid{grid-template-columns:1fr;}
+  .report-steps{grid-template-columns:1fr 1fr;}
+  .protect-grid{grid-template-columns:1fr 1fr;}
+  .resources-grid{grid-template-columns:1fr 1fr;}
+  .page{padding:0 1.5rem;}
+  .section{padding:3rem 0;}
+}
+/* === MOBILE (≤768px) === */
+@media(max-width:768px){
+  .alert-grid{grid-template-columns:1fr;}
+  .protect-grid{grid-template-columns:1fr;}
+  .resources-grid{grid-template-columns:1fr;}
+  .report-steps{grid-template-columns:1fr 1fr;}
+  .helpline-block{flex-direction:column;gap:1.5rem;}
+  .helpline-num{font-size:4.5rem;}
+  .emergency-hero{padding:2.5rem 0;}
+  .emergency-actions{flex-direction:column;align-items:flex-start;}
+  .btn-white,.btn-outline-white{width:100%;text-align:center;}
+  .footer-bottom{flex-direction:column;align-items:flex-start;gap:0.8rem;}
+  .page{padding:0 1rem;}
+}
+/* === SMALL MOBILE (≤640px) === */
+@media(max-width:640px){
+  .helpline-num{font-size:3.5rem;}
+  .helpline-steps{gap:0.5rem;}
+  .helpline-step{padding:6px 10px;font-size:0.52rem;}
+  .report-steps{grid-template-columns:1fr;}
+  .report-step{border-right:1px solid var(--rule);border-bottom:none;}
+  .report-step::after{content:'↓';right:auto;left:50%;bottom:-12px;top:auto;transform:translateX(-50%);}
+  .section-heading{font-size:1.5rem;}
+  .fraud-type-nav-inner{padding:0 1rem;}
+  .alert-card-body{padding:1rem;}
+  .alert-card-header{padding:1rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <span class="masthead-text">🚨 Cyber Emergency? Call <span>1930</span> immediately · cybercrime.gov.in · Not Legal Advice</span>
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-brand-name">
+        <strong>DPDPIndia.in</strong>
+        <span>Data Protection Intelligence</span>
+      </div>
+    </a>
+    <ul class="nav-menu">
+      <li class="nav-item has-dropdown">
+        <a href="dpdp-kb.html">DPDP Act</a>
+        <div class="nav-dropdown">
+          <a href="dpdp-kb.html">DPDP Overview</a>
+          <a href="dpdp-act.html">Plain Language Guide</a>
+          <a href="dpdp-rights.html">Your Rights</a>
+          <a href="dpdp-rules.html">DPDP Rules 2025</a>
+        </div>
+      </li>
+      <li class="nav-item has-dropdown">
+        <a href="for-businesses.html">For Business</a>
+        <div class="nav-dropdown">
+          <a href="for-businesses.html#checklist">Compliance Checklist</a>
+          <a href="for-businesses.html#privacy-policy">Privacy Policy Template</a>
+          <a href="for-businesses.html#consent">Consent Generator</a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="for-individuals.html">For Individuals</a></li>
+      <li class="nav-item active has-dropdown">
+        <a href="cyber-fraud-hub.html">🚨 Cyber Fraud</a>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-label">Fraud Types</div>
+          <a href="cybercrime-financial.html">Financial Fraud (UPI, Digital Arrest)</a>
+          <a href="cybercrime-personal.html">Personal & Social Crimes</a>
+          <hr>
+          <div class="nav-dropdown-label">Take Action</div>
+          <a href="cybercrime-remedy-guide.html">How to Report Step-by-Step</a>
+          <a href="cybercrime-kb.html">Cybercrime Knowledge Base</a>
+        </div>
+      </li>
+      <li class="nav-item has-dropdown">
+        <a href="blog.html">Resources</a>
+        <div class="nav-dropdown">
+          <a href="dpdp-kb.html">DPDP KB</a>
+          <a href="itact-kb.html">IT Act KB</a>
+          <a href="ekyc-kb.html">eKYC / UIDAI KB</a>
+          <a href="case-tracker.html">Case Tracker</a>
+          <a href="blog.html">All Articles</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="tel:1930" class="nav-cta">📞 Call 1930</a>
+      </li>
+    </ul>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="index.html">← Home</a></li>
+      <span class="mm-label">🚨 Emergency</span>
+      <li><a href="tel:1930" style="color:var(--danger);font-weight:600;">📞 Call 1930 — Cyber Helpline</a></li>
+      <li><a href="cybercrime-remedy-guide.html">How to Report Step-by-Step</a></li>
+      <span class="mm-label">Fraud Types</span>
+      <li><a href="cybercrime-financial.html">Financial Fraud</a></li>
+      <li><a href="cybercrime-personal.html">Personal Crimes</a></li>
+      <li><a href="cybercrime-kb.html">Cybercrime KB</a></li>
+      <span class="mm-label">Other</span>
+      <li><a href="for-businesses.html">For Businesses</a></li>
+      <li><a href="for-individuals.html">For Individuals</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- FRAUD TYPE SUB-NAV -->
+<div class="fraud-type-nav">
+  <div class="fraud-type-nav-inner">
+    <a href="#alerts" class="fraud-type-tab active">🔴 Latest Alerts</a>
+    <a href="#financial" class="fraud-type-tab">💸 Financial Fraud</a>
+    <a href="#digital-arrest" class="fraud-type-tab">🚔 Digital Arrest</a>
+    <a href="#upi" class="fraud-type-tab">📱 UPI / OTP Fraud</a>
+    <a href="#social" class="fraud-type-tab">👤 Social Engineering</a>
+    <a href="#report" class="fraud-type-tab">📋 How to Report</a>
+    <a href="#protect" class="fraud-type-tab">🛡 Protect Yourself</a>
+  </div>
+</div>
+
+<!-- EMERGENCY HERO -->
+<section class="emergency-hero">
+  <div class="page">
+    <div class="helpline-block">
+      <div class="helpline-num">1930</div>
+      <div>
+        <div class="helpline-label">National Cyber Crime Helpline — India</div>
+        <p class="helpline-desc">If you've been a victim of cyber fraud — UPI theft, OTP fraud, digital arrest, investment scam, or any online crime — call 1930 immediately. The sooner you report, the higher the chance of fund recovery.</p>
+        <div class="helpline-steps">
+          <span class="helpline-step">1. Call 1930</span>
+          <span class="helpline-step">2. File on cybercrime.gov.in</span>
+          <span class="helpline-step">3. Block your account</span>
+          <span class="helpline-step">4. Preserve evidence</span>
+        </div>
+        <div class="emergency-actions">
+          <a href="cybercrime-remedy-guide.html" class="btn-white">Full Step-by-Step Guide →</a>
+          <a href="https://cybercrime.gov.in" target="_blank" rel="noopener" class="btn-outline-white">Report Online →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LATEST FRAUD ALERTS -->
+<section class="section" id="alerts">
+  <div class="page">
+    <div class="section-kicker">Intelligence Alerts</div>
+    <h2 class="section-heading">Latest Fraud <em>Alerts</em> — April 2026</h2>
+    <p class="section-deck">Current active scam patterns reported across India. Updated regularly from CERT-In, cybercrime.gov.in, and verified media sources.</p>
+    <div class="alert-grid">
+
+      <div class="alert-card">
+        <div class="alert-card-header">
+          <span class="alert-severity critical">🔴 Critical — Active</span>
+          <div class="alert-title">Digital Arrest Scam — Fake CBI/ED Officers</div>
+        </div>
+        <div class="alert-card-body">
+          <div class="alert-howit">How it works</div>
+          <div class="alert-desc">Fraudsters pose as CBI, ED, TRAI, or police officers via video call. They claim your Aadhaar/phone is linked to drug trafficking or money laundering and demand immediate money transfer to "clear your name."</div>
+          <ul class="alert-redflags">
+            <li>Unexpected video call from "official" number</li>
+            <li>Demands "stay on camera" for hours</li>
+            <li>Asks you to keep it secret from family</li>
+            <li>Requests immediate UPI transfer for "bail"</li>
+          </ul>
+        </div>
+        <div class="alert-card-footer">
+          <span class="alert-date">Updated: April 2026</span>
+          <a href="cybercrime-financial.html" class="alert-link">Full Details →</a>
+        </div>
+      </div>
+
+      <div class="alert-card">
+        <div class="alert-card-header">
+          <span class="alert-severity critical">🔴 Critical — Surge</span>
+          <div class="alert-title">Investment Fraud — Fake Trading Apps</div>
+        </div>
+        <div class="alert-card-body">
+          <div class="alert-howit">How it works</div>
+          <div class="alert-desc">Victims are added to WhatsApp "investment groups" where paid actors share fake profits. Victims invest via counterfeit trading apps showing false returns. Withdrawal is blocked or requires "taxes" to release funds — which are stolen.</div>
+          <ul class="alert-redflags">
+            <li>WhatsApp group with "investment experts"</li>
+            <li>Shows high returns in custom app only</li>
+            <li>Withdrawal requires paying a "tax" first</li>
+            <li>App not on Google Play Store or Apple Store</li>
+          </ul>
+        </div>
+        <div class="alert-card-footer">
+          <span class="alert-date">Updated: March 2026</span>
+          <a href="cybercrime-financial.html" class="alert-link">Full Details →</a>
+        </div>
+      </div>
+
+      <div class="alert-card">
+        <div class="alert-card-header">
+          <span class="alert-severity high">🟠 High — Active</span>
+          <div class="alert-title">AI Voice Cloning — Family Emergency Scam</div>
+        </div>
+        <div class="alert-card-body">
+          <div class="alert-howit">How it works</div>
+          <div class="alert-desc">Using AI, scammers clone a family member's voice from social media. They call pretending to be in a hospital/accident emergency and urgently request money transfer before you can verify.</div>
+          <ul class="alert-redflags">
+            <li>Urgent call from "family member" in distress</li>
+            <li>Voice sounds slightly robotic or flat</li>
+            <li>Requests immediate UPI/bank transfer</li>
+            <li>Asks you not to call back on their number</li>
+          </ul>
+        </div>
+        <div class="alert-card-footer">
+          <span class="alert-date">Updated: April 2026</span>
+          <a href="cybercrime-personal.html" class="alert-link">Full Details →</a>
+        </div>
+      </div>
+
+      <div class="alert-card">
+        <div class="alert-card-header">
+          <span class="alert-severity high">🟠 High — Rising</span>
+          <div class="alert-title">Fake Job Offers — Task-Based Fraud</div>
+        </div>
+        <div class="alert-card-body">
+          <div class="alert-howit">How it works</div>
+          <div class="alert-desc">Victims are offered work-from-home "like videos / complete tasks" jobs. Initial small payments build trust. Then larger "deposits" are required to unlock higher earnings — all funds are stolen.</div>
+          <ul class="alert-redflags">
+            <li>Telegram-based "job" group</li>
+            <li>Initial small payment to build trust</li>
+            <li>Asks to invest increasing amounts</li>
+            <li>Work dashboard shows earnings that can't be withdrawn</li>
+          </ul>
+        </div>
+        <div class="alert-card-footer">
+          <span class="alert-date">Updated: March 2026</span>
+          <a href="cybercrime-financial.html" class="alert-link">Full Details →</a>
+        </div>
+      </div>
+
+      <div class="alert-card">
+        <div class="alert-card-header">
+          <span class="alert-severity high">🟠 High — Ongoing</span>
+          <div class="alert-title">OTP / SIM Swap Fraud — Banking Takeover</div>
+        </div>
+        <div class="alert-card-body">
+          <div class="alert-howit">How it works</div>
+          <div class="alert-desc">Scammers use your Aadhaar/PAN details (bought from data breaches) to get a duplicate SIM from your carrier. They then reset banking passwords and drain accounts before you realise.</div>
+          <ul class="alert-redflags">
+            <li>Your phone suddenly loses network</li>
+            <li>You stop receiving SMS for 30+ minutes</li>
+            <li>Unknown transaction OTPs received</li>
+            <li>Bank account access suddenly fails</li>
+          </ul>
+        </div>
+        <div class="alert-card-footer">
+          <span class="alert-date">Updated: February 2026</span>
+          <a href="cybercrime-financial.html" class="alert-link">Full Details →</a>
+        </div>
+      </div>
+
+      <div class="alert-card">
+        <div class="alert-card-header">
+          <span class="alert-severity">🟡 Medium — Seasonal</span>
+          <div class="alert-title">Income Tax Refund Fraud</div>
+        </div>
+        <div class="alert-card-body">
+          <div class="alert-howit">How it works</div>
+          <div class="alert-desc">Fraudsters send SMS/WhatsApp claiming your income tax refund is pending. They ask you to click a link and enter banking details to "receive" the refund — which instead drains your account.</div>
+          <ul class="alert-redflags">
+            <li>SMS from unofficial number about "tax refund"</li>
+            <li>Link redirects to a fake IT portal</li>
+            <li>Asks for full banking credentials</li>
+            <li>Real IT refunds come via ECS — no link needed</li>
+          </ul>
+        </div>
+        <div class="alert-card-footer">
+          <span class="alert-date">Updated: March 2026 (Tax Season)</span>
+          <a href="cybercrime-financial.html" class="alert-link">Full Details →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FRAUD TYPES -->
+<section class="section dark" id="financial">
+  <div class="page">
+    <div class="section-kicker" style="color:var(--danger);">Intelligence Hub</div>
+    <h2 class="section-heading light">All Fraud <em style="color:var(--danger);">Types</em></h2>
+    <p class="section-deck light">In-depth analysis of each fraud category — modus operandi, red flags, and what to do if targeted.</p>
+    <div class="fraud-types-grid">
+
+      <a href="cybercrime-financial.html" class="fraud-type-card">
+        <div class="ft-icon">💸</div>
+        <div class="ft-title">Financial & Banking Fraud</div>
+        <div class="ft-desc">Fraud that directly targets your money — bank accounts, UPI, investments, and digital payments. The most common category and the fastest-growing.</div>
+        <ul class="ft-examples">
+          <li>UPI Fraud &amp; Fake Payment Requests</li>
+          <li>Digital Arrest Scam</li>
+          <li>Investment / Trading App Fraud</li>
+          <li>Loan App Fraud &amp; Harassment</li>
+          <li>KYC Update Scam</li>
+          <li>Account Hacking &amp; Card Fraud</li>
+        </ul>
+        <div class="ft-link">Learn More + How to Report →</div>
+      </a>
+
+      <a href="cybercrime-personal.html" class="fraud-type-card">
+        <div class="ft-icon">👤</div>
+        <div class="ft-title">Personal & Social Engineering</div>
+        <div class="ft-desc">Fraud targeting your identity, relationships, and personal information — often emotionally manipulative and harder to identify in the moment.</div>
+        <ul class="ft-examples">
+          <li>AI Voice Cloning — Family Emergency</li>
+          <li>Romance Scam &amp; Sextortion</li>
+          <li>Fake Job / Work-from-Home Scam</li>
+          <li>Social Media Account Takeover</li>
+          <li>Impersonation (Celebrity, Officer)</li>
+          <li>Phishing &amp; Smishing</li>
+        </ul>
+        <div class="ft-link">Learn More + How to Report →</div>
+      </a>
+
+      <a href="cybercrime-kb.html" class="fraud-type-card" id="digital-arrest">
+        <div class="ft-icon">🚔</div>
+        <div class="ft-title">Digital Arrest Scam — Special Focus</div>
+        <div class="ft-desc">India's fastest-growing fraud type. Victims lose lakhs to crores in a single call. Know exactly how it works so you can identify and resist it.</div>
+        <ul class="ft-examples">
+          <li>Fake CBI / ED / TRAI officer call</li>
+          <li>"Your package contains drugs" scenario</li>
+          <li>"Your Aadhaar used in crime"</li>
+          <li>Forced video call kept on for hours</li>
+          <li>Secrecy demanded from family</li>
+          <li>Multiple UPI transfers demanded</li>
+        </ul>
+        <div class="ft-link">Read Full Digital Arrest Guide →</div>
+      </a>
+
+      <a href="cybercrime-kb.html" class="fraud-type-card" id="upi">
+        <div class="ft-icon">📱</div>
+        <div class="ft-title">UPI / OTP / SIM Swap Fraud</div>
+        <div class="ft-desc">Technical attacks on your payment infrastructure — SIM swapping, OTP interception, and malicious payment requests designed to look legitimate.</div>
+        <ul class="ft-examples">
+          <li>Collect Request (you pay, not receive)</li>
+          <li>Screen-sharing to capture OTP</li>
+          <li>SIM Swap — duplicate SIM fraud</li>
+          <li>Fake UPI apps and QR codes</li>
+          <li>Cashback &amp; Reward Scam</li>
+          <li>Bank customer care impersonation</li>
+        </ul>
+        <div class="ft-link">Learn More + How to Report →</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO REPORT -->
+<section class="section alt" id="report">
+  <div class="page">
+    <div class="section-kicker">Take Action</div>
+    <h2 class="section-heading">If It Happened to You — <em>Act Now</em></h2>
+    <p class="section-deck">Speed is critical. Every minute matters in financial fraud — banks can freeze transactions if you report within the golden window. Follow these steps in exact order.</p>
+    <div class="report-steps">
+      <div class="report-step">
+        <div class="step-num">01</div>
+        <div class="step-title">Call 1930 Immediately</div>
+        <div class="step-desc">National Cyber Crime Helpline. Tell them: amount, bank, UPI ID or account number, and time of fraud. They will create a ticket and alert the bank's nodal officer.</div>
+        <div class="step-time">⏱ Do this within 1 hour for best chance of recovery</div>
+      </div>
+      <div class="report-step">
+        <div class="step-num">02</div>
+        <div class="step-title">Block Your Account & UPI</div>
+        <div class="step-desc">Immediately call your bank's 24×7 helpline (printed on your card) to freeze transactions. Open your UPI app and disable the bank account linked to it.</div>
+        <div class="step-time">⏱ Do this simultaneously with calling 1930</div>
+      </div>
+      <div class="report-step">
+        <div class="step-num">03</div>
+        <div class="step-title">File Online Complaint</div>
+        <div class="step-desc">Go to cybercrime.gov.in → "Report Cyber Crime" → "Financial Fraud". Attach screenshots, transaction IDs, and call logs. Get your complaint reference number.</div>
+        <div class="step-time">⏱ Within 24 hours of the fraud</div>
+      </div>
+      <div class="report-step">
+        <div class="step-num">04</div>
+        <div class="step-title">File an FIR</div>
+        <div class="step-desc">Visit your local police station or file on the e-FIR portal of your state. Take your cybercrime.gov.in complaint reference number. An FIR strengthens your recovery claim with the bank.</div>
+        <div class="step-time">⏱ Within 72 hours</div>
+      </div>
+    </div>
+    <div style="margin-top:2rem;text-align:center;">
+      <a href="cybercrime-remedy-guide.html" style="font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;background:var(--danger);color:#fff;padding:14px 32px;text-decoration:none;display:inline-block;transition:background 0.2s;" onmouseover="this.style.background='#a93226'" onmouseout="this.style.background='var(--danger)'">Full Step-by-Step Reporting Guide →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROTECT YOURSELF -->
+<section class="section" id="protect">
+  <div class="page">
+    <div class="section-kicker">Prevention</div>
+    <h2 class="section-heading">Protect <em>Yourself</em></h2>
+    <p class="section-deck">Simple practices that dramatically reduce your exposure to the most common fraud types.</p>
+    <div class="protect-grid">
+
+      <div class="protect-card">
+        <div class="protect-icon">🏦</div>
+        <div class="protect-title">Banking Safety</div>
+        <ul class="protect-tips">
+          <li>Never share OTP, PIN, or CVV with anyone — banks never ask</li>
+          <li>Enable transaction alerts on WhatsApp and SMS</li>
+          <li>Set a daily UPI transaction limit in your bank app</li>
+          <li>Check bank account at least weekly for unknown transactions</li>
+          <li>Never use banking apps on public Wi-Fi</li>
+        </ul>
+      </div>
+
+      <div class="protect-card">
+        <div class="protect-icon">📞</div>
+        <div class="protect-title">Call & Video Safety</div>
+        <ul class="protect-tips">
+          <li>No real government officer ever demands money over phone/video</li>
+          <li>If threatened with "digital arrest" — hang up, call family</li>
+          <li>Verify caller identity by calling the official number independently</li>
+          <li>AI can clone voices — always have a family code word for emergencies</li>
+          <li>Screen-share = fraud risk; never share screen during a financial call</li>
+        </ul>
+      </div>
+
+      <div class="protect-card">
+        <div class="protect-icon">🌐</div>
+        <div class="protect-title">Online & Social Safety</div>
+        <ul class="protect-tips">
+          <li>Enable 2-factor authentication on all social media accounts</li>
+          <li>Investment groups on WhatsApp/Telegram are almost always frauds</li>
+          <li>Verify job offers on the company's official website directly</li>
+          <li>Never download APKs or apps from WhatsApp or Telegram links</li>
+          <li>Limit personal information visible on your social media profiles</li>
+        </ul>
+      </div>
+
+      <div class="protect-card">
+        <div class="protect-icon">🪪</div>
+        <div class="protect-title">Aadhaar & Identity Safety</div>
+        <ul class="protect-tips">
+          <li>Use Masked Aadhaar for KYC — shows last 4 digits only</li>
+          <li>Check Aadhaar authentication history on UIDAI.gov.in regularly</li>
+          <li>Lock your Aadhaar biometric when not in use (mAadhaar app)</li>
+          <li>Never share full Aadhaar photocopy for hotel check-ins etc.</li>
+          <li>Report suspicious Aadhaar use at 1947 or uidai.gov.in</li>
+        </ul>
+      </div>
+
+      <div class="protect-card">
+        <div class="protect-icon">📱</div>
+        <div class="protect-title">Phone & SIM Safety</div>
+        <ul class="protect-tips">
+          <li>If phone suddenly loses network — call carrier immediately (SIM Swap alert)</li>
+          <li>Set a SIM PIN through your phone settings</li>
+          <li>Keep telecom account linked to a separate secure email</li>
+          <li>Don't accept unknown call forwarding requests</li>
+          <li>Register your number on DND (trai.gov.in) to reduce fraud calls</li>
+        </ul>
+      </div>
+
+      <div class="protect-card">
+        <div class="protect-icon">👨‍👩‍👧</div>
+        <div class="protect-title">Protect Your Family</div>
+        <ul class="protect-tips">
+          <li>Brief elderly family members — they are the most targeted</li>
+          <li>Create a family "verification code" for emergency calls</li>
+          <li>Show elders how "digital arrest" scams work with examples</li>
+          <li>Set up Google Family Safety or parental controls for children</li>
+          <li>Know each other's bank — so you can help freeze accounts</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- RESOURCES -->
+<div class="resources-strip">
+  <div class="page">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--danger);margin-bottom:1.5rem;">More Resources</div>
+    <div class="resources-grid">
+      <a href="cybercrime-kb.html" class="resource-item">
+        <div class="resource-tag">Knowledge Base</div>
+        <div class="resource-title">Complete Cybercrime Knowledge Base</div>
+        <div class="resource-arrow">Explore KB →</div>
+      </a>
+      <a href="cybercrime-remedy-guide.html" class="resource-item">
+        <div class="resource-tag">Action Guide</div>
+        <div class="resource-title">Full Reporting & Recovery Guide</div>
+        <div class="resource-arrow">Read Guide →</div>
+      </a>
+      <a href="cybercrime-financial.html" class="resource-item">
+        <div class="resource-tag">Financial Fraud</div>
+        <div class="resource-title">UPI, Digital Arrest, Banking Frauds</div>
+        <div class="resource-arrow">View All →</div>
+      </a>
+      <a href="dpdp-rights.html" class="resource-item">
+        <div class="resource-tag">Your Rights</div>
+        <div class="resource-title">DPDP Act Data Rights — Know What's Yours</div>
+        <div class="resource-arrow">Know Rights →</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="page">
+    <div style="margin-bottom:2rem;">
+      <div style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--danger);">1930</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.1em;color:rgba(255,255,255,0.4);margin-bottom:0.5rem;">NATIONAL CYBER CRIME HELPLINE · 24×7</div>
+      <div style="font-size:0.82rem;font-weight:300;color:rgba(248,244,236,0.4);">Also report at cybercrime.gov.in · All information on this page is for awareness only — content sourced from CERT-In, cybercrime.gov.in, and verified media. Not legal advice.</div>
+    </div>
+    <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin-bottom:1.5rem;">
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 DPDPIndia.in · Intermediary under IT Act 2000 §79 · Not Legal Advice</div>
+      <div class="footer-legal-links">
+        <a href="legal.html">Terms</a>
+        <a href="contact.html">Contact</a>
+        <a href="index.html">Home</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('hamburger').addEventListener('click',function(){
+  this.classList.toggle('open');
+  document.getElementById('mobileMenu').classList.toggle('open');
+});
+</script>
+</body>
+</html>

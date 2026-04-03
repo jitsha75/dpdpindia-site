@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shreya Singhal v. Union of India — Free Speech & Intermediary Liability · DPDP India</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--parchment:#F8F4EC;--cream:#FDFAF5;--paper:#F2EDE2;--ink:#1A1610;--prussian:#1B2B3A;--slate:#2D3D4E;--saffron:#D4760A;--saffron-lt:#F0A840;--ochre:#B8862C;--mist:#7A7468;--rule:rgba(26,22,16,0.12);--rule-gold:rgba(212,118,10,0.25);--shadow-sm:0 2px 12px rgba(26,22,16,0.06);--shadow-md:0 8px 40px rgba(26,22,16,0.10);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:'Source Serif 4',Georgia,serif;background:var(--cream);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;}
+.masthead{background:var(--prussian);padding:10px 0;text-align:center;border-bottom:3px solid var(--saffron);}
+.masthead-text{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.55);}
+.masthead-text span{color:var(--saffron-lt);}
+nav{position:sticky;top:0;z-index:200;background:var(--cream);border-bottom:1px solid var(--rule);box-shadow:var(--shadow-sm);}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:68px;}
+.nav-brand{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.nav-brand-seal{width:42px;height:42px;flex-shrink:0;}
+.nav-brand-name{display:flex;flex-direction:column;gap:1px;}
+.nav-brand-name strong{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--prussian);line-height:1;}
+.nav-brand-name span{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);line-height:1;}
+.nav-links{display:flex;align-items:center;gap:1.5rem;list-style:none;}
+.nav-links a{font-family:'Source Serif 4',serif;font-size:0.82rem;color:var(--slate);text-decoration:none;transition:color 0.2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--saffron);transform:scaleX(0);transition:transform 0.25s;transform-origin:left;}
+.nav-links a:hover{color:var(--saffron);}
+.nav-links a:hover::after{transform:scaleX(1);}
+.nav-blog-btn{font-family:'JetBrains Mono',monospace!important;font-size:0.65rem!important;text-transform:uppercase;background:var(--prussian)!important;color:var(--cream)!important;padding:9px 20px;border-radius:1px;}
+.nav-blog-btn::after{display:none!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--prussian);transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-menu{display:none;position:absolute;top:68px;left:0;right:0;background:var(--cream);border-bottom:2px solid var(--saffron);box-shadow:var(--shadow-md);z-index:199;}
+.mobile-menu.open{display:block;}
+.mobile-menu ul{list-style:none;padding:1rem 2rem 1.5rem;}
+.mobile-menu ul li a{display:block;font-family:'Source Serif 4',serif;font-size:0.95rem;color:var(--slate);text-decoration:none;padding:0.7rem 0;border-bottom:1px solid var(--rule);}
+.mobile-menu ul li:last-child a{border-bottom:none;}
+.mobile-menu ul li a:hover{color:var(--saffron);}
+.page-header{background:var(--prussian);padding:5rem 0 4rem;position:relative;overflow:hidden;}
+.page-header::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
+.page{max-width:1320px;margin:0 auto;padding:0 2rem;}
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:1.5rem;font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);position:relative;z-index:1;flex-wrap:wrap;}
+.breadcrumb a{color:rgba(255,255,255,0.4);text-decoration:none;}
+.breadcrumb a:hover{color:var(--saffron-lt);}
+.breadcrumb-sep{color:rgba(255,255,255,0.25);}
+.page-kicker{display:flex;align-items:center;gap:10px;margin-bottom:1.5rem;position:relative;z-index:1;}
+.page-kicker-line{width:32px;height:1px;background:var(--saffron);}
+.page-kicker-text{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--saffron);}
+.page-title{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3.5vw,3rem);font-weight:700;line-height:1.12;color:var(--parchment);margin-bottom:1rem;position:relative;z-index:1;}
+.page-title em{font-style:italic;color:var(--saffron-lt);}
+.page-deck{font-size:1rem;font-weight:300;line-height:1.85;color:rgba(248,244,236,0.65);max-width:640px;position:relative;z-index:1;}
+/* CASE META BAND */
+.case-meta-band{background:var(--ink);border-top:3px solid var(--saffron);}
+.case-meta-inner{max-width:1320px;margin:0 auto;padding:0;display:grid;grid-template-columns:repeat(5,1fr);}
+.cm-item{padding:1.4rem 1.8rem;border-right:1px solid rgba(255,255,255,0.07);}
+.cm-item:last-child{border-right:none;}
+.cm-label{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:0.3rem;}
+.cm-value{font-family:'Source Serif 4',serif;font-size:0.88rem;font-weight:400;color:var(--parchment);}
+/* ARTICLE LAYOUT */
+.article-layout{display:grid;grid-template-columns:1fr 300px;gap:5rem;padding:5rem 0 6rem;align-items:start;}
+.sidebar-box{background:var(--parchment);border:1px solid var(--rule);padding:2rem;margin-bottom:1.5rem;}
+.sidebar-title{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--saffron);margin-bottom:1.2rem;padding-bottom:0.8rem;border-bottom:1px solid var(--rule);}
+.sidebar-links{list-style:none;display:flex;flex-direction:column;gap:0;}
+.sidebar-links li a{display:flex;align-items:center;gap:8px;font-size:0.85rem;color:var(--slate);text-decoration:none;padding:0.7rem 0;border-bottom:1px solid var(--rule);transition:color 0.2s;}
+.sidebar-links li:last-child a{border-bottom:none;}
+.sidebar-links li a:hover{color:var(--saffron);}
+.sidebar-links li a::before{content:'→';color:var(--saffron);font-size:0.8rem;flex-shrink:0;}
+.sidebar-links li.active a{color:var(--prussian);font-weight:600;}
+.sidebar-links li.active a::before{content:'●';font-size:0.5rem;}
+.cite-box{background:rgba(212,118,10,0.05);border:1px solid var(--rule-gold);border-left:3px solid var(--saffron);padding:1.2rem 1.5rem;}
+.cite-box-title{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.8rem;}
+.cite-box p{font-size:0.8rem;font-weight:300;line-height:1.75;color:var(--slate);}
+/* ARTICLE BODY */
+.article-body h2{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:var(--prussian);margin:3rem 0 1rem;line-height:1.2;padding-top:1rem;border-top:2px solid var(--ink);}
+.article-body h2:first-child{margin-top:0;border-top:none;}
+.article-body h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--prussian);margin:2rem 0 0.8rem;line-height:1.3;}
+.article-body p{font-size:1rem;font-weight:300;line-height:1.9;color:var(--slate);margin-bottom:1.4rem;}
+.article-body p strong{font-weight:600;color:var(--prussian);}
+.article-body ul,.article-body ol{margin:0 0 1.4rem 1.5rem;}
+.article-body li{font-size:0.95rem;font-weight:300;line-height:1.8;color:var(--slate);margin-bottom:0.5rem;}
+.article-body li strong{font-weight:600;color:var(--prussian);}
+.pullquote{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:400;font-style:italic;line-height:1.6;color:var(--prussian);padding:1.5rem 1.5rem 1.5rem 2rem;margin:2.5rem 0;background:var(--parchment);border-left:3px solid var(--saffron);}
+/* VERDICT BLOCK */
+.verdict-block{background:var(--prussian);padding:3rem;margin:2.5rem 0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;}
+.vb-item{padding-left:1.5rem;border-left:2px solid var(--saffron);}
+.vb-status{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.5rem;}
+.vb-status.struck{color:#ef4444;}
+.vb-status.readdown{color:var(--saffron-lt);}
+.vb-status.upheld{color:#22c55e;}
+.vb-section{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--parchment);margin-bottom:0.5rem;}
+.vb-desc{font-size:0.82rem;font-weight:300;line-height:1.75;color:rgba(248,244,236,0.6);}
+/* SECTION BLOCK */
+.section-block{background:var(--prussian);color:var(--parchment);padding:2.5rem;margin:2.5rem 0;position:relative;overflow:hidden;}
+.section-block::before{content:'';position:absolute;top:0;right:0;width:40%;height:100%;background:radial-gradient(ellipse at right,rgba(212,118,10,0.1) 0%,transparent 70%);pointer-events:none;}
+.section-block-num{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.5rem;}
+.section-block h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--parchment);margin-bottom:0.8rem;}
+.section-block p{font-size:0.9rem;font-weight:300;line-height:1.8;color:rgba(248,244,236,0.7);margin-bottom:0;}
+/* UPDATE CALLOUT */
+.update-callout{background:rgba(27,42,58,0.06);border:1px solid rgba(27,42,58,0.15);border-left:3px solid var(--prussian);padding:1.5rem;margin:2rem 0;}
+.update-callout-label{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--prussian);margin-bottom:0.6rem;}
+.update-callout p{font-size:0.9rem;font-weight:300;line-height:1.8;color:var(--slate);margin-bottom:0;}
+/* ARTICLE NAV STRIP */
+.article-nav-strip{background:var(--ink);padding:2rem 0;}
+.ans-inner{max-width:1320px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.ans-btn{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s;}
+.ans-btn:hover{color:var(--saffron-lt);}
+/* FOOTER */
+footer{background:var(--ink);padding:4rem 0 2rem;}
+.footer-grid{max-width:1320px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,0.06);}
+.footer-brand-name{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--parchment);margin-bottom:0.8rem;}
+.footer-brand-desc{font-size:0.82rem;font-weight:300;line-height:1.8;color:rgba(248,244,236,0.4);max-width:280px;}
+.footer-col-title{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);margin-bottom:1rem;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.footer-links a{font-size:0.82rem;font-weight:300;color:rgba(248,244,236,0.45);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--parchment);}
+.footer-bottom{max-width:1320px;margin:0 auto;padding:1.5rem 2rem 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;}
+.footer-copy{font-size:0.75rem;color:rgba(248,244,236,0.25);}
+@media(max-width:1024px){.article-layout{grid-template-columns:1fr;}.sidebar{order:-1;}}
+@media(max-width:900px){.nav-links{display:none;}.hamburger{display:flex;}.verdict-block{grid-template-columns:1fr;}.case-meta-inner{grid-template-columns:repeat(3,1fr);}.footer-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.page-header{padding:3rem 0 2.5rem;}.case-meta-inner{grid-template-columns:1fr 1fr;}.footer-grid{grid-template-columns:1fr;}.footer-bottom{flex-direction:column;align-items:flex-start;}}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <p class="masthead-text">DPDP India · <span>Independent Strategic Policy & Legal Research</span> · Digital Personal Data Protection Act, 2023</p>
+</div>
+
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <svg class="nav-brand-seal" viewBox="0 0 42 42" fill="none"><circle cx="21" cy="21" r="20" stroke="#1B2B3A" stroke-width="1.5"/><circle cx="21" cy="21" r="14" stroke="#D4760A" stroke-width="0.75" stroke-dasharray="2 2"/><text x="21" y="25" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="700" fill="#1B2B3A">§</text></svg>
+      <div class="nav-brand-name"><strong>DPDP India</strong><span>Policy & Legal Research</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#research">Research</a></li>
+      <li><a href="dpdp-kb.html">DPDP KB</a></li>
+      <li><a href="ekyc-kb.html">eKYC KB</a></li>
+      <li><a href="itact-kb.html">IT Act KB</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="https://blog.dpdpindia.in" class="nav-blog-btn">Blog →</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#research">Research</a></li>
+      <li><a href="dpdp-kb.html">DPDP KB</a></li>
+      <li><a href="ekyc-kb.html">eKYC KB</a></li>
+      <li><a href="itact-kb.html">IT Act KB</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="https://blog.dpdpindia.in">Blog →</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="page">
+    <div class="breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">›</span><a href="itact-kb.html">IT Act KB</a><span class="breadcrumb-sep">›</span><span>Article 02</span></div>
+    <div class="page-kicker"><div class="page-kicker-line"></div><span class="page-kicker-text">Article 02 of 05 · Landmark Judgment</span></div>
+    <h1 class="page-title"><em>Shreya Singhal</em> v. Union of India (2015)<br>Free Speech & Intermediary Liability</h1>
+    <p class="page-deck">The Supreme Court verdict that struck down Section 66A, read down Section 79, and fundamentally redrawn the online free speech and platform liability landscape in India — with continuing reverberations in 2025–26.</p>
+  </div>
+</header>
+
+<div class="case-meta-band">
+  <div class="case-meta-inner">
+    <div class="cm-item"><div class="cm-label">Citation</div><div class="cm-value">(2015) 5 SCC 1</div></div>
+    <div class="cm-item"><div class="cm-label">Court</div><div class="cm-value">Supreme Court of India</div></div>
+    <div class="cm-item"><div class="cm-label">Bench</div><div class="cm-value">J. Chelameswar &amp; J. Nariman</div></div>
+    <div class="cm-item"><div class="cm-label">Decided</div><div class="cm-value">24 March 2015</div></div>
+    <div class="cm-item"><div class="cm-label">Judgment</div><div class="cm-value">Unanimous (2-0)</div></div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="article-layout">
+
+    <article class="article-body">
+
+      <h2>Background: The Mumbai Arrests (2012)</h2>
+      <p>On 19 November 2012, two women — Shaheen Dhada and Rinu Srinivasan — were arrested by Mumbai Police under <strong>Section 66A of the Information Technology Act, 2000</strong>. Their alleged offence: posting and "liking" a comment on Facebook that questioned the propriety of the bandh (city shutdown) organised following the death of Shiv Sena leader Bal Thackeray. The arrests triggered nationwide outrage and media coverage, exposing the chilling potential of Section 66A.</p>
+      <p>Though the women were quickly released and charges dropped, the incident catalysed a constitutional challenge. Law student Shreya Singhal filed a writ petition under Article 32, joined by People's Union for Civil Liberties (PUCL), Common Cause, and various internet companies and individuals. The petitions were clubbed and heard by a two-judge bench of the Supreme Court.</p>
+
+      <h2>The Three Contested Provisions</h2>
+      <p>The petitions challenged three distinct provisions of the IT Act:</p>
+
+      <div class="verdict-block">
+        <div class="vb-item">
+          <div class="vb-status struck">● STRUCK DOWN</div>
+          <div class="vb-section">Section 66A</div>
+          <div class="vb-desc">Criminalised "offensive," "annoying," or "menacing" online messages. Declared unconstitutional in its entirety — violated Article 19(1)(a); not saved by any ground under Article 19(2).</div>
+        </div>
+        <div class="vb-item">
+          <div class="vb-status readdown">● READ DOWN</div>
+          <div class="vb-section">Section 79</div>
+          <div class="vb-desc">Intermediary safe harbour provision. Read down to limit takedown obligation to court orders or government authority directions only — private complaints insufficient.</div>
+        </div>
+        <div class="vb-item">
+          <div class="vb-status upheld">● UPHELD</div>
+          <div class="vb-section">Section 69A</div>
+          <div class="vb-desc">Government power to block website access. Upheld as a narrowly drawn provision with adequate procedural safeguards — committee review, written directions, no public disclosure required.</div>
+        </div>
+      </div>
+
+      <h2>Part I — Section 66A: Why It Was Struck Down</h2>
+
+      <h3>The Vagueness Problem</h3>
+      <p>The Court's primary ground for striking down Section 66A was its unconstitutional <strong>vagueness</strong>. The provision criminalised sending information through a computer resource that was:</p>
+      <ul>
+        <li>"Grossly offensive or of a menacing character"</li>
+        <li>Sent to cause "annoyance, inconvenience, danger, obstruction, insult, injury, criminal intimidation, enmity, hatred, or ill will"</li>
+      </ul>
+      <p>The Court found that terms like "grossly offensive," "menacing," "annoyance," and "inconvenience" were <strong>undefined and undefinable</strong> with certainty — meaning that a very large amount of protected and innocent speech could potentially fall within the provision's sweep. This created an unconstitutional "chilling effect" on free speech, as speakers could not know in advance whether their communications would attract criminal liability.</p>
+
+      <div class="pullquote">"Section 66A is cast so widely that virtually any opinion on any subject would be covered by it, as it is not possible to lay down an intelligible or definite standard by which the quality of speech can be judged."<br><span style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--saffron);margin-top:0.8rem;display:block;">— Shreya Singhal v. Union of India (2015) 5 SCC 1</span></div>
+
+      <h3>Not Saved by Article 19(2)</h3>
+      <p>The government argued that Section 66A was a "reasonable restriction" on free speech permitted under Article 19(2). The Court rejected this argument on a fundamental doctrinal ground: Article 19(2) permits restrictions only in the interests of specific heads — sovereignty and integrity of India, security of the State, friendly relations with foreign states, <strong>public order</strong>, decency or morality, contempt of court, defamation, or incitement to an offence.</p>
+      <p>The Court held that the speech targeted by Section 66A — causing "annoyance" or "inconvenience" — did not fall within any of these heads. There was <strong>no proximate connection</strong> between online messages causing "annoyance" and any of the recognised grounds for restriction. The provision therefore failed the constitutional test entirely.</p>
+
+      <h3>The Shaheen Dhada Problem: Criminalising Dissent</h3>
+      <p>The Court expressly noted that Section 66A could be — and had been — used to criminalise legitimate political commentary, satirical speech, and factual information. Unlike defamation (which requires proof of falsity and damage) or incitement (which requires a nexus to imminent violence), Section 66A required only that the message cause "annoyance" to anyone — a standard impossible to apply consistently and perfectly designed for abuse.</p>
+
+      <h2>Part II — Section 79: The Safe Harbour Reading</h2>
+
+      <h3>What Section 79 Does</h3>
+      <p><strong>Section 79</strong> of the IT Act provides conditional immunity ("safe harbour") to intermediaries — defined under Section 2(1)(w) to include network service providers, internet service providers, web-hosting service providers, search engines, online payment sites, and any person who "stores or transmits" data on behalf of others. The immunity applies when the intermediary:</p>
+      <ol>
+        <li>Functions as a mere "conduit" — i.e., does not initiate, select recipients, or modify the transmission;</li>
+        <li>Observes due diligence as prescribed by the Central Government; and</li>
+        <li>Does not conspire, abet, aid, or induce the offence.</li>
+      </ol>
+
+      <div class="section-block">
+        <div class="section-block-num">Section 79(3)(b) · IT Act 2000 — as read down</div>
+        <h3>The Critical "Actual Knowledge" Clause</h3>
+        <p>Section 79(3)(b) provides that the safe harbour does NOT apply if "upon receiving actual knowledge, or on being notified by the appropriate Government or its agency that any information, data or communication link... is being used to commit the unlawful act, the intermediary fails to expeditiously remove or disable access to that material."</p>
+        <p style="margin-top:0.8rem;color:rgba(248,244,236,0.5);font-size:0.82rem;">The Supreme Court read "actual knowledge" narrowly to mean: knowledge received by way of a <strong>court order</strong> or a notification from a <strong>government authority</strong> acting under due process. Private complaints do not constitute "actual knowledge" triggering the takedown obligation.</p>
+      </div>
+
+      <h3>The Court's Reading: Court Order or Government Direction Only</h3>
+      <p>The most practically significant holding on Section 79 was the Court's <strong>reading down</strong> of the "actual knowledge" standard in Section 79(3)(b). The Court held that intermediaries are obligated to take down content <em>only</em> when they receive:</p>
+      <ul>
+        <li>An order from a <strong>court of competent jurisdiction</strong>; or</li>
+        <li>A direction from a <strong>government authority</strong> acting within its legal mandate under due process.</li>
+      </ul>
+      <p>This reading critically means that private individuals' complaints, grievances from other users, or informal demands from government officials without formal authority <strong>do not trigger</strong> the intermediary's takedown obligation under Section 79. An intermediary that acts (or fails to act) on private complaints alone does not lose its safe harbour.</p>
+
+      <h3>Rule 3(4) of the 2011 Intermediary Guidelines — Read Down</h3>
+      <p>The Court also read down Rule 3(4) of the 2011 Intermediary Guidelines, which had required intermediaries to take down content within 36 hours of receiving a complaint. The Court held this rule must also be read to apply only to court orders and government directions — not private complaints.</p>
+
+      <h2>Part III — Section 69A: Why It Survived</h2>
+      <p>The Court's unanimous upholding of Section 69A is crucial context. The provision was saved precisely because — unlike Section 66A — it contains multiple procedural safeguards:</p>
+      <ul>
+        <li>Directions to block must be issued by the Central Government (not local police or individual officials);</li>
+        <li>The Secretary-level officer must record reasons in writing;</li>
+        <li>A <strong>Review Committee</strong> reviews each blocking order;</li>
+        <li>There is no public disclosure of blocking orders (which the Court held was a reasonable confidentiality protection);</li>
+        <li>The scope is limited to specified grounds — sovereignty, security, public order, friendly relations, incitement.</li>
+      </ul>
+      <p>The Court concluded that this architecture made Section 69A "a narrowly drawn provision with several safeguards" — distinguishable from the vague and overbroad Section 66A.</p>
+
+      <h2>Part IV — 2025–26 Update: X Corp v. Union of India</h2>
+      <div class="update-callout">
+        <div class="update-callout-label">⚡ Ongoing Litigation · 2025</div>
+        <p>In March 2025, X Corp (formerly Twitter) filed a writ petition before the Karnataka High Court challenging the legality of <strong>blocking orders issued under Section 79(3)(b)</strong> — rather than under the constitutionally validated Section 69A mechanism. The challenge arose from a <strong>Ministry of Electronics and Information Technology (MeitY) Office Memorandum of 31 October 2023</strong>, which directed all central ministries, state governments, and local police to issue blocking orders using Section 79(3)(b) — bypassing Section 69A's procedural safeguards entirely.</p>
+        <p style="margin-top:0.8rem;">The MHA subsequently launched the <strong>Sahyog Portal</strong> (March 2024), a centralised dashboard enabling officials across government to issue Section 79(3)(b) blocking orders directly to intermediaries. X Corp argued this created a "parallel mechanism" that circumvents the constitutional safeguards the Supreme Court relied upon in upholding Section 69A in <em>Shreya Singhal</em>. The Karnataka High Court reserved its verdict on 19 July 2025. Judgment pending as of publication.</p>
+      </div>
+
+      <h2>Significance for DPDPIndia.in as an Intermediary</h2>
+      <p>For DPDPIndia.in, the <em>Shreya Singhal</em> holding has direct operational relevance:</p>
+      <ul>
+        <li><strong>Safe Harbour applies:</strong> DPDPIndia.in qualifies as an intermediary under Section 2(1)(w) as it hosts research content and (if enabled) user-generated comments. It is entitled to the Section 79 safe harbour.</li>
+        <li><strong>Private complaints insufficient:</strong> Informal or private demands for content removal do not trigger a legal takedown obligation. Only court orders or authorised government directions create such an obligation.</li>
+        <li><strong>Due diligence required:</strong> To maintain safe harbour protection, DPDPIndia.in must publish a Privacy Policy and Terms of Use, appoint a Grievance Officer, and comply with the IT Rules 2021. See <a href="itact-intermediary.html">Article 05</a> and <a href="legal.html">Legal & Safe Harbour Policy</a>.</li>
+        <li><strong>36-hour takedown obligation:</strong> Upon receiving a valid court order or government direction, content must be removed within 36 hours to maintain safe harbour protection.</li>
+      </ul>
+
+      <h2>Sources & Citations</h2>
+      <ul>
+        <li><em>Shreya Singhal v. Union of India</em> (2015) 5 SCC 1 (Chelameswar and Nariman JJ.)</li>
+        <li><em>Information Technology Act</em>, 2000, ss. 2(1)(w), 66A (struck down), 69A, 79</li>
+        <li>IT (Intermediary Guidelines) Rules, 2011, r. 3(4) (read down)</li>
+        <li>IT (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021</li>
+        <li>MeitY Office Memorandum, No. 07/05/2020-Legal, dated 31 October 2023</li>
+        <li><em>X Corp. v. Union of India</em>, WP No. [Karnataka HC 2025] — verdict reserved 19 July 2025</li>
+        <li><em>Avnish Bajaj v. State</em> (2005) 116 DLT 427 (Delhi HC)</li>
+      </ul>
+      <div style="background:rgba(212,118,10,0.06);border:1px solid var(--rule-gold);border-left:3px solid var(--saffron);padding:1.2rem 1.5rem;margin-top:1.5rem;">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.04em;color:var(--ochre);margin-bottom:0;"><strong>Research Disclaimer:</strong> This article is for educational purposes only. DPDPIndia.in is an intermediary under the IT Act. Independently verify all information. See <a href="legal.html" style="color:var(--saffron);">Safe Harbour Policy</a>.</p>
+      </div>
+    </article>
+
+    <aside class="sidebar">
+      <div class="sidebar-box">
+        <div class="sidebar-title">IT Act KB Articles</div>
+        <ul class="sidebar-links">
+          <li><a href="itact-history.html">01 — Origins & 2008 Pivot</a></li>
+          <li class="active"><a href="itact-shreya-singhal.html">02 — Shreya Singhal Verdict</a></li>
+          <li><a href="itact-egovernance.html">03 — E-Governance</a></li>
+          <li><a href="itact-sections.html">04 — Key Sections Reference</a></li>
+          <li><a href="itact-intermediary.html">05 — IT Rules 2021 Compliance</a></li>
+        </ul>
+      </div>
+      <div class="cite-box">
+        <div class="cite-box-title">Citation</div>
+        <p>DPDP India, 'Shreya Singhal v. Union of India — Free Speech & Intermediary Liability', <em>IT Act Knowledge Base</em> (2026), Article 02 of 05. dpdpindia.in/itact-shreya-singhal.html</p>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<div class="article-nav-strip">
+  <div class="ans-inner">
+    <a href="itact-history.html" class="ans-btn">← 01 — Origins & 2008 Pivot</a>
+    <span><a href="itact-kb.html" style="color:rgba(255,255,255,0.35);font-family:'JetBrains Mono',monospace;font-size:0.6rem;text-decoration:none;">IT Act KB</a></span>
+    <a href="itact-egovernance.html" class="ans-btn">03 — E-Governance →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-brand-name">DPDP India</div><div class="footer-brand-desc">Independent strategic policy and legal research on India's digital governance landscape.</div></div>
+    <div><div class="footer-col-title">IT Act KB</div><ul class="footer-links"><li><a href="itact-kb.html">KB Index</a></li><li><a href="itact-history.html">Origins & Amendment</a></li><li><a href="itact-egovernance.html">E-Governance</a></li></ul></div>
+    <div><div class="footer-col-title">Legal</div><ul class="footer-links"><li><a href="legal.html">Terms & Privacy</a></li><li><a href="legal.html#safe-harbour">Safe Harbour</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2026 DPDP India · Independent Policy Research · All rights reserved</div></div>
+</footer>
+<script>
+const h=document.getElementById('hamburger'),m=document.getElementById('mobile-menu');
+h.addEventListener('click',()=>{h.classList.toggle('open');m.classList.toggle('open');});
+</script>
+</body>
+</html>

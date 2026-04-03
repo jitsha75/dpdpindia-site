@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Policy Analysis & Research | DPDPIndia.in</title>
+<meta name="description" content="In-depth policy analysis, legal commentary, and research on India's DPDP Act 2023, IT Act 2000, Aadhaar eKYC, and digital governance from DPDPIndia.in.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --parchment:#F8F4EC;--cream:#FDFAF5;--paper:#F2EDE2;--ink:#1A1610;
+  --prussian:#1B2B3A;--slate:#2D3D4E;--saffron:#D4760A;--saffron-lt:#F0A840;
+  --ochre:#B8862C;--chakra-blue:#1B3A6B;--mist:#7A7468;
+  --rule:rgba(26,22,16,0.12);--rule-gold:rgba(212,118,10,0.25);
+  --shadow-sm:0 2px 12px rgba(26,22,16,0.06);--shadow-md:0 8px 40px rgba(26,22,16,0.10);
+  --danger:#C0392B;--danger-lt:rgba(192,57,43,0.08);
+  --green:#1A6B3A;--green-lt:rgba(26,107,58,0.08);
+  --blue-lt:rgba(27,58,107,0.07);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:'Source Serif 4',Georgia,serif;background:var(--cream);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;}
+
+/* MASTHEAD */
+.masthead{background:var(--prussian);padding:10px 0;text-align:center;border-bottom:3px solid var(--saffron);}
+.masthead-text{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.55);}
+.masthead-text span{color:var(--saffron-lt);}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:200;background:var(--cream);border-bottom:1px solid var(--rule);box-shadow:var(--shadow-sm);}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:68px;position:relative;}
+.nav-brand{display:flex;align-items:center;gap:14px;text-decoration:none;flex-shrink:0;}
+.nav-brand-seal{width:42px;height:42px;flex-shrink:0;}
+.nav-brand-name{display:flex;flex-direction:column;gap:1px;}
+.nav-brand-name strong{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--prussian);letter-spacing:0.01em;line-height:1;}
+.nav-brand-name span{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);line-height:1;}
+.nav-links{display:flex;align-items:center;gap:1.5rem;list-style:none;}
+.nav-links a{font-family:'Source Serif 4',serif;font-size:0.82rem;font-weight:400;color:var(--slate);text-decoration:none;letter-spacing:0.01em;transition:color 0.2s;position:relative;white-space:nowrap;}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--saffron);transform:scaleX(0);transition:transform 0.25s;transform-origin:left;}
+.nav-links a:hover{color:var(--saffron);}
+.nav-links a:hover::after{transform:scaleX(1);}
+.nav-links a.active{color:var(--saffron);}
+.nav-links a.active::after{transform:scaleX(1);}
+.nav-blog-btn{font-family:'JetBrains Mono',monospace!important;font-size:0.65rem!important;letter-spacing:0.1em!important;text-transform:uppercase;background:var(--prussian)!important;color:var(--cream)!important;padding:9px 20px;border-radius:1px;transition:background 0.2s!important;}
+.nav-blog-btn::after{display:none!important;}
+.nav-blog-btn:hover{background:var(--saffron)!important;color:var(--cream)!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;z-index:201;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--prussian);transition:all 0.3s;}
+.mobile-menu{display:none;position:absolute;top:68px;left:0;right:0;background:var(--cream);border-bottom:2px solid var(--saffron);box-shadow:var(--shadow-md);z-index:199;}
+.mobile-menu.open{display:block;}
+.mobile-menu ul{list-style:none;padding:1rem 2rem 1.5rem;}
+.mobile-menu ul li a{display:block;font-family:'Source Serif 4',serif;font-size:0.95rem;color:var(--slate);text-decoration:none;padding:0.7rem 0;border-bottom:1px solid var(--rule);}
+.mobile-menu ul li:last-child a{border-bottom:none;}
+.mobile-menu ul li a:hover{color:var(--saffron);}
+.mm-label{display:block;font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);padding:1rem 0 0.5rem;border-top:1px solid var(--rule);}
+.mm-label:first-child{border-top:none;}
+@media(max-width:900px){.nav-links{display:none;}.hamburger{display:flex;}}
+
+/* BLOG HERO */
+.blog-hero{background:var(--prussian);padding:4rem 2rem 3rem;border-bottom:4px solid var(--saffron);position:relative;overflow:hidden;}
+.blog-hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,255,255,0.018) 40px);pointer-events:none;}
+.hero-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1;}
+.hero-kicker{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--saffron-lt);margin-bottom:1rem;display:flex;align-items:center;gap:1rem;}
+.hero-kicker::before{content:'';display:inline-block;width:28px;height:1px;background:var(--saffron);}
+.blog-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:900;color:var(--parchment);line-height:1.1;margin-bottom:0.75rem;}
+.blog-hero p{font-family:'Source Serif 4',serif;font-size:1rem;font-weight:300;color:rgba(248,244,236,0.65);line-height:1.75;max-width:640px;margin-bottom:2rem;}
+.blog-filter{display:flex;flex-wrap:wrap;gap:0.5rem;}
+.filter-pill{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;padding:6px 14px;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.5);cursor:pointer;transition:all 0.2s;background:transparent;}
+.filter-pill:hover,.filter-pill.active{background:var(--saffron);border-color:var(--saffron);color:var(--cream);}
+
+/* MAIN LAYOUT */
+.blog-layout{max-width:1200px;margin:0 auto;padding:3.5rem 2rem;display:grid;grid-template-columns:1fr 300px;gap:4rem;}
+@media(max-width:960px){.blog-layout{grid-template-columns:1fr;gap:2.5rem;}}
+
+/* FEATURED POST */
+.featured-post{margin-bottom:3rem;padding-bottom:3rem;border-bottom:2px solid var(--rule);}
+.featured-label{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--saffron);margin-bottom:1.2rem;display:flex;align-items:center;gap:0.75rem;}
+.featured-label::after{content:'';flex:1;height:1px;background:var(--rule-gold);}
+.featured-card{background:var(--parchment);border:1px solid var(--rule);border-top:4px solid var(--saffron);padding:2.5rem;transition:box-shadow 0.2s;text-decoration:none;display:block;}
+.featured-card:hover{box-shadow:var(--shadow-md);}
+.featured-meta{display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:1rem;}
+.post-badge{font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.14em;text-transform:uppercase;padding:3px 8px;background:rgba(212,118,10,0.1);color:var(--ochre);border:1px solid var(--rule-gold);}
+.post-date{font-family:'JetBrains Mono',monospace;font-size:0.58rem;color:var(--mist);}
+.post-readtime{font-family:'JetBrains Mono',monospace;font-size:0.58rem;color:var(--mist);}
+.featured-card h2{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:900;color:var(--prussian);line-height:1.2;margin-bottom:0.75rem;}
+.featured-card .deck{font-size:0.95rem;font-weight:300;font-style:italic;line-height:1.85;color:var(--slate);margin-bottom:1.2rem;}
+.featured-excerpt{font-size:0.9rem;font-weight:300;line-height:1.85;color:var(--slate);margin-bottom:1.5rem;}
+.post-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.5rem;}
+.post-tag{font-family:'JetBrains Mono',monospace;font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--blue-lt);border:1px solid rgba(27,58,107,0.15);color:var(--chakra-blue);padding:3px 8px;}
+.read-more{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--saffron);display:inline-flex;align-items:center;gap:0.4rem;}
+
+/* POST GRID */
+.post-grid-label{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--mist);margin-bottom:1.5rem;display:flex;align-items:center;gap:0.75rem;}
+.post-grid-label::after{content:'';flex:1;height:1px;background:var(--rule);}
+.post-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+@media(max-width:680px){.post-grid{grid-template-columns:1fr;}}
+.post-card{background:var(--parchment);border:1px solid var(--rule);border-left:3px solid var(--saffron);padding:1.5rem;text-decoration:none;display:block;transition:box-shadow 0.2s;}
+.post-card:hover{box-shadow:var(--shadow-md);border-left-color:var(--prussian);}
+.post-card.coming-soon{opacity:0.55;cursor:default;pointer-events:none;border-left-style:dashed;}
+.post-card h3{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--prussian);line-height:1.3;margin-bottom:0.5rem;}
+.post-card p{font-size:0.82rem;font-weight:300;line-height:1.7;color:var(--slate);margin-bottom:0.9rem;}
+.post-card-meta{display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;}
+.soon-badge{font-family:'JetBrains Mono',monospace;font-size:0.5rem;letter-spacing:0.12em;text-transform:uppercase;background:var(--paper);border:1px solid var(--rule);color:var(--mist);padding:3px 8px;}
+
+/* SIDEBAR */
+.sidebar{}
+.sidebar-sticky{position:sticky;top:88px;}
+.sidebar-card{background:var(--parchment);border:1px solid var(--rule);padding:1.4rem;margin-bottom:1.5rem;}
+.sidebar-card-label{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--saffron);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;}
+.sidebar-card-label::after{content:'';flex:1;height:1px;background:var(--rule-gold);}
+.sidebar-card h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--prussian);margin-bottom:0.75rem;line-height:1.3;}
+.sidebar-card p{font-size:0.82rem;font-weight:300;line-height:1.7;color:var(--slate);}
+.subscribe-form{margin-top:0.75rem;}
+.subscribe-form input{width:100%;padding:9px 12px;border:1px solid var(--rule);background:var(--cream);font-family:'Source Serif 4',serif;font-size:0.82rem;color:var(--ink);margin-bottom:0.5rem;outline:none;}
+.subscribe-form input:focus{border-color:var(--saffron);}
+.subscribe-form button{width:100%;padding:10px;background:var(--prussian);color:var(--cream);border:none;font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;}
+.subscribe-form button:hover{background:var(--saffron);}
+.sidebar-links{list-style:none;padding:0;}
+.sidebar-links li{border-bottom:1px solid var(--rule);padding:0.6rem 0;}
+.sidebar-links li:last-child{border-bottom:none;}
+.sidebar-links a{font-size:0.82rem;font-weight:300;color:var(--prussian);text-decoration:none;line-height:1.5;transition:color 0.2s;}
+.sidebar-links a:hover{color:var(--saffron);}
+.sidebar-links .link-tag{font-family:'JetBrains Mono',monospace;font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;background:rgba(212,118,10,0.1);color:var(--ochre);padding:2px 6px;margin-right:0.4rem;}
+.topic-cloud{display:flex;flex-wrap:wrap;gap:0.4rem;}
+.topic-tag{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.08em;text-transform:uppercase;background:var(--paper);border:1px solid var(--rule);color:var(--slate);padding:5px 10px;text-decoration:none;transition:all 0.2s;}
+.topic-tag:hover{background:var(--prussian);color:var(--cream);border-color:var(--prussian);}
+
+/* FOOTER */
+footer{background:var(--prussian);padding:3rem 2rem;border-top:3px solid var(--saffron);}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:2rem;}
+.footer-brand strong{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--parchment);}
+.footer-brand p{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:0.4rem;}
+.footer-nav{display:flex;gap:2rem;flex-wrap:wrap;}
+.footer-nav a{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s;}
+.footer-nav a:hover{color:var(--saffron);}
+.footer-legal{width:100%;border-top:1px solid rgba(255,255,255,0.08);padding-top:1.5rem;font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.06em;color:rgba(255,255,255,0.3);line-height:1.8;}
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <p class="masthead-text"><span>DPDPIndia.in</span> &nbsp;·&nbsp; Policy Analysis &amp; Research Blog &nbsp;·&nbsp; DPDP Act · IT Act · eKYC · Cybercrime</p>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <svg class="nav-brand-seal" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="21" cy="21" r="20" stroke="#1B2B3A" stroke-width="1.5"/>
+        <circle cx="21" cy="21" r="16" stroke="#D4760A" stroke-width="0.75"/>
+        <text x="21" y="17" text-anchor="middle" font-family="'Playfair Display',serif" font-size="7" font-weight="700" fill="#1B2B3A">DPDP</text>
+        <text x="21" y="26" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="4.5" fill="#D4760A" letter-spacing="1">INDIA</text>
+        <path d="M10 30 Q21 34 32 30" stroke="#D4760A" stroke-width="0.5" fill="none"/>
+      </svg>
+      <div class="nav-brand-name">
+        <strong>DPDP India</strong>
+        <span>Policy &amp; Legal Research</span>
+      </div>
+    </a>
+    <ul class="nav-links" id="desktop-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dpdp-kb.html">DPDP Act</a></li>
+      <li><a href="itact-kb.html">IT Act</a></li>
+      <li><a href="ekyc-kb.html">eKYC</a></li>
+      <li><a href="cybercrime-kb.html">Cyber Crime</a></li>
+      <li><a href="for-businesses.html">For Business</a></li>
+      <li><a href="for-individuals.html">For Individuals</a></li>
+      <li><a href="case-tracker.html">Cases</a></li>
+      <li><a href="blog.html" class="active">Articles</a></li>
+      <li><a href="cyber-fraud-hub.html" class="nav-blog-btn">🚨 1930</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <ul>
+      <span class="mm-label">Main</span>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="for-businesses.html">DPDP Compliance for Business</a></li>
+      <li><a href="for-individuals.html">Know Your Rights</a></li>
+      <li><a href="case-tracker.html">Case Tracker</a></li>
+      <span class="mm-label">Knowledge Bases</span>
+      <li><a href="dpdp-kb.html">DPDP Act 2023 KB</a></li>
+      <li><a href="itact-kb.html">IT Act 2000 KB</a></li>
+      <li><a href="ekyc-kb.html">eKYC / UIDAI KB</a></li>
+      <li><a href="cybercrime-kb.html">Cyber Fraud KB</a></li>
+      <span class="mm-label">Articles</span>
+      <li><a href="blog.html">All Articles</a></li>
+      <li><a href="blog-dpdp-geospatial-data-governance.html">Geospatial Data & DPDP Act</a></li>
+      <li><a href="blog-dpdp-consent-frameworks.html">Consent Frameworks & DPDP Act</a></li>
+      <li><a href="blog-dpdp-data-fiduciary-vs-processor.html">Data Fiduciary vs Processor</a></li>
+      <li><a href="blog-dpdp-dpbi-enforcement.html">DPBI Enforcement Framework</a></li>
+      <li><a href="blog-itact-section-66c-identity-theft.html">Section 66C & Identity Theft</a></li>
+      <li><a href="blog-gati-shakti-dpdp-compliance.html">Gati Shakti & DPDP Compliance</a></li>
+      <li><a href="blog-gdpr-vs-dpdp-comparison.html">GDPR vs DPDP — Comparison</a></li>
+      <span class="mm-label">Emergency</span>
+      <li><a href="cyber-fraud-hub.html">🚨 Cyber Fraud Hub — Report on 1930</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- BLOG HERO -->
+<header class="blog-hero">
+  <div class="hero-inner">
+    <div class="hero-kicker">Research Blog</div>
+    <h1>Policy Analysis &amp; <em style="font-style:italic;color:var(--saffron-lt);">Legal Commentary</em></h1>
+    <p>Practitioner-grade analysis on India's data protection law, cybercrime, digital governance, and the evolving regulatory landscape — published by DPDPIndia.in.</p>
+    <div class="blog-filter">
+      <span class="filter-pill active">All</span>
+      <span class="filter-pill">DPDP Act</span>
+      <span class="filter-pill">IT Act</span>
+      <span class="filter-pill">Geospatial</span>
+      <span class="filter-pill">E-Governance</span>
+      <span class="filter-pill">Cybercrime</span>
+    </div>
+  </div>
+</header>
+
+<!-- BLOG LAYOUT -->
+<div class="blog-layout">
+  <main>
+
+    <!-- FEATURED POST -->
+    <div class="featured-post">
+      <div class="featured-label">Featured Analysis · Latest</div>
+      <a href="blog-dpdp-geospatial-data-governance.html" class="featured-card">
+        <div class="featured-meta">
+          <span class="post-badge">DPDP Act · Geospatial</span>
+          <span class="post-date">27 March 2026</span>
+          <span class="post-readtime">· 7 min read</span>
+        </div>
+        <h2>Geospatial Data Under the DPDP Act: When the Map Becomes the Risk</h2>
+        <p class="deck">With the DPDP Act now in force, can governments still manage geospatial data the way they always have?</p>
+        <p class="featured-excerpt">Government geospatial platforms have long been built on a foundational belief: maps and spatial data are technical public assets. Drone surveys, dashcam analytics, CCTV feeds, and GIS layers held by departments without mature information security frameworks — under the DPDP Act and IT Act, this decentralised model now creates systemic legal risk. Who is accountable when that data enables personal or inferable identification? The answer demands a platform-level governance rethink.</p>
+        <div class="post-tags">
+          <span class="post-tag">DPDP Act 2023</span>
+          <span class="post-tag">IT Act 2000</span>
+          <span class="post-tag">Geospatial Data</span>
+          <span class="post-tag">Data Fiduciary</span>
+          <span class="post-tag">E-Governance</span>
+          <span class="post-tag">GIS Policy</span>
+        </div>
+        <span class="read-more">Read Full Analysis →</span>
+      </a>
+    </div>
+
+    <!-- MORE ARTICLES -->
+    <div class="post-grid-label">More Articles</div>
+    <div class="post-grid">
+
+      <a href="blog-dpdp-consent-frameworks.html" class="post-card">
+        <div class="featured-meta" style="margin-bottom:0.6rem;">
+          <span class="post-badge">DPDP Act</span>
+          <span class="post-date">27 March 2026</span>
+          <span class="post-readtime">· 8 min</span>
+        </div>
+        <h3>Consent Frameworks Under the DPDP Act: What Compliance Really Looks Like</h3>
+        <p>Breaking down the consent notice requirements under s. 6, deemed consent under s. 7, and what real-world implementation demands from product teams — consent withdrawal flows, records, and penalty exposure up to ₹250 crore.</p>
+        <div class="post-card-meta">
+          <span class="post-tag">Consent</span>
+          <span class="post-tag">DPDP Act §6</span>
+          <span class="post-tag">Compliance</span>
+        </div>
+      </a>
+
+      <a href="blog-dpdp-data-fiduciary-vs-processor.html" class="post-card">
+        <div class="featured-meta" style="margin-bottom:0.6rem;">
+          <span class="post-badge">IT Act · DPDP</span>
+          <span class="post-date">27 March 2026</span>
+          <span class="post-readtime">· 7 min</span>
+        </div>
+        <h3>Data Fiduciary vs Data Processor: The Accountability Gap India Must Close</h3>
+        <p>When the processor fails and the fiduciary is liable — the contractual and regulatory architecture required under ss. 2(i), 2(k), and 8(2), Data Processing Agreements, and what IT Act s. 43A still demands.</p>
+        <div class="post-card-meta">
+          <span class="post-tag">Data Fiduciary</span>
+          <span class="post-tag">DPDP Act §8</span>
+          <span class="post-tag">Processor</span>
+        </div>
+      </a>
+
+      <a href="blog-dpdp-dpbi-enforcement.html" class="post-card">
+        <div class="featured-meta" style="margin-bottom:0.6rem;">
+          <span class="post-badge">Adjudication · DPDP</span>
+          <span class="post-date">27 March 2026</span>
+          <span class="post-readtime">· 8 min</span>
+        </div>
+        <h3>The Data Protection Board of India: Enforcement Architecture and Penalty Framework</h3>
+        <p>How the DPBI operates under Chapter VI — inquiry powers, breach notification obligations under s. 20, voluntary undertakings, and the full penalty schedule from ₹10,000 to ₹250 crore.</p>
+        <div class="post-card-meta">
+          <span class="post-tag">DPBI</span>
+          <span class="post-tag">Enforcement</span>
+          <span class="post-tag">Penalties</span>
+        </div>
+      </a>
+
+      <a href="blog-itact-section-66c-identity-theft.html" class="post-card">
+        <div class="featured-meta" style="margin-bottom:0.6rem;">
+          <span class="post-badge">IT Act · Cybercrime</span>
+          <span class="post-date">27 March 2026</span>
+          <span class="post-readtime">· 7 min</span>
+        </div>
+        <h3>Section 66C and Identity Theft: The IT Act's Most Under-Used Protection</h3>
+        <p>Why s. 66C prosecutions remain rare despite SIM swap, OTP, and Aadhaar-based fraud surging — the evidentiary burden, digital forensics gaps, and a practical complaint-building guide for victims.</p>
+        <div class="post-card-meta">
+          <span class="post-tag">IT Act §66C</span>
+          <span class="post-tag">Identity Theft</span>
+          <span class="post-tag">BNS 2023</span>
+        </div>
+      </a>
+
+      <a href="blog-gati-shakti-dpdp-compliance.html" class="post-card">
+        <div class="featured-meta" style="margin-bottom:0.6rem;">
+          <span class="post-badge">E-Governance · GIS</span>
+          <span class="post-date">27 March 2026</span>
+          <span class="post-readtime">· 8 min</span>
+        </div>
+        <h3>The PM Gati Shakti Data Governance Gap: Where GIS Meets DPDP Compliance</h3>
+        <p>India's largest infrastructure GIS platform aggregates data from 16+ ministries. Who is the data fiduciary? How do CERT-In Directions 2022, Drone Rules 2021, and the National Geospatial Policy 2022 interact with DPDP obligations?</p>
+        <div class="post-card-meta">
+          <span class="post-tag">Gati Shakti</span>
+          <span class="post-tag">GIS</span>
+          <span class="post-tag">CERT-In</span>
+        </div>
+      </a>
+
+      <a href="blog-gdpr-vs-dpdp-comparison.html" class="post-card">
+        <div class="featured-meta" style="margin-bottom:0.6rem;">
+          <span class="post-badge">GDPR · DPDP</span>
+          <span class="post-date">27 March 2026</span>
+          <span class="post-readtime">· 9 min</span>
+        </div>
+        <h3>India vs Europe: What the GDPR Gets Right That the DPDP Act Still Needs to Address</h3>
+        <p>Consent burden of proof, mandatory DPO, turnover-based penalties, data portability, adequacy frameworks — a section-by-section comparison of what India's Rules must resolve to achieve regulatory maturity.</p>
+        <div class="post-card-meta">
+          <span class="post-tag">GDPR Art. 83</span>
+          <span class="post-tag">DPDP Act</span>
+          <span class="post-tag">Comparative Law</span>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-sticky">
+
+      <!-- Newsletter -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-label">Weekly Newsletter</div>
+        <h3>Stay ahead of DPDP developments</h3>
+        <p>Get our weekly briefing on DPDP Act, IT Act, and digital governance — delivered every Friday.</p>
+        <form class="subscribe-form" id="subscribeForm"
+              action="https://formspree.io/f/mlgodzbr"
+              method="POST">
+          <input type="hidden" name="_subject" value="Newsletter Subscription — DPDPindia.in">
+          <input type="hidden" name="Type" value="Newsletter Subscription">
+          <input type="email" name="Email" placeholder="your@email.com" required>
+          <button type="submit">Subscribe Free →</button>
+          <p class="subscribe-success" style="display:none;color:green;font-size:0.8rem;margin-top:0.4rem;">✓ Subscribed! Thank you.</p>
+        </form>
+        <script>
+        (function(){
+          var f=document.getElementById('subscribeForm');
+          if(f) f.addEventListener('submit',async function(e){
+            e.preventDefault();
+            var btn=f.querySelector('button');
+            btn.textContent='Subscribing…'; btn.disabled=true;
+            var res=await fetch(f.action,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}});
+            if(res.ok){f.querySelector('.subscribe-success').style.display='block';btn.style.display='none';}
+            else{btn.textContent='Try again'; btn.disabled=false;}
+          });
+        })();
+        </script>
+      </div>
+
+      <!-- Topic Cloud -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-label">Topics</div>
+        <div class="topic-cloud">
+          <a href="#" class="topic-tag">DPDP Act</a>
+          <a href="#" class="topic-tag">IT Act</a>
+          <a href="#" class="topic-tag">Geospatial</a>
+          <a href="#" class="topic-tag">Consent</a>
+          <a href="#" class="topic-tag">Data Fiduciary</a>
+          <a href="#" class="topic-tag">E-Governance</a>
+          <a href="#" class="topic-tag">Cybercrime</a>
+          <a href="#" class="topic-tag">DPBI</a>
+          <a href="#" class="topic-tag">eKYC</a>
+          <a href="#" class="topic-tag">UIDAI</a>
+          <a href="#" class="topic-tag">GDPR</a>
+          <a href="#" class="topic-tag">Adjudication</a>
+        </div>
+      </div>
+
+      <!-- Knowledge Bases -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-label">Knowledge Bases</div>
+        <ul class="sidebar-links">
+          <li><a href="dpdp-kb.html"><span class="link-tag">DPDP</span>DPDP Act 2023 — Full KB</a></li>
+          <li><a href="itact-kb.html"><span class="link-tag">IT Act</span>IT Act 2000 — Full KB</a></li>
+          <li><a href="ekyc-kb.html"><span class="link-tag">eKYC</span>Aadhaar &amp; UIDAI Framework</a></li>
+          <li><a href="cybercrime-kb.html"><span class="link-tag">Cyber</span>Cyber Fraud Awareness</a></li>
+        </ul>
+      </div>
+
+      <!-- Disclaimer -->
+      <div class="sidebar-card" style="background:rgba(192,57,43,0.04);border-color:rgba(192,57,43,0.12);">
+        <div class="sidebar-card-label" style="color:var(--danger);">Disclaimer</div>
+        <p style="font-size:0.78rem;font-weight:300;color:var(--mist);line-height:1.65;">All articles are for research and informational purposes only. Not legal advice. Independently verify before relying on any content. <a href="legal.html" style="color:var(--saffron);text-decoration:none;">Full Legal Notice →</a></p>
+      </div>
+
+    </div>
+  </aside>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <strong>DPDPIndia.in</strong>
+      <p>Independent Research &amp; Policy Analysis · Est. 2024</p>
+    </div>
+    <nav class="footer-nav">
+      <a href="dpdp-kb.html">DPDP KB</a>
+      <a href="itact-kb.html">IT Act KB</a>
+      <a href="ekyc-kb.html">eKYC</a>
+      <a href="cybercrime-kb.html">Cybercrime</a>
+      <a href="blog.html">Blog</a>
+      <a href="legal.html">Legal</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="footer-legal">
+      © 2026 DPDPIndia.in · Independent Policy Research Initiative · Intermediary under IT Act 2000, s. 2(1)(w) · All content is for educational and research purposes only and does not constitute legal advice.
+    </div>
+  </div>
+</footer>
+
+<script>
+var hamburger = document.getElementById('hamburger');
+var mobileMenu = document.getElementById('mobile-menu');
+hamburger.addEventListener('click', function() {
+  var isOpen = hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  mobileMenu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+});
+document.querySelectorAll('.mobile-menu a').forEach(function(link) {
+  link.addEventListener('click', function() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  });
+});
+</script>
+</body>
+</html>

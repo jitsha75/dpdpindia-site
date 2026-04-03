@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The DPDP Act — Core Framework & Key Sections — DPDP KB</title>
+<style>@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:wght@600&display=swap');
+:root{--navy:#0a1628;--navy2:#132040;--blue:#1a5cad;--blue-light:#3b82d4;--amber:#d4900a;--amber-light:#f5c842;--teal:#0e7c6b;--coral:#c2420a;--purple:#5b4bc4;--green:#156c2e;--red:#b91c1c;--surface:#f4f6fb;--surface2:#eaeff8;--text:#0d1b2a;--text2:#3a4a5c;--text3:#6b7e94;--border:#c8d4e8;--border2:#b0c0d8;--white:#ffffff;--font-body:'IBM Plex Sans',sans-serif;--font-display:'Playfair Display',serif;--font-mono:'IBM Plex Mono',monospace;--radius:8px;--radius-lg:12px;--shadow:0 2px 12px rgba(10,22,40,.08);--shadow-md:0 4px 24px rgba(10,22,40,.13);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--surface);color:var(--text);font-size:15px;line-height:1.7;min-height:100vh;}
+.header{background:var(--navy);color:#fff;position:relative;overflow:hidden;}
+.header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px),repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px);}
+.header-inner{position:relative;max-width:1100px;margin:0 auto;padding:52px 40px 48px;}
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:20px;font-family:var(--font-mono);font-size:11px;flex-wrap:wrap;}
+.breadcrumb a{color:rgba(255,255,255,.5);text-decoration:none;transition:color .15s;}
+.breadcrumb a:hover{color:var(--amber-light);}
+.breadcrumb .sep{color:rgba(255,255,255,.25);}
+.breadcrumb .cur{color:var(--amber-light);}
+.header-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:4px 14px;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:20px;}
+.header h1{font-family:var(--font-display);font-size:clamp(24px,4vw,38px);font-weight:600;line-height:1.15;color:#fff;margin-bottom:14px;max-width:760px;}
+.header-sub{font-size:15px;color:rgba(255,255,255,.6);max-width:680px;line-height:1.65;margin-bottom:28px;}
+.header-meta{display:flex;flex-wrap:wrap;gap:8px;}
+.meta-pill{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:4px 12px;font-size:12px;color:rgba(255,255,255,.65);font-family:var(--font-mono);}
+.layout{display:flex;max-width:1100px;margin:0 auto;padding:32px 20px;gap:32px;align-items:flex-start;}
+.sidebar{width:220px;flex-shrink:0;position:sticky;top:24px;}
+.sidebar-nav{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:12px 0;box-shadow:var(--shadow);}
+.sidebar-nav h3{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:6px 18px 10px;}
+.sidebar-nav a{display:flex;align-items:center;gap:8px;padding:8px 18px;font-size:13px;color:var(--text2);text-decoration:none;border-left:2px solid transparent;transition:all .15s;line-height:1.3;}
+.sidebar-nav a:hover{background:var(--surface);color:var(--blue);border-left-color:var(--blue-light);}
+.sidebar-nav .nav-num{font-family:var(--font-mono);font-size:10px;color:var(--text3);min-width:16px;}
+.sidebar-nav hr{border:none;border-top:1px solid var(--border);margin:8px 0;}
+.sidebar-nav .nav-sep{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:12px 18px 4px;display:block;}
+.sidebar-related{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px 18px;box-shadow:var(--shadow);margin-top:12px;}
+.sidebar-related h4{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:10px;}
+.sidebar-related a{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);text-decoration:none;padding:5px 0;border-bottom:1px solid var(--border);transition:color .15s;}
+.sidebar-related a:last-child{border-bottom:none;}
+.sidebar-related a:hover{color:var(--blue);}
+.sidebar-related .link-icon{font-size:11px;opacity:.5;}
+.main{flex:1;min-width:0;}
+.section{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:24px;box-shadow:var(--shadow);overflow:hidden;}
+.section-header{display:flex;align-items:center;gap:14px;padding:20px 28px;border-bottom:1px solid var(--border);background:var(--surface);}
+.section-num{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--font-mono);font-size:12px;font-weight:500;flex-shrink:0;}
+.section-header h2{font-size:17px;font-weight:600;color:var(--text);letter-spacing:-.01em;}
+.section-header p{font-size:13px;color:var(--text3);margin-top:2px;}
+.section-body{padding:28px;}
+.prose p{font-size:14px;color:var(--text2);margin-bottom:12px;line-height:1.75;}
+.prose p:last-child{margin-bottom:0;}
+.prose strong{font-weight:600;color:var(--text);}
+.prose ul{padding-left:20px;margin-bottom:12px;}
+.prose li{font-size:14px;color:var(--text2);margin-bottom:5px;line-height:1.65;}
+.prose code{font-family:var(--font-mono);font-size:12px;background:var(--surface2);padding:1px 6px;border-radius:3px;border:1px solid var(--border);color:var(--blue);}
+.note-box{padding:12px 16px;border-radius:var(--radius);font-size:13px;line-height:1.6;border-left:3px solid;margin:12px 0;}
+.note-box.warning{background:#fef3cd;border-color:var(--amber);color:#533200;}
+.note-box.info{background:#e6f1fb;border-color:var(--blue);color:#0a2e5e;}
+.note-box.danger{background:#fde8e8;border-color:var(--red);color:#5c0f0f;}
+.note-box.success{background:#e8f5ee;border-color:var(--green);color:#0a3318;}
+.note-box.amber{background:#fffaed;border-color:var(--amber);color:#533200;}
+.note-box strong{font-weight:600;}
+.reg-ref{display:inline-flex;align-items:center;gap:4px;padding:2px 8px 2px 6px;border-radius:4px;background:#ede8fe;color:var(--purple);border:1px solid #c4b8f5;font-family:var(--font-mono);font-size:11px;font-weight:500;white-space:nowrap;}
+.reg-ref::before{content:'§';font-family:Georgia,serif;font-size:12px;}
+.footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:28px 20px;font-size:12px;margin-top:40px;}
+.footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:12px;}
+.footer-links a{color:rgba(255,255,255,.55);text-decoration:none;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;transition:color .15s;}
+.footer-links a:hover{color:var(--amber-light);}
+.footer a{color:rgba(255,255,255,.6);}
+@media(max-width:820px){.layout{flex-direction:column;padding:16px;}.sidebar{width:100%;position:static;}.sidebar-nav{display:none;}.header-inner{padding:32px 20px;}.section-body{padding:16px;}}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <div class="breadcrumb">
+      <a href="index.html">DPDPindia.in</a><span class="sep">/</span>
+      <a href="dpdp-kb.html">DPDP Knowledge Base</a><span class="sep">/</span>
+      <span class="cur">Core Legal Framework</span>
+    </div>
+    <div class="header-badge"><span style="width:6px;height:6px;border-radius:50%;background:#e8edf5;display:inline-block;"></span>&nbsp;Article 02 · DPDP Knowledge Base</div>
+    <h1><span style="color:#e8edf5;">The DPDP Act</span> — Core Framework & Key Sections</h1>
+    <p class="header-sub">A structured walkthrough of the DPDP Act's operative provisions — the SARAL framework, notice and consent under Sections 4–6, Data Fiduciary obligations under Section 8, children's data protections under Section 9, and Significant Data Fiduciary requirements under Section 10.</p>
+    <div class="header-meta"><span class="meta-pill">DPDP Act 2023</span><span class="meta-pill">SARAL framework</span><span class="meta-pill">Sec 4–6 Consent</span><span class="meta-pill">Sec 9 Children</span><span class="meta-pill">Sec 10 SDF</span></div>
+  </div>
+</header>
+<div class="layout">
+  <nav class="sidebar">
+    <div class="sidebar-nav">
+      <h3>On this page</h3>
+      <a href="#s1"><span class="nav-num">01</span> SARAL framework overview</a><a href="#s2"><span class="nav-num">02</span> Sections 4–6: Notice & consent</a><a href="#s3"><span class="nav-num">03</span> Section 9: Children's data</a><a href="#s4"><span class="nav-num">04</span> Section 10: Significant Data Fiduciaries</a>
+      <hr><span class="nav-sep">Knowledge Base</span>
+      <a href="dpdp-kb.html"><span class="nav-num">←</span> Back to DPDP KB</a>
+      <a href="index.html"><span class="nav-num">⌂</span> DPDPindia.in</a>
+    </div>
+    <div class="sidebar-related">
+      <h4>Related Articles</h4><a href="dpdp-genesis.html"><span class="link-icon">↗</span> Legislative Genesis</a><a href="dpdp-rights.html"><span class="link-icon">↗</span> Data Principal Rights</a><a href="dpdp-rules.html"><span class="link-icon">↗</span> Rules 2025</a>
+    </div>
+  </nav>
+  <main class="main">
+
+    <section class="section" id="s1">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <div><h2>SARAL — The Overarching Framework</h2><p>Simple, Accessible, Responsible, and Accountable Legislation</p></div>
+      </div>
+      <div class="section-body"><div class="prose"><p>The DPDP Act 2023 is built around the <strong>SARAL framework</strong> — an acronym capturing its design philosophy: <strong>Simple</strong> (short, principles-based statute), <strong>Accessible</strong> (notices must be clear and in regional languages), <strong>Responsible</strong> (data fiduciaries bear accountability), and <strong>Accountable</strong> (enforcement through the Data Protection Board).</p>
+<p>The Act applies to processing of digital personal data — (a) within India, and (b) outside India if it involves offering goods or services to data principals in India. It does not apply to processing by individuals for personal or domestic purposes, or to personal data made publicly available by the data principal themselves.</p></div>
+<div class="note-box info"><strong>Scope note:</strong> Unlike GDPR, the DPDP Act currently covers only <em>digital</em> personal data (including data that was originally offline but has been digitised). Pure offline/physical personal data processing is not within scope — though this boundary may shift in future rules.</div></div>
+    </section>
+    <section class="section" id="s2">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <div><h2>Sections 4–6: Notice, Consent, and Lawful Processing</h2><p>The consent architecture that every Data Fiduciary must implement</p></div>
+      </div>
+      <div class="section-body"><div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:16px;"><div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);"><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-bottom:7px;">Section 4 — Lawful Processing</div><div style="font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:7px;line-height:1.3;">Grounds for Processing</div><div style="font-size:13px;color:var(--text2);line-height:1.65;">Processing is lawful only if: (a) the data principal has given consent for one or more specified purposes, or (b) it falls within one of the 'legitimate uses' — legal obligations, state functions, medical emergencies, employment, or public interest. There is no broad 'legitimate interests' ground.</div></div><div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);"><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-bottom:7px;">Section 5 — Notice</div><div style="font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:7px;line-height:1.3;">Notice Requirements</div><div style="font-size:13px;color:var(--text2);line-height:1.65;">Before seeking consent, Data Fiduciaries must provide clear notice in English or any scheduled language of India. The notice must describe what data is collected, the purpose, how to exercise rights, and how to reach the grievance officer. Vague or bundled notices are prohibited.</div></div><div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);"><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-bottom:7px;">Section 6 — Consent</div><div style="font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:7px;line-height:1.3;">Consent Standards</div><div style="font-size:13px;color:var(--text2);line-height:1.65;">Consent must be free, specific, informed, unconditional, and unambiguous. It must be given through a clear affirmative action. Consent can be revoked at any time — and the Data Fiduciary must cease processing within a reasonable time after revocation.</div></div><div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);"><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:7px;">Legitimate Uses</div><div style="font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:7px;line-height:1.3;">Processing Without Consent</div><div style="font-size:13px;color:var(--text2);line-height:1.65;">Section 7 lists limited grounds where processing is lawful without consent: the State performing its functions, legal obligations, medical treatment, national security, employment purposes, and protecting the vital interests of the data principal.</div></div></div>
+<div class="note-box warning"><strong>Revocation implication:</strong> Once a data principal revokes consent, the Data Fiduciary must stop processing and — subject to retention obligations under other laws — delete the data. There is no GDPR-style 'legitimate interests' that can override a withdrawn consent.</div></div>
+    </section>
+    <section class="section" id="s3">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div><h2>Section 9: Children's Data — Special Protection</h2><p>No tracking, no behavioural monitoring, verifiable parental consent mandatory</p></div>
+      </div>
+      <div class="section-body"><div class="prose">
+<p>Section 9 provides the Act's strongest protections. A Data Fiduciary must not process personal data of a <strong>child (person under 18 years of age)</strong> without verifiable consent of the parent or lawful guardian. The rules will specify the mechanism for age verification and parental consent verification.</p>
+<p>Three absolute prohibitions apply to all entities processing children's data — these cannot be overridden by consent:</p></div>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:16px;"><div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);"><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-bottom:7px;">Prohibition 1</div><div style="font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:7px;line-height:1.3;">No Behavioural Monitoring</div><div style="font-size:13px;color:var(--text2);line-height:1.65;">No tracking or monitoring of children's online behaviour for profiling, targeted advertising, or any other purpose. This covers recommendation systems, click tracking, engagement optimisation, and any similar mechanism.</div></div><div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);"><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-bottom:7px;">Prohibition 2</div><div style="font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:7px;line-height:1.3;">No Targeted Advertising to Children</div><div style="font-size:13px;color:var(--text2);line-height:1.65;">Serving advertisements targeted at children based on profiling is prohibited — regardless of whether the parent has consented to data processing for other purposes.</div></div><div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);"><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-bottom:7px;">Prohibition 3</div><div style="font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:7px;line-height:1.3;">Processing Detrimental to Children</div><div style="font-size:13px;color:var(--text2);line-height:1.65;">Any processing that may be detrimental to a child's wellbeing is prohibited. This is a broadly worded provision that gives the DPB significant scope in enforcement against platforms and services.</div></div></div>
+<div class="note-box amber"><strong>Age gate obligation:</strong> Data Fiduciaries must implement age-verification systems. The DPDP Rules 2025 specify technical and procedural standards for verifying age. Operating services accessible to children without adequate age gating exposes a Data Fiduciary to up to ₹200 Crore in penalties under Section 33.</div></div>
+    </section>
+    <section class="section" id="s4">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <div><h2>Section 10: Significant Data Fiduciaries</h2><p>Elevated obligations for entities designated by the Central Government</p></div>
+      </div>
+      <div class="section-body"><div class="prose"><p>The Central Government may designate any Data Fiduciary or class of Data Fiduciaries as a <strong>Significant Data Fiduciary (SDF)</strong> based on volume and sensitivity of data processed, risk to data principals' rights, national security considerations, and public order implications. SDFs face three additional obligations not required of ordinary Data Fiduciaries:</p></div>
+<div style="border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;">
+  <div style="background:var(--navy);padding:14px 20px;display:flex;align-items:center;gap:12px;">
+    <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);">Three Additional SDF Obligations under Section 10</div>
+  </div>
+  <div style="padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:14px;">
+    <div style="width:28px;height:28px;border-radius:50%;background:var(--amber);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:12px;font-weight:500;flex-shrink:0;margin-top:1px;">1</div>
+    <div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">Appoint a Data Protection Officer (DPO)</div><div style="font-size:13px;color:var(--text2);line-height:1.6;">The DPO must be based in India and represent the SDF before the Data Protection Board. Unlike GDPR, the Act does not require the DPO to have specific professional qualifications — though the rules may specify criteria.</div></div>
+  </div>
+  <div style="padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:14px;">
+    <div style="width:28px;height:28px;border-radius:50%;background:var(--amber);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:12px;font-weight:500;flex-shrink:0;margin-top:1px;">2</div>
+    <div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">Conduct Data Protection Impact Assessments (DPIA)</div><div style="font-size:13px;color:var(--text2);line-height:1.6;">DPIAs must be conducted for significant processing activities. The rules will specify when DPIAs are triggered, what they must cover, and whether outcomes must be shared with the DPB.</div></div>
+  </div>
+  <div style="padding:14px 20px;display:flex;align-items:flex-start;gap:14px;">
+    <div style="width:28px;height:28px;border-radius:50%;background:var(--amber);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:12px;font-weight:500;flex-shrink:0;margin-top:1px;">3</div>
+    <div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">Periodic Independent Audits</div><div style="font-size:13px;color:var(--text2);line-height:1.6;">SDFs must conduct periodic audits of their data processing activities by independent auditors. Audit reports may be required to be submitted to the DPB. The interval and scope of audits will be specified in rules.</div></div>
+  </div>
+</div>
+<div style="margin-top:24px;padding:20px;border:1px solid var(--border);border-left:4px solid var(--amber);border-radius:var(--radius);background:var(--surface);"><div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-bottom:14px;">Other Articles in This Knowledge Base</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;"><a href="dpdp-rights.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;padding:12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--white);transition:border-color .15s;" onmouseover="this.style.borderColor='var(--blue-light)'" onmouseout="this.style.borderColor='var(--border)'"><div style="font-size:20px;flex-shrink:0;">👤</div><div><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Data Principal Rights</div><div style="font-size:12px;color:var(--text3);">What individuals can demand from Data Fiduciaries</div></div></a><a href="dpdp-rules.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;padding:12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--white);transition:border-color .15s;" onmouseover="this.style.borderColor='var(--blue-light)'" onmouseout="this.style.borderColor='var(--border)'"><div style="font-size:20px;flex-shrink:0;">📋</div><div><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Rules & Implementation 2025</div><div style="font-size:12px;color:var(--text3);">How the Act is operationalised</div></div></a></div></div></div>
+    </section>
+  </main>
+</div>
+<footer class="footer">
+  <div class="footer-links">
+    <a href="index.html">DPDPindia.in</a><a href="dpdp-kb.html">DPDP KB</a>
+    <a href="dpdp-genesis.html">Genesis</a><a href="dpdp-act.html">The Act</a>
+    <a href="dpdp-rights.html">Rights</a><a href="dpdp-rules.html">Rules</a>
+    <a href="dpdp-adjudication.html">Adjudication</a>
+    <a href="dpdp-exemptions.html">Exemptions</a><a href="dpdp-global.html">Global</a>
+  </div>
+  <p>Article 02 — Part of the DPDP Act Knowledge Base · <a href="dpdp-kb.html">← Back to KB</a></p>
+</footer>
+</body>
+</html>

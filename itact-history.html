@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IT Act 2000: Origins, Global Genesis & the 2008 Pivot · DPDP India</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--parchment:#F8F4EC;--cream:#FDFAF5;--paper:#F2EDE2;--ink:#1A1610;--prussian:#1B2B3A;--slate:#2D3D4E;--saffron:#D4760A;--saffron-lt:#F0A840;--ochre:#B8862C;--mist:#7A7468;--rule:rgba(26,22,16,0.12);--rule-gold:rgba(212,118,10,0.25);--shadow-sm:0 2px 12px rgba(26,22,16,0.06);--shadow-md:0 8px 40px rgba(26,22,16,0.10);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:'Source Serif 4',Georgia,serif;background:var(--cream);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;}
+.masthead{background:var(--prussian);padding:10px 0;text-align:center;border-bottom:3px solid var(--saffron);}
+.masthead-text{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.55);}
+.masthead-text span{color:var(--saffron-lt);}
+nav{position:sticky;top:0;z-index:200;background:var(--cream);border-bottom:1px solid var(--rule);box-shadow:var(--shadow-sm);}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:68px;}
+.nav-brand{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.nav-brand-seal{width:42px;height:42px;flex-shrink:0;}
+.nav-brand-name{display:flex;flex-direction:column;gap:1px;}
+.nav-brand-name strong{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--prussian);letter-spacing:0.01em;line-height:1;}
+.nav-brand-name span{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);line-height:1;}
+.nav-links{display:flex;align-items:center;gap:1.5rem;list-style:none;}
+.nav-links a{font-family:'Source Serif 4',serif;font-size:0.82rem;color:var(--slate);text-decoration:none;transition:color 0.2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--saffron);transform:scaleX(0);transition:transform 0.25s;transform-origin:left;}
+.nav-links a:hover{color:var(--saffron);}
+.nav-links a:hover::after{transform:scaleX(1);}
+.nav-blog-btn{font-family:'JetBrains Mono',monospace!important;font-size:0.65rem!important;letter-spacing:0.1em!important;text-transform:uppercase;background:var(--prussian)!important;color:var(--cream)!important;padding:9px 20px;border-radius:1px;}
+.nav-blog-btn::after{display:none!important;}
+.nav-blog-btn:hover{background:var(--saffron)!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--prussian);transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-menu{display:none;position:absolute;top:68px;left:0;right:0;background:var(--cream);border-bottom:2px solid var(--saffron);box-shadow:var(--shadow-md);z-index:199;}
+.mobile-menu.open{display:block;}
+.mobile-menu ul{list-style:none;padding:1rem 2rem 1.5rem;}
+.mobile-menu ul li a{display:block;font-family:'Source Serif 4',serif;font-size:0.95rem;color:var(--slate);text-decoration:none;padding:0.7rem 0;border-bottom:1px solid var(--rule);}
+.mobile-menu ul li:last-child a{border-bottom:none;}
+.mobile-menu ul li a:hover{color:var(--saffron);}
+.page-header{background:var(--prussian);padding:5rem 0 4rem;position:relative;overflow:hidden;}
+.page-header::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
+.page{max-width:1320px;margin:0 auto;padding:0 2rem;}
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:1.5rem;font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);position:relative;z-index:1;flex-wrap:wrap;}
+.breadcrumb a{color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s;}
+.breadcrumb a:hover{color:var(--saffron-lt);}
+.breadcrumb-sep{color:rgba(255,255,255,0.25);}
+.page-kicker{display:flex;align-items:center;gap:10px;margin-bottom:1.5rem;position:relative;z-index:1;}
+.page-kicker-line{width:32px;height:1px;background:var(--saffron);}
+.page-kicker-text{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--saffron);}
+.page-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:700;line-height:1.12;color:var(--parchment);margin-bottom:1rem;position:relative;z-index:1;}
+.page-title em{font-style:italic;color:var(--saffron-lt);}
+.page-deck{font-size:1rem;font-weight:300;line-height:1.85;color:rgba(248,244,236,0.65);max-width:640px;position:relative;z-index:1;}
+/* ARTICLE LAYOUT */
+.article-layout{display:grid;grid-template-columns:1fr 320px;gap:5rem;padding:5rem 0 6rem;align-items:start;}
+/* SIDEBAR */
+.sidebar{}
+.sidebar-box{background:var(--parchment);border:1px solid var(--rule);padding:2rem;margin-bottom:1.5rem;}
+.sidebar-title{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--saffron);margin-bottom:1.2rem;padding-bottom:0.8rem;border-bottom:1px solid var(--rule);}
+.sidebar-links{list-style:none;display:flex;flex-direction:column;gap:0;}
+.sidebar-links li a{display:flex;align-items:center;gap:8px;font-size:0.85rem;color:var(--slate);text-decoration:none;padding:0.7rem 0;border-bottom:1px solid var(--rule);transition:color 0.2s;}
+.sidebar-links li:last-child a{border-bottom:none;}
+.sidebar-links li a:hover{color:var(--saffron);}
+.sidebar-links li a::before{content:'→';color:var(--saffron);font-size:0.8rem;flex-shrink:0;}
+.sidebar-links li.active a{color:var(--prussian);font-weight:600;}
+.sidebar-links li.active a::before{content:'●';font-size:0.5rem;}
+.cite-box{background:rgba(212,118,10,0.05);border:1px solid var(--rule-gold);border-left:3px solid var(--saffron);padding:1.2rem 1.5rem;}
+.cite-box-title{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.8rem;}
+.cite-box p{font-size:0.8rem;font-weight:300;line-height:1.75;color:var(--slate);}
+/* ARTICLE BODY */
+.article-body h2{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:var(--prussian);margin:3rem 0 1rem;line-height:1.2;padding-top:1rem;border-top:2px solid var(--ink);}
+.article-body h2:first-child{margin-top:0;border-top:none;}
+.article-body h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--prussian);margin:2rem 0 0.8rem;line-height:1.3;}
+.article-body p{font-size:1rem;font-weight:300;line-height:1.9;color:var(--slate);margin-bottom:1.4rem;}
+.article-body p strong{font-weight:600;color:var(--prussian);}
+.article-body ul,.article-body ol{margin:0 0 1.4rem 1.5rem;}
+.article-body li{font-size:0.95rem;font-weight:300;line-height:1.8;color:var(--slate);margin-bottom:0.5rem;}
+.article-body li strong{font-weight:600;color:var(--prussian);}
+/* PULLQUOTE */
+.pullquote{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:400;font-style:italic;line-height:1.6;color:var(--prussian);position:relative;padding:1.5rem 1.5rem 1.5rem 2rem;margin:2.5rem 0;background:var(--parchment);border-left:3px solid var(--saffron);}
+/* SECTION BLOCK */
+.section-block{background:var(--prussian);color:var(--parchment);padding:2.5rem;margin:2.5rem 0;position:relative;overflow:hidden;}
+.section-block::before{content:'';position:absolute;top:0;right:0;width:40%;height:100%;background:radial-gradient(ellipse at right,rgba(212,118,10,0.1) 0%,transparent 70%);pointer-events:none;}
+.section-block-num{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.5rem;}
+.section-block h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--parchment);margin-bottom:0.8rem;}
+.section-block p{font-size:0.9rem;font-weight:300;line-height:1.8;color:rgba(248,244,236,0.7);margin-bottom:0;}
+/* TIMELINE BLOCKS */
+.evolution-timeline{border-left:2px solid var(--rule-gold);margin:2rem 0;padding-left:0;}
+.et-entry{display:grid;grid-template-columns:100px 1fr;gap:1.5rem;margin-bottom:0;padding:2rem 0 2rem 2rem;border-bottom:1px solid var(--rule);}
+.et-entry:last-child{border-bottom:none;}
+.et-year{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--prussian);line-height:1;}
+.et-year-sub{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;color:var(--saffron);text-transform:uppercase;}
+.et-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--prussian);margin-bottom:0.4rem;}
+.et-desc{font-size:0.88rem;font-weight:300;line-height:1.8;color:var(--mist);}
+/* COMPARISON TABLE */
+.comp-table{width:100%;border-collapse:collapse;margin:1.5rem 0;}
+.comp-table th{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;background:var(--prussian);color:var(--parchment);padding:1rem 1.2rem;text-align:left;border-right:1px solid rgba(255,255,255,0.1);}
+.comp-table th:last-child{border-right:none;}
+.comp-table td{font-size:0.85rem;font-weight:300;line-height:1.7;color:var(--slate);padding:1rem 1.2rem;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);vertical-align:top;}
+.comp-table td:last-child{border-right:none;}
+.comp-table tr:last-child td{border-bottom:none;}
+.comp-table tr:nth-child(even) td{background:var(--parchment);}
+/* NAV STRIP (article pagination) */
+.article-nav-strip{background:var(--ink);padding:2rem 0;}
+.ans-inner{max-width:1320px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.ans-btn{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s;}
+.ans-btn:hover{color:var(--saffron-lt);}
+.ans-kb{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);}
+/* FOOTER */
+footer{background:var(--ink);padding:4rem 0 2rem;}
+.footer-grid{max-width:1320px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,0.06);}
+.footer-brand-name{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--parchment);margin-bottom:0.8rem;}
+.footer-brand-desc{font-size:0.82rem;font-weight:300;line-height:1.8;color:rgba(248,244,236,0.4);max-width:280px;}
+.footer-col-title{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);margin-bottom:1rem;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.footer-links a{font-size:0.82rem;font-weight:300;color:rgba(248,244,236,0.45);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--parchment);}
+.footer-bottom{max-width:1320px;margin:0 auto;padding:1.5rem 2rem 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;}
+.footer-copy{font-size:0.75rem;color:rgba(248,244,236,0.25);}
+@media(max-width:1024px){.article-layout{grid-template-columns:1fr;}.sidebar{order:-1;}.sidebar-box{display:none;}}
+@media(max-width:900px){.nav-links{display:none;}.hamburger{display:flex;}.footer-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.page-header{padding:3rem 0 2.5rem;}.et-entry{grid-template-columns:1fr;gap:0.3rem;}.footer-grid{grid-template-columns:1fr;}.footer-bottom{flex-direction:column;align-items:flex-start;}}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <p class="masthead-text">DPDP India · <span>Independent Strategic Policy & Legal Research</span> · Digital Personal Data Protection Act, 2023</p>
+</div>
+
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <svg class="nav-brand-seal" viewBox="0 0 42 42" fill="none"><circle cx="21" cy="21" r="20" stroke="#1B2B3A" stroke-width="1.5"/><circle cx="21" cy="21" r="14" stroke="#D4760A" stroke-width="0.75" stroke-dasharray="2 2"/><text x="21" y="25" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="700" fill="#1B2B3A">§</text></svg>
+      <div class="nav-brand-name"><strong>DPDP India</strong><span>Policy & Legal Research</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#research">Research</a></li>
+      <li><a href="dpdp-kb.html">DPDP KB</a></li>
+      <li><a href="ekyc-kb.html">eKYC KB</a></li>
+      <li><a href="itact-kb.html">IT Act KB</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="https://blog.dpdpindia.in" class="nav-blog-btn">Blog →</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#research">Research</a></li>
+      <li><a href="dpdp-kb.html">DPDP KB</a></li>
+      <li><a href="ekyc-kb.html">eKYC KB</a></li>
+      <li><a href="itact-kb.html">IT Act KB</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="https://blog.dpdpindia.in">Blog →</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="page">
+    <div class="breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">›</span><a href="itact-kb.html">IT Act KB</a><span class="breadcrumb-sep">›</span><span>Article 01</span></div>
+    <div class="page-kicker"><div class="page-kicker-line"></div><span class="page-kicker-text">Article 01 of 05 · Historical Evolution</span></div>
+    <h1 class="page-title">IT Act 2000: Origins, <em>Global Genesis</em><br>& the 2008 Security Pivot</h1>
+    <p class="page-deck">From the UNCITRAL Model Law on Electronic Commerce (1996) to India's enactment, and the landmark 2008 amendment that shifted focus from paperless trade to cybersecurity and corporate data liability.</p>
+  </div>
+</header>
+
+<div class="page">
+  <div class="article-layout">
+
+    <article class="article-body">
+
+      <h2>Part I — Global Genesis (1996–2000)</h2>
+
+      <h3>The UNCITRAL Foundation</h3>
+      <p>India's Information Technology Act, 2000 did not emerge in a vacuum. Its intellectual and structural genesis lies in the <strong>United Nations Commission on International Trade Law (UNCITRAL) Model Law on Electronic Commerce, 1996</strong>. The UN General Assembly, recognising the explosive growth of cross-border electronic commerce, recommended that member states modernise their domestic laws to give legal recognition to electronic records, transactions, and signatures — enabling what the UN called "Paperless Trade."</p>
+      <p>India formally adopted the UNCITRAL Model Law's architecture, making it one of the first Asian democracies at the time to enact a comprehensive framework for electronic commerce and digital transactions. This alignment with international standards was deliberate: it facilitated cross-border commerce, reduced legal uncertainty for foreign investors, and positioned India within the global digital trade framework.</p>
+
+      <div class="pullquote">"If a law requires information to be in writing, an electronic record satisfies that requirement if the information contained therein is accessible so as to be usable for subsequent reference."<br><span style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--saffron);margin-top:0.8rem;display:block;">— Principle of Functional Equivalence, UNCITRAL Model Law 1996</span></div>
+
+      <h3>The Principle of Functional Equivalence</h3>
+      <p>The cornerstone of the UNCITRAL framework — and therefore of the IT Act — is the doctrine of <strong>Functional Equivalence</strong>. This principle holds that electronic records and signatures perform the same legal functions as their paper-based equivalents, provided certain conditions of reliability and accessibility are met. In practical terms:</p>
+      <ul>
+        <li>If a law requires a document to be "in writing," an electronic record satisfies this if it is accessible for future reference.</li>
+        <li>If a law requires a "signature," a digital signature satisfies this if it identifies the signatory and indicates their intent.</li>
+        <li>If a law requires a document to be "retained" or "preserved," electronic storage satisfies this if the record is reproducible.</li>
+      </ul>
+      <p>These principles are embodied in <strong>Sections 4, 5, and 7</strong> of the IT Act, 2000 respectively — giving legal standing to electronic records, digital signatures, and electronic document retention.</p>
+
+      <h3>India's Enactment: May 2000</h3>
+      <p>The Information Technology Act, 2000 was passed by the Indian Parliament in <strong>May 2000</strong> and notified on <strong>17 October 2000</strong>. At that time, India became one of the few countries in the world with a dedicated, comprehensive statute on electronic commerce and cybercrime. The Act simultaneously:</p>
+      <ul>
+        <li>Amended the Indian Penal Code, 1860 and the Indian Evidence Act, 1872 to recognise electronic records and digital evidence.</li>
+        <li>Amended the Bankers' Books Evidence Act, 1891 for electronic banking records.</li>
+        <li>Established the <strong>Controller of Certifying Authorities (CCA)</strong> to regulate digital signature infrastructure.</li>
+        <li>Created the <strong>Cyber Appellate Tribunal (CAT)</strong> for dispute resolution.</li>
+        <li>Established offences and penalties for cybercrimes — hacking (s. 66), publishing obscene material (s. 67), and breach of confidentiality (s. 72).</li>
+      </ul>
+
+      <div class="evolution-timeline">
+        <div class="et-entry">
+          <div><div class="et-year">1996</div><div class="et-year-sub">International</div></div>
+          <div><div class="et-title">UNCITRAL Model Law on Electronic Commerce</div><div class="et-desc">UN General Assembly Resolution 51/162 adopts the Model Law. Recommends member states align domestic law to recognise electronic records. The Functional Equivalence principle is established as the governing doctrine for paperless trade.</div></div>
+        </div>
+        <div class="et-entry">
+          <div><div class="et-year">2000</div><div class="et-year-sub">Enactment</div></div>
+          <div><div class="et-title">IT Act Passed & Notified</div><div class="et-desc">Passed in May, notified 17 October 2000. CCA established. Cyber Appellate Tribunal created. IPC, Evidence Act, and Bankers' Books Evidence Act amended. India enters the global cyber law framework.</div></div>
+        </div>
+        <div class="et-entry">
+          <div><div class="et-year">2005</div><div class="et-year-sub">Precedent</div></div>
+          <div><div class="et-title">Avnish Bajaj v. State (Delhi HC)</div><div class="et-desc">The Baazee.com case raises first major intermediary liability questions. The CEO held liable for obscene content uploaded by a user — directly influencing the 2008 amendment to Section 79.</div></div>
+        </div>
+        <div class="et-entry">
+          <div><div class="et-year">2008</div><div class="et-year-sub">Amendment</div></div>
+          <div><div class="et-title">IT (Amendment) Act, 2008 — The Pivot to Security</div><div class="et-desc">Comprehensive overhaul. Focus shifts from e-commerce to cybersecurity. 43A (corporate data liability), 66A (offensive messages — later struck down), 69 (expanded surveillance), and technology-neutral electronic signatures introduced.</div></div>
+        </div>
+        <div class="et-entry">
+          <div><div class="et-year">2013</div><div class="et-year-sub">Policy</div></div>
+          <div><div class="et-title">National Cyber Security Policy</div><div class="et-desc">MeitY issues India's first National Cyber Security Policy. Establishes roles of CERT-In, NTRO, and NCIIPC. Sets target of 500,000 cybersecurity professionals. Framework under revision as of 2026.</div></div>
+        </div>
+        <div class="et-entry">
+          <div><div class="et-year">2015</div><div class="et-year-sub">Landmark</div></div>
+          <div><div class="et-title">Shreya Singhal v. Union of India</div><div class="et-desc">Supreme Court strikes down Section 66A entirely. Reads down Section 79. Free speech jurisprudence online fundamentally redrawn. Intermediaries protected from private takedown demands.</div></div>
+        </div>
+        <div class="et-entry">
+          <div><div class="et-year">2021</div><div class="et-year-sub">Rules</div></div>
+          <div><div class="et-title">IT (Intermediary Guidelines) Rules 2021</div><div class="et-desc">Replaces 2011 Rules. Significant Social Media Intermediaries (SSMIs) defined. Grievance officer, monthly compliance reports, traceability obligations for SSMIs. Part III covers digital news and OTT platforms.</div></div>
+        </div>
+        <div class="et-entry">
+          <div><div class="et-year">2023</div><div class="et-year-sub">Transition</div></div>
+          <div><div class="et-title">DPDP Act 2023 — Partial Supersession</div><div class="et-desc">The Digital Personal Data Protection Act 2023 supersedes Section 43A of the IT Act in relation to personal data protection. Section 43A compensation regime replaced by DPDP Act's penalty framework under the Data Protection Board.</div></div>
+        </div>
+      </div>
+
+      <h2>Part II — The IT (Amendment) Act, 2008: The Pivot to Security</h2>
+      <p>By 2005, it was evident that the IT Act, 2000 was primarily an e-commerce statute that was poorly equipped to address the emerging landscape of cybercrime, corporate data breaches, and state surveillance needs. A series of high-profile incidents — including the Baazee.com case and the 2008 Mumbai terror attacks, which exposed gaps in India's electronic surveillance architecture — accelerated the amendment process.</p>
+      <p>The <strong>IT (Amendment) Act, 2008</strong>, notified on 27 October 2009, fundamentally recalibrated the Act's centre of gravity from commercial facilitation to <strong>cybersecurity and data governance</strong>.</p>
+
+      <h3>Technology Neutrality — Electronic Signatures</h3>
+      <p>One of the most significant conceptual shifts in the 2008 amendment was the replacement of the narrowly defined "Digital Signatures" (which required PKI-based infrastructure) with the broader concept of <strong>"Electronic Signatures"</strong> under Section 3A. This made the Act technology-neutral — any authentication technique specified in the Second Schedule (and subsequently notified) would qualify as a valid electronic signature. This was critical for accommodating emerging authentication methods like OTP-based e-signing and biometric authentication used in Aadhaar eKYC.</p>
+
+      <div class="section-block">
+        <div class="section-block-num">Section 43A · IT Act 2000 (as amended 2008)</div>
+        <h3>Corporate Liability for Data Protection</h3>
+        <p>Where a body corporate, possessing, dealing with or handling any sensitive personal data or information in a computer resource which it owns, controls or operates, is negligent in implementing and maintaining reasonable security practices and procedures and thereby causes wrongful loss or wrongful gain to any person, such body corporate shall be liable to pay damages by way of compensation, not exceeding five crore rupees, to the person so affected.</p>
+        <p style="margin-top:0.8rem;font-size:0.8rem;color:rgba(248,244,236,0.5);">Note: Section 43A is largely superseded by the DPDP Act 2023 for personal data matters. The DPDP Act's penalty regime (up to ₹250 crore) now governs data protection obligations.</p>
+      </div>
+
+      <h3>Section 43A — Reasonable Security Practices</h3>
+      <p>Section 43A introduced the concept of <strong>"Reasonable Security Practices and Procedures"</strong> into Indian law — the first time a statutory obligation of this nature was imposed on private entities. A body corporate that handles "Sensitive Personal Data or Information" (SPDI) was obligated to implement these practices and could face compensation claims up to ₹5 crore for negligent data handling causing wrongful loss or gain.</p>
+      <p>The MeitY subsequently issued the <strong>IT (Reasonable Security Practices and Procedures and Sensitive Personal Data or Information) Rules, 2011</strong>, defining what constitutes SPDI (passwords, financial information, health data, biometrics, etc.) and specifying the IS/ISO/IEC 27001 standard as a reference framework for "reasonable security practices." Section 43A is now substantially superseded by the DPDP Act 2023 for matters involving personal data of individuals.</p>
+
+      <h3>Section 66A — The Controversial Addition (Now Struck Down)</h3>
+      <p>Section 66A, inserted by the 2008 amendment, criminalised the sending of information through a computer resource or communication device that was:</p>
+      <ul>
+        <li><em>(a)</em> Grossly offensive or of a menacing character</li>
+        <li><em>(b)</em> False and sent to cause annoyance, inconvenience, danger, obstruction, insult, injury, enmity, hatred, or ill will</li>
+        <li><em>(c)</em> Intended to deceive or mislead the recipient about the origin</li>
+      </ul>
+      <p>The provision attracted widespread criticism for its <strong>unconstitutionally vague</strong> language. Terms like "annoyance," "inconvenience," and "grossly offensive" gave police unchecked discretion, resulting in well-documented misuse against political dissidents, journalists, and social media users. The Supreme Court of India finally struck down Section 66A in its entirety in 2015 in <em>Shreya Singhal v. Union of India</em> — see Article 02 of this KB.</p>
+
+      <h3>Section 69 — Expanded State Surveillance Powers</h3>
+      <p>The 2008 amendment significantly expanded <strong>Section 69</strong>, conferring upon the Central Government and State Governments the power to direct any agency to intercept, monitor, or decrypt any information transmitted through a computer resource if it is in the interest of:</p>
+      <ul>
+        <li>Sovereignty and integrity of India</li>
+        <li>Defence of India</li>
+        <li>Security of the State</li>
+        <li>Friendly relations with foreign states</li>
+        <li>Public order</li>
+        <li>Prevention of incitement to commission of any cognisable offence</li>
+        <li>Investigation of any offence</li>
+      </ul>
+      <p>The procedural safeguards for Section 69 were specified in the <strong>IT (Procedure and Safeguards for Interception, Monitoring and Decryption of Information) Rules, 2009</strong>. These Rules created a multi-tier authorisation process, but critics have raised concerns about the breadth of the "public order" and "incitement" grounds.</p>
+
+      <h2>Part III — Section 69A: Blocking of Public Access</h2>
+      <p>Section 69A, also inserted by the 2008 amendment, authorises the Central Government to direct any agency to block access to online content for public viewing where it is deemed necessary in the interests of sovereignty and integrity of India, defence, state security, friendly relations with foreign states, or public order. The <strong>IT (Procedure and Safeguards for Blocking for Access of Information by Public) Rules, 2009</strong> govern this process.</p>
+      <p>Critically, the Supreme Court in <em>Shreya Singhal</em> upheld Section 69A as constitutional — distinguishing it from the struck-down Section 66A on the grounds that 69A is <em>"a narrowly drawn provision with several safeguards"</em> including committee review, written directions, and judicial review. As of 2025–26, Section 69A is at the centre of a significant litigation involving X Corp (formerly Twitter) challenging the government's use of Section 79(3)(b) as an alternative blocking mechanism that bypasses 69A's procedural safeguards.</p>
+
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Aspect</th>
+            <th>IT Act 2000 (Original)</th>
+            <th>IT (Amendment) Act 2008</th>
+            <th>Current Position (2026)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Primary Focus</strong></td>
+            <td>Electronic commerce facilitation</td>
+            <td>Cybersecurity + Data protection</td>
+            <td>DPDP Act 2023 governs data; IT Act governs cyber</td>
+          </tr>
+          <tr>
+            <td><strong>Authentication</strong></td>
+            <td>Digital Signatures (PKI only)</td>
+            <td>Electronic Signatures (technology-neutral)</td>
+            <td>Aadhaar OTP, biometric, eSign all valid</td>
+          </tr>
+          <tr>
+            <td><strong>Corporate Data Liability</strong></td>
+            <td>None specific</td>
+            <td>Section 43A (up to ₹5 crore)</td>
+            <td>Superseded by DPDP Act 2023 (up to ₹250 crore)</td>
+          </tr>
+          <tr>
+            <td><strong>Online Speech</strong></td>
+            <td>Section 67 (obscenity only)</td>
+            <td>Section 66A (offensive messages)</td>
+            <td>Section 66A struck down (2015); gap remains</td>
+          </tr>
+          <tr>
+            <td><strong>Surveillance</strong></td>
+            <td>Limited interception powers</td>
+            <td>Sections 69, 69A, 69B (expanded)</td>
+            <td>Active litigation on scope; CERT-In 2022 Directions</td>
+          </tr>
+          <tr>
+            <td><strong>Intermediary Liability</strong></td>
+            <td>No safe harbour</td>
+            <td>Section 79 (safe harbour introduced)</td>
+            <td>Read down by Shreya Singhal; IT Rules 2021 apply</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Sources & Citations</h2>
+      <ul>
+        <li><em>Information Technology Act</em>, 2000 (Act 21 of 2000)</li>
+        <li><em>Information Technology (Amendment) Act</em>, 2008 (Act 10 of 2009)</li>
+        <li>UNCITRAL Model Law on Electronic Commerce, 1996 (UN General Assembly Resolution 51/162)</li>
+        <li><em>Shreya Singhal v. Union of India</em> (2015) 5 SCC 1</li>
+        <li>IT (Reasonable Security Practices and Procedures and SPDI) Rules, 2011</li>
+        <li>IT (Procedure and Safeguards for Interception, Monitoring and Decryption of Information) Rules, 2009</li>
+        <li>IT (Procedure and Safeguards for Blocking for Access of Information by Public) Rules, 2009</li>
+        <li><em>Digital Personal Data Protection Act</em>, 2023 (Act 22 of 2023), s. 44 (amendments to IT Act)</li>
+      </ul>
+      <div style="background:rgba(212,118,10,0.06);border:1px solid var(--rule-gold);border-left:3px solid var(--saffron);padding:1.2rem 1.5rem;margin-top:1.5rem;">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.04em;color:var(--ochre);margin-bottom:0;"><strong>Research Disclaimer:</strong> This article is for educational purposes only and does not constitute legal advice. DPDPIndia.in is an intermediary under the IT Act, 2000. Verify all legal information independently. See <a href="legal.html" style="color:var(--saffron);">Legal Disclaimer & Safe Harbour Policy</a>.</p>
+      </div>
+    </article>
+
+    <aside class="sidebar">
+      <div class="sidebar-box">
+        <div class="sidebar-title">IT Act KB Articles</div>
+        <ul class="sidebar-links">
+          <li class="active"><a href="itact-history.html">01 — Origins & 2008 Pivot</a></li>
+          <li><a href="itact-shreya-singhal.html">02 — Shreya Singhal Verdict</a></li>
+          <li><a href="itact-egovernance.html">03 — E-Governance</a></li>
+          <li><a href="itact-sections.html">04 — Key Sections Reference</a></li>
+          <li><a href="itact-intermediary.html">05 — IT Rules 2021 Compliance</a></li>
+        </ul>
+      </div>
+      <div class="cite-box">
+        <div class="cite-box-title">Citation</div>
+        <p>DPDP India, 'IT Act 2000: Origins, Global Genesis & the 2008 Security Pivot', <em>IT Act Knowledge Base</em> (2026), Article 01 of 05. Available at dpdpindia.in/itact-history.html</p>
+      </div>
+      <div class="sidebar-box" style="margin-top:1.5rem;">
+        <div class="sidebar-title">Related DPDP Research</div>
+        <ul class="sidebar-links">
+          <li><a href="dpdp-genesis.html">DPDP Act Genesis</a></li>
+          <li><a href="dpdp-adjudication.html">DPB Penalties</a></li>
+          <li><a href="legal.html">Safe Harbour Policy</a></li>
+        </ul>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<div class="article-nav-strip">
+  <div class="ans-inner">
+    <span class="ans-btn">← Previous</span>
+    <span class="ans-kb"><a href="itact-kb.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">IT Act KB</a></span>
+    <a href="itact-shreya-singhal.html" class="ans-btn">02 — Shreya Singhal Verdict →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-brand-name">DPDP India</div><div class="footer-brand-desc">Independent strategic policy and legal research on India's digital governance landscape.</div></div>
+    <div><div class="footer-col-title">IT Act KB</div><ul class="footer-links"><li><a href="itact-kb.html">KB Index</a></li><li><a href="itact-shreya-singhal.html">Shreya Singhal</a></li><li><a href="itact-egovernance.html">E-Governance</a></li></ul></div>
+    <div><div class="footer-col-title">Legal</div><ul class="footer-links"><li><a href="legal.html">Terms & Privacy</a></li><li><a href="legal.html#safe-harbour">Safe Harbour</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2026 DPDP India · Independent Policy Research · All rights reserved</div></div>
+</footer>
+
+<script>
+const h=document.getElementById('hamburger'),m=document.getElementById('mobile-menu');
+h.addEventListener('click',()=>{h.classList.toggle('open');m.classList.toggle('open');});
+</script>
+</body>
+</html>

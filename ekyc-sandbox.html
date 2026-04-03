@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UIDAI Developer Sandbox — Integration & Testing Guide</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:wght@600&display=swap');
+
+:root {
+  --navy:#0a1628;--navy2:#132040;--navy3:#1c3055;
+  --blue:#1a5cad;--blue-light:#3b82d4;
+  --amber:#d4900a;--amber-light:#f5c842;
+  --teal:#0e7c6b;--coral:#c2420a;--purple:#5b4bc4;
+  --green:#156c2e;--red:#b91c1c;
+  --surface:#f4f6fb;--surface2:#eaeff8;--surface3:#dde4f0;
+  --text:#0d1b2a;--text2:#3a4a5c;--text3:#6b7e94;
+  --border:#c8d4e8;--border2:#b0c0d8;--white:#ffffff;
+  --font-body:'IBM Plex Sans',sans-serif;
+  --font-display:'Playfair Display',serif;
+  --font-mono:'IBM Plex Mono',monospace;
+  --radius:8px;--radius-lg:12px;
+  --shadow:0 2px 12px rgba(10,22,40,.08);
+  --shadow-md:0 4px 24px rgba(10,22,40,.12);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--surface);color:var(--text);font-size:15px;line-height:1.7;min-height:100vh;}
+
+/* ── HEADER ── */
+.header{background:var(--navy);color:#fff;position:relative;overflow:hidden;}
+.header::before{content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px),
+             repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px);}
+.header-inner{position:relative;max-width:1100px;margin:0 auto;padding:52px 40px 48px;}
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:20px;font-family:var(--font-mono);font-size:11px;}
+.breadcrumb a{color:rgba(255,255,255,.5);text-decoration:none;transition:color .15s;}
+.breadcrumb a:hover{color:var(--amber-light);}
+.breadcrumb .sep{color:rgba(255,255,255,.25);}
+.breadcrumb .cur{color:var(--amber-light);}
+.header-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:4px 14px;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:20px;}
+.header-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--teal-light, #14b8a6);}
+.header h1{font-family:var(--font-display);font-size:clamp(24px,4vw,38px);font-weight:600;line-height:1.15;color:#fff;margin-bottom:14px;max-width:740px;}
+.header h1 span{color:#14b8a6;}
+.header-sub{font-size:15px;color:rgba(255,255,255,.6);max-width:660px;line-height:1.65;margin-bottom:28px;}
+.header-meta{display:flex;flex-wrap:wrap;gap:8px;}
+.meta-pill{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:4px 12px;font-size:12px;color:rgba(255,255,255,.65);font-family:var(--font-mono);}
+
+/* ── LAYOUT ── */
+.layout{display:flex;max-width:1100px;margin:0 auto;padding:32px 20px;gap:32px;align-items:flex-start;}
+.sidebar{width:220px;flex-shrink:0;position:sticky;top:24px;}
+.sidebar-nav{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:12px 0;box-shadow:var(--shadow);}
+.sidebar-nav h3{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:6px 18px 10px;}
+.sidebar-nav a{display:flex;align-items:center;gap:8px;padding:8px 18px;font-size:13px;color:var(--text2);text-decoration:none;border-left:2px solid transparent;transition:all .15s;line-height:1.3;}
+.sidebar-nav a:hover{background:var(--surface);color:var(--blue);border-left-color:var(--blue-light);}
+.sidebar-nav .nav-num{font-family:var(--font-mono);font-size:10px;color:var(--text3);min-width:16px;}
+.sidebar-nav hr{border:none;border-top:1px solid var(--border);margin:8px 0;}
+.sidebar-nav .nav-sep{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:12px 18px 4px;display:block;}
+.sidebar-related{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px 18px;box-shadow:var(--shadow);margin-top:12px;}
+.sidebar-related h4{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:10px;}
+.sidebar-related a{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);text-decoration:none;padding:5px 0;border-bottom:1px solid var(--border);transition:color .15s;}
+.sidebar-related a:last-child{border-bottom:none;}
+.sidebar-related a:hover{color:var(--blue);}
+.sidebar-related .link-icon{font-size:11px;opacity:.5;}
+
+/* Quick-start checklist in sidebar */
+.checklist-box{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px 18px;box-shadow:var(--shadow);margin-top:12px;}
+.checklist-box h4{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:10px;}
+.checklist-box label{display:flex;align-items:flex-start;gap:8px;font-size:12px;color:var(--text2);padding:5px 0;border-bottom:1px solid var(--border);cursor:pointer;line-height:1.45;}
+.checklist-box label:last-child{border-bottom:none;}
+.checklist-box input[type=checkbox]{margin-top:2px;flex-shrink:0;accent-color:var(--teal);}
+.checklist-box input[type=checkbox]:checked + span{text-decoration:line-through;color:var(--text3);}
+
+/* ── MAIN ── */
+.main{flex:1;min-width:0;}
+
+/* ── SECTION ── */
+.section{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:24px;box-shadow:var(--shadow);overflow:hidden;}
+.section-header{display:flex;align-items:center;gap:14px;padding:20px 28px;border-bottom:1px solid var(--border);background:var(--surface);}
+.section-num{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--font-mono);font-size:12px;font-weight:500;flex-shrink:0;}
+.section-header h2{font-size:17px;font-weight:600;color:var(--text);letter-spacing:-.01em;}
+.section-header p{font-size:13px;color:var(--text3);margin-top:2px;}
+.section-body{padding:28px;}
+
+/* ── ENDPOINT CARDS ── */
+.endpoint-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:4px;}
+.endpoint-card{border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;}
+.endpoint-card-head{padding:10px 14px;display:flex;align-items:center;gap:8px;}
+.endpoint-method{font-family:var(--font-mono);font-size:10px;font-weight:500;padding:2px 7px;border-radius:3px;background:var(--teal);color:#fff;letter-spacing:.04em;}
+.endpoint-type{font-size:12px;font-weight:600;color:var(--text);}
+.endpoint-card-body{padding:0 14px 14px;}
+.endpoint-url{display:block;font-family:var(--font-mono);font-size:11px;color:var(--blue);background:var(--surface2);padding:7px 10px;border-radius:5px;border:1px solid var(--border);word-break:break-all;text-decoration:none;transition:background .15s;}
+.endpoint-url:hover{background:var(--surface3);}
+.endpoint-desc{font-size:12px;color:var(--text3);margin-top:8px;line-height:1.5;}
+
+/* ── ACCESS MODE TABLE ── */
+.access-table{width:100%;border-collapse:collapse;font-size:13.5px;}
+.access-table thead tr{background:var(--navy);}
+.access-table th{padding:11px 16px;text-align:left;font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.75);}
+.access-table td{padding:14px 16px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.6;}
+.access-table tr:last-child td{border-bottom:none;}
+.access-table tr:hover td{background:var(--surface);}
+.access-table td:first-child{font-weight:600;color:var(--text);white-space:nowrap;border-right:1px solid var(--border);}
+.access-badge{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:5px;font-family:var(--font-mono);font-size:11.5px;font-weight:500;}
+.badge-open{background:#e0f2ef;color:var(--teal);}
+.badge-reg{background:#e6f1fb;color:var(--blue);}
+
+/* ── CONFIG TABLE ── */
+.config-table{width:100%;border-collapse:collapse;font-size:13px;}
+.config-table tr{border-bottom:1px solid var(--border);}
+.config-table tr:last-child{border-bottom:none;}
+.config-table tr:hover td{background:var(--surface);}
+.config-table td{padding:10px 14px;vertical-align:top;}
+.config-table td:first-child{width:160px;font-family:var(--font-mono);font-size:12px;color:var(--text3);font-weight:500;white-space:nowrap;}
+.config-table td:nth-child(2){font-family:var(--font-mono);font-size:13px;color:var(--blue);font-weight:500;}
+.config-table td:last-child{font-size:12.5px;color:var(--text2);}
+.config-table thead td{background:var(--surface2);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);font-family:var(--font-body);}
+
+/* ── IMPLEMENTATION STEPS ── */
+.impl-steps{display:flex;flex-direction:column;gap:0;}
+.impl-step{border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:12px;}
+.impl-step-head{display:flex;align-items:center;gap:14px;padding:14px 20px;background:var(--surface);border-bottom:1px solid var(--border);cursor:pointer;user-select:none;}
+.impl-step-num{display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--font-mono);font-size:11px;font-weight:500;flex-shrink:0;}
+.impl-step-num.teal{background:var(--teal);}
+.impl-step-num.blue{background:var(--blue);}
+.impl-step-num.amber{background:var(--amber);}
+.impl-step-title{font-size:14px;font-weight:600;color:var(--text);}
+.impl-step-sub{font-size:12px;color:var(--text3);margin-top:1px;}
+.impl-step-body{padding:20px;}
+.impl-step-body p{font-size:13.5px;color:var(--text2);line-height:1.7;margin-bottom:10px;}
+.impl-step-body p:last-child{margin-bottom:0;}
+.impl-step-body ul,
+.impl-step-body ol{padding-left:20px;margin-bottom:10px;}
+.impl-step-body li{font-size:13.5px;color:var(--text2);line-height:1.65;margin-bottom:6px;}
+.impl-step-body strong{font-weight:600;color:var(--text);}
+.impl-step-body code{font-family:var(--font-mono);font-size:12px;background:var(--surface2);padding:1px 6px;border-radius:3px;border:1px solid var(--border);color:var(--blue);}
+
+/* ── CODE BLOCK ── */
+.code-block{background:var(--navy);border-radius:var(--radius);padding:16px 18px;margin:12px 0;overflow-x:auto;}
+.code-block pre{font-family:var(--font-mono);font-size:12.5px;color:#a8c8f0;line-height:1.7;margin:0;}
+.code-block pre .comment{color:#4a7a6a;}
+.code-block pre .key{color:#f0c060;}
+.code-block pre .val{color:#98e0b0;}
+.code-block pre .url{color:#7ab8f5;text-decoration:underline;}
+.code-block-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:8px;}
+
+/* ── RESPONSE TABLE ── */
+.resp-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:12px;}
+.resp-table th{padding:9px 14px;background:var(--surface2);border-bottom:2px solid var(--border2);text-align:left;font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.04em;}
+.resp-table td{padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:top;}
+.resp-table tr:last-child td{border-bottom:none;}
+.resp-table tr:hover td{background:var(--surface);}
+.resp-table td:first-child{font-family:var(--font-mono);font-size:12px;font-weight:500;color:var(--blue);}
+.resp-table td:nth-child(2){font-family:var(--font-mono);font-size:12px;color:var(--text2);}
+.resp-table td:last-child{font-size:12.5px;color:var(--text2);}
+.badge-success{background:#e8f5ee;color:var(--green);padding:1px 8px;border-radius:4px;font-family:var(--font-mono);font-size:11px;}
+.badge-fail{background:#fde8e8;color:var(--red);padding:1px 8px;border-radius:4px;font-family:var(--font-mono);font-size:11px;}
+
+/* ── NOTE / TIP / WARNING ── */
+.note-box{padding:12px 16px;border-radius:var(--radius);font-size:13px;line-height:1.6;border-left:3px solid;margin:12px 0;}
+.note-box.warning{background:#fef3cd;border-color:var(--amber);color:#533200;}
+.note-box.info{background:#e6f1fb;border-color:var(--blue);color:#0a2e5e;}
+.note-box.danger{background:#fde8e8;border-color:var(--red);color:#5c0f0f;}
+.note-box.success{background:#e8f5ee;border-color:var(--green);color:#0a3318;}
+.note-box.tip{background:#e0f2ef;border-color:var(--teal);color:#073d30;}
+.note-box strong{font-weight:600;}
+
+/* ── COMPARISON BAND ── */
+.env-compare{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;}
+.env-col{padding:20px 22px;}
+.env-col:first-child{border-right:1px solid var(--border);}
+.env-col-head{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.env-col-head.sandbox{color:var(--teal);}
+.env-col-head.prod{color:var(--blue);}
+.env-row{display:flex;align-items:flex-start;gap:8px;font-size:12.5px;color:var(--text2);margin-bottom:8px;line-height:1.5;}
+.env-row:last-child{margin-bottom:0;}
+.env-row .label{color:var(--text3);font-size:11.5px;min-width:80px;flex-shrink:0;padding-top:1px;}
+
+/* ── CHECKLIST STEPS ── */
+.checklist-steps{list-style:none;padding:0;display:flex;flex-direction:column;gap:0;}
+.cl-step{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid var(--border);}
+.cl-step:last-child{border-bottom:none;}
+.cl-num{width:28px;height:28px;border-radius:50%;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;font-weight:500;flex-shrink:0;margin-top:2px;}
+.cl-content{}
+.cl-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;}
+.cl-body{font-size:13px;color:var(--text2);line-height:1.6;}
+.cl-body code{font-family:var(--font-mono);font-size:12px;background:var(--surface2);padding:1px 6px;border-radius:3px;border:1px solid var(--border);color:var(--blue);}
+.cl-body strong{font-weight:600;color:var(--text);}
+.cl-body a{color:var(--blue);text-decoration:none;}
+.cl-body a:hover{text-decoration:underline;}
+
+/* ── SECURITY GRID ── */
+.security-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:4px;}
+.security-card{border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;background:var(--white);}
+.security-card-head{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.security-icon{width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+.security-title{font-size:13px;font-weight:600;color:var(--text);}
+.security-body{font-size:12.5px;color:var(--text2);line-height:1.6;}
+
+/* ── LINKS GRID ── */
+.links-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.link-card{border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px 18px;background:var(--white);transition:all .15s;text-decoration:none;display:block;}
+.link-card:hover{border-color:var(--blue-light);box-shadow:var(--shadow-md);}
+.link-card-type{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-bottom:6px;}
+.link-card-title{font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:5px;line-height:1.3;}
+.link-card-url{font-family:var(--font-mono);font-size:11px;color:var(--blue);word-break:break-all;}
+.link-card:hover .link-card-title{color:var(--blue);}
+
+/* ── FOOTER ── */
+.footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:28px 20px;font-size:12px;margin-top:40px;}
+.footer-links{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:12px;}
+.footer-links a{color:rgba(255,255,255,.55);text-decoration:none;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;transition:color .15s;}
+.footer-links a:hover{color:#14b8a6;}
+.footer a{color:rgba(255,255,255,.6);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:820px){
+  .layout{flex-direction:column;padding:16px;}
+  .sidebar{width:100%;position:static;}
+  .sidebar-nav{display:none;}
+  .header-inner{padding:32px 20px;}
+  .section-body{padding:16px;}
+  .endpoint-grid{grid-template-columns:1fr;}
+  .env-compare{grid-template-columns:1fr;}
+  .env-col:first-child{border-right:none;border-bottom:1px solid var(--border);}
+  .security-grid{grid-template-columns:1fr;}
+  .links-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <div class="breadcrumb">
+      <a href="index.html">DPDPindia.in</a>
+      <span class="sep">/</span>
+      <a href="ekyc-kb.html">eKYC Knowledge Base</a>
+      <span class="sep">/</span>
+      <span class="cur">Developer Sandbox Guide</span>
+    </div>
+    <div class="header-badge"><span class="dot"></span>Developer Reference</div>
+    <h1>UIDAI Aadhaar <span>Developer Sandbox</span><br>Integration &amp; Testing Guide</h1>
+    <p class="header-sub">
+      A complete reference for connecting to UIDAI's staging environment — from open access PoC testing to registered sandbox integration, configuration parameters, test data, and the path from sandbox to production.
+    </p>
+    <div class="header-meta">
+      <span class="meta-pill">Auth API 2.5</span>
+      <span class="meta-pill">eKYC API 2.5</span>
+      <span class="meta-pill">OTP API 2.5</span>
+      <span class="meta-pill">L0 / L1 RD Services</span>
+      <span class="meta-pill">Public Internet — No Leased Line</span>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sidebar-nav">
+      <h3>On this page</h3>
+      <a href="#s1"><span class="nav-num">01</span> Sandbox overview</a>
+      <a href="#s2"><span class="nav-num">02</span> Staging endpoints</a>
+      <a href="#s3"><span class="nav-num">03</span> Access modes</a>
+      <a href="#s4"><span class="nav-num">04</span> Connecting — prerequisites</a>
+      <a href="#s5"><span class="nav-num">05</span> Implementation steps</a>
+      <a href="#s6"><span class="nav-num">06</span> Test data reference</a>
+      <a href="#s7"><span class="nav-num">07</span> Response handling</a>
+      <a href="#s8"><span class="nav-num">08</span> Security best practices</a>
+      <a href="#s9"><span class="nav-num">09</span> Quick-start checklist</a>
+      <a href="#s10"><span class="nav-num">10</span> Essential links</a>
+      <hr>
+      <span class="nav-sep">Knowledge Base</span>
+      <a href="ekyc-kb.html"><span class="nav-num">←</span> Back to eKYC KB</a>
+      <a href="index.html"><span class="nav-num">⌂</span> DPDPindia.in</a>
+    </div>
+    <div class="sidebar-related">
+      <h4>Related Articles</h4>
+      <a href="ekyc-uidai-guide.html"><span class="link-icon">↗</span> eKYC Complete Guide</a>
+      <a href="ekyc-trust-chain.html"><span class="link-icon">↗</span> Trust Chain &amp; Sub-KUA</a>
+    </div>
+    <div class="checklist-box">
+      <h4>Quick-Start Tracker</h4>
+      <label><input type="checkbox"><span>Visit developer portal</span></label>
+      <label><input type="checkbox"><span>Download test data PDF</span></label>
+      <label><input type="checkbox"><span>Get sample client code</span></label>
+      <label><input type="checkbox"><span>Import staging certificates</span></label>
+      <label><input type="checkbox"><span>Fire first Demo Auth</span></label>
+      <label><input type="checkbox"><span>Pass CERT-IN audit</span></label>
+      <label><input type="checkbox"><span>Switch to production keys</span></label>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- S1 — OVERVIEW -->
+    <section class="section" id="s1">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <div>
+          <h2>Sandbox Overview &amp; Purpose</h2>
+          <p>A risk-free Test CIDR environment — no real data, no leased lines, no prior licence required to start</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <p style="font-size:14px;color:var(--text2);line-height:1.75;margin-bottom:20px;">
+          The UIDAI Aadhaar Authentication Sandbox is a <strong>dedicated staging environment</strong> hosting a mock CIDR (Central Identities Data Repository) populated exclusively with dummy test data. It is designed as the lowest-barrier entry point into the Aadhaar authentication ecosystem — allowing developers, fintechs, and prospective AUAs to validate their integration logic before touching the production environment.
+        </p>
+        <div class="env-compare" style="margin-bottom:20px;">
+          <div class="env-col">
+            <div class="env-col-head sandbox">Sandbox / Staging Environment</div>
+            <div class="env-row"><span class="label">API version</span>Auth &amp; eKYC API 2.5 (current)</div>
+            <div class="env-row"><span class="label">Network</span>Public internet — no VPN, no leased line required</div>
+            <div class="env-row"><span class="label">Data</span>Dummy Aadhaar numbers (9999-series) only</div>
+            <div class="env-row"><span class="label">Biometrics</span>RD Service Simulation Mode generates valid test PID blocks</div>
+            <div class="env-row"><span class="label">Certificates</span>UIDAI Staging Public Key (.cer)</div>
+            <div class="env-row"><span class="label">Access</span>Open (public) or registered (post-application)</div>
+            <div class="env-row"><span class="label">Purpose</span>PoC development, logic validation, pre-production audit prep</div>
+          </div>
+          <div class="env-col">
+            <div class="env-col-head prod">Production Environment</div>
+            <div class="env-row"><span class="label">Network</span>Dedicated leased line via registered ASA only</div>
+            <div class="env-row"><span class="label">Data</span>Real Aadhaar numbers — all 1.4B residents</div>
+            <div class="env-row"><span class="label">Biometrics</span>Live STQC-certified L1 Registered Device required</div>
+            <div class="env-row"><span class="label">Certificates</span>UIDAI Production Public Key</div>
+            <div class="env-row"><span class="label">Access</span>Requires AUA/KUA licence, Joint Agreement, CERT-IN audit pass</div>
+            <div class="env-row"><span class="label">Purpose</span>Live identity verification for real users</div>
+          </div>
+        </div>
+        <div class="note-box info">
+          <strong>Critical isolation guarantee:</strong> Sandbox data (9999-series UIDs) will never authenticate in production, and real Aadhaar numbers will not work in the sandbox. The two environments are completely isolated — there is no risk of accidentally testing against live resident data.
+        </div>
+      </div>
+    </section>
+
+    <!-- S2 — STAGING ENDPOINTS -->
+    <section class="section" id="s2">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <div>
+          <h2>Staging Endpoints</h2>
+          <p>Three API URLs — replace these with production URLs only after CERT-IN audit</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <p style="font-size:13.5px;color:var(--text2);line-height:1.7;margin-bottom:20px;">The sandbox is not a software download — it is a set of hosted staging URLs maintained by UIDAI at <code style="font-family:var(--font-mono);font-size:12px;background:var(--surface2);padding:1px 6px;border-radius:3px;border:1px solid var(--border);color:var(--blue);">developer.uidai.gov.in</code>. These connect to the Test CIDR backend.</p>
+        <div class="endpoint-grid">
+          <div class="endpoint-card">
+            <div class="endpoint-card-head">
+              <span class="endpoint-method">POST</span>
+              <span class="endpoint-type">Authentication (Auth)</span>
+            </div>
+            <div class="endpoint-card-body">
+              <a class="endpoint-url" href="https://developer.uidai.gov.in/authserver/2.5" target="_blank">
+                developer.uidai.gov.in<br>/authserver/2.5
+              </a>
+              <p class="endpoint-desc">Biometric, OTP, or demographic authentication. Returns Y/N with error code. Used by AUAs.</p>
+            </div>
+          </div>
+          <div class="endpoint-card">
+            <div class="endpoint-card-head">
+              <span class="endpoint-method">POST</span>
+              <span class="endpoint-type">e-KYC (Data Retrieval)</span>
+            </div>
+            <div class="endpoint-card-body">
+              <a class="endpoint-url" href="https://developer.uidai.gov.in/uidkyc/kyc/2.5" target="_blank">
+                developer.uidai.gov.in<br>/uidkyc/kyc/2.5
+              </a>
+              <p class="endpoint-desc">Full demographic data retrieval — Name, DOB, Address, Photo. Used by KUAs. Returns encrypted, signed KycRes XML.</p>
+            </div>
+          </div>
+          <div class="endpoint-card">
+            <div class="endpoint-card-head">
+              <span class="endpoint-method">POST</span>
+              <span class="endpoint-type">OTP Generation</span>
+            </div>
+            <div class="endpoint-card-body">
+              <a class="endpoint-url" href="https://developer.uidai.gov.in/uidotp/2.5" target="_blank">
+                developer.uidai.gov.in<br>/uidotp/2.5
+              </a>
+              <p class="endpoint-desc">Triggers an OTP dispatch to the Aadhaar-registered mobile. Call this before submitting an OTP Auth request.</p>
+            </div>
+          </div>
+        </div>
+        <div class="note-box warning" style="margin-top:16px;">
+          <strong>Production switch:</strong> When moving to production, you replace these three URLs <em>and</em> the Staging Public Key certificate with the production equivalents provided by UIDAI after your CERT-IN audit passes. No other code change is required if your integration is correctly parameterised.
+        </div>
+      </div>
+    </section>
+
+    <!-- S3 — ACCESS MODES -->
+    <section class="section" id="s3">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div>
+          <h2>Access Modes: Who Can Use the Sandbox?</h2>
+          <p>UIDAI operates a dual-access model — open PoC testing and registered pre-production access</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <table class="access-table">
+          <thead>
+            <tr>
+              <th style="width:130px;">Access Type</th>
+              <th>Who It's For</th>
+              <th>Requirement</th>
+              <th>What You Get</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="access-badge badge-open">Open / Public</span></td>
+              <td>Any developer, startup, student, or organisation in the Proof of Concept (PoC) stage. No licence, no registered company, no prior permission needed.</td>
+              <td>None. Use the <strong>public</strong> AUA code and the test license key immediately. Download the SDK and start firing requests.</td>
+              <td>Full access to all three staging endpoints using the public AUA code. Can test Auth, OTP, and eKYC API flows end-to-end with dummy UIDs.</td>
+            </tr>
+            <tr>
+              <td><span class="access-badge badge-reg">Registered</span></td>
+              <td>Companies that have formally applied for an AUA or KUA licence and paid the application fee. This is used during the onboarding and pre-production audit phase.</td>
+              <td>Granted by UIDAI during the onboarding process, after initial application submission. Requires a formal AUA/KUA application on file.</td>
+              <td>A <strong>specific Sandbox ID</strong> tied to your company's AUA code. Allows testing with your own code, preparing for the Self-Certification tests required before production go-live.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="note-box tip" style="margin-top:16px;">
+          <strong>Where to start:</strong> Every integration begins with Open Access. Use the public AUA code to validate your XML construction, PID block encryption, and API connectivity before investing in the formal licence application. This de-risks the onboarding process significantly.
+        </div>
+      </div>
+    </section>
+
+    <!-- S4 — PREREQUISITES -->
+    <section class="section" id="s4">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <div>
+          <h2>Technical Prerequisites &amp; Configuration</h2>
+          <p>What your application needs before it can speak to the staging environment</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <p style="font-size:13.5px;color:var(--text2);line-height:1.7;margin-bottom:20px;">Your application must perform a correct cryptographic handshake with the UIDAI staging server. These are the components required before you can send your first request.</p>
+
+        <div style="margin-bottom:24px;">
+          <div style="font-size:12px;font-weight:600;color:var(--text3);letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px;">A — Technical Prerequisites</div>
+          <div style="border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;">
+            <div style="display:grid;grid-template-columns:160px 1fr;border-bottom:1px solid var(--border);background:var(--surface2);padding:8px 14px;">
+              <span style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;">Requirement</span>
+              <span style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;">Detail</span>
+            </div>
+            <div style="display:grid;grid-template-columns:160px 1fr;padding:12px 14px;border-bottom:1px solid var(--border);">
+              <span style="font-size:13px;font-weight:500;color:var(--text);">Internet connectivity</span>
+              <span style="font-size:13px;color:var(--text2);">Standard public internet — no VPN or leased line required for the sandbox environment.</span>
+            </div>
+            <div style="display:grid;grid-template-columns:160px 1fr;padding:12px 14px;border-bottom:1px solid var(--border);">
+              <span style="font-size:13px;font-weight:500;color:var(--text);">Staging Public Key</span>
+              <span style="font-size:13px;color:var(--text2);">Download the <strong>Staging Public Key</strong> (.cer file) from the UIDAI Developer Portal. This is used to encrypt the PID block so only the UIDAI staging server can decrypt it. Do not confuse with the Production Public Key.</span>
+            </div>
+            <div style="display:grid;grid-template-columns:160px 1fr;padding:12px 14px;border-bottom:1px solid var(--border);">
+              <span style="font-size:13px;font-weight:500;color:var(--text);">Digital Signature cert</span>
+              <span style="font-size:13px;color:var(--text2);">A <code>.p12</code> or <code>.jks</code> keystore file for signing your XML requests. Sample test certificates are included in the UIDAI tutorial ZIP files — use these for sandbox testing. Production will require your own registered certificate.</span>
+            </div>
+            <div style="display:grid;grid-template-columns:160px 1fr;padding:12px 14px;">
+              <span style="font-size:13px;font-weight:500;color:var(--text);">Runtime</span>
+              <span style="font-size:13px;color:var(--text2);">Java 1.6 or higher is recommended — UIDAI provides Java-based SDKs. Maven is recommended for dependency management. .NET clients are also available on the developer portal.</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-size:12px;font-weight:600;color:var(--text3);letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px;">B — Standard Configuration Parameters (Public Access)</div>
+          <table class="config-table" style="border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;">
+            <thead>
+              <tr>
+                <td>Parameter</td>
+                <td>Value</td>
+                <td>Notes</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>AUA Code (<code>ac</code>)</td>
+                <td>public</td>
+                <td>Use this for all open-access testing. Your own AUA code is issued only after licence approval.</td>
+              </tr>
+              <tr>
+                <td>Sub-AUA Code (<code>sa</code>)</td>
+                <td>public</td>
+                <td>Set to match the AUA code for public testing. In production, this is your registered Sub-KUA code.</td>
+              </tr>
+              <tr>
+                <td>License Key (<code>lk</code>)</td>
+                <td>MG41K999H9S</td>
+                <td>Common public test key. Always verify the current active key on the <em>Testing Data</em> page — it is updated periodically.</td>
+              </tr>
+              <tr>
+                <td>Terminal ID</td>
+                <td>Any string</td>
+                <td>Example: <code>TestTerminal01</code>. No validation is performed on this field in the sandbox.</td>
+              </tr>
+              <tr>
+                <td>Transaction ID (<code>txn</code>)</td>
+                <td>Any unique string</td>
+                <td>Must begin with <code>UKC:</code> prefix for eKYC requests. E.g., <code>UKC:TEST:20260319:001</code>.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- S5 — IMPLEMENTATION STEPS -->
+    <section class="section" id="s5">
+      <div class="section-header">
+        <div class="section-num">05</div>
+        <div>
+          <h2>Implementation Steps</h2>
+          <p>Step-by-step walkthrough from environment setup to firing your first authenticated request</p>
+        </div>
+      </div>
+      <div class="section-body">
+
+        <div class="impl-step">
+          <div class="impl-step-head">
+            <div class="impl-step-num teal">A</div>
+            <div>
+              <div class="impl-step-title">Environment Setup</div>
+              <div class="impl-step-sub">Download the SDK, certificates, and configure your build environment</div>
+            </div>
+          </div>
+          <div class="impl-step-body">
+            <ol>
+              <li>Ensure <strong>Java 1.6+</strong> is installed and <code>JAVA_HOME</code> is set. Maven 3.x is recommended for dependency management.</li>
+              <li>Navigate to the <a href="https://uidai.gov.in/en/ecosystem/authentication-devices-documents/developer-section.html" target="_blank" style="color:var(--blue);">UIDAI Developer Section</a> and download the <strong>auth-client-source.zip</strong>. This contains the XML construction, PID block encryption, and digital signing logic.</li>
+              <li>Download the <strong>Staging Public Key</strong> (.cer file) from the same portal. Import it into your application's truststore: <code>keytool -import -alias uidai-staging -file staging-public.cer -keystore truststore.jks</code></li>
+              <li>Download the <strong>tutorial ZIP</strong> which contains sample <code>.p12</code> test certificates for signing. Import into your keystore for signing XML requests.</li>
+            </ol>
+            <div class="note-box tip">
+              <strong>Pro tip:</strong> Before writing a single line of custom code, use the <strong>UIDAI Sample GUI App</strong> (included in the tutorial ZIP) or <strong>Postman</strong> to fire a test request. This validates that your network connectivity, certificates, and credentials are correct in isolation — eliminating environmental issues before they contaminate your code debugging.
+            </div>
+          </div>
+        </div>
+
+        <div class="impl-step">
+          <div class="impl-step-head">
+            <div class="impl-step-num blue">B</div>
+            <div>
+              <div class="impl-step-title">Construct the Auth/eKYC XML Request</div>
+              <div class="impl-step-sub">Build the PID block and Auth XML with correct parameters</div>
+            </div>
+          </div>
+          <div class="impl-step-body">
+            <p>Every request to UIDAI is a digitally signed XML document containing an encrypted PID block. The SDK handles this construction — configure it with your parameters:</p>
+            <div class="code-block">
+              <div class="code-block-label">Configuration — Public Sandbox Access</div>
+              <pre><span class="comment">// AUA and auth settings</span>
+<span class="key">auaCode</span>         = <span class="val">"public"</span>
+<span class="key">subAuaCode</span>      = <span class="val">"public"</span>
+<span class="key">licenseKey</span>      = <span class="val">"MG41K999H9S"</span>
+<span class="key">authEndpoint</span>    = <span class="url">"https://developer.uidai.gov.in/authserver/2.5"</span>
+<span class="key">eKycEndpoint</span>   = <span class="url">"https://developer.uidai.gov.in/uidkyc/kyc/2.5"</span>
+<span class="key">otpEndpoint</span>     = <span class="url">"https://developer.uidai.gov.in/uidotp/2.5"</span>
+
+<span class="comment">// Certificates</span>
+<span class="key">stagingPublicKey</span> = <span class="val">"staging-public.cer"</span>   <span class="comment">// Encrypt PID block</span>
+<span class="key">signingKeystore</span>  = <span class="val">"test-signing.p12"</span>     <span class="comment">// Sign Auth XML</span>
+
+<span class="comment">// Test UID for Demo Auth</span>
+<span class="key">testUID</span>         = <span class="val">"999999990019"</span>
+<span class="key">txnId</span>           = <span class="val">"UKC:TEST:20260319:001"</span></pre>
+            </div>
+            <p>The PID block is constructed as follows: the user's demographic data or OTP is placed in a <code>&lt;Pid&gt;</code> element, encrypted with a fresh AES-256 session key, and the session key is wrapped with the UIDAI Staging Public Key. The combined block is Base64-encoded and placed inside the Auth XML.</p>
+          </div>
+        </div>
+
+        <div class="impl-step">
+          <div class="impl-step-head">
+            <div class="impl-step-num amber">C</div>
+            <div>
+              <div class="impl-step-title">Send the Request &amp; Handle the Response</div>
+              <div class="impl-step-sub">HTTPS POST to the staging endpoint, parse the Auth or KycRes XML</div>
+            </div>
+          </div>
+          <div class="impl-step-body">
+            <ol>
+              <li><strong>Digital signing:</strong> Sign the complete Auth XML using the test <code>.p12</code> certificate. The SDK's <code>signXml()</code> method handles this.</li>
+              <li><strong>HTTPS POST:</strong> Send the signed XML as the request body to the appropriate staging endpoint.</li>
+              <li><strong>Parse response:</strong> The response is a signed XML document. Check the <code>ret</code> attribute first — <code>"y"</code> for success, <code>"n"</code> for failure.</li>
+              <li><strong>Error handling:</strong> On failure, parse the <code>err</code> attribute for the error code. See the response table in Section 07.</li>
+            </ol>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- S6 — TEST DATA -->
+    <section class="section" id="s6">
+      <div class="section-header">
+        <div class="section-num">06</div>
+        <div>
+          <h2>Test Data Reference</h2>
+          <p>Dummy Aadhaar numbers for sandbox use — real UIDs will not work here</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="note-box danger" style="margin-bottom:20px;">
+          <strong>Critical constraint:</strong> You cannot test the sandbox with your own real Aadhaar number. The sandbox Test CIDR only contains the 9999-series dummy UIDs. Real Aadhaar numbers will return an error. Download the full test UID list from the <em>Testing Data and License Keys</em> page on the developer portal.
+        </div>
+        <div style="border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;">
+          <div style="padding:12px 16px;background:var(--surface2);border-bottom:1px solid var(--border);font-size:11px;font-weight:600;color:var(--text3);letter-spacing:.06em;text-transform:uppercase;">Sample Test UIDs</div>
+          <table style="width:100%;border-collapse:collapse;font-size:13px;">
+            <thead>
+              <tr style="background:var(--surface);">
+                <th style="padding:10px 14px;text-align:left;font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.04em;border-bottom:1px solid var(--border);">Dummy UID</th>
+                <th style="padding:10px 14px;text-align:left;font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.04em;border-bottom:1px solid var(--border);">Name in Test CIDR</th>
+                <th style="padding:10px 14px;text-align:left;font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.04em;border-bottom:1px solid var(--border);">Suitable for Testing</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:10px 14px;font-family:var(--font-mono);font-size:13px;color:var(--blue);font-weight:500;">999999990019</td>
+                <td style="padding:10px 14px;font-size:13px;color:var(--text2);">Shivshankar Choudhury</td>
+                <td style="padding:10px 14px;font-size:12.5px;color:var(--text2);">Demo Auth, OTP Auth, eKYC</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);background:var(--surface);">
+                <td style="padding:10px 14px;font-family:var(--font-mono);font-size:13px;color:var(--blue);font-weight:500;">9999-series</td>
+                <td style="padding:10px 14px;font-size:13px;color:var(--text2);">Multiple test personas</td>
+                <td style="padding:10px 14px;font-size:12.5px;color:var(--text2);">Full list in Testing Data PDF on developer portal</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:13px;color:var(--text2);margin-top:14px;line-height:1.65;">
+          <strong>Biometric simulation:</strong> Since the sandbox does not store real biometric templates, you cannot use a live fingerprint reader. Instead, configure an <strong>L0 or L1 Registered Device (RD) Service in Simulation Mode</strong> — this generates a valid, correctly-formatted encrypted PID block that the staging CIDR will accept for biometric auth testing.
+        </p>
+      </div>
+    </section>
+
+    <!-- S7 — RESPONSE HANDLING -->
+    <section class="section" id="s7">
+      <div class="section-header">
+        <div class="section-num">07</div>
+        <div>
+          <h2>Response Handling &amp; Error Codes</h2>
+          <p>Parsing AuthRes and KycRes XML — common error codes you will encounter</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <p style="font-size:13.5px;color:var(--text2);line-height:1.7;margin-bottom:16px;">
+          Every response from UIDAI is a digitally signed XML document. Always <strong>verify the UIDAI signature</strong> before trusting the response content. Check the <code>ret</code> attribute for the outcome, then the <code>err</code> attribute for the specific reason if authentication failed.
+        </p>
+        <table class="resp-table">
+          <thead>
+            <tr>
+              <th>ret value</th>
+              <th>err code</th>
+              <th>Meaning &amp; Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge-success">y</span></td>
+              <td><code>0</code></td>
+              <td>Authentication or eKYC successful. For eKYC, decrypt the <code>Rar</code> element using your private key to access the KYC payload.</td>
+            </tr>
+            <tr>
+              <td><span class="badge-fail">n</span></td>
+              <td><code>100</code></td>
+              <td><strong>Name mismatch.</strong> The name in the PID block does not match the record in CIDR. Check the demo data you are supplying.</td>
+            </tr>
+            <tr>
+              <td><span class="badge-fail">n</span></td>
+              <td><code>300</code></td>
+              <td><strong>Biometric mismatch.</strong> The fingerprint or iris template did not match. In sandbox, ensure your RD Service is in Simulation Mode and generating valid test PID blocks.</td>
+            </tr>
+            <tr>
+              <td><span class="badge-fail">n</span></td>
+              <td><code>400</code></td>
+              <td><strong>Invalid OTP.</strong> OTP has expired or does not match. Call the OTP endpoint first and use the OTP immediately.</td>
+            </tr>
+            <tr>
+              <td><span class="badge-fail">n</span></td>
+              <td><code>500</code></td>
+              <td><strong>Invalid AUA/license key.</strong> Verify your <code>ac</code> and <code>lk</code> values. Check the Testing Data page for the current public license key.</td>
+            </tr>
+            <tr>
+              <td><span class="badge-fail">n</span></td>
+              <td><code>540</code></td>
+              <td><strong>Invalid UID.</strong> You are using a real Aadhaar number. Switch to a 9999-series test UID.</td>
+            </tr>
+            <tr>
+              <td><span class="badge-fail">n</span></td>
+              <td><code>940</code></td>
+              <td><strong>Signature verification failed.</strong> Your XML signing is incorrect. Check that you are using the correct test <code>.p12</code> certificate and that the XML is not being modified after signing.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="note-box info" style="margin-top:12px;">
+          The full error code reference is published in the UIDAI Authentication API specification v2.5, available on the developer portal. The sandbox and production environments use the same error code set.
+        </div>
+      </div>
+    </section>
+
+    <!-- S8 — SECURITY BEST PRACTICES -->
+    <section class="section" id="s8">
+      <div class="section-header">
+        <div class="section-num">08</div>
+        <div>
+          <h2>Security Best Practices in the Sandbox</h2>
+          <p>Habits formed in the sandbox carry directly into production — build compliance in from day one</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="security-grid">
+          <div class="security-card">
+            <div class="security-card-head">
+              <div class="security-icon" style="background:#e8f5ee;">🔒</div>
+              <div class="security-title">No PII in logs — even in sandbox</div>
+            </div>
+            <div class="security-body">Even though sandbox UIDs are dummy data, build your logging layer to exclude Aadhaar numbers, biometric data, OTP values, and demographic fields from day one. These habits must carry into production — retrofitting compliant logging is far more expensive than building it correctly initially.</div>
+          </div>
+          <div class="security-card">
+            <div class="security-card-head">
+              <div class="security-icon" style="background:#e6f1fb;">🔑</div>
+              <div class="security-title">Always encrypt the PID block</div>
+            </div>
+            <div class="security-body">The PID block must always be encrypted using the latest UIDAI Staging Public Key before transmission. Never transmit a plaintext PID block, even for debugging. If you need to inspect what you are sending, decrypt a copy locally — never disable encryption on the outgoing request.</div>
+          </div>
+          <div class="security-card">
+            <div class="security-card-head">
+              <div class="security-icon" style="background:#fef3cd;">⚠️</div>
+              <div class="security-title">Rotate the staging public key</div>
+            </div>
+            <div class="security-body">UIDAI periodically updates the Staging Public Key. If your PID block encryption starts failing, check the developer portal for a key update. Build a key-refresh mechanism into your application rather than hard-coding the key — the same will be required in production.</div>
+          </div>
+          <div class="security-card">
+            <div class="security-card-head">
+              <div class="security-icon" style="background:#e0f2ef;">✅</div>
+              <div class="security-title">Verify the UIDAI response signature</div>
+            </div>
+            <div class="security-body">Always verify the digital signature on every AuthRes and KycRes XML before accepting or processing its contents. This guards against man-in-the-middle attacks and tampered responses. Use the UIDAI Staging Certificate (separate from the Public Key) for response signature verification.</div>
+          </div>
+          <div class="security-card">
+            <div class="security-card-head">
+              <div class="security-icon" style="background:#ede8fe;">📋</div>
+              <div class="security-title">Prepare your CERT-IN audit evidence</div>
+            </div>
+            <div class="security-body">The sandbox period is your window to build the log samples, architecture diagrams, and security control documentation that a CERT-IN empanelled auditor will review before you can go to production. Document every security decision made during sandbox development — it becomes your audit evidence.</div>
+          </div>
+          <div class="security-card">
+            <div class="security-card-head">
+              <div class="security-icon" style="background:#fde8e8;">🚫</div>
+              <div class="security-title">Never use real Aadhaar numbers for testing</div>
+            </div>
+            <div class="security-body">Using real Aadhaar numbers in the sandbox — even your own — is a violation of the purpose limitation principle and may be viewed as unauthorised processing. The sandbox's 9999-series UIDs exist precisely so that no real resident's identity data is exposed during development. Use only the dummy UIDs.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S9 — QUICK-START CHECKLIST -->
+    <section class="section" id="s9">
+      <div class="section-header">
+        <div class="section-num">09</div>
+        <div>
+          <h2>Quick-Start Checklist</h2>
+          <p>Five steps to get your first successful authentication in under an hour</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <ul class="checklist-steps">
+          <li class="cl-step">
+            <div class="cl-num">1</div>
+            <div class="cl-content">
+              <div class="cl-title">Visit the UIDAI Developer Section</div>
+              <div class="cl-body">Go to <a href="https://uidai.gov.in/en/ecosystem/authentication-devices-documents/developer-section.html" target="_blank">uidai.gov.in → Ecosystem → Developer Section</a>. Bookmark this page — it is the central source for all SDKs, certificates, test data, and tutorial guides.</div>
+            </div>
+          </li>
+          <li class="cl-step">
+            <div class="cl-num">2</div>
+            <div class="cl-content">
+              <div class="cl-title">Download the Testing Data PDF</div>
+              <div class="cl-body">From the <a href="https://uidai.gov.in/en/916-developer-section/data-and-downloads-section/11350-testing-data-and-license-keys.html" target="_blank">Testing Data and License Keys</a> page, download the PDF listing all dummy Aadhaar numbers. Verify the current public license key on this page — <code>MG41K999H9S</code> is the commonly referenced key but it is updated periodically.</div>
+            </div>
+          </li>
+          <li class="cl-step">
+            <div class="cl-num">3</div>
+            <div class="cl-content">
+              <div class="cl-title">Download the Sample Client Code</div>
+              <div class="cl-body">Get the <strong>Java Auth Client</strong> or <strong>.NET Client</strong> source code from the <a href="https://uidai.gov.in/en/915-developer-section/tutorial-section/11345-developing-using-sample-applications.html" target="_blank">Developing using Sample Applications</a> tutorial page. This includes all XML construction, PID encryption, and signing logic pre-built.</div>
+            </div>
+          </li>
+          <li class="cl-step">
+            <div class="cl-num">4</div>
+            <div class="cl-content">
+              <div class="cl-title">Import the Staging Certificates</div>
+              <div class="cl-body">Download the Staging Public Key (.cer) and import it into your application truststore. Import the sample test <code>.p12</code> signing certificate from the tutorial ZIP. Configure the staging endpoint URLs in your application.</div>
+            </div>
+          </li>
+          <li class="cl-step">
+            <div class="cl-num">5</div>
+            <div class="cl-content">
+              <div class="cl-title">Fire a Demo Auth Request</div>
+              <div class="cl-body">Use test UID <code>999999990019</code> (Shivshankar Choudhury) and perform a <strong>Demo Auth</strong> — matching just the name field. This is the simplest auth type and has no biometric dependency. A successful <code>ret="y"</code> response confirms your connectivity, certificate setup, and XML construction are all correct.</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- S10 — ESSENTIAL LINKS -->
+    <section class="section" id="s10">
+      <div class="section-header">
+        <div class="section-num">10</div>
+        <div>
+          <h2>Essential Links for Developers</h2>
+          <p>Official UIDAI resources — all links point to uidai.gov.in</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="links-grid">
+          <a class="link-card" href="https://uidai.gov.in/en/ecosystem/authentication-devices-documents/developer-section.html" target="_blank">
+            <div class="link-card-type">Portal</div>
+            <div class="link-card-title">UIDAI Developer Section</div>
+            <div class="link-card-url">uidai.gov.in/.../developer-section</div>
+          </a>
+          <a class="link-card" href="https://uidai.gov.in/en/915-developer-section/tutorial-section/11345-developing-using-sample-applications.html" target="_blank">
+            <div class="link-card-type">Tutorial</div>
+            <div class="link-card-title">Developing using Sample Applications</div>
+            <div class="link-card-url">uidai.gov.in/.../developing-using-sample-applications</div>
+          </a>
+          <a class="link-card" href="https://uidai.gov.in/en/916-developer-section/data-and-downloads-section/11350-testing-data-and-license-keys.html" target="_blank">
+            <div class="link-card-type">Data &amp; Downloads</div>
+            <div class="link-card-title">Testing Data &amp; License Keys</div>
+            <div class="link-card-url">uidai.gov.in/.../testing-data-and-license-keys</div>
+          </a>
+          <a class="link-card" href="https://uidai.gov.in/images/resource/aadhaar_ekyc_api_2_5.pdf" target="_blank">
+            <div class="link-card-type">API Specification PDF</div>
+            <div class="link-card-title">eKYC API v2.5 — Complete Spec</div>
+            <div class="link-card-url">uidai.gov.in/.../aadhaar_ekyc_api_2_5.pdf</div>
+          </a>
+          <a class="link-card" href="https://uidai.gov.in/aadhaar_dashboard/asa_transactions.php?asacode=3600" target="_blank">
+            <div class="link-card-type">Live Dashboard</div>
+            <div class="link-card-title">ASA / AUA Transaction Dashboard</div>
+            <div class="link-card-url">uidai.gov.in/aadhaar_dashboard/asa_transactions.php</div>
+          </a>
+          <a class="link-card" href="https://uidai.gov.in/images/FrontPageUpdates/aadhaar_authentication_api_2_0_1.pdf" target="_blank">
+            <div class="link-card-type">API Specification PDF</div>
+            <div class="link-card-title">Authentication API v2.0</div>
+            <div class="link-card-url">uidai.gov.in/.../aadhaar_authentication_api_2_0_1.pdf</div>
+          </a>
+        </div>
+
+        <!-- Navigation to other KB articles -->
+        <div style="margin-top:24px;padding:20px 24px;border:1px solid var(--border);border-left:4px solid var(--teal);border-radius:var(--radius);background:var(--surface);">
+          <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);margin-bottom:14px;">Other Articles in This Knowledge Base</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <a href="ekyc-uidai-guide.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;padding:12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--white);transition:border-color .15s;" onmouseover="this.style.borderColor='var(--blue-light)'" onmouseout="this.style.borderColor='var(--border)'">
+              <div style="font-size:22px;flex-shrink:0;">📘</div>
+              <div><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">eKYC Process — Complete Technical Reference</div><div style="font-size:12px;color:var(--text3);">Entity roles, message flow, encryption matrix, bank log requirements</div></div>
+            </a>
+            <a href="ekyc-trust-chain.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;padding:12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--white);transition:border-color .15s;" onmouseover="this.style.borderColor='var(--blue-light)'" onmouseout="this.style.borderColor='var(--border)'">
+              <div style="font-size:22px;flex-shrink:0;">🔗</div>
+              <div><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Trust Chain &amp; Sub-KUA Governance</div><div style="font-size:12px;color:var(--text3);">Entity segregation rationale and Sub-KUA appointment process</div></div>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-links">
+    <a href="index.html">DPDPindia.in</a>
+    <a href="ekyc-kb.html">eKYC Knowledge Base</a>
+    <a href="ekyc-uidai-guide.html">eKYC Complete Guide</a>
+    <a href="ekyc-trust-chain.html">Trust Chain &amp; Sub-KUA</a>
+    <a href="https://uidai.gov.in" target="_blank">UIDAI Official</a>
+    <a href="https://uidai.gov.in/en/ecosystem/authentication-devices-documents/developer-section.html" target="_blank">Developer Portal</a>
+  </div>
+  <p>UIDAI Developer Sandbox Guide — Part of the Aadhaar eKYC Knowledge Base at DPDPindia.in</p>
+  <p style="margin-top:6px;">
+    <a href="ekyc-kb.html">← Back to Knowledge Base</a> · For production integrations consult the latest UIDAI specifications at <a href="https://uidai.gov.in" target="_blank">uidai.gov.in</a>
+  </p>
+</footer>
+
+</body>
+</html>

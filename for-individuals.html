@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Know Your Data Rights — DPDP Act for Individuals | DPDPIndia.in</title>
+<meta name="description" content="Your rights under the DPDP Act 2023 as a Data Principal — access, correction, erasure, grievance, and how to withdraw consent. Plain language guide for Indian citizens.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --parchment:#F8F4EC;--cream:#FDFAF5;--ink:#1A1610;
+  --prussian:#1B2B3A;--slate:#2D3D4E;--saffron:#D4760A;--saffron-lt:#F0A840;
+  --ochre:#B8862C;--mist:#7A7468;
+  --rule:rgba(26,22,16,0.12);--rule-gold:rgba(212,118,10,0.25);
+  --shadow-sm:0 2px 12px rgba(26,22,16,0.06);--shadow-md:0 8px 40px rgba(26,22,16,0.10);
+  --danger:#C0392B;--success:#1A6B3A;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:'Source Serif 4',Georgia,serif;background:var(--cream);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+.masthead{background:var(--prussian);padding:9px 0;text-align:center;border-bottom:2px solid var(--saffron);}
+.masthead-text{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.5);}
+.masthead-text span{color:var(--saffron-lt);}
+nav{position:sticky;top:0;z-index:500;background:var(--cream);border-bottom:1px solid var(--rule);box-shadow:var(--shadow-sm);}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:relative;}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0;}
+.nav-brand-name{display:flex;flex-direction:column;gap:1px;}
+.nav-brand-name strong{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--prussian);}
+.nav-brand-name span{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);}
+.nav-menu{display:flex;align-items:center;gap:0;list-style:none;}
+.nav-item>a{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--slate);text-decoration:none;padding:0 14px;height:64px;display:flex;align-items:center;transition:color 0.2s;white-space:nowrap;border-bottom:2px solid transparent;}
+.nav-item>a:hover,.nav-item.active>a{color:var(--saffron);border-bottom-color:var(--saffron);}
+.nav-item.has-dropdown>a::after{content:'▾';font-size:0.5rem;margin-left:5px;opacity:0.6;}
+.nav-dropdown{display:none;position:absolute;top:100%;left:0;min-width:240px;background:var(--cream);border:1px solid var(--rule);border-top:3px solid var(--saffron);box-shadow:var(--shadow-md);z-index:600;}
+.nav-item:hover .nav-dropdown{display:block;}
+.nav-dropdown a{display:block;font-family:'Source Serif 4',serif;font-size:0.82rem;font-weight:300;color:var(--slate);text-decoration:none;padding:0.5rem 1.2rem;transition:background 0.15s;}
+.nav-dropdown a:hover{background:var(--parchment);}
+.nav-cta{background:var(--danger)!important;color:#fff!important;padding:9px 18px;margin-left:12px;border-bottom:none!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--prussian);transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-menu{display:none;position:absolute;top:64px;left:0;right:0;background:var(--cream);border-bottom:2px solid var(--saffron);box-shadow:var(--shadow-md);z-index:499;max-height:80vh;overflow-y:auto;}
+.mobile-menu.open{display:block;}
+.mobile-menu ul{list-style:none;padding:0.5rem 1.5rem 1.5rem;}
+.mobile-menu ul li a{display:block;font-size:0.92rem;color:var(--slate);text-decoration:none;padding:0.6rem 0;border-bottom:1px solid var(--rule);}
+.mm-label{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--saffron);padding:1rem 0 0.3rem;display:block;}
+.page{max-width:1320px;margin:0 auto;padding:0 2rem;}
+
+/* PAGE HERO */
+.page-hero{background:var(--prussian);padding:4.5rem 0 4rem;position:relative;overflow:hidden;}
+.page-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
+.page-hero::after{content:'';position:absolute;top:0;right:0;width:45%;height:100%;background:radial-gradient(ellipse at right top,rgba(212,118,10,0.1) 0%,transparent 60%);pointer-events:none;}
+.hero-inner-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr auto;gap:4rem;align-items:center;}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:1.5rem;}
+.breadcrumb a{color:var(--saffron);text-decoration:none;}
+.breadcrumb span{color:rgba(255,255,255,0.25);}
+.page-hero-kicker{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--saffron);margin-bottom:1rem;display:flex;align-items:center;gap:12px;}
+.page-hero-kicker::before{content:'';width:28px;height:1px;background:var(--saffron);}
+.page-hero-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:1.1;color:var(--parchment);margin-bottom:1rem;}
+.page-hero-title em{font-style:italic;color:var(--saffron-lt);}
+.page-hero-deck{font-size:1rem;font-weight:300;line-height:1.85;color:rgba(248,244,236,0.6);max-width:640px;margin-bottom:2rem;}
+.hero-quick-rights{display:grid;grid-template-columns:repeat(2,1fr);gap:0.8rem;min-width:280px;}
+.hqr-item{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);padding:1rem 1.2rem;}
+.hqr-icon{font-size:1.4rem;margin-bottom:0.3rem;}
+.hqr-title{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--saffron);}
+
+/* TABS */
+.tabs-bar{background:var(--parchment);border-bottom:1px solid var(--rule);position:sticky;top:64px;z-index:100;}
+.tabs-inner{max-width:1320px;margin:0 auto;padding:0 2rem;display:flex;gap:0;overflow-x:auto;}
+.tab{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--slate);padding:1rem 1.5rem;border-bottom:3px solid transparent;text-decoration:none;transition:all 0.2s;white-space:nowrap;}
+.tab:hover{color:var(--prussian);}
+.tab.active{color:var(--saffron);border-bottom-color:var(--saffron);}
+
+/* SECTIONS */
+.content-section{padding:5rem 0;}
+.content-section.alt{background:var(--parchment);}
+.section-kicker{display:flex;align-items:center;gap:12px;font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.8rem;}
+.section-kicker::before{content:'';width:28px;height:1px;background:var(--saffron);}
+.section-heading{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.4rem);font-weight:700;line-height:1.15;color:var(--prussian);margin-bottom:0.6rem;}
+.section-heading em{font-style:italic;color:var(--saffron);}
+.section-deck{font-size:0.92rem;font-weight:300;line-height:1.85;color:var(--mist);margin-bottom:2.5rem;max-width:600px;}
+
+/* RIGHTS CARDS */
+.rights-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.right-card{background:var(--cream);border:1px solid var(--rule);border-top:4px solid var(--saffron);padding:2rem;}
+.right-num{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:900;color:var(--saffron);opacity:0.15;line-height:1;margin-bottom:0.5rem;}
+.right-icon{font-size:1.8rem;margin-bottom:0.8rem;}
+.right-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--prussian);margin-bottom:0.4rem;}
+.right-section{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.8rem;}
+.right-desc{font-size:0.85rem;font-weight:300;line-height:1.8;color:var(--mist);margin-bottom:1rem;}
+.right-how{background:var(--parchment);border-left:3px solid var(--saffron);padding:0.8rem 1rem;}
+.right-how-label{font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.3rem;}
+.right-how-text{font-size:0.78rem;font-weight:300;color:var(--slate);line-height:1.65;}
+
+/* ELI15 SECTION */
+.eli-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;}
+.eli-scenario{background:var(--cream);border:1px solid var(--rule);padding:2rem;}
+.eli-q{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--prussian);margin-bottom:1rem;padding-bottom:0.8rem;border-bottom:1px solid var(--rule);}
+.eli-q::before{content:'"';font-size:1.4rem;color:var(--saffron);margin-right:4px;}
+.eli-q::after{content:'"';font-size:1.4rem;color:var(--saffron);}
+.eli-a{font-size:0.88rem;font-weight:300;color:var(--slate);line-height:1.8;}
+.eli-law{margin-top:1rem;padding:0.7rem 1rem;background:var(--parchment);border-left:2px solid var(--saffron);}
+.eli-law-text{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.04em;color:var(--ochre);}
+
+/* HOW TO EXERCISE */
+.exercise-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-bottom:3rem;}
+.ex-step{background:var(--cream);border:1px solid var(--rule);padding:1.5rem;text-align:center;}
+.ex-step-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--saffron);opacity:0.3;margin-bottom:0.5rem;}
+.ex-step-title{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--prussian);margin-bottom:0.5rem;}
+.ex-step-desc{font-size:0.8rem;font-weight:300;color:var(--mist);line-height:1.65;}
+
+/* GRIEVANCE */
+.grievance-box{background:var(--prussian);padding:3rem;}
+.grievance-title{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--parchment);margin-bottom:0.5rem;}
+.grievance-deck{font-size:0.92rem;font-weight:300;color:rgba(248,244,236,0.6);line-height:1.85;margin-bottom:2rem;}
+.grievance-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.gv-item{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);padding:1.5rem;}
+.gv-step{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.5rem;}
+.gv-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--parchment);margin-bottom:0.5rem;}
+.gv-desc{font-size:0.82rem;font-weight:300;color:rgba(248,244,236,0.55);line-height:1.7;}
+.gv-timeline{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--saffron-lt);margin-top:0.8rem;}
+
+footer{background:var(--prussian);padding:3rem 0 2rem;border-top:3px solid var(--saffron);}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.footer-copy{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.1em;color:rgba(255,255,255,0.3);}
+.footer-legal-links{display:flex;gap:1.5rem;}
+.footer-legal-links a{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.08em;color:rgba(255,255,255,0.3);text-decoration:none;}
+.footer-legal-links a:hover{color:var(--saffron);}
+
+/* === TABLET (≤1100px) === */
+@media(max-width:1100px){
+  .nav-menu{display:none;}
+  .hamburger{display:flex;}
+  .hero-inner-grid{grid-template-columns:1fr;}
+  .hero-quick-rights{display:none;}
+  .rights-grid{grid-template-columns:1fr 1fr;}
+  .eli-grid{grid-template-columns:1fr;}
+  .exercise-steps{grid-template-columns:1fr 1fr;}
+  .grievance-grid{grid-template-columns:1fr;}
+  .page{padding:0 1.5rem;}
+  .section{padding:3.5rem 0;}
+}
+/* === MOBILE (≤768px) === */
+@media(max-width:768px){
+  .rights-grid{grid-template-columns:1fr;}
+  .page-hero{padding:3rem 0 2.5rem;}
+  .page-hero-title{font-size:1.8rem;}
+  .page-hero-ctas{flex-direction:column;align-items:flex-start;}
+  .btn-primary,.btn-outline{width:100%;text-align:center;}
+  .footer-bottom{flex-direction:column;align-items:flex-start;gap:0.8rem;}
+  .breadcrumb{display:none;}
+  .page{padding:0 1rem;}
+}
+/* === SMALL MOBILE (≤640px) === */
+@media(max-width:640px){
+  .exercise-steps{grid-template-columns:1fr;}
+  .section-heading{font-size:1.5rem;}
+  .page-hero-title{font-size:1.6rem;}
+  .right-card{padding:1.5rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <span class="masthead-text">Your Rights Under <span>DPDP Act 2023</span> — For Individual Citizens of India — Not Legal Advice</span>
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-brand-name">
+        <strong>DPDPIndia.in</strong>
+        <span>Data Protection Intelligence</span>
+      </div>
+    </a>
+    <ul class="nav-menu">
+      <li class="nav-item has-dropdown">
+        <a href="dpdp-kb.html">DPDP Act</a>
+        <div class="nav-dropdown">
+          <a href="dpdp-kb.html">DPDP Act Overview</a>
+          <a href="dpdp-act.html">Plain Language Guide</a>
+          <a href="dpdp-rights.html">Your Rights</a>
+          <a href="dpdp-rules.html">DPDP Rules 2025</a>
+        </div>
+      </li>
+      <li class="nav-item has-dropdown">
+        <a href="for-businesses.html">For Business</a>
+        <div class="nav-dropdown">
+          <a href="for-businesses.html#checklist">Compliance Checklist</a>
+          <a href="for-businesses.html#privacy-policy">Privacy Policy Template</a>
+          <a href="for-businesses.html#consent">Consent Generator</a>
+        </div>
+      </li>
+      <li class="nav-item active has-dropdown">
+        <a href="for-individuals.html">For Individuals</a>
+        <div class="nav-dropdown">
+          <a href="#rights">Know Your Rights</a>
+          <a href="#eli15">Explained Simply</a>
+          <a href="#how-to">How to Exercise Rights</a>
+          <a href="#grievance">File a Grievance</a>
+        </div>
+      </li>
+      <li class="nav-item has-dropdown">
+        <a href="cyber-fraud-hub.html">🚨 Cyber Fraud</a>
+        <div class="nav-dropdown">
+          <a href="cybercrime-financial.html">Financial Fraud</a>
+          <a href="cybercrime-remedy-guide.html">How to Report</a>
+        </div>
+      </li>
+      <li class="nav-item has-dropdown">
+        <a href="blog.html">Resources</a>
+        <div class="nav-dropdown">
+          <a href="dpdp-kb.html">DPDP KB</a>
+          <a href="itact-kb.html">IT Act KB</a>
+          <a href="ekyc-kb.html">eKYC / UIDAI KB</a>
+          <a href="case-tracker.html">Case Tracker</a>
+          <a href="blog.html">All Articles</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="cyber-fraud-hub.html" class="nav-cta">📞 1930 Helpline</a>
+      </li>
+    </ul>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="index.html">← Home</a></li>
+      <span class="mm-label">Your Rights</span>
+      <li><a href="#rights">All Your Rights (DPDP Act)</a></li>
+      <li><a href="#eli15">Explained Simply</a></li>
+      <li><a href="#how-to">How to Exercise Your Rights</a></li>
+      <li><a href="#grievance">File a Grievance</a></li>
+      <span class="mm-label">Related</span>
+      <li><a href="cyber-fraud-hub.html">🚨 Cyber Fraud Hub</a></li>
+      <li><a href="dpdp-rights.html">Full Legal Rights Analysis</a></li>
+      <li><a href="for-businesses.html">For Businesses</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="tabs-bar">
+  <div class="tabs-inner">
+    <a href="#rights" class="tab active">📋 My Rights</a>
+    <a href="#eli15" class="tab">💬 Explain Simply</a>
+    <a href="#how-to" class="tab">🛠 How to Exercise</a>
+    <a href="#grievance" class="tab">📣 File a Grievance</a>
+    <a href="dpdp-rights.html" class="tab">📖 Legal Deep-Dive</a>
+  </div>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page">
+    <div class="hero-inner-grid">
+      <div>
+        <div class="breadcrumb"><a href="index.html">Home</a> <span>›</span> For Individuals</div>
+        <div class="page-hero-kicker">For Individual Citizens</div>
+        <h1 class="page-hero-title">Know Your <em>Data Rights</em></h1>
+        <p class="page-hero-deck">The DPDP Act 2023 gives every Indian citizen powerful rights over how companies collect, use, and store your personal data. You are a <strong style="color:var(--saffron-lt);">Data Principal</strong> — and these are your rights. In plain language, with no legalese.</p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+          <a href="#rights" style="font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;background:var(--saffron);color:#fff;padding:13px 26px;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='var(--saffron-lt)'" onmouseout="this.style.background='var(--saffron)'">Know My Rights →</a>
+          <a href="#grievance" style="font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(255,255,255,0.25);color:rgba(248,244,236,0.75);padding:13px 26px;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--saffron)';this.style.color='var(--saffron)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.25)';this.style.color='rgba(248,244,236,0.75)'">File a Complaint →</a>
+        </div>
+      </div>
+      <div class="hero-quick-rights">
+        <div class="hqr-item"><div class="hqr-icon">📂</div><div class="hqr-title">Right to Access</div></div>
+        <div class="hqr-item"><div class="hqr-icon">✏️</div><div class="hqr-title">Right to Correct</div></div>
+        <div class="hqr-item"><div class="hqr-icon">🗑️</div><div class="hqr-title">Right to Erase</div></div>
+        <div class="hqr-item"><div class="hqr-icon">📣</div><div class="hqr-title">Right to Grieve</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- YOUR RIGHTS -->
+<section class="content-section" id="rights">
+  <div class="page">
+    <div class="section-kicker">DPDP Act 2023</div>
+    <h2 class="section-heading">Your Rights as a <em>Data Principal</em></h2>
+    <p class="section-deck">Under the DPDP Act 2023, every individual whose personal data is processed by a company in India is a "Data Principal" — and you have these legally enforceable rights.</p>
+    <div class="rights-grid">
+
+      <div class="right-card">
+        <div class="right-icon">📂</div>
+        <div class="right-num">01</div>
+        <div class="right-title">Right to Access</div>
+        <div class="right-section">Section 11 · DPDP Act 2023</div>
+        <div class="right-desc">You have the right to know what personal data a company holds about you, how they are using it, and who they have shared it with. Any company processing your data must provide this information upon request.</div>
+        <div class="right-how">
+          <div class="right-how-label">How to Exercise This Right</div>
+          <div class="right-how-text">Send a written request to the company's Grievance Officer (details must be on their website/app). They must respond within 30 days. Ask for: a summary of data held, purposes of processing, and list of processors/third parties.</div>
+        </div>
+      </div>
+
+      <div class="right-card">
+        <div class="right-icon">✏️</div>
+        <div class="right-num">02</div>
+        <div class="right-title">Right to Correction</div>
+        <div class="right-section">Section 12 · DPDP Act 2023</div>
+        <div class="right-desc">If a company holds inaccurate, incomplete, or outdated personal information about you, you have the right to have it corrected. This applies to all data they hold — your name, address, contact details, transaction records, and more.</div>
+        <div class="right-how">
+          <div class="right-how-label">How to Exercise This Right</div>
+          <div class="right-how-text">Contact the Grievance Officer and specify exactly what data is incorrect and what the correct information is. Provide supporting documentation if available. The company must correct the data within 30 days.</div>
+        </div>
+      </div>
+
+      <div class="right-card">
+        <div class="right-icon">🗑️</div>
+        <div class="right-num">03</div>
+        <div class="right-title">Right to Erasure</div>
+        <div class="right-section">Section 12 · DPDP Act 2023</div>
+        <div class="right-desc">You can request a company to erase your personal data — either when the original purpose of collection is complete, when you withdraw your consent, or when the data is no longer necessary. Some data may be retained if required by law.</div>
+        <div class="right-how">
+          <div class="right-how-label">How to Exercise This Right</div>
+          <div class="right-how-text">Send a deletion request to the Grievance Officer. Companies must erase data unless they have a legal obligation to retain it (e.g. for tax records). They must confirm deletion or give reasons for retention.</div>
+        </div>
+      </div>
+
+      <div class="right-card">
+        <div class="right-icon">🚫</div>
+        <div class="right-num">04</div>
+        <div class="right-title">Right to Withdraw Consent</div>
+        <div class="right-section">Section 6(4) · DPDP Act 2023</div>
+        <div class="right-desc">If a company is processing your data based on your consent, you have the right to withdraw that consent at any time — as easily as you gave it. Withdrawal does not make their past processing illegal, but they must stop after withdrawal.</div>
+        <div class="right-how">
+          <div class="right-how-label">How to Exercise This Right</div>
+          <div class="right-how-text">Look for "Withdraw Consent" in the app/website settings, or contact the Grievance Officer. The withdrawal mechanism must be as simple as the consent mechanism. Companies must process withdrawals within 30 days.</div>
+        </div>
+      </div>
+
+      <div class="right-card">
+        <div class="right-icon">📣</div>
+        <div class="right-num">05</div>
+        <div class="right-title">Right to Grieve</div>
+        <div class="right-section">Section 13 · DPDP Act 2023</div>
+        <div class="right-desc">If a company fails to fulfil your rights requests, handles your data improperly, or violates the DPDP Act, you have the right to file a complaint — first with the company's Grievance Officer, then with the Data Protection Board of India (DPDPB).</div>
+        <div class="right-how">
+          <div class="right-how-label">How to Exercise This Right</div>
+          <div class="right-how-text">Step 1: File grievance with company's Grievance Officer (must respond within 30 days). Step 2: If unsatisfied, escalate to the Data Protection Board of India at its official portal. DPDPB can award compensation and impose penalties on the company.</div>
+        </div>
+      </div>
+
+      <div class="right-card">
+        <div class="right-icon">👤</div>
+        <div class="right-num">06</div>
+        <div class="right-title">Right to Nominate</div>
+        <div class="right-section">Section 14 · DPDP Act 2023</div>
+        <div class="right-desc">You can nominate another person — a trusted family member or friend — to exercise your data rights on your behalf in the event of your death or incapacity. This nominee can file grievances, access your data, and request corrections or erasure.</div>
+        <div class="right-how">
+          <div class="right-how-label">How to Exercise This Right</div>
+          <div class="right-how-text">The nomination process will be prescribed by the DPDPB rules. Once rules are in force, you will be able to designate a nominee through the company's platform or directly with the DPDPB portal.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPLAIN LIKE I'M 15 -->
+<section class="content-section alt" id="eli15">
+  <div class="page">
+    <div class="section-kicker">Plain Language</div>
+    <h2 class="section-heading">Explained <em>Simply</em></h2>
+    <p class="section-deck">Real situations that you may have experienced — and what the DPDP Act says you can do about them.</p>
+    <div class="eli-grid">
+
+      <div class="eli-scenario">
+        <div class="eli-q">An app I installed 2 years ago keeps sending me ads. I never agreed to this.</div>
+        <p class="eli-a">Under the DPDP Act, companies must have your explicit, specific consent before using your data for marketing. If you didn't consent to ads separately from the app's basic function, this processing is likely unlawful. You can: (1) withdraw consent through the app's privacy settings, (2) request they stop processing your data for marketing, (3) file a grievance if they don't comply within 30 days.</p>
+        <div class="eli-law">
+          <div class="eli-law-text">§ Section 6 DPDP Act: Consent must be free, specific, informed, unconditional, and unambiguous. Bundled consent is prohibited.</div>
+        </div>
+      </div>
+
+      <div class="eli-scenario">
+        <div class="eli-q">My old bank has wrong details about me — wrong address, old phone number. It's causing problems.</div>
+        <p class="eli-a">You have a statutory right to have this corrected. Contact the bank's Grievance Officer (their contact details must be on the website/app/statements). Send them the correct information with supporting documents. They must correct it within 30 days. If they don't, escalate to the Banking Ombudsman and the Data Protection Board.</p>
+        <div class="eli-law">
+          <div class="eli-law-text">§ Section 12 DPDP Act: Right to correction of inaccurate or outdated personal data — mandatory, time-bound obligation on Data Fiduciary.</div>
+        </div>
+      </div>
+
+      <div class="eli-scenario">
+        <div class="eli-q">I deleted my account on an app — but I'm worried they still have all my data somewhere.</div>
+        <p class="eli-a">Deleting your account triggers your right to erasure. The company must delete all personal data that they no longer need to provide the service. They may keep some data if legally required (e.g. for tax or fraud prevention) but must tell you what they're retaining and why. Write to the Grievance Officer to confirm deletion and request details of any retained data.</p>
+        <div class="eli-law">
+          <div class="eli-law-text">§ Section 12 + Section 8(7) DPDP Act: Erasure obligation on withdrawal of consent or completion of purpose. Retention only lawful with legal basis.</div>
+        </div>
+      </div>
+
+      <div class="eli-scenario">
+        <div class="eli-q">A company shared my data with another company and I found out by accident. Can I do something?</div>
+        <p class="eli-a">Yes — sharing your data with a third party requires either your consent (with disclosure of who the third party is) or a valid legal basis. You have the right to know who your data has been shared with (Right to Access). File a grievance with the Grievance Officer demanding a list of all third parties they've shared your data with. If the sharing was unauthorised, you can escalate to the DPDPB.</p>
+        <div class="eli-law">
+          <div class="eli-law-text">§ Section 11 + Section 5 DPDP Act: Right to access disclosure of recipients. Data sharing without consent is a violation of the Act.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO EXERCISE RIGHTS -->
+<section class="content-section" id="how-to">
+  <div class="page">
+    <div class="section-kicker">Step by Step</div>
+    <h2 class="section-heading">How to <em>Exercise Your Rights</em></h2>
+    <p class="section-deck">Follow these steps to exercise any of your DPDP Act rights — access, correction, erasure, or withdrawal of consent.</p>
+    <div class="exercise-steps">
+      <div class="ex-step">
+        <div class="ex-step-num">01</div>
+        <div class="ex-step-title">Find the Grievance Officer</div>
+        <div class="ex-step-desc">Every company that processes your data must publish their Grievance Officer's contact details on their website, app, and privacy policy. Look under "Privacy Policy → Contact" or "Settings → Privacy."</div>
+      </div>
+      <div class="ex-step">
+        <div class="ex-step-num">02</div>
+        <div class="ex-step-title">Send a Written Request</div>
+        <div class="ex-step-desc">Write an email clearly stating: (a) which right you are exercising, (b) what data this concerns, and (c) what action you expect from them. Keep a copy of your email and note the date sent.</div>
+      </div>
+      <div class="ex-step">
+        <div class="ex-step-num">03</div>
+        <div class="ex-step-title">Wait for Response (30 Days)</div>
+        <div class="ex-step-desc">Companies must respond within 30 days under the DPDP Act. If they don't respond or their response is unsatisfactory, you have grounds to escalate to the Data Protection Board.</div>
+      </div>
+      <div class="ex-step">
+        <div class="ex-step-num">04</div>
+        <div class="ex-step-title">Escalate to DPDPB</div>
+        <div class="ex-step-desc">If the company doesn't comply, file a complaint at the Data Protection Board of India's portal (to be operationalised in 2026). The DPDPB can award compensation and fine companies up to ₹50 Crore.</div>
+      </div>
+    </div>
+
+    <!-- Template request letter -->
+    <div style="background:var(--parchment);border:1px solid var(--rule);border-left:4px solid var(--saffron);padding:2rem;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--saffron);margin-bottom:1rem;">Template — Data Rights Request Email</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--slate);line-height:2;background:var(--cream);padding:1.5rem;border:1px solid var(--rule);" id="templateText">
+        Subject: Data Subject Rights Request under DPDP Act 2023<br><br>
+        Dear Grievance Officer,<br><br>
+        I am writing to exercise my rights under the Digital Personal Data Protection Act 2023.<br><br>
+        My details: [Your Name], [Your registered email/phone with the company]<br><br>
+        I am requesting: [Select: Access to my data / Correction of my data / Erasure of my data / Withdrawal of consent]<br><br>
+        Specific data concerned: [Describe the data — e.g. "All personal data held in my account registered under this email address"]<br><br>
+        Expected action: Please [provide a summary of data held / correct the following information: ___ / erase all my data / confirm withdrawal of consent and cessation of processing] within 30 days as required by the DPDP Act 2023.<br><br>
+        If you do not respond within 30 days, I will escalate this matter to the Data Protection Board of India.<br><br>
+        Regards,<br>
+        [Your Name]
+      </div>
+      <button onclick="copyTemplate()" style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--prussian);color:var(--cream);border:none;padding:10px 20px;cursor:pointer;margin-top:1rem;transition:background 0.2s;" onmouseover="this.style.background='var(--saffron)'" onmouseout="this.style.background='var(--prussian)'">Copy Template →</button>
+    </div>
+  </div>
+</section>
+
+<!-- GRIEVANCE -->
+<section class="content-section alt" id="grievance">
+  <div class="page">
+    <div class="grievance-box">
+      <div class="grievance-title">How to File a Grievance</div>
+      <p class="grievance-deck">If a company is mishandling your data, not responding to your rights requests, or violating the DPDP Act — here's how to escalate.</p>
+      <div class="grievance-grid">
+        <div class="gv-item">
+          <div class="gv-step">Step 1 — Company Level</div>
+          <div class="gv-title">Grievance Officer</div>
+          <div class="gv-desc">Every Data Fiduciary must appoint a Grievance Officer. File your complaint with them first. They must acknowledge within 24 hours and resolve within 30 days under DPDP Act rules.</div>
+          <div class="gv-timeline">⏱ 30 day resolution timeline</div>
+        </div>
+        <div class="gv-item">
+          <div class="gv-step">Step 2 — Regulatory Level</div>
+          <div class="gv-title">Data Protection Board (DPDPB)</div>
+          <div class="gv-desc">If the Grievance Officer doesn't resolve your complaint or you're unsatisfied, file with the DPDPB at its official portal. The Board can investigate, order compensation, and impose penalties on the company.</div>
+          <div class="gv-timeline">⏱ DPDPB to be fully operational in 2026</div>
+        </div>
+        <div class="gv-item">
+          <div class="gv-step">Step 3 — Adjudication</div>
+          <div class="gv-title">Adjudicating Officer + High Court</div>
+          <div class="gv-desc">DPDPB orders can be appealed to the Appellate Tribunal. For violations of other rights (e.g. under IT Act), you can also approach a consumer forum or High Court. Consider consulting an advocate for complex cases.</div>
+          <div class="gv-timeline">⏱ Judicial remedy — timeline varies</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RELATED LINKS -->
+<section class="content-section" style="padding-top:3rem;padding-bottom:3rem;">
+  <div class="page">
+    <div style="display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center;justify-content:space-between;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--saffron);">Also Useful</div>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+        <a href="dpdp-rights.html" style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--prussian);color:var(--cream);padding:10px 20px;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='var(--saffron)'" onmouseout="this.style.background='var(--prussian)'">Full Legal Rights Analysis →</a>
+        <a href="cyber-fraud-hub.html" style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--danger);color:#fff;padding:10px 20px;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='#a93226'" onmouseout="this.style.background='var(--danger)'">🚨 Cyber Fraud Hub →</a>
+        <a href="for-businesses.html" style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--rule);color:var(--slate);padding:10px 20px;text-decoration:none;">For Businesses →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="page">
+    <div style="margin-bottom:1.5rem;font-size:0.82rem;font-weight:300;color:rgba(248,244,236,0.4);line-height:1.8;">DPDPIndia.in is an independent research platform. This page provides general information about rights under the DPDP Act 2023 for educational purposes only. It is not legal advice. For complex disputes, consult a qualified advocate.</div>
+    <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin-bottom:1.5rem;">
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 DPDPIndia.in · Not Legal Advice · Safe Harbour: IT Act 2000 §79</div>
+      <div class="footer-legal-links">
+        <a href="legal.html">Terms</a>
+        <a href="contact.html">Contact</a>
+        <a href="index.html">Home</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('hamburger').addEventListener('click',function(){
+  this.classList.toggle('open');
+  document.getElementById('mobileMenu').classList.toggle('open');
+});
+
+function copyTemplate(){
+  var text=document.getElementById('templateText').innerText;
+  navigator.clipboard.writeText(text).then(function(){
+    alert('Template copied to clipboard!');
+  }).catch(function(){
+    var ta=document.createElement('textarea');
+    ta.value=text;document.body.appendChild(ta);ta.select();
+    document.execCommand('copy');document.body.removeChild(ta);
+    alert('Copied!');
+  });
+}
+</script>
+</body>
+</html>
