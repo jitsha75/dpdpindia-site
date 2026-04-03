@@ -133,10 +133,11 @@ footer{background:var(--prussian);padding:2rem 0;border-top:3px solid var(--saff
   <div class="page">
     <div class="kicker">Case Tracker</div>
     <h1 class="page-hero-title">Data Protection & Privacy <em>Case Law</em></h1>
-    <p class="page-hero-deck">Verified landmark judgements from the Supreme Court and High Courts on privacy rights, cybercrime, and data protection in India. Every case listed here is real and sourced — we do not publish speculative or unverified case summaries.</p>
+    <p class="page-hero-deck">Verified landmark judgements from the Supreme Court, High Courts, and trial courts on privacy rights, cybercrime, electronic evidence, and data protection in India. Every case is sourced from official records or established legal databases — no speculative or unverified summaries.</p>
     <div style="display:flex;gap:1rem;flex-wrap:wrap;">
       <a href="#sc" style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--saffron);color:#fff;padding:11px 22px;text-decoration:none;">Supreme Court →</a>
       <a href="#hc" style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid rgba(255,255,255,0.25);color:rgba(248,244,236,0.75);padding:11px 22px;text-decoration:none;">High Courts →</a>
+      <a href="#trial" style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid rgba(255,255,255,0.25);color:rgba(248,244,236,0.75);padding:11px 22px;text-decoration:none;">First Conviction →</a>
       <a href="#dpb" style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid rgba(255,255,255,0.25);color:rgba(248,244,236,0.75);padding:11px 22px;text-decoration:none;">DPDPB Status →</a>
     </div>
     <div style="margin-top:2rem;padding:0.9rem 1.2rem;background:rgba(212,118,10,0.12);border:1px solid rgba(212,118,10,0.3);border-left:3px solid var(--saffron);max-width:680px;">
@@ -151,7 +152,7 @@ footer{background:var(--prussian);padding:2rem 0;border-top:3px solid var(--saff
   <div class="page">
     <div class="kicker">Supreme Court of India</div>
     <h2 class="sh">Landmark <em>Supreme Court</em> Decisions</h2>
-    <p class="sd">Foundational judgements that shaped India's data protection framework — many forming the constitutional basis for the DPDP Act 2023 itself.</p>
+    <p class="sd">Foundational Supreme Court judgements that shaped India's data protection, surveillance law, and digital evidence framework — many forming the direct constitutional and statutory basis for the DPDP Act 2023 and IT Act enforcement.</p>
     <div class="case-grid">
 
       <div class="case-card sc">
@@ -177,14 +178,58 @@ footer{background:var(--prussian);padding:2rem 0;border-top:3px solid var(--saff
       </div>
 
       <div class="case-card sc">
-        <div class="case-court">Supreme Court · 24 March 2015 · AIR 2015 SC 1523</div>
+        <div class="case-court">Supreme Court · 24 March 2015 · (2015) 5 SCC 1</div>
         <div class="case-name">Shreya Singhal v. Union of India</div>
-        <div class="case-issue">Constitutionality of Section 66A of the IT Act 2000 — restrictions on online speech</div>
+        <div class="case-issue">Constitutionality of Section 66A of the IT Act 2000 — criminal liability for online speech; also the scope of intermediary safe harbour under Section 79</div>
         <div class="case-outcome">
           <div class="case-outcome-label">Outcome</div>
-          <div class="case-outcome-text">Section 66A struck down in entirety as unconstitutional — vague, overbroad, violates Article 19(1)(a) free speech guarantee. Section 79 (intermediary safe harbour) read down — intermediaries must remove content only on court or government orders, not private complaints.</div>
+          <div class="case-outcome-text">Section 66A struck down in entirety as unconstitutional — vague, overbroad, violates Article 19(1)(a) free speech guarantee. Bench: J. Chelameswar and R.F. Nariman JJ. Section 79 (intermediary safe harbour) read down — intermediaries must remove content only on court or government orders, not on private complaints alone.</div>
         </div>
-        <div class="case-takeaway">Foundational case defining limits of state power over online speech. The Section 79 reading directly governs intermediary liability under the IT Act's safe harbour framework.</div>
+        <div class="case-takeaway">Foundational case defining limits of state power over online speech. The Section 79 reading directly governs intermediary liability under the IT Act's safe harbour framework and shapes DPDP Act compliance for platforms.</div>
+      </div>
+
+      <div class="case-card sc">
+        <div class="case-court">Supreme Court · 18 December 1996 · (1997) 1 SCC 301</div>
+        <div class="case-name">People's Union for Civil Liberties v. Union of India — Telephone Tapping Case</div>
+        <div class="case-issue">Whether state interception of telephone communications without procedural safeguards violates the right to privacy under Article 21</div>
+        <div class="case-outcome">
+          <div class="case-outcome-label">Outcome</div>
+          <div class="case-outcome-text">Bench: Kuldip Singh J and S. Sagir Ahmad J. The Court held that phone tapping constitutes a serious invasion of privacy. Until Parliament legislated on the subject, the Government was directed to follow strict procedural guidelines — including ministerial-level authorisation, limited duration, and periodic review — before intercepting communications under Section 5(2) of the Indian Telegraph Act, 1885.</div>
+        </div>
+        <div class="case-takeaway">Predates the IT Act but established that surveillance by the state must be procedurally governed. The PUCL guidelines remained the only safeguard for communications surveillance until the IT Act's Section 69 rules were framed. Relevant to any analysis of AI-driven surveillance, CDR analysis, and lawful interception under Indian law.</div>
+      </div>
+
+      <div class="case-card sc">
+        <div class="case-court">Supreme Court · 3-Judge Bench · 18 September 2014 · (2014) 10 SCC 473</div>
+        <div class="case-name">Anvar P.V. v. P.K. Basheer — Electronic Evidence Admissibility</div>
+        <div class="case-issue">Whether electronic records can be admitted as secondary evidence without a certificate under Section 65B of the Indian Evidence Act, 1872</div>
+        <div class="case-outcome">
+          <div class="case-outcome-label">Outcome</div>
+          <div class="case-outcome-text">Bench: Kurian Joseph, R.F. Nariman and Arun Misra JJ. Held that a Section 65B certificate is mandatory for electronic records produced as secondary evidence — without it, such evidence is inadmissible. Overruled the earlier position in State (NCT of Delhi) v. Navjot Sandhu. Primary evidence (original hard drive / device in court) does not require the certificate.</div>
+        </div>
+        <div class="case-takeaway">Critical for cybercrime prosecutions: every digital printout, screenshot, CCTV recording, or call log submitted in court must be accompanied by a 65B certificate from a responsible official. Failure to obtain this certificate at the investigation stage can collapse a prosecution.</div>
+      </div>
+
+      <div class="case-card sc">
+        <div class="case-court">Supreme Court · 3-Judge Bench · 14 July 2020 · (2020) 7 SCC 1</div>
+        <div class="case-name">Arjun Panditrao Khotkar v. Kailash Gorantyal — Electronic Evidence Reaffirmed</div>
+        <div class="case-issue">Whether the mandatory Section 65B certificate requirement from Anvar P.V. applies uniformly, and what remedies exist when a party is wrongly denied access to such a certificate</div>
+        <div class="case-outcome">
+          <div class="case-outcome-label">Outcome</div>
+          <div class="case-outcome-text">Bench: R.F. Nariman, S. Ravindra Bhat and V. Ramasubramanian JJ. Reaffirmed Anvar P.V. — 65B certificate is mandatory without exception for secondary electronic evidence. Added that if a party is unable to obtain the certificate (e.g., the government refuses), the court can use its Section 165 Evidence Act powers to call for it. Clarified that the certificate can only be given by the person responsible for the computer producing the record.</div>
+        </div>
+        <div class="case-takeaway">Settled law on electronic evidence in India. Practitioners must secure a 65B certificate at the earliest stage — ideally at seizure. The judgment also clarifies who the "certifier" must be, which matters for cloud-stored data and SaaS platforms subject to DPDP Act obligations.</div>
+      </div>
+
+      <div class="case-card sc">
+        <div class="case-court">Supreme Court · 2-Judge Bench · 16 October 2019 · (2020) 4 SCC 162</div>
+        <div class="case-name">Google India Pvt. Ltd. v. Visaka Industries — Intermediary Liability After Notice</div>
+        <div class="case-issue">Whether Google India can claim absolute immunity as an intermediary under Section 79 of the IT Act when it has actual knowledge of defamatory content posted on its platform and fails to remove it</div>
+        <div class="case-outcome">
+          <div class="case-outcome-label">Outcome</div>
+          <div class="case-outcome-text">Bench: Ashok Bhushan and Navin Sinha JJ. The Court declined to quash defamation proceedings against Google India. Once an intermediary has actual knowledge of unlawful or defamatory content (via a takedown notice or otherwise), Section 79 immunity is conditional — the platform must act expeditiously. Failure to remove content after actual knowledge defeats the safe harbour defence.</div>
+        </div>
+        <div class="case-takeaway">Platforms cannot claim Section 79 immunity after they are notified of illegal content and fail to act. The "actual knowledge" test governs — relevant for platforms processing personal data under the DPDP Act where a data principal raises a deletion or erasure request that the platform ignores.</div>
       </div>
 
     </div>
@@ -210,15 +255,71 @@ footer{background:var(--prussian);padding:2rem 0;border-top:3px solid var(--saff
         <div class="case-takeaway">Pre-existing data collected under an earlier consent cannot automatically be repurposed under a revised policy — consent must be specific, informed, and cover each purpose of use.</div>
       </div>
 
-      <div class="case-card hc" style="background:var(--parchment);border-left-color:#7A7468;border-style:dashed;">
-        <div class="case-court" style="color:var(--mist);">High Courts — Curation In Progress</div>
-        <div class="case-name" style="color:var(--mist);font-style:italic;">Additional verified cases being added</div>
-        <div class="case-issue">We are reviewing and verifying High Court decisions on workplace monitoring, medical data sharing, cybercrime jurisdiction, and DPDP Act implementation before publication.</div>
-        <div class="case-outcome" style="background:rgba(26,22,16,0.04);">
-          <div class="case-outcome-label" style="color:var(--mist);">Editorial Policy</div>
-          <div class="case-outcome-text">Each case is cross-checked against SCC Online, Manupatra, or official court records before it is listed. We do not publish summaries of unreported or unverifiable cases. If you have a case citation to suggest, write to us.</div>
+      <div class="case-card hc">
+        <div class="case-court">Delhi High Court · CS(OS) 1279/2001 · 2001</div>
+        <div class="case-name">SMC Pneumatics (India) Pvt. Ltd. v. Jogesh Kwatra — Email Defamation</div>
+        <div class="case-issue">Whether defamatory statements sent via email to a person's employer and colleagues constitute actionable defamation; and whether Indian courts can grant injunctive relief against online defamation</div>
+        <div class="case-outcome">
+          <div class="case-outcome-label">Outcome</div>
+          <div class="case-outcome-text">Delhi HC granted an ex-parte ad-interim injunction restraining the defendant — a former employee — from sending defamatory emails to the plaintiff company's MD and business associates. This is India's first reported case of court-granted injunctive relief against cyber defamation. The court held that emails constitute a valid medium for defamation and that Indian courts have jurisdiction even for content transmitted digitally.</div>
         </div>
-        <div class="case-takeaway" style="color:var(--mist);">Subscribe to our Weekly Briefing — verified case updates are included in every issue.</div>
+        <div class="case-takeaway">Emails, messages, and posts carry the same legal weight as printed defamatory matter. The case established that corporate victims of cyber harassment — including defamatory mass emails — can obtain emergency injunctions from Indian courts.</div>
+      </div>
+
+      <div class="case-card hc">
+        <div class="case-court">Delhi High Court · 23 March 2005 · 119 (2005) DLT 596</div>
+        <div class="case-name">National Association of Software & Service Companies (NASSCOM) v. Ajay Sood & Ors. — Phishing Defined</div>
+        <div class="case-issue">Whether phishing — creating a spoof website and sending fraudulent emails impersonating a legitimate organisation to extract personal data — constitutes an actionable wrong under Indian law</div>
+        <div class="case-outcome">
+          <div class="case-outcome-label">Outcome</div>
+          <div class="case-outcome-text">Delhi HC declared phishing illegal for the first time in Indian law. The defendants had created a website (nasscom.co.in) deceptively similar to NASSCOM's official site and sent fraudulent emails in NASSCOM officials' names to extract personal and professional data. The court defined phishing as "a misrepresentation made in the course of trade leading to confusion as to the source and origin of the e-mail." Injunction granted; defendants directed to pay ₹16 Lakh in damages.</div>
+        </div>
+        <div class="case-takeaway">India's first judicial recognition of phishing as a legal wrong — predating specific phishing legislation. This precedent underpins all identity theft and impersonation prosecutions under Section 66D of the IT Act (inserted in 2008 amendments).</div>
+      </div>
+
+      <div class="case-card hc">
+        <div class="case-court">Delhi High Court · 29 May 2008 · 150 (2008) DLT 769</div>
+        <div class="case-name">Avnish Bajaj v. State (NCT of Delhi) — The Baazee.com / MMS Case</div>
+        <div class="case-issue">Criminal liability of a platform CEO (intermediary) for obscene content listed by a user on the company's e-commerce website; limits of corporate director liability under the IT Act</div>
+        <div class="case-outcome">
+          <div class="case-outcome-label">Outcome</div>
+          <div class="case-outcome-text">A student had listed an obscene MMS clip for sale on Baazee.com (now eBay India); the CEO Avnish Bajaj was arrested. Delhi HC held that under IPC Sections 292/294 there is no automatic personal criminal liability of a director where the company has not been arraigned. However, under IT Act Section 67 read with Section 85 (corporate offences), a prima facie case was made out against the director since the Act recognises deemed criminal liability of directors. The prosecution was allowed to proceed on the IT Act charge alone.</div>
+        </div>
+        <div class="case-takeaway">Directly catalysed the 2008 IT Act amendments introducing the formal safe harbour regime under Section 79. Any CXO of a platform operating in India must ensure the company has an operational content takedown and grievance redressal system — or face personal criminal exposure under Section 85.</div>
+      </div>
+
+      <div class="case-card hc">
+        <div class="case-court">Punjab & Haryana High Court · CRR 66/2013 · 10 January 2013</div>
+        <div class="case-name">Sanjay Kumar v. State of Haryana — Bank IT Fraud via System Manipulation</div>
+        <div class="case-issue">Whether a software maintenance vendor who exploits privileged access to a bank's computerised accounting system to fraudulently credit amounts to his own account is guilty under both the IPC and Sections 65–66 of the IT Act</div>
+        <div class="case-outcome">
+          <div class="case-outcome-label">Outcome</div>
+          <div class="case-outcome-text">FIR No. 165/2003, Vijaya Bank Faridabad. The accused, a software vendor with administrative access to the bank's system, manipulated interest entries, inflated balances, and transferred ₹17,67,409 to his personal account over multiple transactions. Convicted at trial and on appeal. P&H HC dismissed revision — held that evidence of forged electronic records was overwhelming; convicted under IPC Sections 420, 467, 468, 471 and IT Act Sections 65 (tampering with computer source documents) and 66 (hacking). Acquitted under Section 72 (breach of confidentiality) as no disclosure to third parties was proven.</div>
+        </div>
+        <div class="case-takeaway">Privileged system access does not mean unfettered freedom. Insider manipulation of computerised bank records attracts both IPC fraud provisions and IT Act offences. Relevant to access-control and audit-log requirements under DPDP Act's data security obligations for Data Fiduciaries.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TRIAL COURTS — LANDMARK FIRSTS -->
+<section class="section" id="trial">
+  <div class="page">
+    <div class="kicker">Trial Court — Landmark First</div>
+    <h2 class="sh">First IT Act <em>Conviction</em></h2>
+    <p class="sd">Notable lower court decisions that established key precedents in India's cyber law history — even before the High Courts had occasion to rule.</p>
+    <div class="case-grid">
+
+      <div class="case-card sc">
+        <div class="case-court">Addl. Chief Metropolitan Magistrate · Egmore, Chennai · November 2004</div>
+        <div class="case-name">State of Tamil Nadu v. Suhas Katti — First Conviction Under IT Act</div>
+        <div class="case-issue">Whether posting obscene and harassing messages about a woman on the internet under a fake identity, and transmitting her contact details to cause unsolicited calls and messages, constitutes an offence under the IT Act 2000</div>
+        <div class="case-outcome">
+          <div class="case-outcome-label">Outcome</div>
+          <div class="case-outcome-text">India's first successful prosecution under the IT Act 2000. The accused — an acquaintance of the victim — created a fake profile for her and posted obscene messages attributing statements to her, along with her contact number. She received hundreds of obscene calls. The case was disposed of in just 7 days from registration — a record for cybercrime prosecution at the time. Convicted under Section 67 IT Act (publishing obscene material in electronic form) and Section 509 IPC (word, gesture, or act intended to insult the modesty of a woman). Sentenced to rigorous imprisonment and fine.</div>
+        </div>
+        <div class="case-takeaway">Proved that Indian courts could move swiftly on cyber harassment cases and that the IT Act's Section 67 was workable for online abuse. Predated social media but the principle applies directly to deepfakes, morphed images, and impersonation attacks on platforms — all now covered by IT Act and DPDP Act together.</div>
       </div>
 
     </div>
