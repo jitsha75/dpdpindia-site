@@ -216,10 +216,11 @@ nav{position:sticky;top:0;z-index:500;background:var(--cream);border-bottom:1px 
 .kb-band-link:hover{color:var(--saffron);}
 .kb-band-link::before{content:'→';font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--saffron);flex-shrink:0;}
 .kb-band-link:last-child{border-bottom:none;}
-
+.kb-nl-form{display:flex;flex-direction:column;gap:0.5rem;margin-top:0.2rem;}
+.kb-nl-input{font-family:'Source Serif 4',serif;font-size:0.82rem;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:var(--parchment);padding:9px 12px;outline:none;transition:border-color 0.2s;}
 .kb-nl-input:focus{border-color:var(--saffron);}
 .kb-nl-input::placeholder{color:rgba(255,255,255,0.2);}
-
+.kb-nl-btn{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--saffron);color:#fff;border:none;padding:10px 16px;cursor:pointer;transition:background 0.2s;align-self:flex-start;}
 .kb-nl-btn:hover{background:var(--saffron-lt);}
 /* ===== QUICK ACCESS CARDS ===== */
 .quick-section{padding:5rem 0;}
@@ -289,6 +290,13 @@ nav{position:sticky;top:0;z-index:500;background:var(--cream);border-bottom:1px 
 .newsletter-card{background:var(--prussian);padding:2rem;}
 .newsletter-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--parchment);margin-bottom:0.5rem;}
 .newsletter-desc{font-size:0.82rem;font-weight:300;color:rgba(248,244,236,0.6);line-height:1.7;margin-bottom:1.2rem;}
+.newsletter-form{display:flex;flex-direction:column;gap:0.6rem;}
+.newsletter-input{font-family:'Source Serif 4',serif;font-size:0.85rem;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);color:var(--parchment);padding:10px 14px;outline:none;transition:border-color 0.2s;}
+.newsletter-input:focus{border-color:var(--saffron);}
+.newsletter-input::placeholder{color:rgba(255,255,255,0.3);}
+.newsletter-btn{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--saffron);color:#fff;border:none;padding:11px 20px;cursor:pointer;transition:background 0.2s;}
+.newsletter-btn:hover{background:var(--saffron-lt);}
+.newsletter-note{font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.06em;color:rgba(255,255,255,0.3);margin-top:0.3rem;}
 
 /* ===== CASE TRACKER PREVIEW ===== */
 .cases-preview{background:var(--cream);border:1px solid var(--rule);padding:1.5rem;}
@@ -545,7 +553,36 @@ footer{background:var(--prussian);padding:4rem 0 2rem;border-top:3px solid var(-
         </div>
       </li>
 
-      <!-- 6. Resources -->
+      <!-- 6. AI Intelligence -->
+      <li class="nav-item has-dropdown">
+        <a href="ai-hub.html" style="color:#9B6FE8;">🤖 AI Intelligence</a>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-section">
+            <div class="nav-dropdown-label" style="color:#9B6FE8;">Foundation</div>
+            <a href="ai-hub.html#intro">Introduction to AI</a>
+            <a href="ai-hub.html#history">History &amp; Evolution</a>
+            <a href="ai-hub.html#personalities">Key Personalities</a>
+            <a href="ai-hub.html#timeline">Timeline of AI</a>
+          </div>
+          <hr>
+          <div class="nav-dropdown-section">
+            <div class="nav-dropdown-label" style="color:#9B6FE8;">AI &amp; Law</div>
+            <a href="ai-hub.html#privacy">AI &amp; Privacy (DPDP Mapped)</a>
+            <a href="ai-hub.html#cybercrime">AI &amp; Cybercrime</a>
+            <a href="ai-hub.html#global-regs">Global AI Regulations</a>
+            <a href="ai-hub.html#india">AI in India</a>
+          </div>
+          <hr>
+          <div class="nav-dropdown-section">
+            <div class="nav-dropdown-label" style="color:#9B6FE8;">AI &amp; Risk</div>
+            <a href="ai-hub.html#risk">AI Risk Framework</a>
+            <a href="ai-hub.html#threats">AI Threat Models</a>
+            <a href="ai-hub.html#playbook">AI Compliance Playbook</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- 7. Resources -->
       <li class="nav-item has-dropdown">
         <a href="blog.html">Resources</a>
         <div class="nav-dropdown">
@@ -596,6 +633,12 @@ footer{background:var(--prussian);padding:4rem 0 2rem;border-top:3px solid var(-
       <li><a href="cyber-fraud-hub.html">Fraud Intelligence Hub</a></li>
       <li><a href="cybercrime-financial.html">Financial Frauds</a></li>
       <li><a href="cybercrime-remedy-guide.html">How to Report</a></li>
+      <span class="mm-label" style="color:#9B6FE8;">🤖 AI Intelligence</span>
+      <li><a href="ai-hub.html">AI Intelligence Hub</a></li>
+      <li><a href="ai-hub.html#privacy">AI & Privacy (DPDP)</a></li>
+      <li><a href="ai-hub.html#cybercrime">AI & Cybercrime</a></li>
+      <li><a href="ai-hub.html#global-regs">Global AI Regulations</a></li>
+      <li><a href="ai-hub.html#playbook">AI Compliance Playbook</a></li>
       <span class="mm-label">Resources</span>
       <li><a href="itact-kb.html">IT Act 2000 KB</a></li>
       <li><a href="ekyc-kb.html">Aadhaar & eKYC KB</a></li>
@@ -1136,6 +1179,102 @@ footer{background:var(--prussian);padding:4rem 0 2rem;border-top:3px solid var(-
         <button class="tool-btn disabled">Coming Soon</button>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- ===== AI INTELLIGENCE SNAPSHOT ===== -->
+<style>
+:root{--ai:#6C3FC5;--ai-lt:#9B6FE8;--ai-dim:rgba(108,63,197,0.12);--ai-rule:rgba(108,63,197,0.25);}
+.ai-snapshot{background:var(--ink);padding:6rem 0;position:relative;overflow:hidden;border-top:3px solid var(--ai);}
+.ai-snapshot::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(108,63,197,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(108,63,197,0.05) 1px,transparent 1px);background-size:52px 52px;pointer-events:none;}
+.ai-snapshot::after{content:'';position:absolute;top:0;right:0;width:50%;height:100%;background:radial-gradient(ellipse at right top,rgba(108,63,197,0.15) 0%,transparent 60%);pointer-events:none;}
+.ai-snapshot-inner{position:relative;z-index:1;}
+.ai-snap-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem;}
+.ai-snap-eyebrow-line{width:40px;height:1px;background:var(--ai-lt);}
+.ai-snap-eyebrow-text{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--ai-lt);}
+.ai-snap-badge{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;background:rgba(108,63,197,0.2);border:1px solid var(--ai-rule);color:var(--ai-lt);padding:6px 14px;margin-bottom:1.2rem;animation:ai-pulse 2.5s ease-in-out infinite;}
+@keyframes ai-pulse{0%,100%{border-color:rgba(108,63,197,0.25);}50%{border-color:rgba(108,63,197,0.7);box-shadow:0 0 16px rgba(108,63,197,0.2);}}
+.ai-snap-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:1.1;color:var(--parchment);margin-bottom:1rem;}
+.ai-snap-title em{font-style:italic;color:var(--ai-lt);}
+.ai-snap-deck{font-size:0.95rem;font-weight:300;line-height:1.85;color:rgba(248,244,236,0.55);margin-bottom:2.5rem;max-width:560px;}
+.ai-snap-cta{display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;background:var(--ai);color:#fff;padding:16px 32px;text-decoration:none;transition:background 0.2s,gap 0.2s;font-weight:500;}
+.ai-snap-cta:hover{background:var(--ai-lt);gap:14px;}
+.ai-snap-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.ai-snap-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.ai-snap-card{background:rgba(108,63,197,0.08);border:1px solid rgba(108,63,197,0.2);padding:1.5rem;transition:border-color 0.2s,background 0.2s;text-decoration:none;display:flex;flex-direction:column;gap:0.5rem;}
+.ai-snap-card:hover{border-color:rgba(108,63,197,0.55);background:rgba(108,63,197,0.14);}
+.ai-snap-card-icon{font-size:1.5rem;}
+.ai-snap-card-label{font-family:'JetBrains Mono',monospace;font-size:0.54rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--ai-lt);}
+.ai-snap-card-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--parchment);line-height:1.25;}
+.ai-snap-card-desc{font-size:0.75rem;font-weight:300;color:rgba(248,244,236,0.4);line-height:1.65;}
+.ai-snap-pillars{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:2rem;}
+.ai-snap-pill{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid rgba(108,63,197,0.4);color:var(--ai-lt);padding:4px 11px;}
+@media(max-width:1100px){.ai-snap-grid{grid-template-columns:1fr;}.ai-snap-cards{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.ai-snap-cards{grid-template-columns:1fr;}}
+</style>
+
+<section class="ai-snapshot" id="ai-section">
+  <div class="page ai-snapshot-inner">
+    <div class="ai-snap-grid">
+      <div>
+        <div class="ai-snap-eyebrow">
+          <div class="ai-snap-eyebrow-line"></div>
+          <div class="ai-snap-eyebrow-text">New — AI + Law + Risk Intelligence</div>
+        </div>
+        <div class="ai-snap-badge">🤖 AI Intelligence Hub — Now Live</div>
+        <h2 class="ai-snap-title">Artificial Intelligence:<br><em>History, Risk &amp; Law</em></h2>
+        <p class="ai-snap-deck">From Alan Turing's 1950 thought experiment to the EU AI Act 2024 and India's IndiaAI Mission — explore 75 years of AI history, how AI intersects with DPDP Act obligations, the deepfake cybercrime landscape, and your AI compliance playbook.</p>
+        <div class="ai-snap-pillars">
+          <span class="ai-snap-pill">AI History & Timeline</span>
+          <span class="ai-snap-pill">DPDP Act Mapping</span>
+          <span class="ai-snap-pill">Deepfakes & Fraud</span>
+          <span class="ai-snap-pill">EU AI Act</span>
+          <span class="ai-snap-pill">IndiaAI Mission</span>
+          <span class="ai-snap-pill">Risk Framework</span>
+          <span class="ai-snap-pill">AI Threat Models</span>
+          <span class="ai-snap-pill">Compliance Playbook</span>
+        </div>
+        <a href="ai-hub.html" class="ai-snap-cta">Explore AI Intelligence Hub →</a>
+      </div>
+      <div class="ai-snap-cards">
+        <a href="ai-hub.html#history" class="ai-snap-card">
+          <div class="ai-snap-card-icon">🕰️</div>
+          <div class="ai-snap-card-label">Section 02 & 04</div>
+          <div class="ai-snap-card-title">History &amp; Timeline</div>
+          <div class="ai-snap-card-desc">75 years of AI milestones from Turing 1950 to GPT-4, AlphaFold, and DeepSeek 2025</div>
+        </a>
+        <a href="ai-hub.html#privacy" class="ai-snap-card">
+          <div class="ai-snap-card-icon">🔐</div>
+          <div class="ai-snap-card-label">Section 05 — DPDP Mapped</div>
+          <div class="ai-snap-card-title">AI &amp; Privacy</div>
+          <div class="ai-snap-card-desc">AI consent, profiling, erasure rights, and cross-border transfers — DPDP Act obligations mapped</div>
+        </a>
+        <a href="ai-hub.html#cybercrime" class="ai-snap-card">
+          <div class="ai-snap-card-icon">🎭</div>
+          <div class="ai-snap-card-label">Section 06 — High Alert</div>
+          <div class="ai-snap-card-title">AI &amp; Cybercrime</div>
+          <div class="ai-snap-card-desc">Deepfakes, voice cloning, AI phishing, and digital arrest — India's AI threat landscape</div>
+        </a>
+        <a href="ai-hub.html#global-regs" class="ai-snap-card">
+          <div class="ai-snap-card-icon">🌐</div>
+          <div class="ai-snap-card-label">Section 08 — Policy</div>
+          <div class="ai-snap-card-title">Global AI Regulations</div>
+          <div class="ai-snap-card-desc">EU AI Act, US Executive Order, China's GenAI Rules, Singapore framework — and India's position</div>
+        </a>
+        <a href="ai-hub.html#india" class="ai-snap-card">
+          <div class="ai-snap-card-icon">🇮🇳</div>
+          <div class="ai-snap-card-label">Section 09 — India Focus</div>
+          <div class="ai-snap-card-title">AI in India</div>
+          <div class="ai-snap-card-desc">IndiaAI Mission ₹10,372 Cr, DPI integration, NITI Aayog #AIforAll strategy</div>
+        </a>
+        <a href="ai-hub.html#playbook" class="ai-snap-card">
+          <div class="ai-snap-card-icon">📋</div>
+          <div class="ai-snap-card-label">Section 15 — Action</div>
+          <div class="ai-snap-card-title">Compliance Playbook</div>
+          <div class="ai-snap-card-desc">6-step AI compliance playbook for the DPDP Act — for legal, compliance, and tech teams</div>
+        </a>
+      </div>
     </div>
   </div>
 </section>
