@@ -288,10 +288,11 @@ footer{background:var(--prussian);padding:3rem 2rem;margin-top:0;border-top:3px 
 
     <!-- SECTION 1: CONSENT -->
     <div class="article-section">
+      <div style="background:rgba(212,118,10,0.07);border:1px solid rgba(212,118,10,0.2);border-left:3px solid var(--saffron);padding:1rem 1.25rem;margin-bottom:1.5rem;font-size:0.85rem;font-weight:300;line-height:1.7;color:var(--ochre);"><strong style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;">Editorial Note:</strong> This article presents a comparative policy analysis of GDPR and the DPDP Act 2023. All comparisons reflect policy-level observations and are not statements of legal deficiency. The DPDP Act and GDPR operate in different constitutional, regulatory, and enforcement contexts. This is a comparative policy perspective, not a legal gap assessment.</div>
       <h2>Consent: Burden of Proof and the Pre-Ticked Box Problem</h2>
       <p>The GDPR's approach to consent is notoriously exacting. Article 7 places the burden of proof squarely on the <strong>data controller</strong>: the controller must be able to demonstrate, at any time and to the regulator, that consent was obtained. Pre-ticked boxes, opt-out mechanisms, and inactivity-as-consent are all invalid under the GDPR. In the landmark <em>Planet49 GmbH</em> case (CJEU 2019), the Court of Justice of the European Union ruled that consent must involve an <strong>affirmative action</strong> — silence or inaction does not suffice.</p>
 
-      <p>The DPDP Act s. 6 mirrors this requirement on paper: consent must be obtained through "clear affirmative action." However, the Act then creates a significant exception at s. 7: <strong>deemed consent.</strong> Under s. 7, consent can be assumed if a data principal is provided with notice and does not object within a specified period. This is fundamentally different from the GDPR model.</p>
+      <p>The DPDP Act s. 6 mirrors this requirement on paper: consent must be obtained through "clear affirmative action." However, the Act then creates a significant exception at s. 7: <strong>deemed consent.</strong> Under s. 7, deemed consent may arise in specific, limited statutory scenarios — it is not a general alternative to consent under s. 6, and its scope is expected to be narrowly interpreted by the Board. This is fundamentally different from the GDPR model.</p>
 
       <ul class="risk-list">
         <li>
@@ -547,33 +548,15 @@ footer{background:var(--prussian);padding:3rem 2rem;margin-top:0;border-top:3px 
   <aside class="sidebar">
     <div class="sidebar-sticky">
 
-      <!-- Newsletter -->
+      <!-- Monthly Newsletter -->
       <div class="sidebar-card">
-        <div class="sidebar-card-label">Weekly Newsletter</div>
-        <h3>Stay ahead of DPDP developments</h3>
-        <p>Get our weekly briefing on DPDP Act, IT Act, and cybercrime policy — delivered to your inbox every Friday.</p>
-        <form class="subscribe-form" id="subscribeForm"
-              action="https://formspree.io/f/mlgodzbr"
-              method="POST">
-          <input type="hidden" name="_subject" value="Newsletter Subscription — DPDPindia.in">
-          <input type="hidden" name="Type" value="Newsletter Subscription">
-          <input type="email" name="Email" placeholder="your@email.com" required>
-          <button type="submit">Subscribe →</button>
-          <p class="subscribe-success" style="display:none;color:green;font-size:0.8rem;margin-top:0.4rem;">✓ Subscribed! Thank you.</p>
-        </form>
-        <script>
-        (function(){
-          var f=document.getElementById('subscribeForm');
-          if(f) f.addEventListener('submit',async function(e){
-            e.preventDefault();
-            var btn=f.querySelector('button');
-            btn.textContent='Subscribing…'; btn.disabled=true;
-            var res=await fetch(f.action,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}});
-            if(res.ok){f.querySelector('.subscribe-success').style.display='block';btn.style.display='none';}
-            else{btn.textContent='Try again'; btn.disabled=false;}
-          });
-        })();
-        </script>
+        <div class="sidebar-card-label">Monthly Newsletter</div>
+        <h3>Monthly Intelligence Brief</h3>
+        <p>Curated DPDP Act updates, fraud alerts, case law, and compliance insights — published every month.</p>
+        <div style="display:flex;flex-direction:column;gap:0.6rem;margin-top:0.75rem;">
+          <a href="monthly-briefing-2026-04.html" style="display:block;padding:10px 14px;background:var(--prussian);color:var(--cream);font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;text-align:center;transition:background 0.2s;">&#9733; Read April 2026 Issue →</a>
+          <a href="contact.html" style="display:block;padding:10px 14px;border:1px solid var(--rule);color:var(--slate);font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;text-align:center;transition:background 0.2s;">Contact Us →</a>
+        </div>
       </div>
 
       <!-- Related Articles -->

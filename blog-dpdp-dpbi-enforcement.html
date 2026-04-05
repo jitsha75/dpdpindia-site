@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Data Protection Board of India: Enforcement Architecture and Penalty Framework | blog.DPDPIndia.in</title>
-<meta name="description" content="A comprehensive analysis of DPBI's establishment, inquiry procedures, breach notification obligations, and the DPDP Act's penalty framework — from ₹10,000 to ₹250 crore based on violation severity.">
+<meta name="description" content="A comprehensive analysis of DPBI's establishment, inquiry procedures, breach notification obligations, and the DPDP Act's penalty framework — penalties up to ₹250 crore based on violation category.">
 <meta property="og:title" content="The Data Protection Board of India: Enforcement Architecture and Penalty Framework">
-<meta property="og:description" content="Chapter VI of the DPDP Act 2023 establishes the Data Protection Board of India as the independent adjudicatory authority. This deep dive covers DPBI powers, inquiry procedures, breach remedies, and statutory penalties.">
+<meta property="og:description" content="Chapter VI of the DPDP Act 2023 establishes the Data Protection Board of India as an adjudicatory body constituted by the Central Government. This deep dive covers DPBI powers, inquiry procedures, breach remedies, and statutory penalties.">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2026-03-27">
 <meta property="article:section" content="DPDP Act">
@@ -283,7 +283,7 @@ footer{background:var(--prussian);padding:3rem 2rem;margin-top:0;border-top:3px 
   <main class="article-body">
 
     <p class="article-lead">
-      The Data Protection Board of India (DPBI) is not merely an advisory body — it is <strong>India's primary independent adjudicatory authority for data protection violations.</strong> Established under Chapter VI of the DPDP Act 2023, the Board wields investigation powers, remedy authority, and penalty enforcement mechanisms that rival or exceed those of sectoral regulators. Understanding DPBI's establishment, powers, and penalty framework is essential for any data fiduciary operating in India.
+      The Data Protection Board of India (DPBI) is not merely an advisory body — it is <strong>India's designated adjudicatory body for data protection violations, constituted by the Central Government under Chapter VI.</strong> Established under Chapter VI of the DPDP Act 2023, the Board wields investigation powers, remedy authority, and penalty enforcement mechanisms that rival or exceed those of sectoral regulators. Understanding DPBI's establishment, powers, and penalty framework is essential for any data fiduciary operating in India.
     </p>
 
     <!-- SECTION 1 -->
@@ -451,7 +451,7 @@ footer{background:var(--prussian);padding:3rem 2rem;margin-top:0;border-top:3px 
 
     <!-- SECTION 7 -->
     <div class="article-section">
-      <h2>The Penalty Framework: From ₹10,000 to ₹250 Crore (Schedule, Section 33)</h2>
+      <h2>The Penalty Framework: Up to ₹250 Crore for Fiduciaries (Schedule, Section 33)</h2>
       <p>The DPDP Act establishes a <strong>tiered penalty structure</strong> based on the violation category. These are not mere fines; they are calculated to be economically painful, deterring repeat offences and signalling regulatory seriousness. The Schedule (s. 33) specifies:</p>
 
       <h3>Tier 1: Children's Data Violations (Up to ₹250 crore)</h3>
@@ -479,6 +479,7 @@ footer{background:var(--prussian);padding:3rem 2rem;margin-top:0;border-top:3px 
       <p>Breach of core <strong>Section 8 obligations</strong> — consent, data minimisation, security, retention limits, and transparency — attracts fines up to <strong>₹150 crore or 6% annual turnover.</strong> This tier covers most violations: unlawful processing, inadequate security, retention beyond permissible periods, and failure to honour data principal rights.</p>
 
       <h3>Tier 4: Data Principal Violations (Up to ₹10,000)</h3>
+      <p><em>Note: The ₹10,000 figure applies exclusively to Data Principals under Section 15, not to organisations. It is not a minimum penalty for Data Fiduciaries — there is no prescribed statutory minimum for fiduciary violations.</em></p>
       <p>A data principal who breaches <strong>Section 15 obligations</strong> (e.g., misusing obtained data, violating confidentiality) faces a maximum fine of <strong>₹10,000.</strong> This tiered approach acknowledges asymmetry: organisations command resources and must be deterred more forcefully; individuals have fewer resources and face proportionately lower penalties.</p>
 
       <div class="callout risk">
@@ -637,33 +638,15 @@ footer{background:var(--prussian);padding:3rem 2rem;margin-top:0;border-top:3px 
   <aside class="sidebar">
     <div class="sidebar-sticky">
 
-      <!-- Newsletter -->
+      <!-- Monthly Newsletter -->
       <div class="sidebar-card">
-        <div class="sidebar-card-label">Weekly Newsletter</div>
-        <h3>Stay ahead of DPDP developments</h3>
-        <p>Get our weekly briefing on DPDP Act, IT Act, and cybercrime policy — delivered to your inbox every Friday.</p>
-        <form class="subscribe-form" id="subscribeForm"
-              action="https://formspree.io/f/mlgodzbr"
-              method="POST">
-          <input type="hidden" name="_subject" value="Newsletter Subscription — DPDPindia.in">
-          <input type="hidden" name="Type" value="Newsletter Subscription">
-          <input type="email" name="Email" placeholder="your@email.com" required>
-          <button type="submit">Subscribe →</button>
-          <p class="subscribe-success" style="display:none;color:green;font-size:0.8rem;margin-top:0.4rem;">✓ Subscribed! Thank you.</p>
-        </form>
-        <script>
-        (function(){
-          var f=document.getElementById('subscribeForm');
-          if(f) f.addEventListener('submit',async function(e){
-            e.preventDefault();
-            var btn=f.querySelector('button');
-            btn.textContent='Subscribing…'; btn.disabled=true;
-            var res=await fetch(f.action,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}});
-            if(res.ok){f.querySelector('.subscribe-success').style.display='block';btn.style.display='none';}
-            else{btn.textContent='Try again'; btn.disabled=false;}
-          });
-        })();
-        </script>
+        <div class="sidebar-card-label">Monthly Newsletter</div>
+        <h3>Monthly Intelligence Brief</h3>
+        <p>Curated DPDP Act updates, fraud alerts, case law, and compliance insights — published every month.</p>
+        <div style="display:flex;flex-direction:column;gap:0.6rem;margin-top:0.75rem;">
+          <a href="monthly-briefing-2026-04.html" style="display:block;padding:10px 14px;background:var(--prussian);color:var(--cream);font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;text-align:center;transition:background 0.2s;">&#9733; Read April 2026 Issue →</a>
+          <a href="contact.html" style="display:block;padding:10px 14px;border:1px solid var(--rule);color:var(--slate);font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;text-align:center;transition:background 0.2s;">Contact Us →</a>
+        </div>
       </div>
 
       <!-- Related Articles -->

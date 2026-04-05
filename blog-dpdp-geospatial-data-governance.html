@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Geospatial Data Under the DPDP Act: When the Map Becomes the Risk | blog.DPDPIndia.in</title>
-<meta name="description" content="With the DPDP Act now in force, can governments still manage geospatial data the way they always have? A deep dive into the systemic risks of decentralised spatial data governance.">
+<meta name="description" content="With the DPDP Act enacted and phased enforcement underway, can governments still manage geospatial data the way they always have? A deep dive into the compliance risks of decentralised spatial data governance.">
 <meta property="og:title" content="Geospatial Data Under the DPDP Act: When the Map Becomes the Risk">
-<meta property="og:description" content="Government geospatial platforms were built on the belief that maps are technical public assets. Under the DPDP Act and IT Act, decentralised spatial data management is now systemic risk.">
+<meta property="og:description" content="Government geospatial platforms were built on the belief that maps are technical public assets. Under the DPDP Act and IT Act, decentralised spatial data management creates significant compliance risk if fiduciary accountability is not clearly established.">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2026-03-27">
 <meta property="article:section" content="DPDP Act">
@@ -248,7 +248,7 @@ footer{background:var(--prussian);padding:3rem 2rem;margin-top:0;border-top:3px 
       <span class="hero-category">DPDP Act · Geospatial</span>
     </div>
     <h1 class="hero-title">Geospatial Data Under the DPDP Act:<br>When the Map Becomes the Risk</h1>
-    <p class="hero-deck">With the DPDP Act now in force, can governments still manage geospatial data the way they always have? The answer is forcing a fundamental rethink of how spatial data is created, stored, and governed.</p>
+    <p class="hero-deck">With the DPDP Act enacted and phased enforcement underway, can governments still manage geospatial data the way they always have? The answer is prompting a fundamental rethink of how spatial data is created, stored, and governed.</p>
     <div class="hero-meta">
       <div class="meta-item">
         <span class="meta-label">Published</span>
@@ -314,7 +314,7 @@ footer{background:var(--prussian);padding:3rem 2rem;margin-top:0;border-top:3px 
 
       <div class="callout risk">
         <div class="callout-label">⚠ Legal Risk</div>
-        <p>Under the DPDP Act and the IT Act, this decentralised model now creates <strong>systemic risk</strong>. What was once an operational convenience has become a compliance liability — and potentially, a legal one.</p>
+        <p>Under the DPDP Act and the IT Act, this decentralised model creates significant <strong>compliance risk</strong> — particularly where fiduciary accountability is unclear. What was once an operational convenience may become a compliance liability. <em>(Note: This is a policy compliance perspective. The DPDP Act does not prohibit decentralisation; it assigns accountability to the Data Fiduciary for all processing under their control.)</em></p>
       </div>
     </div>
 
@@ -371,7 +371,7 @@ footer{background:var(--prussian);padding:3rem 2rem;margin-top:0;border-top:3px 
     </div>
 
     <div class="pullquote">
-      <p>"In the DPDP era, decentralised geospatial data creation managed by desktop license is no longer agility — it is exposure."</p>
+      <p>"In the DPDP era, decentralised geospatial data creation without clear fiduciary accountability may no longer be agility — it may be compliance exposure." <em>(Compliance policy perspective, not a legal determination.)</em></p>
       <cite>DPDPIndia.in Policy Analysis · March 2026</cite>
     </div>
 
@@ -410,7 +410,7 @@ footer{background:var(--prussian);padding:3rem 2rem;margin-top:0;border-top:3px 
     <!-- CLOSING THOUGHT -->
     <div class="closing-thought">
       <div class="closing-label">Food for Thought</div>
-      <p>In the DPDP era, decentralised geospatial data creation managed by desktop license is no longer agility — it is exposure. The question governments are still asking — "who can create data fastest?" — is the wrong question.</p>
+      <p>In the DPDP era, decentralised geospatial data creation without clear fiduciary accountability may no longer be pure agility — it may carry compliance exposure. The question governments should also be asking alongside "who can create data fastest?" is "who is accountable for the data created?"</p>
       <p class="closing-punch">"The real question is: who can create and govern it responsibly?"</p>
     </div>
 
@@ -441,33 +441,15 @@ footer{background:var(--prussian);padding:3rem 2rem;margin-top:0;border-top:3px 
   <aside class="sidebar">
     <div class="sidebar-sticky">
 
-      <!-- Newsletter -->
+      <!-- Monthly Newsletter -->
       <div class="sidebar-card">
-        <div class="sidebar-card-label">Weekly Newsletter</div>
-        <h3>Stay ahead of DPDP developments</h3>
-        <p>Get our weekly briefing on DPDP Act, IT Act, and cybercrime policy — delivered to your inbox every Friday.</p>
-        <form class="subscribe-form" id="subscribeForm"
-              action="https://formspree.io/f/mlgodzbr"
-              method="POST">
-          <input type="hidden" name="_subject" value="Newsletter Subscription — DPDPindia.in">
-          <input type="hidden" name="Type" value="Newsletter Subscription">
-          <input type="email" name="Email" placeholder="your@email.com" required>
-          <button type="submit">Subscribe →</button>
-          <p class="subscribe-success" style="display:none;color:green;font-size:0.8rem;margin-top:0.4rem;">✓ Subscribed! Thank you.</p>
-        </form>
-        <script>
-        (function(){
-          var f=document.getElementById('subscribeForm');
-          if(f) f.addEventListener('submit',async function(e){
-            e.preventDefault();
-            var btn=f.querySelector('button');
-            btn.textContent='Subscribing…'; btn.disabled=true;
-            var res=await fetch(f.action,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}});
-            if(res.ok){f.querySelector('.subscribe-success').style.display='block';btn.style.display='none';}
-            else{btn.textContent='Try again'; btn.disabled=false;}
-          });
-        })();
-        </script>
+        <div class="sidebar-card-label">Monthly Newsletter</div>
+        <h3>Monthly Intelligence Brief</h3>
+        <p>Curated DPDP Act updates, fraud alerts, case law, and compliance insights — published every month.</p>
+        <div style="display:flex;flex-direction:column;gap:0.6rem;margin-top:0.75rem;">
+          <a href="monthly-briefing-2026-04.html" style="display:block;padding:10px 14px;background:var(--prussian);color:var(--cream);font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;text-align:center;transition:background 0.2s;">&#9733; Read April 2026 Issue →</a>
+          <a href="contact.html" style="display:block;padding:10px 14px;border:1px solid var(--rule);color:var(--slate);font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;text-align:center;transition:background 0.2s;">Contact Us →</a>
+        </div>
       </div>
 
       <!-- Related Articles -->

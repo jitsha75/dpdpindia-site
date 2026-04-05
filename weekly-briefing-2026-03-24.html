@@ -527,74 +527,15 @@ footer{background:var(--prussian);padding:2.5rem 2rem;border-top:3px solid var(-
   <!-- SIDEBAR -->
   <aside class="sidebar">
 
-    <div class="sidebar-card">
-      <div class="sidebar-card-title">&#x1F4C5; DPDP Implementation Phases</div>
-      <div class="timeline-item">
-        <div class="timeline-dot active"></div>
-        <div class="timeline-text"><strong>Phase 1 &mdash; Active Now</strong><br>Data Protection Board constituted. Adjudicatory functions and complaint mechanisms operational since 13 Nov 2025.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-text"><strong>Phase 2 &mdash; 13 Nov 2026</strong><br>Consent Manager registration framework opens. &#8377;2 Cr net-worth requirement. Board empowered to impose consent-related penalties.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot future"></div>
-        <div class="timeline-text"><strong>Phase 3 &mdash; 13 May 2027</strong><br>Full compliance. Notice, consent, Data Principal rights, breach notification, children&rsquo;s data rules &amp; full penalties live.</div>
-      </div>
-    </div>
-
-    <div class="sidebar-card">
-      <div class="sidebar-card-title">&#x2696;&#xFE0F; DPDP Penalty Scale (from May 2027)</div>
-      <div class="penalty-item">
-        <span class="penalty-label">Security safeguard failure</span>
-        <span class="penalty-val">&#8377;250 Cr</span>
-      </div>
-      <div class="penalty-item">
-        <span class="penalty-label">Child data breach</span>
-        <span class="penalty-val">&#8377;200 Cr</span>
-      </div>
-      <div class="penalty-item">
-        <span class="penalty-label">Breach notification failure</span>
-        <span class="penalty-val">&#8377;200 Cr</span>
-      </div>
-      <div class="penalty-item">
-        <span class="penalty-label">Notice / Consent non-compliance</span>
-        <span class="penalty-val">&#8377;50 Cr</span>
-      </div>
-      <div class="penalty-item">
-        <span class="penalty-label">Data Principal rights denial</span>
-        <span class="penalty-val">&#8377;50 Cr</span>
-      </div>
-    </div>
-
-    <div class="subscribe-card">
-      <div class="subscribe-title">Subscribe — Weekly Intelligence</div>
-      <p class="subscribe-body">Get curated DPDP Act, IT Act &amp; cybercrime developments delivered every Monday. Trusted by lawyers, CISOs, and policy researchers across India.</p>
-      <form class="subscribe-form" id="subscribeForm"
-            action="https://formspree.io/f/mlgodzbr"
-            method="POST">
-        <input type="hidden" name="_subject" value="Newsletter Subscription — DPDPindia.in">
-        <input type="hidden" name="Type" value="Newsletter Subscription">
-        <input type="email" name="Email" class="subscribe-input" placeholder="your@email.com" required>
-        <button type="submit" class="subscribe-btn">Subscribe Free &rarr;</button>
-        <p class="subscribe-success" style="display:none;color:#a8d5a2;font-size:0.82rem;margin-top:0.5rem;">✓ Subscribed! Thank you.</p>
-      </form>
-      <script>
-      (function(){
-        var f=document.getElementById('subscribeForm');
-        if(f) f.addEventListener('submit',async function(e){
-          e.preventDefault();
-          var btn=f.querySelector('button');
-          btn.textContent='Subscribing…'; btn.disabled=true;
-          var res=await fetch(f.action,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}});
-          if(res.ok){f.querySelector('.subscribe-success').style.display='block';btn.style.display='none';}
-          else{btn.textContent='Try again'; btn.disabled=false;}
-        });
-      })();
-      </script>
-    </div>
-
-    <div class="sidebar-card">
+          <div class="sidebar-card" style="background:var(--paper);border:1px solid var(--rule-gold);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.5rem;">Monthly Newsletter</div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--prussian);margin-bottom:0.5rem;">Monthly Intelligence Brief</h3>
+        <p style="font-size:0.82rem;font-weight:300;color:var(--mist);line-height:1.7;margin-bottom:0.75rem;">Curated DPDP Act updates, fraud alerts, case law, and compliance insights — published every month.</p>
+        <div style="display:flex;flex-direction:column;gap:0.5rem;">
+          <a href="monthly-briefing-2026-04.html" style="display:block;padding:9px 14px;background:var(--prussian);color:var(--cream);font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;text-align:center;">&#9733; Read April 2026 Issue →</a>
+          <a href="contact.html" style="display:block;padding:9px 14px;border:1px solid var(--rule);color:var(--slate);font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;text-align:center;">Contact Us →</a>
+        </div>
+      </div><div class="sidebar-card">
       <div class="sidebar-card-title">&#x1F517; Research Quick Links</div>
       <a href="dpdp-act.html" class="quick-link">
         <span class="quick-link-icon">&#x1F4DC;</span>
