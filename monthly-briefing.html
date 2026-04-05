@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monthly Intelligence Briefings — DPDP Act, IT Act & Cyber Law | DPDPIndia.in</title>
+<meta name="description" content="Monthly briefings covering DPDP Act, IT Act, Aadhaar/UIDAI, e-governance, cybersecurity and court rulings — published monthly by DPDPIndia.in. India's premier data protection research portal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --parchment:#F8F4EC;--cream:#FDFAF5;--paper:#F2EDE2;--ink:#1A1610;
+  --prussian:#1B2B3A;--slate:#2D3D4E;--saffron:#D4760A;--saffron-lt:#F0A840;
+  --ochre:#B8862C;--mist:#7A7468;
+  --rule:rgba(26,22,16,0.12);--rule-gold:rgba(212,118,10,0.25);
+  --shadow-sm:0 2px 12px rgba(26,22,16,0.06);--shadow-md:0 8px 40px rgba(26,22,16,0.10);
+  --danger:#C0392B;--success:#1A6B3A;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:'Source Serif 4',Georgia,serif;background:var(--cream);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+/* MASTHEAD */
+.masthead{background:var(--prussian);padding:9px 0;text-align:center;border-bottom:2px solid var(--saffron);}
+.masthead-text{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.5);}
+.masthead-text span{color:var(--saffron-lt);}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:500;background:var(--cream);border-bottom:1px solid var(--rule);box-shadow:var(--shadow-sm);}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:relative;}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0;}
+.nav-brand-name{display:flex;flex-direction:column;gap:1px;}
+.nav-brand-name strong{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--prussian);}
+.nav-brand-name span{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);}
+.nav-links{display:flex;align-items:center;gap:0;list-style:none;}
+.nav-links a{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--slate);text-decoration:none;padding:0 13px;height:64px;display:flex;align-items:center;border-bottom:2px solid transparent;transition:color 0.2s,border-color 0.2s;white-space:nowrap;}
+.nav-links a:hover,.nav-links a.active{color:var(--saffron);border-bottom-color:var(--saffron);}
+.nav-cta{background:var(--danger)!important;color:#fff!important;padding:9px 16px;margin-left:10px;height:auto!important;border-bottom:none!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--prussian);transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-menu{display:none;position:absolute;top:64px;left:0;right:0;background:var(--cream);border-bottom:2px solid var(--saffron);box-shadow:var(--shadow-md);z-index:499;max-height:80vh;overflow-y:auto;}
+.mobile-menu.open{display:block;}
+.mobile-menu ul{list-style:none;padding:0.5rem 1.5rem 1.5rem;}
+.mobile-menu ul li a{display:block;font-size:0.9rem;color:var(--slate);text-decoration:none;padding:0.55rem 0;border-bottom:1px solid var(--rule);}
+.mm-label{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--saffron);padding:0.9rem 0 0.3rem;display:block;}
+
+/* PAGE HERO */
+.page-hero{background:var(--prussian);padding:4.5rem 0 4rem;position:relative;overflow:hidden;}
+.page-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
+.page{max-width:1100px;margin:0 auto;padding:0 2rem;}
+.hero-kicker{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--saffron-lt);margin-bottom:1rem;display:flex;align-items:center;gap:1rem;}
+.hero-kicker::before{content:'';display:inline-block;width:28px;height:1px;background:var(--saffron);}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:900;color:var(--parchment);line-height:1.1;margin-bottom:1rem;}
+.hero-title em{font-style:italic;color:var(--saffron-lt);}
+.hero-deck{font-size:1rem;font-weight:300;color:rgba(248,244,236,0.65);line-height:1.8;max-width:640px;margin-bottom:2rem;}
+.hero-tags{display:flex;flex-wrap:wrap;gap:0.5rem;}
+.hero-tag{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;background:rgba(212,118,10,0.15);border:1px solid rgba(212,118,10,0.3);color:var(--saffron-lt);padding:4px 12px;}
+
+/* WHAT IS SECTION */
+.what-section{background:var(--paper);border-bottom:1px solid var(--rule-gold);padding:2rem 0;}
+.what-inner{display:flex;gap:4rem;align-items:center;flex-wrap:wrap;}
+.what-text{flex:1;min-width:260px;}
+.what-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--prussian);margin-bottom:0.6rem;}
+.what-body{font-size:0.88rem;font-weight:300;line-height:1.85;color:var(--slate);}
+.what-stats{display:flex;gap:2rem;flex-wrap:wrap;flex-shrink:0;}
+.what-stat{text-align:center;}
+.what-stat-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--saffron);display:block;line-height:1;}
+.what-stat-label{font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--mist);margin-top:4px;display:block;}
+
+/* BRIEFINGS GRID */
+.briefings-section{padding:5rem 0;}
+.section-kicker{display:flex;align-items:center;gap:12px;font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.8rem;}
+.section-kicker::before{content:'';width:28px;height:1px;background:var(--saffron);}
+.section-heading{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.4rem);font-weight:700;color:var(--prussian);margin-bottom:0.5rem;}
+.section-heading em{font-style:italic;color:var(--saffron);}
+.section-deck{font-size:0.9rem;font-weight:300;color:var(--mist);line-height:1.8;margin-bottom:3rem;max-width:580px;}
+
+.briefings-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;}
+.briefing-card{background:var(--parchment);border:1px solid var(--rule);border-top:4px solid var(--saffron);padding:2rem;position:relative;transition:box-shadow 0.2s,transform 0.2s;}
+.briefing-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);}
+.briefing-card.latest{border-top-color:var(--prussian);background:var(--prussian);}
+.briefing-card.latest .bc-month{color:var(--saffron);}
+.briefing-card.latest .bc-title{color:var(--parchment);}
+.briefing-card.latest .bc-desc{color:rgba(248,244,236,0.6);}
+.briefing-card.latest .bc-meta{color:rgba(248,244,236,0.4);}
+.briefing-card.latest .bc-tag{background:rgba(212,118,10,0.2);border-color:rgba(212,118,10,0.4);color:var(--saffron-lt);}
+.bc-latest-badge{font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.14em;text-transform:uppercase;background:var(--saffron);color:#fff;padding:3px 10px;display:inline-block;margin-bottom:1rem;}
+.bc-month{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.5rem;}
+.bc-title{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:var(--prussian);margin-bottom:0.6rem;line-height:1.25;}
+.bc-desc{font-size:0.85rem;font-weight:300;color:var(--slate);line-height:1.75;margin-bottom:1.2rem;}
+.bc-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.2rem;}
+.bc-tag{font-family:'JetBrains Mono',monospace;font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;background:rgba(26,22,16,0.05);border:1px solid var(--rule);color:var(--mist);padding:3px 8px;}
+.bc-meta{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;color:var(--mist);margin-bottom:1.2rem;}
+.bc-cta{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--saffron);color:#fff;padding:10px 20px;text-decoration:none;display:inline-block;transition:background 0.2s;}
+.bc-cta:hover{background:var(--ochre);}
+.briefing-card.latest .bc-cta{background:var(--saffron);color:#fff;}
+.bc-story-count{position:absolute;top:1.5rem;right:1.5rem;font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--mist);text-align:right;}
+.bc-story-count strong{display:block;font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--saffron);line-height:1;}
+
+/* COMING SOON CARD */
+.briefing-card.coming-soon{background:var(--paper);border-style:dashed;border-top:none;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;min-height:260px;gap:0.6rem;}
+.cs-icon{font-size:2rem;margin-bottom:0.5rem;}
+.cs-label{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--mist);}
+.cs-date{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--prussian);}
+
+/* WHAT'S INSIDE SECTION */
+.inside-section{background:var(--prussian);padding:5rem 0;}
+.inside-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.inside-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);padding:1.8rem;}
+.inside-icon{font-size:1.5rem;margin-bottom:0.8rem;}
+.inside-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--parchment);margin-bottom:0.5rem;}
+.inside-desc{font-size:0.82rem;font-weight:300;color:rgba(248,244,236,0.5);line-height:1.75;}
+
+/* SUBSCRIBE BAND */
+.subscribe-band{background:var(--paper);border-top:1px solid var(--rule-gold);border-bottom:1px solid var(--rule-gold);padding:4rem 0;}
+.subscribe-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.sub-heading{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--prussian);margin-bottom:0.8rem;line-height:1.2;}
+.sub-heading em{font-style:italic;color:var(--saffron);}
+.sub-deck{font-size:0.9rem;font-weight:300;color:var(--mist);line-height:1.8;margin-bottom:0;}
+.sub-form{display:flex;flex-direction:column;gap:0.8rem;}
+.sub-input{font-family:'Source Serif 4',serif;font-size:0.9rem;background:var(--cream);border:1px solid var(--rule);color:var(--ink);padding:12px 16px;outline:none;transition:border-color 0.2s;}
+.sub-input:focus{border-color:var(--saffron);}
+.sub-select{font-family:'Source Serif 4',serif;font-size:0.9rem;background:var(--cream);border:1px solid var(--rule);color:var(--ink);padding:12px 16px;cursor:pointer;}
+.sub-row{display:flex;gap:0.8rem;}
+.sub-row .sub-input{flex:1;}
+.sub-btn{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;background:var(--prussian);color:var(--cream);border:none;padding:14px 28px;cursor:pointer;transition:background 0.2s;align-self:flex-start;}
+.sub-btn:hover{background:var(--saffron);}
+.sub-note{font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.08em;color:var(--mist);}
+
+/* FOOTER */
+footer{background:var(--prussian);padding:3rem 0 2rem;border-top:3px solid var(--saffron);}
+.footer-inner{max-width:1100px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-brand{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--parchment);}
+.footer-note{font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.08em;color:rgba(255,255,255,0.3);max-width:480px;line-height:1.7;}
+.footer-links{display:flex;gap:1.5rem;flex-wrap:wrap;}
+.footer-links a{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--saffron-lt);}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .briefings-grid{grid-template-columns:1fr;}
+  .inside-grid{grid-template-columns:1fr 1fr;}
+  .subscribe-inner{grid-template-columns:1fr;}
+}
+@media(max-width:768px){
+  .what-inner{flex-direction:column;gap:2rem;}
+  .inside-grid{grid-template-columns:1fr;}
+  .page{padding:0 1rem;}
+  .briefings-section{padding:3rem 0;}
+  .page-hero{padding:3rem 0 2.5rem;}
+  .footer-inner{flex-direction:column;align-items:flex-start;}
+}
+@media(max-width:640px){
+  .hero-title{font-size:1.8rem;}
+  .section-heading{font-size:1.5rem;}
+  .briefing-card{padding:1.4rem;}
+  .sub-row{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <span class="masthead-text">Independent Research Platform — <span>DPDP Act · IT Act · UIDAI · Cyber Law</span> — Not Legal Advice</span>
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-brand-name">
+        <strong>DPDPIndia.in</strong>
+        <span>Data Protection Intelligence</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dpdp-kb.html">DPDP Act</a></li>
+      <li><a href="itact-kb.html">IT Act</a></li>
+      <li><a href="ekyc-kb.html">eKYC</a></li>
+      <li><a href="cybercrime-kb.html">Cyber Crime</a></li>
+      <li><a href="for-businesses.html">For Business</a></li>
+      <li><a href="for-individuals.html">For Individuals</a></li>
+      <li><a href="case-tracker.html">Cases</a></li>
+      <li><a href="monthly-briefing.html" class="active">Monthly Brief</a></li>
+      <li><a href="blog.html">Articles</a></li>
+      <li><a href="cyber-fraud-hub.html" class="nav-cta">🚨 1930</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Open menu" onclick="this.classList.toggle('open');document.getElementById('mbMob').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mbMob">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <span class="mm-label">Knowledge Bases</span>
+      <li><a href="dpdp-kb.html">DPDP Act Knowledge Base</a></li>
+      <li><a href="itact-kb.html">IT Act Knowledge Base</a></li>
+      <li><a href="ekyc-kb.html">eKYC / UIDAI Knowledge Base</a></li>
+      <li><a href="cybercrime-kb.html">Cyber Crime Knowledge Base</a></li>
+      <span class="mm-label">Tools & Sections</span>
+      <li><a href="for-businesses.html">DPDP Compliance for Business</a></li>
+      <li><a href="for-individuals.html">Know Your Rights</a></li>
+      <li><a href="case-tracker.html">Case Tracker</a></li>
+      <li><a href="monthly-briefing.html">Monthly Briefings</a></li>
+      <li><a href="blog.html">All Articles</a></li>
+      <li><a href="cyber-fraud-hub.html">🚨 Cyber Fraud Hub — 1930</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page">
+    <div class="hero-kicker">Monthly Intelligence</div>
+    <h1 class="hero-title">Monthly Briefings —<br><em>India's Data Protection Month in Review</em></h1>
+    <p class="hero-deck">Every month, DPDPIndia.in publishes a curated intelligence roundup covering DPDP Act developments, court rulings, CERT-In advisories, MeitY notifications, Aadhaar/UIDAI updates, and cybercrime alerts — written for legal professionals, compliance officers, and policy practitioners.</p>
+    <div class="hero-tags">
+      <span class="hero-tag">DPDP Act 2023</span>
+      <span class="hero-tag">IT Act 2000</span>
+      <span class="hero-tag">UIDAI / eKYC</span>
+      <span class="hero-tag">CERT-In</span>
+      <span class="hero-tag">Supreme Court</span>
+      <span class="hero-tag">Cybercrime India</span>
+      <span class="hero-tag">MeitY Updates</span>
+      <span class="hero-tag">Published Monthly</span>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT IS THIS -->
+<div class="what-section">
+  <div class="page">
+    <div class="what-inner">
+      <div class="what-text">
+        <div class="what-title">A Professional-Grade Monthly Digest, Free to All</div>
+        <p class="what-body">Each issue covers 6–10 stories across five domains: DPDP Act & Rules implementation, court and tribunal rulings, e-governance and UIDAI updates, India cybercrime & CERT-In advisories, and global data protection developments. Every story includes a <em>Strategic Implication</em> note — actionable analysis written for practitioners, not just observers.</p>
+      </div>
+      <div class="what-stats">
+        <div class="what-stat">
+          <span class="what-stat-num">12</span>
+          <span class="what-stat-label">Issues per year</span>
+        </div>
+        <div class="what-stat">
+          <span class="what-stat-num">5</span>
+          <span class="what-stat-label">Coverage domains</span>
+        </div>
+        <div class="what-stat">
+          <span class="what-stat-num">Free</span>
+          <span class="what-stat-label">Always open access</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BRIEFINGS ARCHIVE -->
+<div class="briefings-section">
+  <div class="page">
+    <div class="section-kicker">Archive</div>
+    <h2 class="section-heading">All Monthly <em>Briefings</em></h2>
+    <p class="section-deck">Browse every issue below. Each briefing is a standalone research publication — permanently archived and freely accessible.</p>
+
+    <div class="briefings-grid">
+
+      <!-- LATEST ISSUE -->
+      <div class="briefing-card latest">
+        <div class="bc-latest-badge">Latest Issue</div>
+        <div class="bc-story-count"><strong>8</strong>stories</div>
+        <div class="bc-month">April 2026</div>
+        <h2 class="bc-title">IT Rules 2026 Deepfake Amendment, Supreme Court DPDP Challenge & Operation Sindoor Cyber Analysis</h2>
+        <p class="bc-desc">This month: World's first deepfake takedown law now in force; Supreme Court refers DPDP Act constitutional challenge to larger bench; Parliamentary Committee calls for comprehensive AI statute; Operation Sindoor cyber campaign documented; Taiwan-linked SIM-box syndicate dismantled; MHA cybercrime data 2024; UIDAI document update deadline; EU AI Act enforcement countdown.</p>
+        <div class="bc-tags">
+          <span class="bc-tag">IT Rules 2026</span>
+          <span class="bc-tag">Supreme Court</span>
+          <span class="bc-tag">AI Governance</span>
+          <span class="bc-tag">Operation Sindoor</span>
+          <span class="bc-tag">Cybercrime</span>
+          <span class="bc-tag">UIDAI</span>
+          <span class="bc-tag">EU AI Act</span>
+        </div>
+        <div class="bc-meta">Published: April 2026 &nbsp;·&nbsp; 8 stories &nbsp;·&nbsp; 3 critical analyses</div>
+        <a href="monthly-briefing-2026-04.html" class="bc-cta">Read April 2026 Briefing →</a>
+      </div>
+
+      <!-- ISSUE 2 -->
+      <div class="briefing-card">
+        <div class="bc-story-count"><strong>9</strong>stories</div>
+        <div class="bc-month">Week of 30 March 2026</div>
+        <h2 class="bc-title">SC Constitutional Challenge, Deepfake Orders & CERT-In Advisories</h2>
+        <p class="bc-desc">Earlier briefing published as weekly format. This week: Supreme Court refers DPDP Act constitutional challenge to larger bench; Delhi HC deepfake interim order under IT Act; CERT-In CIVN-2026-0150 Apple RCE advisory; MeitY Blockchain Challenge 2026 launched; Aadhaar crosses 2,707 Cr transactions in FY25.</p>
+        <div class="bc-tags">
+          <span class="bc-tag">DPDP Act</span>
+          <span class="bc-tag">Supreme Court</span>
+          <span class="bc-tag">CERT-In</span>
+          <span class="bc-tag">Deepfakes</span>
+          <span class="bc-tag">UIDAI</span>
+          <span class="bc-tag">MeitY</span>
+        </div>
+        <div class="bc-meta">Published: Monday 30 March 2026 &nbsp;·&nbsp; 9 stories &nbsp;·&nbsp; Earlier issues published weekly</div>
+        <a href="weekly-briefing-2026-03-30.html" class="bc-cta">Read Issue →</a>
+      </div>
+
+      <!-- ISSUE 3 -->
+      <div class="briefing-card">
+        <div class="bc-story-count"><strong>9</strong>stories</div>
+        <div class="bc-month">Week of 24 March 2026</div>
+        <h2 class="bc-title">DPDP Phase 2 Countdown, RTI Privacy Ruling & Aadhaar eKYC Surge</h2>
+        <p class="bc-desc">233 days to consent manager framework activation — enterprise preparation checklist; SC clarifies RTI cannot override privacy without proportionality test; CERT-In CIVN-2026-0150 Apple RCE vulnerabilities; Aadhaar eKYC at 45 Cr transactions in March; Crunchyroll breach 6.8M records.</p>
+        <div class="bc-tags">
+          <span class="bc-tag">DPDP Phase 2</span>
+          <span class="bc-tag">RTI vs Privacy</span>
+          <span class="bc-tag">CERT-In</span>
+          <span class="bc-tag">UIDAI</span>
+          <span class="bc-tag">Cybercrime</span>
+        </div>
+        <div class="bc-meta">Published: Monday 24 March 2026 &nbsp;·&nbsp; 9 stories &nbsp;·&nbsp; Earlier issues published weekly</div>
+        <a href="weekly-briefing-2026-03-24.html" class="bc-cta">Read Issue →</a>
+      </div>
+
+      <!-- COMING SOON CARDS -->
+      <div class="briefing-card coming-soon">
+        <div class="cs-icon">📋</div>
+        <div class="cs-label">Next Issue</div>
+        <div class="cs-date">May 2026</div>
+        <p style="font-size:0.8rem;font-weight:300;color:var(--mist);margin-top:0.4rem;">Publishing May 2026</p>
+      </div>
+
+      <div class="briefing-card coming-soon">
+        <div class="cs-icon">📬</div>
+        <div class="cs-label">Never Miss an Issue</div>
+        <div class="cs-date">Subscribe Below</div>
+        <p style="font-size:0.8rem;font-weight:300;color:var(--mist);margin-top:0.4rem;">Get each briefing delivered to your inbox every month</p>
+        <a href="#subscribe" style="font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--prussian);color:var(--cream);padding:8px 16px;text-decoration:none;display:inline-block;margin-top:1rem;">Subscribe Free →</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- WHAT'S INSIDE -->
+<div class="inside-section">
+  <div class="page">
+    <div class="section-kicker" style="color:var(--saffron);">Coverage</div>
+    <h2 class="section-heading" style="color:var(--parchment);">What Every Briefing <em>Contains</em></h2>
+    <p class="section-deck" style="color:rgba(248,244,236,0.55);max-width:640px;">Five structured sections, every month. Each story includes a Strategic Implication note — actionable analysis, not just headlines.</p>
+
+    <div class="inside-grid">
+      <div class="inside-card">
+        <div class="inside-icon">⚖️</div>
+        <div class="inside-title">DPDP Act & Rules Watch</div>
+        <p class="inside-desc">Implementation milestones, Data Protection Board orders, MeitY notifications, consent framework developments, and deadline countdowns for Phase 1, 2 & 3 compliance.</p>
+      </div>
+      <div class="inside-card">
+        <div class="inside-icon">🏛️</div>
+        <div class="inside-title">Court Rulings & Digital Rights</div>
+        <p class="inside-desc">Supreme Court and High Court judgements touching privacy, data protection, RTI intersections, deepfakes, intermediary liability, and Section 66A/66C of the IT Act.</p>
+      </div>
+      <div class="inside-card">
+        <div class="inside-icon">🏦</div>
+        <div class="inside-title">E-Governance & UIDAI</div>
+        <p class="inside-desc">MeitY initiatives, UIDAI circulars, eKYC framework updates, DigiLocker developments, Aadhaar authentication statistics, and digital public infrastructure news.</p>
+      </div>
+      <div class="inside-card">
+        <div class="inside-icon">🛡️</div>
+        <div class="inside-title">India Cybercrime & CERT-In</div>
+        <p class="inside-desc">CERT-In vulnerability notes and advisories, major Indian cybercrime incidents, enforcement actions under the IT Act, financial fraud trends (MHA Cybercrime), and 1930 helpline updates.</p>
+      </div>
+      <div class="inside-card">
+        <div class="inside-icon">🌐</div>
+        <div class="inside-title">Global Intelligence</div>
+        <p class="inside-desc">GDPR enforcement actions, global data breach incidents, international regulatory developments, and comparative analysis relevant to India's data protection practitioners.</p>
+      </div>
+      <div class="inside-card" style="background:rgba(212,118,10,0.06);border-color:rgba(212,118,10,0.2);">
+        <div class="inside-icon">💡</div>
+        <div class="inside-title">Strategic Implications</div>
+        <p class="inside-desc" style="color:rgba(212,118,10,0.7);">Every story closes with a practitioner-grade analysis note — what the development means for DPOs, legal counsel, CISOs, and compliance teams right now.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SUBSCRIBE -->
+<div class="subscribe-band" id="subscribe">
+  <div class="page">
+    <div class="subscribe-inner">
+      <div>
+        <div class="sub-heading">Get the Briefing<br><em>Every Month</em></div>
+        <p class="sub-deck">Join legal professionals, compliance officers, and policy practitioners who receive DPDPIndia.in's Monthly Intelligence Briefing — free, open, no paywalls. Delivered monthly covering everything that moved in India's data protection landscape that month.</p>
+      </div>
+      <div>
+        <form class="sub-form" action="https://formspree.io/f/mlgodzbr" method="POST">
+          <div class="sub-row">
+            <input type="text" name="name" class="sub-input" placeholder="Your name" required>
+            <input type="email" name="email" class="sub-input" placeholder="your@email.com" required>
+          </div>
+          <select name="role" class="sub-select">
+            <option value="">I am a… (optional)</option>
+            <option>Legal Professional / Advocate</option>
+            <option>Business / Compliance Officer</option>
+            <option>Data Protection Officer (DPO)</option>
+            <option>Government / Policy Professional</option>
+            <option>CISO / IT Security</option>
+            <option>Researcher / Academic</option>
+            <option>Individual / Citizen</option>
+          </select>
+          <input type="hidden" name="_subject" value="Monthly Briefing Subscription — DPDPIndia.in">
+          <input type="hidden" name="_next" value="https://dpdpindia.in/monthly-briefing.html">
+          <button type="submit" class="sub-btn">Subscribe to Monthly Briefing →</button>
+          <p class="sub-note">Published monthly · Free forever · Unsubscribe any time · No spam</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">DPDPIndia.in</div>
+      <p class="footer-note" style="margin-top:0.5rem;">India's independent research portal on the Digital Personal Data Protection Act 2023, IT Act 2000, Aadhaar eKYC, and Cyber Law. All monthly briefings are research publications and do not constitute legal advice. &copy; 2026 DPDPIndia.in</p>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="dpdp-kb.html">DPDP Act</a>
+      <a href="itact-kb.html">IT Act</a>
+      <a href="ekyc-kb.html">eKYC</a>
+      <a href="cybercrime-kb.html">Cyber Crime</a>
+      <a href="for-businesses.html">For Business</a>
+      <a href="for-individuals.html">For Individuals</a>
+      <a href="monthly-briefing.html">Monthly Briefings</a>
+      <a href="blog.html">Articles</a>
+      <a href="cyber-fraud-hub.html">🚨 1930</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
