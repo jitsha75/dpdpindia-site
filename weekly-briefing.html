@@ -120,15 +120,8 @@ nav{position:sticky;top:0;z-index:500;background:var(--cream);border-bottom:1px 
 .sub-heading{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--prussian);margin-bottom:0.8rem;line-height:1.2;}
 .sub-heading em{font-style:italic;color:var(--saffron);}
 .sub-deck{font-size:0.9rem;font-weight:300;color:var(--mist);line-height:1.8;margin-bottom:0;}
-.sub-form{display:flex;flex-direction:column;gap:0.8rem;}
-.sub-input{font-family:'Source Serif 4',serif;font-size:0.9rem;background:var(--cream);border:1px solid var(--rule);color:var(--ink);padding:12px 16px;outline:none;transition:border-color 0.2s;}
-.sub-input:focus{border-color:var(--saffron);}
-.sub-select{font-family:'Source Serif 4',serif;font-size:0.9rem;background:var(--cream);border:1px solid var(--rule);color:var(--ink);padding:12px 16px;cursor:pointer;}
-.sub-row{display:flex;gap:0.8rem;}
-.sub-row .sub-input{flex:1;}
-.sub-btn{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;background:var(--prussian);color:var(--cream);border:none;padding:14px 28px;cursor:pointer;transition:background 0.2s;align-self:flex-start;}
-.sub-btn:hover{background:var(--saffron);}
-.sub-note{font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.08em;color:var(--mist);}
+
+.sub-row 
 
 /* FOOTER */
 footer{background:var(--prussian);padding:3rem 0 2rem;border-top:3px solid var(--saffron);}
@@ -159,7 +152,7 @@ footer{background:var(--prussian);padding:3rem 0 2rem;border-top:3px solid var(-
   .hero-title{font-size:1.8rem;}
   .section-heading{font-size:1.5rem;}
   .briefing-card{padding:1.4rem;}
-  .sub-row{flex-direction:column;}
+  
 }
 </style>
 </head>
@@ -314,7 +307,7 @@ footer{background:var(--prussian);padding:3rem 0 2rem;border-top:3px solid var(-
       <div class="briefing-card coming-soon">
         <div class="cs-icon">📬</div>
         <div class="cs-label">Never Miss an Issue</div>
-        <div class="cs-date">Subscribe Below</div>
+        <div class="cs-date">Latest Issue</div>
         <p style="font-size:0.8rem;font-weight:300;color:var(--mist);margin-top:0.4rem;">Get each briefing delivered to your inbox every Monday morning</p>
         <a href="monthly-briefing-2026-04.html" style="font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--prussian);color:var(--cream);padding:8px 16px;text-decoration:none;display:inline-block;margin-top:1rem;">Read Newsletter →</a>
       </div>
@@ -365,35 +358,17 @@ footer{background:var(--prussian);padding:3rem 0 2rem;border-top:3px solid var(-
   </div>
 </div>
 
-<!-- SUBSCRIBE -->
-<div class="subscribe-band" id="subscribe">
+<!-- CONTACT BAND -->
+<div class="subscribe-band" id="contact">
   <div class="page">
     <div class="subscribe-inner">
       <div>
-        <div class="sub-heading">Get the Briefing<br><em>Every Monday</em></div>
-        <p class="sub-deck">Join legal professionals, compliance officers, and policy practitioners who receive DPDPIndia.in's Weekly Intelligence Briefing — free, open, no paywalls. Delivered every Monday morning covering everything that moved in India's data protection landscape that week.</p>
+        <div class="sub-heading">Stay Connected<br><em>Get in Touch</em></div>
+        <p class="sub-deck">Have a question about the DPDP Act, want to engage on data protection policy, or looking for sample compliance resources? Use our contact form — we respond to every genuine enquiry.</p>
       </div>
-      <div>
-        <form class="sub-form" action="https://formspree.io/f/mlgodzbr" method="POST">
-          <div class="sub-row">
-            <input type="text" name="name" class="sub-input" placeholder="Your name" required>
-            <input type="email" name="email" class="sub-input" placeholder="your@email.com" required>
-          </div>
-          <select name="role" class="sub-select">
-            <option value="">I am a… (optional)</option>
-            <option>Legal Professional / Advocate</option>
-            <option>Business / Compliance Officer</option>
-            <option>Data Protection Officer (DPO)</option>
-            <option>Government / Policy Professional</option>
-            <option>CISO / IT Security</option>
-            <option>Researcher / Academic</option>
-            <option>Individual / Citizen</option>
-          </select>
-          <input type="hidden" name="_subject" value="Weekly Briefing Subscription — DPDPIndia.in">
-          <input type="hidden" name="_next" value="https://dpdpindia.in/weekly-briefing.html">
-          <button type="submit" class="sub-btn">Subscribe to Weekly Briefing →</button>
-          <p class="sub-note">Published every Monday · Free forever · Unsubscribe any time · No spam</p>
-        </form>
+      <div style="display:flex;flex-direction:column;gap:1rem;justify-content:center;">
+        <a href="contact.html" style="display:block;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;background:var(--saffron);color:#fff;padding:16px 28px;text-decoration:none;transition:background 0.2s;">Contact Us →</a>
+        <a href="monthly-briefing-2026-04.html" style="display:block;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;background:transparent;border:1px solid var(--saffron);color:var(--saffron);padding:15px 28px;text-decoration:none;transition:background 0.2s;">&#9733; Read April 2026 Newsletter →</a>
       </div>
     </div>
   </div>
