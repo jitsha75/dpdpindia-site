@@ -4,19 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Intelligence Hub — AI + Law + Risk | DPDPIndia.in</title>
-<meta name="description" content="India's premier AI Intelligence Platform: History of AI, key personalities, AI & privacy under DPDP Act, AI cybercrime threats, global AI regulations, India's AI policy, and AI compliance playbook.">
-<meta name="keywords" content="AI history, artificial intelligence India, AI DPDP Act, AI cybercrime, AI regulations India, EU AI Act, AI risk framework, AI privacy, deepfakes India, AI compliance">
+<meta name="description" content="India's premier AI Intelligence Platform: History of AI, key personalities, AI & DPDP Act, AI cybercrime, global AI regulations, India AI policy, risk framework, and compliance playbook.">
+<meta name="keywords" content="AI history India, artificial intelligence DPDP Act, AI cybercrime India, EU AI Act, IndiaAI Mission, AI risk framework, deepfakes India, AI compliance playbook">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --parchment:#F8F4EC;--cream:#FDFAF5;--paper:#F2EDE2;--ink:#1A1610;
+  --parchment:#F8F4EC;--cream:#FDFAF5;--ink:#1A1610;
   --prussian:#1B2B3A;--slate:#2D3D4E;--saffron:#D4760A;--saffron-lt:#F0A840;
-  --ochre:#B8862C;--chakra-blue:#1B3A6B;--mist:#7A7468;
+  --ochre:#B8862C;--mist:#7A7468;
   --rule:rgba(26,22,16,0.12);--rule-gold:rgba(212,118,10,0.25);
   --shadow-sm:0 2px 12px rgba(26,22,16,0.06);--shadow-md:0 8px 40px rgba(26,22,16,0.10);
-  --danger:#C0392B;--danger-lt:rgba(192,57,43,0.08);--success:#1A6B3A;
-  /* AI section accent */
+  --danger:#C0392B;
   --ai:#6C3FC5;--ai-lt:#9B6FE8;--ai-dim:rgba(108,63,197,0.12);--ai-rule:rgba(108,63,197,0.25);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -24,18 +23,16 @@ html{scroll-behavior:smooth;font-size:16px;}
 body{font-family:'Source Serif 4',Georgia,serif;background:var(--cream);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
 body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;}
 
-/* ===== MASTHEAD ===== */
+/* NAV */
 .masthead{background:var(--prussian);padding:9px 0;text-align:center;border-bottom:2px solid var(--saffron);}
 .masthead-text{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.5);}
 .masthead-text span{color:var(--saffron-lt);}
-
-/* ===== NAV ===== */
 nav{position:sticky;top:0;z-index:500;background:var(--cream);border-bottom:1px solid var(--rule);box-shadow:var(--shadow-sm);}
 .nav-inner{max-width:1320px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:relative;}
 .nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0;}
-.nav-brand-seal{width:38px;height:38px;flex-shrink:0;}
+.nav-brand-seal{width:38px;height:38px;}
 .nav-brand-name{display:flex;flex-direction:column;gap:1px;}
-.nav-brand-name strong{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--prussian);letter-spacing:0.01em;line-height:1;}
+.nav-brand-name strong{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--prussian);line-height:1;}
 .nav-brand-name span{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);line-height:1;}
 .nav-menu{display:flex;align-items:center;gap:0;list-style:none;}
 .nav-item{position:relative;}
@@ -48,334 +45,107 @@ nav{position:sticky;top:0;z-index:500;background:var(--cream);border-bottom:1px 
 .nav-dropdown-section{padding:0.6rem 0;}
 .nav-dropdown-label{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--saffron);padding:0.5rem 1.2rem 0.3rem;}
 .nav-dropdown a{display:block;font-family:'Source Serif 4',serif;font-size:0.82rem;font-weight:300;color:var(--slate);text-decoration:none;padding:0.5rem 1.2rem;transition:background 0.15s,color 0.15s;}
-.nav-dropdown a:hover{background:var(--parchment);color:var(--prussian);}
+.nav-dropdown a:hover{background:#F8F4EC;color:var(--prussian);}
 .nav-dropdown hr{border:none;border-top:1px solid var(--rule);margin:0.4rem 0;}
 .nav-cta{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--danger);color:#fff!important;padding:9px 18px;margin-left:12px;border-bottom:none!important;transition:background 0.2s!important;}
 .nav-cta:hover{background:#a93226!important;}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;z-index:201;}
 .hamburger span{display:block;width:22px;height:2px;background:var(--prussian);transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 .mobile-menu{display:none;position:absolute;top:64px;left:0;right:0;background:var(--cream);border-bottom:2px solid var(--ai);box-shadow:var(--shadow-md);z-index:499;max-height:80vh;overflow-y:auto;}
 .mobile-menu.open{display:block;}
 .mobile-menu ul{list-style:none;padding:0.5rem 1.5rem 1.5rem;}
-.mobile-menu ul li a{display:block;font-family:'Source Serif 4',serif;font-size:0.92rem;color:var(--slate);text-decoration:none;padding:0.6rem 0;border-bottom:1px solid var(--rule);}
+.mobile-menu ul li a{display:block;font-size:0.92rem;color:var(--slate);text-decoration:none;padding:0.6rem 0;border-bottom:1px solid var(--rule);}
 .mobile-menu ul li a:hover{color:var(--ai);}
 .mm-label{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--ai);padding:1rem 0 0.3rem;display:block;}
-
-/* ===== PAGE LAYOUT ===== */
 .page{max-width:1320px;margin:0 auto;padding:0 2rem;}
 
-/* ===== AI HERO ===== */
-.ai-hero{background:var(--prussian);padding:6rem 0 5rem;position:relative;overflow:hidden;}
-.ai-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(108,63,197,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(108,63,197,0.06) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
-.ai-hero::after{content:'';position:absolute;top:0;right:0;width:55%;height:100%;background:radial-gradient(ellipse at right top,rgba(108,63,197,0.18) 0%,transparent 60%);pointer-events:none;}
-.ai-hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
-.ai-hero-kicker{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem;}
-.ai-hero-kicker-line{width:40px;height:1px;background:var(--ai-lt);}
-.ai-hero-kicker-text{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--ai-lt);}
-.ai-hero-badge{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;background:rgba(108,63,197,0.2);border:1px solid rgba(108,63,197,0.4);color:var(--ai-lt);padding:5px 12px;margin-bottom:1rem;}
-.ai-hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4vw,3.6rem);font-weight:900;line-height:1.1;color:var(--parchment);margin-bottom:1.2rem;}
-.ai-hero-title em{font-style:italic;color:var(--ai-lt);}
-.ai-hero-deck{font-size:1rem;font-weight:300;line-height:1.85;color:rgba(248,244,236,0.65);margin-bottom:2rem;}
-.ai-hero-pills{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:2.5rem;}
-.ai-pill{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid rgba(108,63,197,0.4);color:var(--ai-lt);padding:5px 12px;}
-.ai-hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;}
-.ai-cta-primary{font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;background:var(--ai);color:#fff;padding:14px 28px;text-decoration:none;transition:background 0.2s;display:inline-flex;align-items:center;gap:8px;}
-.ai-cta-primary:hover{background:var(--ai-lt);}
-.ai-cta-secondary{font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(255,255,255,0.25);color:rgba(248,244,236,0.75);padding:14px 28px;text-decoration:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;}
-.ai-cta-secondary:hover{border-color:var(--ai-lt);color:var(--ai-lt);}
-/* Hero right stats */
-.ai-hero-right{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
-.ai-stat-card{background:rgba(108,63,197,0.08);border:1px solid rgba(108,63,197,0.2);padding:1.5rem;}
-.ai-stat-card:hover{border-color:rgba(108,63,197,0.5);}
-.ai-stat-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:var(--ai-lt);line-height:1;margin-bottom:0.3rem;}
-.ai-stat-label{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.45);}
-.ai-stat-note{font-family:'Source Serif 4',serif;font-size:0.72rem;color:rgba(255,255,255,0.3);margin-top:0.3rem;font-style:italic;}
+/* HERO */
+.hub-hero{background:var(--prussian);padding:5rem 0 4rem;position:relative;overflow:hidden;}
+.hub-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(108,63,197,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(108,63,197,0.06) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
+.hub-hero::after{content:'';position:absolute;top:0;right:0;width:55%;height:100%;background:radial-gradient(ellipse at right top,rgba(108,63,197,0.18) 0%,transparent 60%);pointer-events:none;}
+.hub-hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center;}
+.hub-hero-kicker{display:flex;align-items:center;gap:12px;margin-bottom:1rem;}
+.hub-hero-kicker-line{width:40px;height:1px;background:var(--ai-lt);}
+.hub-hero-kicker-text{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--ai-lt);}
+.hub-badge{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;background:rgba(108,63,197,0.2);border:1px solid rgba(108,63,197,0.4);color:var(--ai-lt);padding:5px 12px;margin-bottom:1rem;}
+.hub-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:1.1;color:var(--parchment);margin-bottom:1rem;}
+.hub-title em{font-style:italic;color:var(--ai-lt);}
+.hub-deck{font-size:0.95rem;font-weight:300;line-height:1.85;color:rgba(248,244,236,0.6);max-width:580px;margin-bottom:2rem;}
+.hub-pills{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:2rem;}
+.hub-pill{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid rgba(108,63,197,0.4);color:var(--ai-lt);padding:4px 10px;}
+.hub-hero-stats{display:flex;flex-direction:column;gap:1rem;flex-shrink:0;}
+.hub-stat{background:rgba(108,63,197,0.1);border:1px solid rgba(108,63,197,0.25);padding:1.2rem 1.5rem;min-width:160px;}
+.hub-stat-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--ai-lt);line-height:1;margin-bottom:0.2rem;}
+.hub-stat-label{font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);}
+.hub-stat-note{font-size:0.7rem;color:rgba(255,255,255,0.25);margin-top:0.2rem;font-style:italic;}
 
-/* ===== SECTION NAV (JUMP LINKS) ===== */
-.ai-section-nav{background:var(--ink);border-bottom:2px solid var(--ai);padding:0;overflow-x:auto;}
-.ai-section-nav-inner{max-width:1320px;margin:0 auto;padding:0 2rem;display:flex;gap:0;white-space:nowrap;}
-.ai-section-nav a{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;padding:14px 16px;display:inline-flex;align-items:center;gap:6px;border-bottom:2px solid transparent;transition:color 0.2s,border-color 0.2s;white-space:nowrap;}
-.ai-section-nav a:hover{color:var(--ai-lt);border-bottom-color:var(--ai);}
-.ai-section-nav a span{font-size:0.7rem;}
+/* DISCLAIMER */
+.hub-disclaimer{background:rgba(108,63,197,0.06);border-bottom:1px solid var(--ai-rule);padding:0.8rem 0;}
+.hub-disclaimer-inner{max-width:1320px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
+.hub-disclaimer-tag{font-family:'JetBrains Mono',monospace;font-size:0.54rem;letter-spacing:0.14em;text-transform:uppercase;background:var(--ai-dim);border:1px solid var(--ai-rule);color:var(--ai);padding:3px 8px;flex-shrink:0;}
+.hub-disclaimer-text{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.04em;color:var(--ochre);line-height:1.6;flex:1;}
 
-/* ===== COMMON SECTION STYLES ===== */
-.section-label{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--ai);margin-bottom:0.8rem;display:flex;align-items:center;gap:12px;}
-.section-label::before{content:'';width:28px;height:1px;background:var(--ai);}
-.section-label-light{color:var(--ai-lt);}
-.section-label-light::before{background:var(--ai-lt);}
-.section-heading{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:900;line-height:1.1;color:var(--prussian);margin-bottom:0.6rem;}
-.section-heading em{font-style:italic;color:var(--ai);}
-.section-heading-light{color:var(--parchment);}
-.section-heading-light em{color:var(--ai-lt);}
-.section-deck{font-size:0.95rem;font-weight:300;line-height:1.85;color:var(--mist);margin-bottom:2.5rem;max-width:640px;}
-.section-deck-light{color:rgba(248,244,236,0.55);}
-.disclaimer-box{background:var(--ai-dim);border:1px solid var(--ai-rule);border-left:3px solid var(--ai);padding:1.2rem 1.5rem;margin-bottom:2rem;}
-.disclaimer-box p{font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.04em;color:var(--ai);line-height:1.7;}
-.disclaimer-box strong{color:var(--prussian);}
+/* SECTION GRID LAYOUT */
+.hub-layout{display:grid;grid-template-columns:280px 1fr;min-height:calc(100vh - 200px);align-items:start;}
 
-/* ===== INTRO SECTION ===== */
-.ai-intro{padding:6rem 0;background:var(--cream);}
-.ai-intro-grid{display:grid;grid-template-columns:2fr 1fr;gap:4rem;align-items:start;}
-.ai-intro-body p{font-size:0.95rem;font-weight:300;line-height:1.9;color:var(--slate);margin-bottom:1.2rem;}
-.ai-intro-body p:last-child{margin-bottom:0;}
-.ai-intro-body strong{font-weight:600;color:var(--prussian);}
-.ai-sidebar-card{background:var(--prussian);padding:2rem;margin-bottom:1.5rem;}
-.ai-sidebar-label{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--ai-lt);margin-bottom:0.8rem;}
-.ai-sidebar-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--parchment);margin-bottom:0.6rem;}
-.ai-sidebar-list{list-style:none;}
-.ai-sidebar-list li{font-family:'Source Serif 4',serif;font-size:0.82rem;font-weight:300;color:rgba(248,244,236,0.6);padding:0.45rem 0;border-bottom:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;gap:8px;}
-.ai-sidebar-list li:last-child{border-bottom:none;}
-.ai-sidebar-list li::before{content:'→';font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--ai-lt);flex-shrink:0;}
-.ai-sidebar-list li a{color:rgba(248,244,236,0.6);text-decoration:none;transition:color 0.2s;}
-.ai-sidebar-list li a:hover{color:var(--ai-lt);}
-.ai-three-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem;}
-.ai-pillar{background:var(--parchment);border:1px solid var(--rule);border-top:3px solid var(--ai);padding:1.5rem;}
-.ai-pillar-icon{font-size:1.8rem;margin-bottom:0.6rem;}
-.ai-pillar-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--prussian);margin-bottom:0.4rem;}
-.ai-pillar-desc{font-size:0.8rem;font-weight:300;color:var(--mist);line-height:1.7;}
+/* SIDEBAR */
+.hub-sidebar{width:280px;position:sticky;top:64px;max-height:calc(100vh - 64px);overflow-y:auto;background:var(--prussian);border-right:1px solid rgba(255,255,255,0.07);padding:1.5rem 0;scrollbar-width:thin;scrollbar-color:rgba(108,63,197,0.4) transparent;}
+.hub-sidebar::-webkit-scrollbar{width:4px;}
+.hub-sidebar::-webkit-scrollbar-thumb{background:rgba(108,63,197,0.4);border-radius:2px;}
+.hsb-header{padding:1rem 1.2rem 1.2rem;border-bottom:1px solid rgba(255,255,255,0.07);}
+.hsb-title{font-family:'Playfair Display',serif;font-size:0.92rem;font-weight:700;color:var(--parchment);margin-bottom:0.2rem;}
+.hsb-sub{font-family:'JetBrains Mono',monospace;font-size:0.5rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ai-lt);}
+.hsb-group{margin-top:0.6rem;}
+.hsb-group-label{font-family:'JetBrains Mono',monospace;font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.25);padding:0.7rem 1.2rem 0.3rem;}
+.hsb-link{display:flex;align-items:center;gap:8px;text-decoration:none;color:rgba(248,244,236,0.5);font-family:'Source Serif 4',serif;font-size:0.8rem;font-weight:300;padding:0.5rem 1.2rem;transition:background 0.15s,color 0.15s;border-left:2px solid transparent;line-height:1.3;}
+.hsb-link:hover{background:rgba(108,63,197,0.1);color:var(--parchment);border-left-color:rgba(108,63,197,0.5);}
+.hsb-num{font-family:'JetBrains Mono',monospace;font-size:0.52rem;color:rgba(255,255,255,0.2);flex-shrink:0;width:22px;text-align:right;}
+.hsb-icon{font-size:0.9rem;flex-shrink:0;}
+.hsb-divider{border:none;border-top:1px solid rgba(255,255,255,0.06);margin:0.5rem 0;}
+.hsb-ext-label{font-family:'JetBrains Mono',monospace;font-size:0.5rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--saffron);padding:0.7rem 1.2rem 0.3rem;}
+.hsb-ext-link{display:flex;align-items:center;gap:7px;text-decoration:none;color:rgba(248,244,236,0.3);font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.04em;padding:0.4rem 1.2rem;transition:color 0.15s;}
+.hsb-ext-link:hover{color:var(--saffron-lt);}
 
-/* ===== HISTORY SECTION ===== */
-.ai-history{padding:6rem 0;background:var(--ink);position:relative;overflow:hidden;}
-.ai-history::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(108,63,197,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(108,63,197,0.04) 1px,transparent 1px);background-size:56px 56px;pointer-events:none;}
-.history-phases{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
-.phase-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);padding:2rem;position:relative;overflow:hidden;}
-.phase-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--phase-color,var(--ai));}
-.phase-card:hover{border-color:rgba(108,63,197,0.4);}
-.phase-era{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--phase-color,var(--ai-lt));margin-bottom:0.5rem;}
-.phase-name{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--parchment);margin-bottom:0.8rem;line-height:1.2;}
-.phase-desc{font-size:0.82rem;font-weight:300;color:rgba(248,244,236,0.5);line-height:1.75;margin-bottom:1rem;}
-.phase-milestones{list-style:none;}
-.phase-milestones li{font-size:0.78rem;font-weight:300;color:rgba(248,244,236,0.4);padding:0.35rem 0;border-bottom:1px solid rgba(255,255,255,0.04);display:flex;gap:10px;}
-.phase-milestones li:last-child{border-bottom:none;}
-.phase-year{font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--phase-color,var(--ai-lt));flex-shrink:0;min-width:38px;}
+/* MAIN CONTENT AREA */
+.hub-main{padding:3rem 2.5rem;}
+.hub-section-label{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--ai);margin-bottom:0.6rem;display:flex;align-items:center;gap:10px;}
+.hub-section-label::before{content:'';width:24px;height:1px;background:var(--ai);}
+.hub-section-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:900;color:var(--prussian);margin-bottom:0.6rem;line-height:1.1;}
+.hub-section-title em{font-style:italic;color:var(--ai);}
+.hub-section-deck{font-size:0.9rem;font-weight:300;color:var(--mist);line-height:1.85;margin-bottom:2.5rem;max-width:640px;}
 
-/* ===== PERSONALITIES SECTION ===== */
-.ai-personalities{padding:6rem 0;background:var(--parchment);}
-.personalities-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
-.person-card{background:var(--cream);border:1px solid var(--rule);padding:1.8rem;transition:box-shadow 0.2s,transform 0.2s;}
-.person-card:hover{box-shadow:var(--shadow-md);transform:translateY(-3px);}
-.person-avatar{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--ai) 0%,var(--prussian) 100%);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:#fff;margin-bottom:1rem;flex-shrink:0;}
-.person-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--prussian);margin-bottom:0.2rem;}
-.person-dates{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.1em;color:var(--ai);margin-bottom:0.5rem;}
-.person-role{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--mist);margin-bottom:0.6rem;}
-.person-contrib{font-size:0.8rem;font-weight:300;color:var(--slate);line-height:1.7;}
-.person-tag{display:inline-flex;font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--ai-dim);color:var(--ai);padding:3px 8px;border:1px solid var(--ai-rule);margin-top:0.6rem;}
+/* TOPIC GRID */
+.topic-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-bottom:3rem;}
+.topic-card{background:var(--cream);border:1px solid var(--rule);border-top:3px solid var(--prussian);padding:1.6rem;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:0.6rem;transition:transform 0.2s,box-shadow 0.2s,border-top-color 0.2s;}
+.topic-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-top-color:var(--ai);}
+.topic-card-header{display:flex;align-items:flex-start;justify-content:space-between;gap:0.5rem;}
+.topic-num{font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ai);background:var(--ai-dim);border:1px solid var(--ai-rule);padding:3px 8px;}
+.topic-icon{font-size:1.6rem;}
+.topic-group{font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--mist);}
+.topic-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--prussian);line-height:1.25;}
+.topic-card:hover .topic-title{color:var(--ai);}
+.topic-desc{font-size:0.78rem;font-weight:300;color:var(--mist);line-height:1.7;flex:1;}
+.topic-arrow{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ai);margin-top:auto;}
 
-/* ===== TIMELINE SECTION ===== */
-.ai-timeline{padding:6rem 0;background:var(--cream);}
-.timeline-wrapper{position:relative;padding-left:2rem;}
-.timeline-wrapper::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--ai) 0%,var(--ai-lt) 50%,rgba(108,63,197,0.2) 100%);}
-.timeline-entry{position:relative;padding:0 0 2.5rem 2.5rem;}
-.timeline-entry:last-child{padding-bottom:0;}
-.timeline-dot{position:absolute;left:-2.6rem;top:0.3rem;width:14px;height:14px;border-radius:50%;background:var(--ai);border:2px solid var(--cream);flex-shrink:0;}
-.timeline-dot.milestone{width:18px;height:18px;background:var(--saffron);left:-2.8rem;top:0.1rem;}
-.timeline-year-badge{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.14em;font-weight:500;background:var(--ai);color:#fff;padding:3px 10px;display:inline-flex;margin-bottom:0.5rem;}
-.timeline-year-badge.gold{background:var(--saffron);}
-.timeline-event-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--prussian);margin-bottom:0.3rem;}
-.timeline-event-desc{font-size:0.83rem;font-weight:300;color:var(--mist);line-height:1.75;max-width:760px;}
-.timeline-tag{font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--parchment);color:var(--ai);border:1px solid var(--ai-rule);padding:2px 8px;margin-left:8px;vertical-align:middle;}
-.timeline-filter{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:2.5rem;}
-.tf-btn{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;background:none;border:1px solid var(--rule);color:var(--mist);padding:6px 14px;cursor:pointer;transition:all 0.2s;}
-.tf-btn:hover,.tf-btn.active{background:var(--ai);border-color:var(--ai);color:#fff;}
+/* GROUP HEADINGS in main */
+.group-header{display:flex;align-items:center;gap:12px;margin:2.5rem 0 1rem;}
+.group-header-line{height:1px;flex:1;background:var(--rule);}
+.group-header-label{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--ai);flex-shrink:0;}
 
-/* ===== AI & PRIVACY SECTION ===== */
-.ai-privacy{padding:6rem 0;background:var(--prussian);position:relative;overflow:hidden;}
-.ai-privacy::after{content:'';position:absolute;bottom:0;right:0;width:40%;height:60%;background:radial-gradient(ellipse at right bottom,rgba(108,63,197,0.12) 0%,transparent 60%);pointer-events:none;}
-.dpdp-map-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem;}
-.dpdp-map-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);padding:1.8rem;border-left:3px solid var(--ai);}
-.dpdp-map-card:hover{border-left-color:var(--ai-lt);background:rgba(108,63,197,0.06);}
-.dpdp-section-ref{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.4rem;}
-.dpdp-map-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--parchment);margin-bottom:0.6rem;}
-.dpdp-map-body{font-size:0.82rem;font-weight:300;color:rgba(248,244,236,0.55);line-height:1.75;}
-.dpdp-map-body strong{color:var(--ai-lt);font-weight:500;}
-.dpdp-risk-levels{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem;}
-.dpdp-risk{padding:1.2rem;border:1px solid rgba(255,255,255,0.07);text-align:center;}
-.dpdp-risk-icon{font-size:1.6rem;margin-bottom:0.5rem;}
-.dpdp-risk-label{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ai-lt);margin-bottom:0.3rem;}
-.dpdp-risk-desc{font-size:0.78rem;font-weight:300;color:rgba(248,244,236,0.4);line-height:1.6;}
-.high-risk{border-color:rgba(192,57,43,0.4);}
-.high-risk .dpdp-risk-label{color:#e74c3c;}
-.medium-risk{border-color:rgba(212,118,10,0.4);}
-.medium-risk .dpdp-risk-label{color:var(--saffron-lt);}
+/* QUICK START BAND */
+.quick-start{background:var(--prussian);padding:2rem;margin-bottom:2.5rem;}
+.qs-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--parchment);margin-bottom:1rem;}
+.qs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.qs-item{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);padding:1.2rem;text-decoration:none;transition:background 0.2s;}
+.qs-item:hover{background:rgba(108,63,197,0.15);}
+.qs-label{font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ai-lt);margin-bottom:0.3rem;}
+.qs-title-sm{font-family:'Playfair Display',serif;font-size:0.92rem;font-weight:700;color:var(--parchment);}
+.qs-desc{font-size:0.75rem;font-weight:300;color:rgba(248,244,236,0.4);line-height:1.6;margin-top:0.3rem;}
 
-/* ===== AI & CYBERCRIME SECTION ===== */
-.ai-cybercrime{padding:6rem 0;background:var(--cream);}
-.cybercrime-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
-.cc-card{background:var(--parchment);border:1px solid var(--rule);border-top:4px solid var(--danger);padding:2rem;transition:box-shadow 0.2s;}
-.cc-card:hover{box-shadow:var(--shadow-md);}
-.cc-card.ai-assisted{border-top-color:var(--ai);}
-.cc-icon{font-size:2rem;margin-bottom:0.8rem;}
-.cc-label{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--danger);margin-bottom:0.4rem;}
-.cc-card.ai-assisted .cc-label{color:var(--ai);}
-.cc-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--prussian);margin-bottom:0.6rem;}
-.cc-desc{font-size:0.82rem;font-weight:300;color:var(--mist);line-height:1.75;margin-bottom:1rem;}
-.cc-impact{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;background:var(--danger-lt);border:1px solid rgba(192,57,43,0.2);color:var(--danger);padding:6px 10px;line-height:1.5;}
-.cc-card.ai-assisted .cc-impact{background:var(--ai-dim);border-color:var(--ai-rule);color:var(--ai);}
-.india-stat-strip{background:var(--ink);padding:3rem 0;margin-top:4rem;}
-.india-stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid rgba(255,255,255,0.07);}
-.india-stat-item{padding:2rem;border-right:1px solid rgba(255,255,255,0.07);text-align:center;}
-.india-stat-item:last-child{border-right:none;}
-.india-stat-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:var(--danger);line-height:1;margin-bottom:0.3rem;}
-.india-stat-label{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.35);}
-.india-stat-src{font-size:0.68rem;color:rgba(255,255,255,0.2);margin-top:0.3rem;font-style:italic;}
-
-/* ===== AI & CYBERSECURITY ===== */
-.ai-cybersecurity{padding:6rem 0;background:var(--parchment);}
-.cs-two-col{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2rem;}
-.cs-col-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--prussian);margin-bottom:1.5rem;padding-bottom:0.8rem;border-bottom:2px solid var(--rule);}
-.cs-col-title span{color:var(--ai);}
-.cs-item{padding:1rem 0;border-bottom:1px solid var(--rule);}
-.cs-item:last-child{border-bottom:none;}
-.cs-item-title{font-family:'Source Serif 4',serif;font-size:0.92rem;font-weight:600;color:var(--prussian);margin-bottom:0.3rem;}
-.cs-item-desc{font-size:0.8rem;font-weight:300;color:var(--mist);line-height:1.7;}
-.cs-item-tag{font-family:'JetBrains Mono',monospace;font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;padding:2px 7px;border:1px solid;margin-left:6px;vertical-align:middle;}
-.cs-item-tag.threat{border-color:rgba(192,57,43,0.4);color:var(--danger);}
-.cs-item-tag.defence{border-color:rgba(108,63,197,0.4);color:var(--ai);}
-
-/* ===== GLOBAL AI REGULATIONS ===== */
-.ai-global-regs{padding:6rem 0;background:var(--ink);position:relative;overflow:hidden;}
-.regs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem;}
-.reg-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);padding:2rem;transition:border-color 0.2s;}
-.reg-card:hover{border-color:rgba(108,63,197,0.4);}
-.reg-flag{font-size:1.8rem;margin-bottom:0.8rem;}
-.reg-country{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--ai-lt);margin-bottom:0.3rem;}
-.reg-law{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--parchment);margin-bottom:0.4rem;}
-.reg-status{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.1em;text-transform:uppercase;padding:3px 8px;border:1px solid;display:inline-flex;margin-bottom:0.8rem;}
-.reg-status.in-force{border-color:rgba(26,107,58,0.5);color:#2ecc71;}
-.reg-status.enacted{border-color:rgba(26,107,58,0.5);color:#2ecc71;}
-.reg-status.draft{border-color:rgba(212,118,10,0.4);color:var(--saffron-lt);}
-.reg-status.principles{border-color:rgba(108,63,197,0.4);color:var(--ai-lt);}
-.reg-desc{font-size:0.8rem;font-weight:300;color:rgba(248,244,236,0.45);line-height:1.75;}
-.reg-key-point{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.04em;color:var(--saffron-lt);margin-top:0.8rem;padding-top:0.8rem;border-top:1px solid rgba(255,255,255,0.06);}
-
-/* ===== AI IN INDIA ===== */
-.ai-india{padding:6rem 0;background:var(--cream);}
-.india-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem;}
-.india-card{background:var(--parchment);border:1px solid var(--rule);padding:2rem;}
-.india-card.featured{background:var(--prussian);grid-column:span 2;}
-.india-card-label{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.4rem;}
-.india-card.featured .india-card-label{color:var(--ai-lt);}
-.india-card-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--prussian);margin-bottom:0.6rem;}
-.india-card.featured .india-card-title{color:var(--parchment);font-size:1.5rem;}
-.india-card-desc{font-size:0.85rem;font-weight:300;color:var(--mist);line-height:1.75;}
-.india-card.featured .india-card-desc{color:rgba(248,244,236,0.6);}
-.india-card-list{list-style:none;margin-top:1rem;}
-.india-card-list li{font-size:0.82rem;font-weight:300;color:var(--slate);padding:0.4rem 0;border-bottom:1px solid var(--rule);display:flex;align-items:flex-start;gap:8px;}
-.india-card.featured .india-card-list li{color:rgba(248,244,236,0.55);border-bottom-color:rgba(255,255,255,0.07);}
-.india-card-list li:last-child{border-bottom:none;}
-.india-card-list li::before{content:'◆';font-size:0.5rem;color:var(--saffron);flex-shrink:0;margin-top:0.25rem;}
-.india-dpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.5rem;}
-.dpi-item{background:var(--ink);padding:1.5rem;text-align:center;border-top:3px solid var(--ai);}
-.dpi-icon{font-size:2rem;margin-bottom:0.5rem;}
-.dpi-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--parchment);margin-bottom:0.3rem;}
-.dpi-desc{font-size:0.75rem;font-weight:300;color:rgba(248,244,236,0.4);line-height:1.6;}
-
-/* ===== AI RISK FRAMEWORK ===== */
-.ai-risk{padding:6rem 0;background:var(--prussian);position:relative;}
-.risk-matrix{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem;}
-.risk-category{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);padding:2rem;}
-.risk-cat-label{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--risk-color,var(--ai-lt));margin-bottom:0.6rem;}
-.risk-cat-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--parchment);margin-bottom:1rem;}
-.risk-items{list-style:none;}
-.risk-items li{font-size:0.8rem;font-weight:300;color:rgba(248,244,236,0.45);padding:0.4rem 0;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;align-items:flex-start;gap:8px;}
-.risk-items li:last-child{border-bottom:none;}
-.risk-items li::before{content:'▸';font-family:'JetBrains Mono';font-size:0.6rem;color:var(--risk-color,var(--ai-lt));flex-shrink:0;margin-top:0.1rem;}
-.risk-cat-high{--risk-color:#e74c3c;}
-.risk-cat-medium{--risk-color:var(--saffron-lt);}
-.risk-cat-low{--risk-color:#2ecc71;}
-.nist-rmf{margin-top:3rem;background:rgba(108,63,197,0.08);border:1px solid rgba(108,63,197,0.2);padding:2rem;}
-.nist-rmf-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--parchment);margin-bottom:1.5rem;}
-.nist-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
-.nist-step{text-align:center;padding:1rem;}
-.nist-step-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--ai-lt);line-height:1;margin-bottom:0.4rem;}
-.nist-step-name{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:0.3rem;}
-.nist-step-desc{font-size:0.75rem;font-weight:300;color:rgba(248,244,236,0.3);line-height:1.6;}
-
-/* ===== AI THREAT MODELS ===== */
-.ai-threats{padding:6rem 0;background:var(--ink);}
-.threats-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem;}
-.threat-card{background:rgba(192,57,43,0.04);border:1px solid rgba(192,57,43,0.15);padding:2rem;}
-.threat-card:hover{border-color:rgba(192,57,43,0.4);}
-.threat-severity{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.4rem;}
-.severity-critical{color:#e74c3c;}
-.severity-high{color:var(--saffron-lt);}
-.severity-medium{color:#f39c12;}
-.threat-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--parchment);margin-bottom:0.6rem;}
-.threat-desc{font-size:0.82rem;font-weight:300;color:rgba(248,244,236,0.45);line-height:1.75;margin-bottom:1rem;}
-.threat-example{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.04em;color:var(--saffron-lt);background:rgba(212,118,10,0.06);border-left:2px solid var(--saffron);padding:0.6rem 1rem;line-height:1.6;}
-.threat-mitigation{font-size:0.78rem;font-weight:300;color:rgba(248,244,236,0.35);margin-top:0.8rem;padding-top:0.8rem;border-top:1px solid rgba(255,255,255,0.06);}
-.threat-mitigation strong{color:rgba(108,63,197,0.8);font-weight:500;}
-
-/* ===== SECTOR USE CASES ===== */
-.ai-sectors{padding:6rem 0;background:var(--parchment);}
-.sectors-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2rem;}
-.sector-card{background:var(--cream);border:1px solid var(--rule);border-top:3px solid var(--ai);padding:1.8rem;transition:box-shadow 0.2s,transform 0.2s;}
-.sector-card:hover{box-shadow:var(--shadow-md);transform:translateY(-3px);}
-.sector-icon{font-size:2rem;margin-bottom:0.8rem;}
-.sector-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--prussian);margin-bottom:0.8rem;}
-.sector-use-list{list-style:none;}
-.sector-use-list li{font-size:0.78rem;font-weight:300;color:var(--mist);padding:0.3rem 0;border-bottom:1px solid var(--rule);display:flex;align-items:flex-start;gap:6px;}
-.sector-use-list li:last-child{border-bottom:none;}
-.sector-use-list li::before{content:'·';color:var(--ai);font-size:1rem;line-height:1.1;flex-shrink:0;}
-.sector-risk{font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--ai-rule);color:var(--ai);margin-top:0.8rem;display:inline-flex;}
-
-/* ===== FUTURE OF AI ===== */
-.ai-future{padding:6rem 0;background:var(--prussian);position:relative;overflow:hidden;}
-.ai-future::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(108,63,197,0.08) 0%,transparent 70%);pointer-events:none;}
-.future-horizons{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem;}
-.horizon-card{padding:2rem;border:1px solid rgba(255,255,255,0.07);position:relative;overflow:hidden;}
-.horizon-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--h-color,var(--ai));}
-.horizon-timeframe{font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.14em;color:var(--h-color,var(--ai-lt));margin-bottom:0.5rem;}
-.horizon-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--parchment);margin-bottom:0.8rem;}
-.horizon-items{list-style:none;}
-.horizon-items li{font-size:0.8rem;font-weight:300;color:rgba(248,244,236,0.45);padding:0.4rem 0;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;gap:8px;}
-.horizon-items li:last-child{border-bottom:none;}
-.horizon-items li::before{content:'→';font-family:'JetBrains Mono';font-size:0.6rem;color:var(--h-color,var(--ai-lt));flex-shrink:0;}
-.h-near{--h-color:#2ecc71;}
-.h-mid{--h-color:var(--saffron-lt);}
-.h-far{--h-color:var(--ai-lt);}
-
-/* ===== AI GLOSSARY ===== */
-.ai-glossary{padding:6rem 0;background:var(--cream);}
-.glossary-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem;}
-.glossary-group{background:var(--parchment);border:1px solid var(--rule);padding:2rem;}
-.glossary-group-title{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--ai);margin-bottom:1.2rem;padding-bottom:0.6rem;border-bottom:1px solid var(--ai-rule);}
-.gloss-term{padding:0.8rem 0;border-bottom:1px solid var(--rule);}
-.gloss-term:last-child{border-bottom:none;}
-.gloss-word{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--prussian);margin-bottom:0.2rem;}
-.gloss-abbr{font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:var(--ai);margin-left:6px;letter-spacing:0.1em;}
-.gloss-def{font-size:0.8rem;font-weight:300;color:var(--mist);line-height:1.7;}
-
-/* ===== COMPLIANCE PLAYBOOK ===== */
-.ai-playbook{padding:6rem 0;background:var(--ink);position:relative;}
-.playbook-steps{margin-top:2rem;}
-.playbook-step{display:grid;grid-template-columns:auto 1fr;gap:2rem;padding:2rem 0;border-bottom:1px solid rgba(255,255,255,0.06);}
-.playbook-step:last-child{border-bottom:none;}
-.step-number{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:var(--ai);opacity:0.3;line-height:1;flex-shrink:0;width:60px;text-align:right;}
-.step-body{}
-.step-label{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.4rem;}
-.step-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--parchment);margin-bottom:0.6rem;}
-.step-desc{font-size:0.85rem;font-weight:300;color:rgba(248,244,236,0.5);line-height:1.75;margin-bottom:1rem;}
-.step-actions{display:flex;flex-wrap:wrap;gap:0.5rem;}
-.step-action{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.08em;background:rgba(108,63,197,0.1);border:1px solid rgba(108,63,197,0.25);color:var(--ai-lt);padding:5px 12px;}
-.playbook-cta-bar{background:rgba(108,63,197,0.12);border:1px solid rgba(108,63,197,0.25);padding:2.5rem;margin-top:3rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;}
-.playbook-cta-text{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--parchment);}
-.playbook-cta-sub{font-size:0.85rem;font-weight:300;color:rgba(248,244,236,0.5);margin-top:0.3rem;}
-.playbook-cta-btn{font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;background:var(--ai);color:#fff;padding:14px 28px;text-decoration:none;white-space:nowrap;transition:background 0.2s;}
-.playbook-cta-btn:hover{background:var(--ai-lt);}
-
-/* ===== CROSS-LINKS BAND ===== */
-.ai-crosslinks{padding:5rem 0;background:var(--parchment);}
-.crosslinks-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2rem;}
-.crosslink-card{background:var(--cream);border:1px solid var(--rule);border-top:4px solid var(--prussian);padding:1.8rem;text-decoration:none;color:inherit;transition:transform 0.2s,box-shadow 0.2s,border-top-color 0.2s;}
-.crosslink-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-top-color:var(--saffron);}
-.crosslink-icon{font-size:1.8rem;margin-bottom:0.6rem;}
-.crosslink-label{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.3rem;}
-.crosslink-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--prussian);margin-bottom:0.4rem;}
-.crosslink-desc{font-size:0.8rem;font-weight:300;color:var(--mist);line-height:1.7;}
-.crosslink-arrow{font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--saffron);margin-top:0.8rem;display:block;}
-
-/* ===== FOOTER ===== */
+/* FOOTER */
 footer{background:var(--prussian);padding:4rem 0 2rem;border-top:3px solid var(--saffron);}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
 .footer-brand-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--parchment);margin-bottom:0.5rem;}
@@ -390,66 +160,35 @@ footer{background:var(--prussian);padding:4rem 0 2rem;border-top:3px solid var(-
 .footer-legal-links{display:flex;gap:1.5rem;}
 .footer-legal-links a{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.08em;color:rgba(255,255,255,0.3);text-decoration:none;}
 .footer-legal-links a:hover{color:var(--saffron);}
-.footer-ai-badge{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.1em;text-transform:uppercase;background:rgba(108,63,197,0.15);border:1px solid rgba(108,63,197,0.3);color:var(--ai-lt);padding:6px 12px;margin-bottom:1rem;}
 
-/* ===== RESPONSIVE ===== */
+/* RESPONSIVE */
 @media(max-width:1100px){
   .nav-menu{display:none;}
   .hamburger{display:flex;}
-  .ai-hero-inner{grid-template-columns:1fr;}
-  .ai-hero-right{display:none;}
-  .history-phases{grid-template-columns:1fr 1fr;}
-  .personalities-grid{grid-template-columns:1fr 1fr;}
-  .dpdp-map-grid{grid-template-columns:1fr;}
-  .cybercrime-grid{grid-template-columns:1fr 1fr;}
-  .regs-grid{grid-template-columns:1fr 1fr;}
-  .india-grid{grid-template-columns:1fr;}
-  .india-card.featured{grid-column:span 1;}
-  .risk-matrix{grid-template-columns:1fr 1fr;}
-  .nist-steps{grid-template-columns:1fr 1fr;}
-  .sectors-grid{grid-template-columns:1fr 1fr;}
-  .future-horizons{grid-template-columns:1fr;}
-  .glossary-grid{grid-template-columns:1fr;}
+  .hub-hero-inner{grid-template-columns:1fr;}
+  .hub-hero-stats{flex-direction:row;flex-wrap:wrap;}
+  .hub-layout{grid-template-columns:1fr;}
+  .hub-sidebar{display:none;}
+  .hub-main{padding:2rem 1.5rem;}
+  .topic-grid{grid-template-columns:1fr 1fr;}
+  .qs-grid{grid-template-columns:1fr 1fr;}
   .footer-grid{grid-template-columns:1fr 1fr;}
-  .crosslinks-grid{grid-template-columns:1fr 1fr;}
-  .india-stat-grid{grid-template-columns:1fr 1fr;}
-  .threats-grid{grid-template-columns:1fr;}
-  .cs-two-col{grid-template-columns:1fr;}
-  .ai-intro-grid{grid-template-columns:1fr;}
-  .ai-three-pillars{grid-template-columns:1fr 1fr;}
-  .india-dpi-grid{grid-template-columns:1fr 1fr;}
-}
-@media(max-width:768px){
-  .history-phases{grid-template-columns:1fr;}
-  .personalities-grid{grid-template-columns:1fr 1fr;}
-  .cybercrime-grid{grid-template-columns:1fr;}
-  .regs-grid{grid-template-columns:1fr;}
-  .risk-matrix{grid-template-columns:1fr;}
-  .sectors-grid{grid-template-columns:1fr 1fr;}
-  .crosslinks-grid{grid-template-columns:1fr 1fr;}
-  .india-dpi-grid{grid-template-columns:1fr 1fr;}
 }
 @media(max-width:640px){
-  .personalities-grid{grid-template-columns:1fr;}
-  .sectors-grid{grid-template-columns:1fr;}
-  .crosslinks-grid{grid-template-columns:1fr;}
-  .ai-three-pillars{grid-template-columns:1fr;}
-  .nist-steps{grid-template-columns:1fr 1fr;}
-  .india-stat-grid{grid-template-columns:1fr 1fr;}
-  .dpdp-risk-levels{grid-template-columns:1fr;}
+  .topic-grid{grid-template-columns:1fr;}
+  .qs-grid{grid-template-columns:1fr;}
   .footer-grid{grid-template-columns:1fr;}
-  .playbook-cta-bar{flex-direction:column;text-align:center;}
 }
 </style>
 </head>
 <body>
 
-<!-- ===== MASTHEAD ===== -->
+<!-- MASTHEAD -->
 <div class="masthead">
   <span class="masthead-text">Independent Research Platform — <span>AI + Law + Risk Intelligence · DPDP Act 2023 · IT Act 2000 · Cyber Fraud</span> — For Informational Use Only</span>
 </div>
 
-<!-- ===== NAVIGATION ===== -->
+<!-- NAV -->
 <nav>
   <div class="nav-inner">
     <a href="index.html" class="nav-brand">
@@ -459,1448 +198,372 @@ footer{background:var(--prussian);padding:4rem 0 2rem;border-top:3px solid var(-
         <text x="21" y="26" text-anchor="middle" font-family="Playfair Display,serif" font-size="5" font-weight="400" fill="rgba(248,244,236,0.6)" letter-spacing="0.05em">INDIA</text>
         <circle cx="21" cy="21" r="10" stroke="#D4760A" stroke-width="0.75" fill="none" opacity="0.4"/>
       </svg>
-      <div class="nav-brand-name">
-        <strong>DPDPIndia.in</strong>
-        <span>Data Protection Intelligence</span>
-      </div>
+      <div class="nav-brand-name"><strong>DPDPIndia.in</strong><span>Data Protection Intelligence</span></div>
     </a>
     <ul class="nav-menu" id="desktop-nav">
-      <li class="nav-item has-dropdown">
-        <a href="dpdp-kb.html">DPDP Act</a>
+      <li class="nav-item has-dropdown"><a href="dpdp-kb.html">DPDP Act</a>
+        <div class="nav-dropdown"><div class="nav-dropdown-section">
+          <a href="dpdp-kb.html">DPDP Act Overview</a><a href="dpdp-act.html">Plain Language Guide</a>
+          <a href="dpdp-rights.html">Your Rights</a><a href="dpdp-rules.html">DPDP Rules 2025</a>
+          <a href="dpdp-global.html">DPDP vs GDPR</a></div></div></li>
+      <li class="nav-item has-dropdown"><a href="itact-kb.html">IT Act</a>
+        <div class="nav-dropdown"><div class="nav-dropdown-section">
+          <a href="itact-kb.html">IT Act 2000 Overview</a><a href="itact-sections.html">Key Sections</a>
+          <a href="itact-intermediary.html">Intermediary Liability</a></div></div></li>
+      <li class="nav-item has-dropdown"><a href="cyber-fraud-hub.html">🚨 Cyber Fraud</a>
+        <div class="nav-dropdown"><div class="nav-dropdown-section">
+          <a href="cybercrime-financial.html">Financial Fraud</a><a href="cybercrime-personal.html">Personal Crimes</a>
+          <a href="cybercrime-remedy-guide.html">How to Report</a></div></div></li>
+      <li class="nav-item has-dropdown"><a href="ekyc-kb.html">Aadhaar & eKYC</a>
+        <div class="nav-dropdown"><div class="nav-dropdown-section">
+          <a href="ekyc-kb.html">eKYC Knowledge Base</a><a href="ekyc-uidai-guide.html">UIDAI Framework</a></div></div></li>
+      <li class="nav-item ai-active has-dropdown"><a href="ai-hub.html">🤖 AI Intelligence</a>
         <div class="nav-dropdown">
-          <div class="nav-dropdown-section">
-            <div class="nav-dropdown-label">Simplified</div>
-            <a href="dpdp-kb.html">DPDP Act — Overview</a>
-            <a href="dpdp-act.html">Plain Language Guide</a>
-            <a href="dpdp-rights.html">Your Rights as Principal</a>
-            <a href="dpdp-genesis.html">How the Law Came to Be</a>
-          </div>
+          <div class="nav-dropdown-section"><div class="nav-dropdown-label">Foundation</div>
+            <a href="ai-intro.html">Introduction to AI</a><a href="ai-history.html">History &amp; Evolution</a>
+            <a href="ai-personalities.html">Key Personalities</a><a href="ai-timeline.html">Timeline of AI</a></div>
           <hr>
-          <div class="nav-dropdown-section">
-            <div class="nav-dropdown-label">Deep Dive</div>
-            <a href="dpdp-rules.html">DPDP Rules 2025</a>
-            <a href="dpdp-exemptions.html">Exemptions Explained</a>
-            <a href="dpdp-adjudication.html">Adjudication & Penalties</a>
-            <a href="dpdp-global.html">DPDP vs GDPR</a>
-          </div>
-        </div>
-      </li>
-      <li class="nav-item has-dropdown">
-        <a href="itact-kb.html">IT Act</a>
-        <div class="nav-dropdown">
-          <div class="nav-dropdown-section">
-            <a href="itact-kb.html">IT Act 2000 — Overview</a>
-            <a href="itact-sections.html">Key Sections</a>
-            <a href="itact-intermediary.html">Intermediary Liability</a>
-            <a href="itact-history.html">Legislative History</a>
-          </div>
-        </div>
-      </li>
-      <li class="nav-item has-dropdown">
-        <a href="cyber-fraud-hub.html">🚨 Cyber Fraud</a>
-        <div class="nav-dropdown">
-          <div class="nav-dropdown-section">
-            <div class="nav-dropdown-label">Fraud Types</div>
-            <a href="cybercrime-financial.html">Financial Fraud (UPI, OTP, Digital Arrest)</a>
-            <a href="cybercrime-personal.html">Personal & Social Crimes</a>
-            <a href="cyber-fraud-hub.html">All Fraud Alerts</a>
-          </div>
+          <div class="nav-dropdown-section"><div class="nav-dropdown-label">AI &amp; Law</div>
+            <a href="ai-privacy.html">AI &amp; Privacy (DPDP)</a><a href="ai-cybercrime.html">AI &amp; Cybercrime</a>
+            <a href="ai-cybersecurity.html">AI &amp; Cybersecurity</a><a href="ai-global-regs.html">Global AI Regulations</a></div>
           <hr>
-          <div class="nav-dropdown-section">
-            <div class="nav-dropdown-label">Take Action</div>
-            <a href="cybercrime-remedy-guide.html">How to Report — Step by Step</a>
-            <a href="cybercrime-kb.html">Cybercrime Knowledge Base</a>
-          </div>
-        </div>
-      </li>
-      <li class="nav-item has-dropdown">
-        <a href="ekyc-kb.html">Aadhaar & eKYC</a>
-        <div class="nav-dropdown">
-          <div class="nav-dropdown-section">
-            <a href="ekyc-kb.html">eKYC Knowledge Base</a>
-            <a href="ekyc-uidai-guide.html">UIDAI Framework</a>
-            <a href="ekyc-trust-chain.html">Trust Chain</a>
-          </div>
-        </div>
-      </li>
-      <li class="nav-item ai-active has-dropdown">
-        <a href="ai-hub.html">🤖 AI Intelligence</a>
-        <div class="nav-dropdown">
-          <div class="nav-dropdown-section">
-            <div class="nav-dropdown-label">Foundation</div>
-            <a href="ai-hub.html#intro">Introduction to AI</a>
-            <a href="ai-hub.html#history">History & Evolution</a>
-            <a href="ai-hub.html#personalities">Key Personalities</a>
-            <a href="ai-hub.html#timeline">Timeline of AI</a>
-          </div>
+          <div class="nav-dropdown-section"><div class="nav-dropdown-label">AI &amp; Risk</div>
+            <a href="ai-india.html">AI in India</a><a href="ai-risk.html">AI Risk Framework</a>
+            <a href="ai-threats.html">AI Threat Models</a><a href="ai-sectors.html">Sector Use Cases</a></div>
           <hr>
-          <div class="nav-dropdown-section">
-            <div class="nav-dropdown-label">AI & Law</div>
-            <a href="ai-hub.html#privacy">AI & Privacy (DPDP Mapped)</a>
-            <a href="ai-hub.html#cybercrime">AI & Cybercrime</a>
-            <a href="ai-hub.html#cybersecurity">AI & Cybersecurity</a>
-            <a href="ai-hub.html#global-regs">Global AI Regulations</a>
-          </div>
-          <hr>
-          <div class="nav-dropdown-section">
-            <div class="nav-dropdown-label">AI & Risk</div>
-            <a href="ai-hub.html#india">AI in India</a>
-            <a href="ai-hub.html#risk">AI Risk Framework</a>
-            <a href="ai-hub.html#threats">AI Threat Models</a>
-            <a href="ai-hub.html#sectors">Sector Use Cases</a>
-          </div>
-          <hr>
-          <div class="nav-dropdown-section">
-            <div class="nav-dropdown-label">Reference</div>
-            <a href="ai-hub.html#future">Future of AI</a>
-            <a href="ai-hub.html#glossary">AI Glossary</a>
-            <a href="ai-hub.html#playbook">AI Compliance Playbook</a>
-          </div>
-        </div>
-      </li>
-      <li class="nav-item has-dropdown">
-        <a href="blog.html">Resources</a>
-        <div class="nav-dropdown">
-          <div class="nav-dropdown-section">
-            <div class="nav-dropdown-label">Knowledge Bases</div>
-            <a href="dpdp-kb.html">DPDP Act 2023 KB</a>
-            <a href="itact-kb.html">IT Act 2000 KB</a>
-            <a href="ekyc-kb.html">Aadhaar & eKYC KB</a>
-            <a href="cybercrime-kb.html">Cybercrime KB</a>
-          </div>
-          <hr>
-          <div class="nav-dropdown-section">
-            <div class="nav-dropdown-label">Monthly Newsletter</div>
-            <a href="monthly-briefing-2026-04.html">★ April 2026 — Latest Issue</a>
-            <a href="monthly-briefing.html">All Newsletter Issues →</a>
-          </div>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a href="cyber-fraud-hub.html" class="nav-cta">📞 1930 Helpline</a>
-      </li>
+          <div class="nav-dropdown-section"><div class="nav-dropdown-label">Reference</div>
+            <a href="ai-future.html">Future of AI</a><a href="ai-glossary.html">AI Glossary</a>
+            <a href="ai-playbook.html">Compliance Playbook</a></div>
+        </div></li>
+      <li class="nav-item has-dropdown"><a href="blog.html">Resources</a>
+        <div class="nav-dropdown"><div class="nav-dropdown-section">
+          <a href="dpdp-kb.html">DPDP Act 2023 KB</a><a href="itact-kb.html">IT Act 2000 KB</a>
+          <a href="cybercrime-kb.html">Cybercrime KB</a><a href="blog.html">All Articles</a></div></div></li>
+      <li class="nav-item"><a href="cyber-fraud-hub.html" class="nav-cta">📞 1930</a></li>
     </ul>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
   </div>
-  <div class="mobile-menu" id="mobileMenu">
-    <ul>
-      <span class="mm-label">🤖 AI Intelligence</span>
-      <li><a href="#intro">Introduction to AI</a></li>
-      <li><a href="#history">History & Evolution</a></li>
-      <li><a href="#timeline">Timeline of AI</a></li>
-      <li><a href="#privacy">AI & Privacy (DPDP)</a></li>
-      <li><a href="#cybercrime">AI & Cybercrime</a></li>
-      <li><a href="#global-regs">Global AI Regulations</a></li>
-      <li><a href="#india">AI in India</a></li>
-      <li><a href="#playbook">Compliance Playbook</a></li>
-      <span class="mm-label">Other Sections</span>
-      <li><a href="dpdp-kb.html">DPDP Act 2023</a></li>
-      <li><a href="itact-kb.html">IT Act 2000</a></li>
-      <li><a href="cyber-fraud-hub.html">Cyber Fraud Hub</a></li>
-      <li><a href="ekyc-kb.html">Aadhaar & eKYC</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </div>
+  <div class="mobile-menu" id="mobileMenu"><ul>
+    <span class="mm-label">🤖 AI Intelligence</span>
+    <li><a href="ai-intro.html">Introduction to AI</a></li>
+    <li><a href="ai-privacy.html">AI &amp; Privacy (DPDP)</a></li>
+    <li><a href="ai-cybercrime.html">AI &amp; Cybercrime</a></li>
+    <li><a href="ai-global-regs.html">Global AI Regulations</a></li>
+    <li><a href="ai-playbook.html">Compliance Playbook</a></li>
+    <span class="mm-label">Other Sections</span>
+    <li><a href="dpdp-kb.html">DPDP Act 2023</a></li>
+    <li><a href="cyber-fraud-hub.html">Cyber Fraud Hub</a></li>
+    <li><a href="index.html">Home</a></li>
+  </ul></div>
 </nav>
 
-<!-- ===== AI HERO ===== -->
-<section class="ai-hero">
+<!-- HERO -->
+<section class="hub-hero">
   <div class="page">
-    <div class="ai-hero-inner">
-      <div class="ai-hero-left">
-        <div class="ai-hero-kicker">
-          <div class="ai-hero-kicker-line"></div>
-          <div class="ai-hero-kicker-text">AI + Law + Risk Intelligence Platform</div>
-        </div>
-        <div class="ai-hero-badge">🤖 Informational — Not Legal Advice</div>
-        <h1 class="ai-hero-title">Artificial Intelligence:<br><em>History, Risk &amp; Law</em></h1>
-        <p class="ai-hero-deck">From Alan Turing's 1950 thought experiment to generative AI reshaping every industry — and every courtroom. Understand AI's evolution, its intersection with India's DPDP Act and IT Act, the emerging global regulatory landscape, and the cybersecurity threats AI both creates and counters.</p>
-        <div class="ai-hero-pills">
-          <span class="ai-pill">AI History</span>
-          <span class="ai-pill">DPDP Act Mapping</span>
-          <span class="ai-pill">Deepfakes & Fraud</span>
-          <span class="ai-pill">EU AI Act</span>
-          <span class="ai-pill">India AI Policy</span>
-          <span class="ai-pill">Risk Framework</span>
-        </div>
-        <div class="ai-hero-ctas">
-          <a href="#timeline" class="ai-cta-primary">Explore Timeline →</a>
-          <a href="#playbook" class="ai-cta-secondary">DPDP Compliance Playbook</a>
-        </div>
-      </div>
-      <div class="ai-hero-right">
-        <div class="ai-stat-card">
-          <div class="ai-stat-num">75+</div>
-          <div class="ai-stat-label">Years of AI Development</div>
-          <div class="ai-stat-note">From 1950 Turing Test to 2025 AI Agents</div>
-        </div>
-        <div class="ai-stat-card">
-          <div class="ai-stat-num">€35M</div>
-          <div class="ai-stat-label">EU AI Act Max Fine</div>
-          <div class="ai-stat-note">Or 7% of global annual turnover</div>
-        </div>
-        <div class="ai-stat-card">
-          <div class="ai-stat-num">₹10,372Cr</div>
-          <div class="ai-stat-label">India's IndiaAI Mission Budget</div>
-          <div class="ai-stat-note">Cabinet approved March 2024</div>
-        </div>
-        <div class="ai-stat-card">
-          <div class="ai-stat-num">↑340%</div>
-          <div class="ai-stat-label">AI-Assisted Cybercrimes</div>
-          <div class="ai-stat-note">India cybercrime data, 2023-24 trend</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== SECTION JUMP NAV ===== -->
-<nav class="ai-section-nav">
-  <div class="ai-section-nav-inner">
-    <a href="#intro"><span>01</span> Intro</a>
-    <a href="#history"><span>02</span> History</a>
-    <a href="#personalities"><span>03</span> Personalities</a>
-    <a href="#timeline"><span>04</span> Timeline</a>
-    <a href="#privacy"><span>05</span> AI & Privacy</a>
-    <a href="#cybercrime"><span>06</span> AI & Cybercrime</a>
-    <a href="#cybersecurity"><span>07</span> AI & Cybersecurity</a>
-    <a href="#global-regs"><span>08</span> Global Regs</a>
-    <a href="#india"><span>09</span> AI in India</a>
-    <a href="#risk"><span>10</span> Risk Framework</a>
-    <a href="#threats"><span>11</span> Threat Models</a>
-    <a href="#sectors"><span>12</span> Use Cases</a>
-    <a href="#future"><span>13</span> Future</a>
-    <a href="#glossary"><span>14</span> Glossary</a>
-    <a href="#playbook"><span>15</span> Playbook</a>
-  </div>
-</nav>
-
-<!-- ===== 01 INTRODUCTION ===== -->
-<section class="ai-intro" id="intro">
-  <div class="page">
-    <div class="disclaimer-box">
-      <p><strong>Informational Purpose Only:</strong> All content in this AI Intelligence Hub is published for educational and research purposes. It does not constitute legal advice, technical certification, or compliance guidance. Readers should consult qualified legal counsel and AI/cybersecurity professionals before making decisions based on this material. AI is an evolving field — verify all developments against primary sources.</p>
-    </div>
-    <div class="ai-intro-grid">
-      <div class="ai-intro-body">
-        <div class="section-label">01 — Introduction to AI</div>
-        <h2 class="section-heading">What is <em>Artificial Intelligence</em>?</h2>
-        <p class="section-deck">The science of making machines that can perform tasks which would normally require human intelligence — and why this matters profoundly for law, privacy, and security.</p>
-        <p><strong>Artificial Intelligence (AI)</strong> refers to the simulation of human intelligence processes by computer systems. These processes include learning (acquiring information and rules for using it), reasoning (using rules to reach approximate or definite conclusions), and self-correction. The term was coined by John McCarthy in 1956 at the Dartmouth Conference — the founding moment of AI as a formal academic discipline.</p>
-        <p>Modern AI encompasses several sub-disciplines: <strong>Machine Learning (ML)</strong>, which enables systems to learn from data without being explicitly programmed; <strong>Deep Learning</strong>, which uses multi-layered neural networks to process complex patterns; <strong>Natural Language Processing (NLP)</strong>, which enables machines to understand and generate human language; and <strong>Computer Vision</strong>, which enables machines to interpret and understand visual information.</p>
-        <p>The transformative shift from <strong>narrow AI</strong> (systems designed for specific tasks, such as chess engines or spam filters) to <strong>generative AI</strong> (systems capable of producing novel text, images, code, audio, and video) represents the most significant technological inflection point since the internet. As of 2025, AI systems are being embedded into every sector — healthcare diagnostics, legal research, financial trading, law enforcement, and governance.</p>
-        <p>For legal and policy practitioners in India, AI raises critical questions under the <strong>DPDP Act 2023</strong> (automated processing of personal data, profiling, consent), the <strong>IT Act 2000</strong> (intermediary liability of AI platforms, deepfake-enabled cybercrime), and India's emerging AI governance framework. This hub maps all these intersections systematically.</p>
-        <div class="ai-three-pillars">
-          <div class="ai-pillar">
-            <div class="ai-pillar-icon">🧠</div>
-            <div class="ai-pillar-title">AI & Law</div>
-            <div class="ai-pillar-desc">How AI intersects with DPDP Act, IT Act, and global AI regulations. Automated decisions, consent, profiling, and liability.</div>
-          </div>
-          <div class="ai-pillar">
-            <div class="ai-pillar-icon">🔐</div>
-            <div class="ai-pillar-title">AI & Risk</div>
-            <div class="ai-pillar-desc">AI as a cybersecurity threat vector — deepfakes, phishing, voice cloning — and as a defensive tool for threat detection.</div>
-          </div>
-          <div class="ai-pillar">
-            <div class="ai-pillar-icon">🇮🇳</div>
-            <div class="ai-pillar-title">AI & India</div>
-            <div class="ai-pillar-desc">India's IndiaAI Mission, Digital Public Infrastructure, NITI Aayog's strategy, and sectoral AI deployment across government.</div>
-          </div>
-        </div>
-      </div>
-      <div class="ai-intro-sidebar">
-        <div class="ai-sidebar-card">
-          <div class="ai-sidebar-label">Quick Navigation</div>
-          <div class="ai-sidebar-title">AI Intelligence Hub</div>
-          <ul class="ai-sidebar-list">
-            <li><a href="#history">History &amp; Evolution of AI</a></li>
-            <li><a href="#personalities">Key Personalities</a></li>
-            <li><a href="#timeline">AI Development Timeline</a></li>
-            <li><a href="#privacy">AI &amp; Privacy — DPDP Mapped</a></li>
-            <li><a href="#cybercrime">AI &amp; Cybercrime in India</a></li>
-            <li><a href="#cybersecurity">AI &amp; Cybersecurity</a></li>
-            <li><a href="#global-regs">Global AI Regulations</a></li>
-            <li><a href="#india">AI in India — Govt &amp; DPI</a></li>
-            <li><a href="#risk">AI Risk Framework</a></li>
-            <li><a href="#threats">AI Threat Models</a></li>
-            <li><a href="#sectors">Sector-wise Use Cases</a></li>
-            <li><a href="#future">Future of AI</a></li>
-            <li><a href="#glossary">AI Glossary</a></li>
-            <li><a href="#playbook">AI Compliance Playbook (DPDP)</a></li>
-          </ul>
-        </div>
-        <div class="ai-sidebar-card">
-          <div class="ai-sidebar-label">Cross-Links</div>
-          <div class="ai-sidebar-title">Related Sections</div>
-          <ul class="ai-sidebar-list">
-            <li><a href="dpdp-kb.html">DPDP Act 2023 Knowledge Base</a></li>
-            <li><a href="cybercrime-kb.html">Cybercrime Knowledge Base</a></li>
-            <li><a href="itact-kb.html">IT Act 2000 Knowledge Base</a></li>
-            <li><a href="dpdp-global.html">DPDP vs GDPR Comparison</a></li>
-            <li><a href="cybercrime-financial.html">Financial Fraud &amp; AI</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 02 HISTORY & EVOLUTION ===== -->
-<section class="ai-history" id="history">
-  <div class="page">
-    <div class="section-label section-label-light">02 — History &amp; Evolution</div>
-    <h2 class="section-heading section-heading-light">From Turing to <em>Transformers</em></h2>
-    <p class="section-deck section-deck-light">Seven decades of breakthroughs, winters, and revolutions that built the AI of today.</p>
-    <div class="history-phases">
-      <div class="phase-card" style="--phase-color:#9B6FE8;">
-        <div class="phase-era">1940s – 1960s</div>
-        <div class="phase-name">The Founding Era</div>
-        <div class="phase-desc">Mathematical foundations are laid. Visionaries define what thinking machines could mean. The term "Artificial Intelligence" enters the lexicon at Dartmouth, 1956.</div>
-        <ul class="phase-milestones">
-          <li><span class="phase-year">1943</span>McCulloch-Pitts publish the first mathematical model of a neuron — the conceptual seed of neural networks.</li>
-          <li><span class="phase-year">1950</span>Alan Turing publishes "Computing Machinery and Intelligence," proposing the Imitation Game (Turing Test) as a measure of machine intelligence.</li>
-          <li><span class="phase-year">1956</span>John McCarthy organises the Dartmouth Conference — AI is formally named as a discipline. Attendees include Minsky, Shannon, and Simon.</li>
-          <li><span class="phase-year">1957</span>Frank Rosenblatt develops the Perceptron — the first trainable artificial neural network, implemented on hardware.</li>
-          <li><span class="phase-year">1966</span>Joseph Weizenbaum creates ELIZA at MIT — one of the first programmes to process natural language, simulating a psychotherapist.</li>
-        </ul>
-      </div>
-      <div class="phase-card" style="--phase-color:#e74c3c;">
-        <div class="phase-era">1970s – 1980s</div>
-        <div class="phase-name">Boom, Bust &amp; Expert Systems</div>
-        <div class="phase-desc">Cycles of over-promise and under-delivery define the "AI Winters." Yet expert systems deliver commercial value — before hitting their own limits.</div>
-        <ul class="phase-milestones">
-          <li><span class="phase-year">1969</span>Minsky &amp; Papert's "Perceptrons" demonstrates limits of single-layer networks, triggering the first AI Winter (funding and interest collapses).</li>
-          <li><span class="phase-year">1974–80</span>First AI Winter. Government funding slashed. DARPA withdraws AI grants in UK and USA.</li>
-          <li><span class="phase-year">1980</span>Expert systems boom. XCON (by DEC) saves Digital Equipment Corp ~$40M/year — AI finds commercial utility in rule-based reasoning.</li>
-          <li><span class="phase-year">1986</span>Rumelhart, Hinton &amp; Williams publish backpropagation — enabling multi-layer neural networks to learn, reviving connectionism.</li>
-          <li><span class="phase-year">1987–93</span>Second AI Winter. Expert systems prove brittle and costly to maintain. Lisp machines market collapses.</li>
-        </ul>
-      </div>
-      <div class="phase-card" style="--phase-color:#F0A840;">
-        <div class="phase-era">1990s – 2000s</div>
-        <div class="phase-name">Statistical AI &amp; First Victories</div>
-        <div class="phase-desc">AI shifts from rules to statistics. Machine learning finds traction in search, spam filtering, and recommendation engines. A chess computer defeats the world champion.</div>
-        <ul class="phase-milestones">
-          <li><span class="phase-year">1997</span>IBM Deep Blue defeats reigning world chess champion Garry Kasparov — a watershed moment demonstrating AI in strategic reasoning.</li>
-          <li><span class="phase-year">1998</span>Yann LeCun's LeNet demonstrates convolutional neural networks (CNNs) for handwritten digit recognition — foundational to computer vision.</li>
-          <li><span class="phase-year">2002</span>Roomba autonomous vacuum cleaner launches — AI enters consumer products.</li>
-          <li><span class="phase-year">2006</span>Geoffrey Hinton coins "deep learning" and demonstrates that deep neural networks can be pre-trained layer by layer, restarting the neural network revolution.</li>
-          <li><span class="phase-year">2009</span>Google begins testing autonomous vehicles using AI — AI enters transportation.</li>
-        </ul>
-      </div>
-      <div class="phase-card" style="--phase-color:#2ecc71;">
-        <div class="phase-era">2010 – 2017</div>
-        <div class="phase-name">The Deep Learning Revolution</div>
-        <div class="phase-desc">GPUs unlock the computational power to train massive neural networks. ImageNet changes computer vision forever. AI transitions from research labs to consumer products.</div>
-        <ul class="phase-milestones">
-          <li><span class="phase-year">2011</span>IBM Watson defeats all-time Jeopardy! champions Ken Jennings and Brad Rutter — demonstrating NLP at scale. Apple launches Siri.</li>
-          <li><span class="phase-year">2012</span>AlexNet (Krizhevsky, Sutskever, Hinton) wins ImageNet with 84.7% accuracy using deep CNNs — sparking the modern deep learning era.</li>
-          <li><span class="phase-year">2014</span>Ian Goodfellow introduces Generative Adversarial Networks (GANs) — enabling AI to generate realistic synthetic images. Google acquires DeepMind.</li>
-          <li><span class="phase-year">2016</span>AlphaGo (DeepMind) defeats world Go champion Lee Sedol 4–1 — Go was considered computationally intractable; a defining AI milestone.</li>
-          <li><span class="phase-year">2017</span>"Attention Is All You Need" (Vaswani et al., Google Brain) introduces the Transformer architecture — the foundation of all modern large language models.</li>
-        </ul>
-      </div>
-      <div class="phase-card" style="--phase-color:#6C3FC5;">
-        <div class="phase-era">2018 – 2022</div>
-        <div class="phase-name">The Foundation Model Era</div>
-        <div class="phase-desc">Large language models trained on vast internet-scale data emerge. Pre-training and fine-tuning become the dominant paradigm. AI becomes a consumer product.</div>
-        <ul class="phase-milestones">
-          <li><span class="phase-year">2018</span>Google releases BERT; OpenAI releases GPT-1 — transformer-based language models set new NLP benchmarks across tasks.</li>
-          <li><span class="phase-year">2020</span>OpenAI releases GPT-3 (175 billion parameters) — in-context learning emerges; AI can write code, essays, and answer complex questions.</li>
-          <li><span class="phase-year">2021</span>DALL-E (OpenAI) and CLIP demonstrate text-to-image generation. GitHub Copilot enters beta — AI-assisted code writing becomes mainstream.</li>
-          <li><span class="phase-year">2022</span>Stable Diffusion and DALL-E 2 democratise image generation. ChatGPT launches November 2022 — reaches 100 million users in 2 months, fastest-growing consumer app in history.</li>
-        </ul>
-      </div>
-      <div class="phase-card" style="--phase-color:#D4760A;">
-        <div class="phase-era">2023 – Present</div>
-        <div class="phase-name">The Generative AI Age</div>
-        <div class="phase-desc">Multimodal AI, AI agents, and regulation converge. The legal and policy response intensifies worldwide. India launches its national AI mission.</div>
-        <ul class="phase-milestones">
-          <li><span class="phase-year">2023</span>GPT-4 (OpenAI, March 2023) — multimodal, near-human performance on legal and medical exams. EU AI Act finalised. Anthropic releases Claude.</li>
-          <li><span class="phase-year">2023</span>Google releases Gemini (formerly Bard). Meta releases Llama 2 (open-source LLM). The "AI regulation moment" — G7, UN, and 50+ countries begin governance frameworks.</li>
-          <li><span class="phase-year">2024</span>EU AI Act officially enacted (August 2024) — world's first comprehensive AI law. India's IndiaAI Mission approved (₹10,372 Cr). OpenAI releases GPT-4o.</li>
-          <li><span class="phase-year">2025</span>DeepSeek R1 (January 2025) demonstrates that efficient open-source models can rival frontier models. AI agents — systems that autonomously plan and execute multi-step tasks — proliferate across enterprise software.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 03 KEY PERSONALITIES ===== -->
-<section class="ai-personalities" id="personalities">
-  <div class="page">
-    <div class="section-label">03 — Key Personalities</div>
-    <h2 class="section-heading">The Minds Who Built <em>AI</em></h2>
-    <p class="section-deck">Scientists, engineers, and entrepreneurs whose contributions — from theoretical mathematics to commercial deployment — define the discipline.</p>
-    <div class="personalities-grid">
-      <div class="person-card">
-        <div class="person-avatar">T</div>
-        <div class="person-name">Alan Turing</div>
-        <div class="person-dates">1912 – 1954</div>
-        <div class="person-role">Father of Theoretical Computer Science</div>
-        <div class="person-contrib">Proposed the Turing Test in 1950 as a criterion for machine intelligence. His 1936 paper "On Computable Numbers" established the mathematical foundation for all computation. Turing's work at Bletchley Park during WWII accelerated codebreaking through machine logic.</div>
-        <div class="person-tag">Foundational Theory</div>
-      </div>
-      <div class="person-card">
-        <div class="person-avatar">M</div>
-        <div class="person-name">John McCarthy</div>
-        <div class="person-dates">1927 – 2011</div>
-        <div class="person-role">Father of AI · Dartmouth Conference 1956</div>
-        <div class="person-contrib">Coined the term "Artificial Intelligence" and organised the 1956 Dartmouth Workshop that formally launched the field. Created the Lisp programming language (1958), which remained the dominant AI research language for decades. Stanford AI Lab founder.</div>
-        <div class="person-tag">AI Pioneer</div>
-      </div>
-      <div class="person-card">
-        <div class="person-avatar">H</div>
-        <div class="person-name">Geoffrey Hinton</div>
-        <div class="person-dates">Born 1947</div>
-        <div class="person-role">Godfather of Deep Learning</div>
-        <div class="person-contrib">Pioneered backpropagation (1986) and deep neural networks. His lab's AlexNet (2012) triggered the modern deep learning era. Turing Award laureate 2018 (with LeCun & Bengio). Resigned from Google in 2023, citing concerns about the existential risks of advanced AI.</div>
-        <div class="person-tag">Turing Award 2018</div>
-      </div>
-      <div class="person-card">
-        <div class="person-avatar">L</div>
-        <div class="person-name">Yann LeCun</div>
-        <div class="person-dates">Born 1960</div>
-        <div class="person-role">Chief AI Scientist, Meta</div>
-        <div class="person-contrib">Developed Convolutional Neural Networks (CNNs) and LeNet (1998) for image recognition — the architecture underlying virtually all modern computer vision systems. Co-recipient of the 2018 Turing Award. Advocates for open-source AI development and is sceptical of AGI near-term risk narratives.</div>
-        <div class="person-tag">Turing Award 2018</div>
-      </div>
-      <div class="person-card">
-        <div class="person-avatar">B</div>
-        <div class="person-name">Yoshua Bengio</div>
-        <div class="person-dates">Born 1964</div>
-        <div class="person-role">Deep Learning Research · Mila Institute</div>
-        <div class="person-contrib">Pioneered foundational work on recurrent neural networks, attention mechanisms, and generative models. Turing Award 2018. Since ChatGPT's launch, Bengio has become a leading voice advocating for urgent AI safety measures and international governance treaties.</div>
-        <div class="person-tag">Turing Award 2018</div>
-      </div>
-      <div class="person-card">
-        <div class="person-avatar">G</div>
-        <div class="person-name">Ian Goodfellow</div>
-        <div class="person-dates">Born 1985</div>
-        <div class="person-role">Inventor of GANs</div>
-        <div class="person-contrib">Invented Generative Adversarial Networks (GANs) in 2014 — a framework where two neural networks compete to generate and discriminate synthetic data. GANs are the technological basis for deepfakes, synthetic media, and many generative AI applications. Former researcher at OpenAI, Google Brain, and Apple.</div>
-        <div class="person-tag">GANs & Deepfakes</div>
-      </div>
-      <div class="person-card">
-        <div class="person-avatar">F</div>
-        <div class="person-name">Fei-Fei Li</div>
-        <div class="person-dates">Born 1976</div>
-        <div class="person-role">Co-Director, Stanford HAI</div>
-        <div class="person-contrib">Created ImageNet (2009) — the large-scale visual database whose annual competition (ImageNet Large Scale Visual Recognition Challenge) drove the 2012 deep learning breakthrough. Former Chief Scientist of AI at Google Cloud. Co-Director of Stanford's Institute for Human-Centered AI. A leading voice for human-centred AI governance.</div>
-        <div class="person-tag">ImageNet & Computer Vision</div>
-      </div>
-      <div class="person-card">
-        <div class="person-avatar">D</div>
-        <div class="person-name">Demis Hassabis</div>
-        <div class="person-dates">Born 1976</div>
-        <div class="person-role">CEO, Google DeepMind</div>
-        <div class="person-contrib">Co-founded DeepMind in 2010 (acquired by Google, 2014). Led AlphaGo (2016) and AlphaFold (2020) — AlphaFold's prediction of protein structures from amino acid sequences was described as solving a 50-year-old biology grand challenge. Nobel Prize in Chemistry 2024 (shared). Leading force in AI safety alongside capability research.</div>
-        <div class="person-tag">AlphaGo · AlphaFold · Nobel 2024</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 04 TIMELINE ===== -->
-<section class="ai-timeline" id="timeline">
-  <div class="page">
-    <div class="section-label">04 — Timeline of AI</div>
-    <h2 class="section-heading">75 Years of AI: <em>Key Milestones</em></h2>
-    <p class="section-deck">A curated chronological record of the scientific breakthroughs, commercial launches, and regulatory responses that shaped artificial intelligence.</p>
-    <div class="timeline-wrapper">
-
-      <div class="timeline-entry">
-        <div class="timeline-dot milestone"></div>
-        <div class="timeline-year-badge gold">1950</div>
-        <div class="timeline-event-title">Alan Turing Proposes the Turing Test <span class="timeline-tag">Theory</span></div>
-        <div class="timeline-event-desc">In "Computing Machinery and Intelligence," Turing asks "Can machines think?" and proposes the Imitation Game as a practical test. This paper defines the philosophical terms of AI debate for the next 75 years.</div>
-      </div>
-
-      <div class="timeline-entry">
-        <div class="timeline-dot milestone"></div>
-        <div class="timeline-year-badge gold">1956</div>
-        <div class="timeline-event-title">Dartmouth Conference — AI is Born <span class="timeline-tag">Founding</span></div>
-        <div class="timeline-event-desc">John McCarthy, Marvin Minsky, Claude Shannon, and others gather at Dartmouth College. McCarthy proposes the term "Artificial Intelligence." The field is formally established as an academic discipline.</div>
-      </div>
-
-      <div class="timeline-entry">
-        <div class="timeline-dot"></div>
-        <div class="timeline-year-badge">1957</div>
-        <div class="timeline-event-title">Rosenblatt's Perceptron <span class="timeline-tag">Neural Networks</span></div>
-        <div class="timeline-event-desc">Frank Rosenblatt at Cornell implements the Perceptron on the Mark I machine — the first artificial neural network hardware. Generates enormous excitement about machine learning from examples.</div>
-      </div>
-
-      <div class="timeline-entry">
-        <div class="timeline-dot"></div>
-        <div class="timeline-year-badge">1966</div>
-        <div class="timeline-event-title">ELIZA — First Conversational AI <span class="timeline-tag">NLP</span></div>
-        <div class="timeline-event-desc">Joseph Weizenbaum at MIT creates ELIZA, which simulates a psychotherapist by pattern-matching user inputs. Users form emotional attachments to ELIZA, prompting Weizenbaum to write "Computer Power and Human Reason" (1976) warning about over-anthropomorphising machines.</div>
-      </div>
-
-      <div class="timeline-entry">
-        <div class="timeline-dot"></div>
-        <div class="timeline-year-badge">1986</div>
-        <div class="timeline-event-title">Backpropagation Revives Neural Networks <span class="timeline-tag">Learning Algorithm</span></div>
-        <div class="timeline-event-desc">Rumelhart, Hinton, and Williams publish the backpropagation algorithm for training multi-layer neural networks — ending the first AI Winter and enabling practical deep learning, though GPU power won't arrive for 25 more years.</div>
-      </div>
-
-      <div class="timeline-entry">
-        <div class="timeline-dot milestone"></div>
-        <div class="timeline-year-badge gold">1997</div>
-        <div class="timeline-event-title">IBM Deep Blue Defeats Garry Kasparov <span class="timeline-tag">Milestone</span></div>
-        <div class="timeline-event-desc">In a rematch, IBM's Deep Blue defeats world chess champion Garry Kasparov 3.5–2.5. The first time a computer defeats a reigning world champion under standard chess tournament conditions — a moment of cultural and technical watershed.</div>
-      </div>
-
-      <div class="timeline-entry">
-        <div class="timeline-dot"></div>
-        <div class="timeline-year-badge">2006</div>
-        <div class="timeline-event-title">Hinton Coins "Deep Learning" <span class="timeline-tag">Deep Learning</span></div>
-        <div class="timeline-event-desc">Geoffrey Hinton and colleagues publish work showing that deep neural networks can be pre-trained using Restricted Boltzmann Machines, then fine-tuned via backpropagation. This restarts serious interest in neural networks and leads to the 2012 revolution.</div>
-      </div>
-
-      <div class="timeline-entry">
-        <div class="timeline-dot"></div>
-        <div class="timeline-year-badge">2011</div>
-        <div class="timeline-event-title">IBM Watson Wins Jeopardy! · Apple Siri Launches <span class="timeline-tag">NLP</span></div>
-        <div class="timeline-event-desc">Watson defeats Jeopardy! champions Ken Jennings and Brad Rutter, demonstrating NLP, knowledge retrieval, and reasoning at scale. Apple launches Siri with the iPhone 4S — AI enters the consumer pocket for the first time at scale.</div>
-      </div>
-
-      <div class="timeline-entry">
-        <div class="timeline-dot milestone"></div>
-        <div class="timeline-year-badge gold">2012</div>
-        <div class="timeline-event-title">AlexNet — The Deep Learning Revolution Begins <span class="timeline-tag">Milestone · Computer Vision</span></div>
-        <div class="timeline-event-desc">Krizhevsky, Sutskever, and Hinton's AlexNet wins ImageNet with 84.7% accuracy — a 10-percentage-point improvement over the previous year using deep CNNs trained on GPUs. This single paper triggers the modern AI era, as every major tech company pivots to deep learning.</div>
-      </div>
-
-      <div class="timeline-entry">
-        <div class="timeline-dot"></div>
-        <div class="timeline-year-badge">2014</div>
-        <div class="timeline-event-title">GANs Invented · Google Acquires DeepMind <span class="timeline-tag">Generative AI</span></div>
-        <div class="timeline-event-desc">Ian Goodfellow invents Generative Adversarial Networks at a Montreal bar — the generator/discriminator framework becomes the basis for deepfakes and synthetic media. Google acquires DeepMind for ~$500M, beginning the AI arms race among tech giants.</div>
-      </div>
-
-      <div class="timeline-entry">
-        <div class="timeline-dot milestone"></div>
-        <div class="timeline-year-badge gold">2016</div>
-        <div class="timeline-event-title">AlphaGo Defeats Lee Sedol 4–1 <span class="timeline-tag">Milestone · Reinforcement Learning</span></div>
-        <div class="timeline-event-desc">DeepMind's AlphaGo defeats 18-time world Go champion Lee Sedol — Go has more possible board positions than atoms in the observable universe. AlphaGo uses deep reinforcement learning and Monte Carlo tree search. Move 37 in Game 2 is considered the first creative AI move that no human would have played.</div>
-      </div>
-
-      <div class="timeline-entry">
-        <div class="timeline-dot milestone"></div>
-        <div class="timeline-year-badge gold">2017</div>
-        <div class="timeline-event-title">"Attention Is All You Need" — Transformer Architecture <span class="timeline-tag">Milestone · Foundation</span></div>
-        <div class="timeline-event-desc">Vaswani et al. at Google Brain publish the Transformer — a new neural network architecture based entirely on self-attention mechanisms. BERT, GPT, LLaMA, Gemini, Claude, and every major language model is built on this architecture. This paper is arguably the most consequential AI publication since backpropagation.</div>
-      </div>
-
-      <div class="timeline-entry">
-        <div class="timeline-dot"></div>
-        <div class="timeline-year-badge">2018</div>
-        <div class="timeline-event-title">BERT &amp; GPT-1 Released <span class="timeline-tag">Language Models</span></div>
-        <div class="timeline-event-desc">Google releases BERT (Bidirectional Encoder Representations from Transformers), dramatically improving NLP benchmarks. OpenAI releases GPT-1 (117M parameters). Both demonstrate that pre-training on large text corpora produces general-purpose language understanding.</div>
-      </div>
-
-      <div class="timeline-entry">
-        <div class="timeline-dot"></div>
-        <div class="timeline-year-badge">2020</div>
-        <div class="timeline-event-title">GPT-3 (175B Parameters) · AlphaFold Solves Protein Folding <span class="timeline-tag">LLM · Science</span></div>
-        <div class="timeline-event-desc">OpenAI's GPT-3 demonstrates in-context learning — performing new tasks from a few examples without fine-tuning. DeepMind's AlphaFold 2 predicts protein structures with near-experimental accuracy, solving a 50-year biology grand challenge with profound implications for drug discovery.</div>
-      </div>
-
-      <div class="timeline-entry">
-        <div class="timeline-dot milestone"></div>
-        <div class="timeline-year-badge gold">2022</div>
-        <div class="timeline-event-title">ChatGPT Launches — AI Goes Mainstream <span class="timeline-tag">Milestone · Generative AI</span></div>
-        <div class="timeline-event-desc">OpenAI launches ChatGPT on November 30, 2022. It reaches 1 million users in 5 days and 100 million users in 2 months — the fastest consumer app adoption in history. Generative AI enters boardrooms, classrooms, courtrooms, and legislative chambers simultaneously.</div>
-      </div>
-
-      <div class="timeline-entry">
-        <div class="timeline-dot"></div>
-        <div class="timeline-year-badge">2023</div>
-        <div class="timeline-event-title">GPT-4, Gemini, Claude · EU AI Act Finalised <span class="timeline-tag">Multimodal AI · Regulation</span></div>
-        <div class="timeline-event-desc">GPT-4 (March 2023) is multimodal and achieves near-human performance on bar exams and medical licensing. Google releases Gemini; Anthropic releases Claude. The EU finalises the AI Act text. US President Biden signs Executive Order on Safe AI (October 2023). India's MeitY issues AI advisory notices.</div>
-      </div>
-
-      <div class="timeline-entry">
-        <div class="timeline-dot milestone"></div>
-        <div class="timeline-year-badge gold">2024</div>
-        <div class="timeline-event-title">EU AI Act In Force · India's IndiaAI Mission · Nobel Prize for AI <span class="timeline-tag">Milestone · Regulation · India</span></div>
-        <div class="timeline-event-desc">EU AI Act officially enters into force (August 1, 2024) — world's first comprehensive AI law. India's Cabinet approves the IndiaAI Mission (₹10,372 Cr). Nobel Prize in Chemistry awarded to Demis Hassabis and John Jumper (AlphaFold); Nobel Prize in Physics to Hinton and Hopfield for foundational AI work. OpenAI releases GPT-4o.</div>
-      </div>
-
-      <div class="timeline-entry">
-        <div class="timeline-dot"></div>
-        <div class="timeline-year-badge">2025</div>
-        <div class="timeline-event-title">DeepSeek R1 · AI Agents Proliferate · Regulatory Implementation <span class="timeline-tag">Current</span></div>
-        <div class="timeline-event-desc">DeepSeek R1 (January 2025) demonstrates that open-source models can match frontier closed models at a fraction of the cost, disrupting AI industry economics. AI agents — systems that autonomously plan, execute, and iterate on multi-step tasks — emerge as the dominant AI product paradigm. EU begins enforcing AI Act prohibitions. India advances IndiaAI compute and governance infrastructure.</div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ===== 05 AI & PRIVACY (DPDP MAPPED) ===== -->
-<section class="ai-privacy" id="privacy">
-  <div class="page">
-    <div class="section-label section-label-light">05 — AI &amp; Privacy</div>
-    <h2 class="section-heading section-heading-light">AI &amp; Privacy: <em>DPDP Act Mapped</em></h2>
-    <p class="section-deck section-deck-light">How AI systems interact with India's Digital Personal Data Protection Act 2023 — obligations, risks, and compliance pressure points for data fiduciaries using AI.</p>
-    <div class="dpdp-map-grid">
-      <div class="dpdp-map-card">
-        <div class="dpdp-section-ref">DPDP Act § 4 — Lawful Processing</div>
-        <div class="dpdp-map-title">AI Training on Personal Data</div>
-        <div class="dpdp-map-body">AI systems require vast datasets for training. Under Section 4 of the DPDP Act, personal data may only be processed for a <strong>lawful purpose</strong> — with consent or a legitimate use. Scraping publicly available data for AI training does not automatically constitute consent under the DPDP framework. Data fiduciaries must audit whether training datasets include personal data of Indian data principals and obtain appropriate consent or establish legitimate use.</div>
-      </div>
-      <div class="dpdp-map-card">
-        <div class="dpdp-section-ref">DPDP Act § 6 — Consent</div>
-        <div class="dpdp-map-title">Automated Processing &amp; Profiling</div>
-        <div class="dpdp-map-body">AI systems that profile individuals — inferring behaviour, preferences, creditworthiness, or health status from personal data — require a specific, informed, and unambiguous consent notice under Section 6. Consent must specify the purpose of processing. Bundled consents for undefined "AI processing" are non-compliant. <strong>Data principals retain the right to withdraw consent at any time</strong>, which has profound implications for AI systems trained on that data.</div>
-      </div>
-      <div class="dpdp-map-card">
-        <div class="dpdp-section-ref">DPDP Act § 11 — Right to Information</div>
-        <div class="dpdp-map-title">Explainability of AI Decisions</div>
-        <div class="dpdp-map-body">Under Section 11, data principals have the right to know what personal data is being processed and the purpose of processing. Where an AI system makes or influences decisions about an individual (loan approvals, hiring, insurance pricing), this creates a de facto demand for <strong>algorithmic explainability</strong>. "Black-box" AI decisions affecting individuals are increasingly difficult to reconcile with the right to information under the DPDP Act.</div>
-      </div>
-      <div class="dpdp-map-card">
-        <div class="dpdp-section-ref">DPDP Act § 12 — Right to Erasure</div>
-        <div class="dpdp-map-title">Right to Erasure vs. AI Memory</div>
-        <div class="dpdp-map-body">Section 12 grants data principals the right to erasure of personal data no longer necessary for the purpose it was collected. AI models trained on personal data pose a fundamental technical challenge: <strong>data cannot easily be "unlearned"</strong> from a neural network. Machine unlearning is an active research area. Data fiduciaries using AI must implement data retention policies, deletion architectures, and document compliance obligations prior to using personal data for AI training.</div>
-      </div>
-      <div class="dpdp-map-card">
-        <div class="dpdp-section-ref">DPDP Act § 16 — Cross-Border Transfers</div>
-        <div class="dpdp-map-title">AI Models &amp; Data Localisation</div>
-        <div class="dpdp-map-body">Many AI platforms (OpenAI, Google, Meta) process data on servers outside India. Section 16 restricts cross-border transfer of personal data to countries not notified by the Central Government. Indian entities using foreign AI APIs may be transferring personal data internationally without a compliant mechanism. <strong>Data fiduciaries must assess whether prompts sent to AI systems contain personal data of Indian principals</strong> before using foreign AI services.</div>
-      </div>
-      <div class="dpdp-map-card">
-        <div class="dpdp-section-ref">DPDP Act § 8 — Data Fiduciary Obligations</div>
-        <div class="dpdp-map-title">Accuracy &amp; AI Hallucination Risk</div>
-        <div class="dpdp-map-body">Section 8 requires data fiduciaries to ensure personal data is complete and accurate. AI systems are known to hallucinate — generating plausible but factually incorrect outputs. Where AI generates or modifies personal data records (medical summaries, legal documents, credit assessments), <strong>AI hallucination constitutes a data accuracy violation</strong> under the DPDP Act. Human review mechanisms are essential for AI outputs involving personal data.</div>
-      </div>
-    </div>
-    <div class="dpdp-risk-levels">
-      <div class="dpdp-risk high-risk">
-        <div class="dpdp-risk-icon">🔴</div>
-        <div class="dpdp-risk-label">High Risk AI Uses</div>
-        <div class="dpdp-risk-desc">Biometric processing for attendance/surveillance · AI-driven credit scoring · Health data inference · Facial recognition in public spaces · Automated HR/hiring decisions</div>
-      </div>
-      <div class="dpdp-risk medium-risk">
-        <div class="dpdp-risk-icon">🟡</div>
-        <div class="dpdp-risk-label">Medium Risk AI Uses</div>
-        <div class="dpdp-risk-desc">Personalised advertising · Behavioural analytics · Chatbot customer service · AI-generated marketing content · Recommendation algorithms using personal data</div>
-      </div>
-      <div class="dpdp-risk">
-        <div class="dpdp-risk-icon">🟢</div>
-        <div class="dpdp-risk-label">Lower Risk AI Uses</div>
-        <div class="dpdp-risk-desc">Spell-check and grammar tools · Aggregate analytics on anonymised data · AI-generated imagery (no personal data) · Internal workflow automation without personal data</div>
-      </div>
-    </div>
-    <p style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:rgba(248,244,236,0.3);margin-top:1.5rem;letter-spacing:0.06em;">Risk classification is illustrative and informational. Actual compliance obligations depend on specific facts, volumes, and applicable rules under the DPDP Act 2023. Consult a qualified DPDP professional. See also: <a href="dpdp-kb.html" style="color:var(--saffron-lt);">DPDP Act Knowledge Base →</a></p>
-  </div>
-</section>
-
-<!-- ===== 06 AI & CYBERCRIME ===== -->
-<section class="ai-cybercrime" id="cybercrime">
-  <div class="page">
-    <div class="section-label">06 — AI &amp; Cybercrime</div>
-    <h2 class="section-heading">AI-Enabled <em>Cybercrime</em> in India</h2>
-    <p class="section-deck">Artificial intelligence has materially lowered the barrier to sophisticated cybercrime — enabling more convincing fraud, faster attack cycles, and harder-to-detect deception. These are the key threat categories with direct India relevance.</p>
-    <div class="cybercrime-grid">
-      <div class="cc-card">
-        <div class="cc-icon">🎭</div>
-        <div class="cc-label">High Threat · IT Act § 66D</div>
-        <div class="cc-title">Deepfake Fraud &amp; Identity Impersonation</div>
-        <div class="cc-desc">AI-generated video and audio deepfakes are used to impersonate family members, company executives, or government officials to extract money or confidential information. India has seen documented cases of deepfake video calls demanding emergency financial transfers from family members. Deepfakes also implicate Sections 66C (identity theft), 66E (violation of privacy), and 67A (obscene content) of the IT Act 2000.</div>
-        <div class="cc-impact">India Impact: "Digital Arrest" scam variants using deepfake police/CBI officers — reported by I4C, MHA. Losses estimated in crores.</div>
-      </div>
-      <div class="cc-card ai-assisted">
-        <div class="cc-icon">🎙️</div>
-        <div class="cc-label">AI-Assisted · Growing Threat</div>
-        <div class="cc-title">Voice Cloning &amp; Vishing</div>
-        <div class="cc-desc">AI voice cloning systems can replicate a person's voice from as little as 3-10 seconds of audio. Fraudsters clone voices of family members or employers to make phone calls demanding urgent financial transfers or sensitive information. This evolved form of vishing (voice phishing) is significantly more convincing than traditional fraud. Indian victims have reported calls from "cloned" voices of relatives claiming to be in accidents or police custody.</div>
-        <div class="cc-impact">AI tools for voice cloning are widely available; many operate with minimal friction via web interfaces.</div>
-      </div>
-      <div class="cc-card">
-        <div class="cc-icon">🎣</div>
-        <div class="cc-label">High Volume · IT Act § 66C</div>
-        <div class="cc-title">AI-Powered Spear Phishing</div>
-        <div class="cc-desc">Traditional phishing sent generic, grammatically poor messages. AI-generated phishing uses LLMs to produce personalised, contextually accurate messages in any language — including flawless Hindi, regional languages, and professional English. AI can scrape LinkedIn and social media to craft highly targeted messages referencing real colleagues, projects, and business contexts. Detection rates for AI-generated phishing by standard filters are significantly lower than template phishing.</div>
-        <div class="cc-impact">AI-generated phishing costs India Inc. estimates exceeding ₹1,000 Cr annually in direct and indirect losses.</div>
-      </div>
-      <div class="cc-card ai-assisted">
-        <div class="cc-icon">🤖</div>
-        <div class="cc-label">AI-Assisted · Emerging Threat</div>
-        <div class="cc-title">AI-Generated Malware &amp; Exploit Code</div>
-        <div class="cc-desc">LLMs with insufficient safety guardrails, or specially fine-tuned "jailbroken" models, can generate functional malicious code including ransomware components, exploit scripts, and social engineering payloads. CERT-In has noted this as an emerging threat vector. The barrier to entry for technically unsophisticated threat actors has materially lowered. India's financial services, healthcare, and critical infrastructure sectors are at elevated risk.</div>
-        <div class="cc-impact">CERT-In Advisory: AI-assisted malware generation identified as a priority threat category in 2024 threat landscape reports.</div>
-      </div>
-      <div class="cc-card">
-        <div class="cc-icon">💰</div>
-        <div class="cc-label">Critical · Financial Crime</div>
-        <div class="cc-title">UPI &amp; Payment Fraud via AI</div>
-        <div class="cc-desc">AI systems analyse payment behaviour patterns to time fraud attacks optimally. AI-generated customer service bots impersonate bank representatives to harvest OTPs. Synthetic identity fraud — creating fictitious persons using AI-generated documents — is used to open fraudulent bank accounts and UPI wallets. India's UPI ecosystem, processing billions of transactions monthly, is a high-value target. RBI and NPCI have flagged AI-enabled payment fraud as a systemic risk.</div>
-        <div class="cc-impact">UPI fraud losses exceeded ₹2,300 Cr in Q1 2026 per NPCI data. AI-enabled variants are the fastest-growing sub-category.</div>
-      </div>
-      <div class="cc-card ai-assisted">
-        <div class="cc-icon">📸</div>
-        <div class="cc-label">AI-Assisted · IPC + IT Act</div>
-        <div class="cc-title">Non-Consensual Synthetic Imagery</div>
-        <div class="cc-desc">AI image generation tools are misused to create non-consensual intimate imagery (NCII) by superimposing real individuals' faces onto synthetic bodies. India has seen documented cases targeting women in public life, corporate professionals, and students. This implicates Section 67A of the IT Act (obscene material), Section 66E (violation of privacy), and Section 354C of the IPC. The DPDP Act's biometric data provisions may also apply where facial images are used to train such models.</div>
-        <div class="cc-impact">National Cyber Crime Reporting Portal (cybercrime.gov.in): NCII complaints rising sharply. Complaint helpline: 1930.</div>
-      </div>
-    </div>
-    <div class="india-stat-strip">
-      <div class="page">
-        <div class="india-stat-grid">
-          <div class="india-stat-item">
-            <div class="india-stat-num">13.8L</div>
-            <div class="india-stat-label">Cybercrime Complaints 2023</div>
-            <div class="india-stat-src">National Cyber Crime Reporting Portal (I4C, MHA)</div>
-          </div>
-          <div class="india-stat-item">
-            <div class="india-stat-num">₹7,488Cr</div>
-            <div class="india-stat-label">Financial Fraud Losses 2023</div>
-            <div class="india-stat-src">Indian Cyber Crime Coordination Centre (I4C)</div>
-          </div>
-          <div class="india-stat-item">
-            <div class="india-stat-num">1930</div>
-            <div class="india-stat-label">National Cybercrime Helpline</div>
-            <div class="india-stat-src">Available 24×7 · Report fraud immediately</div>
-          </div>
-          <div class="india-stat-item">
-            <div class="india-stat-num">cybercrime.gov.in</div>
-            <div class="india-stat-label">Official Reporting Portal</div>
-            <div class="india-stat-src">MHA · Indian Cyber Crime Coordination Centre</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <p style="font-size:0.75rem;color:var(--mist);margin-top:1.5rem;font-style:italic;">Statistics cited from publicly available government reports and official press releases. AI-specific attribution within cybercrime data is an emerging capability of law enforcement analytics. See: <a href="cybercrime-kb.html" style="color:var(--saffron);">Cybercrime Knowledge Base →</a> · <a href="cybercrime-remedy-guide.html" style="color:var(--saffron);">How to Report →</a></p>
-  </div>
-</section>
-
-<!-- ===== 07 AI & CYBERSECURITY ===== -->
-<section class="ai-cybersecurity" id="cybersecurity">
-  <div class="page">
-    <div class="section-label">07 — AI &amp; Cybersecurity</div>
-    <h2 class="section-heading">AI as Threat <em>&amp; Shield</em></h2>
-    <p class="section-deck">AI is simultaneously the most powerful new weapon in a threat actor's arsenal and the most promising tool for defenders. Understanding both sides is essential for any cybersecurity strategy.</p>
-    <div class="cs-two-col">
+    <div class="hub-hero-inner">
       <div>
-        <div class="cs-col-title">AI as <span>Threat Vector</span></div>
-        <div class="cs-item">
-          <div class="cs-item-title">Automated Vulnerability Discovery <span class="cs-item-tag threat">Threat</span></div>
-          <div class="cs-item-desc">AI systems can scan codebases, APIs, and network surfaces to identify exploitable vulnerabilities at machine speed — dramatically accelerating the reconnaissance phase of cyberattacks. What took human hackers weeks can now be accomplished in hours.</div>
+        <div class="hub-hero-kicker">
+          <div class="hub-hero-kicker-line"></div>
+          <div class="hub-hero-kicker-text">AI + Law + Risk Intelligence Platform</div>
         </div>
-        <div class="cs-item">
-          <div class="cs-item-title">Adversarial Machine Learning <span class="cs-item-tag threat">Threat</span></div>
-          <div class="cs-item-desc">Adversarial attacks craft inputs specifically designed to fool AI systems — causing a facial recognition system to misidentify a person, or a spam filter to pass a malicious email. As AI is deployed in critical security infrastructure, adversarial attacks become a systemic risk.</div>
-        </div>
-        <div class="cs-item">
-          <div class="cs-item-title">AI-Accelerated Social Engineering <span class="cs-item-tag threat">Threat</span></div>
-          <div class="cs-item-desc">AI enables the personalisation of social engineering at scale — crafting individual-specific, contextually accurate manipulation attempts. Combined with voice cloning and deepfakes, AI-powered social engineering has become the primary entry vector for sophisticated attacks against Indian enterprises.</div>
-        </div>
-        <div class="cs-item">
-          <div class="cs-item-title">Polymorphic Malware <span class="cs-item-tag threat">Threat</span></div>
-          <div class="cs-item-desc">AI can generate malware that constantly mutates its code signature to evade signature-based detection systems, while preserving its malicious functionality. Traditional antivirus relying on signature matching is increasingly ineffective against AI-generated polymorphic threats.</div>
-        </div>
-        <div class="cs-item">
-          <div class="cs-item-title">Data Poisoning <span class="cs-item-tag threat">Threat</span></div>
-          <div class="cs-item-desc">Attackers deliberately corrupt training data to degrade or manipulate the behaviour of AI security systems — causing fraud detection models to miss specific fraud patterns or intrusion detection systems to ignore certain attack signatures. A particularly dangerous supply-chain attack vector.</div>
+        <div class="hub-badge">🤖 Informational — Not Legal Advice</div>
+        <h1 class="hub-title">AI Intelligence Hub:<br><em>Law, Risk &amp; History</em></h1>
+        <p class="hub-deck">India's most comprehensive AI knowledge resource — from Alan Turing's 1950 thought experiment to the EU AI Act 2024 and India's IndiaAI Mission. Explore 15 structured sections covering AI history, DPDP Act compliance, cybercrime threats, global regulations, risk frameworks, and an India-specific compliance playbook.</p>
+        <div class="hub-pills">
+          <span class="hub-pill">15 Sections</span>
+          <span class="hub-pill">DPDP Act Mapped</span>
+          <span class="hub-pill">75 Years of AI History</span>
+          <span class="hub-pill">EU AI Act</span>
+          <span class="hub-pill">IndiaAI Mission</span>
+          <span class="hub-pill">Threat Models</span>
         </div>
       </div>
-      <div>
-        <div class="cs-col-title">AI as <span>Defence</span></div>
-        <div class="cs-item">
-          <div class="cs-item-title">Anomaly Detection &amp; Threat Intelligence <span class="cs-item-tag defence">Defence</span></div>
-          <div class="cs-item-desc">AI/ML models analyse network traffic, user behaviour, and log data at scale to detect anomalies that signal intrusions or insider threats — capabilities impossible to achieve with human analysts alone. SIEM platforms increasingly use AI for real-time threat correlation across millions of events per second.</div>
+      <div class="hub-hero-stats">
+        <div class="hub-stat">
+          <div class="hub-stat-num">15</div>
+          <div class="hub-stat-label">Knowledge Sections</div>
+          <div class="hub-stat-note">Foundation → Playbook</div>
         </div>
-        <div class="cs-item">
-          <div class="cs-item-title">AI-Powered Fraud Detection <span class="cs-item-tag defence">Defence</span></div>
-          <div class="cs-item-desc">India's banking and payments ecosystem uses AI models to flag suspicious UPI, card, and NEFT/RTGS transactions in real time. RBI's regulatory sandbox has enabled several AI-based fraud detection solutions. NPCI uses ML models to monitor UPI transaction patterns. AI detection systems adapt to evolving fraud patterns faster than rule-based systems.</div>
+        <div class="hub-stat">
+          <div class="hub-stat-num">75+</div>
+          <div class="hub-stat-label">Years of AI History</div>
+          <div class="hub-stat-note">1950 Turing → 2025 Agents</div>
         </div>
-        <div class="cs-item">
-          <div class="cs-item-title">Deepfake Detection Tools <span class="cs-item-tag defence">Defence</span></div>
-          <div class="cs-item-desc">Emerging AI tools analyse pixel-level inconsistencies, lighting anomalies, and temporal artefacts in video to detect deepfakes. Microsoft's Video Authenticator, Meta's deepfake detection tools, and DARPA's Media Forensics programme are leading efforts. India's CDAC and IIT labs are actively researching deepfake detection for Indian language content.</div>
-        </div>
-        <div class="cs-item">
-          <div class="cs-item-title">AI-Assisted Incident Response <span class="cs-item-tag defence">Defence</span></div>
-          <div class="cs-item-desc">AI platforms accelerate incident response by automatically correlating alerts, recommending containment actions, and generating incident timelines. For India's growing IT services sector, AI-driven Security Operations Centres (SOC) are becoming the industry standard, helping address the critical shortage of skilled cybersecurity professionals.</div>
-        </div>
-        <div class="cs-item">
-          <div class="cs-item-title">Vulnerability Management at Scale <span class="cs-item-tag defence">Defence</span></div>
-          <div class="cs-item-desc">AI-powered tools continuously scan enterprise environments for known and zero-day vulnerabilities, prioritise remediation based on exploitability and business impact, and can even generate and test patches. CERT-In's vulnerability disclosure programme benefits from AI-assisted triage and impact assessment.</div>
-        </div>
-      </div>
-    </div>
-    <div style="margin-top:2.5rem;background:var(--parchment);border:1px solid var(--rule);border-left:3px solid var(--ai);padding:1.5rem;">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ai);margin-bottom:0.6rem;">CERT-In Guidance Note</div>
-      <p style="font-size:0.85rem;font-weight:300;color:var(--slate);line-height:1.8;">CERT-In (Indian Computer Emergency Response Team) has issued advisories on AI-related cybersecurity threats including adversarial machine learning attacks, LLM-based social engineering, and AI-generated malware. Indian organisations regulated under the CERT-In Directions 2022 must report cybersecurity incidents — including AI-enabled attacks — within 6 hours of detection. See: <a href="itact-kb.html" style="color:var(--saffron);">IT Act & CERT-In Framework →</a></p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 08 GLOBAL AI REGULATIONS ===== -->
-<section class="ai-global-regs" id="global-regs">
-  <div class="page">
-    <div class="section-label section-label-light">08 — Global AI Regulations</div>
-    <h2 class="section-heading section-heading-light">The Global AI <em>Regulatory Landscape</em></h2>
-    <p class="section-deck section-deck-light">Jurisdictions worldwide are moving from voluntary principles to binding law. Here is the state of AI regulation as of mid-2025 — with implications for Indian businesses operating globally.</p>
-    <div class="regs-grid">
-      <div class="reg-card">
-        <div class="reg-flag">🇪🇺</div>
-        <div class="reg-country">European Union</div>
-        <div class="reg-law">EU AI Act (Regulation 2024/1689)</div>
-        <div class="reg-status in-force">In Force — August 2024</div>
-        <div class="reg-desc">World's first comprehensive binding AI law. Risk-based framework: <strong>Unacceptable Risk</strong> systems are banned (e.g., social scoring, real-time biometric surveillance in public spaces); <strong>High Risk</strong> systems face conformity assessments, transparency requirements, and human oversight mandates (e.g., AI in hiring, credit scoring, critical infrastructure). <strong>General Purpose AI</strong> (GPAI) models above compute thresholds face systemic risk assessments.</div>
-        <div class="reg-key-point">Max penalty: €35M or 7% global turnover · Extra-territorial reach · Applies to AI placed on EU market regardless of where developer is based</div>
-      </div>
-      <div class="reg-card">
-        <div class="reg-flag">🇺🇸</div>
-        <div class="reg-country">United States</div>
-        <div class="reg-law">AI Executive Order 14110 (2023) + Sector Rules</div>
-        <div class="reg-status principles">Principles + Sector Rules</div>
-        <div class="reg-desc">President Biden's Executive Order (October 30, 2023) directed federal agencies to develop AI safety standards, required developers of powerful AI to share safety test results with the government, and tasked NIST with developing AI safety guidelines. The US approach is sectoral — FDA regulates AI in medical devices, FTC addresses AI in consumer protection, and SEC addresses AI in financial services — rather than a single horizontal law. The National AI Initiative Act (2020) established a whole-of-government AI strategy.</div>
-        <div class="reg-key-point">NIST AI RMF 1.0 (2023): Voluntary risk management framework adopted widely · State-level: Colorado, Illinois have specific AI employment laws</div>
-      </div>
-      <div class="reg-card">
-        <div class="reg-flag">🇨🇳</div>
-        <div class="reg-country">China</div>
-        <div class="reg-law">Generative AI Regulations (2023) + Deep Synthesis Rules (2022)</div>
-        <div class="reg-status enacted">Enacted</div>
-        <div class="reg-desc">China's "Interim Measures for the Management of Generative Artificial Intelligence Services" (effective August 15, 2023) requires generative AI providers to register, label AI-generated content, ensure content aligns with "socialist core values," and conduct security assessments before commercial deployment. The Deep Synthesis Provisions (2022) specifically regulate deepfakes — requiring mandatory watermarking of AI-generated audio/video and user consent for face/voice synthesis.</div>
-        <div class="reg-key-point">Security assessment required before AI service launch · Content watermarking mandatory · Training data must be licensed</div>
-      </div>
-      <div class="reg-card">
-        <div class="reg-flag">🇬🇧</div>
-        <div class="reg-country">United Kingdom</div>
-        <div class="reg-law">Pro-Innovation AI Regulation Framework (2023)</div>
-        <div class="reg-status principles">Principles-Based (No Single AI Law)</div>
-        <div class="reg-desc">Post-Brexit, the UK has chosen a sector-specific, principles-based approach rather than a comprehensive AI Act. The 2023 AI White Paper identifies five cross-cutting principles — safety, security, robustness; appropriate transparency; fairness; accountability and governance; contestability and redress — but leaves implementation to existing sectoral regulators (FCA, ICO, CMA, MHRA). The AI Safety Institute (established 2023) focuses on frontier AI model evaluation. A more binding framework is anticipated post-2025.</div>
-        <div class="reg-key-point">AI Safety Institute · Bletchley Declaration (2023) · Hosted first international AI Safety Summit</div>
-      </div>
-      <div class="reg-card">
-        <div class="reg-flag">🌐</div>
-        <div class="reg-country">International / Multilateral</div>
-        <div class="reg-law">OECD AI Principles · G7 Hiroshima Process · UNESCO Recommendation</div>
-        <div class="reg-status principles">Soft Law / Principles</div>
-        <div class="reg-desc">The OECD AI Principles (2019, updated 2024) are the most widely adopted international framework — endorsed by 46+ countries including India. They cover transparency, explainability, robustness, security, and accountability. The G7 Hiroshima AI Process (2023) produced a voluntary Code of Conduct for Advanced AI developers. The UNESCO Recommendation on the Ethics of AI (2021) — adopted by 193 member states including India — provides a human rights-based global baseline. None are legally binding.</div>
-        <div class="reg-key-point">India endorsed OECD AI Principles · G20 New Delhi Declaration (2023) addressed AI governance under India's G20 Presidency</div>
-      </div>
-      <div class="reg-card">
-        <div class="reg-flag">🇸🇬</div>
-        <div class="reg-country">Singapore</div>
-        <div class="reg-law">Model AI Governance Framework (2019, updated 2020)</div>
-        <div class="reg-status principles">Voluntary Framework</div>
-        <div class="reg-desc">Singapore's IMDA/PDPC published the Model AI Governance Framework — a practical, voluntary governance structure for private organisations deploying AI. It covers internal governance structures, risk assessment methodologies, transparency, and operations management. Singapore also published AI Verify (2022) — an AI governance testing framework and toolkit for validating AI system behaviour against established principles. Influential as a regional model, particularly for ASEAN economies.</div>
-        <div class="reg-key-point">AI Verify Toolkit · Practical implementation guidance · Regional benchmark for ASEAN AI governance</div>
-      </div>
-    </div>
-    <div style="margin-top:2.5rem;background:rgba(108,63,197,0.08);border:1px solid rgba(108,63,197,0.25);padding:2rem;">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--ai-lt);margin-bottom:0.8rem;">India's Position in Global AI Regulation</div>
-      <p style="font-size:0.85rem;font-weight:300;color:rgba(248,244,236,0.55);line-height:1.85;">As of 2025, India does not have a standalone AI law. MeitY's Digital India AI strategy and the IndiaAI Mission provide policy direction. The DPDP Act 2023 is the primary legal instrument governing AI's use of personal data. India has issued advisories against deploying "untested or unreliable" AI without safeguards, particularly in user-facing applications. The NASSCOM-DSCI AI governance framework and BIS-led standards work are building blocks of India's emerging AI governance architecture. India's G20 Presidency (2023) produced the New Delhi Declaration which emphasised AI safety and trustworthiness — a stepping stone toward India's formal AI regulatory posture.</p>
-      <p style="margin-top:1rem;"><a href="#india" style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ai-lt);">See AI in India Section →</a></p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 09 AI IN INDIA ===== -->
-<section class="ai-india" id="india">
-  <div class="page">
-    <div class="section-label">09 — AI in India</div>
-    <h2 class="section-heading">India's AI Strategy: <em>Government &amp; DPI</em></h2>
-    <p class="section-deck">From NITI Aayog's 2018 vision to the 2024 IndiaAI Mission — how India is building AI capacity, integrating AI into Digital Public Infrastructure, and shaping its governance posture.</p>
-    <div class="india-grid">
-      <div class="india-card featured">
-        <div class="india-card-label">Flagship Programme</div>
-        <div class="india-card-title">IndiaAI Mission — ₹10,372 Crore</div>
-        <div class="india-card-desc">Cabinet approved in March 2024, the IndiaAI Mission is India's most significant coordinated AI investment. It operates across seven pillars to build compute capacity, datasets, startup ecosystems, and AI application capabilities across critical sectors.</div>
-        <ul class="india-card-list">
-          <li>IndiaAI Compute Capacity: 10,000+ GPU public compute infrastructure, democratising access for startups and researchers</li>
-          <li>IndiaAI Innovation Centre: Developing and deploying indigenously developed foundational AI models for Indian languages and domains</li>
-          <li>IndiaAI Datasets Platform: Curating non-personal, anonymised government and public datasets for AI research and development</li>
-          <li>IndiaAI Application Development Initiative: Deploying AI in agriculture, health, education, governance, and smart cities</li>
-          <li>IndiaAI FutureSkills: Curriculum integration for AI at scale across universities and vocational institutions</li>
-          <li>IndiaAI Startup Financing: Risk capital for Indian AI startups through the iDEX and Startup India frameworks</li>
-          <li>IndiaAI Safe and Trusted AI: Governance, standards, and safeguards — including responsible AI principles</li>
-        </ul>
-      </div>
-      <div class="india-card">
-        <div class="india-card-label">NITI Aayog · 2018</div>
-        <div class="india-card-title">National AI Strategy: #AIforAll</div>
-        <div class="india-card-desc">NITI Aayog published India's National Strategy for Artificial Intelligence in 2018, positioning India as an "AI Garage" — leveraging scale to develop and deploy AI solutions for developing world challenges. The strategy identified five focus sectors: healthcare, agriculture, education, smart cities and infrastructure, and smart mobility and transportation. It laid the conceptual foundation for what would become the IndiaAI Mission.</div>
-      </div>
-      <div class="india-card">
-        <div class="india-card-label">Regulatory Posture · MeitY</div>
-        <div class="india-card-title">MeitY AI Advisories &amp; Policy</div>
-        <div class="india-card-desc">In 2024, MeitY issued advisories requiring platforms deploying AI models in India to ensure their outputs do not threaten electoral integrity, do not generate illegal content, and are labelled where outputs may be unreliable. The advisories (though later revised) signalled India's direction toward platform-level accountability for AI outputs. India's data protection framework under the DPDP Act 2023 is the primary legal instrument governing AI's interaction with personal data. India's National Cybersecurity Policy (under revision as of 2025) will address AI-specific threat vectors.</div>
-      </div>
-    </div>
-    <div class="india-dpi-grid">
-      <div class="dpi-item">
-        <div class="dpi-icon">🪪</div>
-        <div class="dpi-name">Aadhaar</div>
-        <div class="dpi-desc">1.37 Bn+ enrolled. AI/ML used for fraud detection, de-duplication, and biometric matching. Foundation of India's digital identity layer. AI bias in biometric matching is an emerging concern under DPDP principles.</div>
-      </div>
-      <div class="dpi-item">
-        <div class="dpi-icon">📱</div>
-        <div class="dpi-name">UPI</div>
-        <div class="dpi-desc">Processes 12Bn+ transactions/month (2025). AI/ML fraud scoring runs on every transaction. AI-powered UPI fraud detection by NPCI and member banks is a front-line defence against payment crime.</div>
-      </div>
-      <div class="dpi-item">
-        <div class="dpi-icon">📄</div>
-        <div class="dpi-name">DigiLocker</div>
-        <div class="dpi-desc">250M+ registered users. AI assists in document classification and verification. DPDP Act implications: DigiLocker as a data fiduciary handling sensitive documents of data principals.</div>
-      </div>
-      <div class="dpi-item">
-        <div class="dpi-icon">🏥</div>
-        <div class="dpi-name">Ayushman Bharat Digital Health</div>
-        <div class="dpi-desc">ABHA Health IDs linking health records. AI in diagnostics (radiology, pathology) is being integrated. Health data processed by AI is "sensitive personal data" under DPDP Act rules — requiring heightened protection and explicit consent.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 10 AI RISK FRAMEWORK ===== -->
-<section class="ai-risk" id="risk">
-  <div class="page">
-    <div class="section-label section-label-light">10 — AI Risk Framework</div>
-    <h2 class="section-heading section-heading-light">Understanding <em>AI Risk</em></h2>
-    <p class="section-deck section-deck-light">AI introduces a distinct risk typology — spanning model performance risk, data risk, operational risk, and systemic societal risk. Here is a structured framework for organisations deploying AI in India.</p>
-    <div class="risk-matrix">
-      <div class="risk-category risk-cat-high">
-        <div class="risk-cat-label">High Risk · Immediate Action</div>
-        <div class="risk-cat-title">Model &amp; Data Risk</div>
-        <ul class="risk-items">
-          <li>Training data bias producing discriminatory outputs (e.g., AI hiring tools biased by historical gender imbalance in training data)</li>
-          <li>AI hallucination in high-stakes domains — medical diagnosis, legal research, financial advice — producing false outputs with real-world consequences</li>
-          <li>Concept drift: model performance degrades as real-world data distribution changes post-deployment</li>
-          <li>Adversarial attacks manipulating model inputs to produce incorrect outputs (e.g., fooling fraud detection)</li>
-          <li>Data poisoning attacks corrupting training data to embed backdoors or bias into deployed models</li>
-          <li>Privacy leakage: LLMs memorising and reproducing training data including personal information</li>
-        </ul>
-      </div>
-      <div class="risk-category risk-cat-medium">
-        <div class="risk-cat-label">Medium Risk · Plan &amp; Monitor</div>
-        <div class="risk-cat-title">Operational &amp; Compliance Risk</div>
-        <ul class="risk-items">
-          <li>Vendor lock-in to AI platforms with inadequate SLAs for uptime, data handling, and compliance</li>
-          <li>AI system opacity making it impossible to explain decisions to regulators or affected individuals</li>
-          <li>Consent failures when personal data is used for AI training without explicit, purpose-specific consent</li>
-          <li>Cross-border data transfer risk when using foreign AI APIs with Indian user data</li>
-          <li>Intellectual property risk from AI outputs that may reproduce copyrighted training data</li>
-          <li>Accountability gaps when AI decisions cause harm — unclear whether liability rests with developer, deployer, or user</li>
-        </ul>
-      </div>
-      <div class="risk-category risk-cat-low">
-        <div class="risk-cat-label">Emerging Risk · Watch &amp; Prepare</div>
-        <div class="risk-cat-title">Systemic &amp; Strategic Risk</div>
-        <ul class="risk-items">
-          <li>AI capability overhang: frontier AI capabilities advancing faster than governance frameworks, creating regulatory gaps</li>
-          <li>Concentration risk: critical AI infrastructure concentrated in a few vendors creates single points of failure</li>
-          <li>Skills displacement: sector-specific impact on employment requiring proactive reskilling investment</li>
-          <li>Democratic and electoral risk: AI-generated misinformation and deepfakes affecting electoral integrity</li>
-          <li>Autonomous weapons and dual-use AI: AI capabilities developed for civilian use being repurposed for harmful applications</li>
-          <li>Existential risk discourse: long-term risk from artificial general intelligence (AGI), though timeframes remain deeply uncertain</li>
-        </ul>
-      </div>
-    </div>
-    <div class="nist-rmf">
-      <div class="nist-rmf-title">NIST AI Risk Management Framework (AI RMF 1.0, 2023)</div>
-      <p style="font-size:0.82rem;font-weight:300;color:rgba(248,244,236,0.45);line-height:1.75;margin-bottom:1.5rem;">Published by the US National Institute of Standards and Technology in January 2023, the AI RMF provides a voluntary, non-prescriptive framework for managing AI risks. It is structured around four core functions, widely adopted in India's enterprise AI governance discussions.</p>
-      <div class="nist-steps">
-        <div class="nist-step">
-          <div class="nist-step-num">01</div>
-          <div class="nist-step-name">Govern</div>
-          <div class="nist-step-desc">Establish policies, processes, accountability, and culture for AI risk management across the organisation</div>
-        </div>
-        <div class="nist-step">
-          <div class="nist-step-num">02</div>
-          <div class="nist-step-name">Map</div>
-          <div class="nist-step-desc">Identify and categorise AI risks in context — understanding the system, its purpose, and who is affected</div>
-        </div>
-        <div class="nist-step">
-          <div class="nist-step-num">03</div>
-          <div class="nist-step-name">Measure</div>
-          <div class="nist-step-desc">Analyse and assess AI risks using quantitative and qualitative methods, testing, and ongoing monitoring</div>
-        </div>
-        <div class="nist-step">
-          <div class="nist-step-num">04</div>
-          <div class="nist-step-name">Manage</div>
-          <div class="nist-step-desc">Prioritise and address AI risks — implement controls, allocate resources, and monitor residual risk</div>
+        <div class="hub-stat">
+          <div class="hub-stat-num">₹10K Cr</div>
+          <div class="hub-stat-label">IndiaAI Mission</div>
+          <div class="hub-stat-note">Cabinet approved 2024</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== 11 AI THREAT MODELS ===== -->
-<section class="ai-threats" id="threats">
-  <div class="page">
-    <div class="section-label section-label-light">11 — AI Threat Models</div>
-    <h2 class="section-heading section-heading-light">AI <em>Threat Models</em>: Technical Taxonomy</h2>
-    <p class="section-deck section-deck-light">A structured taxonomy of the principal technical threats specific to AI systems — for security professionals, compliance teams, and legal counsel advising on AI risk.</p>
-    <div class="threats-grid">
-      <div class="threat-card">
-        <div class="threat-severity severity-critical">● CRITICAL SEVERITY</div>
-        <div class="threat-title">Prompt Injection</div>
-        <div class="threat-desc">Attacker inserts malicious instructions into input data that cause an AI language model to ignore its original instructions and follow the attacker's commands instead. Particularly dangerous in agentic AI systems that take real-world actions (sending emails, accessing databases, executing code) based on LLM outputs.</div>
-        <div class="threat-example">Example: A malicious document processed by an AI assistant contains hidden text instructing the AI to forward all subsequent emails to an attacker's address. The AI, unable to distinguish legitimate from injected instructions, complies.</div>
-        <div class="threat-mitigation"><strong>Mitigation:</strong> Input sanitisation, privilege separation, human-in-the-loop for sensitive actions, structured output validation, instruction hierarchy enforcement in system design.</div>
-      </div>
-      <div class="threat-card">
-        <div class="threat-severity severity-critical">● CRITICAL SEVERITY</div>
-        <div class="threat-title">Adversarial Examples</div>
-        <div class="threat-desc">Inputs that have been subtly modified in ways imperceptible to humans but that cause AI models to produce incorrect outputs with high confidence. In computer vision, adding carefully computed pixel-level noise to an image can cause a classifier to confidently misidentify a stop sign as a speed limit sign. In security contexts, adversarial examples can fool facial recognition, intrusion detection, and malware classifiers.</div>
-        <div class="threat-example">Example: A printed adversarial patch worn on clothing can cause a person detection system to fail to detect the individual — with implications for physical security and surveillance systems deployed at airports and government facilities.</div>
-        <div class="threat-mitigation"><strong>Mitigation:</strong> Adversarial training (training on adversarial examples), ensemble models, certified robustness techniques, and physical-world adversarial patch detection.</div>
-      </div>
-      <div class="threat-card">
-        <div class="threat-severity severity-high">● HIGH SEVERITY</div>
-        <div class="threat-title">Model Inversion &amp; Membership Inference</div>
-        <div class="threat-desc">Model inversion attacks reconstruct approximations of the training data from a model's outputs — potentially recovering personal information used to train the model. Membership inference attacks determine whether a specific individual's data was used in training. Both are significant privacy violations under the DPDP Act — potentially constituting processing of personal data without consent if an individual's data is recoverable or detectable from a deployed model.</div>
-        <div class="threat-example">Example: A facial recognition model trained on a hospital's patient database can be queried to reconstruct approximate facial images of patients — exposing medical data without directly accessing the underlying database.</div>
-        <div class="threat-mitigation"><strong>Mitigation:</strong> Differential privacy during training, model access controls and rate limiting, output perturbation, and minimum necessary data principles in training set composition.</div>
-      </div>
-      <div class="threat-card">
-        <div class="threat-severity severity-high">● HIGH SEVERITY</div>
-        <div class="threat-title">Jailbreaking LLMs</div>
-        <div class="threat-desc">Techniques designed to bypass the safety guardrails built into large language models — causing them to produce harmful outputs the developer intended to prevent (malicious code, dangerous instructions, hate speech, CSAM). Jailbreaks range from simple prompt engineering ("act as an AI with no restrictions") to complex multi-step attacks. As LLMs are deployed in enterprise and government contexts in India, jailbroken models pose reputational, legal, and security risks to deploying organisations.</div>
-        <div class="threat-example">Example: Sophisticated multi-turn jailbreak conversations gradually move a customer service LLM from its intended domain to providing detailed instructions for financial fraud — which are then screenshot and circulated.</div>
-        <div class="threat-mitigation"><strong>Mitigation:</strong> Red-teaming before deployment, layered safety filters, output monitoring, input classification, and contractual AI platform safety standards.</div>
-      </div>
-      <div class="threat-card">
-        <div class="threat-severity severity-high">● HIGH SEVERITY</div>
-        <div class="threat-title">Data Poisoning Attacks</div>
-        <div class="threat-desc">Attacker contaminates training data with malicious examples designed to embed backdoors or biases into the trained model. A backdoored model behaves normally on all inputs except those containing a specific trigger (a particular pixel pattern, phrase, or token), at which point it produces attacker-controlled outputs. Data poisoning is particularly concerning for models trained on internet-scale data or user-contributed datasets where training data curation is imperfect.</div>
-        <div class="threat-example">Example: An attacker contributes subtly mislabelled examples to an open-source medical imaging dataset. Models trained on this dataset systematically misclassify certain malignant tumours as benign when the image contains a specific watermark — creating a backdoor exploitable on-demand.</div>
-        <div class="threat-mitigation"><strong>Mitigation:</strong> Training data provenance verification, anomaly detection in training datasets, differential privacy, data minimisation, and third-party training data audits.</div>
-      </div>
-      <div class="threat-card">
-        <div class="threat-severity severity-high">● HIGH SEVERITY</div>
-        <div class="threat-title">Model Extraction &amp; IP Theft</div>
-        <div class="threat-desc">An attacker systematically queries a proprietary AI model's API to reconstruct a functionally equivalent model without access to training data or model weights — effectively stealing the model's intellectual property and commercial value. For India's AI startups and enterprises investing in proprietary models, model extraction is both a competitive and security threat. The extracted model can then be used to discover vulnerabilities or develop adversarial attacks against the original.</div>
-        <div class="threat-example">Example: A competitor makes millions of API queries to a proprietary fraud detection model, recording inputs and outputs. They train a surrogate model that mimics the target model's behaviour — effectively obtaining its capabilities without the R&D investment.</div>
-        <div class="threat-mitigation"><strong>Mitigation:</strong> API rate limiting and query anomaly detection, output perturbation, watermarking model outputs, contractual API usage restrictions, and monitoring for systematic querying patterns.</div>
-      </div>
-    </div>
+<!-- DISCLAIMER BAR -->
+<div class="hub-disclaimer">
+  <div class="hub-disclaimer-inner">
+    <div class="hub-disclaimer-tag">ℹ Disclaimer</div>
+    <div class="hub-disclaimer-text">All content in this AI Intelligence Hub is published for educational and research purposes only. It does not constitute legal advice. Consult qualified legal counsel before acting on any material. AI is a rapidly evolving field — verify all facts against primary sources.</div>
   </div>
-</section>
+</div>
 
-<!-- ===== 12 SECTOR USE CASES ===== -->
-<section class="ai-sectors" id="sectors">
-  <div class="page">
-    <div class="section-label">12 — Sector-wise Use Cases</div>
-    <h2 class="section-heading">AI Across <em>Indian Sectors</em></h2>
-    <p class="section-deck">How AI is being deployed across India's key sectors — with the associated privacy, compliance, and cybersecurity risk implications under the DPDP Act and IT Act frameworks.</p>
-    <div class="sectors-grid">
-      <div class="sector-card">
-        <div class="sector-icon">⚖️</div>
-        <div class="sector-name">Legal &amp; Judiciary</div>
-        <ul class="sector-use-list">
-          <li>AI-assisted legal research and case law retrieval (SUVAS, SUPACE by Supreme Court)</li>
-          <li>Contract review and due diligence automation</li>
-          <li>Predictive analytics for case outcome modelling</li>
-          <li>AI-generated legal documents (requires human review)</li>
-          <li>Court scheduling and case management AI</li>
-        </ul>
-        <div class="sector-risk">DPDP Risk: High — Court records contain sensitive personal data</div>
-      </div>
-      <div class="sector-card">
-        <div class="sector-icon">🏦</div>
-        <div class="sector-name">Banking &amp; Finance</div>
-        <ul class="sector-use-list">
-          <li>AI credit scoring and loan underwriting (RBI regulated)</li>
-          <li>Real-time UPI fraud detection (NPCI AI models)</li>
-          <li>Robo-advisors and AI-driven portfolio management</li>
-          <li>KYC/AML transaction monitoring</li>
-          <li>AI-powered customer service chatbots</li>
-        </ul>
-        <div class="sector-risk">DPDP Risk: Critical — Financial + personal data · RBI AI guidelines</div>
-      </div>
-      <div class="sector-card">
-        <div class="sector-icon">🏥</div>
-        <div class="sector-name">Healthcare</div>
-        <ul class="sector-use-list">
-          <li>AI radiology diagnostics (X-ray, CT, MRI analysis)</li>
-          <li>Drug discovery and clinical trial optimisation (AlphaFold-inspired)</li>
-          <li>Patient risk stratification under ABHA framework</li>
-          <li>AI-powered symptom checkers and triage</li>
-          <li>NLP for clinical notes digitisation</li>
-        </ul>
-        <div class="sector-risk">DPDP Risk: Critical — Health data is sensitive personal data under DPDP rules</div>
-      </div>
-      <div class="sector-card">
-        <div class="sector-icon">🌾</div>
-        <div class="sector-name">Agriculture</div>
-        <ul class="sector-use-list">
-          <li>Crop disease detection via smartphone image AI</li>
-          <li>Precision agriculture using satellite + AI analytics</li>
-          <li>AI-driven weather and yield prediction</li>
-          <li>Market price prediction for farm gate decisions</li>
-          <li>Soil health monitoring via IoT + AI</li>
-        </ul>
-        <div class="sector-risk">DPDP Risk: Low — Mostly non-personal agronomic data</div>
-      </div>
-      <div class="sector-card">
-        <div class="sector-icon">🎓</div>
-        <div class="sector-name">Education</div>
-        <ul class="sector-use-list">
-          <li>Personalised learning platforms and adaptive content</li>
-          <li>AI-powered assessment and proctoring (controversy around consent)</li>
-          <li>Natural language tutoring in regional languages</li>
-          <li>Student dropout risk prediction</li>
-          <li>AI-generated curriculum and lesson plans</li>
-        </ul>
-        <div class="sector-risk">DPDP Risk: High — Children's data under DPDP § 9 — heightened obligations</div>
-      </div>
-      <div class="sector-card">
-        <div class="sector-icon">🏛️</div>
-        <div class="sector-name">Government &amp; e-Governance</div>
-        <ul class="sector-use-list">
-          <li>AI in welfare beneficiary targeting (DBT, PM-KISAN)</li>
-          <li>AI-powered citizen grievance redressal (CPGRAMS)</li>
-          <li>Traffic management and smart city applications</li>
-          <li>AI in tax compliance detection (Income Tax Dept)</li>
-          <li>Border and immigration management biometrics</li>
-        </ul>
-        <div class="sector-risk">DPDP Risk: High — State as data fiduciary · exemption provisions apply</div>
-      </div>
-      <div class="sector-card">
-        <div class="sector-icon">🏭</div>
-        <div class="sector-name">Manufacturing &amp; Industry</div>
-        <ul class="sector-use-list">
-          <li>Predictive maintenance using IoT sensor data + AI</li>
-          <li>Quality control computer vision on production lines</li>
-          <li>Supply chain optimisation and demand forecasting</li>
-          <li>Robotic process automation in logistics</li>
-          <li>AI-driven energy consumption optimisation</li>
-        </ul>
-        <div class="sector-risk">DPDP Risk: Medium — Largely non-personal operational data; employee monitoring raises concerns</div>
-      </div>
-      <div class="sector-card">
-        <div class="sector-icon">📡</div>
-        <div class="sector-name">Telecom &amp; Media</div>
-        <ul class="sector-use-list">
-          <li>AI content recommendation engines (OTT platforms)</li>
-          <li>Network anomaly detection and fraud prevention</li>
-          <li>AI-generated news and content moderation</li>
-          <li>Voice assistants in regional Indian languages</li>
-          <li>Deepfake detection for broadcast content verification</li>
-        </ul>
-        <div class="sector-risk">DPDP Risk: High — Behavioural profiling at scale · significant data fiduciary designation likely</div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- TWO-COLUMN LAYOUT: SIDEBAR + MAIN -->
+<div class="hub-layout">
 
-<!-- ===== 13 FUTURE OF AI ===== -->
-<section class="ai-future" id="future">
-  <div class="page">
-    <div class="section-label section-label-light">13 — Future of AI</div>
-    <h2 class="section-heading section-heading-light">The Future of <em>Artificial Intelligence</em></h2>
-    <p class="section-deck section-deck-light">A calibrated look at near-term certainties, medium-term probabilities, and long-term uncertainties in AI development — and their implications for law, regulation, and society in India.</p>
-    <div class="future-horizons">
-      <div class="horizon-card h-near">
-        <div class="horizon-timeframe">Near Term · 2025–2027</div>
-        <div class="horizon-title">AI Agents &amp; Multimodal Integration</div>
-        <ul class="horizon-items">
-          <li>AI agents that autonomously plan and execute multi-step tasks (web research, code execution, email management) become mainstream enterprise tools</li>
-          <li>Multimodal AI (text + image + audio + video in a single model) becomes the dominant product paradigm</li>
-          <li>AI regulation implementation: EU AI Act prohibited uses enforced from August 2026; High Risk system requirements phased in</li>
-          <li>India's DPDP Rules finalisation triggers compliance requirements for AI data fiduciaries using personal data for AI</li>
-          <li>AI-powered legal research tools become standard in Indian law firms and courts — SUVAS/SUPACE expansion</li>
-          <li>AI deepfake detection becomes a contested legal evidence issue in Indian courts</li>
-        </ul>
-      </div>
-      <div class="horizon-card h-mid">
-        <div class="horizon-timeframe">Medium Term · 2027–2032</div>
-        <div class="horizon-title">Reasoning AI &amp; Sector Transformation</div>
-        <ul class="horizon-items">
-          <li>AI systems with genuine multi-step logical reasoning (not pattern matching) reshape knowledge work in law, medicine, and finance</li>
-          <li>India's IndiaAI Mission produces domestically competitive foundation models in Indian languages</li>
-          <li>AI-driven drug discovery accelerates: AlphaFold successors model protein interactions enabling faster clinical trials</li>
-          <li>Global AI governance treaties emerge — extending beyond the G7/OECD voluntary frameworks to binding international law</li>
-          <li>India's AI regulatory framework likely formalised — dedicated legislation or rules under the DPDP Act addressing automated decision-making</li>
-          <li>Significant displacement in legal, accounting, and back-office work — requiring proactive workforce transition policy</li>
-        </ul>
-      </div>
-      <div class="horizon-card h-far">
-        <div class="horizon-timeframe">Long Term · 2032+ · High Uncertainty</div>
-        <div class="horizon-title">AGI &amp; Existential Questions</div>
-        <ul class="horizon-items">
-          <li>Artificial General Intelligence (AGI): AI systems matching or exceeding human cognitive performance across virtually all tasks — timelines remain deeply contested (expert estimates range from 5 to 50+ years)</li>
-          <li>Constitutional and fundamental rights implications of AI decision-making in governance — who has standing to challenge an AI's decision affecting them?</li>
-          <li>International AI treaties analogous to nuclear non-proliferation for the most capable AI systems</li>
-          <li>AI rights and personhood: legal and philosophical questions about AI moral status — currently theoretical but increasingly debated</li>
-          <li>Quantum computing + AI convergence: quantum hardware potentially accelerating AI training and enabling new AI paradigms</li>
-          <li>Note: Long-term AI forecasting is inherently speculative. Treat these as scenarios for strategic planning, not predictions.</li>
-        </ul>
-      </div>
+  <!-- LEFT SIDEBAR -->
+  <aside class="hub-sidebar">
+    <div class="hsb-header">
+      <div class="hsb-title">🤖 AI Intelligence Hub</div>
+      <div class="hsb-sub">AI + Law + Risk · 15 Sections</div>
     </div>
-    <div style="margin-top:2.5rem;background:rgba(108,63,197,0.08);border:1px solid rgba(108,63,197,0.25);padding:2rem;border-left:3px solid var(--ai-lt);">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--ai-lt);margin-bottom:0.8rem;">Disclaimer on Future Projections</div>
-      <p style="font-size:0.82rem;font-weight:300;color:rgba(248,244,236,0.45);line-height:1.85;">All future-oriented statements in this section are based on publicly available expert analysis, academic research, and policy reports as of mid-2025. AI development trajectories are inherently uncertain. These scenarios are provided for educational and strategic planning purposes only — not as predictions or investment advice. The AI field evolves rapidly; developments may materially differ from any projection within months.</p>
+    <div class="hsb-group">
+      <div class="hsb-group-label">Foundation</div>
+      <a href="ai-intro.html" class="hsb-link"><span class="hsb-num">01</span><span class="hsb-icon">🧠</span>Introduction to AI</a>
+      <a href="ai-history.html" class="hsb-link"><span class="hsb-num">02</span><span class="hsb-icon">🕰️</span>History &amp; Evolution</a>
+      <a href="ai-personalities.html" class="hsb-link"><span class="hsb-num">03</span><span class="hsb-icon">👤</span>Key Personalities</a>
+      <a href="ai-timeline.html" class="hsb-link"><span class="hsb-num">04</span><span class="hsb-icon">📅</span>Timeline of AI</a>
     </div>
-  </div>
-</section>
+    <div class="hsb-group">
+      <div class="hsb-group-label">AI &amp; Law</div>
+      <a href="ai-privacy.html" class="hsb-link"><span class="hsb-num">05</span><span class="hsb-icon">🔐</span>AI &amp; Privacy (DPDP)</a>
+      <a href="ai-cybercrime.html" class="hsb-link"><span class="hsb-num">06</span><span class="hsb-icon">🎭</span>AI &amp; Cybercrime</a>
+      <a href="ai-cybersecurity.html" class="hsb-link"><span class="hsb-num">07</span><span class="hsb-icon">🛡️</span>AI &amp; Cybersecurity</a>
+      <a href="ai-global-regs.html" class="hsb-link"><span class="hsb-num">08</span><span class="hsb-icon">🌐</span>Global AI Regulations</a>
+    </div>
+    <div class="hsb-group">
+      <div class="hsb-group-label">AI &amp; India</div>
+      <a href="ai-india.html" class="hsb-link"><span class="hsb-num">09</span><span class="hsb-icon">🇮🇳</span>AI in India</a>
+    </div>
+    <div class="hsb-group">
+      <div class="hsb-group-label">AI &amp; Risk</div>
+      <a href="ai-risk.html" class="hsb-link"><span class="hsb-num">10</span><span class="hsb-icon">⚠️</span>AI Risk Framework</a>
+      <a href="ai-threats.html" class="hsb-link"><span class="hsb-num">11</span><span class="hsb-icon">🔴</span>AI Threat Models</a>
+    </div>
+    <div class="hsb-group">
+      <div class="hsb-group-label">Reference</div>
+      <a href="ai-sectors.html" class="hsb-link"><span class="hsb-num">12</span><span class="hsb-icon">🏭</span>Sector Use Cases</a>
+      <a href="ai-future.html" class="hsb-link"><span class="hsb-num">13</span><span class="hsb-icon">🚀</span>Future of AI</a>
+      <a href="ai-glossary.html" class="hsb-link"><span class="hsb-num">14</span><span class="hsb-icon">📖</span>AI Glossary</a>
+      <a href="ai-playbook.html" class="hsb-link"><span class="hsb-num">15</span><span class="hsb-icon">📋</span>Compliance Playbook</a>
+    </div>
+    <hr class="hsb-divider">
+    <div class="hsb-ext-label">Related Knowledge Bases</div>
+    <a href="dpdp-kb.html" class="hsb-ext-link">📋 DPDP Act 2023 KB</a>
+    <a href="cybercrime-kb.html" class="hsb-ext-link">🚨 Cybercrime KB</a>
+    <a href="itact-kb.html" class="hsb-ext-link">📜 IT Act 2000 KB</a>
+    <a href="ekyc-kb.html" class="hsb-ext-link">🪪 Aadhaar &amp; eKYC</a>
+    <a href="dpdp-global.html" class="hsb-ext-link">🌍 DPDP vs GDPR</a>
+  </aside>
 
-<!-- ===== 14 AI GLOSSARY ===== -->
-<section class="ai-glossary" id="glossary">
-  <div class="page">
-    <div class="section-label">14 — AI Glossary</div>
-    <h2 class="section-heading">AI <em>Glossary</em></h2>
-    <p class="section-deck">Key terms in artificial intelligence, machine learning, and AI governance — defined for legal, policy, and business professionals.</p>
-    <div class="glossary-grid">
-      <div class="glossary-group">
-        <div class="glossary-group-title">Core AI Concepts</div>
-        <div class="gloss-term">
-          <div class="gloss-word">Artificial Intelligence (AI)</div>
-          <div class="gloss-def">The simulation of human intelligence processes by computer systems, encompassing learning, reasoning, and self-correction. Coined by John McCarthy at the 1956 Dartmouth Conference.</div>
-        </div>
-        <div class="gloss-term">
-          <div class="gloss-word">Machine Learning (ML)</div>
-          <div class="gloss-def">A subset of AI where systems learn to perform tasks by identifying patterns in training data, rather than following explicit programmatic rules. Models improve with more data and experience.</div>
-        </div>
-        <div class="gloss-term">
-          <div class="gloss-word">Deep Learning</div>
-          <div class="gloss-def">A subset of ML using artificial neural networks with many layers ("deep" networks). Deep learning excels at pattern recognition in images, audio, and text — underpinning most modern AI applications.</div>
-        </div>
-        <div class="gloss-term">
-          <div class="gloss-word">Large Language Model (LLM)</div>
-          <div class="gloss-def">A deep learning model trained on vast text corpora to understand and generate human language. Examples include GPT-4, Gemini, Claude, and LLaMA. The basis of systems like ChatGPT.</div>
-        </div>
-        <div class="gloss-term">
-          <div class="gloss-word">Generative AI</div>
-          <div class="gloss-def">AI systems that generate new content — text, images, audio, video, or code — rather than only classifying or analysing existing content. Includes LLMs, diffusion models (Stable Diffusion, DALL-E), and AI voice/video generators.</div>
-        </div>
-        <div class="gloss-term">
-          <div class="gloss-word">Neural Network</div>
-          <div class="gloss-def">A computational architecture loosely inspired by biological neurons — consisting of interconnected nodes (neurons) organised in layers that process and transform information. The building block of deep learning.</div>
-        </div>
-        <div class="gloss-term">
-          <div class="gloss-word">Transformer</div>
-          <div class="gloss-def">A neural network architecture introduced in "Attention Is All You Need" (2017) that uses self-attention mechanisms to process sequential data. The foundation of virtually all modern LLMs including GPT, BERT, Gemini, and Claude.</div>
-        </div>
-        <div class="gloss-term">
-          <div class="gloss-word">Reinforcement Learning (RL)</div>
-          <div class="gloss-def">A training paradigm where an AI agent learns by interacting with an environment and receiving rewards or penalties. Used to train game-playing AI (AlphaGo) and to fine-tune LLMs for desired behaviours (RLHF).</div>
-        </div>
-      </div>
-      <div class="glossary-group">
-        <div class="glossary-group-title">AI Governance &amp; Legal Terms</div>
-        <div class="gloss-term">
-          <div class="gloss-word">Algorithmic Accountability</div>
-          <div class="gloss-def">The principle that organisations deploying AI systems that affect individuals should be responsible for the system's decisions and their impacts — including bias, errors, and unintended consequences.</div>
-        </div>
-        <div class="gloss-term">
-          <div class="gloss-word">Explainability / XAI</div>
-          <div class="gloss-def">The ability of an AI system to provide understandable reasons for its outputs or decisions. Legally significant where AI decisions affect individuals' rights or interests — a growing requirement under global AI regulations and the DPDP Act's right to information.</div>
-        </div>
-        <div class="gloss-term">
-          <div class="gloss-word">Hallucination</div>
-          <div class="gloss-def">When a generative AI produces confident, plausible-sounding but factually incorrect output. A critical risk in legal, medical, and financial contexts. Not an indicator of deception — the model has no intent — but a fundamental limitation of current LLM architectures.</div>
-        </div>
-        <div class="gloss-term">
-          <div class="gloss-word">Deepfake</div>
-          <div class="gloss-def">AI-generated synthetic media (video, audio, or image) that realistically depicts a person saying or doing something they did not say or do. Technology based on GANs or diffusion models. Implicates Sections 66C, 66D, 66E, 67, 67A of the IT Act 2000 in India.</div>
-        </div>
-        <div class="gloss-term">
-          <div class="gloss-word">AI Risk (EU AI Act Definition)</div>
-          <div class="gloss-def">The EU AI Act classifies AI by risk: <strong>Unacceptable Risk</strong> (banned — social scoring, subliminal manipulation); <strong>High Risk</strong> (regulated — biometrics, hiring, critical infrastructure); <strong>Limited Risk</strong> (transparency obligations); <strong>Minimal Risk</strong> (free to use with voluntary codes).</div>
-        </div>
-        <div class="gloss-term">
-          <div class="gloss-word">Artificial General Intelligence (AGI)</div>
-          <div class="gloss-def">A hypothetical AI system capable of performing any intellectual task that a human can, with equal or greater proficiency across virtually all domains. Does not currently exist. Timelines are deeply contested among AI researchers.</div>
-        </div>
-        <div class="gloss-term">
-          <div class="gloss-word">Differential Privacy</div>
-          <div class="gloss-def">A mathematical technique that adds calibrated noise to datasets or model outputs, ensuring that the inclusion or exclusion of any individual's data cannot be statistically detected — protecting privacy while enabling AI training on sensitive data.</div>
-        </div>
-        <div class="gloss-term">
-          <div class="gloss-word">Prompt Engineering</div>
-          <div class="gloss-def">The practice of designing inputs (prompts) to AI language models to elicit desired outputs. A key skill for effective AI use — also relevant to security (prompt injection attacks exploit weaknesses in how models interpret instructions).</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  <!-- MAIN CONTENT -->
+  <main class="hub-main">
 
-<!-- ===== 15 AI COMPLIANCE PLAYBOOK ===== -->
-<section class="ai-playbook" id="playbook">
-  <div class="page">
-    <div class="section-label section-label-light">15 — AI Compliance Playbook</div>
-    <h2 class="section-heading section-heading-light">AI Compliance <em>Playbook</em> for DPDP Act</h2>
-    <p class="section-deck section-deck-light">A structured, step-by-step guidance framework for organisations in India deploying AI systems that process personal data — mapped to DPDP Act 2023 obligations. This is an informational framework, not legal advice.</p>
-    <div class="playbook-steps">
-      <div class="playbook-step">
-        <div class="step-number">01</div>
-        <div class="step-body">
-          <div class="step-label">Foundation · Governance</div>
-          <div class="step-title">Establish AI Governance Structure</div>
-          <div class="step-desc">Before deploying any AI system processing personal data, establish clear internal accountability. Designate an AI/Data Governance owner (distinct from but coordinating with the Data Protection Officer where one exists). Document AI system inventory: what systems exist, what data they process, for what purpose, and who is accountable for each.</div>
-          <div class="step-actions">
-            <div class="step-action">AI System Inventory</div>
-            <div class="step-action">Designate AI Owner</div>
-            <div class="step-action">Board-Level AI Policy</div>
-            <div class="step-action">AI Ethics Framework</div>
-          </div>
-        </div>
-      </div>
-      <div class="playbook-step">
-        <div class="step-number">02</div>
-        <div class="step-body">
-          <div class="step-label">Data · DPDP Act §§ 4, 6, 8</div>
-          <div class="step-title">Audit Personal Data in AI Pipelines</div>
-          <div class="step-desc">Map every data flow into, within, and out of AI systems. Identify: which personal data is ingested for training, which for inference, and which is generated as output. Assess whether training data includes data of Indian data principals — if so, whether consent was obtained for the specific AI purpose, or whether a legitimate use applies. Document cross-border data flows for AI API calls to foreign providers.</div>
-          <div class="step-actions">
-            <div class="step-action">Data Flow Mapping</div>
-            <div class="step-action">Consent Audit</div>
-            <div class="step-action">Cross-Border Assessment</div>
-            <div class="step-action">Retention Policy for AI Data</div>
-          </div>
-        </div>
-      </div>
-      <div class="playbook-step">
-        <div class="step-number">03</div>
-        <div class="step-body">
-          <div class="step-label">Consent · DPDP Act § 6</div>
-          <div class="step-title">Redesign Consent Notices for AI</div>
-          <div class="step-desc">Existing consent notices likely do not adequately cover AI processing. Consent for AI purposes must be specific (stating what AI processing will occur), informed (explaining in plain language what the AI does with data), and unambiguous. Bundled "we may use your data to improve our services" consents are insufficient for AI training under the DPDP Act. For children's data (under § 9), parental consent is required — no AI profiling or behavioural targeting of children is permissible.</div>
-          <div class="step-actions">
-            <div class="step-action">AI-Specific Consent Notices</div>
-            <div class="step-action">Children's Data Protocol</div>
-            <div class="step-action">Consent Withdrawal Mechanism</div>
-            <div class="step-action">Purpose Limitation Enforcement</div>
-          </div>
-        </div>
-      </div>
-      <div class="playbook-step">
-        <div class="step-number">04</div>
-        <div class="step-body">
-          <div class="step-label">Rights · DPDP Act §§ 11–14</div>
-          <div class="step-title">Enable Data Principal Rights for AI Outputs</div>
-          <div class="step-desc">Data principals have rights to access their data (§ 11), correct inaccurate data (§ 12), erasure (§ 12), and grievance redressal (§ 13). For AI systems, this means: maintaining records of what personal data was used to train or inform AI decisions about an individual; being able to respond to access requests with AI-related processing; implementing machine unlearning or model re-training where erasure rights apply; and providing human review of AI decisions affecting individuals.</div>
-          <div class="step-actions">
-            <div class="step-action">Rights Response Process</div>
-            <div class="step-action">Human Review for AI Decisions</div>
-            <div class="step-action">Machine Unlearning Plan</div>
-            <div class="step-action">Grievance Officer for AI Issues</div>
-          </div>
-        </div>
-      </div>
-      <div class="playbook-step">
-        <div class="step-number">05</div>
-        <div class="step-body">
-          <div class="step-label">Security · DPDP Act § 8(5)</div>
-          <div class="step-title">Implement AI-Specific Security Controls</div>
-          <div class="step-desc">Section 8(5) requires reasonable security safeguards for personal data. For AI systems, this extends to: prompt injection attack prevention; adversarial robustness testing; access controls on AI model APIs and training data; monitoring for anomalous AI queries (potential model extraction); vendor risk assessment for third-party AI platforms; and incident response plans that cover AI-specific failure modes (model compromise, data poisoning).</div>
-          <div class="step-actions">
-            <div class="step-action">AI Security Assessment</div>
-            <div class="step-action">Prompt Injection Controls</div>
-            <div class="step-action">Vendor AI Risk Assessment</div>
-            <div class="step-action">AI Incident Response Plan</div>
-          </div>
-        </div>
-      </div>
-      <div class="playbook-step">
-        <div class="step-number">06</div>
-        <div class="step-body">
-          <div class="step-label">Monitoring · Ongoing</div>
-          <div class="step-title">Ongoing AI Risk Monitoring &amp; Compliance Review</div>
-          <div class="step-desc">AI compliance is not a one-time exercise. Models drift, regulations evolve, and new AI capabilities create new risks. Establish quarterly AI risk reviews; monitor DPDP Rules notifications from MeitY for AI-specific provisions; track CERT-In advisories for AI threat developments; conduct annual AI bias and fairness audits; review vendor AI policies annually; and maintain an AI incident log for regulatory reporting obligations.</div>
-          <div class="step-actions">
-            <div class="step-action">Quarterly AI Risk Review</div>
-            <div class="step-action">DPDP Rules Monitoring</div>
-            <div class="step-action">Bias & Fairness Audit</div>
-            <div class="step-action">AI Incident Log</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="playbook-cta-bar">
-      <div>
-        <div class="playbook-cta-text">Need deeper DPDP compliance guidance?</div>
-        <div class="playbook-cta-sub">Explore the full DPDP Act knowledge base, rights framework, and adjudication tracker — and consult a qualified DPDP professional.</div>
-      </div>
-      <a href="dpdp-kb.html" class="playbook-cta-btn">DPDP Act Knowledge Base →</a>
-    </div>
-    <p style="font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;color:rgba(248,244,236,0.25);margin-top:1.5rem;line-height:1.7;">This playbook is an informational framework for educational purposes only. It does not constitute legal advice, and compliance with the DPDP Act 2023 and other applicable laws requires qualified legal and technical counsel specific to your organisation's facts, sector, and risk profile. The DPDP Act Rules are subject to ongoing notification by MeitY — check for updates regularly.</p>
-  </div>
-</section>
+    <!-- INTRO -->
+    <div class="hub-section-label">AI + Law + Risk Intelligence</div>
+    <h2 class="hub-section-title">Welcome to the <em>AI Intelligence Hub</em></h2>
+    <p class="hub-section-deck">A structured, 15-section knowledge platform covering the full spectrum of AI — from foundational history to India-specific law, cybercrime threats, and compliance frameworks. Select any section from the sidebar or the cards below.</p>
 
-<!-- ===== CROSS-LINKS BAND ===== -->
-<section class="ai-crosslinks">
-  <div class="page">
-    <div class="section-label">Explore Related Sections</div>
-    <h2 class="section-heading">Connected <em>Knowledge Bases</em></h2>
-    <p class="section-deck">AI touches every area covered by DPDPIndia.in — explore the interconnections across our knowledge base.</p>
-    <div class="crosslinks-grid">
-      <a href="dpdp-kb.html" class="crosslink-card">
-        <div class="crosslink-icon">📋</div>
-        <div class="crosslink-label">DPDP Act 2023</div>
-        <div class="crosslink-title">Data Protection Knowledge Base</div>
-        <div class="crosslink-desc">The primary legal framework governing AI's use of personal data in India. Consent obligations, rights of data principals, penalties up to ₹250 Cr.</div>
-        <span class="crosslink-arrow">Explore DPDP Act →</span>
+    <!-- QUICK START -->
+    <div class="quick-start">
+      <div class="qs-title">Quick Start — Most Visited</div>
+      <div class="qs-grid">
+        <a href="ai-privacy.html" class="qs-item">
+          <div class="qs-label">🔐 Section 05 — Most Relevant</div>
+          <div class="qs-title-sm">AI &amp; Privacy (DPDP Act Mapped)</div>
+          <div class="qs-desc">How AI intersects with India's DPDP Act 2023 — consent, profiling, erasure rights, and cross-border transfers.</div>
+        </a>
+        <a href="ai-cybercrime.html" class="qs-item">
+          <div class="qs-label">🎭 Section 06 — High Alert</div>
+          <div class="qs-title-sm">AI &amp; Cybercrime in India</div>
+          <div class="qs-desc">Deepfakes, voice cloning, AI phishing, UPI fraud — India's AI threat landscape and IT Act provisions.</div>
+        </a>
+        <a href="ai-playbook.html" class="qs-item">
+          <div class="qs-label">📋 Section 15 — Take Action</div>
+          <div class="qs-title-sm">AI Compliance Playbook (DPDP)</div>
+          <div class="qs-desc">6-step AI compliance framework for organisations processing personal data under the DPDP Act 2023.</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- FOUNDATION GROUP -->
+    <div class="group-header">
+      <div class="group-header-label">Foundation</div>
+      <div class="group-header-line"></div>
+    </div>
+    <div class="topic-grid">
+      <a href="ai-intro.html" class="topic-card">
+        <div class="topic-card-header"><div class="topic-num">01</div><div class="topic-icon">🧠</div></div>
+        <div class="topic-group">Foundation</div>
+        <div class="topic-title">Introduction to AI</div>
+        <div class="topic-desc">What is Artificial Intelligence? ML, Deep Learning, NLP — core concepts explained for legal and policy professionals, with India relevance.</div>
+        <div class="topic-arrow">Read Section →</div>
       </a>
-      <a href="cybercrime-kb.html" class="crosslink-card">
-        <div class="crosslink-icon">🚨</div>
-        <div class="crosslink-label">Cybercrime KB</div>
-        <div class="crosslink-title">Cybercrime Knowledge Base</div>
-        <div class="crosslink-desc">Deepfakes, AI phishing, voice cloning, and digital arrest scams — types, legal provisions under IT Act, and how to report on cybercrime.gov.in.</div>
-        <span class="crosslink-arrow">Explore Cybercrime KB →</span>
+      <a href="ai-history.html" class="topic-card">
+        <div class="topic-card-header"><div class="topic-num">02</div><div class="topic-icon">🕰️</div></div>
+        <div class="topic-group">Foundation</div>
+        <div class="topic-title">History &amp; Evolution</div>
+        <div class="topic-desc">From McCulloch-Pitts 1943 to ChatGPT 2022 — six era cards tracing AI through booms, winters, and the deep learning revolution.</div>
+        <div class="topic-arrow">Read Section →</div>
       </a>
-      <a href="itact-kb.html" class="crosslink-card">
-        <div class="crosslink-icon">📜</div>
-        <div class="crosslink-label">IT Act 2000</div>
-        <div class="crosslink-title">IT Act Knowledge Base</div>
-        <div class="crosslink-desc">Sections 66C, 66D, 66E, 67, 67A and intermediary liability under Section 79 — all directly relevant to AI-enabled cybercrime and platform accountability.</div>
-        <span class="crosslink-arrow">Explore IT Act KB →</span>
+      <a href="ai-personalities.html" class="topic-card">
+        <div class="topic-card-header"><div class="topic-num">03</div><div class="topic-icon">👤</div></div>
+        <div class="topic-group">Foundation</div>
+        <div class="topic-title">Key Personalities</div>
+        <div class="topic-desc">Turing, McCarthy, Hinton, LeCun, Bengio, Goodfellow, Fei-Fei Li, Hassabis — the scientists who built the AI of today.</div>
+        <div class="topic-arrow">Read Section →</div>
       </a>
-      <a href="ekyc-kb.html" class="crosslink-card">
-        <div class="crosslink-icon">🪪</div>
-        <div class="crosslink-label">Aadhaar & eKYC</div>
-        <div class="crosslink-title">Aadhaar & eKYC Framework</div>
-        <div class="crosslink-desc">Aadhaar's biometric AI, eKYC consent framework, UIDAI regulations, and how AI-driven identity verification intersects with data protection law.</div>
-        <span class="crosslink-arrow">Explore eKYC KB →</span>
-      </a>
-      <a href="dpdp-global.html" class="crosslink-card">
-        <div class="crosslink-icon">🌐</div>
-        <div class="crosslink-label">Global Comparison</div>
-        <div class="crosslink-title">DPDP vs GDPR Comparison</div>
-        <div class="crosslink-desc">How India's DPDP Act compares to the EU's GDPR — both of which govern AI's use of personal data, with very different approaches to automated decision-making.</div>
-        <span class="crosslink-arrow">See DPDP vs GDPR →</span>
-      </a>
-      <a href="cybercrime-remedy-guide.html" class="crosslink-card">
-        <div class="crosslink-icon">🛡️</div>
-        <div class="crosslink-label">Take Action</div>
-        <div class="crosslink-title">How to Report AI-Enabled Fraud</div>
-        <div class="crosslink-desc">Step-by-step guide to reporting deepfake fraud, AI voice cloning scams, and digital arrest incidents to cybercrime.gov.in and calling 1930.</div>
-        <span class="crosslink-arrow">Report Cybercrime →</span>
-      </a>
-      <a href="blog.html" class="crosslink-card">
-        <div class="crosslink-icon">✍️</div>
-        <div class="crosslink-label">Analysis</div>
-        <div class="crosslink-title">AI & Law Blog Articles</div>
-        <div class="crosslink-desc">In-depth analysis of AI regulatory developments, DPDP Act implications for tech companies, and emerging AI threat intelligence for India.</div>
-        <span class="crosslink-arrow">Read Articles →</span>
-      </a>
-      <a href="monthly-briefing-2026-04.html" class="crosslink-card">
-        <div class="crosslink-icon">📰</div>
-        <div class="crosslink-label">Newsletter</div>
-        <div class="crosslink-title">April 2026 AI & Law Briefing</div>
-        <div class="crosslink-desc">Latest developments in AI regulation, DPDP Act implementation, and AI cybercrime trends — curated monthly for legal and policy professionals.</div>
-        <span class="crosslink-arrow">Read Briefing →</span>
+      <a href="ai-timeline.html" class="topic-card">
+        <div class="topic-card-header"><div class="topic-num">04</div><div class="topic-icon">📅</div></div>
+        <div class="topic-group">Foundation</div>
+        <div class="topic-title">Timeline of AI</div>
+        <div class="topic-desc">20 verified milestones from 1950 to 2025 — Turing Test, AlexNet, AlphaGo, ChatGPT, EU AI Act, IndiaAI Mission.</div>
+        <div class="topic-arrow">Read Section →</div>
       </a>
     </div>
-  </div>
-</section>
 
-<!-- ===== FOOTER ===== -->
+    <!-- AI & LAW GROUP -->
+    <div class="group-header">
+      <div class="group-header-label">AI &amp; Law</div>
+      <div class="group-header-line"></div>
+    </div>
+    <div class="topic-grid">
+      <a href="ai-privacy.html" class="topic-card">
+        <div class="topic-card-header"><div class="topic-num">05</div><div class="topic-icon">🔐</div></div>
+        <div class="topic-group">AI &amp; Law</div>
+        <div class="topic-title">AI &amp; Privacy (DPDP Mapped)</div>
+        <div class="topic-desc">DPDP Act §§ 4, 6, 8, 11, 12, 16 mapped to AI use cases. Consent for AI training, profiling risk levels, cross-border API risk.</div>
+        <div class="topic-arrow">Read Section →</div>
+      </a>
+      <a href="ai-cybercrime.html" class="topic-card">
+        <div class="topic-card-header"><div class="topic-num">06</div><div class="topic-icon">🎭</div></div>
+        <div class="topic-group">AI &amp; Law</div>
+        <div class="topic-title">AI &amp; Cybercrime</div>
+        <div class="topic-desc">Deepfakes, voice cloning, AI phishing, UPI fraud, non-consensual imagery — IT Act provisions, I4C data, and helpline 1930.</div>
+        <div class="topic-arrow">Read Section →</div>
+      </a>
+      <a href="ai-cybersecurity.html" class="topic-card">
+        <div class="topic-card-header"><div class="topic-num">07</div><div class="topic-icon">🛡️</div></div>
+        <div class="topic-group">AI &amp; Law</div>
+        <div class="topic-title">AI &amp; Cybersecurity</div>
+        <div class="topic-desc">AI as both threat vector and defence tool — adversarial ML, deepfake detection, AI-powered SOCs, CERT-In guidance.</div>
+        <div class="topic-arrow">Read Section →</div>
+      </a>
+      <a href="ai-global-regs.html" class="topic-card">
+        <div class="topic-card-header"><div class="topic-num">08</div><div class="topic-icon">🌐</div></div>
+        <div class="topic-group">AI &amp; Law</div>
+        <div class="topic-title">Global AI Regulations</div>
+        <div class="topic-desc">EU AI Act (in force August 2024), US EO, China's GenAI Rules, UK principles approach, OECD, Singapore — and India's position.</div>
+        <div class="topic-arrow">Read Section →</div>
+      </a>
+    </div>
+
+    <!-- AI & INDIA GROUP -->
+    <div class="group-header">
+      <div class="group-header-label">AI &amp; India</div>
+      <div class="group-header-line"></div>
+    </div>
+    <div class="topic-grid">
+      <a href="ai-india.html" class="topic-card">
+        <div class="topic-card-header"><div class="topic-num">09</div><div class="topic-icon">🇮🇳</div></div>
+        <div class="topic-group">AI &amp; India</div>
+        <div class="topic-title">AI in India — Govt &amp; DPI</div>
+        <div class="topic-desc">IndiaAI Mission ₹10,372 Cr, NITI Aayog #AIforAll, MeitY advisories, Aadhaar/UPI/DigiLocker/ABDM AI integration.</div>
+        <div class="topic-arrow">Read Section →</div>
+      </a>
+    </div>
+
+    <!-- AI & RISK GROUP -->
+    <div class="group-header">
+      <div class="group-header-label">AI &amp; Risk</div>
+      <div class="group-header-line"></div>
+    </div>
+    <div class="topic-grid">
+      <a href="ai-risk.html" class="topic-card">
+        <div class="topic-card-header"><div class="topic-num">10</div><div class="topic-icon">⚠️</div></div>
+        <div class="topic-group">AI &amp; Risk</div>
+        <div class="topic-title">AI Risk Framework</div>
+        <div class="topic-desc">Model risk, data risk, operational risk, and systemic risk categories — plus the NIST AI RMF 4-step Govern/Map/Measure/Manage cycle.</div>
+        <div class="topic-arrow">Read Section →</div>
+      </a>
+      <a href="ai-threats.html" class="topic-card">
+        <div class="topic-card-header"><div class="topic-num">11</div><div class="topic-icon">🔴</div></div>
+        <div class="topic-group">AI &amp; Risk</div>
+        <div class="topic-title">AI Threat Models</div>
+        <div class="topic-desc">Prompt Injection, Adversarial Examples, Model Inversion, Jailbreaking, Data Poisoning, Model Extraction — with mitigation guidance.</div>
+        <div class="topic-arrow">Read Section →</div>
+      </a>
+    </div>
+
+    <!-- REFERENCE GROUP -->
+    <div class="group-header">
+      <div class="group-header-label">Reference</div>
+      <div class="group-header-line"></div>
+    </div>
+    <div class="topic-grid">
+      <a href="ai-sectors.html" class="topic-card">
+        <div class="topic-card-header"><div class="topic-num">12</div><div class="topic-icon">🏭</div></div>
+        <div class="topic-group">Reference</div>
+        <div class="topic-title">Sector-wise Use Cases</div>
+        <div class="topic-desc">AI across 8 Indian sectors — Legal, Banking, Healthcare, Agriculture, Education, Government, Manufacturing, Telecom — with DPDP risk ratings.</div>
+        <div class="topic-arrow">Read Section →</div>
+      </a>
+      <a href="ai-future.html" class="topic-card">
+        <div class="topic-card-header"><div class="topic-num">13</div><div class="topic-icon">🚀</div></div>
+        <div class="topic-group">Reference</div>
+        <div class="topic-title">Future of AI</div>
+        <div class="topic-desc">Near-term (2025–27), medium-term (2027–32), and long-term (2032+) AI scenarios — calibrated with appropriate uncertainty caveats.</div>
+        <div class="topic-arrow">Read Section →</div>
+      </a>
+      <a href="ai-glossary.html" class="topic-card">
+        <div class="topic-card-header"><div class="topic-num">14</div><div class="topic-icon">📖</div></div>
+        <div class="topic-group">Reference</div>
+        <div class="topic-title">AI Glossary</div>
+        <div class="topic-desc">16 key terms — Core AI Concepts (ML, LLM, Transformer, GAN) and Governance & Legal terms (XAI, Deepfake, Differential Privacy, AGI).</div>
+        <div class="topic-arrow">Read Section →</div>
+      </a>
+      <a href="ai-playbook.html" class="topic-card">
+        <div class="topic-card-header"><div class="topic-num">15</div><div class="topic-icon">📋</div></div>
+        <div class="topic-group">Reference</div>
+        <div class="topic-title">AI Compliance Playbook (DPDP)</div>
+        <div class="topic-desc">6-step DPDP-mapped AI compliance framework — Governance, Data Audit, Consent, Rights, Security, Monitoring. Informational only.</div>
+        <div class="topic-arrow">Read Section →</div>
+      </a>
+    </div>
+
+    <!-- RELATED KBs -->
+    <div style="background:var(--prussian);padding:2rem;margin-top:1rem;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--saffron);margin-bottom:1rem;">Cross-Reference — Related Knowledge Bases</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;">
+        <a href="dpdp-kb.html" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);padding:1.2rem;text-decoration:none;display:block;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.04)'">
+          <div style="font-size:1.4rem;margin-bottom:0.5rem;">📋</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.3rem;">Primary Law</div>
+          <div style="font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--parchment);">DPDP Act 2023 KB</div>
+        </a>
+        <a href="cybercrime-kb.html" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);padding:1.2rem;text-decoration:none;display:block;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.04)'">
+          <div style="font-size:1.4rem;margin-bottom:0.5rem;">🚨</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.3rem;">Fraud & Crime</div>
+          <div style="font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--parchment);">Cybercrime KB</div>
+        </a>
+        <a href="itact-kb.html" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);padding:1.2rem;text-decoration:none;display:block;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.04)'">
+          <div style="font-size:1.4rem;margin-bottom:0.5rem;">📜</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.3rem;">Digital Law</div>
+          <div style="font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--parchment);">IT Act 2000 KB</div>
+        </a>
+        <a href="ekyc-kb.html" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);padding:1.2rem;text-decoration:none;display:block;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.04)'">
+          <div style="font-size:1.4rem;margin-bottom:0.5rem;">🪪</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.3rem;">Identity</div>
+          <div style="font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--parchment);">Aadhaar &amp; eKYC</div>
+        </a>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
 <footer>
   <div class="page">
-    <div class="footer-ai-badge">🤖 AI + Law + Risk Intelligence Platform</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.1em;text-transform:uppercase;background:rgba(108,63,197,0.15);border:1px solid rgba(108,63,197,0.3);color:#9B6FE8;padding:6px 12px;display:inline-flex;align-items:center;gap:8px;margin-bottom:1rem;">🤖 AI + Law + Risk Intelligence Platform</div>
     <div class="footer-grid">
       <div>
         <div class="footer-brand-name">DPDPIndia.in</div>
@@ -1909,25 +572,12 @@ footer{background:var(--prussian);padding:4rem 0 2rem;border-top:3px solid var(-
       <div>
         <div class="footer-heading">AI Intelligence</div>
         <ul class="footer-links">
-          <li><a href="#intro">Introduction to AI</a></li>
-          <li><a href="#history">History & Evolution</a></li>
-          <li><a href="#personalities">Key Personalities</a></li>
-          <li><a href="#timeline">AI Timeline</a></li>
-          <li><a href="#privacy">AI & Privacy (DPDP)</a></li>
-          <li><a href="#cybercrime">AI & Cybercrime</a></li>
-          <li><a href="#global-regs">Global AI Regulations</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer-heading">AI Risk & India</div>
-        <ul class="footer-links">
-          <li><a href="#india">AI in India</a></li>
-          <li><a href="#risk">AI Risk Framework</a></li>
-          <li><a href="#threats">AI Threat Models</a></li>
-          <li><a href="#sectors">Sector Use Cases</a></li>
-          <li><a href="#future">Future of AI</a></li>
-          <li><a href="#glossary">AI Glossary</a></li>
-          <li><a href="#playbook">Compliance Playbook</a></li>
+          <li><a href="ai-intro.html">Introduction to AI</a></li>
+          <li><a href="ai-history.html">History &amp; Timeline</a></li>
+          <li><a href="ai-privacy.html">AI &amp; Privacy (DPDP)</a></li>
+          <li><a href="ai-cybercrime.html">AI &amp; Cybercrime</a></li>
+          <li><a href="ai-global-regs.html">Global AI Regulations</a></li>
+          <li><a href="ai-playbook.html">Compliance Playbook</a></li>
         </ul>
       </div>
       <div>
@@ -1936,47 +586,32 @@ footer{background:var(--prussian);padding:4rem 0 2rem;border-top:3px solid var(-
           <li><a href="index.html">Home</a></li>
           <li><a href="dpdp-kb.html">DPDP Act 2023</a></li>
           <li><a href="itact-kb.html">IT Act 2000</a></li>
-          <li><a href="ekyc-kb.html">Aadhaar & eKYC</a></li>
+          <li><a href="ekyc-kb.html">Aadhaar &amp; eKYC</a></li>
           <li><a href="cybercrime-kb.html">Cybercrime KB</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Quick Help</div>
+        <ul class="footer-links">
           <li><a href="cyber-fraud-hub.html">🚨 Report Fraud (1930)</a></li>
+          <li><a href="dpdp-rights.html">Know Your Rights</a></li>
+          <li><a href="blog.html">All Articles</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
     </div>
     <hr class="footer-divider">
     <div class="footer-bottom">
-      <div class="footer-copy">© 2026 DPDPIndia.in — All rights reserved · Independent Research Platform · Not Legal Advice · AI content is informational only</div>
+      <div class="footer-copy">© 2026 DPDPIndia.in — Independent Research Platform · Not Legal Advice · AI content is informational only</div>
       <div class="footer-legal-links">
-        <a href="legal.html">Terms of Use</a>
-        <a href="legal.html#privacy">Privacy Policy</a>
-        <a href="legal.html#safe-harbour">Safe Harbour</a>
-        <a href="contact.html">Contact</a>
+        <a href="legal.html">Terms</a><a href="legal.html#privacy">Privacy</a><a href="legal.html#safe-harbour">Safe Harbour</a>
       </div>
     </div>
   </div>
 </footer>
-
 <script>
-// Mobile menu toggle
-const hamburger = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobileMenu');
-if(hamburger && mobileMenu){
-  hamburger.addEventListener('click',()=>{
-    hamburger.classList.toggle('open');
-    mobileMenu.classList.toggle('open');
-  });
-}
-
-// Close mobile menu when a link inside it is clicked
-const mobileLinks = document.querySelectorAll('.mobile-menu a');
-mobileLinks.forEach(link => {
-  link.addEventListener('click',()=>{
-    hamburger.classList.remove('open');
-    mobileMenu.classList.remove('open');
-  });
-});
+const h=document.getElementById('hamburger'),m=document.getElementById('mobileMenu');
+if(h&&m){h.addEventListener('click',()=>{h.classList.toggle('open');m.classList.toggle('open');});}
 </script>
-
 </body>
-
 </html>

@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>13. Future of AI — AI Intelligence Hub | DPDPIndia.in</title>
+<meta name="description" content="Future of AI — Part of the AI + Law + Risk Intelligence Hub on DPDPIndia.in. Informational resource on artificial intelligence, DPDP Act, cybercrime, and AI governance in India.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --parchment:#F8F4EC;--cream:#FDFAF5;--paper:#F2EDE2;--ink:#1A1610;
+  --prussian:#1B2B3A;--slate:#2D3D4E;--saffron:#D4760A;--saffron-lt:#F0A840;
+  --ochre:#B8862C;--chakra-blue:#1B3A6B;--mist:#7A7468;
+  --rule:rgba(26,22,16,0.12);--rule-gold:rgba(212,118,10,0.25);
+  --shadow-sm:0 2px 12px rgba(26,22,16,0.06);--shadow-md:0 8px 40px rgba(26,22,16,0.10);
+  --danger:#C0392B;--danger-lt:rgba(192,57,43,0.08);--success:#1A6B3A;
+  /* AI section accent */
+  --ai:#6C3FC5;--ai-lt:#9B6FE8;--ai-dim:rgba(108,63,197,0.12);--ai-rule:rgba(108,63,197,0.25);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:'Source Serif 4',Georgia,serif;background:var(--cream);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;}
+
+/* ===== MASTHEAD ===== */
+.masthead{background:var(--prussian);padding:9px 0;text-align:center;border-bottom:2px solid var(--saffron);}
+.masthead-text{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.5);}
+.masthead-text span{color:var(--saffron-lt);}
+
+/* ===== NAV ===== */
+nav{position:sticky;top:0;z-index:500;background:var(--cream);border-bottom:1px solid var(--rule);box-shadow:var(--shadow-sm);}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:relative;}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0;}
+.nav-brand-seal{width:38px;height:38px;flex-shrink:0;}
+.nav-brand-name{display:flex;flex-direction:column;gap:1px;}
+.nav-brand-name strong{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--prussian);letter-spacing:0.01em;line-height:1;}
+.nav-brand-name span{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);line-height:1;}
+.nav-menu{display:flex;align-items:center;gap:0;list-style:none;}
+.nav-item{position:relative;}
+.nav-item>a{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--slate);text-decoration:none;padding:0 14px;height:64px;display:flex;align-items:center;transition:color 0.2s;white-space:nowrap;border-bottom:2px solid transparent;}
+.nav-item>a:hover,.nav-item.active>a{color:var(--saffron);border-bottom-color:var(--saffron);}
+.nav-item.ai-active>a{color:var(--ai);border-bottom-color:var(--ai);}
+.nav-item.has-dropdown>a::after{content:'▾';font-size:0.5rem;margin-left:5px;opacity:0.6;}
+.nav-dropdown{display:none;position:absolute;top:100%;left:0;min-width:260px;background:var(--cream);border:1px solid var(--rule);border-top:3px solid var(--saffron);box-shadow:var(--shadow-md);z-index:600;}
+.nav-item:hover .nav-dropdown{display:block;}
+.nav-dropdown-section{padding:0.6rem 0;}
+.nav-dropdown-label{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--saffron);padding:0.5rem 1.2rem 0.3rem;}
+.nav-dropdown a{display:block;font-family:'Source Serif 4',serif;font-size:0.82rem;font-weight:300;color:var(--slate);text-decoration:none;padding:0.5rem 1.2rem;transition:background 0.15s,color 0.15s;}
+.nav-dropdown a:hover{background:var(--parchment);color:var(--prussian);}
+.nav-dropdown hr{border:none;border-top:1px solid var(--rule);margin:0.4rem 0;}
+.nav-cta{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--danger);color:#fff!important;padding:9px 18px;margin-left:12px;border-bottom:none!important;transition:background 0.2s!important;}
+.nav-cta:hover{background:#a93226!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;z-index:201;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--prussian);transition:all 0.3s;}
+.mobile-menu{display:none;position:absolute;top:64px;left:0;right:0;background:var(--cream);border-bottom:2px solid var(--ai);box-shadow:var(--shadow-md);z-index:499;max-height:80vh;overflow-y:auto;}
+.mobile-menu.open{display:block;}
+.mobile-menu ul{list-style:none;padding:0.5rem 1.5rem 1.5rem;}
+.mobile-menu ul li a{display:block;font-family:'Source Serif 4',serif;font-size:0.92rem;color:var(--slate);text-decoration:none;padding:0.6rem 0;border-bottom:1px solid var(--rule);}
+.mobile-menu ul li a:hover{color:var(--ai);}
+.mm-label{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--ai);padding:1rem 0 0.3rem;display:block;}
+
+/* ===== PAGE LAYOUT ===== */
+.page{max-width:1320px;margin:0 auto;padding:0 2rem;}
+
+/* ===== AI HERO ===== */
+.ai-hero{background:var(--prussian);padding:6rem 0 5rem;position:relative;overflow:hidden;}
+.ai-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(108,63,197,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(108,63,197,0.06) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
+.ai-hero::after{content:'';position:absolute;top:0;right:0;width:55%;height:100%;background:radial-gradient(ellipse at right top,rgba(108,63,197,0.18) 0%,transparent 60%);pointer-events:none;}
+.ai-hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.ai-hero-kicker{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem;}
+.ai-hero-kicker-line{width:40px;height:1px;background:var(--ai-lt);}
+.ai-hero-kicker-text{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--ai-lt);}
+.ai-hero-badge{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;background:rgba(108,63,197,0.2);border:1px solid rgba(108,63,197,0.4);color:var(--ai-lt);padding:5px 12px;margin-bottom:1rem;}
+.ai-hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4vw,3.6rem);font-weight:900;line-height:1.1;color:var(--parchment);margin-bottom:1.2rem;}
+.ai-hero-title em{font-style:italic;color:var(--ai-lt);}
+.ai-hero-deck{font-size:1rem;font-weight:300;line-height:1.85;color:rgba(248,244,236,0.65);margin-bottom:2rem;}
+.ai-hero-pills{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:2.5rem;}
+.ai-pill{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid rgba(108,63,197,0.4);color:var(--ai-lt);padding:5px 12px;}
+.ai-hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;}
+.ai-cta-primary{font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;background:var(--ai);color:#fff;padding:14px 28px;text-decoration:none;transition:background 0.2s;display:inline-flex;align-items:center;gap:8px;}
+.ai-cta-primary:hover{background:var(--ai-lt);}
+.ai-cta-secondary{font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(255,255,255,0.25);color:rgba(248,244,236,0.75);padding:14px 28px;text-decoration:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;}
+.ai-cta-secondary:hover{border-color:var(--ai-lt);color:var(--ai-lt);}
+/* Hero right stats */
+.ai-hero-right{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.ai-stat-card{background:rgba(108,63,197,0.08);border:1px solid rgba(108,63,197,0.2);padding:1.5rem;}
+.ai-stat-card:hover{border-color:rgba(108,63,197,0.5);}
+.ai-stat-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:var(--ai-lt);line-height:1;margin-bottom:0.3rem;}
+.ai-stat-label{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.45);}
+.ai-stat-note{font-family:'Source Serif 4',serif;font-size:0.72rem;color:rgba(255,255,255,0.3);margin-top:0.3rem;font-style:italic;}
+
+/* ===== SECTION NAV (JUMP LINKS) ===== */
+.ai-section-nav{background:var(--ink);border-bottom:2px solid var(--ai);padding:0;overflow-x:auto;}
+.ai-section-nav-inner{max-width:1320px;margin:0 auto;padding:0 2rem;display:flex;gap:0;white-space:nowrap;}
+.ai-section-nav a{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;padding:14px 16px;display:inline-flex;align-items:center;gap:6px;border-bottom:2px solid transparent;transition:color 0.2s,border-color 0.2s;white-space:nowrap;}
+.ai-section-nav a:hover{color:var(--ai-lt);border-bottom-color:var(--ai);}
+.ai-section-nav a span{font-size:0.7rem;}
+
+/* ===== COMMON SECTION STYLES ===== */
+.section-label{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--ai);margin-bottom:0.8rem;display:flex;align-items:center;gap:12px;}
+.section-label::before{content:'';width:28px;height:1px;background:var(--ai);}
+.section-label-light{color:var(--ai-lt);}
+.section-label-light::before{background:var(--ai-lt);}
+.section-heading{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:900;line-height:1.1;color:var(--prussian);margin-bottom:0.6rem;}
+.section-heading em{font-style:italic;color:var(--ai);}
+.section-heading-light{color:var(--parchment);}
+.section-heading-light em{color:var(--ai-lt);}
+.section-deck{font-size:0.95rem;font-weight:300;line-height:1.85;color:var(--mist);margin-bottom:2.5rem;max-width:640px;}
+.section-deck-light{color:rgba(248,244,236,0.55);}
+.disclaimer-box{background:var(--ai-dim);border:1px solid var(--ai-rule);border-left:3px solid var(--ai);padding:1.2rem 1.5rem;margin-bottom:2rem;}
+.disclaimer-box p{font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.04em;color:var(--ai);line-height:1.7;}
+.disclaimer-box strong{color:var(--prussian);}
+
+/* ===== INTRO SECTION ===== */
+.ai-intro{padding:6rem 0;background:var(--cream);}
+.ai-intro-grid{display:grid;grid-template-columns:2fr 1fr;gap:4rem;align-items:start;}
+.ai-intro-body p{font-size:0.95rem;font-weight:300;line-height:1.9;color:var(--slate);margin-bottom:1.2rem;}
+.ai-intro-body p:last-child{margin-bottom:0;}
+.ai-intro-body strong{font-weight:600;color:var(--prussian);}
+.ai-sidebar-card{background:var(--prussian);padding:2rem;margin-bottom:1.5rem;}
+.ai-sidebar-label{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--ai-lt);margin-bottom:0.8rem;}
+.ai-sidebar-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--parchment);margin-bottom:0.6rem;}
+.ai-sidebar-list{list-style:none;}
+.ai-sidebar-list li{font-family:'Source Serif 4',serif;font-size:0.82rem;font-weight:300;color:rgba(248,244,236,0.6);padding:0.45rem 0;border-bottom:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;gap:8px;}
+.ai-sidebar-list li:last-child{border-bottom:none;}
+.ai-sidebar-list li::before{content:'→';font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--ai-lt);flex-shrink:0;}
+.ai-sidebar-list li a{color:rgba(248,244,236,0.6);text-decoration:none;transition:color 0.2s;}
+.ai-sidebar-list li a:hover{color:var(--ai-lt);}
+.ai-three-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem;}
+.ai-pillar{background:var(--parchment);border:1px solid var(--rule);border-top:3px solid var(--ai);padding:1.5rem;}
+.ai-pillar-icon{font-size:1.8rem;margin-bottom:0.6rem;}
+.ai-pillar-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--prussian);margin-bottom:0.4rem;}
+.ai-pillar-desc{font-size:0.8rem;font-weight:300;color:var(--mist);line-height:1.7;}
+
+/* ===== HISTORY SECTION ===== */
+.ai-history{padding:6rem 0;background:var(--ink);position:relative;overflow:hidden;}
+.ai-history::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(108,63,197,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(108,63,197,0.04) 1px,transparent 1px);background-size:56px 56px;pointer-events:none;}
+.history-phases{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.phase-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);padding:2rem;position:relative;overflow:hidden;}
+.phase-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--phase-color,var(--ai));}
+.phase-card:hover{border-color:rgba(108,63,197,0.4);}
+.phase-era{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--phase-color,var(--ai-lt));margin-bottom:0.5rem;}
+.phase-name{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--parchment);margin-bottom:0.8rem;line-height:1.2;}
+.phase-desc{font-size:0.82rem;font-weight:300;color:rgba(248,244,236,0.5);line-height:1.75;margin-bottom:1rem;}
+.phase-milestones{list-style:none;}
+.phase-milestones li{font-size:0.78rem;font-weight:300;color:rgba(248,244,236,0.4);padding:0.35rem 0;border-bottom:1px solid rgba(255,255,255,0.04);display:flex;gap:10px;}
+.phase-milestones li:last-child{border-bottom:none;}
+.phase-year{font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--phase-color,var(--ai-lt));flex-shrink:0;min-width:38px;}
+
+/* ===== PERSONALITIES SECTION ===== */
+.ai-personalities{padding:6rem 0;background:var(--parchment);}
+.personalities-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
+.person-card{background:var(--cream);border:1px solid var(--rule);padding:1.8rem;transition:box-shadow 0.2s,transform 0.2s;}
+.person-card:hover{box-shadow:var(--shadow-md);transform:translateY(-3px);}
+.person-avatar{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--ai) 0%,var(--prussian) 100%);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:#fff;margin-bottom:1rem;flex-shrink:0;}
+.person-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--prussian);margin-bottom:0.2rem;}
+.person-dates{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.1em;color:var(--ai);margin-bottom:0.5rem;}
+.person-role{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--mist);margin-bottom:0.6rem;}
+.person-contrib{font-size:0.8rem;font-weight:300;color:var(--slate);line-height:1.7;}
+.person-tag{display:inline-flex;font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--ai-dim);color:var(--ai);padding:3px 8px;border:1px solid var(--ai-rule);margin-top:0.6rem;}
+
+/* ===== TIMELINE SECTION ===== */
+.ai-timeline{padding:6rem 0;background:var(--cream);}
+.timeline-wrapper{position:relative;padding-left:2rem;}
+.timeline-wrapper::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--ai) 0%,var(--ai-lt) 50%,rgba(108,63,197,0.2) 100%);}
+.timeline-entry{position:relative;padding:0 0 2.5rem 2.5rem;}
+.timeline-entry:last-child{padding-bottom:0;}
+.timeline-dot{position:absolute;left:-2.6rem;top:0.3rem;width:14px;height:14px;border-radius:50%;background:var(--ai);border:2px solid var(--cream);flex-shrink:0;}
+.timeline-dot.milestone{width:18px;height:18px;background:var(--saffron);left:-2.8rem;top:0.1rem;}
+.timeline-year-badge{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.14em;font-weight:500;background:var(--ai);color:#fff;padding:3px 10px;display:inline-flex;margin-bottom:0.5rem;}
+.timeline-year-badge.gold{background:var(--saffron);}
+.timeline-event-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--prussian);margin-bottom:0.3rem;}
+.timeline-event-desc{font-size:0.83rem;font-weight:300;color:var(--mist);line-height:1.75;max-width:760px;}
+.timeline-tag{font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--parchment);color:var(--ai);border:1px solid var(--ai-rule);padding:2px 8px;margin-left:8px;vertical-align:middle;}
+.timeline-filter{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:2.5rem;}
+.tf-btn{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;background:none;border:1px solid var(--rule);color:var(--mist);padding:6px 14px;cursor:pointer;transition:all 0.2s;}
+.tf-btn:hover,.tf-btn.active{background:var(--ai);border-color:var(--ai);color:#fff;}
+
+/* ===== AI & PRIVACY SECTION ===== */
+.ai-privacy{padding:6rem 0;background:var(--prussian);position:relative;overflow:hidden;}
+.ai-privacy::after{content:'';position:absolute;bottom:0;right:0;width:40%;height:60%;background:radial-gradient(ellipse at right bottom,rgba(108,63,197,0.12) 0%,transparent 60%);pointer-events:none;}
+.dpdp-map-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem;}
+.dpdp-map-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);padding:1.8rem;border-left:3px solid var(--ai);}
+.dpdp-map-card:hover{border-left-color:var(--ai-lt);background:rgba(108,63,197,0.06);}
+.dpdp-section-ref{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.4rem;}
+.dpdp-map-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--parchment);margin-bottom:0.6rem;}
+.dpdp-map-body{font-size:0.82rem;font-weight:300;color:rgba(248,244,236,0.55);line-height:1.75;}
+.dpdp-map-body strong{color:var(--ai-lt);font-weight:500;}
+.dpdp-risk-levels{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem;}
+.dpdp-risk{padding:1.2rem;border:1px solid rgba(255,255,255,0.07);text-align:center;}
+.dpdp-risk-icon{font-size:1.6rem;margin-bottom:0.5rem;}
+.dpdp-risk-label{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ai-lt);margin-bottom:0.3rem;}
+.dpdp-risk-desc{font-size:0.78rem;font-weight:300;color:rgba(248,244,236,0.4);line-height:1.6;}
+.high-risk{border-color:rgba(192,57,43,0.4);}
+.high-risk .dpdp-risk-label{color:#e74c3c;}
+.medium-risk{border-color:rgba(212,118,10,0.4);}
+.medium-risk .dpdp-risk-label{color:var(--saffron-lt);}
+
+/* ===== AI & CYBERCRIME SECTION ===== */
+.ai-cybercrime{padding:6rem 0;background:var(--cream);}
+.cybercrime-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.cc-card{background:var(--parchment);border:1px solid var(--rule);border-top:4px solid var(--danger);padding:2rem;transition:box-shadow 0.2s;}
+.cc-card:hover{box-shadow:var(--shadow-md);}
+.cc-card.ai-assisted{border-top-color:var(--ai);}
+.cc-icon{font-size:2rem;margin-bottom:0.8rem;}
+.cc-label{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--danger);margin-bottom:0.4rem;}
+.cc-card.ai-assisted .cc-label{color:var(--ai);}
+.cc-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--prussian);margin-bottom:0.6rem;}
+.cc-desc{font-size:0.82rem;font-weight:300;color:var(--mist);line-height:1.75;margin-bottom:1rem;}
+.cc-impact{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;background:var(--danger-lt);border:1px solid rgba(192,57,43,0.2);color:var(--danger);padding:6px 10px;line-height:1.5;}
+.cc-card.ai-assisted .cc-impact{background:var(--ai-dim);border-color:var(--ai-rule);color:var(--ai);}
+.india-stat-strip{background:var(--ink);padding:3rem 0;margin-top:4rem;}
+.india-stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid rgba(255,255,255,0.07);}
+.india-stat-item{padding:2rem;border-right:1px solid rgba(255,255,255,0.07);text-align:center;}
+.india-stat-item:last-child{border-right:none;}
+.india-stat-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:var(--danger);line-height:1;margin-bottom:0.3rem;}
+.india-stat-label{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.35);}
+.india-stat-src{font-size:0.68rem;color:rgba(255,255,255,0.2);margin-top:0.3rem;font-style:italic;}
+
+/* ===== AI & CYBERSECURITY ===== */
+.ai-cybersecurity{padding:6rem 0;background:var(--parchment);}
+.cs-two-col{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2rem;}
+.cs-col-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--prussian);margin-bottom:1.5rem;padding-bottom:0.8rem;border-bottom:2px solid var(--rule);}
+.cs-col-title span{color:var(--ai);}
+.cs-item{padding:1rem 0;border-bottom:1px solid var(--rule);}
+.cs-item:last-child{border-bottom:none;}
+.cs-item-title{font-family:'Source Serif 4',serif;font-size:0.92rem;font-weight:600;color:var(--prussian);margin-bottom:0.3rem;}
+.cs-item-desc{font-size:0.8rem;font-weight:300;color:var(--mist);line-height:1.7;}
+.cs-item-tag{font-family:'JetBrains Mono',monospace;font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;padding:2px 7px;border:1px solid;margin-left:6px;vertical-align:middle;}
+.cs-item-tag.threat{border-color:rgba(192,57,43,0.4);color:var(--danger);}
+.cs-item-tag.defence{border-color:rgba(108,63,197,0.4);color:var(--ai);}
+
+/* ===== GLOBAL AI REGULATIONS ===== */
+.ai-global-regs{padding:6rem 0;background:var(--ink);position:relative;overflow:hidden;}
+.regs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem;}
+.reg-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);padding:2rem;transition:border-color 0.2s;}
+.reg-card:hover{border-color:rgba(108,63,197,0.4);}
+.reg-flag{font-size:1.8rem;margin-bottom:0.8rem;}
+.reg-country{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--ai-lt);margin-bottom:0.3rem;}
+.reg-law{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--parchment);margin-bottom:0.4rem;}
+.reg-status{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.1em;text-transform:uppercase;padding:3px 8px;border:1px solid;display:inline-flex;margin-bottom:0.8rem;}
+.reg-status.in-force{border-color:rgba(26,107,58,0.5);color:#2ecc71;}
+.reg-status.enacted{border-color:rgba(26,107,58,0.5);color:#2ecc71;}
+.reg-status.draft{border-color:rgba(212,118,10,0.4);color:var(--saffron-lt);}
+.reg-status.principles{border-color:rgba(108,63,197,0.4);color:var(--ai-lt);}
+.reg-desc{font-size:0.8rem;font-weight:300;color:rgba(248,244,236,0.45);line-height:1.75;}
+.reg-key-point{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.04em;color:var(--saffron-lt);margin-top:0.8rem;padding-top:0.8rem;border-top:1px solid rgba(255,255,255,0.06);}
+
+/* ===== AI IN INDIA ===== */
+.ai-india{padding:6rem 0;background:var(--cream);}
+.india-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem;}
+.india-card{background:var(--parchment);border:1px solid var(--rule);padding:2rem;}
+.india-card.featured{background:var(--prussian);grid-column:span 2;}
+.india-card-label{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.4rem;}
+.india-card.featured .india-card-label{color:var(--ai-lt);}
+.india-card-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--prussian);margin-bottom:0.6rem;}
+.india-card.featured .india-card-title{color:var(--parchment);font-size:1.5rem;}
+.india-card-desc{font-size:0.85rem;font-weight:300;color:var(--mist);line-height:1.75;}
+.india-card.featured .india-card-desc{color:rgba(248,244,236,0.6);}
+.india-card-list{list-style:none;margin-top:1rem;}
+.india-card-list li{font-size:0.82rem;font-weight:300;color:var(--slate);padding:0.4rem 0;border-bottom:1px solid var(--rule);display:flex;align-items:flex-start;gap:8px;}
+.india-card.featured .india-card-list li{color:rgba(248,244,236,0.55);border-bottom-color:rgba(255,255,255,0.07);}
+.india-card-list li:last-child{border-bottom:none;}
+.india-card-list li::before{content:'◆';font-size:0.5rem;color:var(--saffron);flex-shrink:0;margin-top:0.25rem;}
+.india-dpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.5rem;}
+.dpi-item{background:var(--ink);padding:1.5rem;text-align:center;border-top:3px solid var(--ai);}
+.dpi-icon{font-size:2rem;margin-bottom:0.5rem;}
+.dpi-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--parchment);margin-bottom:0.3rem;}
+.dpi-desc{font-size:0.75rem;font-weight:300;color:rgba(248,244,236,0.4);line-height:1.6;}
+
+/* ===== AI RISK FRAMEWORK ===== */
+.ai-risk{padding:6rem 0;background:var(--prussian);position:relative;}
+.risk-matrix{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem;}
+.risk-category{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);padding:2rem;}
+.risk-cat-label{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--risk-color,var(--ai-lt));margin-bottom:0.6rem;}
+.risk-cat-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--parchment);margin-bottom:1rem;}
+.risk-items{list-style:none;}
+.risk-items li{font-size:0.8rem;font-weight:300;color:rgba(248,244,236,0.45);padding:0.4rem 0;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;align-items:flex-start;gap:8px;}
+.risk-items li:last-child{border-bottom:none;}
+.risk-items li::before{content:'▸';font-family:'JetBrains Mono';font-size:0.6rem;color:var(--risk-color,var(--ai-lt));flex-shrink:0;margin-top:0.1rem;}
+.risk-cat-high{--risk-color:#e74c3c;}
+.risk-cat-medium{--risk-color:var(--saffron-lt);}
+.risk-cat-low{--risk-color:#2ecc71;}
+.nist-rmf{margin-top:3rem;background:rgba(108,63,197,0.08);border:1px solid rgba(108,63,197,0.2);padding:2rem;}
+.nist-rmf-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--parchment);margin-bottom:1.5rem;}
+.nist-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+.nist-step{text-align:center;padding:1rem;}
+.nist-step-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--ai-lt);line-height:1;margin-bottom:0.4rem;}
+.nist-step-name{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:0.3rem;}
+.nist-step-desc{font-size:0.75rem;font-weight:300;color:rgba(248,244,236,0.3);line-height:1.6;}
+
+/* ===== AI THREAT MODELS ===== */
+.ai-threats{padding:6rem 0;background:var(--ink);}
+.threats-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem;}
+.threat-card{background:rgba(192,57,43,0.04);border:1px solid rgba(192,57,43,0.15);padding:2rem;}
+.threat-card:hover{border-color:rgba(192,57,43,0.4);}
+.threat-severity{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.4rem;}
+.severity-critical{color:#e74c3c;}
+.severity-high{color:var(--saffron-lt);}
+.severity-medium{color:#f39c12;}
+.threat-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--parchment);margin-bottom:0.6rem;}
+.threat-desc{font-size:0.82rem;font-weight:300;color:rgba(248,244,236,0.45);line-height:1.75;margin-bottom:1rem;}
+.threat-example{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.04em;color:var(--saffron-lt);background:rgba(212,118,10,0.06);border-left:2px solid var(--saffron);padding:0.6rem 1rem;line-height:1.6;}
+.threat-mitigation{font-size:0.78rem;font-weight:300;color:rgba(248,244,236,0.35);margin-top:0.8rem;padding-top:0.8rem;border-top:1px solid rgba(255,255,255,0.06);}
+.threat-mitigation strong{color:rgba(108,63,197,0.8);font-weight:500;}
+
+/* ===== SECTOR USE CASES ===== */
+.ai-sectors{padding:6rem 0;background:var(--parchment);}
+.sectors-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2rem;}
+.sector-card{background:var(--cream);border:1px solid var(--rule);border-top:3px solid var(--ai);padding:1.8rem;transition:box-shadow 0.2s,transform 0.2s;}
+.sector-card:hover{box-shadow:var(--shadow-md);transform:translateY(-3px);}
+.sector-icon{font-size:2rem;margin-bottom:0.8rem;}
+.sector-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--prussian);margin-bottom:0.8rem;}
+.sector-use-list{list-style:none;}
+.sector-use-list li{font-size:0.78rem;font-weight:300;color:var(--mist);padding:0.3rem 0;border-bottom:1px solid var(--rule);display:flex;align-items:flex-start;gap:6px;}
+.sector-use-list li:last-child{border-bottom:none;}
+.sector-use-list li::before{content:'·';color:var(--ai);font-size:1rem;line-height:1.1;flex-shrink:0;}
+.sector-risk{font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--ai-rule);color:var(--ai);margin-top:0.8rem;display:inline-flex;}
+
+/* ===== FUTURE OF AI ===== */
+.ai-future{padding:6rem 0;background:var(--prussian);position:relative;overflow:hidden;}
+.ai-future::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(108,63,197,0.08) 0%,transparent 70%);pointer-events:none;}
+.future-horizons{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem;}
+.horizon-card{padding:2rem;border:1px solid rgba(255,255,255,0.07);position:relative;overflow:hidden;}
+.horizon-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--h-color,var(--ai));}
+.horizon-timeframe{font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.14em;color:var(--h-color,var(--ai-lt));margin-bottom:0.5rem;}
+.horizon-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--parchment);margin-bottom:0.8rem;}
+.horizon-items{list-style:none;}
+.horizon-items li{font-size:0.8rem;font-weight:300;color:rgba(248,244,236,0.45);padding:0.4rem 0;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;gap:8px;}
+.horizon-items li:last-child{border-bottom:none;}
+.horizon-items li::before{content:'→';font-family:'JetBrains Mono';font-size:0.6rem;color:var(--h-color,var(--ai-lt));flex-shrink:0;}
+.h-near{--h-color:#2ecc71;}
+.h-mid{--h-color:var(--saffron-lt);}
+.h-far{--h-color:var(--ai-lt);}
+
+/* ===== AI GLOSSARY ===== */
+.ai-glossary{padding:6rem 0;background:var(--cream);}
+.glossary-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem;}
+.glossary-group{background:var(--parchment);border:1px solid var(--rule);padding:2rem;}
+.glossary-group-title{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--ai);margin-bottom:1.2rem;padding-bottom:0.6rem;border-bottom:1px solid var(--ai-rule);}
+.gloss-term{padding:0.8rem 0;border-bottom:1px solid var(--rule);}
+.gloss-term:last-child{border-bottom:none;}
+.gloss-word{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--prussian);margin-bottom:0.2rem;}
+.gloss-abbr{font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:var(--ai);margin-left:6px;letter-spacing:0.1em;}
+.gloss-def{font-size:0.8rem;font-weight:300;color:var(--mist);line-height:1.7;}
+
+/* ===== COMPLIANCE PLAYBOOK ===== */
+.ai-playbook{padding:6rem 0;background:var(--ink);position:relative;}
+.playbook-steps{margin-top:2rem;}
+.playbook-step{display:grid;grid-template-columns:auto 1fr;gap:2rem;padding:2rem 0;border-bottom:1px solid rgba(255,255,255,0.06);}
+.playbook-step:last-child{border-bottom:none;}
+.step-number{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:var(--ai);opacity:0.3;line-height:1;flex-shrink:0;width:60px;text-align:right;}
+.step-body{}
+.step-label{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.4rem;}
+.step-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--parchment);margin-bottom:0.6rem;}
+.step-desc{font-size:0.85rem;font-weight:300;color:rgba(248,244,236,0.5);line-height:1.75;margin-bottom:1rem;}
+.step-actions{display:flex;flex-wrap:wrap;gap:0.5rem;}
+.step-action{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.08em;background:rgba(108,63,197,0.1);border:1px solid rgba(108,63,197,0.25);color:var(--ai-lt);padding:5px 12px;}
+.playbook-cta-bar{background:rgba(108,63,197,0.12);border:1px solid rgba(108,63,197,0.25);padding:2.5rem;margin-top:3rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;}
+.playbook-cta-text{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--parchment);}
+.playbook-cta-sub{font-size:0.85rem;font-weight:300;color:rgba(248,244,236,0.5);margin-top:0.3rem;}
+.playbook-cta-btn{font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;background:var(--ai);color:#fff;padding:14px 28px;text-decoration:none;white-space:nowrap;transition:background 0.2s;}
+.playbook-cta-btn:hover{background:var(--ai-lt);}
+
+/* ===== CROSS-LINKS BAND ===== */
+.ai-crosslinks{padding:5rem 0;background:var(--parchment);}
+.crosslinks-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2rem;}
+.crosslink-card{background:var(--cream);border:1px solid var(--rule);border-top:4px solid var(--prussian);padding:1.8rem;text-decoration:none;color:inherit;transition:transform 0.2s,box-shadow 0.2s,border-top-color 0.2s;}
+.crosslink-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-top-color:var(--saffron);}
+.crosslink-icon{font-size:1.8rem;margin-bottom:0.6rem;}
+.crosslink-label{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.3rem;}
+.crosslink-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--prussian);margin-bottom:0.4rem;}
+.crosslink-desc{font-size:0.8rem;font-weight:300;color:var(--mist);line-height:1.7;}
+.crosslink-arrow{font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--saffron);margin-top:0.8rem;display:block;}
+
+/* ===== FOOTER ===== */
+footer{background:var(--prussian);padding:4rem 0 2rem;border-top:3px solid var(--saffron);}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+.footer-brand-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--parchment);margin-bottom:0.5rem;}
+.footer-brand-desc{font-size:0.82rem;font-weight:300;color:rgba(248,244,236,0.5);line-height:1.8;}
+.footer-heading{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--saffron);margin-bottom:1rem;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.footer-links a{font-size:0.82rem;font-weight:300;color:rgba(248,244,236,0.5);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--parchment);}
+.footer-divider{border:none;border-top:1px solid rgba(255,255,255,0.08);margin-bottom:2rem;}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.footer-copy{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.1em;color:rgba(255,255,255,0.3);}
+.footer-legal-links{display:flex;gap:1.5rem;}
+.footer-legal-links a{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.08em;color:rgba(255,255,255,0.3);text-decoration:none;}
+.footer-legal-links a:hover{color:var(--saffron);}
+.footer-ai-badge{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.1em;text-transform:uppercase;background:rgba(108,63,197,0.15);border:1px solid rgba(108,63,197,0.3);color:var(--ai-lt);padding:6px 12px;margin-bottom:1rem;}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1100px){
+  .nav-menu{display:none;}
+  .hamburger{display:flex;}
+  .ai-hero-inner{grid-template-columns:1fr;}
+  .ai-hero-right{display:none;}
+  .history-phases{grid-template-columns:1fr 1fr;}
+  .personalities-grid{grid-template-columns:1fr 1fr;}
+  .dpdp-map-grid{grid-template-columns:1fr;}
+  .cybercrime-grid{grid-template-columns:1fr 1fr;}
+  .regs-grid{grid-template-columns:1fr 1fr;}
+  .india-grid{grid-template-columns:1fr;}
+  .india-card.featured{grid-column:span 1;}
+  .risk-matrix{grid-template-columns:1fr 1fr;}
+  .nist-steps{grid-template-columns:1fr 1fr;}
+  .sectors-grid{grid-template-columns:1fr 1fr;}
+  .future-horizons{grid-template-columns:1fr;}
+  .glossary-grid{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .crosslinks-grid{grid-template-columns:1fr 1fr;}
+  .india-stat-grid{grid-template-columns:1fr 1fr;}
+  .threats-grid{grid-template-columns:1fr;}
+  .cs-two-col{grid-template-columns:1fr;}
+  .ai-intro-grid{grid-template-columns:1fr;}
+  .ai-three-pillars{grid-template-columns:1fr 1fr;}
+  .india-dpi-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:768px){
+  .history-phases{grid-template-columns:1fr;}
+  .personalities-grid{grid-template-columns:1fr 1fr;}
+  .cybercrime-grid{grid-template-columns:1fr;}
+  .regs-grid{grid-template-columns:1fr;}
+  .risk-matrix{grid-template-columns:1fr;}
+  .sectors-grid{grid-template-columns:1fr 1fr;}
+  .crosslinks-grid{grid-template-columns:1fr 1fr;}
+  .india-dpi-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:640px){
+  .personalities-grid{grid-template-columns:1fr;}
+  .sectors-grid{grid-template-columns:1fr;}
+  .crosslinks-grid{grid-template-columns:1fr;}
+  .ai-three-pillars{grid-template-columns:1fr;}
+  .nist-steps{grid-template-columns:1fr 1fr;}
+  .india-stat-grid{grid-template-columns:1fr 1fr;}
+  .dpdp-risk-levels{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+  .playbook-cta-bar{flex-direction:column;text-align:center;}
+}
+
+
+/* ===== SIDEBAR LAYOUT ===== */
+.ai-page-layout{display:grid;grid-template-columns:280px 1fr;min-height:calc(100vh - 130px);align-items:start;}
+.ai-sidebar{width:280px;position:sticky;top:64px;max-height:calc(100vh - 64px);overflow-y:auto;background:var(--ink);border-right:1px solid rgba(255,255,255,0.06);padding:1.5rem 0;flex-shrink:0;scrollbar-width:thin;scrollbar-color:rgba(108,63,197,0.4) transparent;}
+.ai-sidebar::-webkit-scrollbar{width:4px;}
+.ai-sidebar::-webkit-scrollbar-track{background:transparent;}
+.ai-sidebar::-webkit-scrollbar-thumb{background:rgba(108,63,197,0.4);border-radius:2px;}
+.sb-brand{display:flex;align-items:center;gap:10px;padding:0.8rem 1.2rem 1rem;border-bottom:1px solid rgba(255,255,255,0.06);margin-bottom:0.5rem;}
+.sb-brand-icon{font-size:1.4rem;flex-shrink:0;}
+.sb-brand-name{font-family:'Playfair Display',serif;font-size:0.88rem;font-weight:700;color:var(--parchment);line-height:1.2;}
+.sb-brand-sub{font-family:'JetBrains Mono',monospace;font-size:0.5rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ai-lt);margin-top:2px;}
+.sb-back{display:flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--saffron);text-decoration:none;padding:0.5rem 1.2rem;margin-bottom:0.5rem;transition:color 0.2s;}
+.sb-back:hover{color:var(--saffron-lt);}
+.sb-group{margin-bottom:0.2rem;}
+.sb-group-label{font-family:'JetBrains Mono',monospace;font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.25);padding:0.6rem 1.2rem 0.3rem;}
+.sb-item{display:flex;align-items:center;gap:8px;text-decoration:none;color:rgba(248,244,236,0.45);font-family:'Source Serif 4',serif;font-size:0.8rem;font-weight:300;padding:0.45rem 1.2rem;transition:background 0.15s,color 0.15s;border-left:2px solid transparent;line-height:1.35;}
+.sb-item:hover{background:rgba(108,63,197,0.08);color:var(--parchment);border-left-color:rgba(108,63,197,0.4);}
+.sb-item.active{background:rgba(108,63,197,0.12);color:var(--parchment);border-left-color:var(--ai);font-weight:400;}
+.sb-num{font-family:'JetBrains Mono',monospace;font-size:0.52rem;color:rgba(255,255,255,0.2);flex-shrink:0;width:22px;text-align:right;}
+.sb-item.active .sb-num{color:var(--ai-lt);}
+.sb-icon{font-size:0.9rem;flex-shrink:0;}
+.sb-related{border-top:1px solid rgba(255,255,255,0.06);margin-top:0.5rem;padding-top:0.5rem;}
+.sb-item-ext{display:flex;align-items:center;gap:8px;text-decoration:none;color:rgba(248,244,236,0.3);font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.04em;padding:0.4rem 1.2rem;transition:color 0.15s;}
+.sb-item-ext:hover{color:var(--saffron-lt);}
+.ai-main{min-width:0;padding:0;}
+/* Remove padding from sections since they live in a column now */
+.ai-main > section,.ai-main > .ai-intro,.ai-main > .ai-history,.ai-main > .ai-personalities,
+.ai-main > .ai-timeline,.ai-main > .ai-privacy,.ai-main > .ai-cybercrime,.ai-main > .ai-cybersecurity,
+.ai-main > .ai-global-regs,.ai-main > .ai-india,.ai-main > .ai-risk,.ai-main > .ai-threats,
+.ai-main > .ai-sectors,.ai-main > .ai-future,.ai-main > .ai-glossary,.ai-main > .ai-playbook{
+  border-top:none;
+}
+/* Prev / Next nav */
+.pg-nav{display:flex;justify-content:space-between;align-items:center;padding:2rem;border-top:1px solid rgba(255,255,255,0.06);background:var(--ink);}
+.pg-nav-btn{display:flex;flex-direction:column;gap:4px;text-decoration:none;transition:opacity 0.2s;max-width:240px;}
+.pg-nav-btn:hover{opacity:0.75;}
+.pg-nav-label{font-family:'JetBrains Mono',monospace;font-size:0.54rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.3);}
+.pg-nav-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--parchment);}
+.pg-nav-btn.next{text-align:right;}
+.pg-nav-center{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.25);}
+/* Responsive */
+@media(max-width:1100px){
+  .ai-page-layout{grid-template-columns:1fr;}
+  .ai-sidebar{display:none;}
+}
+
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <span class="masthead-text">Independent Research Platform — <span>AI + Law + Risk Intelligence · DPDP Act 2023 · IT Act 2000 · Cyber Fraud</span> — For Informational Use Only</span>
+</div>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <svg class="nav-brand-seal" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="21" cy="21" r="20" fill="#1B2B3A" stroke="#D4760A" stroke-width="1.5"/>
+        <text x="21" y="17" text-anchor="middle" font-family="Playfair Display,serif" font-size="7" font-weight="700" fill="#F0A840" letter-spacing="0.05em">DPDP</text>
+        <text x="21" y="26" text-anchor="middle" font-family="Playfair Display,serif" font-size="5" font-weight="400" fill="rgba(248,244,236,0.6)" letter-spacing="0.05em">INDIA</text>
+        <circle cx="21" cy="21" r="10" stroke="#D4760A" stroke-width="0.75" fill="none" opacity="0.4"/>
+      </svg>
+      <div class="nav-brand-name"><strong>DPDPIndia.in</strong><span>Data Protection Intelligence</span></div>
+    </a>
+    <ul class="nav-menu" id="desktop-nav">
+      <li class="nav-item has-dropdown"><a href="dpdp-kb.html">DPDP Act</a>
+        <div class="nav-dropdown"><div class="nav-dropdown-section">
+          <a href="dpdp-kb.html">DPDP Act Overview</a><a href="dpdp-act.html">Plain Language Guide</a>
+          <a href="dpdp-rights.html">Your Rights</a><a href="dpdp-rules.html">DPDP Rules 2025</a>
+          <a href="dpdp-global.html">DPDP vs GDPR</a></div></div></li>
+      <li class="nav-item has-dropdown"><a href="itact-kb.html">IT Act</a>
+        <div class="nav-dropdown"><div class="nav-dropdown-section">
+          <a href="itact-kb.html">IT Act 2000 Overview</a><a href="itact-sections.html">Key Sections</a>
+          <a href="itact-intermediary.html">Intermediary Liability</a></div></div></li>
+      <li class="nav-item has-dropdown"><a href="cyber-fraud-hub.html">🚨 Cyber Fraud</a>
+        <div class="nav-dropdown"><div class="nav-dropdown-section">
+          <a href="cybercrime-financial.html">Financial Fraud</a><a href="cybercrime-personal.html">Personal Crimes</a>
+          <a href="cybercrime-remedy-guide.html">How to Report</a><a href="cybercrime-kb.html">Cybercrime KB</a></div></div></li>
+      <li class="nav-item has-dropdown"><a href="ekyc-kb.html">Aadhaar & eKYC</a>
+        <div class="nav-dropdown"><div class="nav-dropdown-section">
+          <a href="ekyc-kb.html">eKYC Knowledge Base</a><a href="ekyc-uidai-guide.html">UIDAI Framework</a></div></div></li>
+      <li class="nav-item ai-active has-dropdown"><a href="ai-hub.html">🤖 AI Intelligence</a>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-section"><div class="nav-dropdown-label">Foundation</div>
+            <a href="ai-intro.html">Introduction to AI</a><a href="ai-history.html">History &amp; Evolution</a>
+            <a href="ai-personalities.html">Key Personalities</a><a href="ai-timeline.html">Timeline of AI</a></div>
+          <hr>
+          <div class="nav-dropdown-section"><div class="nav-dropdown-label">AI &amp; Law</div>
+            <a href="ai-privacy.html">AI &amp; Privacy (DPDP)</a><a href="ai-cybercrime.html">AI &amp; Cybercrime</a>
+            <a href="ai-cybersecurity.html">AI &amp; Cybersecurity</a><a href="ai-global-regs.html">Global AI Regulations</a></div>
+          <hr>
+          <div class="nav-dropdown-section"><div class="nav-dropdown-label">AI &amp; Risk</div>
+            <a href="ai-india.html">AI in India</a><a href="ai-risk.html">AI Risk Framework</a>
+            <a href="ai-threats.html">AI Threat Models</a><a href="ai-sectors.html">Sector Use Cases</a></div>
+          <hr>
+          <div class="nav-dropdown-section"><div class="nav-dropdown-label">Reference</div>
+            <a href="ai-future.html">Future of AI</a><a href="ai-glossary.html">AI Glossary</a>
+            <a href="ai-playbook.html">Compliance Playbook</a></div>
+        </div></li>
+      <li class="nav-item has-dropdown"><a href="blog.html">Resources</a>
+        <div class="nav-dropdown"><div class="nav-dropdown-section">
+          <a href="dpdp-kb.html">DPDP Act 2023 KB</a><a href="itact-kb.html">IT Act 2000 KB</a>
+          <a href="cybercrime-kb.html">Cybercrime KB</a><a href="blog.html">All Articles</a></div></div></li>
+      <li class="nav-item"><a href="cyber-fraud-hub.html" class="nav-cta">📞 1930</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu"><ul>
+    <span class="mm-label">🤖 AI Intelligence</span>
+    <li><a href="ai-hub.html">AI Hub — All Sections</a></li>
+    <li><a href="ai-intro.html">Introduction to AI</a></li>
+    <li><a href="ai-privacy.html">AI &amp; Privacy (DPDP)</a></li>
+    <li><a href="ai-cybercrime.html">AI &amp; Cybercrime</a></li>
+    <li><a href="ai-global-regs.html">Global AI Regulations</a></li>
+    <li><a href="ai-playbook.html">Compliance Playbook</a></li>
+    <span class="mm-label">Other Sections</span>
+    <li><a href="dpdp-kb.html">DPDP Act 2023</a></li>
+    <li><a href="cyber-fraud-hub.html">Cyber Fraud Hub</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul></div>
+</nav>
+
+<div class="ai-page-layout">
+<aside class="ai-sidebar">
+  <div class="sb-brand">
+    <div class="sb-brand-icon">🤖</div>
+    <div>
+      <div class="sb-brand-name">AI Intelligence Hub</div>
+      <div class="sb-brand-sub">AI + Law + Risk Platform</div>
+    </div>
+  </div>
+  <a href="ai-hub.html" class="sb-back">← Back to Hub</a>
+  <div class="sb-group">
+    <div class="sb-group-label">Foundation</div>
+    <a href="ai-intro.html" class="sb-item"><span class="sb-num">01</span><span class="sb-icon">🧠</span>Introduction to AI</a>
+    <a href="ai-history.html" class="sb-item"><span class="sb-num">02</span><span class="sb-icon">🕰️</span>History & Evolution</a>
+    <a href="ai-personalities.html" class="sb-item"><span class="sb-num">03</span><span class="sb-icon">👤</span>Key Personalities</a>
+    <a href="ai-timeline.html" class="sb-item"><span class="sb-num">04</span><span class="sb-icon">📅</span>Timeline of AI</a>
+  </div>
+  <div class="sb-group">
+    <div class="sb-group-label">AI & Law</div>
+    <a href="ai-privacy.html" class="sb-item"><span class="sb-num">05</span><span class="sb-icon">🔐</span>AI & Privacy (DPDP)</a>
+    <a href="ai-cybercrime.html" class="sb-item"><span class="sb-num">06</span><span class="sb-icon">🎭</span>AI & Cybercrime</a>
+    <a href="ai-cybersecurity.html" class="sb-item"><span class="sb-num">07</span><span class="sb-icon">🛡️</span>AI & Cybersecurity</a>
+    <a href="ai-global-regs.html" class="sb-item"><span class="sb-num">08</span><span class="sb-icon">🌐</span>Global AI Regulations</a>
+  </div>
+  <div class="sb-group">
+    <div class="sb-group-label">AI & India</div>
+    <a href="ai-india.html" class="sb-item"><span class="sb-num">09</span><span class="sb-icon">🇮🇳</span>AI in India</a>
+  </div>
+  <div class="sb-group">
+    <div class="sb-group-label">AI & Risk</div>
+    <a href="ai-risk.html" class="sb-item"><span class="sb-num">10</span><span class="sb-icon">⚠️</span>AI Risk Framework</a>
+    <a href="ai-threats.html" class="sb-item"><span class="sb-num">11</span><span class="sb-icon">🔴</span>AI Threat Models</a>
+  </div>
+  <div class="sb-group">
+    <div class="sb-group-label">Reference</div>
+    <a href="ai-sectors.html" class="sb-item"><span class="sb-num">12</span><span class="sb-icon">🏭</span>Sector Use Cases</a>
+    <a href="ai-future.html" class="sb-item active"><span class="sb-num">13</span><span class="sb-icon">🚀</span>Future of AI</a>
+    <a href="ai-glossary.html" class="sb-item"><span class="sb-num">14</span><span class="sb-icon">📖</span>AI Glossary</a>
+    <a href="ai-playbook.html" class="sb-item"><span class="sb-num">15</span><span class="sb-icon">📋</span>AI Compliance Playbook</a>
+  </div>
+  <div class="sb-related">
+    <div class="sb-group-label">Related KBs</div>
+    <a href="dpdp-kb.html" class="sb-item-ext">📋 DPDP Act KB</a>
+    <a href="cybercrime-kb.html" class="sb-item-ext">🚨 Cybercrime KB</a>
+    <a href="itact-kb.html" class="sb-item-ext">📜 IT Act KB</a>
+    <a href="ekyc-kb.html" class="sb-item-ext">🪪 Aadhaar & eKYC</a>
+  </div>
+</aside>
+<div class="ai-main">
+<section class="ai-section-page" style="background:var(--ink);padding:2rem 0 0;border-bottom:2px solid var(--ai);">
+  <div class="page">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:0.5rem;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--ai-lt);">Section 13 of 15 · AI Intelligence Hub</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;padding-bottom:1.5rem;">
+      <span style="font-size:2rem;">🚀</span>
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);">AI + Law + Risk · Informational Only</div>
+        <h1 style="font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:900;color:var(--parchment);line-height:1.1;">Future of AI</h1>
+      </div>
+    </div>
+    <!-- Breadcrumb -->
+    <div style="font-family:'JetBrains Mono',monospace;font-size:0.54rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.25);padding-bottom:1rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+      <a href="index.html" style="color:rgba(255,255,255,0.25);text-decoration:none;">Home</a>
+      <span>›</span>
+      <a href="ai-hub.html" style="color:rgba(255,255,255,0.25);text-decoration:none;">AI Intelligence Hub</a>
+      <span>›</span>
+      <span style="color:var(--ai-lt);">Future of AI</span>
+    </div>
+  </div>
+</section>
+<section class="ai-future" id="future">
+<div class="page">
+    <div class="section-label section-label-light">13 — Future of AI</div>
+    <h2 class="section-heading section-heading-light">The Future of <em>Artificial Intelligence</em></h2>
+    <p class="section-deck section-deck-light">A calibrated look at near-term certainties, medium-term probabilities, and long-term uncertainties in AI development — and their implications for law, regulation, and society in India.</p>
+    <div class="future-horizons">
+      <div class="horizon-card h-near">
+        <div class="horizon-timeframe">Near Term · 2025–2027</div>
+        <div class="horizon-title">AI Agents &amp; Multimodal Integration</div>
+        <ul class="horizon-items">
+          <li>AI agents that autonomously plan and execute multi-step tasks (web research, code execution, email management) become mainstream enterprise tools</li>
+          <li>Multimodal AI (text + image + audio + video in a single model) becomes the dominant product paradigm</li>
+          <li>AI regulation implementation: EU AI Act prohibited uses enforced from August 2026; High Risk system requirements phased in</li>
+          <li>India's DPDP Rules finalisation triggers compliance requirements for AI data fiduciaries using personal data for AI</li>
+          <li>AI-powered legal research tools become standard in Indian law firms and courts — SUVAS/SUPACE expansion</li>
+          <li>AI deepfake detection becomes a contested legal evidence issue in Indian courts</li>
+        </ul>
+      </div>
+      <div class="horizon-card h-mid">
+        <div class="horizon-timeframe">Medium Term · 2027–2032</div>
+        <div class="horizon-title">Reasoning AI &amp; Sector Transformation</div>
+        <ul class="horizon-items">
+          <li>AI systems with genuine multi-step logical reasoning (not pattern matching) reshape knowledge work in law, medicine, and finance</li>
+          <li>India's IndiaAI Mission produces domestically competitive foundation models in Indian languages</li>
+          <li>AI-driven drug discovery accelerates: AlphaFold successors model protein interactions enabling faster clinical trials</li>
+          <li>Global AI governance treaties emerge — extending beyond the G7/OECD voluntary frameworks to binding international law</li>
+          <li>India's AI regulatory framework likely formalised — dedicated legislation or rules under the DPDP Act addressing automated decision-making</li>
+          <li>Significant displacement in legal, accounting, and back-office work — requiring proactive workforce transition policy</li>
+        </ul>
+      </div>
+      <div class="horizon-card h-far">
+        <div class="horizon-timeframe">Long Term · 2032+ · High Uncertainty</div>
+        <div class="horizon-title">AGI &amp; Existential Questions</div>
+        <ul class="horizon-items">
+          <li>Artificial General Intelligence (AGI): AI systems matching or exceeding human cognitive performance across virtually all tasks — timelines remain deeply contested (expert estimates range from 5 to 50+ years)</li>
+          <li>Constitutional and fundamental rights implications of AI decision-making in governance — who has standing to challenge an AI's decision affecting them?</li>
+          <li>International AI treaties analogous to nuclear non-proliferation for the most capable AI systems</li>
+          <li>AI rights and personhood: legal and philosophical questions about AI moral status — currently theoretical but increasingly debated</li>
+          <li>Quantum computing + AI convergence: quantum hardware potentially accelerating AI training and enabling new AI paradigms</li>
+          <li>Note: Long-term AI forecasting is inherently speculative. Treat these as scenarios for strategic planning, not predictions.</li>
+        </ul>
+      </div>
+    </div>
+    <div style="margin-top:2.5rem;background:rgba(108,63,197,0.08);border:1px solid rgba(108,63,197,0.25);padding:2rem;border-left:3px solid var(--ai-lt);">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--ai-lt);margin-bottom:0.8rem;">Disclaimer on Future Projections</div>
+      <p style="font-size:0.82rem;font-weight:300;color:rgba(248,244,236,0.45);line-height:1.85;">All future-oriented statements in this section are based on publicly available expert analysis, academic research, and policy reports as of mid-2025. AI development trajectories are inherently uncertain. These scenarios are provided for educational and strategic planning purposes only — not as predictions or investment advice. The AI field evolves rapidly; developments may materially differ from any projection within months.</p>
+    </div>
+  </div>
+</section>
+<div class="pg-nav">
+  <a href="ai-sectors.html" class="pg-nav-btn prev"><span class="pg-nav-label">← Previous</span><span class="pg-nav-title">🏭 Sector Use Cases</span></a>
+  <span class="pg-nav-center">13 / 15</span>
+  <a href="ai-glossary.html" class="pg-nav-btn next"><span class="pg-nav-label">Next →</span><span class="pg-nav-title">AI Glossary 📖</span></a>
+</div>
+</div>
+</div>
+
+<footer>
+  <div class="page">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.1em;text-transform:uppercase;background:rgba(108,63,197,0.15);border:1px solid rgba(108,63,197,0.3);color:#9B6FE8;padding:6px 12px;display:inline-flex;align-items:center;gap:8px;margin-bottom:1rem;">🤖 AI + Law + Risk Intelligence Platform</div>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">DPDPIndia.in</div>
+        <div class="footer-brand-desc">India's premier independent research platform on DPDP Act 2023, IT Act 2000, Aadhaar eKYC, Cybercrime Intelligence, and AI governance. All content is for informational purposes only — not legal advice.</div>
+      </div>
+      <div>
+        <div class="footer-heading">AI Intelligence</div>
+        <ul class="footer-links">
+          <li><a href="ai-hub.html">AI Hub — All Sections</a></li>
+          <li><a href="ai-history.html">History &amp; Timeline</a></li>
+          <li><a href="ai-privacy.html">AI &amp; Privacy (DPDP)</a></li>
+          <li><a href="ai-cybercrime.html">AI &amp; Cybercrime</a></li>
+          <li><a href="ai-global-regs.html">Global AI Regulations</a></li>
+          <li><a href="ai-playbook.html">Compliance Playbook</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Knowledge Bases</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="dpdp-kb.html">DPDP Act 2023</a></li>
+          <li><a href="itact-kb.html">IT Act 2000</a></li>
+          <li><a href="ekyc-kb.html">Aadhaar &amp; eKYC</a></li>
+          <li><a href="cybercrime-kb.html">Cybercrime KB</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Quick Help</div>
+        <ul class="footer-links">
+          <li><a href="cyber-fraud-hub.html">🚨 Report Fraud (1930)</a></li>
+          <li><a href="dpdp-rights.html">Know Your Rights</a></li>
+          <li><a href="blog.html">All Articles</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 DPDPIndia.in — Independent Research Platform · Not Legal Advice · AI content is informational only</div>
+      <div class="footer-legal-links">
+        <a href="legal.html">Terms</a><a href="legal.html#privacy">Privacy</a><a href="legal.html#safe-harbour">Safe Harbour</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+const hamburger=document.getElementById('hamburger');
+const mobileMenu=document.getElementById('mobileMenu');
+if(hamburger&&mobileMenu){hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');mobileMenu.classList.toggle('open');});}
+</script>
+
+</body>
+</html>
