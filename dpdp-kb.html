@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DPDP Act Knowledge Base — DPDPindia.in</title>
+<meta name="last-updated" content="April 2026 — Updated for DPDP Rules 2025">
+<link rel="stylesheet" href="site-global.css">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:wght@600;700&display=swap');
 :root{
@@ -190,6 +192,91 @@ body{font-family:var(--font-body);background:var(--surface);color:var(--text);fo
     <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M6 1L1 5l5 4M1 5h12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
     DPDPindia.in Home
   </a>
+
+  <!-- COMPLIANCE TIMELINE WIDGET -->
+  <div class="g-timeline" id="compliance-timeline">
+    <div class="g-timeline-title">⏱ DPDP Act — Enforcement Phases</div>
+    <div class="g-timeline-track">
+      <div class="g-timeline-phase">
+        <div class="g-timeline-dot done">✓</div>
+        <div class="g-timeline-date">Aug 2023</div>
+        <div class="g-timeline-label">Act Enacted</div>
+        <div class="g-timeline-desc">DPDP Act 2023 receives Presidential assent &amp; published in Gazette</div>
+      </div>
+      <div class="g-timeline-phase">
+        <div class="g-timeline-dot done">✓</div>
+        <div class="g-timeline-date">Nov 2025</div>
+        <div class="g-timeline-label">Rules Notified</div>
+        <div class="g-timeline-desc">DPDP Rules 2025 notified — consent manager, breach protocol, DPB setup</div>
+      </div>
+      <div class="g-timeline-phase">
+        <div class="g-timeline-dot current">●</div>
+        <div class="g-timeline-date">Nov 2026</div>
+        <div class="g-timeline-label">Phase 1 Enforcement</div>
+        <div class="g-timeline-desc">SDFs &amp; large data fiduciaries: full compliance, DPO appointed, DPIAs done</div>
+      </div>
+      <div class="g-timeline-phase">
+        <div class="g-timeline-dot future">○</div>
+        <div class="g-timeline-date">May 2027</div>
+        <div class="g-timeline-label">Full Enforcement</div>
+        <div class="g-timeline-desc">All data fiduciaries — SMEs, startups — must comply; legacy data onboarded</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PENALTY QUICK-REFERENCE TABLE -->
+  <div id="penalty-table" style="margin:2rem 0;">
+    <div class="section-kicker" style="margin-bottom:10px;">Penalty Quick Reference</div>
+    <h2 style="font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--text);margin-bottom:10px;">DPDP Act — Violation → Maximum Penalty</h2>
+    <p style="font-size:13px;color:var(--text2);max-width:640px;margin-bottom:14px;">Fixed caps (not % of turnover). Adjudicated by the Data Protection Board of India.</p>
+    <table class="g-penalty-table">
+      <thead>
+        <tr>
+          <th>Violation</th>
+          <th>Relevant Section</th>
+          <th>Max Penalty</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Failure to implement adequate security safeguards causing data breach</td>
+          <td class="penalty-section">Sec 8(5)</td>
+          <td class="penalty-amount">₹250 Crore</td>
+        </tr>
+        <tr>
+          <td>Failure to notify Data Protection Board &amp; affected persons of breach</td>
+          <td class="penalty-section">Sec 8(6) / Rules</td>
+          <td class="penalty-amount">₹200 Crore</td>
+        </tr>
+        <tr>
+          <td>Non-compliance with provisions related to children's data (Sec 9)</td>
+          <td class="penalty-section">Sec 9</td>
+          <td class="penalty-amount">₹200 Crore</td>
+        </tr>
+        <tr>
+          <td>Non-compliance by Significant Data Fiduciary (Sec 10 obligations)</td>
+          <td class="penalty-section">Sec 10</td>
+          <td class="penalty-amount">₹150 Crore</td>
+        </tr>
+        <tr>
+          <td>Violation of data principal rights (access, erasure, grievance)</td>
+          <td class="penalty-section">Sec 11–14</td>
+          <td class="penalty-amount">₹50 Crore</td>
+        </tr>
+        <tr>
+          <td>Non-compliance with DPB orders / obstruction</td>
+          <td class="penalty-section">Sec 25</td>
+          <td class="penalty-amount">₹10,000 / day + ₹10 Crore</td>
+        </tr>
+        <tr>
+          <td>Any other violation not covered above</td>
+          <td class="penalty-section">Sec 24(d)</td>
+          <td class="penalty-amount">₹50 Crore</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:11px;color:var(--text3);font-family:var(--font-mono);">Note: Appeals lie to TDSAT. No criminal liability under the DPDP Act itself (criminal provisions remain under IT Act 2000).</p>
+  </div>
 
   <div class="section-kicker">In this Knowledge Base</div>
   <h2 style="font-family:var(--font-display);font-size:26px;font-weight:700;color:var(--text);line-height:1.2;margin-bottom:6px;">Seven Articles. The Complete Legal Picture.</h2>
@@ -404,6 +491,25 @@ body{font-family:var(--font-body);background:var(--surface);color:var(--text);fo
 
   </div>
 
+  <!-- Related Articles -->
+  <div class="g-related">
+    <div class="g-related-title">Related Knowledge Bases</div>
+    <div class="g-related-grid">
+      <a class="g-related-card" href="itact-kb.html">
+        <div class="g-related-card-section">IT Act 2000</div>
+        <div class="g-related-card-title">IT Act Knowledge Base — 6-article deep-dive into India's cyber law framework</div>
+      </a>
+      <a class="g-related-card" href="cybercrime-kb.html">
+        <div class="g-related-card-section">Cybercrime</div>
+        <div class="g-related-card-title">Cybercrime Knowledge Base — financial fraud, personal crimes, and remedies</div>
+      </a>
+      <a class="g-related-card" href="ekyc-kb.html">
+        <div class="g-related-card-section">UIDAI / eKYC</div>
+        <div class="g-related-card-title">eKYC & UIDAI Knowledge Base — Aadhaar authentication, trust chain, sandbox</div>
+      </a>
+    </div>
+  </div>
+
   <!-- Official resources -->
   <div class="ql-band" style="margin-top:40px;">
     <h3>Official Reference Documents</h3>
@@ -457,5 +563,6 @@ body{font-family:var(--font-body);background:var(--surface);color:var(--text);fo
   </div>
   <p>DPDP Act Knowledge Base · Published by DPDPindia.in · Independent Policy &amp; Legal Research</p>
 <div style="background:linear-gradient(135deg,#1B2B3A 0%,#2D1F5E 100%);padding:2.5rem 0;border-top:3px solid #6C3FC5;"><div style="max-width:1320px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;"><div><div style="font-family:JetBrains Mono,monospace;font-size:0.56rem;letter-spacing:0.18em;text-transform:uppercase;color:#9B6FE8;margin-bottom:0.5rem;">🤖 New Section — AI + Law + Risk</div><div style="font-family:Playfair Display,serif;font-size:1.3rem;font-weight:700;color:#FDFAF5;margin-bottom:0.3rem;">Explore Our AI Intelligence Hub</div><div style="font-size:0.82rem;font-weight:300;color:rgba(248,244,236,0.5);max-width:560px;">History of AI · DPDP Act mapping · Deepfake threats · EU AI Act · IndiaAI Mission · Risk framework · Compliance playbook</div></div><a href="ai-hub.html" style="font-family:JetBrains Mono,monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;background:#6C3FC5;color:#fff;padding:14px 28px;text-decoration:none;white-space:nowrap;flex-shrink:0;display:inline-flex;align-items:center;gap:8px;">Explore AI Hub →</a></div></div></footer>
+<script src="site-global.js"></script>
 </body>
 </html>
