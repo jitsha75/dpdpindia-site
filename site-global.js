@@ -50,6 +50,11 @@
     { title: 'Adjudication & Penalties — Data Protection Board', url: 'dpdp-adjudication.html', section: 'DPDP Act', keywords: 'penalty adjudication DPB TDSAT 250 crore enforcement breach fine' },
     { title: 'Exemptions & Government Powers', url: 'dpdp-exemptions.html', section: 'DPDP Act', keywords: 'exemptions government national security state processing sec 17 18' },
     { title: 'DPDP vs GDPR — Global Comparison', url: 'dpdp-global.html', section: 'DPDP Act', keywords: 'GDPR PDPA comparison global international adequacy cross-border' },
+    { title: "Children's Data Protection — DPDP Act Section 9", url: 'dpdp-children.html', section: 'DPDP Act', keywords: 'sec 9 children minor under 18 parental consent verifiable age verification behavioural tracking targeted advertising COPPA GDPR UK childrens code' },
+    { title: 'Data Fiduciary Obligations — DPDP Act Sections 8–10', url: 'dpdp-fiduciary-obligations.html', section: 'DPDP Act', keywords: 'data fiduciary sec 8 9 10 obligations breach notification CERT-In SDF significant DPO DPIA audit data processor contract accuracy storage limitation' },
+    // ── Privacy Law ──
+    { title: 'Constitutional Right to Privacy — Puttaswamy 2017', url: 'privacy-constitutional.html', section: 'Privacy Law', keywords: 'Puttaswamy 2017 nine judge bench right to privacy constitutional informational physical decisional proportionality test Aadhaar 2018 DPDP compliance fundamental rights' },
+    { title: 'State Surveillance Law in India', url: 'privacy-surveillance.html', section: 'Privacy Law', keywords: 'surveillance interception Telegraph Act sec 5 IT Act sec 69 69A 69B IT Rules 2021 traceability Pegasus technical committee WhatsApp E2E encryption backdoor' },
     // ── IT Act ──
     { title: 'IT Act Knowledge Base', url: 'itact-kb.html', section: 'IT Act', keywords: 'IT act 2000 information technology knowledge base intermediary' },
     { title: 'IT Act — Intermediary Rules', url: 'itact-intermediary.html', section: 'IT Act', keywords: 'intermediary rules safe harbour sec 79 platform liability social media' },
@@ -57,12 +62,16 @@
     { title: 'IT Act — History & Evolution', url: 'itact-history.html', section: 'IT Act', keywords: 'IT act history 2000 2008 amendment cyber law evolution' },
     { title: 'IT Act Key Sections', url: 'itact-sections.html', section: 'IT Act', keywords: 'sections 43 66 66A 66C 66D 67 69 72 hacking cybercrime offences penalties' },
     { title: 'Shreya Singhal Case — Sec 66A struck down', url: 'itact-shreya-singhal.html', section: 'IT Act', keywords: 'Shreya Singhal section 66A free speech struck down Supreme Court' },
+    { title: 'IT Act — Adjudication & Appeals Hierarchy', url: 'itact-adjudication.html', section: 'IT Act', keywords: 'adjudication officer AO CATC cyber appellate tribunal sec 46 48 appeals digital evidence 65B 77A compounding' },
+    { title: 'CERT-In — Mandate, 2022 Directions & Incident Reporting', url: 'itact-certIn.html', section: 'IT Act', keywords: 'CERT-In 2022 directions 6 hour reporting 180 day logs VPN KYC NTP NCIIPC sec 70B 70A breach notification cybersecurity incident' },
     // ── Cybercrime ──
     { title: 'Cybercrime Knowledge Base', url: 'cybercrime-kb.html', section: 'Cybercrime', keywords: 'cybercrime fraud knowledge base awareness' },
     { title: 'Financial Cybercrimes', url: 'cybercrime-financial.html', section: 'Cybercrime', keywords: 'UPI fraud OTP phishing banking scam financial cybercrime' },
     { title: 'Personal Cybercrimes', url: 'cybercrime-personal.html', section: 'Cybercrime', keywords: 'deepfake sextortion harassment stalking morphing personal cybercrime' },
     { title: 'Cybercrime Remedy Guide', url: 'cybercrime-remedy-guide.html', section: 'Cybercrime', keywords: 'remedy report 1930 NCRP complaint FIR police cybercrime portal' },
     { title: 'Cyber Fraud Hub — Emergency 1930', url: 'cyber-fraud-hub.html', section: 'Cybercrime', keywords: '1930 helpline report fraud emergency cyber fraud hub' },
+    { title: 'Cybercrimes Against Children — IT Act S.67B, POCSO & Mandatory Reporting', url: 'cybercrime-children.html', section: 'Cybercrime', keywords: 'CSAM child sexual abuse material POCSO sec 67B IT act grooming cyber bullying sextortion minor mandatory reporting CHILDLINE 1098 NCPCR' },
+    { title: 'BNS 2023 & Cyber Provisions — New Penal Code', url: 'cybercrime-bns2023.html', section: 'Cybercrime', keywords: 'BNS Bharatiya Nyaya Sanhita 2023 sec 316 317 77 78 111 112 113 organised crime lex specialis BSA digital evidence 61 IPC replacement cybercrime' },
     // ── eKYC / UIDAI ──
     { title: 'eKYC Knowledge Base', url: 'ekyc-kb.html', section: 'UIDAI / eKYC', keywords: 'eKYC UIDAI Aadhaar authentication knowledge base' },
     { title: 'UIDAI eKYC Guide', url: 'ekyc-uidai-guide.html', section: 'UIDAI / eKYC', keywords: 'UIDAI eKYC guide OTP biometric face authentication' },

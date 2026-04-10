@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="site-global.css">
+<title>Children's Data — Section 9 of the DPDP Act · DPDP India</title>
+<style>@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:wght@600&display=swap');
+:root{--navy:#0a1628;--navy2:#132040;--blue:#1a5cad;--blue-light:#3b82d4;--amber:#d4900a;--amber-light:#f5c842;--teal:#0e7c6b;--coral:#c2420a;--purple:#5b4bc4;--green:#156c2e;--red:#b91c1c;--surface:#f4f6fb;--surface2:#eaeff8;--text:#0d1b2a;--text2:#3a4a5c;--text3:#6b7e94;--border:#c8d4e8;--border2:#b0c0d8;--white:#ffffff;--font-body:'IBM Plex Sans',sans-serif;--font-display:'Playfair Display',serif;--font-mono:'IBM Plex Mono',monospace;--radius:8px;--radius-lg:12px;--shadow:0 2px 12px rgba(10,22,40,.08);--shadow-md:0 4px 24px rgba(10,22,40,.13);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--surface);color:var(--text);font-size:15px;line-height:1.7;min-height:100vh;}
+.header{background:var(--navy);color:#fff;position:relative;overflow:hidden;}
+.header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px),repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px);}
+.header-inner{position:relative;max-width:1100px;margin:0 auto;padding:52px 40px 48px;}
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:20px;font-family:var(--font-mono);font-size:11px;flex-wrap:wrap;}
+.breadcrumb a{color:rgba(255,255,255,.5);text-decoration:none;transition:color .15s;}
+.breadcrumb a:hover{color:var(--amber-light);}
+.breadcrumb .sep{color:rgba(255,255,255,.25);}
+.breadcrumb .cur{color:var(--amber-light);}
+.header-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:4px 14px;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:20px;}
+.header h1{font-family:var(--font-display);font-size:clamp(24px,4vw,38px);font-weight:600;line-height:1.15;color:#fff;margin-bottom:14px;max-width:760px;}
+.header-sub{font-size:15px;color:rgba(255,255,255,.6);max-width:680px;line-height:1.65;margin-bottom:28px;}
+.header-meta{display:flex;flex-wrap:wrap;gap:8px;}
+.meta-pill{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:4px 12px;font-size:12px;color:rgba(255,255,255,.65);font-family:var(--font-mono);}
+.layout{display:flex;max-width:1100px;margin:0 auto;padding:32px 20px;gap:32px;align-items:flex-start;}
+.sidebar{width:220px;flex-shrink:0;position:sticky;top:24px;}
+.sidebar-nav{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:12px 0;box-shadow:var(--shadow);}
+.sidebar-nav h3{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:6px 18px 10px;}
+.sidebar-nav a{display:flex;align-items:center;gap:8px;padding:8px 18px;font-size:13px;color:var(--text2);text-decoration:none;border-left:2px solid transparent;transition:all .15s;line-height:1.3;}
+.sidebar-nav a:hover{background:var(--surface);color:var(--blue);border-left-color:var(--blue-light);}
+.sidebar-nav .nav-num{font-family:var(--font-mono);font-size:10px;color:var(--text3);min-width:16px;}
+.sidebar-nav hr{border:none;border-top:1px solid var(--border);margin:8px 0;}
+.sidebar-nav .nav-sep{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:12px 18px 4px;display:block;}
+.sidebar-related{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px 18px;box-shadow:var(--shadow);margin-top:12px;}
+.sidebar-related h4{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:10px;}
+.sidebar-related a{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);text-decoration:none;padding:5px 0;border-bottom:1px solid var(--border);transition:color .15s;}
+.sidebar-related a:last-child{border-bottom:none;}
+.sidebar-related a:hover{color:var(--blue);}
+.sidebar-related .link-icon{font-size:11px;opacity:.5;}
+.main{flex:1;min-width:0;}
+.section{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:24px;box-shadow:var(--shadow);overflow:hidden;}
+.section-header{display:flex;align-items:center;gap:14px;padding:20px 28px;border-bottom:1px solid var(--border);background:var(--surface);}
+.section-num{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--font-mono);font-size:12px;font-weight:500;flex-shrink:0;}
+.section-header h2{font-size:17px;font-weight:600;color:var(--text);letter-spacing:-.01em;}
+.section-header p{font-size:13px;color:var(--text3);margin-top:2px;}
+.section-body{padding:28px;}
+.prose p{font-size:14px;color:var(--text2);margin-bottom:12px;line-height:1.75;}
+.prose p:last-child{margin-bottom:0;}
+.prose strong{font-weight:600;color:var(--text);}
+.prose ul{padding-left:20px;margin-bottom:12px;}
+.prose li{font-size:14px;color:var(--text2);margin-bottom:5px;line-height:1.65;}
+.prose code{font-family:var(--font-mono);font-size:12px;background:var(--surface2);padding:1px 6px;border-radius:3px;border:1px solid var(--border);color:var(--blue);}
+.note-box{padding:12px 16px;border-radius:var(--radius);font-size:13px;line-height:1.6;border-left:3px solid;margin:12px 0;}
+.note-box.warning{background:#fef3cd;border-color:var(--amber);color:#533200;}
+.note-box.info{background:#e6f1fb;border-color:var(--blue);color:#0a2e5e;}
+.note-box.danger{background:#fde8e8;border-color:var(--red);color:#5c0f0f;}
+.note-box.success{background:#e8f5ee;border-color:var(--green);color:#0a3318;}
+.note-box.amber{background:#fffaed;border-color:var(--amber);color:#533200;}
+.note-box strong{font-weight:600;}
+.reg-ref{display:inline-flex;align-items:center;gap:4px;padding:2px 8px 2px 6px;border-radius:4px;background:#ede8fe;color:var(--purple);border:1px solid #c4b8f5;font-family:var(--font-mono);font-size:11px;font-weight:500;white-space:nowrap;}
+.reg-ref::before{content:'§';font-family:Georgia,serif;font-size:12px;}
+.footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:28px 20px;font-size:12px;margin-top:40px;}
+.footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:12px;}
+.footer-links a{color:rgba(255,255,255,.55);text-decoration:none;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;transition:color .15s;}
+.footer-links a:hover{color:var(--amber-light);}
+.footer a{color:rgba(255,255,255,.6);}
+@media(max-width:820px){.layout{flex-direction:column;padding:16px;}.sidebar{width:100%;position:static;}.sidebar-nav{display:none;}.header-inner{padding:32px 20px;}.section-body{padding:16px;}}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <div class="breadcrumb">
+      <a href="index.html">DPDPindia.in</a><span class="sep">/</span>
+      <a href="dpdp-kb.html">DPDP Knowledge Base</a><span class="sep">/</span>
+      <span class="cur">Children's Data (Section 9)</span>
+    </div>
+    <div class="header-badge"><span style="width:6px;height:6px;border-radius:50%;background:#b0ccea;display:inline-block;"></span>&nbsp;Article 08 · DPDP Knowledge Base</div>
+    <h1><span style="color:#b0ccea;">Children's Data Under the DPDP Act</span> — Section 9 Analysis</h1>
+    <p class="header-sub">Section 9 of the DPDP Act imposes some of the Act's most stringent obligations — mandatory verifiable parental consent, absolute prohibition on behavioural tracking, and no targeted advertising directed at children. With India's uniform 18-year threshold, this is among the most protective children's data regimes globally.</p>
+    <div class="header-meta"><span class="meta-pill">Section 9 — Children's Data</span><span class="meta-pill">Parental Consent</span><span class="meta-pill">Behavioural Tracking Banned</span><span class="meta-pill">Under-18 Threshold</span><span class="meta-pill">Age Verification</span><span class="meta-pill">COPPA Comparison</span></div>
+  </div>
+</header>
+<div class="layout">
+  <nav class="sidebar">
+    <div class="sidebar-nav">
+      <h3>On this page</h3>
+      <a href="#s1"><span class="nav-num">01</span> Who is a "Child" Under the DPDP Act</a>
+      <a href="#s2"><span class="nav-num">02</span> Parental Consent: Requirements</a>
+      <a href="#s3"><span class="nav-num">03</span> Absolute Prohibited Activities (S.9(3))</a>
+      <a href="#s4"><span class="nav-num">04</span> Age Verification: The Implementation Challenge</a>
+      <a href="#s5"><span class="nav-num">05</span> Exemptions & S.9(4)</a>
+      <a href="#s6"><span class="nav-num">06</span> Global Comparison: COPPA, GDPR, UK Code</a>
+      <hr><span class="nav-sep">Knowledge Base</span>
+      <a href="dpdp-kb.html"><span class="nav-num">←</span> Back to DPDP KB</a>
+      <a href="index.html"><span class="nav-num">⌂</span> DPDPindia.in</a>
+    </div>
+    <div class="sidebar-related">
+      <h4>Related Articles</h4>
+      <a href="dpdp-act.html"><span class="link-icon">↗</span> Core Framework S.4–10</a>
+      <a href="dpdp-rights.html"><span class="link-icon">↗</span> Data Principal Rights</a>
+      <a href="dpdp-exemptions.html"><span class="link-icon">↗</span> Exemptions S.17</a>
+      <a href="dpdp-adjudication.html"><span class="link-icon">↗</span> Penalties — up to ₹200 crore</a>
+    </div>
+  </nav>
+  <main class="main">
+
+    <section class="section" id="s1">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <div><h2>Who is a "Child" Under the DPDP Act</h2><p>Age threshold and scope of application</p></div>
+      </div>
+      <div class="section-body">
+        <div class="prose">
+          <p>The DPDP Act defines a "child" under Section 2(f) as any individual below the age of <strong>18 years</strong>. This is a uniform national threshold — unlike GDPR (EU), which allows Member States to lower consent age to 13. India's uniform 18-year threshold has major implications for tech platforms, social media, educational apps, and e-commerce services.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:16px;">
+          <div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);">
+            <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:7px;">Age Threshold</div>
+            <div style="font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:7px;line-height:1.3;">Under 18 years — Uniform Nationally</div>
+            <div style="font-size:13px;color:var(--text2);line-height:1.65;">No state-level variation permitted. More protective than GDPR (16/13) and COPPA (13).</div>
+          </div>
+          <div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);">
+            <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:7px;">Scope</div>
+            <div style="font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:7px;line-height:1.3;">Applies to ALL Data Fiduciaries</div>
+            <div style="font-size:13px;color:var(--text2);line-height:1.65;">Processing children's personal data, regardless of whether the platform is "intended for" children.</div>
+          </div>
+          <div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);">
+            <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:7px;">Parental Consent</div>
+            <div style="font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:7px;line-height:1.3;">Verifiable Consent Required</div>
+            <div style="font-size:13px;color:var(--text2);line-height:1.65;">Verifiable consent of parent or lawful guardian required BEFORE any processing begins.</div>
+          </div>
+          <div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);">
+            <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-bottom:7px;">Maximum Penalty</div>
+            <div style="font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:7px;line-height:1.3;">Up to ₹200 crore</div>
+            <div style="font-size:13px;color:var(--text2);line-height:1.65;">For breach of children's data obligations — the highest penalty tier under the Act.</div>
+          </div>
+        </div>
+        <div class="prose">
+          <p>The Act does not distinguish between teenagers (13–17) and younger children. All individuals under 18 are treated identically, subject to potential exemptions under Section 9(4). This is a deliberate policy choice reflecting India's approach to child protection in the digital environment.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="s2">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <div><h2>Parental Consent: Requirements & Verification</h2><p>How Data Fiduciaries must obtain and manage parental consent</p></div>
+      </div>
+      <div class="section-body">
+        <div class="prose">
+          <p>Section 9(1) requires that before processing any personal data of a child, the Data Fiduciary must obtain <strong>verifiable consent</strong> of the parent or lawful guardian. This is in addition to, not a substitute for, the standard consent requirements under Section 6.</p>
+          <p><strong>Verifiable consent requirements:</strong> The Rules (pending notification) are expected to specify mechanisms. Likely methods include: Aadhaar-based parental authentication, government ID verification, supervised digital consent flow. No method is foolproof.</p>
+        </div>
+        <div style="border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:16px;">
+          <div style="padding:12px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;"><div style="width:5px;height:5px;border-radius:50%;background:var(--blue);margin-top:7px;flex-shrink:0;"></div><div style="font-size:13.5px;color:var(--text2);"><strong>Process only consented data:</strong> Process only the data consented to, for the consented purpose</div></div>
+          <div style="padding:12px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;"><div style="width:5px;height:5px;border-radius:50%;background:var(--blue);margin-top:7px;flex-shrink:0;"></div><div style="font-size:13.5px;color:var(--text2);"><strong>Right to review:</strong> Permit the parent/guardian to review the child's data on request</div></div>
+          <div style="padding:12px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;"><div style="width:5px;height:5px;border-radius:50%;background:var(--blue);margin-top:7px;flex-shrink:0;"></div><div style="font-size:13.5px;color:var(--text2);"><strong>Withdrawal right:</strong> Allow the parent/guardian to withdraw consent at any time</div></div>
+          <div style="padding:12px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;"><div style="width:5px;height:5px;border-radius:50%;background:var(--blue);margin-top:7px;flex-shrink:0;"></div><div style="font-size:13.5px;color:var(--text2);"><strong>On withdrawal:</strong> Stop processing and delete data (subject to lawful retention obligations)</div></div>
+          <div style="padding:12px 18px;display:flex;gap:10px;align-items:flex-start;"><div style="width:5px;height:5px;border-radius:50%;background:var(--blue);margin-top:7px;flex-shrink:0;"></div><div style="font-size:13.5px;color:var(--text2);"><strong>Record-keeping:</strong> Maintain records of how consent was obtained and verified</div></div>
+        </div>
+        <div class="note-box warning"><strong>Implementation challenge:</strong> The requirement for "verifiable" parental consent is one of the most technically challenging aspects of the Act. Aadhaar-based verification raises privacy concerns of its own; other mechanisms may be circumvented by determined children. Until Rules are notified, Data Fiduciaries should implement reasonable age-gating, document their due diligence, and build consent infrastructure that can be upgraded when Rules are finalised.</div>
+      </div>
+    </section>
+
+    <section class="section" id="s3">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div><h2>Absolute Prohibited Activities Under Section 9(3)</h2><p>Three categories of processing that cannot be permitted for children, under any circumstances</p></div>
+      </div>
+      <div class="section-body">
+        <div class="prose">
+          <p>Section 9(3) imposes <strong>absolute prohibitions</strong> on three categories of processing — these cannot be unlocked by parental consent or any other mechanism:</p>
+        </div>
+        <div style="margin-bottom:16px;border:1px solid var(--red);border-left:3px solid var(--red);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);">
+          <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-bottom:7px;">Prohibition 1</div>
+          <div style="font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:10px;line-height:1.3;">Behavioural Tracking</div>
+          <div style="font-size:13px;color:var(--text2);line-height:1.65;">Data Fiduciaries must NOT undertake tracking or behavioural monitoring of children. This covers: cookie-based tracking, device fingerprinting, location tracking, activity monitoring, cross-site tracking, and all other forms of behavioural surveillance of users under 18.</div>
+        </div>
+        <div style="margin-bottom:16px;border:1px solid var(--red);border-left:3px solid var(--red);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);">
+          <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-bottom:7px;">Prohibition 2</div>
+          <div style="font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:10px;line-height:1.3;">Targeted Advertising</div>
+          <div style="font-size:13px;color:var(--text2);line-height:1.65;">Data Fiduciaries must NOT target advertising at children. This includes: interest-based advertising, retargeting, lookalike audience advertising, demographic profiling for ad delivery, and any personalised advertising based on observed or inferred characteristics of a child.</div>
+        </div>
+        <div style="margin-bottom:16px;border:1px solid var(--red);border-left:3px solid var(--red);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);">
+          <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-bottom:7px;">Prohibition 3</div>
+          <div style="font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:10px;line-height:1.3;">Processing Detrimental to Well-being</div>
+          <div style="font-size:13px;color:var(--text2);line-height:1.65;">Data Fiduciaries must NOT undertake any processing that may be detrimental to the well-being of the child. This is a principles-based catch-all — it covers processing that could cause psychological harm, addictive engagement patterns, undermining of self-esteem, or interference with healthy development.</div>
+        </div>
+        <div class="note-box danger"><strong>Absolute prohibitions:</strong> These three prohibitions apply ABSOLUTELY — even if the parent consented, even if the child "wants" the service, and even if the processing is core to the platform's existing business model. Platform operators must redesign Indian-market products if their model depends on behavioural targeting or tracking of any users who may be under 18.</div>
+        <div style="margin-top:20px;overflow-x:auto;">
+          <table style="width:100%;border-collapse:collapse;font-size:13px;">
+            <thead>
+              <tr style="background:var(--surface);border-bottom:2px solid var(--border);">
+                <th style="padding:12px;text-align:left;font-weight:600;color:var(--text);">Processing Activity</th>
+                <th style="padding:12px;text-align:left;font-weight:600;color:var(--text);">Permissible for Children?</th>
+                <th style="padding:12px;text-align:left;font-weight:600;color:var(--text);">Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:12px;color:var(--text2);">Non-personalised contextual advertising</td>
+                <td style="padding:12px;color:var(--text2);"><strong style="color:var(--green);">Yes</strong></td>
+                <td style="padding:12px;color:var(--text2);">Not "targeted" — no profiling involved</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:12px;color:var(--text2);">Age-gating and parental consent flows</td>
+                <td style="padding:12px;color:var(--text2);"><strong style="color:var(--green);">Yes</strong></td>
+                <td style="padding:12px;color:var(--text2);">Required infrastructure</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:12px;color:var(--text2);">Interest-based content recommendation</td>
+                <td style="padding:12px;color:var(--text2);"><strong style="color:var(--red);">No</strong></td>
+                <td style="padding:12px;color:var(--text2);">Form of behavioural tracking</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:12px;color:var(--text2);">Social media engagement tracking</td>
+                <td style="padding:12px;color:var(--text2);"><strong style="color:var(--red);">No</strong></td>
+                <td style="padding:12px;color:var(--text2);">Behavioural monitoring</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:12px;color:var(--text2);">Location tracking for safety features</td>
+                <td style="padding:12px;color:var(--text2);"><strong style="color:var(--amber);">Uncertain</strong></td>
+                <td style="padding:12px;color:var(--text2);">Rules to clarify — purpose limitation key</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:12px;color:var(--text2);">Analytics on aggregate, non-identifiable data</td>
+                <td style="padding:12px;color:var(--text2);"><strong style="color:var(--amber);">Uncertain</strong></td>
+                <td style="padding:12px;color:var(--text2);">Rules to clarify</td>
+              </tr>
+              <tr>
+                <td style="padding:12px;color:var(--text2);">Serving age-appropriate content categories</td>
+                <td style="padding:12px;color:var(--text2);"><strong style="color:var(--green);">Yes</strong></td>
+                <td style="padding:12px;color:var(--text2);">Not based on individual profiling</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="s4">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <div><h2>Age Verification: The Implementation Challenge</h2><p>How Data Fiduciaries determine whether a user is under 18</p></div>
+      </div>
+      <div class="section-body">
+        <div class="prose">
+          <p>The central practical challenge of Section 9 is: how does a Data Fiduciary know whether a user is under 18? The Act requires compliance but does not specify the verification mechanism — this is left to the DPDP Rules (draft released 2025, pending finalisation).</p>
+          <p><strong>Three approaches under policy discussion:</strong></p>
+          <p><strong>1. Self-declaration with liability shift:</strong> User self-declares age at registration. Platforms add contractual language shifting liability to the user if they provide false information. Risk: easily circumvented; may not satisfy "verifiable" standard.</p>
+          <p><strong>2. Aadhaar-based age verification:</strong> Leverages UIDAI's DigiYatra/age-band token architecture to confirm age range (e.g., "above 18") without revealing full identity. Technically sound but raises privacy-of-minors concerns and requires Aadhaar coverage.</p>
+          <p><strong>3. Consent Manager platforms (S.2(g)):</strong> Third-party registered Consent Managers act as intermediaries — they verify parental identity and manage consent flows on behalf of Data Fiduciaries. This is the most architecturally clean solution once the Consent Manager framework is operationalised.</p>
+        </div>
+        <div class="note-box info"><strong>Until Rules are notified:</strong> Data Fiduciaries should: (a) implement reasonable age-declaration at signup; (b) apply Section 9 protections to all users where age cannot be verified; (c) build technical architecture that can integrate with Aadhaar-based verification or Consent Manager APIs once available; (d) document all due diligence measures taken.</div>
+      </div>
+    </section>
+
+    <section class="section" id="s5">
+      <div class="section-header">
+        <div class="section-num">05</div>
+        <div><h2>Exemptions & Reduced Threshold (S.9(4))</h2><p>Government discretion to exempt certain Data Fiduciaries</p></div>
+      </div>
+      <div class="section-body">
+        <div class="prose">
+          <p>Section 9(4) empowers the Central Government to notify, by Rules, certain Data Fiduciaries or classes of Data Fiduciaries for whom Section 9(1) (parental consent) and Section 9(3) (prohibitions) will not apply, or will apply with modifications.</p>
+          <p><strong>Potential categories being considered for exemption:</strong> Educational technology platforms, healthcare platforms for minors, government welfare schemes serving children, parental monitoring/safety apps.</p>
+        </div>
+        <div class="note-box warning"><strong>Exemption controversy:</strong> Section 9(4) has been criticised by child rights advocates and digital rights organisations as creating a potential "whitelist" of platforms exempt from the core child protection obligations. The scope of exemptions will be a key test of the Government's commitment. Parliament will not see these exemptions before they are notified — they are subordinate legislation under the Rules.</div>
+      </div>
+    </section>
+
+    <section class="section" id="s6">
+      <div class="section-header">
+        <div class="section-num">06</div>
+        <div><h2>Global Comparison: COPPA, GDPR, UK Children's Code</h2><p>How Section 9 compares to other major children's data protection regimes</p></div>
+      </div>
+      <div class="section-body">
+        <div style="margin-bottom:16px;overflow-x:auto;">
+          <table style="width:100%;border-collapse:collapse;font-size:13px;">
+            <thead>
+              <tr style="background:var(--surface);border-bottom:2px solid var(--border);">
+                <th style="padding:12px;text-align:left;font-weight:600;color:var(--text);">Feature</th>
+                <th style="padding:12px;text-align:left;font-weight:600;color:var(--text);">DPDP Act S.9 (India)</th>
+                <th style="padding:12px;text-align:left;font-weight:600;color:var(--text);">COPPA (USA)</th>
+                <th style="padding:12px;text-align:left;font-weight:600;color:var(--text);">GDPR Art.8 (EU)</th>
+                <th style="padding:12px;text-align:left;font-weight:600;color:var(--text);">UK Children's Code</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:12px;color:var(--text2);">Age threshold</td>
+                <td style="padding:12px;color:var(--text2);">Under 18 (uniform)</td>
+                <td style="padding:12px;color:var(--text2);">Under 13</td>
+                <td style="padding:12px;color:var(--text2);">Under 16 (can be 13)</td>
+                <td style="padding:12px;color:var(--text2);">Under 18</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:12px;color:var(--text2);">Parental consent</td>
+                <td style="padding:12px;color:var(--text2);">Yes — verifiable</td>
+                <td style="padding:12px;color:var(--text2);">Yes — verifiable</td>
+                <td style="padding:12px;color:var(--text2);">Yes</td>
+                <td style="padding:12px;color:var(--text2);">Yes</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:12px;color:var(--text2);">Behavioural tracking banned</td>
+                <td style="padding:12px;color:var(--text2);">Yes — absolute</td>
+                <td style="padding:12px;color:var(--text2);">Yes (under 13)</td>
+                <td style="padding:12px;color:var(--text2);">Restricted</td>
+                <td style="padding:12px;color:var(--text2);">Yes</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:12px;color:var(--text2);">Targeted advertising banned</td>
+                <td style="padding:12px;color:var(--text2);">Yes — absolute</td>
+                <td style="padding:12px;color:var(--text2);">Yes (under 13)</td>
+                <td style="padding:12px;color:var(--text2);">Restricted</td>
+                <td style="padding:12px;color:var(--text2);">Yes</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:12px;color:var(--text2);">Data minimisation</td>
+                <td style="padding:12px;color:var(--text2);">Yes (S.8)</td>
+                <td style="padding:12px;color:var(--text2);">Yes</td>
+                <td style="padding:12px;color:var(--text2);">Yes</td>
+                <td style="padding:12px;color:var(--text2);">Yes</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:12px;color:var(--text2);">Best interests principle</td>
+                <td style="padding:12px;color:var(--text2);">Implicit (well-being)</td>
+                <td style="padding:12px;color:var(--text2);">No</td>
+                <td style="padding:12px;color:var(--text2);">Partially</td>
+                <td style="padding:12px;color:var(--text2);">Explicit</td>
+              </tr>
+              <tr>
+                <td style="padding:12px;color:var(--text2);">Maximum penalty</td>
+                <td style="padding:12px;color:var(--text2);">₹200 crore</td>
+                <td style="padding:12px;color:var(--text2);">USD 51,744 per violation</td>
+                <td style="padding:12px;color:var(--text2);">€20M or 4% global turnover</td>
+                <td style="padding:12px;color:var(--text2);">£18M or 4% global turnover</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note-box success"><strong>Global leadership:</strong> India's Section 9, with its uniform 18-year threshold and absolute prohibition on behavioural tracking and targeted advertising, places India among the most protective children's data regimes globally — comparable to the UK Children's Code and more comprehensive than COPPA for the 13–17 age group that COPPA does not protect.</div>
+      </div>
+    </section>
+
+    <div style="margin-top:24px;padding:20px;border:1px solid var(--border);border-left:4px solid var(--amber);border-radius:var(--radius);background:var(--surface);">
+      <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-bottom:14px;">Other Articles in This Knowledge Base</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <a href="dpdp-act.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;padding:12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--white);transition:border-color .15s;" onmouseover="this.style.borderColor='var(--blue-light)'" onmouseout="this.style.borderColor='var(--border)'">
+          <div style="font-size:20px;flex-shrink:0;">📖</div>
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">DPDP Act Core Framework</div>
+            <div style="font-size:12px;color:var(--text3);">Sections 4–10</div>
+          </div>
+        </a>
+        <a href="dpdp-adjudication.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;padding:12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--white);transition:border-color .15s;" onmouseover="this.style.borderColor='var(--blue-light)'" onmouseout="this.style.borderColor='var(--border)'">
+          <div style="font-size:20px;flex-shrink:0;">⚖️</div>
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Penalties & DPB</div>
+            <div style="font-size:12px;color:var(--text3);">Enforcement mechanism</div>
+          </div>
+        </a>
+        <a href="dpdp-fiduciary-obligations.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;padding:12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--white);transition:border-color .15s;" onmouseover="this.style.borderColor='var(--blue-light)'" onmouseout="this.style.borderColor='var(--border)'">
+          <div style="font-size:20px;flex-shrink:0;">🏢</div>
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Fiduciary Obligations S.8–10</div>
+            <div style="font-size:12px;color:var(--text3);">Core duties</div>
+          </div>
+        </a>
+        <a href="dpdp-rights.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;padding:12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--white);transition:border-color .15s;" onmouseover="this.style.borderColor='var(--blue-light)'" onmouseout="this.style.borderColor='var(--border)'">
+          <div style="font-size:20px;flex-shrink:0;">👤</div>
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Data Principal Rights</div>
+            <div style="font-size:12px;color:var(--text3);">Sections 11–14</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+  </main>
+</div>
+<footer class="footer">
+  <div class="footer-links">
+    <a href="index.html">DPDPindia.in</a>
+    <a href="dpdp-kb.html">DPDP KB</a>
+    <a href="dpdp-genesis.html">Genesis</a>
+    <a href="dpdp-act.html">The Act</a>
+    <a href="dpdp-rights.html">Rights</a>
+    <a href="dpdp-rules.html">Rules</a>
+    <a href="dpdp-adjudication.html">Adjudication</a>
+    <a href="dpdp-exemptions.html">Exemptions</a>
+    <a href="dpdp-children.html">Children</a>
+    <a href="dpdp-fiduciary-obligations.html">Fiduciary Obligations</a>
+  </div>
+  <p>Article 08 — Part of the DPDP Act Knowledge Base · <a href="dpdp-kb.html">← Back to KB</a></p>
+</footer>
+<script src="site-global.js"></script>
+</body>
+</html>

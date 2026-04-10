@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="site-global.css">
+<title>Surveillance Law in India — Telegraph Act, S.69 IT Act & Encryption Debate · DPDP India</title>
+<style>@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:wght@600&display=swap');
+:root{--navy:#0a1628;--navy2:#132040;--blue:#1a5cad;--blue-light:#3b82d4;--amber:#d4900a;--amber-light:#f5c842;--teal:#0e7c6b;--coral:#c2420a;--purple:#5b4bc4;--green:#156c2e;--red:#b91c1c;--surface:#f4f6fb;--surface2:#eaeff8;--text:#0d1b2a;--text2:#3a4a5c;--text3:#6b7e94;--border:#c8d4e8;--border2:#b0c0d8;--white:#ffffff;--font-body:'IBM Plex Sans',sans-serif;--font-display:'Playfair Display',serif;--font-mono:'IBM Plex Mono',monospace;--radius:8px;--radius-lg:12px;--shadow:0 2px 12px rgba(10,22,40,.08);--shadow-md:0 4px 24px rgba(10,22,40,.13);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--surface);color:var(--text);font-size:15px;line-height:1.7;min-height:100vh;}
+.header{background:var(--navy);color:#fff;position:relative;overflow:hidden;}
+.header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px),repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px);}
+.header-inner{position:relative;max-width:1100px;margin:0 auto;padding:52px 40px 48px;}
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:20px;font-family:var(--font-mono);font-size:11px;flex-wrap:wrap;}
+.breadcrumb a{color:rgba(255,255,255,.5);text-decoration:none;transition:color .15s;}
+.breadcrumb a:hover{color:var(--amber-light);}
+.breadcrumb .sep{color:rgba(255,255,255,.25);}
+.breadcrumb .cur{color:var(--amber-light);}
+.header-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:4px 14px;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:20px;}
+.header h1{font-family:var(--font-display);font-size:clamp(24px,4vw,38px);font-weight:600;line-height:1.15;color:#fff;margin-bottom:14px;max-width:760px;}
+.header-sub{font-size:15px;color:rgba(255,255,255,.6);max-width:680px;line-height:1.65;margin-bottom:28px;}
+.header-meta{display:flex;flex-wrap:wrap;gap:8px;}
+.meta-pill{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:4px 12px;font-size:12px;color:rgba(255,255,255,.65);font-family:var(--font-mono);}
+.layout{display:flex;max-width:1100px;margin:0 auto;padding:32px 20px;gap:32px;align-items:flex-start;}
+.sidebar{width:220px;flex-shrink:0;position:sticky;top:24px;}
+.sidebar-nav{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:12px 0;box-shadow:var(--shadow);}
+.sidebar-nav h3{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:6px 18px 10px;}
+.sidebar-nav a{display:flex;align-items:center;gap:8px;padding:8px 18px;font-size:13px;color:var(--text2);text-decoration:none;border-left:2px solid transparent;transition:all .15s;line-height:1.3;}
+.sidebar-nav a:hover{background:var(--surface);color:var(--blue);border-left-color:var(--blue-light);}
+.sidebar-nav .nav-num{font-family:var(--font-mono);font-size:10px;color:var(--text3);min-width:16px;}
+.sidebar-nav hr{border:none;border-top:1px solid var(--border);margin:8px 0;}
+.sidebar-nav .nav-sep{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:12px 18px 4px;display:block;}
+.sidebar-related{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px 18px;box-shadow:var(--shadow);margin-top:12px;}
+.sidebar-related h4{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:10px;}
+.sidebar-related a{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);text-decoration:none;padding:5px 0;border-bottom:1px solid var(--border);transition:color .15s;}
+.sidebar-related a:last-child{border-bottom:none;}
+.sidebar-related a:hover{color:var(--blue);}
+.sidebar-related .link-icon{font-size:11px;opacity:.5;}
+.main{flex:1;min-width:0;}
+.section{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:24px;box-shadow:var(--shadow);overflow:hidden;}
+.section-header{display:flex;align-items:center;gap:14px;padding:20px 28px;border-bottom:1px solid var(--border);background:var(--surface);}
+.section-num{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--font-mono);font-size:12px;font-weight:500;flex-shrink:0;}
+.section-header h2{font-size:17px;font-weight:600;color:var(--text);letter-spacing:-.01em;}
+.section-header p{font-size:13px;color:var(--text3);margin-top:2px;}
+.section-body{padding:28px;}
+.prose p{font-size:14px;color:var(--text2);margin-bottom:12px;line-height:1.75;}
+.prose p:last-child{margin-bottom:0;}
+.prose strong{font-weight:600;color:var(--text);}
+.prose ul{padding-left:20px;margin-bottom:12px;}
+.prose li{font-size:14px;color:var(--text2);margin-bottom:5px;line-height:1.65;}
+.prose code{font-family:var(--font-mono);font-size:12px;background:var(--surface2);padding:1px 6px;border-radius:3px;border:1px solid var(--border);color:var(--blue);}
+.note-box{padding:12px 16px;border-radius:var(--radius);font-size:13px;line-height:1.6;border-left:3px solid;margin:12px 0;}
+.note-box.warning{background:#fef3cd;border-color:var(--amber);color:#533200;}
+.note-box.info{background:#e6f1fb;border-color:var(--blue);color:#0a2e5e;}
+.note-box.danger{background:#fde8e8;border-color:var(--red);color:#5c0f0f;}
+.note-box.success{background:#e8f5ee;border-color:var(--green);color:#0a3318;}
+.note-box.amber{background:#fffaed;border-color:var(--amber);color:#533200;}
+.note-box strong{font-weight:600;}
+.reg-ref{display:inline-flex;align-items:center;gap:4px;padding:2px 8px 2px 6px;border-radius:4px;background:#ede8fe;color:var(--purple);border:1px solid #c4b8f5;font-family:var(--font-mono);font-size:11px;font-weight:500;white-space:nowrap;}
+.reg-ref::before{content:'§';font-family:Georgia,serif;font-size:12px;}
+.footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:28px 20px;font-size:12px;margin-top:40px;}
+.footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:12px;}
+.footer-links a{color:rgba(255,255,255,.55);text-decoration:none;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;transition:color .15s;}
+.footer-links a:hover{color:var(--amber-light);}
+.footer a{color:rgba(255,255,255,.6);}
+@media(max-width:820px){.layout{flex-direction:column;padding:16px;}.sidebar{width:100%;position:static;}.sidebar-nav{display:none;}.header-inner{padding:32px 20px;}.section-body{padding:16px;}}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <div class="breadcrumb">
+      <a href="index.html">DPDPindia.in</a><span class="sep">/</span>
+      <a href="dpdp-kb.html">Privacy Laws</a><span class="sep">/</span>
+      <span class="cur">Surveillance Law in India</span>
+    </div>
+    <div class="header-badge"><span style="width:6px;height:6px;border-radius:50%;background:#b0ccea;display:inline-block;"></span>&nbsp;Article 02 · Privacy Law Knowledge Base</div>
+    <h1><span style="color:#b0ccea;">Surveillance Law in India</span> — Telegraph Act, S.69 IT Act &amp; the Encryption Debate</h1>
+    <p class="header-sub">India's surveillance legal framework spans the Telegraph Act 1885, Section 69 of the IT Act 2000, and the IT Rules 2021 traceability mandate — with no independent judicial oversight comparable to FISA courts or UK Judicial Commissioners. This article maps the legal architecture, the Pegasus controversy, and the ongoing encryption vs. investigation debate before the Delhi High Court.</p>
+    <div class="header-meta"><span class="meta-pill">S.69 IT Act</span><span class="meta-pill">Telegraph Act 1885</span><span class="meta-pill">IT Rules 2021</span><span class="meta-pill">Traceability Mandate</span><span class="meta-pill">Pegasus</span><span class="meta-pill">Encryption</span><span class="meta-pill">WhatsApp Delhi HC</span></div>
+  </div>
+</header>
+<div class="layout">
+  <nav class="sidebar">
+    <div class="sidebar-nav">
+      <h3>On this page</h3>
+      <a href="#s1"><span class="nav-num">01</span> India's Surveillance Framework</a>
+      <a href="#s2"><span class="nav-num">02</span> Telegraph Act S.5(2)</a>
+      <a href="#s3"><span class="nav-num">03</span> IT Act S.69 Digital Surveillance</a>
+      <a href="#s4"><span class="nav-num">04</span> IT Rules 2021 Traceability</a>
+      <a href="#s5"><span class="nav-num">05</span> Pegasus & SC Committee</a>
+      <a href="#s6"><span class="nav-num">06</span> Encryption & WhatsApp Litigation</a>
+      <hr><span class="nav-sep">Knowledge Base</span>
+      <a href="dpdp-kb.html"><span class="nav-num">←</span> Back to DPDP KB</a>
+      <a href="index.html"><span class="nav-num">⌂</span> DPDPindia.in</a>
+    </div>
+    <div class="sidebar-related">
+      <h4>Related Articles</h4>
+      <a href="privacy-constitutional.html"><span class="link-icon">↗</span> Puttaswamy & Constitutional Privacy</a>
+      <a href="dpdp-exemptions.html"><span class="link-icon">↗</span> State Exemptions under DPDP S.17</a>
+      <a href="dpdp-genesis.html"><span class="link-icon">↗</span> DPDP Act History & Context</a>
+    </div>
+  </nav>
+  <main class="main">
+
+    <section class="section" id="s1">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <div><h2>India's Surveillance Framework: Overview</h2><p>A patchwork of colonial and modern law with no unified statute</p></div>
+      </div>
+      <div class="section-body">
+        <div class="prose"><p>India's surveillance law is a patchwork of colonial-era legislation, post-liberalisation digital law, and subordinate rules — with no unified surveillance statute and no independent judicial oversight body.</p></div>
+        <div style="display:grid;grid-template-columns:1fr;gap:14px;margin-bottom:16px;">
+          <div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);">
+            <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:7px;">Tier 1 — Legislative</div>
+            <div style="font-size:13px;color:var(--text2);line-height:1.65;"><strong>Indian Telegraph Act 1885</strong> (S.5(2)) — phone/communication interception; <strong>IT Act 2000</strong> (S.69) — digital interception/monitoring/decryption; S.69A — blocking of online content; S.69B — internet traffic monitoring; <strong>BNSS 2023</strong> (S.92) — judicial orders for production of digital documents.</div>
+          </div>
+          <div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);">
+            <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);margin-bottom:7px;">Tier 2 — Executive/Procedural</div>
+            <div style="font-size:13px;color:var(--text2);line-height:1.65;"><strong>IT (Procedure and Safeguards)</strong> Rules 2009; Rule 419A under IT Act (interception safeguards); <strong>IT Rules 2021</strong> — traceability mandate; <strong>CERT-In Directions 2022</strong> — mandatory incident reporting and log retention.</div>
+          </div>
+          <div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);">
+            <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--purple);margin-bottom:7px;">Tier 3 — Institutional</div>
+            <div style="font-size:13px;color:var(--text2);line-height:1.65;">Inter-Ministerial Review Committee (executive, not judicial); National Technical Research Organisation (NTRO) under PMO; Intelligence Bureau (internal intelligence); Research & Analysis Wing (external intelligence); State intelligence agencies; CERT-In (cybersecurity incidents).</div>
+          </div>
+        </div>
+        <div class="note-box danger"><strong>Critical oversight gap:</strong> India does not have a <strong>judicial warrant requirement</strong> for surveillance. Most surveillance orders are made by executive officers (Secretaries at Central/State level) and reviewed by an inter-ministerial committee — not a court. This contrasts with the US (FISA Court), UK (Judicial Commissioner under IPA 2016), and EU standards (judicial or independent administrative authorisation required). The Puttaswamy proportionality test's "procedural guarantees" prong casts constitutional doubt on this purely executive model.</div>
+      </div>
+    </section>
+
+    <section class="section" id="s2">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <div><h2>Telegraph Act 1885: Section 5(2) Interception</h2><p>India's foundational surveillance provision — still in active use</p></div>
+      </div>
+      <div class="section-body">
+        <div class="prose"><p>Section 5(2) of the Indian Telegraph Act 1885 is India's foundational interception provision — still in active use for telephone and communication interception.</p>
+        <p><strong>Grounds for interception:</strong> "Public emergency" or "in the interest of public safety," where necessary/expedient in the interests of: sovereignty and integrity of India; security of the State; friendly relations with foreign states; public order; preventing incitement to any offence.</p></div>
+        <div style="overflow-x:auto;margin-bottom:16px;">
+          <table style="width:100%;border-collapse:collapse;font-size:13px;">
+            <thead>
+              <tr style="background:var(--surface);">
+                <th style="padding:12px;text-align:left;border-bottom:2px solid var(--border);font-weight:600;color:var(--text);">Element</th>
+                <th style="padding:12px;text-align:left;border-bottom:2px solid var(--border);font-weight:600;color:var(--text);">Requirement</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:12px;">Authorising authority</td>
+                <td style="padding:12px;">Secretary, Ministry of Home Affairs (Central) or Secretary (Home), State Govt</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:12px;">Urgency powers</td>
+                <td style="padding:12px;">DSP-level officer may authorise in emergencies — must be confirmed by Secretary within 24 hours</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:12px;">Review</td>
+                <td style="padding:12px;">Inter-Ministerial Review Committee — within 2 months of issue</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:12px;">Committee composition</td>
+                <td style="padding:12px;">Cabinet Secretary (Central) or Chief Secretary (State) as chairman</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:12px;">Duration</td>
+                <td style="padding:12px;">Maximum 60 days; renewable</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="prose"><p><strong>Key Supreme Court ruling:</strong> <strong>People's Union for Civil Liberties (PUCL) v. Union of India (1997)</strong> — The SC laid down procedural safeguards: only Secretary-level officer can authorise; grounds must be recorded in writing; interception only permitted in emergencies. These safeguards, however, are not always observed in practice and are not independently verifiable.</p></div>
+        <div class="note-box warning"><strong>Outdated framework:</strong> The PUCL safeguards (1997) predate the smartphone era, messaging apps, and end-to-end encryption. They were designed for landline/GSM telephone interception. The Telegraph Act has not been updated to address the modern digital communications landscape — a significant legislative gap that the proposed Telecommunications Act 2023 begins to address.</div>
+      </div>
+    </section>
+
+    <section class="section" id="s3">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div><h2>IT Act Section 69: Digital Surveillance Powers</h2><p>Extended interception and monitoring in the digital domain</p></div>
+      </div>
+      <div class="section-body">
+        <div class="prose"><p>Section 69 (inserted by the 2008 Amendment) extends interception and monitoring powers to the digital domain.</p>
+        <p><strong>S.69 authorises:</strong> Any government agency to intercept, monitor, or decrypt <strong>any information</strong> generated, transmitted, received, or stored in <strong>any computer resource</strong> — on grounds: sovereignty/integrity; defence; security of State; friendly relations; public order; preventing incitement to any cognizable offence.</p>
+        <p><strong>Authorisation and procedure:</strong> Same Secretary-level requirement as Telegraph Act; Review Committee review required. Non-compliance by intermediaries: <strong>7 years imprisonment</strong>.</p></div>
+        <div style="overflow-x:auto;margin-bottom:16px;">
+          <table style="width:100%;border-collapse:collapse;font-size:13px;">
+            <thead>
+              <tr style="background:var(--surface);">
+                <th style="padding:12px;text-align:left;border-bottom:2px solid var(--border);font-weight:600;color:var(--text);">Section</th>
+                <th style="padding:12px;text-align:left;border-bottom:2px solid var(--border);font-weight:600;color:var(--text);">Power</th>
+                <th style="padding:12px;text-align:left;border-bottom:2px solid var(--border);font-weight:600;color:var(--text);">Non-compliance Penalty</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:12px;">S.69</td>
+                <td style="padding:12px;">Intercept, monitor, and/or decrypt any data in any computer resource</td>
+                <td style="padding:12px;">7 years imprisonment</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:12px;">S.69A</td>
+                <td style="padding:12px;">Block public access to online content (websites, apps, URLs)</td>
+                <td style="padding:12px;">7 years imprisonment</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:12px;">S.69B</td>
+                <td style="padding:12px;">Monitor and collect traffic data from computer systems for cybersecurity</td>
+                <td style="padding:12px;">3 years imprisonment</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note-box info"><strong>S.69A blocking practice:</strong> S.69A blocking orders are frequently used to block websites — news portals, social media accounts, streaming content, and anti-government content have all been blocked under S.69A. The Supreme Court in Shreya Singhal (2015) upheld S.69A subject to procedural compliance — but also noted that affected parties must be given an opportunity to be heard (though blocking orders may be kept confidential where national security is involved, making this right practically inaccessible).</div>
+      </div>
+    </section>
+
+    <section class="section" id="s4">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <div><h2>IT Rules 2021: The Traceability Mandate</h2><p>First originator identification and technical impossibility</p></div>
+      </div>
+      <div class="section-body">
+        <div class="prose"><p>The Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021 introduced a traceability requirement:</p>
+        <p><strong>Rule 4(2):</strong> Significant Social Media Intermediaries (SSMIs — those with ≥50 lakh registered users in India) providing messaging services must enable identification of the <strong>first originator of information</strong> in India on receiving a judicial order or government direction.</p>
+        <p><strong>Why this is technically problematic:</strong> True end-to-end encryption (E2EE), by mathematical design, means the platform operator cannot read messages or identify the first originator without breaking the encryption. Rule 4(2) in practice requires one of two things: (a) maintaining a parallel record of message origin data alongside encrypted content — creating a surveillance database; or (b) implementing a "ghost user" or "message franking" system where a verifiable tag of the originator travels with the message undetected. Both approaches create security vulnerabilities that could be exploited by actors beyond the government.</p></div>
+        <div class="note-box warning"><strong>The encryption paradox:</strong> Privacy experts and cryptographers have argued that <strong>there is no technical way to implement traceability on an E2EE platform without effectively breaking E2EE</strong> for all users — because any "backdoor" for governments creates a backdoor that malicious actors can exploit. The debate is not technical vs. legal; it is a policy choice between privacy (protecting 1 billion+ users) and targeted investigation (tracing specific bad actors).</div>
+      </div>
+    </section>
+
+    <section class="section" id="s5">
+      <div class="section-header">
+        <div class="section-num">05</div>
+        <div><h2>Pegasus & the Supreme Court Technical Committee</h2><p>Exposing gaps in India's surveillance framework</p></div>
+      </div>
+      <div class="section-body">
+        <div class="prose"><p>In July 2021, the Pegasus Project — an international investigative journalism consortium — published reports suggesting that NSO Group's Pegasus spyware had been deployed against Indian journalists, activists, opposition politicians, lawyers, and government officials.</p>
+        <p><strong>Pegasus capabilities:</strong> Pegasus, sold exclusively to government clients, exploits zero-day vulnerabilities to achieve complete device takeover — reading encrypted messages, activating cameras and microphones, accessing location data, and exfiltrating all data, without the target knowing.</p>
+        <p><strong>SC response:</strong> In October 2021, the Supreme Court constituted a three-member Technical Expert Committee to: (a) inquire into Pegasus deployment; (b) frame a model surveillance law; (c) recommend safeguards for the existing framework.</p>
+        <p><strong>Committee outcome (August 2022):</strong> The committee reported that it <strong>could not conclusively establish</strong> Pegasus use on the phones examined — primarily because the Government of India neither cooperated with the committee nor filed any affidavit denying or confirming use of Pegasus. The committee made 9 recommendations including: a new surveillance law with judicial authorisation, oversight by a parliamentary committee, mandatory notification to targets post-surveillance, and time-limits on retention of intercepted data.</p></div>
+        <div class="note-box danger"><strong>Three critical vulnerabilities exposed:</strong> The Pegasus episode exposed three critical vulnerabilities in India's surveillance framework: (1) no prohibition on use of commercial spyware; (2) no independent judicial oversight of targeted surveillance; (3) no mechanism by which citizens can find out if they have been surveilled unlawfully. All three implicate the Puttaswamy proportionality test's "procedural guarantees" prong.</div>
+      </div>
+    </section>
+
+    <section class="section" id="s6">
+      <div class="section-header">
+        <div class="section-num">06</div>
+        <div><h2>Encryption Debate & WhatsApp Litigation</h2><p>The pending Delhi High Court challenge to Rule 4(2)</p></div>
+      </div>
+      <div class="section-body">
+        <div class="prose"><p><strong>WhatsApp LLC v. Union of India</strong> (Delhi High Court) — WhatsApp filed a petition challenging Rule 4(2) as unconstitutional — violating informational privacy (Puttaswamy), freedom of speech and expression (Art.19(1)(a)), and requiring a technical impossibility that would compromise the security of millions of innocent users to surveil a few bad actors. The case is pending before the Delhi High Court.</p></div>
+        <div style="overflow-x:auto;margin-bottom:16px;">
+          <table style="width:100%;border-collapse:collapse;font-size:13px;">
+            <thead>
+              <tr style="background:var(--surface);">
+                <th style="padding:12px;text-align:left;border-bottom:2px solid var(--border);font-weight:600;color:var(--text);">WhatsApp's Arguments</th>
+                <th style="padding:12px;text-align:left;border-bottom:2px solid var(--border);font-weight:600;color:var(--text);">Government's Arguments</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:12px;">E2EE cannot be broken selectively — a backdoor for govt is a backdoor for everyone</td>
+                <td style="padding:12px;">Law enforcement requires tracing viral misinformation linked to mob violence and terrorism</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:12px;">Compliance requires storing metadata tags on billions of messages — a mass surveillance database</td>
+                <td style="padding:12px;">Parliament has authority to regulate intermediaries under the IT Act</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:12px;">Only innocent users' privacy is sacrificed — bad actors use multiple accounts or alternative platforms</td>
+                <td style="padding:12px;">Platforms have civic responsibility to support lawful order</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:12px;">No less intrusive alternative was considered — proportionality fails</td>
+                <td style="padding:12px;">Traceability of first originator, not content — privacy impact is limited</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:12px;">Multi-jurisdictional issue — India's rules would set global precedent</td>
+                <td style="padding:12px;">India's rules apply to India-based users — sovereign right</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="prose"><p><strong>Global parallel:</strong> The EU's proposed Chat Control regulation, UK Online Safety Act, and Australian debate show this is a global constitutional conflict — governments worldwide want backdoors; technologists and privacy advocates say E2EE is mathematically indivisible. The UK's Ofcom has indicated scanning requirements won't be activated until "technically feasible" — acknowledging the current impossibility.</p></div>
+        <div class="note-box success"><strong>Constitutional significance:</strong> The Delhi High Court's ultimate ruling on Rule 4(2), likely to be appealed to the Supreme Court, will be a landmark in Indian constitutional law — requiring the court to balance Art.19(1)(a) (free expression), Art.21 (privacy), and the state's security mandate. The Puttaswamy 4-part test — especially proportionality — will be the deciding framework. Watch this space.</div>
+        <div style="margin-top:24px;padding:20px;border:1px solid var(--border);border-left:4px solid var(--amber);border-radius:var(--radius);background:var(--surface);">
+          <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-bottom:14px;">Cross-Link: Related Privacy & DPDP Resources</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <a href="privacy-constitutional.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;padding:12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--white);transition:border-color .15s;" onmouseover="this.style.borderColor='var(--blue-light)'" onmouseout="this.style.borderColor='var(--border)'">
+              <div style="font-size:20px;flex-shrink:0;">⚖️</div>
+              <div>
+                <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Puttaswamy & Constitutional Privacy</div>
+                <div style="font-size:12px;color:var(--text3);">The 4-part proportionality test</div>
+              </div>
+            </a>
+            <a href="dpdp-exemptions.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;padding:12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--white);transition:border-color .15s;" onmouseover="this.style.borderColor='var(--blue-light)'" onmouseout="this.style.borderColor='var(--border)'">
+              <div style="font-size:20px;flex-shrink:0;">🏛️</div>
+              <div>
+                <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">State Exemptions under DPDP S.17</div>
+                <div style="font-size:12px;color:var(--text3);">Government processing scope</div>
+              </div>
+            </a>
+            <a href="dpdp-genesis.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;padding:12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--white);transition:border-color .15s;" onmouseover="this.style.borderColor='var(--blue-light)'" onmouseout="this.style.borderColor='var(--border)'">
+              <div style="font-size:20px;flex-shrink:0;">📜</div>
+              <div>
+                <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">DPDP Act History & Context</div>
+                <div style="font-size:12px;color:var(--text3);">Legislative development</div>
+              </div>
+            </a>
+            <a href="dpdp-act.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;padding:12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--white);transition:border-color .15s;" onmouseover="this.style.borderColor='var(--blue-light)'" onmouseout="this.style.borderColor='var(--border)'">
+              <div style="font-size:20px;flex-shrink:0;">📋</div>
+              <div>
+                <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">DPDP Act Core Framework</div>
+                <div style="font-size:12px;color:var(--text3);">Main obligations and rights</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+<footer class="footer">
+  <div class="footer-links">
+    <a href="index.html">DPDPindia.in</a>
+    <a href="dpdp-kb.html">DPDP KB</a>
+    <a href="privacy-constitutional.html">Constitutional Privacy</a>
+    <a href="privacy-surveillance.html">Surveillance Laws</a>
+    <a href="dpdp-exemptions.html">Exemptions</a>
+    <a href="dpdp-genesis.html">Genesis</a>
+  </div>
+  <p>Article 02 — Part of the Privacy Law Knowledge Base · <a href="dpdp-kb.html">← Back to KB</a></p>
+</footer>
+<script src="site-global.js"></script>
+</body>
+</html>

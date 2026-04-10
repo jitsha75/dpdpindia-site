@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="site-global.css">
+<title>IT Act — Adjudication, CATC & Cybercrime Courts</title>
+<style>@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:wght@600&display=swap');
+:root{--navy:#0a1628;--navy2:#132040;--blue:#1a5cad;--blue-light:#3b82d4;--amber:#d4900a;--amber-light:#f5c842;--teal:#0e7c6b;--coral:#c2420a;--purple:#5b4bc4;--green:#156c2e;--red:#b91c1c;--surface:#f4f6fb;--surface2:#eaeff8;--text:#0d1b2a;--text2:#3a4a5c;--text3:#6b7e94;--border:#c8d4e8;--border2:#b0c0d8;--white:#ffffff;--font-body:'IBM Plex Sans',sans-serif;--font-display:'Playfair Display',serif;--font-mono:'IBM Plex Mono',monospace;--radius:8px;--radius-lg:12px;--shadow:0 2px 12px rgba(10,22,40,.08);--shadow-md:0 4px 24px rgba(10,22,40,.13);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--surface);color:var(--text);font-size:15px;line-height:1.7;min-height:100vh;}
+.header{background:var(--navy);color:#fff;position:relative;overflow:hidden;}
+.header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px),repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px);}
+.header-inner{position:relative;max-width:1100px;margin:0 auto;padding:52px 40px 48px;}
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:20px;font-family:var(--font-mono);font-size:11px;flex-wrap:wrap;}
+.breadcrumb a{color:rgba(255,255,255,.5);text-decoration:none;transition:color .15s;}
+.breadcrumb a:hover{color:var(--amber-light);}
+.breadcrumb .sep{color:rgba(255,255,255,.25);}
+.breadcrumb .cur{color:var(--amber-light);}
+.header-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:4px 14px;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:20px;}
+.header h1{font-family:var(--font-display);font-size:clamp(24px,4vw,38px);font-weight:600;line-height:1.15;color:#fff;margin-bottom:14px;max-width:760px;}
+.header-sub{font-size:15px;color:rgba(255,255,255,.6);max-width:680px;line-height:1.65;margin-bottom:28px;}
+.header-meta{display:flex;flex-wrap:wrap;gap:8px;}
+.meta-pill{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:4px 12px;font-size:12px;color:rgba(255,255,255,.65);font-family:var(--font-mono);}
+.layout{display:flex;max-width:1100px;margin:0 auto;padding:32px 20px;gap:32px;align-items:flex-start;}
+.sidebar{width:220px;flex-shrink:0;position:sticky;top:24px;}
+.sidebar-nav{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:12px 0;box-shadow:var(--shadow);}
+.sidebar-nav h3{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:6px 18px 10px;}
+.sidebar-nav a{display:flex;align-items:center;gap:8px;padding:8px 18px;font-size:13px;color:var(--text2);text-decoration:none;border-left:2px solid transparent;transition:all .15s;line-height:1.3;}
+.sidebar-nav a:hover{background:var(--surface);color:var(--blue);border-left-color:var(--blue-light);}
+.sidebar-nav .nav-num{font-family:var(--font-mono);font-size:10px;color:var(--text3);min-width:16px;}
+.sidebar-nav hr{border:none;border-top:1px solid var(--border);margin:8px 0;}
+.sidebar-nav .nav-sep{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:12px 18px 4px;display:block;}
+.sidebar-related{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px 18px;box-shadow:var(--shadow);margin-top:12px;}
+.sidebar-related h4{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:10px;}
+.sidebar-related a{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);text-decoration:none;padding:5px 0;border-bottom:1px solid var(--border);transition:color .15s;}
+.sidebar-related a:last-child{border-bottom:none;}
+.sidebar-related a:hover{color:var(--blue);}
+.sidebar-related .link-icon{font-size:11px;opacity:.5;}
+.main{flex:1;min-width:0;}
+.section{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:24px;box-shadow:var(--shadow);overflow:hidden;}
+.section-header{display:flex;align-items:center;gap:14px;padding:20px 28px;border-bottom:1px solid var(--border);background:var(--surface);}
+.section-num{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--font-mono);font-size:12px;font-weight:500;flex-shrink:0;}
+.section-header h2{font-size:17px;font-weight:600;color:var(--text);letter-spacing:-.01em;}
+.section-header p{font-size:13px;color:var(--text3);margin-top:2px;}
+.section-body{padding:28px;}
+.prose p{font-size:14px;color:var(--text2);margin-bottom:12px;line-height:1.75;}
+.prose p:last-child{margin-bottom:0;}
+.prose strong{font-weight:600;color:var(--text);}
+.prose ul{padding-left:20px;margin-bottom:12px;}
+.prose li{font-size:14px;color:var(--text2);margin-bottom:5px;line-height:1.65;}
+.prose code{font-family:var(--font-mono);font-size:12px;background:var(--surface2);padding:1px 6px;border-radius:3px;border:1px solid var(--border);color:var(--blue);}
+.note-box{padding:12px 16px;border-radius:var(--radius);font-size:13px;line-height:1.6;border-left:3px solid;margin:12px 0;}
+.note-box.warning{background:#fef3cd;border-color:var(--amber);color:#533200;}
+.note-box.info{background:#e6f1fb;border-color:var(--blue);color:#0a2e5e;}
+.note-box.danger{background:#fde8e8;border-color:var(--red);color:#5c0f0f;}
+.note-box.success{background:#e8f5ee;border-color:var(--green);color:#0a3318;}
+.note-box.amber{background:#fffaed;border-color:var(--amber);color:#533200;}
+.note-box strong{font-weight:600;}
+.reg-ref{display:inline-flex;align-items:center;gap:4px;padding:2px 8px 2px 6px;border-radius:4px;background:#ede8fe;color:var(--purple);border:1px solid #c4b8f5;font-family:var(--font-mono);font-size:11px;font-weight:500;white-space:nowrap;}
+.reg-ref::before{content:'§';font-family:Georgia,serif;font-size:12px;}
+.table-wrapper{overflow-x:auto;margin:12px 0;}
+.table-wrapper table{width:100%;border-collapse:collapse;font-size:13px;}
+.table-wrapper th{background:var(--surface2);padding:10px;text-align:left;font-weight:600;color:var(--text);border:1px solid var(--border);}
+.table-wrapper td{padding:10px;border:1px solid var(--border);color:var(--text2);}
+.card-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:12px 0;}
+.card{border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);}
+.card-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:7px;}
+.card-title{font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:7px;line-height:1.3;}
+.card-desc{font-size:13px;color:var(--text2);line-height:1.65;}
+.footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:28px 20px;font-size:12px;margin-top:40px;}
+.footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:12px;}
+.footer-links a{color:rgba(255,255,255,.55);text-decoration:none;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;transition:color .15s;}
+.footer-links a:hover{color:var(--amber-light);}
+.footer a{color:rgba(255,255,255,.6);}
+@media(max-width:820px){.layout{flex-direction:column;padding:16px;}.sidebar{width:100%;position:static;}.sidebar-nav{display:none;}.header-inner{padding:32px 20px;}.section-body{padding:16px;}.card-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <div class="breadcrumb">
+      <a href="index.html">DPDPindia.in</a><span class="sep">/</span>
+      <a href="itact-kb.html">IT Act Knowledge Base</a><span class="sep">/</span>
+      <span class="cur">Adjudication & CATC</span>
+    </div>
+    <div class="header-badge"><span style="width:6px;height:6px;border-radius:50%;background:#b0ccea;display:inline-block;"></span>&nbsp;Article 06 · IT Act Knowledge Base</div>
+    <h1><span style="color:#b0ccea;">IT Act — Adjudication</span>, CATC & Cybercrime Courts</h1>
+    <p class="header-sub">A comprehensive analysis of India's dual-track redressal system for IT Act violations — civil adjudication through specialized officers and the Cyber Appellate Tribunal, criminal prosecution through ordinary courts, and the critical role of digital evidence and compoundable offences.</p>
+    <div class="header-meta"><span class="meta-pill">Section 46 — Adjudicating Officers</span><span class="meta-pill">Section 48 — CATC</span><span class="meta-pill">Section 65B — Digital Evidence</span><span class="meta-pill">Section 77A — Compounding</span></div>
+  </div>
+</header>
+<div class="layout">
+  <nav class="sidebar">
+    <div class="sidebar-nav">
+      <h3>On this page</h3>
+      <a href="#s1"><span class="nav-num">01</span> Overview: Civil vs Criminal</a>
+      <a href="#s2"><span class="nav-num">02</span> Adjudicating Officers (S.46)</a>
+      <a href="#s3"><span class="nav-num">03</span> Cyber Appellate Tribunal</a>
+      <a href="#s4"><span class="nav-num">04</span> Criminal Courts & Jurisdiction</a>
+      <a href="#s5"><span class="nav-num">05</span> Digital Evidence (S.65B)</a>
+      <a href="#s6"><span class="nav-num">06</span> Compoundable Offences (S.77A)</a>
+      <hr><span class="nav-sep">Knowledge Base</span>
+      <a href="itact-kb.html"><span class="nav-num">←</span> Back to IT Act KB</a>
+      <a href="index.html"><span class="nav-num">⌂</span> DPDPindia.in</a>
+    </div>
+    <div class="sidebar-related">
+      <h4>Related Articles</h4>
+      <a href="itact-sections.html"><span class="link-icon">↗</span> Key Sections Reference</a>
+      <a href="itact-intermediary.html"><span class="link-icon">↗</span> Safe Harbour & S.79</a>
+      <a href="cybercrime-kb.html"><span class="link-icon">↗</span> Cyber Crime KB</a>
+    </div>
+  </nav>
+  <main class="main">
+
+    <section class="section" id="s1">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <div><h2>Overview — Civil vs Criminal Remedies</h2><p>Dual-track redressal system under the IT Act</p></div>
+      </div>
+      <div class="section-body">
+        <div class="prose">
+          <p>The IT Act creates a <strong>dual-track redressal system</strong>. The same act — for example, unauthorized access to a computer system — may give rise to both a civil claim for compensation under Section 43 and a criminal prosecution under Section 66. The choice of track depends on the complainant's objective: compensation (civil) or punishment (criminal). This dual-track structure is a defining feature of the Act and must be understood by both practitioners and victims.</p>
+        </div>
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-label">Civil Track</div>
+            <div class="card-title">Section 43 Compensation</div>
+            <div class="card-desc">Adjudicating Officer (AO) → CATC → High Court. Remedy: Compensation to aggrieved party. No cap post-2008 (up to ₹5 crore before AO). Key: No criminal intent required.</div>
+          </div>
+          <div class="card">
+            <div class="card-label">Criminal Track</div>
+            <div class="card-title">Sections 65–70 Prosecution</div>
+            <div class="card-desc">Police/CERT-In → Sessions Court (or JMFC for offences <3 yrs). Remedy: Imprisonment and/or fine. Key: Dishonest or fraudulent intent required for S.66.</div>
+          </div>
+        </div>
+        <div class="note-box info"><strong>Timeline distinction:</strong> Civil claims typically take longer to process through adjudication and tribunal appeal; criminal cases follow CrPC (now BNSS 2023) and may move faster if police investigation is efficient.</div>
+      </div>
+    </section>
+
+    <section class="section" id="s2">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <div><h2>Adjudicating Officers (Section 46)</h2><p>Specialized officials with quasi-judicial powers</p></div>
+      </div>
+      <div class="section-body">
+        <div class="prose">
+          <p>Under Section 46, the Central Government appoints <strong>Adjudicating Officers (AOs)</strong> who are officials of the rank of Secretary to the Government. They have jurisdiction to adjudicate civil claims under Section 43 and 43A (though 43A has been largely superseded by the DPDP Act 2023). AOs can award compensation up to <strong>₹5 crore</strong> — claims above this threshold go directly to civil courts.</p>
+          <p><strong>Powers of AOs:</strong> They may summon persons, require document production, issue certificates. They follow a quasi-judicial process — natural justice principles apply. The AO's order can be appealed to the Cyber Appellate Tribunal (CATC).</p>
+        </div>
+        <div class="note-box info"><strong>Accessibility note:</strong> The adjudication process was originally meant to be quick and accessible — a specialist alternative to civil courts. In practice, the number of AO orders has been limited, with many complainants preferring criminal routes or civil suits.</div>
+      </div>
+    </section>
+
+    <section class="section" id="s3">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div><h2>Cyber Appellate Tribunal (Section 48)</h2><p>Appeal forum for AO orders and specialized cyber disputes</p></div>
+      </div>
+      <div class="section-body">
+        <div class="prose">
+          <p>The <strong>Cyber Appellate Tribunal (CATC)</strong> is established under Section 48 of the IT Act. Appeals from AO orders lie to the CATC. The Presiding Officer must be a person qualified to be a judge of a High Court. Beyond the CATC, further appeals lie to the High Court on questions of law.</p>
+          <p><strong>CATC Structure:</strong> Presiding Officer (High Court judge rank) + two members. Sits in New Delhi. Can grant interim relief, confirm/modify/reverse AO orders.</p>
+        </div>
+        <div class="note-box warning"><strong>Current operational status:</strong> The CATC has historically been non-functional for extended periods due to vacancies in the Presiding Officer position. This is a significant gap in the enforcement architecture. Parties have frequently been forced to approach High Courts directly.</div>
+      </div>
+    </section>
+
+    <section class="section" id="s4">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <div><h2>Criminal Courts & Jurisdiction</h2><p>Court hierarchy and investigative authority for IT Act offences</p></div>
+      </div>
+      <div class="section-body">
+        <div class="prose">
+          <p>Criminal offences under the IT Act are <strong>cognizable and non-bailable</strong> in most cases. Jurisdiction is tiered by severity:</p>
+        </div>
+        <div style="border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin:12px 0;">
+          <div style="padding:12px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;"><div style="width:5px;height:5px;border-radius:50%;background:var(--blue);margin-top:7px;flex-shrink:0;"></div><div style="font-size:13.5px;color:var(--text2);"><strong>Offences punishable >3 years:</strong> Sessions Court (higher jurisdiction)</div></div>
+          <div style="padding:12px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;"><div style="width:5px;height:5px;border-radius:50%;background:var(--blue);margin-top:7px;flex-shrink:0;"></div><div style="font-size:13.5px;color:var(--text2);"><strong>Offences punishable ≤3 years:</strong> Judicial Magistrate First Class (JMFC)</div></div>
+          <div style="padding:12px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;"><div style="width:5px;height:5px;border-radius:50%;background:var(--blue);margin-top:7px;flex-shrink:0;"></div><div style="font-size:13.5px;color:var(--text2);"><strong>Investigation:</strong> Police (DSP rank or above per S.80), CERT-In, state cyber cells</div></div>
+          <div style="padding:12px 18px;display:flex;gap:10px;align-items:flex-start;"><div style="width:5px;height:5px;border-radius:50%;background:var(--blue);margin-top:7px;flex-shrink:0;"></div><div style="font-size:13.5px;color:var(--text2);"><strong>Complaint portal:</strong> cybercrime.gov.in (operated by I4C, Home Ministry)</div></div>
+        </div>
+        <div class="note-box success"><strong>Extraterritorial reach:</strong> Section 1(2) and Section 75 give the IT Act extraterritorial reach — offences committed outside India against computers located in India fall within Indian jurisdiction.</div>
+        <div class="prose" style="margin-top:12px;">
+          <p><strong>Trial procedure:</strong> Follows CrPC (now BNSS 2023). Digital evidence governed by Section 65B of the Indian Evidence Act (now Bharatiya Sakshya Adhiniyam 2023).</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="s5">
+      <div class="section-header">
+        <div class="section-num">05</div>
+        <div><h2>Digital Evidence (Section 65B)</h2><p>Admissibility and certification of electronic records</p></div>
+      </div>
+      <div class="section-body">
+        <div class="prose">
+          <p>Section 65B of the Indian Evidence Act (BSA 2023 equivalent) is <strong>critical for any cybercrime prosecution or civil claim</strong>. It governs the admissibility of electronic records.</p>
+          <p><strong>Key requirements:</strong></p>
+        </div>
+        <div style="border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin:12px 0;">
+          <div style="padding:12px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;"><div style="width:5px;height:5px;border-radius:50%;background:var(--blue);margin-top:7px;flex-shrink:0;"></div><div style="font-size:13.5px;color:var(--text2);">A <strong>Section 65B certificate</strong> must accompany any electronic record sought to be admitted as evidence</div></div>
+          <div style="padding:12px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;"><div style="width:5px;height:5px;border-radius:50%;background:var(--blue);margin-top:7px;flex-shrink:0;"></div><div style="font-size:13.5px;color:var(--text2);">The certificate must be issued by a <strong>responsible official</strong> of the device/system used to produce the record</div></div>
+          <div style="padding:12px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;"><div style="width:5px;height:5px;border-radius:50%;background:var(--blue);margin-top:7px;flex-shrink:0;"></div><div style="font-size:13.5px;color:var(--text2);">The certificate must confirm: (a) the electronic record was produced by the device/computer; (b) the device was in regular use; (c) the information was stored in the ordinary course of activities; (d) the record is a true representation</div></div>
+          <div style="padding:12px 18px;display:flex;gap:10px;align-items:flex-start;"><div style="width:5px;height:5px;border-radius:50%;background:var(--blue);margin-top:7px;flex-shrink:0;"></div><div style="font-size:13.5px;color:var(--text2;"><strong>Chain of custody:</strong> Hash values (MD5, SHA-256) are used to prove integrity of digital evidence. CFSL (Central Forensic Science Laboratory) and state FSLs are the designated agencies for digital forensics</div></div>
+        </div>
+        <div class="note-box danger"><strong>Critical failure point:</strong> Failure to obtain a S.65B certificate at the time of seizure is one of the most common causes of cybercrime case failure in India. Police and legal teams must ensure certification at the point of evidence collection, not after.</div>
+        <div class="prose" style="margin-top:12px;">
+          <p><strong>Landmark case:</strong> <em>Arjun Panditrao Khotkar v. Kailash Kushanrao Gorantyal</em> (2020) SC — the Supreme Court clarified that the S.65B certificate is mandatory (not directory) for electronic records, except where the original device itself is produced before court.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="s6">
+      <div class="section-header">
+        <div class="section-num">06</div>
+        <div><h2>Compoundable Offences (Section 77A)</h2><p>Settlement and out-of-court resolution options</p></div>
+      </div>
+      <div class="section-body">
+        <div class="prose">
+          <p>Section 77A allows <strong>certain IT Act offences to be compounded</strong> (settled between parties) — either with court permission or (for less serious offences) by the parties themselves. Offences punishable with imprisonment of up to 3 years may generally be compounded. Offences punishable with <strong>more than 3 years cannot be compounded</strong>.</p>
+          <p><strong>Non-compoundable serious offences:</strong></p>
+        </div>
+        <div style="border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin:12px 0;">
+          <div style="padding:12px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;"><div style="width:5px;height:5px;border-radius:50%;background:var(--red);margin-top:7px;flex-shrink:0;"></div><div style="font-size:13.5px;color:var(--text2);"><strong>Section 66F (Cyber terrorism):</strong> Life imprisonment — non-compoundable</div></div>
+          <div style="padding:12px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;"><div style="width:5px;height:5px;border-radius:50%;background:var(--red);margin-top:7px;flex-shrink:0;"></div><div style="font-size:13.5px;color:var(--text2);"><strong>Section 67B (CSAM):</strong> 5–7 years imprisonment — non-compoundable</div></div>
+          <div style="padding:12px 18px;display:flex;gap:10px;align-items:flex-start;"><div style="width:5px;height:5px;border-radius:50%;background:var(--red);margin-top:7px;flex-shrink:0;"></div><div style="font-size:13.5px;color:var(--text2);"><strong>Section 70 (Protected systems):</strong> 10 years imprisonment — non-compoundable</div></div>
+        </div>
+        <div class="prose" style="margin-top:12px;">
+          <p><strong>Compounding procedure:</strong> Application to the court having jurisdiction. Court may impose a compounding fee. Once compounded, the accused is acquitted of that charge.</p>
+        </div>
+      </div>
+    </section>
+
+    <div style="margin-top:40px;padding:20px;border:1px solid var(--border);border-left:4px solid var(--amber);border-radius:var(--radius);background:var(--surface);">
+      <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-bottom:14px;">Related Articles in IT Act KB</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
+        <a href="itact-sections.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;padding:12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--white);transition:border-color .15s;" onmouseover="this.style.borderColor='var(--blue-light)'" onmouseout="this.style.borderColor='var(--border)'"><div style="font-size:18px;flex-shrink:0;">📋</div><div><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Key Sections Reference</div></div></a>
+        <a href="itact-intermediary.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;padding:12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--white);transition:border-color .15s;" onmouseover="this.style.borderColor='var(--blue-light)'" onmouseout="this.style.borderColor='var(--border)'"><div style="font-size:18px;flex-shrink:0;">🛡️</div><div><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Safe Harbour & S.79</div></div></a>
+        <a href="cybercrime-kb.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;padding:12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--white);transition:border-color .15s;" onmouseover="this.style.borderColor='var(--blue-light)'" onmouseout="this.style.borderColor='var(--border)'"><div style="font-size:18px;flex-shrink:0;">🔒</div><div><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Cyber Crime KB</div></div></a>
+      </div>
+    </div>
+
+  </main>
+</div>
+<footer class="footer">
+  <div class="footer-links">
+    <a href="itact-kb.html">IT Act KB</a>
+    <a href="itact-history.html">History</a>
+    <a href="itact-sections.html">Sections</a>
+    <a href="itact-intermediary.html">Intermediary</a>
+    <a href="itact-shreya-singhal.html">Shreya Singhal</a>
+    <a href="itact-adjudication.html">Adjudication</a>
+    <a href="itact-certIn.html">CERT-In</a>
+  </div>
+  <p>Article 06 — Part of the IT Act Knowledge Base · <a href="itact-kb.html">← Back to KB</a></p>
+</footer>
+<script src="site-global.js"></script>
+</body>
+</html>

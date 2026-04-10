@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="site-global.css">
+<title>CERT-In & Critical Infrastructure — IT Act S.70B · DPDP India</title>
+<style>@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:wght@600&display=swap');
+:root{--navy:#0a1628;--navy2:#132040;--blue:#1a5cad;--blue-light:#3b82d4;--amber:#d4900a;--amber-light:#f5c842;--teal:#0e7c6b;--coral:#c2420a;--purple:#5b4bc4;--green:#156c2e;--red:#b91c1c;--surface:#f4f6fb;--surface2:#eaeff8;--text:#0d1b2a;--text2:#3a4a5c;--text3:#6b7e94;--border:#c8d4e8;--border2:#b0c0d8;--white:#ffffff;--font-body:'IBM Plex Sans',sans-serif;--font-display:'Playfair Display',serif;--font-mono:'IBM Plex Mono',monospace;--radius:8px;--radius-lg:12px;--shadow:0 2px 12px rgba(10,22,40,.08);--shadow-md:0 4px 24px rgba(10,22,40,.13);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--surface);color:var(--text);font-size:15px;line-height:1.7;min-height:100vh;}
+.header{background:var(--navy);color:#fff;position:relative;overflow:hidden;}
+.header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px),repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px);}
+.header-inner{position:relative;max-width:1100px;margin:0 auto;padding:52px 40px 48px;}
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:20px;font-family:var(--font-mono);font-size:11px;flex-wrap:wrap;}
+.breadcrumb a{color:rgba(255,255,255,.5);text-decoration:none;transition:color .15s;}
+.breadcrumb a:hover{color:var(--amber-light);}
+.breadcrumb .sep{color:rgba(255,255,255,.25);}
+.breadcrumb .cur{color:var(--amber-light);}
+.header-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:4px 14px;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:20px;}
+.header h1{font-family:var(--font-display);font-size:clamp(24px,4vw,38px);font-weight:600;line-height:1.15;color:#fff;margin-bottom:14px;max-width:760px;}
+.header-sub{font-size:15px;color:rgba(255,255,255,.6);max-width:680px;line-height:1.65;margin-bottom:28px;}
+.header-meta{display:flex;flex-wrap:wrap;gap:8px;}
+.meta-pill{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:4px 12px;font-size:12px;color:rgba(255,255,255,.65);font-family:var(--font-mono);}
+.layout{display:flex;max-width:1100px;margin:0 auto;padding:32px 20px;gap:32px;align-items:flex-start;}
+.sidebar{width:220px;flex-shrink:0;position:sticky;top:24px;}
+.sidebar-nav{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:12px 0;box-shadow:var(--shadow);}
+.sidebar-nav h3{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:6px 18px 10px;}
+.sidebar-nav a{display:flex;align-items:center;gap:8px;padding:8px 18px;font-size:13px;color:var(--text2);text-decoration:none;border-left:2px solid transparent;transition:all .15s;line-height:1.3;}
+.sidebar-nav a:hover{background:var(--surface);color:var(--blue);border-left-color:var(--blue-light);}
+.sidebar-nav .nav-num{font-family:var(--font-mono);font-size:10px;color:var(--text3);min-width:16px;}
+.sidebar-nav hr{border:none;border-top:1px solid var(--border);margin:8px 0;}
+.sidebar-nav .nav-sep{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:12px 18px 4px;display:block;}
+.sidebar-related{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px 18px;box-shadow:var(--shadow);margin-top:12px;}
+.sidebar-related h4{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:10px;}
+.sidebar-related a{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);text-decoration:none;padding:5px 0;border-bottom:1px solid var(--border);transition:color .15s;}
+.sidebar-related a:last-child{border-bottom:none;}
+.sidebar-related a:hover{color:var(--blue);}
+.sidebar-related .link-icon{font-size:11px;opacity:.5;}
+.main{flex:1;min-width:0;}
+.section{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:24px;box-shadow:var(--shadow);overflow:hidden;}
+.section-header{display:flex;align-items:center;gap:14px;padding:20px 28px;border-bottom:1px solid var(--border);background:var(--surface);}
+.section-num{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--font-mono);font-size:12px;font-weight:500;flex-shrink:0;}
+.section-header h2{font-size:17px;font-weight:600;color:var(--text);letter-spacing:-.01em;}
+.section-header p{font-size:13px;color:var(--text3);margin-top:2px;}
+.section-body{padding:28px;}
+.prose p{font-size:14px;color:var(--text2);margin-bottom:12px;line-height:1.75;}
+.prose p:last-child{margin-bottom:0;}
+.prose strong{font-weight:600;color:var(--text);}
+.prose ul{padding-left:20px;margin-bottom:12px;}
+.prose li{font-size:14px;color:var(--text2);margin-bottom:5px;line-height:1.65;}
+.prose code{font-family:var(--font-mono);font-size:12px;background:var(--surface2);padding:1px 6px;border-radius:3px;border:1px solid var(--border);color:var(--blue);}
+.note-box{padding:12px 16px;border-radius:var(--radius);font-size:13px;line-height:1.6;border-left:3px solid;margin:12px 0;}
+.note-box.warning{background:#fef3cd;border-color:var(--amber);color:#533200;}
+.note-box.info{background:#e6f1fb;border-color:var(--blue);color:#0a2e5e;}
+.note-box.danger{background:#fde8e8;border-color:var(--red);color:#5c0f0f;}
+.note-box.success{background:#e8f5ee;border-color:var(--green);color:#0a3318;}
+.note-box.amber{background:#fffaed;border-color:var(--amber);color:#533200;}
+.note-box strong{font-weight:600;}
+.reg-ref{display:inline-flex;align-items:center;gap:4px;padding:2px 8px 2px 6px;border-radius:4px;background:#ede8fe;color:var(--purple);border:1px solid #c4b8f5;font-family:var(--font-mono);font-size:11px;font-weight:500;white-space:nowrap;}
+.reg-ref::before{content:'§';font-family:Georgia,serif;font-size:12px;}
+.table-container{overflow-x:auto;margin:12px 0;}
+.table-container table{width:100%;border-collapse:collapse;font-size:13px;}
+.table-container th{background:var(--surface2);border:1px solid var(--border);padding:10px 12px;text-align:left;font-weight:600;color:var(--text);}
+.table-container td{border:1px solid var(--border);padding:10px 12px;color:var(--text2);}
+.table-container tr:nth-child(even){background:var(--surface);}
+.footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:28px 20px;font-size:12px;margin-top:40px;}
+.footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:12px;}
+.footer-links a{color:rgba(255,255,255,.55);text-decoration:none;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;transition:color .15s;}
+.footer-links a:hover{color:var(--amber-light);}
+.footer a{color:rgba(255,255,255,.6);}
+@media(max-width:820px){.layout{flex-direction:column;padding:16px;}.sidebar{width:100%;position:static;}.sidebar-nav{display:none;}.header-inner{padding:32px 20px;}.section-body{padding:16px;}}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <div class="breadcrumb">
+      <a href="index.html">DPDPindia.in</a><span class="sep">/</span>
+      <a href="itact-kb.html">IT Act Knowledge Base</a><span class="sep">/</span>
+      <span class="cur">CERT-In & Critical Infrastructure</span>
+    </div>
+    <div class="header-badge"><span style="width:6px;height:6px;border-radius:50%;background:#b0ccea;display:inline-block;"></span>&nbsp;Article 07 · IT Act Knowledge Base</div>
+    <h1><span style="color:#b0ccea;">CERT-In (S.70B) & NCIIPC (S.70A)</span> — India's Cybersecurity Architecture</h1>
+    <p class="header-sub">India's cybersecurity governance rests on two statutory pillars — CERT-In (Indian Computer Emergency Response Team, Section 70B) and NCIIPC (National Critical Information Infrastructure Protection Centre, Section 70A). This article analyses their mandates, the landmark 2022 CERT-In Directions, and how they interact with the DPDP Act's breach notification obligations.</p>
+    <div class="header-meta"><span class="meta-pill">S.70B — CERT-In</span><span class="meta-pill">S.70A — NCIIPC</span><span class="meta-pill">2022 CERT-In Directions</span><span class="meta-pill">6-Hour Reporting</span><span class="meta-pill">Incident Reporting</span><span class="meta-pill">Data Breach Overlap</span></div>
+  </div>
+</header>
+<div class="layout">
+  <nav class="sidebar">
+    <div class="sidebar-nav">
+      <h3>On this page</h3>
+      <a href="#s1"><span class="nav-num">01</span> India's Cybersecurity Architecture</a>
+      <a href="#s2"><span class="nav-num">02</span> CERT-In: Mandate & Powers (S.70B)</a>
+      <a href="#s3"><span class="nav-num">03</span> The 2022 CERT-In Directions</a>
+      <a href="#s4"><span class="nav-num">04</span> NCIIPC & Protected Systems (S.70, S.70A)</a>
+      <a href="#s5"><span class="nav-num">05</span> Incident Reporting: Obligations & Timelines</a>
+      <a href="#s6"><span class="nav-num">06</span> CERT-In vs DPDP Act: Data Breach Overlap</a>
+      <hr><span class="nav-sep">Knowledge Base</span>
+      <a href="itact-kb.html"><span class="nav-num">←</span> Back to IT Act KB</a>
+      <a href="index.html"><span class="nav-num">⌂</span> DPDPindia.in</a>
+    </div>
+    <div class="sidebar-related">
+      <h4>Related Articles</h4>
+      <a href="itact-sections.html"><span class="link-icon">↗</span> Key Sections Reference</a>
+      <a href="itact-adjudication.html"><span class="link-icon">↗</span> Adjudication & CATC</a>
+      <a href="dpdp-adjudication.html"><span class="link-icon">↗</span> DPDP Penalties & DPB</a>
+      <a href="cybercrime-kb.html"><span class="link-icon">↗</span> Cyber Crime KB</a>
+    </div>
+  </nav>
+  <main class="main">
+
+    <section class="section" id="s1">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <div><h2>India's Cybersecurity Architecture: Overview</h2><p>Two pillars of institutional cyber governance</p></div>
+      </div>
+      <div class="section-body"><div class="prose"><p>India's cybersecurity governance is built on two pillars established by the IT Act. Together, these agencies form the institutional backbone of India's response to cyber threats — from individual company data breaches to attacks on national critical infrastructure. Their mandates are complementary but distinct: CERT-In handles incident response across all sectors; NCIIPC focuses on protecting the most critical systems.</p></div>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:16px;"><div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);"><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:7px;">Section 70B</div><div style="font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:7px;line-height:1.3;">CERT-In — National Cybersecurity Agency</div><div style="font-size:13px;color:var(--text2);line-height:1.65;">National nodal agency for cybersecurity incidents. Under MeitY. Issues security advisories, coordinates incident response, mandates 6-hour incident reporting. 2022 Directions expanded obligations significantly.</div></div><div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);"><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);margin-bottom:7px;">Section 70A</div><div style="font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:7px;line-height:1.3;">NCIIPC — Critical Infrastructure Protection</div><div style="font-size:13px;color:var(--text2);line-height:1.65;">Protects Critical Information Infrastructure — power, banking, telecom, transport, energy. Operates under the PMO (National Technical Research Organisation / NTRO).</div></div></div>
+<div class="note-box info"><strong>International coordination:</strong> CERT-In is also India's national Point of Contact (PoC) for international cybersecurity cooperation — it coordinates with counterpart agencies (US-CISA, UK-NCSC, ENISA) and participates in global forums like the Forum of Incident Response and Security Teams (FIRST).</div></div>
+    </section>
+
+    <section class="section" id="s2">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <div><h2>CERT-In: Mandate & Powers (Section 70B)</h2><p>India's national nodal agency for cybersecurity incident response</p></div>
+      </div>
+      <div class="section-body"><div class="prose"><p>CERT-In was established as India's national nodal agency for cybersecurity under Section 70B (inserted by the 2008 Amendment). Under MeitY.</p>
+<p><strong>Core statutory functions:</strong></p></div>
+<div style="border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;">
+  <div style="padding:12px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;"><div style="width:5px;height:5px;border-radius:50%;background:var(--blue);margin-top:7px;flex-shrink:0;"></div><div style="font-size:13.5px;color:var(--text2);">Issue security advisories, vulnerability notes, and threat alerts</div></div><div style="padding:12px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;"><div style="width:5px;height:5px;border-radius:50%;background:var(--blue);margin-top:7px;flex-shrink:0;"></div><div style="font-size:13.5px;color:var(--text2);">Coordinate responses to cybersecurity incidents at national level</div></div><div style="padding:12px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;"><div style="width:5px;height:5px;border-radius:50%;background:var(--blue);margin-top:7px;flex-shrink:0;"></div><div style="font-size:13.5px;color:var(--text2);">Collect, analyse, and disseminate information on cyber threats and incidents</div></div><div style="padding:12px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;"><div style="width:5px;height:5px;border-radius:50%;background:var(--blue);margin-top:7px;flex-shrink:0;"></div><div style="font-size:13.5px;color:var(--text2);">Forecast and provide early warning of imminent cybersecurity incidents</div></div><div style="padding:12px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;"><div style="width:5px;height:5px;border-radius:50%;background:var(--blue);margin-top:7px;flex-shrink:0;"></div><div style="font-size:13.5px;color:var(--text2);">Take emergency measures for handling critical cybersecurity incidents</div></div><div style="padding:12px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;"><div style="width:5px;height:5px;border-radius:50%;background:var(--blue);margin-top:7px;flex-shrink:0;"></div><div style="font-size:13.5px;color:var(--text2);">Coordinate cyber incident response activities across government and private sectors</div></div><div style="padding:12px 18px;display:flex;gap:10px;align-items:flex-start;"><div style="width:5px;height:5px;border-radius:50%;background:var(--blue);margin-top:7px;flex-shrink:0;"></div><div style="font-size:13.5px;color:var(--text2);">Conduct and coordinate forensic analysis of IT systems</div></div>
+</div>
+<div class="prose" style="margin-top:16px;"><p><strong>Powers:</strong> CERT-In may call for information from any service provider, intermediary, data centre, body corporate, or government entity. It can issue binding directions for security audit compliance, forensic analysis, and incident response. Non-compliance with CERT-In directions is punishable under the IT Act.</p></div></div>
+    </section>
+
+    <section class="section" id="s3">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div><h2>The 2022 CERT-In Directions</h2><p>Landmark mandatory directions issued under Section 70B(6)</p></div>
+      </div>
+      <div class="section-body"><div class="prose"><p>On 28 April 2022, CERT-In issued landmark mandatory directions under Section 70B(6) of the IT Act. These came into force on 27 June 2022 and significantly expanded compliance obligations.</p></div>
+<div class="table-container">
+<table>
+<tr>
+<th>Obligation</th>
+<th>Requirement</th>
+<th>Timeline/Duration</th>
+</tr>
+<tr>
+<td>Incident Reporting</td>
+<td>Report 50 categories of cybersecurity incidents to CERT-In</td>
+<td>Within 6 hours of detection or being informed</td>
+</tr>
+<tr>
+<td>Log Retention</td>
+<td>Maintain logs of all ICT systems and network devices</td>
+<td>180 days (rolling); must be provided on CERT-In request</td>
+</tr>
+<tr>
+<td>NTP Synchronisation</td>
+<td>Sync all ICT system clocks with NTP servers of NIC or NPTEL in India</td>
+<td>Ongoing compliance</td>
+</tr>
+<tr>
+<td>VPN Provider KYC</td>
+<td>Maintain validated subscriber names, addresses, contact numbers, IPs, usage patterns</td>
+<td>5 years; must share on request</td>
+</tr>
+<tr>
+<td>Cloud Service Provider KYC</td>
+<td>Maintain KYC details of subscribers</td>
+<td>5 years</td>
+</tr>
+<tr>
+<td>Data Centre KYC</td>
+<td>Subscriber details including purpose of use</td>
+<td>5 years</td>
+</tr>
+</table>
+</div>
+<div class="prose"><p><strong>Covered entities:</strong> Service providers, intermediaries, data centres, body corporates, and government organisations in India.</p>
+<p><strong>Reportable incident categories (key examples):</strong> Targeted scanning/probing of critical networks, compromise of critical systems, unauthorised access to IT systems, website defacement, malware/ransomware deployment, DDoS attacks, attacks on internet infrastructure, data breaches involving personal data, attacks on critical infrastructure, IoT device compromise, and supply chain attacks.</p></div>
+<div class="note-box warning"><strong>6-hour reporting timeline:</strong> The 6-hour incident reporting requirement is among the shortest mandatory timelines globally. EU's NIS2 Directive allows 24 hours for early warning and 72 hours for initial notification. The 6-hour window places significant demands on incident response teams — organisations should have pre-drafted incident report templates and a designated CERT-In reporting officer.</div>
+<div class="note-box danger"><strong>Data localisation and compliance risk:</strong> Non-compliance with the 2022 Directions is punishable under the IT Act. Data localisation requirements for logs and KYC (must be stored in India) have implications for multi-national organisations with centralised log management outside India.</div></div>
+    </section>
+
+    <section class="section" id="s4">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <div><h2>NCIIPC & Protected Systems (S.70 and S.70A)</h2><p>Critical information infrastructure protection framework</p></div>
+      </div>
+      <div class="section-body"><div class="prose"><p><strong>Section 70 — Protected Systems:</strong> The Central Government may designate any computer resource as a "Protected System" by official notification. Unauthorised access to a Protected System is punishable with imprisonment up to 10 years plus fine. Notified Protected Systems span power grids, banking networks, critical government infrastructure, and defence systems.</p>
+<p><strong>Section 70A — NCIIPC:</strong> The National Critical Information Infrastructure Protection Centre was established under Section 70A as the national nodal agency for protection of Critical Information Infrastructure (CII). NCIIPC operates under the National Technical Research Organisation (NTRO) under the PMO.</p>
+<p><strong>What constitutes CII:</strong> Computer resources whose incapacitation or destruction would have a debilitating impact on national security, economy, public health, or safety.</p></div>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:16px;"><div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);"><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:7px;">Priority Sectors</div><div style="font-family:var(--font-display);font-size:14px;font-weight:600;color:var(--text);margin-bottom:10px;line-height:1.3;">Tier 1 Infrastructure</div><div style="font-size:13px;color:var(--text2);line-height:1.65;"><strong>Power & Energy</strong><br>National power grids, generation and distribution systems.<br><br><strong>Banking & Finance</strong><br>Payment systems, clearing houses, critical financial networks.<br><br><strong>Telecom & IT</strong><br>Core network infrastructure, internet backbone.</div></div><div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;background:var(--white);"><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);margin-bottom:7px;">Additional Sectors</div><div style="font-family:var(--font-display);font-size:14px;font-weight:600;color:var(--text);margin-bottom:10px;line-height:1.3;">Strategic Systems</div><div style="font-size:13px;color:var(--text2);line-height:1.65;"><strong>Transport</strong><br>Air traffic control, rail networks, port systems.<br><br><strong>Government</strong><br>National security and defence systems.<br><br><strong>Public Enterprises</strong><br>Strategic national undertakings with critical functions.</div></div></div>
+<div class="prose"><p><strong>NCIIPC functions:</strong></p></div>
+<div style="border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;">
+  <div style="padding:12px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;"><div style="width:5px;height:5px;border-radius:50%;background:var(--teal);margin-top:7px;flex-shrink:0;"></div><div style="font-size:13.5px;color:var(--text2);">Identify, classify, and notify Critical Information Infrastructure</div></div><div style="padding:12px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;"><div style="width:5px;height:5px;border-radius:50%;background:var(--teal);margin-top:7px;flex-shrink:0;"></div><div style="font-size:13.5px;color:var(--text2);">Issue guidelines and directions to CII operators</div></div><div style="padding:12px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;"><div style="width:5px;height:5px;border-radius:50%;background:var(--teal);margin-top:7px;flex-shrink:0;"></div><div style="font-size:13.5px;color:var(--text2);">Coordinate vulnerability disclosure and patch management</div></div><div style="padding:12px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;"><div style="width:5px;height:5px;border-radius:50%;background:var(--teal);margin-top:7px;flex-shrink:0;"></div><div style="font-size:13.5px;color:var(--text2);">Threat intelligence sharing with sector-specific CERTs and operators</div></div><div style="padding:12px 18px;display:flex;gap:10px;align-items:flex-start;"><div style="width:5px;height:5px;border-radius:50%;background:var(--teal);margin-top:7px;flex-shrink:0;"></div><div style="font-size:13.5px;color:var(--text2);">Conduct CII protection exercises (like Synergy exercises)</div></div>
+</div></div>
+    </section>
+
+    <section class="section" id="s5">
+      <div class="section-header">
+        <div class="section-num">05</div>
+        <div><h2>Incident Reporting: Obligations & Timelines</h2><p>Who must report to CERT-In and how</p></div>
+      </div>
+      <div class="section-body"><div class="prose"><p><strong>Who must report to CERT-In:</strong></p></div>
+<div style="border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;">
+  <div style="padding:12px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;"><div style="width:5px;height:5px;border-radius:50%;background:var(--coral);margin-top:7px;flex-shrink:0;"></div><div style="font-size:13.5px;color:var(--text2);">All service providers, intermediaries, data centres, body corporates</div></div><div style="padding:12px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;"><div style="width:5px;height:5px;border-radius:50%;background:var(--coral);margin-top:7px;flex-shrink:0;"></div><div style="font-size:13.5px;color:var(--text2);">Government organisations</div></div><div style="padding:12px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;"><div style="width:5px;height:5px;border-radius:50%;background:var(--coral);margin-top:7px;flex-shrink:0;"></div><div style="font-size:13.5px;color:var(--text2);">VPN service providers (including corporate VPNs)</div></div><div style="padding:12px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;"><div style="width:5px;height:5px;border-radius:50%;background:var(--coral);margin-top:7px;flex-shrink:0;"></div><div style="font-size:13.5px;color:var(--text2);">Cloud service providers (IaaS, PaaS, SaaS)</div></div><div style="padding:12px 18px;display:flex;gap:10px;align-items:flex-start;"><div style="width:5px;height:5px;border-radius:50%;background:var(--coral);margin-top:7px;flex-shrink:0;"></div><div style="font-size:13.5px;color:var(--text2);">Virtual asset service providers, virtual asset exchange providers, custodian wallet providers</div></div>
+</div>
+<div class="prose" style="margin-top:16px;"><p><strong>How to report:</strong> CERT-In online portal (https://incident.cert-in.org.in) or email. Structured incident report form must be submitted.</p></div>
+<div class="note-box success"><strong>Best practice for compliance:</strong> Designate a CERT-In Reporting Officer (CRO) within your organisation; maintain a pre-filled incident report template for each of the 50 reportable categories; integrate CERT-In reporting into your Security Incident Response Plan (SIRP); test the reporting workflow quarterly.</div></div>
+    </section>
+
+    <section class="section" id="s6">
+      <div class="section-header">
+        <div class="section-num">06</div>
+        <div><h2>CERT-In vs DPDP Act: Data Breach Overlap</h2><p>Concurrent obligations in personal data breach scenarios</p></div>
+      </div>
+      <div class="section-body"><div class="prose"><p>A significant personal data breach will typically trigger obligations under BOTH frameworks simultaneously. Organisations must be prepared for concurrent compliance.</p></div>
+<div class="table-container">
+<table>
+<tr>
+<th>Aspect</th>
+<th>CERT-In Directions 2022</th>
+<th>DPDP Act 2023 — S.8(6)</th>
+</tr>
+<tr>
+<td>Who must notify</td>
+<td>Service providers, intermediaries, data centres, body corporates</td>
+<td>Data Fiduciaries</td>
+</tr>
+<tr>
+<td>Notify whom</td>
+<td>CERT-In</td>
+<td>Data Protection Board + affected Data Principals</td>
+</tr>
+<tr>
+<td>Timeline</td>
+<td>6 hours from detection</td>
+<td>As prescribed in Rules (not yet notified)</td>
+</tr>
+<tr>
+<td>Scope</td>
+<td>All 50 categories of cybersecurity incidents</td>
+<td>Personal data breaches only</td>
+</tr>
+<tr>
+<td>Format</td>
+<td>CERT-In structured incident report</td>
+<td>As prescribed in Rules</td>
+</tr>
+<tr>
+<td>Penalty for non-compliance</td>
+<td>IT Act provisions</td>
+<td>Up to ₹200 crore (DPB)</td>
+</tr>
+<tr>
+<td>Confidentiality</td>
+<td>CERT-In treats reports as confidential</td>
+<td>DPB proceedings may be public</td>
+</tr>
+</table>
+</div>
+<div class="note-box success"><strong>Unified breach response playbook:</strong> Design a unified breach response playbook. The CERT-In report (filed within 6 hours) should serve as the factual foundation for the DPDP Act notification to DPB and data principals. The CERT-In report is technical/operational; the DPDP notification to data principals must be in plain language explaining the breach, what data was affected, and what remedial steps the Data Fiduciary is taking.</div>
+<div style="margin-top:24px;padding:20px;border:1px solid var(--border);border-left:4px solid var(--amber);border-radius:var(--radius);background:var(--surface);"><div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-bottom:14px;">Related Resources</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;"><a href="itact-sections.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;padding:12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--white);transition:border-color .15s;" onmouseover="this.style.borderColor='var(--blue-light)'" onmouseout="this.style.borderColor='var(--border)'"><div style="font-size:20px;flex-shrink:0;">📋</div><div><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Key Sections Reference</div><div style="font-size:12px;color:var(--text3);">IT Act S.70, S.70A, S.70B</div></div></a><a href="itact-adjudication.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;padding:12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--white);transition:border-color .15s;" onmouseover="this.style.borderColor='var(--blue-light)'" onmouseout="this.style.borderColor='var(--border)'"><div style="font-size:20px;flex-shrink:0;">⚖️</div><div><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Adjudication & CATC</div><div style="font-size:12px;color:var(--text3);">Cyber Appellate Tribunal</div></div></a><a href="dpdp-adjudication.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;padding:12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--white);transition:border-color .15s;" onmouseover="this.style.borderColor='var(--blue-light)'" onmouseout="this.style.borderColor='var(--border)'"><div style="font-size:20px;flex-shrink:0;">🏛️</div><div><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">DPDP Penalties & DPB</div><div style="font-size:12px;color:var(--text3);">Data Protection Board enforcement</div></div></a><a href="cybercrime-kb.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;padding:12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--white);transition:border-color .15s;" onmouseover="this.style.borderColor='var(--blue-light)'" onmouseout="this.style.borderColor='var(--border)'"><div style="font-size:20px;flex-shrink:0;">💻</div><div><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Cyber Crime KB</div><div style="font-size:12px;color:var(--text3);">Criminal provisions and penalties</div></div></a></div></div></div>
+    </section>
+
+  </main>
+</div>
+<footer class="footer">
+  <div class="footer-links">
+    <a href="index.html">DPDPindia.in</a><a href="itact-kb.html">IT Act KB</a>
+    <a href="itact-history.html">History</a><a href="itact-sections.html">Sections</a>
+    <a href="itact-intermediary.html">Intermediary</a><a href="itact-adjudication.html">Adjudication</a><a href="itact-certIn.html">CERT-In</a>
+  </div>
+  <p>Article 07 — Part of the IT Act Knowledge Base · <a href="itact-kb.html">← Back to itact-kb.html</a></p>
+</footer>
+<script src="site-global.js"></script>
+</body>
+</html>

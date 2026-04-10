@@ -139,6 +139,28 @@ nav{position:sticky;top:0;z-index:200;background:var(--cream);border-bottom:1px 
 .gh-number{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:var(--danger);line-height:1;margin-top:0.5rem;}
 .gh-number-label{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--mist);}
 
+/* LEGAL RESEARCH ARTICLES */
+.research-section{padding:4rem 0;background:var(--ink);border-top:3px solid var(--saffron);}
+.research-section .section-kicker{color:var(--saffron-lt);}
+.research-section .section-kicker::before{background:var(--saffron-lt);}
+.research-section .section-heading{color:var(--parchment);}
+.research-section .section-deck{color:rgba(248,244,236,0.55);}
+.article-cards-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:2rem;}
+.art-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:box-shadow 0.2s,transform 0.2s,border-color 0.2s;}
+.art-card:hover{box-shadow:0 8px 40px rgba(0,0,0,0.35);transform:translateY(-2px);border-color:rgba(212,118,10,0.4);}
+.art-card-accent{height:4px;}
+.art-card-body{padding:2rem;flex:1;display:flex;flex-direction:column;gap:1rem;}
+.art-card-kicker{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--saffron);display:flex;align-items:center;gap:8px;}
+.art-card-kicker::before{content:'';width:18px;height:1px;background:var(--saffron);}
+.art-card-title{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:var(--parchment);line-height:1.25;}
+.art-card-desc{font-size:0.84rem;font-weight:300;line-height:1.8;color:rgba(248,244,236,0.5);}
+.art-card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;}
+.art-tag{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;padding:3px 8px;border:1px solid rgba(255,255,255,0.12);color:rgba(248,244,236,0.4);}
+.art-card-footer{padding:1rem 2rem;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;align-items:center;}
+.art-card-num{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(248,244,236,0.25);}
+.art-card-cta{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--saffron);}
+@media(max-width:900px){.article-cards-grid{grid-template-columns:1fr;}}
+
 /* QUICK TIPS */
 .tips-section{background:var(--parchment);padding:4rem 0;}
 .tips-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2.5rem;}
@@ -355,6 +377,61 @@ footer{background:var(--ink);padding:5rem 0 2rem;}
   </div>
 </section>
 
+<!-- Legal Research Articles -->
+<section class="research-section">
+  <div class="page">
+    <div class="section-kicker">Legal Research Articles</div>
+    <h2 class="section-heading">Deep-Dive <em>Legal Analysis</em></h2>
+    <p class="section-deck">Research-grade articles examining the legislative framework, judicial interpretation, and compliance obligations behind India's cybercrime laws — for advocates, policy researchers, and compliance professionals.</p>
+
+    <div class="article-cards-grid">
+
+      <a href="cybercrime-children.html" class="art-card">
+        <div class="art-card-accent" style="background:linear-gradient(90deg,#b91c1c,#d97706);"></div>
+        <div class="art-card-body">
+          <div class="art-card-kicker">Article 05 · Child Safety</div>
+          <div class="art-card-title">Cybercrimes Against Children — IT Act S.67B, POCSO &amp; Mandatory Reporting</div>
+          <div class="art-card-desc">A comprehensive legal analysis of online child sexual abuse material (CSAM) offences under S.67B IT Act and S.14–15 POCSO, online grooming provisions, cyber-bullying of minors, sextortion, and the mandatory reporting obligation under S.19 POCSO. Covers reporting channels — 1930, CHILDLINE 1098, NCPCR — and landmark judicial precedents on child protection in the digital environment.</div>
+          <div class="art-card-tags">
+            <span class="art-tag">IT Act S.67B</span>
+            <span class="art-tag">POCSO 2012</span>
+            <span class="art-tag">CSAM</span>
+            <span class="art-tag">Mandatory Reporting</span>
+            <span class="art-tag">Online Grooming</span>
+            <span class="art-tag">CHILDLINE 1098</span>
+          </div>
+        </div>
+        <div class="art-card-footer">
+          <span class="art-card-num">Article 05 of 06 · Cybercrime KB</span>
+          <span class="art-card-cta">Read Article →</span>
+        </div>
+      </a>
+
+      <a href="cybercrime-bns2023.html" class="art-card">
+        <div class="art-card-accent" style="background:linear-gradient(90deg,#1a5cad,#0e7c6b);"></div>
+        <div class="art-card-body">
+          <div class="art-card-kicker">Article 06 · Legislative Analysis</div>
+          <div class="art-card-title">BNS 2023 &amp; Cyber Provisions — New Penal Code's Impact on Cybercrime Prosecution</div>
+          <div class="art-card-desc">The Bharatiya Nyaya Sanhita 2023 replaced IPC with landmark changes for cybercrime law. This article maps every BNS cyber provision — S.316 (cheating), S.317 (personation), S.77–78 (voyeurism/stalking), S.111–113 (organised crime) — against the repealed IPC sections, examines the new S.111 organised cybercrime provision, the lex specialis charging strategy between BNS and IT Act, and BSA 2023 digital evidence rules under S.61.</div>
+          <div class="art-card-tags">
+            <span class="art-tag">BNS 2023</span>
+            <span class="art-tag">S.111 Organised Crime</span>
+            <span class="art-tag">Lex Specialis</span>
+            <span class="art-tag">BSA 2023</span>
+            <span class="art-tag">S.61 Digital Evidence</span>
+            <span class="art-tag">IPC Replacement</span>
+          </div>
+        </div>
+        <div class="art-card-footer">
+          <span class="art-card-num">Article 06 of 06 · Cybercrime KB</span>
+          <span class="art-card-cta">Read Article →</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
 <section class="tips-section">
   <div class="page">
     <div class="section-kicker">Universal Prevention</div>
@@ -417,6 +494,8 @@ footer{background:var(--ink);padding:5rem 0 2rem;}
         <li><a href="cybercrime-financial.html">Financial Frauds</a></li>
         <li><a href="cybercrime-personal.html">Personal & Social Crimes</a></li>
         <li><a href="cybercrime-remedy-guide.html">Remedy Guide</a></li>
+        <li><a href="cybercrime-children.html">Crimes Against Children</a></li>
+        <li><a href="cybercrime-bns2023.html">BNS 2023 & Cyber Law</a></li>
       </ul>
     </div>
     <div>
