@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="site-global.css">
+<title>Aadhaar Offline Verification — Complete Technical Guide | DPDPIndia.in</title>
+<meta name="description" content="A comprehensive guide to Aadhaar offline verification covering all four types (Secure QR Code, Paperless e-KYC, e-Aadhaar, Verifiable Credentials), the Aadhaar App, OVSE registration, and use cases — based on the UIDAI Offline Verification Handbook January 2026.">
+<meta property="og:title" content="Aadhaar Offline Verification — Complete Technical Guide">
+<meta property="og:description" content="Everything you need to know about verifying Aadhaar identity without connecting to UIDAI's CIDR — from QR codes to Verifiable Credentials via the new Aadhaar App.">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-04-15">
+<meta property="article:section" content="Aadhaar / UIDAI">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#0a1628;--navy2:#132040;--navy3:#1c3055;
+  --blue:#1a5cad;--blue-light:#3b82d4;
+  --amber:#d4900a;--amber-light:#f5c842;
+  --teal:#0e7c6b;--teal-light:#14b8a6;
+  --coral:#c2420a;--purple:#5b4bc4;--green:#156c2e;
+  --orange:#c2420a;--orange-lt:#faeae0;
+  --surface:#f4f6fb;--surface2:#eaeff8;--surface3:#dde4f0;
+  --text:#0d1b2a;--text2:#3a4a5c;--text3:#6b7e94;
+  --border:#c8d4e8;--border2:#b0c0d8;--white:#ffffff;
+  --font-body:'IBM Plex Sans',sans-serif;
+  --font-display:'Playfair Display',serif;
+  --font-mono:'IBM Plex Mono',monospace;
+  --radius:8px;--radius-lg:12px;
+  --shadow:0 2px 12px rgba(10,22,40,.08);
+  --shadow-md:0 4px 24px rgba(10,22,40,.14);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--surface);color:var(--text);font-size:15px;line-height:1.75;min-height:100vh;}
+
+/* ── SITE NAV ── */
+.site-nav{background:#F8F4EC;border-bottom:1px solid rgba(26,22,16,0.12);position:sticky;top:0;z-index:500;}
+.site-nav-inner{max-width:1320px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:52px;}
+.site-nav-brand{font-family:Georgia,serif;font-size:0.95rem;font-weight:700;color:#1B2B3A;text-decoration:none;}
+.site-nav-brand span{font-size:0.5rem;font-family:monospace;letter-spacing:0.16em;text-transform:uppercase;color:#D4760A;margin-left:6px;vertical-align:middle;}
+.site-nav-links{display:flex;gap:0;list-style:none;align-items:center;}
+.site-nav-links a{font-family:monospace;font-size:0.58rem;letter-spacing:0.08em;text-transform:uppercase;color:#2D3D4E;text-decoration:none;padding:0 12px;height:52px;display:flex;align-items:center;border-bottom:2px solid transparent;transition:color 0.2s,border-color 0.2s;white-space:nowrap;}
+.site-nav-links a:hover,.site-nav-links a.active{color:#D4760A;border-bottom-color:#D4760A;}
+.site-nav-links a.emergency{background:#C0392B;color:#fff!important;padding:7px 14px;height:auto;border-bottom:none!important;margin-left:8px;}
+.site-nav-ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}
+.site-nav-ham span{display:block;width:20px;height:2px;background:#1B2B3A;}
+.site-nav-mobile{display:none;position:absolute;top:52px;left:0;right:0;background:#F8F4EC;border-bottom:2px solid #D4760A;z-index:499;box-shadow:0 8px 32px rgba(26,22,16,0.1);}
+.site-nav-mobile.open{display:block;}
+.site-nav-mobile ul{list-style:none;padding:0.5rem 1.5rem 1rem;}
+.site-nav-mobile ul li a{display:block;font-size:0.88rem;color:#2D3D4E;text-decoration:none;padding:0.55rem 0;border-bottom:1px solid rgba(26,22,16,0.08);}
+
+/* ── ARTICLE HEADER ── */
+.article-header{background:var(--navy);color:#fff;position:relative;overflow:hidden;}
+.article-header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px),repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px);}
+.header-inner{position:relative;max-width:1100px;margin:0 auto;padding:52px 40px 48px;}
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:20px;font-family:var(--font-mono);font-size:11px;}
+.breadcrumb a{color:rgba(255,255,255,.5);text-decoration:none;transition:color .15s;}
+.breadcrumb a:hover{color:var(--amber-light);}
+.breadcrumb .sep{color:rgba(255,255,255,.25);}
+.breadcrumb .cur{color:var(--amber-light);}
+.header-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:4px 14px;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:20px;}
+.header-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--amber-light);}
+.article-header h1{font-family:var(--font-display);font-size:clamp(26px,4.5vw,42px);font-weight:700;line-height:1.12;color:#fff;margin-bottom:14px;max-width:760px;}
+.article-header h1 span{color:var(--amber-light);}
+.header-deck{font-size:15px;color:rgba(255,255,255,.6);max-width:660px;line-height:1.7;margin-bottom:28px;}
+.header-meta{display:flex;flex-wrap:wrap;gap:24px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);}
+.meta-item{display:flex;flex-direction:column;gap:2px;}
+.meta-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38);}
+.meta-value{font-family:var(--font-mono);font-size:12px;color:rgba(255,255,255,.75);}
+
+/* ── LAYOUT ── */
+.page-wrap{max-width:1100px;margin:0 auto;padding:40px 40px 80px;display:grid;grid-template-columns:1fr 280px;gap:48px;align-items:start;}
+@media(max-width:960px){.page-wrap{grid-template-columns:1fr;gap:32px;padding:32px 20px 60px;}}
+
+/* ── ARTICLE BODY ── */
+.article-body{}
+.back-link{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:12px;color:var(--text3);text-decoration:none;padding:10px 0;transition:color .15s;margin-bottom:12px;}
+.back-link:hover{color:var(--blue);}
+
+.article-lead{font-size:16px;font-weight:300;line-height:1.9;color:var(--text2);margin-bottom:36px;padding-bottom:28px;border-bottom:2px solid var(--border);}
+.article-lead strong{font-weight:600;color:var(--navy);}
+
+/* ── SECTIONS ── */
+.article-section{margin-bottom:48px;}
+.section-kicker{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
+.section-kicker::before{content:'';width:20px;height:1px;background:var(--amber);}
+.article-section h2{font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:var(--navy);margin-bottom:14px;line-height:1.25;}
+.article-section h3{font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--navy2);margin:24px 0 10px;line-height:1.3;}
+.article-section p{color:var(--text2);margin-bottom:14px;line-height:1.8;}
+.article-section p:last-child{margin-bottom:0;}
+.article-section ul,.article-section ol{margin:12px 0 18px 24px;color:var(--text2);}
+.article-section li{margin-bottom:8px;line-height:1.75;}
+
+/* ── CALLOUT BOXES ── */
+.callout{border-radius:var(--radius);padding:18px 22px;margin:20px 0;border-left:4px solid;}
+.callout-blue{background:#e6f1fb;border-color:#1a5cad;color:#0d2a4e;}
+.callout-amber{background:#fef9e7;border-color:#d4900a;color:#4a2f00;}
+.callout-green{background:#e8f5ee;border-color:#156c2e;color:#0a2e12;}
+.callout-teal{background:#e0f2ef;border-color:#0e7c6b;color:#063028;}
+.callout-coral{background:var(--orange-lt);border-color:#c2420a;color:#4a1500;}
+.callout-title{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;margin-bottom:8px;opacity:.7;}
+.callout p{margin-bottom:0;}
+
+/* ── DEFINITION BOX ── */
+.def-box{background:var(--navy2);border-radius:var(--radius-lg);padding:22px 28px;margin:24px 0;}
+.def-box-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber-light);margin-bottom:10px;}
+.def-box p{color:rgba(255,255,255,.8);font-style:italic;font-size:15px;line-height:1.75;margin:0;}
+
+/* ── FLOW STEPS ── */
+.flow-steps{display:flex;flex-direction:column;gap:0;margin:20px 0;}
+.flow-step{display:flex;gap:16px;align-items:flex-start;position:relative;padding-bottom:20px;}
+.flow-step:last-child{padding-bottom:0;}
+.flow-step::before{content:'';position:absolute;left:19px;top:38px;width:1px;height:calc(100% - 18px);background:var(--border2);}
+.flow-step:last-child::before{display:none;}
+.flow-num{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:13px;font-weight:500;color:#fff;flex-shrink:0;}
+.flow-content{flex:1;padding-top:8px;}
+.flow-content strong{display:block;font-weight:600;color:var(--navy);margin-bottom:4px;font-size:14px;}
+.flow-content p{font-size:14px;color:var(--text2);margin:0;}
+
+/* ── COMPARISON TABLE ── */
+.comp-table{width:100%;border-collapse:collapse;font-size:13.5px;margin:20px 0;}
+.comp-table th{background:var(--navy);color:#fff;padding:10px 14px;text-align:left;font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;font-weight:500;}
+.comp-table th:first-child{border-radius:var(--radius) 0 0 0;}
+.comp-table th:last-child{border-radius:0 var(--radius) 0 0;}
+.comp-table td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top;}
+.comp-table tr:nth-child(even) td{background:var(--surface2);}
+.comp-table tr:last-child td{border-bottom:none;}
+.comp-table .yes{color:#156c2e;font-weight:600;}
+.comp-table .no{color:#b91c1c;font-weight:600;}
+.comp-table .partial{color:#d4900a;font-weight:600;}
+
+/* ── TYPE CARDS ── */
+.type-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0;}
+@media(max-width:640px){.type-cards{grid-template-columns:1fr;}}
+.type-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;box-shadow:var(--shadow);}
+.type-card-header{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.type-card-num{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:12px;font-weight:600;color:#fff;flex-shrink:0;}
+.type-card-name{font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--navy);}
+.type-card p{font-size:13.5px;color:var(--text2);line-height:1.7;margin-bottom:10px;}
+.type-card-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;padding:2px 8px;border-radius:4px;background:var(--surface2);color:var(--text3);border:1px solid var(--border);}
+
+/* ── FEATURE GRID ── */
+.feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0;}
+@media(max-width:640px){.feature-grid{grid-template-columns:1fr;}}
+.feature-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;display:flex;gap:12px;align-items:flex-start;}
+.feature-icon{font-size:22px;flex-shrink:0;margin-top:2px;}
+.feature-body strong{display:block;font-size:14px;font-weight:600;color:var(--navy);margin-bottom:4px;}
+.feature-body p{font-size:13px;color:var(--text2);margin:0;line-height:1.65;}
+
+/* ── USE CASE CARDS ── */
+.use-cases{display:flex;flex-direction:column;gap:16px;margin:20px 0;}
+.use-case{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);}
+.use-case-header{display:flex;align-items:center;gap:12px;padding:14px 20px;border-bottom:1px solid var(--border);}
+.use-case-icon{font-size:22px;}
+.use-case-title{font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--navy);}
+.use-case-body{padding:16px 20px;}
+.use-case-body p{font-size:14px;color:var(--text2);margin-bottom:10px;line-height:1.75;}
+.use-case-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.uc-tag{font-family:var(--font-mono);font-size:10px;padding:2px 8px;border-radius:4px;background:var(--surface2);color:var(--text3);border:1px solid var(--border);}
+
+/* ── TIMELINE ── */
+.timeline{position:relative;padding-left:28px;margin:20px 0;}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:var(--border2);}
+.tl-item{position:relative;margin-bottom:24px;}
+.tl-item:last-child{margin-bottom:0;}
+.tl-dot{position:absolute;left:-24px;top:3px;width:14px;height:14px;border-radius:50%;background:#fff;border:2px solid var(--blue);}
+.tl-year{font-family:var(--font-mono);font-size:12px;font-weight:500;color:var(--amber);margin-bottom:4px;}
+.tl-text{font-size:14px;color:var(--text2);line-height:1.65;}
+.tl-text strong{color:var(--navy);}
+
+/* ── OVSE TABLE ── */
+.req-table{width:100%;border-collapse:collapse;font-size:13.5px;margin:20px 0;}
+.req-table th{background:var(--navy);color:#fff;padding:10px 14px;text-align:left;font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;font-weight:500;}
+.req-table td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top;}
+.req-table tr:nth-child(even) td{background:var(--surface2);}
+.req-table td:first-child{font-family:var(--font-mono);font-size:12px;color:var(--navy2);font-weight:500;white-space:nowrap;}
+
+/* ── SIDEBAR ── */
+.sidebar{position:sticky;top:68px;}
+.sidebar-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;box-shadow:var(--shadow);margin-bottom:16px;}
+.sidebar-card-title{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.toc-list{list-style:none;display:flex;flex-direction:column;gap:4px;}
+.toc-list a{font-size:13px;color:var(--text2);text-decoration:none;padding:5px 10px;border-radius:6px;display:block;transition:background .15s,color .15s;line-height:1.4;}
+.toc-list a:hover{background:var(--surface2);color:var(--navy);}
+.sb-stat{text-align:center;padding:10px 0;}
+.sb-stat-num{font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--blue);line-height:1;}
+.sb-stat-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-top:4px;}
+.sb-stat-divider{border:none;border-top:1px solid var(--border);margin:10px 0;}
+.sb-link{display:flex;align-items:center;justify-content:space-between;font-size:12.5px;color:var(--text2);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);transition:color .15s;}
+.sb-link:last-child{border-bottom:none;}
+.sb-link:hover{color:var(--blue);}
+.sb-link svg{color:var(--text3);flex-shrink:0;}
+.law-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;padding:3px 8px;border-radius:4px;background:var(--surface2);color:var(--text3);border:1px solid var(--border);margin:3px 3px 0 0;}
+
+/* ── FOOTER ── */
+.footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:28px 20px;font-size:12px;}
+.footer-links{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:12px;}
+.footer-links a{color:rgba(255,255,255,.55);text-decoration:none;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;transition:color .15s;}
+.footer-links a:hover{color:var(--amber-light);}
+
+@media(max-width:720px){
+  .header-inner{padding:36px 20px 32px;}
+  .site-nav-links{display:none;}
+  .site-nav-ham{display:flex;}
+  .site-nav-inner{padding:0 1rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- SITE NAV -->
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="index.html" class="site-nav-brand">DPDPIndia.in <span>Data Protection Intelligence</span></a>
+    <ul class="site-nav-links">
+      <li><a href="dpdp-kb.html">DPDP Act</a></li>
+      <li><a href="itact-kb.html">IT Act</a></li>
+      <li><a href="ekyc-kb.html" class="active">eKYC / UIDAI</a></li>
+      <li><a href="cybercrime-kb.html">Cyber Crime</a></li>
+      <li><a href="for-businesses.html">For Business</a></li>
+      <li><a href="for-individuals.html">For Individuals</a></li>
+      <li><a href="case-tracker.html">Cases</a></li>
+      <li><a href="blog.html">Articles</a></li>
+      <li><a href="cyber-fraud-hub.html" class="emergency">🚨 1930</a></li>
+    </ul>
+    <button class="site-nav-ham" aria-label="Open menu" onclick="this.classList.toggle('open');document.getElementById('snm').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="site-nav-mobile" id="snm">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dpdp-kb.html">DPDP Act Knowledge Base</a></li>
+      <li><a href="itact-kb.html">IT Act Knowledge Base</a></li>
+      <li><a href="ekyc-kb.html">eKYC / UIDAI Knowledge Base</a></li>
+      <li><a href="cybercrime-kb.html">Cyber Crime Knowledge Base</a></li>
+      <li><a href="for-businesses.html">DPDP for Business</a></li>
+      <li><a href="for-individuals.html">Know Your Rights</a></li>
+      <li><a href="case-tracker.html">Case Tracker</a></li>
+      <li><a href="blog.html">Articles &amp; Research</a></li>
+      <li><a href="cyber-fraud-hub.html">🚨 Cyber Fraud Hub — 1930</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ARTICLE HEADER -->
+<header class="article-header">
+  <div class="header-inner">
+    <div class="breadcrumb">
+      <a href="index.html">DPDPindia.in</a>
+      <span class="sep">/</span>
+      <a href="ekyc-kb.html">eKYC Knowledge Base</a>
+      <span class="sep">/</span>
+      <span class="cur">Offline Verification</span>
+    </div>
+    <div class="header-badge"><span class="dot"></span>Article 06 · Aadhaar Offline Verification · January 2026</div>
+    <h1>Aadhaar <span>Offline Verification</span><br>— Complete Technical Guide</h1>
+    <p class="header-deck">Identity verification without connecting to UIDAI's CIDR — covering all four modes, the 2026 Aadhaar App, OVSE registration, legal framework, and real-world use cases. Based on the official UIDAI Offline Verification Handbook (January 2026).</p>
+    <div class="header-meta">
+      <div class="meta-item">
+        <span class="meta-label">Published</span>
+        <span class="meta-value">April 2026</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Source</span>
+        <span class="meta-value">UIDAI Handbook Jan 2026</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Read Time</span>
+        <span class="meta-value">~30 min</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Coverage</span>
+        <span class="meta-value">Aadhaar Act 2016 · Regs 2021 · Amendment 2025</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- PAGE CONTENT -->
+<div class="page-wrap">
+
+  <!-- ARTICLE BODY -->
+  <article class="article-body">
+
+    <a href="ekyc-kb.html" class="back-link">
+      <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M6 1L1 5l5 4M1 5h12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to eKYC Knowledge Base
+    </a>
+
+    <p class="article-lead">
+      Aadhaar offline verification enables organisations to confirm the identity of an Aadhaar Number Holder <strong>(ANH)</strong> without sending any request to — or receiving any response from — UIDAI's Central Identities Data Repository <strong>(CIDR)</strong>. The ANH directly shares digitally signed Aadhaar information with the verifying entity, giving citizens meaningful control over their data while providing organisations a privacy-respecting, cryptographically secure identity check. With the launch of the new Aadhaar App in 2026 and updated Aadhaar (Authentication and Offline Verification) Amendment Regulations 2025, offline verification has become the preferred mechanism for identity checks in sectors where real-time CIDR connectivity is unavailable, unnecessary, or undesirable.
+    </p>
+
+    <!-- ── SECTION 1: OVERVIEW ── -->
+    <section class="article-section" id="overview">
+      <div class="section-kicker">Section 01</div>
+      <h2>What Is Aadhaar Offline Verification?</h2>
+
+      <div class="def-box">
+        <div class="def-box-label">Statutory Definition — Aadhaar (Targeted Delivery of Financial and Other Subsidies, Benefits and Services) Act, 2016</div>
+        <p>"Offline verification means the process of verifying the identity of the Aadhaar number holder without authentication, through such offline modes as may be specified by regulations."</p>
+      </div>
+
+      <p>The key distinction from <strong>online Aadhaar authentication</strong> is the absence of a live query to CIDR. In online authentication, an Authentication User Agency (AUA/KUA) sends the ANH's Aadhaar number and authentication parameters (demographic data, OTP, or biometric) to CIDR, which responds in real time with a Yes/No or an e-KYC data packet. The AUA/CIDR connection is mandatory and central to the process.</p>
+
+      <p>In offline verification, UIDAI provisions digitally signed Aadhaar data to the ANH <em>at the time of onboarding</em>. The ANH then presents this pre-signed credential — via QR code, XML file, PDF, or Verifiable Credential on the Aadhaar App — to the verifying entity (called an <strong>Offline Verification Seeking Entity</strong> or <strong>OVSE</strong>). The OVSE verifies UIDAI's digital signature locally, with no CIDR connection required at the point of verification.</p>
+
+      <h3>Online Authentication vs Offline Verification — The Core Architectural Difference</h3>
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Parameter</th>
+            <th>Online Authentication</th>
+            <th>Offline Verification</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>CIDR connection at verification</td>
+            <td class="no">Required (real-time)</td>
+            <td class="yes">Not required</td>
+          </tr>
+          <tr>
+            <td>Aadhaar number transmitted to OVSE/AUA</td>
+            <td class="no">Yes (in PID block)</td>
+            <td class="yes">No (by design)</td>
+          </tr>
+          <tr>
+            <td>Data signed by UIDAI</td>
+            <td class="yes">Yes (response)</td>
+            <td class="yes">Yes (pre-provisioned)</td>
+          </tr>
+          <tr>
+            <td>ANH controls what data is shared</td>
+            <td class="no">Limited</td>
+            <td class="yes">Full (selective disclosure)</td>
+          </tr>
+          <tr>
+            <td>Works without internet at point of verification</td>
+            <td class="no">No</td>
+            <td class="yes">Yes</td>
+          </tr>
+          <tr>
+            <td>Compliance burden on verifier</td>
+            <td class="no">Higher (AUA/KUA licensing)</td>
+            <td class="yes">Lower (OVSE registration)</td>
+          </tr>
+          <tr>
+            <td>Entity licence required</td>
+            <td class="no">AUA / KUA / ASA</td>
+            <td class="partial">OVSE (registration, not licensing)</td>
+          </tr>
+          <tr>
+            <td>Biometric capture at verification point</td>
+            <td class="yes">Possible</td>
+            <td class="no">No — local face match only (offline)</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ── SECTION 2: EVOLUTION ── -->
+    <section class="article-section" id="evolution">
+      <div class="section-kicker">Section 02</div>
+      <h2>Evolution of Aadhaar Offline Verification (2009–2026)</h2>
+      <p>Offline verification has evolved steadily from a convenience feature into a sophisticated privacy-first identity infrastructure. The timeline below maps the key legislative, regulatory, and technical milestones:</p>
+
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">2009</div>
+          <div class="tl-text">UIDAI established. Aadhaar enrolment begins. The foundational Central Identities Data Repository (CIDR) is set up as the primary identity verification infrastructure.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">2016</div>
+          <div class="tl-text"><strong>Aadhaar (Targeted Delivery of Financial and Other Subsidies, Benefits and Services) Act, 2016</strong> enacted. Establishes the statutory framework for Aadhaar use, governance, and the legal basis for authentication. The concept of offline verification is implicitly enabled.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">2018</div>
+          <div class="tl-text">UIDAI introduces the <strong>Aadhaar Secure QR Code</strong> embedded in Aadhaar letters and PVC cards. Also introduces <strong>Aadhaar Paperless Offline e-KYC</strong> (offline XML) containing demographic data and a photograph, digitally signed by UIDAI. These two mechanisms form the first generation of offline verification.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">2019</div>
+          <div class="tl-text"><strong>Aadhaar and Other Laws (Amendment) Act, 2019</strong> formally incorporates offline verification as a distinct legal category under the Aadhaar framework. UIDAI empowered to prescribe offline verification modes through regulations.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">2021</div>
+          <div class="tl-text"><strong>Aadhaar (Authentication and Offline Verification) Regulations, 2021</strong> notified. This landmark regulation sets out the complete governance framework for offline verification including OVSE obligations, consent requirements, data handling standards, and technical specifications. Marks offline verification's transition from practice to regulated process.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">2025 (Mar)</div>
+          <div class="tl-text">UIDAI launches the <strong>early-access version of the new Aadhaar App</strong> — introducing Aadhaar Verifiable Credentials (VCs) for the first time as a next-generation offline verification mechanism, with selective data sharing capabilities.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">2025 (Dec)</div>
+          <div class="tl-text"><strong>Aadhaar (Authentication and Offline Verification) Amendment Regulations, 2025</strong> notified. Updates the governance framework to formally recognise Verifiable Credential (VC) verification and OVSE registration requirements for entities wishing to use the Aadhaar App ecosystem.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">2026</div>
+          <div class="tl-text">UIDAI <strong>launches the production version of the Aadhaar App</strong> (January 2026). The app enables Show, Share, and Verify flows for VCs, offline face verification, and app-to-app / web-to-app intent mechanisms. Marks the beginning of the Verifiable Credential era in Aadhaar identity.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 3: BENEFITS ── -->
+    <section class="article-section" id="benefits">
+      <div class="section-kicker">Section 03</div>
+      <h2>Why Offline Verification? — The Privacy-First Case</h2>
+      <p>The value proposition of offline verification rests on four structural advantages over online authentication:</p>
+
+      <div class="feature-grid">
+        <div class="feature-item">
+          <div class="feature-icon">🔒</div>
+          <div class="feature-body">
+            <strong>Privacy-Preserving by Design</strong>
+            <p>The ANH shares only the minimum attributes required for the specific verification. The full Aadhaar number is never transmitted to the OVSE. Selective disclosure means a hotel need only verify name and photograph — not mobile number, address, or date of birth.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">✍️</div>
+          <div class="feature-body">
+            <strong>Digitally Signed and Tamper-Proof</strong>
+            <p>Every piece of offline Aadhaar data carries UIDAI's digital signature. The OVSE verifies this signature locally using UIDAI's public key — confirming authenticity and integrity without any network round-trip. Forgery is cryptographically infeasible.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">📋</div>
+          <div class="feature-body">
+            <strong>Reduced Compliance Burden</strong>
+            <p>OVSEs do not need AUA/KUA/ASA licences. They do not collect, transmit, or store the full Aadhaar number. This dramatically reduces obligations under the Aadhaar Act, DPDP Act 2023, and UIDAI's data security regulations compared to online authentication.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">📡</div>
+          <div class="feature-body">
+            <strong>No CIDR Connectivity Required</strong>
+            <p>Verification works anywhere — at remote access control gates, in areas with poor connectivity, at field verification points. The verification is completed locally on the OVSE's scanner or application without touching UIDAI's servers.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout callout-amber">
+        <div class="callout-title">Real-World Scenario: The Problem Offline Verification Solves</div>
+        <p>When a hotel photocopies an Aadhaar card, the full Aadhaar number and all personal details are exposed on a physical document stored with the hotel — with no control over reuse, sharing, or sale of that data. The hotel also cannot confirm the card is genuine through visual inspection alone. With offline verification via the Aadhaar App, the guest shares only verifiable credentials, no Aadhaar number is captured, data integrity is confirmed by UIDAI's digital signature, and the ANH retains full control over what attributes are shared.</p>
+      </div>
+    </section>
+
+    <!-- ── SECTION 4: TYPES ── -->
+    <section class="article-section" id="types">
+      <div class="section-kicker">Section 04</div>
+      <h2>Four Types of Aadhaar Offline Verification</h2>
+      <p>UIDAI has defined four distinct offline verification mechanisms, each suited to different technical environments and assurance levels:</p>
+
+      <div class="type-cards">
+        <div class="type-card">
+          <div class="type-card-header">
+            <div class="type-card-num" style="background:#1a5cad;">1</div>
+            <div class="type-card-name">Aadhaar Secure QR Code</div>
+          </div>
+          <p>UIDAI embeds a secure QR code carrying encrypted demographic data and a photograph in all Aadhaar documents — letters, PVC cards, e-Aadhaar, mAadhaar, and the Aadhaar App. The QR code is digitally signed by UIDAI. An OVSE scans it using an Aadhaar-compatible application and verifies the signature locally.</p>
+          <p><strong>Key limitation:</strong> Demographics are displayed but cannot be saved by the OVSE. Suitable for quick authenticity checks.</p>
+          <span class="type-card-tag">No internet needed</span>
+          <span class="type-card-tag">Non-savable output</span>
+          <span class="type-card-tag">Any verifier (no OVSE registration)</span>
+        </div>
+
+        <div class="type-card">
+          <div class="type-card-header">
+            <div class="type-card-num" style="background:#c2420a;">2</div>
+            <div class="type-card-name">Paperless Offline e-KYC</div>
+          </div>
+          <p>A digitally signed XML file generated by UIDAI on the ANH's request (via UIDAI website or Aadhaar app). Contains demographic data and photograph. The ANH shares the XML file and a <strong>share code</strong> with the OVSE, which decrypts and verifies the UIDAI digital signature.</p>
+          <p><strong>Key feature:</strong> The OVSE may store verified data in accordance with applicable law (unlike QR code verification). XML valid for a limited period.</p>
+          <span class="type-card-tag">Share code required</span>
+          <span class="type-card-tag">Savable with legal basis</span>
+          <span class="type-card-tag">Time-limited XML</span>
+        </div>
+
+        <div class="type-card">
+          <div class="type-card-header">
+            <div class="type-card-num" style="background:#0e7c6b;">3</div>
+            <div class="type-card-name">e-Aadhaar Verification</div>
+          </div>
+          <p>e-Aadhaar is the digitally signed, password-protected PDF version of the Aadhaar letter, downloaded via UIDAI's website or mAadhaar app after OTP verification. Legally equivalent to the physical Aadhaar letter. Also contains the Aadhaar Secure QR Code for an additional offline verification layer.</p>
+          <p><strong>Process:</strong> ANH downloads → shares with OVSE → OVSE opens PDF with prescribed password → OVSE verifies UIDAI digital signature using PDF reader.</p>
+          <span class="type-card-tag">OTP-download required</span>
+          <span class="type-card-tag">Password-protected PDF</span>
+          <span class="type-card-tag">Legally equivalent to physical card</span>
+        </div>
+
+        <div class="type-card">
+          <div class="type-card-header">
+            <div class="type-card-num" style="background:#5b4bc4;">4</div>
+            <div class="type-card-name">Verifiable Credential (VC)</div>
+          </div>
+          <p>The most advanced offline verification mode, introduced with the Aadhaar App (2025–26). UIDAI issues a digitally signed Verifiable Credential to the ANH upon onboarding to the Aadhaar App (after SIM binding and face authentication). VCs are stored locally on the device and can be shared fully or selectively.</p>
+          <p><strong>Unique advantage:</strong> Selective disclosure, offline face verification for proof of presence, and savable digitally signed output for registered OVSEs.</p>
+          <span class="type-card-tag">Requires Aadhaar App</span>
+          <span class="type-card-tag">Selective disclosure</span>
+          <span class="type-card-tag">OVSE registration required</span>
+        </div>
+      </div>
+
+      <!-- Type 1 Process Flow -->
+      <h3>Process Flow: Aadhaar Secure QR Code Verification</h3>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-num" style="background:#1a5cad;">1</div>
+          <div class="flow-content">
+            <strong>ANH presents Aadhaar document (physical or digital)</strong>
+            <p>The ANH shows their Aadhaar card, e-Aadhaar PDF, PVC card, mAadhaar, or Aadhaar App displaying the secure QR code to the OVSE verifier.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num" style="background:#1a5cad;">2</div>
+          <div class="flow-content">
+            <strong>OVSE scans the QR code</strong>
+            <p>The OVSE uses an Aadhaar-compatible application — including the Aadhaar App itself acting as a QR scanner, or a dedicated QR scanner app — to read the secure QR code.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num" style="background:#1a5cad;">3</div>
+          <div class="flow-content">
+            <strong>Application verifies UIDAI digital signature</strong>
+            <p>The Aadhaar application validates the digital signature embedded in the QR code using UIDAI's public key. This confirms the data is genuine and unmodified.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num" style="background:#1a5cad;">4</div>
+          <div class="flow-content">
+            <strong>Demographic details displayed (non-savable)</strong>
+            <p>Upon successful verification, the ANH's demographic data and photograph are displayed on screen. The application does not allow saving or exporting this data.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Type 2 Process Flow -->
+      <h3>Process Flow: Paperless Offline e-KYC (XML)</h3>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-num" style="background:#c2420a;">1</div>
+          <div class="flow-content">
+            <strong>ANH generates Aadhaar offline XML</strong>
+            <p>ANH logs into the UIDAI resident portal or uses the Aadhaar App to generate a digitally signed XML file. A 4-digit share code is also generated and known only to the ANH.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num" style="background:#c2420a;">2</div>
+          <div class="flow-content">
+            <strong>ANH shares XML file and share code with OVSE</strong>
+            <p>The XML file (which is encrypted/signed) and the share code are shared with the OVSE, typically via email, secure transfer, or physical media.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num" style="background:#c2420a;">3</div>
+          <div class="flow-content">
+            <strong>OVSE opens the XML file using share code</strong>
+            <p>The OVSE's application uses the share code provided by the ANH to decrypt and open the XML file. Without the share code, the file remains locked.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num" style="background:#c2420a;">4</div>
+          <div class="flow-content">
+            <strong>OVSE verifies UIDAI digital signature</strong>
+            <p>The application validates UIDAI's digital signature on the XML contents, confirming integrity and authenticity.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num" style="background:#c2420a;">5</div>
+          <div class="flow-content">
+            <strong>Verified data displayed — and may be stored</strong>
+            <p>Upon successful verification, the ANH's demographic data and photograph are displayed. Unlike QR code verification, the OVSE may store this data in compliance with applicable laws including the DPDP Act 2023.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Type 4 Process Flow -->
+      <h3>Process Flow: Verifiable Credential (VC) Verification via Aadhaar App</h3>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-num" style="background:#5b4bc4;">1</div>
+          <div class="flow-content">
+            <strong>ANH onboards to Aadhaar App</strong>
+            <p>ANH downloads the Aadhaar App, completes SIM binding, and performs face authentication. Upon successful onboarding, UIDAI issues a Verifiable Credential stored locally on the ANH's device.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num" style="background:#5b4bc4;">2</div>
+          <div class="flow-content">
+            <strong>OVSE requests specific Aadhaar attributes</strong>
+            <p>The OVSE specifies which attributes it needs (e.g., name, photograph, date of birth) via QR code, app-to-app intent, or web-to-app intent. The request reaches the ANH's Aadhaar App.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num" style="background:#5b4bc4;">3</div>
+          <div class="flow-content">
+            <strong>ANH reviews and approves the request</strong>
+            <p>The Aadhaar App displays the attributes being requested. The ANH explicitly approves or rejects the sharing. This consent step is non-negotiable and cannot be bypassed by the OVSE.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num" style="background:#5b4bc4;">4</div>
+          <div class="flow-content">
+            <strong>Optional: Offline face verification for proof of presence</strong>
+            <p>If the OVSE requires proof that the person presenting the credential is the same person in the Aadhaar record, the Aadhaar App captures a live facial image and performs a local face match against the photograph in the VC — entirely on the ANH's device, without CIDR access.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num" style="background:#5b4bc4;">5</div>
+          <div class="flow-content">
+            <strong>VC shared with OVSE through Aadhaar App</strong>
+            <p>The approved verifiable credentials are transmitted to the OVSE via the selected sharing mechanism (QR scan, app-to-app, web-to-app, or self-share).</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num" style="background:#5b4bc4;">6</div>
+          <div class="flow-content">
+            <strong>OVSE verifies UIDAI digital signature</strong>
+            <p>The OVSE validates the digital signature on the received VC using UIDAI's public key. For registered OVSEs, a digitally signed verification output is generated and may be stored in compliance with applicable regulations.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 5: AADHAAR APP ── -->
+    <section class="article-section" id="aadhaar-app">
+      <div class="section-kicker">Section 05</div>
+      <h2>The Aadhaar App — Architecture and Verification Flows</h2>
+      <p>UIDAI released the full production version of the <strong>Aadhaar App</strong> in January 2026. It is the primary mechanism for Verifiable Credential-based offline verification and the key interface for the next generation of Aadhaar identity interactions. The app's architecture is defined by three core operations: <strong>Show · Share · Verify</strong>.</p>
+
+      <h3>Key Features of the Aadhaar App</h3>
+      <div class="feature-grid">
+        <div class="feature-item">
+          <div class="feature-icon">🪪</div>
+          <div class="feature-body">
+            <strong>Sharing of Verifiable Credentials</strong>
+            <p>VCs are digitally signed, tamper-proof, and verifiable without CIDR access. Can be shared via cross-device QR scanning, app-to-app intent, web-to-app intent, or self-share for the ANH's own records.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🎛️</div>
+          <div class="feature-body">
+            <strong>Selective Data Sharing</strong>
+            <p>Enables the ANH to share only specific Aadhaar attributes — such as name, address, date of birth, mobile number, Care-Of field, or photograph — based on what the OVSE requests and what the ANH approves.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">😊</div>
+          <div class="feature-body">
+            <strong>Offline Face Verification</strong>
+            <p>Face verification for proof of presence is performed locally on the ANH's device. No biometric data is transmitted to CIDR or to the OVSE. Convenient verification anywhere, anytime, including in connectivity-limited environments.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">📄</div>
+          <div class="feature-body">
+            <strong>Savable, Digitally Signed Outputs</strong>
+            <p>For registered OVSEs, the app enables generation of digitally signed VC outputs that may be stored in compliance with UIDAI regulations, providing a legally defensible verification record.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>The Three Aadhaar App Flows in Detail</h3>
+
+      <div class="callout callout-blue">
+        <div class="callout-title">Flow 1 — Show: Simple Visual Display</div>
+        <p>In the Show flow, the ANH displays their Aadhaar details on the Aadhaar App screen for visual verification by the OVSE. No credentials are digitally transferred or shared. The verifier sees the Aadhaar data visually. This is the lowest-assurance flow and is suitable for informal or quick identity checks where cryptographic proof is not required.</p>
+      </div>
+
+      <div class="callout callout-teal">
+        <div class="callout-title">Flow 2 — Share: Digital Transfer of Verifiable Credentials</div>
+        <p>The Share flow digitally transfers a UIDAI-signed VC from the ANH's Aadhaar App to the OVSE. This is the primary flow for registered OVSEs. It has three sub-modes: <strong>(i) QR-based sharing</strong> — ANH scans a QR code displayed by the OVSE; <strong>(ii) App-to-app intent</strong> — OVSE's mobile application invokes the Aadhaar App via system intent and receives a signed VC response; <strong>(iii) Web-to-app intent</strong> — OVSE's web portal redirects the user to the Aadhaar App via a deep link, and the VC response is returned to the portal. If higher assurance is required, the OVSE can add an offline face verification layer to any Share sub-mode.</p>
+      </div>
+
+      <div class="callout callout-green">
+        <div class="callout-title">Flow 2(iv) — Selective Self-Sharing</div>
+        <p>In the selective self-sharing variant, the ANH proactively selects specific data fields (e.g., Name, Photo, Date of Birth only) from within the Aadhaar App and shares them with the OVSE. The OVSE receives only the approved attributes. This is the most granular privacy protection mechanism available in the offline verification framework.</p>
+      </div>
+
+      <h3>Offline Face Verification — Technical Architecture</h3>
+      <p>When an OVSE requests proof of presence (i.e., confirming that the person physically present is the same person whose Aadhaar data is being shared), the offline face verification flow activates:</p>
+      <ol style="margin:14px 0 14px 24px;color:var(--text2);">
+        <li style="margin-bottom:10px;"><strong>Request Stage:</strong> After the ANH initiates the share flow (via QR, app-to-app, or web-to-app), the OVSE requests face verification as an additional assurance layer.</li>
+        <li style="margin-bottom:10px;"><strong>Face Capture:</strong> The Aadhaar App initiates a face capture journey on the ANH's own device. A live face image is captured by the front camera.</li>
+        <li style="margin-bottom:10px;"><strong>Local Face Match:</strong> The Aadhaar App performs a face match between the captured live image and the photograph stored in the ANH's locally held Aadhaar VC. This processing occurs entirely on-device — no biometric data leaves the ANH's phone.</li>
+        <li style="margin-bottom:10px;"><strong>Signed VC Generation:</strong> Upon successful match, the Aadhaar App generates a digitally signed VC (as per the OVSE's attribute request) and transmits it to the OVSE via the callback URL specified.</li>
+        <li style="margin-bottom:10px;"><strong>OVSE Signature Validation:</strong> The OVSE verifies the UIDAI digital signature in the received VC using UIDAI's public key, completing the verification process with the highest available assurance level.</li>
+      </ol>
+    </section>
+
+    <!-- ── SECTION 6: ECOSYSTEM ── -->
+    <section class="article-section" id="ecosystem">
+      <div class="section-kicker">Section 06</div>
+      <h2>The Offline Verification Ecosystem — Key Stakeholders</h2>
+      <p>Three principal stakeholders define the Aadhaar offline verification ecosystem:</p>
+
+      <h3>1. Aadhaar Number Holder (ANH)</h3>
+      <p>The ANH is the central and most important stakeholder. Offline verification is <strong>voluntary</strong> — no ANH can be compelled to share Aadhaar information through offline modes. The ANH controls what information is shared through the concept of informed consent, which the OVSE must obtain before any verification begins. Key ANH characteristics:</p>
+      <ul>
+        <li>May use Aadhaar Secure QR Code, offline XML, e-Aadhaar, or Aadhaar App-based VCs</li>
+        <li>Retains the ability to selectively disclose — sharing only the attributes necessary for the specific purpose</li>
+        <li>Has the right to refuse sharing any attribute not required for the stated purpose</li>
+        <li>The share code (for XML) and device-based consent (for VC) ensure the ANH actively participates in every sharing event</li>
+      </ul>
+
+      <h3>2. Offline Verification Seeking Entity (OVSE)</h3>
+      <p>Any organisation that needs to verify the identity of an ANH using offline Aadhaar mechanisms is an OVSE. OVSEs may be government departments, hospitals, banks, NBFCs, hotels, residential societies, gig platforms, educational institutions, or any other entity with a lawful identity verification requirement.</p>
+
+      <p>There are two categories of OVSE with materially different capabilities:</p>
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Capability</th>
+            <th>Registered OVSE</th>
+            <th>Non-Registered OVSE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Verification mechanism available</td>
+            <td>Aadhaar VC via Aadhaar App (+ all legacy modes)</td>
+            <td>Aadhaar Secure QR Code scan, e-Aadhaar inspection</td>
+          </tr>
+          <tr>
+            <td>Selective attribute verification</td>
+            <td class="yes">Yes — complete or selective</td>
+            <td class="no">No — displays all available info</td>
+          </tr>
+          <tr>
+            <td>Offline face verification (proof of presence)</td>
+            <td class="yes">Yes</td>
+            <td class="no">No</td>
+          </tr>
+          <tr>
+            <td>Integration with Aadhaar App</td>
+            <td class="yes">Seamless (QR, app-to-app, web-to-app)</td>
+            <td class="partial">Limited (QR scan only)</td>
+          </tr>
+          <tr>
+            <td>Savable verification output (digitally signed)</td>
+            <td class="yes">Yes</td>
+            <td class="no">No — display only</td>
+          </tr>
+          <tr>
+            <td>UIDAI registration required</td>
+            <td class="yes">Yes — formal application process</td>
+            <td class="yes">No</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>3. UIDAI</h3>
+      <p>UIDAI anchors the ecosystem without participating in individual transactions. Its role is platform provision and regulatory governance: it provides the Aadhaar App infrastructure, maintains UIDAI's public key for signature verification, defines technical standards and data formats, and manages the OVSE registration process. UIDAI also defines the legal framework through the Aadhaar Act and associated regulations.</p>
+    </section>
+
+    <!-- ── SECTION 7: OVSE REGISTRATION ── -->
+    <section class="article-section" id="ovse-registration">
+      <div class="section-kicker">Section 07</div>
+      <h2>OVSE Registration — Process and Requirements</h2>
+      <p>Registration as an OVSE is required only for entities wishing to conduct <strong>Verifiable Credential verification through the Aadhaar App</strong>. Entities using Aadhaar Secure QR code scanning or e-Aadhaar verification do not require OVSE registration, as those mechanisms are limited to document authenticity checks.</p>
+      <p>The registration framework is anchored in the Aadhaar (Authentication and Offline Verification) Regulations 2021, as amended by the Amendment Regulations 2025. The process follows four structured stages:</p>
+
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-num" style="background:#0e7c6b;">1</div>
+          <div class="flow-content">
+            <strong>Application for OVSE Registration</strong>
+            <p>The entity applies to UIDAI in the prescribed form, providing organisational details, intended use cases, and other information specified by UIDAI. Applications may currently be submitted by email to <strong>ovse.registration@uidai.net.in</strong> pending the launch of the online portal.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num" style="background:#0e7c6b;">2</div>
+          <div class="flow-content">
+            <strong>Verification of Details by UIDAI</strong>
+            <p>UIDAI reviews the application, may seek additional information or clarification, and independently verifies the submitted information. The applicant entity must demonstrate a lawful purpose and adequate technical capability.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num" style="background:#0e7c6b;">3</div>
+          <div class="flow-content">
+            <strong>Processing and Approval Decision</strong>
+            <p>Based on assessment, UIDAI approves or rejects the application. Approval is granted only where UIDAI is satisfied the entity meets prescribed terms and conditions. Approval is not a right — it is a discretionary regulatory decision by UIDAI.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num" style="background:#0e7c6b;">4</div>
+          <div class="flow-content">
+            <strong>Technical Integration and Onboarding</strong>
+            <p>Once approved, the entity integrates with UIDAI's specifications and standards. Integration pathways include cross-device QR, app-to-app intent, and web-to-app intent. UIDAI provides technical support for the integration.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>Documentation Requirements for OVSE Registration</h3>
+      <table class="req-table">
+        <thead>
+          <tr>
+            <th>S.No.</th>
+            <th>Parameter</th>
+            <th>Details Required</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Documentation</td>
+            <td>PAN; Certificate of Incorporation / Registration (CIN, NGO Darpan ID, etc.); Company profile; Self-declaration confirming adherence to Aadhaar Act, compliance with UIDAI regulations, and lawful purpose of use</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Technical Infrastructure</td>
+            <td>Registered domain name; Callback/redirect URL; Class 3 public certificate; OVSE logo in SVG format (&lt;10KB); Public certificate with minimum 2-year validity</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Application Submission</td>
+            <td>Via online registration portal (pending launch) or by email to ovse.registration@uidai.net.in with all required documents</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Technology Integration</td>
+            <td>OVSE must integrate using selected pathway: cross-device QR, app-to-app intent, or web-to-app intent</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Legal Compliance</td>
+            <td>Aadhaar Act 2016 and Regulations; IT Act 2000; DPDP Act 2023 and Rules; applicable state laws</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ── SECTION 8: USE CASES ── -->
+    <section class="article-section" id="use-cases">
+      <div class="section-kicker">Section 08</div>
+      <h2>Use Cases of Aadhaar Offline Verification</h2>
+      <p>The UIDAI Handbook identifies four primary use-case domains. These are illustrative, not exhaustive — the 2026 Aadhaar App and VC framework significantly expands the scope of adoption across public and private sector applications.</p>
+
+      <div class="use-cases">
+        <div class="use-case">
+          <div class="use-case-header">
+            <div class="use-case-icon">🏢</div>
+            <div class="use-case-title">Access Control — Offices, Campuses, Government Buildings</div>
+          </div>
+          <div class="use-case-body">
+            <p>Traditional access control relies on manual identity document inspection at entry points. This approach is slow, subject to human error, and provides no cryptographic assurance of document authenticity. Aadhaar offline verification via the Aadhaar App provides rapid, secure identity verification for both employees and visitors.</p>
+            <p>The typical flow: An employee or visitor arrives at the entry gate and scans a QR code displayed by the OVSE through their Aadhaar App. Optional offline face verification is performed locally on the visitor's device to establish proof of presence. The OVSE receives the approved VC, verifies the UIDAI signature, and allows or denies entry. The process takes seconds and generates a tamper-proof audit trail for registered OVSEs.</p>
+            <p>Particularly suited for: data centres, government ministry campuses, research facilities, educational institutions, and event venues requiring age verification or identity-based access.</p>
+            <div class="use-case-tags">
+              <span class="uc-tag">No Aadhaar number captured</span>
+              <span class="uc-tag">Proof of presence via offline face</span>
+              <span class="uc-tag">Audit trail for registered OVSEs</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="use-case">
+          <div class="use-case-header">
+            <div class="use-case-icon">🏘️</div>
+            <div class="use-case-title">Residential Access &amp; Community Management</div>
+          </div>
+          <div class="use-case-body">
+            <p>Residential societies face persistent challenges in verifying the identity of guests, domestic workers, and delivery executives. Traditional visual inspection of identity cards is unreliable, and card photocopies create data privacy risks for residents.</p>
+            <p>Aadhaar offline verification allows a delivery executive to scan the QR code displayed at the society gate via their Aadhaar App. The security personnel's OVSE application receives and verifies the VC in seconds, confirming identity without capturing or storing the Aadhaar number. Society management apps can integrate this as a registered OVSE to maintain digital visitor logs backed by UIDAI-signed identity records.</p>
+            <div class="use-case-tags">
+              <span class="uc-tag">Guest management</span>
+              <span class="uc-tag">Domestic worker verification</span>
+              <span class="uc-tag">Delivery executive check-in</span>
+              <span class="uc-tag">Digital visitor logs</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="use-case">
+          <div class="use-case-header">
+            <div class="use-case-icon">🚗</div>
+            <div class="use-case-title">Employee &amp; Gig Workforce Verification</div>
+          </div>
+          <div class="use-case-body">
+            <p>Distributed and gig-based workforces — cab aggregators, food delivery platforms, facility management companies, and contractual worker pools — present unique identity verification challenges. Centralised document collection is operationally complex, and physical ID checks across multiple locations are inconsistent.</p>
+            <p>Offline verification is particularly suitable for onboarding and periodic identity refreshes. A cab company can initiate driver verification by displaying a QR code on its onboarding portal; the driver shares their VC through the Aadhaar App; the company receives digitally signed, UIDAI-verified identity data. No physical document collection is required. The same mechanism can support periodic re-verification without requiring the worker to visit an office.</p>
+            <div class="use-case-tags">
+              <span class="uc-tag">Cab and mobility aggregators</span>
+              <span class="uc-tag">Food delivery platforms</span>
+              <span class="uc-tag">Facility management staff</span>
+              <span class="uc-tag">Periodic re-verification</span>
+              <span class="uc-tag">Multi-location operations</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="use-case">
+          <div class="use-case-header">
+            <div class="use-case-icon">🏦</div>
+            <div class="use-case-title">NBFCs &amp; MFIs — Customer Due Diligence</div>
+          </div>
+          <div class="use-case-body">
+            <p>Non-Banking Financial Companies and Microfinance Institutions traditionally rely on Aadhaar as the primary KYC document, supplemented by voter ID or PAN. They often use Optical Character Recognition (OCR) on physical Aadhaar cards — a process that is error-prone, lacks integrity guarantees, and creates compliance risks under the DPDP Act 2023 when Aadhaar copies are stored without adequate security.</p>
+            <p>Aadhaar offline verification enables NBFCs/MFIs to conduct customer due diligence with the assurance of UIDAI's digital signature — confirming that the data presented is genuine and unmodified. Field agents with registered OVSE status can use the Aadhaar App to verify customers at their premises, with savable signed outputs that satisfy regulatory record-keeping requirements without storing raw Aadhaar copies.</p>
+            <div class="use-case-tags">
+              <span class="uc-tag">KYC for lending</span>
+              <span class="uc-tag">Field agent verification</span>
+              <span class="uc-tag">Signed record for regulatory compliance</span>
+              <span class="uc-tag">Replaces OCR on physical cards</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout callout-blue">
+        <div class="callout-title">Emerging and Future Use Cases</div>
+        <p>The UIDAI Handbook notes that the listed use cases are indicative, not exhaustive. The Aadhaar App's VC framework can support: patient identity verification at hospitals and telemedicine platforms; student verification for examination centres; tenant verification for rental agreements; hotel check-in (replacing photocopied Aadhaar cards); age verification for regulated services; and cross-border digital identity interoperability as the framework evolves.</p>
+      </div>
+    </section>
+
+    <!-- ── SECTION 9: LEGAL FRAMEWORK ── -->
+    <section class="article-section" id="legal-framework">
+      <div class="section-kicker">Section 09</div>
+      <h2>Legal &amp; Regulatory Framework</h2>
+      <p>Aadhaar offline verification operates within a layered legal framework. The key instruments, in hierarchical order:</p>
+
+      <h3>Primary Legislation</h3>
+      <ul>
+        <li><strong>Aadhaar (Targeted Delivery of Financial and Other Subsidies, Benefits and Services) Act, 2016</strong> — Establishes UIDAI, defines Aadhaar authentication, and (as amended in 2019) formally recognises offline verification as a distinct mode. Section 8A (inserted by Amendment Act 2019) specifically enables offline verification.</li>
+        <li><strong>Aadhaar and Other Laws (Amendment) Act, 2019</strong> — Explicitly incorporates offline verification into the Aadhaar legal framework following the Supreme Court's Puttaswamy (Aadhaar) judgment of 2018, which restricted private entity use of online authentication under Section 57.</li>
+        <li><strong>Digital Personal Data Protection Act, 2023 (DPDP Act)</strong> — Applies to all OVSEs who collect, process, or store personal data of ANHs as part of offline verification. OVSEs are Data Fiduciaries under the DPDP Act when they determine the purpose and means of processing the verified data. Obligations include lawful purpose, consent, data minimisation, and security safeguards.</li>
+        <li><strong>Information Technology Act, 2000</strong> — Governs electronic records and signatures; provides the legal basis for the admissibility of digitally signed Aadhaar documents in digital form.</li>
+      </ul>
+
+      <h3>Regulations and Subordinate Legislation</h3>
+      <ul>
+        <li><strong>Aadhaar (Authentication and Offline Verification) Regulations, 2021</strong> — The primary operational framework: OVSE obligations, consent requirements, data handling standards, technical specifications, and security requirements for offline verification.</li>
+        <li><strong>Aadhaar (Authentication and Offline Verification) Amendment Regulations, 2025</strong> — Updates the 2021 Regulations to formally recognise Verifiable Credential verification via the Aadhaar App and establishes the OVSE registration requirement for VC-based verification.</li>
+      </ul>
+
+      <h3>The Puttaswamy (Aadhaar) Judgment — Context for Offline Verification</h3>
+      <p>The Supreme Court's 2018 judgment in <em>Justice K.S. Puttaswamy v Union of India</em> (2018) 1 SCC 809 struck down Section 57 of the Aadhaar Act, which had permitted private entities to require Aadhaar authentication for commercial purposes. This judgment effectively ended mandatory online Aadhaar authentication by private sector entities. The 2019 Amendment Act responded by creating the offline verification framework as a privacy-respecting alternative that does not require mandatory Aadhaar number disclosure and is voluntary for the ANH — thereby addressing the Court's concerns while enabling legitimate identity verification needs.</p>
+
+      <div class="callout callout-coral">
+        <div class="callout-title">DPDP Act 2023 — OVSE Compliance Obligations</div>
+        <p>When an OVSE collects and stores verified Aadhaar data (permissible only in the paperless XML and VC flows by registered OVSEs), it becomes a Data Fiduciary under the DPDP Act 2023. Key obligations include: obtaining valid consent from the ANH specifying the purpose; processing data only for the stated purpose; implementing reasonable security safeguards; enabling the ANH to exercise data principal rights (access, correction, erasure, grievance redressal); and complying with cross-border data transfer restrictions if applicable. The DPDP Act's implementing Rules (pending final notification as of April 2026) will further specify obligations for OVSEs in high-risk contexts.</p>
+      </div>
+    </section>
+
+    <!-- ── SECTION 10: WAY FORWARD ── -->
+    <section class="article-section" id="way-forward">
+      <div class="section-kicker">Section 10</div>
+      <h2>Way Forward — The Future of Offline Verification</h2>
+      <p>Aadhaar offline verification using the Aadhaar App represents a significant step toward a <strong>paperless, consent-driven, privacy-preserving digital identity ecosystem</strong>. The UIDAI Handbook identifies several directions for evolution:</p>
+      <ul>
+        <li><strong>Expanded OVSE ecosystem:</strong> Continued awareness building, capacity development, and technical support for OVSEs across public and private sectors — particularly in healthcare, financial inclusion, and logistics.</li>
+        <li><strong>Interoperability with emerging digital identity standards:</strong> The Aadhaar VC framework is aligned with globally accepted W3C Verifiable Credentials and DID (Decentralised Identifier) standards, positioning it for future interoperability with India Stack's evolution and potentially with cross-border digital identity frameworks.</li>
+        <li><strong>Cross-border use cases:</strong> Where appropriate and aligned with legal and regulatory frameworks, cross-border identity verification use cases using Aadhaar VCs may be explored.</li>
+        <li><strong>Convergence with DPDP Act Rules:</strong> As the DPDP Act 2023 implementing Rules are finalised, OVSE obligations around consent, data retention, and security will be further clarified — creating a more definitive compliance framework for the sector.</li>
+        <li><strong>Increased adoption by regulated sectors:</strong> RBI's account aggregator framework, SEBI's KYC requirements, and IRDAI's customer onboarding standards may progressively recognise Aadhaar VC-based offline verification as a compliant identity mechanism, reducing reliance on physical document collection.</li>
+      </ul>
+    </section>
+
+  </article>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">Contents</div>
+      <ul class="toc-list">
+        <li><a href="#overview">01 · What Is Offline Verification?</a></li>
+        <li><a href="#evolution">02 · Evolution 2009–2026</a></li>
+        <li><a href="#benefits">03 · Why Offline Verification?</a></li>
+        <li><a href="#types">04 · Four Types</a></li>
+        <li><a href="#aadhaar-app">05 · The Aadhaar App</a></li>
+        <li><a href="#ecosystem">06 · Ecosystem Stakeholders</a></li>
+        <li><a href="#ovse-registration">07 · OVSE Registration</a></li>
+        <li><a href="#use-cases">08 · Use Cases</a></li>
+        <li><a href="#legal-framework">09 · Legal Framework</a></li>
+        <li><a href="#way-forward">10 · Way Forward</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">At a Glance</div>
+      <div class="sb-stat">
+        <div class="sb-stat-num">4</div>
+        <div class="sb-stat-label">Offline Verification Types</div>
+      </div>
+      <hr class="sb-stat-divider">
+      <div class="sb-stat">
+        <div class="sb-stat-num">2026</div>
+        <div class="sb-stat-label">Aadhaar App Launch Year</div>
+      </div>
+      <hr class="sb-stat-divider">
+      <div class="sb-stat">
+        <div class="sb-stat-num">3</div>
+        <div class="sb-stat-label">VC Sharing Flows (QR / App-to-App / Web)</div>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">Legal Framework</div>
+      <span class="law-tag">Aadhaar Act 2016</span>
+      <span class="law-tag">Amendment Act 2019</span>
+      <span class="law-tag">Auth Regulations 2021</span>
+      <span class="law-tag">Amendment Regs 2025</span>
+      <span class="law-tag">DPDP Act 2023</span>
+      <span class="law-tag">IT Act 2000</span>
+      <span class="law-tag">Puttaswamy (2018)</span>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">Official Links</div>
+      <a class="sb-link" href="https://uidai.gov.in" target="_blank">
+        UIDAI Official Website
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H5M10 2v5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="sb-link" href="https://uidai.gov.in/en/about-uidai/legal-framework/regulations.html" target="_blank">
+        Auth &amp; Offline Verification Regs
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H5M10 2v5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="sb-link" href="https://uidai.gov.in/en/ecosystem/authentication-ecosystem/offline-verification-seeking-entities.html" target="_blank">
+        OVSE Information
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H5M10 2v5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">Related Articles</div>
+      <a class="sb-link" href="ekyc-uidai-guide.html">
+        eKYC Complete Technical Reference
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 2h8v8M10 2L2 10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="sb-link" href="ekyc-vs-offline-comparison.html">
+        eKYC vs Offline — When to Use Which
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 2h8v8M10 2L2 10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="sb-link" href="ekyc-trust-chain.html">
+        Trust Chain &amp; Entity Governance
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 2h8v8M10 2L2 10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </aside>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-links">
+    <a href="index.html">DPDPindia.in</a>
+    <a href="ekyc-kb.html">eKYC Knowledge Base</a>
+    <a href="ekyc-uidai-guide.html">eKYC Process Guide</a>
+    <a href="ekyc-offline-verification.html">Offline Verification</a>
+    <a href="ekyc-vs-offline-comparison.html">eKYC vs Offline</a>
+    <a href="ekyc-trust-chain.html">Trust Chain</a>
+    <a href="https://uidai.gov.in" target="_blank">UIDAI Official</a>
+  </div>
+  <p>Aadhaar Offline Verification Guide · DPDPindia.in · Based on UIDAI Offline Verification Handbook, January 2026</p>
+  <div style="background:linear-gradient(135deg,#1B2B3A 0%,#2D1F5E 100%);padding:2.5rem 0;border-top:3px solid #6C3FC5;margin-top:20px;"><div style="max-width:1320px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;"><div><div style="font-family:monospace;font-size:0.56rem;letter-spacing:0.18em;text-transform:uppercase;color:#9B6FE8;margin-bottom:0.5rem;">🤖 AI + Law + Risk</div><div style="font-family:Georgia,serif;font-size:1.1rem;font-weight:700;color:#FDFAF5;margin-bottom:0.3rem;">Explore Our AI Intelligence Hub</div><div style="font-size:0.82rem;font-weight:300;color:rgba(248,244,236,0.5);">DPDP Act mapping · Deepfake threats · EU AI Act · IndiaAI Mission · Risk framework</div></div><a href="ai-hub.html" style="font-family:monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;background:#6C3FC5;color:#fff;padding:14px 28px;text-decoration:none;white-space:nowrap;">Explore AI Hub →</a></div></div>
+</footer>
+
+<script src="site-global.js"></script>
+</body>
+</html>

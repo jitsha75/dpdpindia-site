@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="site-global.css">
+<title>Aadhaar eKYC vs Offline Verification — Differences, Use Cases & Decision Guide | DPDPIndia.in</title>
+<meta name="description" content="A definitive comparison of Aadhaar eKYC (online authentication) and offline verification — covering architecture, privacy design, compliance burden, cost, legal framework, and a practical decision matrix for entities choosing the right mechanism for their use case.">
+<meta property="og:title" content="Aadhaar eKYC vs Offline Verification — Definitive Comparison Guide">
+<meta property="og:description" content="Should your organisation use Aadhaar eKYC or offline verification? This article explains the fundamental difference and provides a sector-by-sector use case decision matrix.">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-04-15">
+<meta property="article:section" content="Aadhaar / UIDAI">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#0a1628;--navy2:#132040;--navy3:#1c3055;
+  --blue:#1a5cad;--blue-light:#3b82d4;
+  --amber:#d4900a;--amber-light:#f5c842;
+  --teal:#0e7c6b;--teal-light:#14b8a6;
+  --coral:#c2420a;--purple:#5b4bc4;--green:#156c2e;
+  --surface:#f4f6fb;--surface2:#eaeff8;--surface3:#dde4f0;
+  --text:#0d1b2a;--text2:#3a4a5c;--text3:#6b7e94;
+  --border:#c8d4e8;--border2:#b0c0d8;--white:#ffffff;
+  --font-body:'IBM Plex Sans',sans-serif;
+  --font-display:'Playfair Display',serif;
+  --font-mono:'IBM Plex Mono',monospace;
+  --radius:8px;--radius-lg:12px;
+  --shadow:0 2px 12px rgba(10,22,40,.08);
+  --shadow-md:0 4px 24px rgba(10,22,40,.14);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--surface);color:var(--text);font-size:15px;line-height:1.75;min-height:100vh;}
+
+/* ── SITE NAV ── */
+.site-nav{background:#F8F4EC;border-bottom:1px solid rgba(26,22,16,0.12);position:sticky;top:0;z-index:500;}
+.site-nav-inner{max-width:1320px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:52px;}
+.site-nav-brand{font-family:Georgia,serif;font-size:0.95rem;font-weight:700;color:#1B2B3A;text-decoration:none;}
+.site-nav-brand span{font-size:0.5rem;font-family:monospace;letter-spacing:0.16em;text-transform:uppercase;color:#D4760A;margin-left:6px;vertical-align:middle;}
+.site-nav-links{display:flex;gap:0;list-style:none;align-items:center;}
+.site-nav-links a{font-family:monospace;font-size:0.58rem;letter-spacing:0.08em;text-transform:uppercase;color:#2D3D4E;text-decoration:none;padding:0 12px;height:52px;display:flex;align-items:center;border-bottom:2px solid transparent;transition:color 0.2s,border-color 0.2s;white-space:nowrap;}
+.site-nav-links a:hover,.site-nav-links a.active{color:#D4760A;border-bottom-color:#D4760A;}
+.site-nav-links a.emergency{background:#C0392B;color:#fff!important;padding:7px 14px;height:auto;border-bottom:none!important;margin-left:8px;}
+.site-nav-ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}
+.site-nav-ham span{display:block;width:20px;height:2px;background:#1B2B3A;}
+.site-nav-mobile{display:none;position:absolute;top:52px;left:0;right:0;background:#F8F4EC;border-bottom:2px solid #D4760A;z-index:499;box-shadow:0 8px 32px rgba(26,22,16,0.1);}
+.site-nav-mobile.open{display:block;}
+.site-nav-mobile ul{list-style:none;padding:0.5rem 1.5rem 1rem;}
+.site-nav-mobile ul li a{display:block;font-size:0.88rem;color:#2D3D4E;text-decoration:none;padding:0.55rem 0;border-bottom:1px solid rgba(26,22,16,0.08);}
+
+/* ── ARTICLE HEADER ── */
+.article-header{background:var(--navy);color:#fff;position:relative;overflow:hidden;}
+.article-header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px),repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px);}
+.header-inner{position:relative;max-width:1100px;margin:0 auto;padding:52px 40px 48px;}
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:20px;font-family:var(--font-mono);font-size:11px;}
+.breadcrumb a{color:rgba(255,255,255,.5);text-decoration:none;transition:color .15s;}
+.breadcrumb a:hover{color:var(--amber-light);}
+.breadcrumb .sep{color:rgba(255,255,255,.25);}
+.breadcrumb .cur{color:var(--amber-light);}
+.header-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:4px 14px;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:20px;}
+.header-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--amber-light);}
+.article-header h1{font-family:var(--font-display);font-size:clamp(24px,4vw,40px);font-weight:700;line-height:1.12;color:#fff;margin-bottom:14px;max-width:820px;}
+.article-header h1 span{color:var(--amber-light);}
+.header-deck{font-size:15px;color:rgba(255,255,255,.6);max-width:680px;line-height:1.7;margin-bottom:28px;}
+.header-meta{display:flex;flex-wrap:wrap;gap:24px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);}
+.meta-item{display:flex;flex-direction:column;gap:2px;}
+.meta-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38);}
+.meta-value{font-family:var(--font-mono);font-size:12px;color:rgba(255,255,255,.75);}
+
+/* ── LAYOUT ── */
+.page-wrap{max-width:1100px;margin:0 auto;padding:40px 40px 80px;display:grid;grid-template-columns:1fr 280px;gap:48px;align-items:start;}
+@media(max-width:960px){.page-wrap{grid-template-columns:1fr;gap:32px;padding:32px 20px 60px;}}
+
+/* ── ARTICLE BODY ── */
+.article-body{}
+.back-link{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:12px;color:var(--text3);text-decoration:none;padding:10px 0;transition:color .15s;margin-bottom:12px;}
+.back-link:hover{color:var(--blue);}
+.article-lead{font-size:16px;font-weight:300;line-height:1.9;color:var(--text2);margin-bottom:36px;padding-bottom:28px;border-bottom:2px solid var(--border);}
+.article-lead strong{font-weight:600;color:var(--navy);}
+
+/* ── SECTIONS ── */
+.article-section{margin-bottom:48px;}
+.section-kicker{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
+.section-kicker::before{content:'';width:20px;height:1px;background:var(--amber);}
+.article-section h2{font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:var(--navy);margin-bottom:14px;line-height:1.25;}
+.article-section h3{font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--navy2);margin:24px 0 10px;}
+.article-section p{color:var(--text2);margin-bottom:14px;line-height:1.8;}
+.article-section ul,.article-section ol{margin:12px 0 18px 24px;color:var(--text2);}
+.article-section li{margin-bottom:8px;line-height:1.75;}
+
+/* ── SPLIT COMPARISON PANEL ── */
+.split-panel{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:24px 0;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);}
+.split-left{background:var(--blue);color:#fff;padding:24px 28px;}
+.split-right{background:var(--teal);color:#fff;padding:24px 28px;}
+.split-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:12px;}
+.split-title{font-family:var(--font-display);font-size:18px;font-weight:700;margin-bottom:10px;line-height:1.2;}
+.split-desc{font-size:13.5px;color:rgba(255,255,255,.8);line-height:1.7;}
+@media(max-width:640px){.split-panel{grid-template-columns:1fr;}}
+
+/* ── BIG COMPARISON TABLE ── */
+.comp-table{width:100%;border-collapse:collapse;font-size:13.5px;margin:20px 0;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);}
+.comp-table th{padding:12px 16px;text-align:left;font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;font-weight:500;}
+.comp-table th:first-child{background:var(--navy);color:rgba(255,255,255,.6);}
+.comp-table th.ekyc{background:var(--blue);color:#fff;}
+.comp-table th.offline{background:var(--teal);color:#fff;}
+.comp-table td{padding:11px 16px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top;}
+.comp-table td:first-child{font-weight:500;color:var(--navy);background:var(--surface2);font-size:13px;}
+.comp-table tr:last-child td{border-bottom:none;}
+.yes{color:#156c2e;font-weight:600;}
+.no{color:#b91c1c;font-weight:600;}
+.partial{color:#d4900a;font-weight:600;}
+
+/* ── CALLOUT BOXES ── */
+.callout{border-radius:var(--radius);padding:18px 22px;margin:20px 0;border-left:4px solid;}
+.callout-blue{background:#e6f1fb;border-color:#1a5cad;color:#0d2a4e;}
+.callout-amber{background:#fef9e7;border-color:#d4900a;color:#4a2f00;}
+.callout-green{background:#e8f5ee;border-color:#156c2e;color:#0a2e12;}
+.callout-teal{background:#e0f2ef;border-color:#0e7c6b;color:#063028;}
+.callout-coral{background:#faeae0;border-color:#c2420a;color:#4a1500;}
+.callout-title{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;margin-bottom:8px;opacity:.7;}
+.callout p{margin-bottom:0;}
+
+/* ── DECISION MATRIX ── */
+.decision-matrix{margin:20px 0;}
+.dm-row{display:grid;grid-template-columns:2fr 1fr 1fr;gap:0;border:1px solid var(--border);border-bottom:none;font-size:13.5px;}
+.dm-row:first-child{border-radius:var(--radius) var(--radius) 0 0;overflow:hidden;}
+.dm-row:last-child{border-bottom:1px solid var(--border);border-radius:0 0 var(--radius) var(--radius);overflow:hidden;}
+.dm-row.header{background:var(--navy);}
+.dm-cell{padding:11px 16px;border-right:1px solid var(--border);color:var(--text2);}
+.dm-cell:last-child{border-right:none;}
+.dm-row.header .dm-cell{color:rgba(255,255,255,.65);font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;border-right-color:rgba(255,255,255,.1);}
+.dm-cell.scenario{font-weight:500;color:var(--navy);}
+.dm-cell.ekyc-col{background:#eef5ff;text-align:center;}
+.dm-cell.offline-col{background:#e8f5f2;text-align:center;}
+.dm-row:nth-child(even) .dm-cell.scenario{background:var(--surface2);}
+.dm-row:nth-child(even) .dm-cell.ekyc-col{background:#e2ecfa;}
+.dm-row:nth-child(even) .dm-cell.offline-col{background:#ddf2ec;}
+.dm-preferred{color:#156c2e;font-weight:700;}
+.dm-applicable{color:#1a5cad;font-weight:500;}
+.dm-not{color:#b91c1c;font-weight:500;}
+.dm-both{color:#d4900a;font-weight:500;}
+@media(max-width:640px){
+  .dm-row{grid-template-columns:1fr;}
+  .dm-cell{border-right:none;border-bottom:1px solid var(--border);}
+}
+
+/* ── USE CASE TILES ── */
+.uc-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0;}
+@media(max-width:640px){.uc-grid{grid-template-columns:1fr;}}
+.uc-tile{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;box-shadow:var(--shadow);}
+.uc-tile-top{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.uc-tile-icon{font-size:22px;}
+.uc-tile-sector{font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--navy);}
+.uc-tile-reco{font-family:var(--font-mono);font-size:10px;padding:2px 8px;border-radius:12px;font-weight:600;margin-left:auto;}
+.reco-offline{background:#e0f2ef;color:#0e7c6b;border:1px solid #0e7c6b;}
+.reco-ekyc{background:#e6f1fb;color:#1a5cad;border:1px solid #1a5cad;}
+.reco-both{background:#fef9e7;color:#d4900a;border:1px solid #d4900a;}
+.uc-tile p{font-size:13px;color:var(--text2);line-height:1.65;margin-bottom:8px;}
+.uc-tile-reason{font-family:var(--font-mono);font-size:11px;color:var(--text3);background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:6px 10px;margin-top:8px;}
+
+/* ── PRIVACY SCORECARD ── */
+.privacy-scorecard{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin:20px 0;box-shadow:var(--shadow);}
+.psc-header{background:var(--navy);padding:14px 20px;display:grid;grid-template-columns:2fr 1fr 1fr;}
+.psc-header span{font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,.6);letter-spacing:.06em;}
+.psc-header span:not(:first-child){text-align:center;}
+.psc-row{display:grid;grid-template-columns:2fr 1fr 1fr;padding:12px 20px;border-bottom:1px solid var(--border);}
+.psc-row:last-child{border-bottom:none;}
+.psc-row:nth-child(even){background:var(--surface);}
+.psc-attr{font-size:13.5px;color:var(--text2);}
+.psc-val{text-align:center;font-family:var(--font-mono);font-size:12px;}
+.score-high{color:#156c2e;font-weight:600;}
+.score-med{color:#d4900a;font-weight:600;}
+.score-low{color:#b91c1c;font-weight:600;}
+
+/* ── COMPLIANCE BREAKDOWN ── */
+.comp-breakdown{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0;}
+@media(max-width:640px){.comp-breakdown{grid-template-columns:1fr;}}
+.cb-card{border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);}
+.cb-header{padding:16px 20px;}
+.cb-title{font-family:var(--font-display);font-size:16px;font-weight:700;margin-bottom:4px;}
+.cb-subtitle{font-size:12px;opacity:.7;}
+.cb-body{background:var(--white);padding:16px 20px;border:1px solid var(--border);border-top:none;border-radius:0 0 var(--radius-lg) var(--radius-lg);}
+.cb-item{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;font-size:13px;color:var(--text2);}
+.cb-item:last-child{margin-bottom:0;}
+.cb-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:4px;}
+
+/* ── SIDEBAR ── */
+.sidebar{position:sticky;top:68px;}
+.sidebar-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;box-shadow:var(--shadow);margin-bottom:16px;}
+.sidebar-card-title{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.toc-list{list-style:none;display:flex;flex-direction:column;gap:4px;}
+.toc-list a{font-size:13px;color:var(--text2);text-decoration:none;padding:5px 10px;border-radius:6px;display:block;transition:background .15s,color .15s;line-height:1.4;}
+.toc-list a:hover{background:var(--surface2);color:var(--navy);}
+.sb-link{display:flex;align-items:center;justify-content:space-between;font-size:12.5px;color:var(--text2);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);transition:color .15s;}
+.sb-link:last-child{border-bottom:none;}
+.sb-link:hover{color:var(--blue);}
+.sb-link svg{color:var(--text3);flex-shrink:0;}
+.quick-ref{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px;}
+.qr-badge{border-radius:var(--radius);padding:12px;text-align:center;}
+.qr-badge-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;opacity:.7;}
+.qr-badge-val{font-size:12.5px;font-weight:600;line-height:1.3;}
+
+/* ── FOOTER ── */
+.footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:28px 20px;font-size:12px;}
+.footer-links{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:12px;}
+.footer-links a{color:rgba(255,255,255,.55);text-decoration:none;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;transition:color .15s;}
+.footer-links a:hover{color:var(--amber-light);}
+
+@media(max-width:720px){
+  .header-inner{padding:36px 20px 32px;}
+  .site-nav-links{display:none;}
+  .site-nav-ham{display:flex;}
+  .site-nav-inner{padding:0 1rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- SITE NAV -->
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="index.html" class="site-nav-brand">DPDPIndia.in <span>Data Protection Intelligence</span></a>
+    <ul class="site-nav-links">
+      <li><a href="dpdp-kb.html">DPDP Act</a></li>
+      <li><a href="itact-kb.html">IT Act</a></li>
+      <li><a href="ekyc-kb.html" class="active">eKYC / UIDAI</a></li>
+      <li><a href="cybercrime-kb.html">Cyber Crime</a></li>
+      <li><a href="for-businesses.html">For Business</a></li>
+      <li><a href="for-individuals.html">For Individuals</a></li>
+      <li><a href="case-tracker.html">Cases</a></li>
+      <li><a href="blog.html">Articles</a></li>
+      <li><a href="cyber-fraud-hub.html" class="emergency">🚨 1930</a></li>
+    </ul>
+    <button class="site-nav-ham" aria-label="Open menu" onclick="this.classList.toggle('open');document.getElementById('snm').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="site-nav-mobile" id="snm">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dpdp-kb.html">DPDP Act Knowledge Base</a></li>
+      <li><a href="itact-kb.html">IT Act Knowledge Base</a></li>
+      <li><a href="ekyc-kb.html">eKYC / UIDAI Knowledge Base</a></li>
+      <li><a href="cybercrime-kb.html">Cyber Crime Knowledge Base</a></li>
+      <li><a href="for-businesses.html">DPDP for Business</a></li>
+      <li><a href="for-individuals.html">Know Your Rights</a></li>
+      <li><a href="case-tracker.html">Case Tracker</a></li>
+      <li><a href="blog.html">Articles &amp; Research</a></li>
+      <li><a href="cyber-fraud-hub.html">🚨 Cyber Fraud Hub — 1930</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ARTICLE HEADER -->
+<header class="article-header">
+  <div class="header-inner">
+    <div class="breadcrumb">
+      <a href="index.html">DPDPindia.in</a>
+      <span class="sep">/</span>
+      <a href="ekyc-kb.html">eKYC Knowledge Base</a>
+      <span class="sep">/</span>
+      <span class="cur">eKYC vs Offline</span>
+    </div>
+    <div class="header-badge"><span class="dot"></span>Article 07 · Comparison Guide · April 2026</div>
+    <h1>Aadhaar eKYC vs <span>Offline Verification</span><br>— Differences, Use Cases &amp; Decision Guide</h1>
+    <p class="header-deck">Two distinct architectures. Different privacy postures, compliance burdens, and applicable scenarios. This guide explains when to use Aadhaar eKYC (online authentication) versus offline verification — and why the right choice matters for your organisation, your users, and the law.</p>
+    <div class="header-meta">
+      <div class="meta-item">
+        <span class="meta-label">Published</span>
+        <span class="meta-value">April 2026</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Level</span>
+        <span class="meta-value">Intermediate / Strategic</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Read Time</span>
+        <span class="meta-value">~25 min</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Coverage</span>
+        <span class="meta-value">Architecture · Privacy · Compliance · Use Cases</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- PAGE CONTENT -->
+<div class="page-wrap">
+
+  <!-- ARTICLE BODY -->
+  <article class="article-body">
+
+    <a href="ekyc-kb.html" class="back-link">
+      <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M6 1L1 5l5 4M1 5h12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to eKYC Knowledge Base
+    </a>
+
+    <p class="article-lead">
+      India's Aadhaar ecosystem offers two fundamentally different pathways for identity verification: <strong>eKYC (online authentication)</strong> — a real-time, CIDR-connected verification that delivers rich identity data with biometric-grade assurance — and <strong>offline verification</strong> — a privacy-by-design, cryptographically signed identity check that works without any connection to UIDAI's Central Identities Data Repository. Choosing between them is not merely a technical decision. It has implications for your entity's compliance obligations under the Aadhaar Act, IT Act, and DPDP Act 2023; for the privacy rights of the individuals you serve; for operational cost structure; and for the assurance level your use case actually requires. This article maps all dimensions of that choice.
+    </p>
+
+    <!-- ── SECTION 1: THE FUNDAMENTAL DISTINCTION ── -->
+    <section class="article-section" id="fundamental">
+      <div class="section-kicker">Section 01</div>
+      <h2>The Fundamental Architectural Distinction</h2>
+      <p>The single most important difference between eKYC and offline verification is whether a live query is made to UIDAI's CIDR at the point of identity verification.</p>
+
+      <div class="split-panel">
+        <div class="split-left">
+          <div class="split-label">Aadhaar eKYC — Online Authentication</div>
+          <div class="split-title">CIDR is the source of truth</div>
+          <div class="split-desc">Your organisation (as AUA/KUA or through a KUA) sends the ANH's Aadhaar number and authentication parameters — demographic data, OTP, or biometric — to UIDAI's CIDR in real time. CIDR validates the data against its master records and returns a Yes/No or an e-KYC data packet signed by UIDAI. The integrity guarantee comes from CIDR responding live. The Aadhaar number is central to the transaction.</div>
+        </div>
+        <div class="split-right">
+          <div class="split-label">Aadhaar Offline Verification</div>
+          <div class="split-title">UIDAI's signature is the source of truth</div>
+          <div class="split-desc">UIDAI pre-provisions digitally signed Aadhaar data to the ANH (in QR codes, XML files, e-Aadhaar PDFs, or Verifiable Credentials on the Aadhaar App). At verification, the ANH presents this pre-signed data directly to your organisation. You verify UIDAI's digital signature locally — no CIDR connection, no Aadhaar number transmission, no real-time query. The integrity guarantee comes from the unforgeable digital signature.</div>
+        </div>
+      </div>
+
+      <p>This architectural difference cascades into every other dimension of the comparison — privacy design, entity licensing, compliance burden, cost, and applicable use cases. Understanding the root cause helps organisations make principled decisions rather than defaulting to whichever mechanism is easier to integrate.</p>
+    </section>
+
+    <!-- ── SECTION 2: COMPREHENSIVE COMPARISON ── -->
+    <section class="article-section" id="comparison">
+      <div class="section-kicker">Section 02</div>
+      <h2>Comprehensive Comparison — 20 Dimensions</h2>
+      <p>The table below maps eKYC and offline verification across every operationally significant dimension. This is the definitive side-by-side reference:</p>
+
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Dimension</th>
+            <th class="ekyc">eKYC (Online Authentication)</th>
+            <th class="offline">Offline Verification</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>CIDR connection at point of verification</td>
+            <td><span class="no">Required</span> — real-time query to UIDAI CIDR</td>
+            <td><span class="yes">Not required</span> — local signature verification only</td>
+          </tr>
+          <tr>
+            <td>Aadhaar number known to verifying entity</td>
+            <td><span class="no">Yes</span> — Aadhaar number is part of the authentication request</td>
+            <td><span class="yes">No</span> — by design; Aadhaar number not shared with OVSE</td>
+          </tr>
+          <tr>
+            <td>Authentication parameters supported</td>
+            <td>Demographic (name, DOB, gender, address), OTP, biometric (fingerprint, iris)</td>
+            <td>Signed demographic data, photograph, Verifiable Credentials; optional offline face match (local only)</td>
+          </tr>
+          <tr>
+            <td>Biometric authentication</td>
+            <td><span class="yes">Yes</span> — fingerprint and iris via AUA-registered devices</td>
+            <td><span class="partial">Limited</span> — offline face match on ANH's own device (not transmitted to verifier)</td>
+          </tr>
+          <tr>
+            <td>Selective attribute disclosure</td>
+            <td><span class="no">No</span> — all KYC attributes returned in the e-KYC packet</td>
+            <td><span class="yes">Yes</span> — ANH can share only required attributes (VC flow)</td>
+          </tr>
+          <tr>
+            <td>ANH consent mechanism</td>
+            <td>OTP-based implicit consent; consent logged by KUA</td>
+            <td>Explicit in-app approval for each sharing event; share code for XML; ANH can selectively disclose</td>
+          </tr>
+          <tr>
+            <td>Works offline / without internet</td>
+            <td><span class="no">No</span> — internet connection mandatory for CIDR query</td>
+            <td><span class="yes">Yes</span> — works in areas with no connectivity once VC is provisioned</td>
+          </tr>
+          <tr>
+            <td>Entity licence type required</td>
+            <td>AUA / KUA (via ASA connectivity) — formal licensing with annual fees and CERT-IN IS audit</td>
+            <td>OVSE registration (for VC flow) — lighter process; no licence fee slab; no IS audit requirement</td>
+          </tr>
+          <tr>
+            <td>Can private entities use it?</td>
+            <td><span class="partial">Restricted</span> — post Puttaswamy (2018), private entity use requires RBI/SEBI/IRDAI mandate or explicit exemption</td>
+            <td><span class="yes">Yes</span> — any entity with a lawful purpose may use offline verification; no statutory restriction on private sector</td>
+          </tr>
+          <tr>
+            <td>Aadhaar number storage required</td>
+            <td><span class="no">Yes</span> — must be stored in Aadhaar Data Vault (tokenised via reference key)</td>
+            <td><span class="yes">No</span> — Aadhaar number is not collected; no ADV obligation</td>
+          </tr>
+          <tr>
+            <td>CERT-IN IS audit</td>
+            <td><span class="no">Mandatory</span> — annual CERT-IN empanelled audit for KUAs and Sub-KUAs</td>
+            <td><span class="yes">Not required</span> for OVSEs</td>
+          </tr>
+          <tr>
+            <td>DPDP Act 2023 obligations</td>
+            <td>Data Fiduciary obligations in full; e-KYC data is sensitive personal data; consent, purpose limitation, security safeguards apply</td>
+            <td>Data Fiduciary obligations apply where verified data is stored (XML/VC flows); QR code display creates minimal footprint</td>
+          </tr>
+          <tr>
+            <td>Real-time liveness assurance</td>
+            <td><span class="yes">High</span> — biometric match via registered capture device confirms live presence</td>
+            <td><span class="partial">Moderate</span> — offline face match on ANH's device; not independent liveness capture by verifier</td>
+          </tr>
+          <tr>
+            <td>Resistance to impersonation</td>
+            <td><span class="yes">Very high</span> — biometric match is cryptographically tied to Aadhaar master record</td>
+            <td><span class="partial">Moderate-high</span> — VC is tamper-proof; face match adds assurance but is ANH-device-based</td>
+          </tr>
+          <tr>
+            <td>Transaction cost (UIDAI charges)</td>
+            <td>₹3.00 per eKYC transaction; ₹0.50 per auth-only transaction</td>
+            <td>No per-transaction UIDAI charge for offline verification</td>
+          </tr>
+          <tr>
+            <td>Licence / registration fee</td>
+            <td>KUA licence: ₹5L–₹20L (slab-based); ASA connectivity: ₹20L+</td>
+            <td>OVSE registration: No fee (as of January 2026 handbook)</td>
+          </tr>
+          <tr>
+            <td>Data freshness guarantee</td>
+            <td><span class="yes">Real-time</span> — CIDR response reflects current Aadhaar data at moment of query</td>
+            <td><span class="partial">Point-in-time</span> — VC reflects Aadhaar data at time of provisioning; may not capture recent updates</td>
+          </tr>
+          <tr>
+            <td>Volume scalability</td>
+            <td>Scales with CIDR capacity; high-volume transactions require ASA capacity planning</td>
+            <td>Highly scalable — no CIDR bottleneck; locally processed verification</td>
+          </tr>
+          <tr>
+            <td>Suitable for mandatory government benefit delivery</td>
+            <td><span class="yes">Yes</span> — the intended primary use case (targeted delivery of subsidies)</td>
+            <td><span class="partial">Partially</span> — suitable for identity verification steps but not for biometric-authenticated subsidy disbursement</td>
+          </tr>
+          <tr>
+            <td>Regulatory evolution trajectory</td>
+            <td>Mature, stable framework; private entity access tightened post-2018</td>
+            <td>Actively expanding — 2025 Regulations and 2026 Aadhaar App represent significant new capability; UIDAI actively promoting adoption</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ── SECTION 3: PRIVACY ANALYSIS ── -->
+    <section class="article-section" id="privacy">
+      <div class="section-kicker">Section 03</div>
+      <h2>Privacy Architecture — A Deep Comparison</h2>
+      <p>Privacy design is the starkest difference between the two frameworks. This is not incidental — offline verification was deliberately architected after the Supreme Court's Puttaswamy (Aadhaar) judgment to provide identity verification with a significantly smaller privacy footprint.</p>
+
+      <div class="privacy-scorecard">
+        <div class="psc-header">
+          <span>Privacy Attribute</span>
+          <span>eKYC</span>
+          <span>Offline Verification</span>
+        </div>
+        <div class="psc-row">
+          <div class="psc-attr">Aadhaar number exposure to verifier</div>
+          <div class="psc-val"><span class="score-low">Exposed</span></div>
+          <div class="psc-val"><span class="score-high">Never shared</span></div>
+        </div>
+        <div class="psc-row">
+          <div class="psc-attr">User control over which attributes are shared</div>
+          <div class="psc-val"><span class="score-low">None (all KYC fields returned)</span></div>
+          <div class="psc-val"><span class="score-high">Full (VC selective disclosure)</span></div>
+        </div>
+        <div class="psc-row">
+          <div class="psc-attr">Biometric data at verifier's infrastructure</div>
+          <div class="psc-val"><span class="score-med">PID block transits verifier's system</span></div>
+          <div class="psc-val"><span class="score-high">No biometric ever leaves ANH's device</span></div>
+        </div>
+        <div class="psc-row">
+          <div class="psc-attr">Risk of data aggregation across transactions</div>
+          <div class="psc-val"><span class="score-low">High — Aadhaar number enables linkability</span></div>
+          <div class="psc-val"><span class="score-high">Low — no persistent identifier at verifier</span></div>
+        </div>
+        <div class="psc-row">
+          <div class="psc-attr">ANH awareness of what is being shared</div>
+          <div class="psc-val"><span class="score-med">OTP consent; limited visibility into data sent</span></div>
+          <div class="psc-val"><span class="score-high">Explicit in-app approval of each attribute</span></div>
+        </div>
+        <div class="psc-row">
+          <div class="psc-attr">Risk from verifier system breach</div>
+          <div class="psc-val"><span class="score-low">High — Aadhaar number in ADV; e-KYC packet may be stored</span></div>
+          <div class="psc-val"><span class="score-high">Low — no Aadhaar number stored; QR display creates no footprint</span></div>
+        </div>
+        <div class="psc-row">
+          <div class="psc-attr">CIDR surveillance / transaction tracking potential</div>
+          <div class="psc-val"><span class="score-low">UIDAI can track all authentication events per Aadhaar number</span></div>
+          <div class="psc-val"><span class="score-high">No individual-level tracking by UIDAI at point of verification</span></div>
+        </div>
+        <div class="psc-row">
+          <div class="psc-attr">Data minimisation alignment</div>
+          <div class="psc-val"><span class="score-low">Limited — full KYC packet; minimisation depends on KUA implementation</span></div>
+          <div class="psc-val"><span class="score-high">Strong — selective disclosure is a core design feature</span></div>
+        </div>
+      </div>
+
+      <div class="callout callout-teal">
+        <div class="callout-title">The Puttaswamy Judgment and Offline Verification's Legal Foundation</div>
+        <p>The Supreme Court's 2018 judgment in <em>Justice K.S. Puttaswamy (Aadhaar) v Union of India</em> struck down Section 57 of the Aadhaar Act, which had allowed private entities to mandate Aadhaar authentication. The Court held that the Right to Privacy is a fundamental right under Article 21, and that requiring citizens to authenticate against a centralised biometric database for private commercial services was disproportionate. The 2019 Amendment Act created offline verification as the constitutionally compliant alternative — enabling lawful identity verification by private sector entities without the privacy intrusions inherent in mandatory CIDR authentication.</p>
+      </div>
+    </section>
+
+    <!-- ── SECTION 4: COMPLIANCE ── -->
+    <section class="article-section" id="compliance">
+      <div class="section-kicker">Section 04</div>
+      <h2>Compliance Burden Analysis</h2>
+      <p>The compliance obligations of eKYC are substantially more demanding than offline verification. This is a significant factor for organisations evaluating which mechanism to adopt, particularly for use cases where the higher assurance of eKYC is not strictly required.</p>
+
+      <div class="comp-breakdown">
+        <div class="cb-card">
+          <div class="cb-header" style="background:var(--blue);color:#fff;">
+            <div class="cb-title">eKYC — Compliance Requirements</div>
+            <div class="cb-subtitle">For KUAs and Sub-KUAs</div>
+          </div>
+          <div class="cb-body">
+            <div class="cb-item">
+              <div class="cb-dot" style="background:#b91c1c;"></div>
+              <div><strong>KUA / AUA Licence from UIDAI</strong> — formal application, approval, slab-based annual fee (₹5L–₹20L for KUAs)</div>
+            </div>
+            <div class="cb-item">
+              <div class="cb-dot" style="background:#b91c1c;"></div>
+              <div><strong>ASA Connectivity</strong> — secure leased line or MPLS to UIDAI's CIDR; significant infrastructure investment</div>
+            </div>
+            <div class="cb-item">
+              <div class="cb-dot" style="background:#b91c1c;"></div>
+              <div><strong>Aadhaar Data Vault (ADV)</strong> — mandatory; Aadhaar numbers must be tokenised and stored in a separately secured vault</div>
+            </div>
+            <div class="cb-item">
+              <div class="cb-dot" style="background:#b91c1c;"></div>
+              <div><strong>HSM Requirement</strong> — FIPS 140-2 Level 3 Hardware Security Module for private key operations and OTP encryption</div>
+            </div>
+            <div class="cb-item">
+              <div class="cb-dot" style="background:#b91c1c;"></div>
+              <div><strong>Annual CERT-IN IS Audit</strong> — empanelled auditor; physical data centre security, OS hardening, application security, VAPT, SAST/DAST</div>
+            </div>
+            <div class="cb-item">
+              <div class="cb-dot" style="background:#b91c1c;"></div>
+              <div><strong>DPDP Act Full Obligations</strong> — e-KYC data is sensitive personal data; consent management, purpose limitation, data principal rights, security obligations</div>
+            </div>
+            <div class="cb-item">
+              <div class="cb-dot" style="background:#d4900a;"></div>
+              <div><strong>Per-transaction charges</strong> — ₹3.00/eKYC, ₹0.50/auth payable to UIDAI; must be factored into product economics</div>
+            </div>
+            <div class="cb-item">
+              <div class="cb-dot" style="background:#d4900a;"></div>
+              <div><strong>Regulation 25 financial disincentives</strong> — penalties for non-compliance with technical or governance obligations</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cb-card">
+          <div class="cb-header" style="background:var(--teal);color:#fff;">
+            <div class="cb-title">Offline Verification — Compliance Requirements</div>
+            <div class="cb-subtitle">For OVSEs (registered)</div>
+          </div>
+          <div class="cb-body">
+            <div class="cb-item">
+              <div class="cb-dot" style="background:#156c2e;"></div>
+              <div><strong>OVSE Registration (for VC flow)</strong> — application to UIDAI, organisation details and use case declaration; no licence fee</div>
+            </div>
+            <div class="cb-item">
+              <div class="cb-dot" style="background:#156c2e;"></div>
+              <div><strong>Technical Integration</strong> — integrate with Aadhaar App via QR, app-to-app, or web-to-app intent; standard HTTPS callback; Class 3 certificate required</div>
+            </div>
+            <div class="cb-item">
+              <div class="cb-dot" style="background:#156c2e;"></div>
+              <div><strong>No CERT-IN IS Audit</strong> — not required for OVSEs</div>
+            </div>
+            <div class="cb-item">
+              <div class="cb-dot" style="background:#156c2e;"></div>
+              <div><strong>No ADV Requirement</strong> — Aadhaar number is never collected; no Data Vault obligation</div>
+            </div>
+            <div class="cb-item">
+              <div class="cb-dot" style="background:#156c2e;"></div>
+              <div><strong>No HSM Requirement</strong> — signature verification uses UIDAI's published public key; no private key operations at OVSE</div>
+            </div>
+            <div class="cb-item">
+              <div class="cb-dot" style="background:#156c2e;"></div>
+              <div><strong>No per-transaction UIDAI charge</strong> — offline verification transactions carry no UIDAI levy</div>
+            </div>
+            <div class="cb-item">
+              <div class="cb-dot" style="background:#d4900a;"></div>
+              <div><strong>DPDP Act obligations where data is stored</strong> — when XML/VC data is retained, OVSE is a Data Fiduciary; consent, minimisation, security obligations apply</div>
+            </div>
+            <div class="cb-item">
+              <div class="cb-dot" style="background:#d4900a;"></div>
+              <div><strong>Self-declaration on Aadhaar Act compliance</strong> — OVSE confirms lawful purpose and adherence to UIDAI regulations in the registration declaration</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 5: USE CASE DECISION MATRIX ── -->
+    <section class="article-section" id="decision-matrix">
+      <div class="section-kicker">Section 05</div>
+      <h2>Use Case Decision Matrix</h2>
+      <p>The following matrix maps the most common identity verification scenarios against the preferred mechanism. The choice is driven by three factors: <strong>assurance level required</strong>, <strong>whether the entity is permitted to use eKYC</strong>, and <strong>the privacy/compliance cost the organisation can sustain</strong>.</p>
+
+      <div class="decision-matrix">
+        <div class="dm-row header">
+          <div class="dm-cell">Scenario / Use Case</div>
+          <div class="dm-cell ekyc-col" style="color:#fff;font-family:var(--font-mono);font-size:11px;">eKYC</div>
+          <div class="dm-cell offline-col" style="color:#fff;font-family:var(--font-mono);font-size:11px;">Offline</div>
+        </div>
+        <div class="dm-row">
+          <div class="dm-cell scenario">Bank account opening (regulated entity, biometric required)</div>
+          <div class="dm-cell ekyc-col"><span class="dm-preferred">Preferred</span></div>
+          <div class="dm-cell offline-col"><span class="dm-not">Not sufficient</span></div>
+        </div>
+        <div class="dm-row">
+          <div class="dm-cell scenario">NBFC / MFI customer onboarding at branch</div>
+          <div class="dm-cell ekyc-col"><span class="dm-applicable">Applicable</span></div>
+          <div class="dm-cell offline-col"><span class="dm-preferred">Preferred</span></div>
+        </div>
+        <div class="dm-row">
+          <div class="dm-cell scenario">Mobile SIM activation (RBI/DOT mandate)</div>
+          <div class="dm-cell ekyc-col"><span class="dm-preferred">Preferred</span></div>
+          <div class="dm-cell offline-col"><span class="dm-not">Not mandated</span></div>
+        </div>
+        <div class="dm-row">
+          <div class="dm-cell scenario">Government subsidy / benefit disbursement</div>
+          <div class="dm-cell ekyc-col"><span class="dm-preferred">Preferred</span></div>
+          <div class="dm-cell offline-col"><span class="dm-partial">Identity check only</span></div>
+        </div>
+        <div class="dm-row">
+          <div class="dm-cell scenario">Hotel check-in / hospitality identity verification</div>
+          <div class="dm-cell ekyc-col"><span class="dm-not">Not applicable</span></div>
+          <div class="dm-cell offline-col"><span class="dm-preferred">Preferred</span></div>
+        </div>
+        <div class="dm-row">
+          <div class="dm-cell scenario">Access control at office / gated premises</div>
+          <div class="dm-cell ekyc-col"><span class="dm-not">Not applicable</span></div>
+          <div class="dm-cell offline-col"><span class="dm-preferred">Preferred</span></div>
+        </div>
+        <div class="dm-row">
+          <div class="dm-cell scenario">Delivery executive / gig worker onboarding</div>
+          <div class="dm-cell ekyc-col"><span class="dm-not">Not applicable</span></div>
+          <div class="dm-cell offline-col"><span class="dm-preferred">Preferred</span></div>
+        </div>
+        <div class="dm-row">
+          <div class="dm-cell scenario">Residential society — visitor and domestic worker verification</div>
+          <div class="dm-cell ekyc-col"><span class="dm-not">Not applicable</span></div>
+          <div class="dm-cell offline-col"><span class="dm-preferred">Preferred</span></div>
+        </div>
+        <div class="dm-row">
+          <div class="dm-cell scenario">Remote / field verification (no internet)</div>
+          <div class="dm-cell ekyc-col"><span class="dm-not">Not possible</span></div>
+          <div class="dm-cell offline-col"><span class="dm-preferred">Preferred</span></div>
+        </div>
+        <div class="dm-row">
+          <div class="dm-cell scenario">Patient identity verification at hospital / clinic</div>
+          <div class="dm-cell ekyc-col"><span class="dm-not">Not applicable (private)</span></div>
+          <div class="dm-cell offline-col"><span class="dm-preferred">Preferred</span></div>
+        </div>
+        <div class="dm-row">
+          <div class="dm-cell scenario">Financial inclusion (Jan Dhan / PM scheme)</div>
+          <div class="dm-cell ekyc-col"><span class="dm-preferred">Preferred</span></div>
+          <div class="dm-cell offline-col"><span class="dm-both">Both viable</span></div>
+        </div>
+        <div class="dm-row">
+          <div class="dm-cell scenario">Tenant / rental agreement identity verification</div>
+          <div class="dm-cell ekyc-col"><span class="dm-not">Not applicable</span></div>
+          <div class="dm-cell offline-col"><span class="dm-preferred">Preferred</span></div>
+        </div>
+        <div class="dm-row">
+          <div class="dm-cell scenario">Age verification for regulated services</div>
+          <div class="dm-cell ekyc-col"><span class="dm-not">Not applicable (private)</span></div>
+          <div class="dm-cell offline-col"><span class="dm-preferred">Preferred</span></div>
+        </div>
+        <div class="dm-row">
+          <div class="dm-cell scenario">High-security biometric authentication (e.g., prison entry, defence facility)</div>
+          <div class="dm-cell ekyc-col"><span class="dm-preferred">Preferred</span></div>
+          <div class="dm-cell offline-col"><span class="dm-not">Insufficient assurance</span></div>
+        </div>
+        <div class="dm-row">
+          <div class="dm-cell scenario">Exam centre candidate identity verification</div>
+          <div class="dm-cell ekyc-col"><span class="dm-both">Both viable</span></div>
+          <div class="dm-cell offline-col"><span class="dm-preferred">Preferred</span></div>
+        </div>
+      </div>
+
+      <div class="callout callout-amber">
+        <div class="callout-title">Why "Not Applicable" for eKYC in Private Sector Use Cases</div>
+        <p>Following the Supreme Court's Puttaswamy (Aadhaar) judgment in 2018 and the striking down of Section 57 of the Aadhaar Act, private sector entities cannot mandatorily require Aadhaar authentication from individuals unless they are operating under a specific statutory mandate (such as RBI-regulated KYC for banks, DOT-mandated SIM verification, SEBI-regulated onboarding, or IRDAI-regulated insurance). This is why hotels, residential societies, delivery platforms, hospitals, and similar private sector entities are shown as "Not applicable" for eKYC — it is not a permitted pathway for their identity verification needs. Offline verification exists precisely to serve these use cases lawfully.</p>
+      </div>
+    </section>
+
+    <!-- ── SECTION 6: SECTOR USE CASES ── -->
+    <section class="article-section" id="sector-usecases">
+      <div class="section-kicker">Section 06</div>
+      <h2>Sector-Specific Use Case Analysis</h2>
+      <p>The decision between eKYC and offline verification plays out differently across sectors. Below is a deeper analysis of key sectors:</p>
+
+      <div class="uc-grid">
+        <div class="uc-tile">
+          <div class="uc-tile-top">
+            <div class="uc-tile-icon">🏦</div>
+            <div class="uc-tile-sector">Banking (RBI-Regulated)</div>
+            <span class="uc-tile-reco reco-ekyc">eKYC</span>
+          </div>
+          <p>Banks require biometric-grade assurance for account opening under RBI's KYC norms. Aadhaar eKYC with biometric (fingerprint or iris) satisfies the V-CIP (Video-based Customer Identification Process) alternative and meets PMLA obligations. The compliance cost of KUA licensing is justified by high transaction volumes and regulatory mandate.</p>
+          <div class="uc-tile-reason">Regulator mandate + biometric assurance needed + high volume justifies KUA cost</div>
+        </div>
+
+        <div class="uc-tile">
+          <div class="uc-tile-top">
+            <div class="uc-tile-icon">💰</div>
+            <div class="uc-tile-sector">NBFCs &amp; Microfinance</div>
+            <span class="uc-tile-reco reco-offline">Offline</span>
+          </div>
+          <p>NBFCs and MFIs need customer identity verification at the point of loan disbursement, including field operations in semi-urban and rural areas. Offline verification via the Aadhaar App works without internet, eliminates the need for physical Aadhaar card copies (reducing DPDP Act risk), and the VC provides a digitally signed identity record that satisfies most RBI directions on customer due diligence for non-bank entities.</p>
+          <div class="uc-tile-reason">Field operations + no reliable internet + lower compliance burden + DPDP Act risk reduction</div>
+        </div>
+
+        <div class="uc-tile">
+          <div class="uc-tile-top">
+            <div class="uc-tile-icon">🏥</div>
+            <div class="uc-tile-sector">Healthcare</div>
+            <span class="uc-tile-reco reco-offline">Offline</span>
+          </div>
+          <p>Hospitals, diagnostic centres, and telemedicine platforms need patient identity verification for Ayushman Bharat linkage, emergency admissions, and health record management. Private hospitals are not permitted to mandate Aadhaar eKYC. Offline verification confirms patient identity at admission — with the Aadhaar App QR scan or VC sharing taking seconds. No Aadhaar number is captured by the hospital, reducing compliance risk under the DPDP Act for health data processors.</p>
+          <div class="uc-tile-reason">Private sector restriction on eKYC + fast check-in + DPDP Act health data compliance</div>
+        </div>
+
+        <div class="uc-tile">
+          <div class="uc-tile-top">
+            <div class="uc-tile-icon">🏨</div>
+            <div class="uc-tile-sector">Hospitality &amp; Hotels</div>
+            <span class="uc-tile-reco reco-offline">Offline</span>
+          </div>
+          <p>Hotels are legally required under Form C of the Foreigners Act / State Police Acts to record guest identity. Currently this is done by photocopying Aadhaar cards — a practice that creates significant data risks. As an OVSE, a hotel chain can replace Aadhaar photocopies with offline VC sharing: the guest's identity is verified, the hotel's compliance obligation is met, but no Aadhaar number is stored and the guest retains control over their data.</p>
+          <div class="uc-tile-reason">Replace Aadhaar photocopies + meet Form C compliance + eliminate Aadhaar number storage risk</div>
+        </div>
+
+        <div class="uc-tile">
+          <div class="uc-tile-top">
+            <div class="uc-tile-icon">🚗</div>
+            <div class="uc-tile-sector">Mobility &amp; Logistics</div>
+            <span class="uc-tile-reco reco-offline">Offline</span>
+          </div>
+          <p>Cab aggregators (Ola, Uber) and food delivery platforms (Swiggy, Zomato) onboard hundreds of thousands of driver-partners and delivery executives. Current onboarding involves physical document collection and manual verification — slow, inconsistent, and privacy-risky. OVSE registration enables these platforms to receive UIDAI-signed VC data at onboarding, with no physical documents required and no Aadhaar number stored in their systems.</p>
+          <div class="uc-tile-reason">Scale onboarding + eliminate physical docs + no Aadhaar number storage + periodic re-verification</div>
+        </div>
+
+        <div class="uc-tile">
+          <div class="uc-tile-top">
+            <div class="uc-tile-icon">🎓</div>
+            <div class="uc-tile-sector">Education &amp; Examinations</div>
+            <span class="uc-tile-reco reco-both">Either</span>
+          </div>
+          <p>Examination bodies (UPSC, SSC, state PSCs, CBSE) and universities need identity verification at examination centres. For government examination bodies with a statutory mandate, eKYC with biometric is possible and provides higher assurance against impersonation. For private educational institutions and coaching centres, offline VC verification via the Aadhaar App is the appropriate mechanism — providing strong identity assurance without the legal and compliance overhead of eKYC.</p>
+          <div class="uc-tile-reason">Government exam bodies → eKYC possible; Private institutions → offline verification required</div>
+        </div>
+
+        <div class="uc-tile">
+          <div class="uc-tile-top">
+            <div class="uc-tile-icon">🏘️</div>
+            <div class="uc-tile-sector">Real Estate &amp; Rental</div>
+            <span class="uc-tile-reco reco-offline">Offline</span>
+          </div>
+          <p>Landlords, property management companies, and co-working spaces need tenant/member identity verification. Traditional practice of collecting Aadhaar card copies creates ongoing liability under the DPDP Act. Offline VC verification enables landlords and property managers to complete identity verification without storing Aadhaar numbers — the UIDAI-signed VC record provides the legally defensible identity confirmation needed for rental agreements, police verification, and society records.</p>
+          <div class="uc-tile-reason">No Aadhaar storage liability + police verification compliance + DPDP Act risk elimination</div>
+        </div>
+
+        <div class="uc-tile">
+          <div class="uc-tile-top">
+            <div class="uc-tile-icon">🏛️</div>
+            <div class="uc-tile-sector">Government Departments</div>
+            <span class="uc-tile-reco reco-both">Either</span>
+          </div>
+          <p>Government departments may use either mechanism depending on the service. For direct benefit transfers requiring biometric authentication — welfare schemes, pension disbursement, MGNREGA attendance — eKYC with biometric remains the appropriate mechanism. For non-benefit services requiring identity confirmation at service delivery points — issuance of certificates, property registrations, court identity verification — offline VC verification is lighter, faster, and reduces the department's data custody burden.</p>
+          <div class="uc-tile-reason">Benefit disbursal → eKYC; Service delivery identity check → offline preferred</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 7: COST-BENEFIT ── -->
+    <section class="article-section" id="cost-benefit">
+      <div class="section-kicker">Section 07</div>
+      <h2>Total Cost of Ownership Comparison</h2>
+      <p>The economics of eKYC versus offline verification differ significantly, particularly for organisations with moderate transaction volumes or operating in sectors where eKYC is not mandated.</p>
+
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Cost Component</th>
+            <th class="ekyc">eKYC (via KUA)</th>
+            <th class="offline">Offline Verification (OVSE)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>UIDAI licence / registration fee</td>
+            <td>₹5L–₹20L/year (KUA licence fee based on slab)</td>
+            <td>No fee (as of 2026)</td>
+          </tr>
+          <tr>
+            <td>ASA connectivity</td>
+            <td>₹20L+ setup + annual; leased line or MPLS to UIDAI</td>
+            <td>Standard HTTPS; no dedicated connectivity required</td>
+          </tr>
+          <tr>
+            <td>HSM hardware</td>
+            <td>₹15L–₹50L+ (FIPS 140-2 Level 3) + maintenance</td>
+            <td>Not required</td>
+          </tr>
+          <tr>
+            <td>Aadhaar Data Vault</td>
+            <td>Implementation + annual maintenance cost</td>
+            <td>Not required</td>
+          </tr>
+          <tr>
+            <td>CERT-IN IS audit</td>
+            <td>₹3L–₹10L/year (empanelled auditor fees)</td>
+            <td>Not required</td>
+          </tr>
+          <tr>
+            <td>Per-transaction UIDAI charge</td>
+            <td>₹3.00/eKYC, ₹0.50/auth-only</td>
+            <td>Zero</td>
+          </tr>
+          <tr>
+            <td>Integration development effort</td>
+            <td>High — API integration, PID block construction, encryption pipeline</td>
+            <td>Moderate — Aadhaar App SDK / QR / deep link integration</td>
+          </tr>
+          <tr>
+            <td>Data security infrastructure</td>
+            <td>Full data centre compliance as per UIDAI Compliance Checklist v2.0</td>
+            <td>Standard application security; no UIDAI-specific DC requirements</td>
+          </tr>
+          <tr>
+            <td>Break-even consideration</td>
+            <td>Economically viable at high volumes (100K+ transactions/year) where per-txn fee is offset by volume discounts</td>
+            <td>Economically attractive at any volume; zero marginal UIDAI cost</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout-green">
+        <div class="callout-title">Cost-Benefit Verdict</div>
+        <p>For most private sector organisations — particularly those not under regulatory mandate to use Aadhaar eKYC — the total cost of ownership of eKYC (including licensing, ASA infrastructure, HSM, CERT-IN audit, and per-transaction charges) far exceeds that of offline OVSE registration. Offline verification delivers adequate identity assurance for most B2C and B2G use cases at a fraction of the cost, with lower compliance risk and better alignment with India's evolving DPDP Act obligations.</p>
+      </div>
+    </section>
+
+    <!-- ── SECTION 8: DECISION FRAMEWORK ── -->
+    <section class="article-section" id="decision">
+      <div class="section-kicker">Section 08</div>
+      <h2>The Decision Framework — Choosing the Right Mechanism</h2>
+      <p>Use the following four-question decision framework to determine which mechanism is appropriate for your organisation's use case:</p>
+
+      <div class="callout callout-blue">
+        <div class="callout-title">Question 1 — Are you a regulated entity with a specific mandate to use Aadhaar eKYC?</div>
+        <p>If you are a bank, NBFC (for certain services), telecom operator, or securities intermediary operating under an RBI, SEBI, DOT, or IRDAI directive that specifically requires Aadhaar authentication — you should use eKYC. If you are a private sector company not under such a directive, eKYC is not the appropriate mechanism and offline verification is your lawful option.</p>
+      </div>
+
+      <div class="callout callout-teal">
+        <div class="callout-title">Question 2 — What assurance level does your use case actually require?</div>
+        <p>If you need biometric-grade assurance that the person in front of you matches a centralised biometric record — for high-security access, financial benefit disbursement, or fraud-sensitive onboarding — eKYC with biometric authentication is the appropriate mechanism. If you need to confirm identity for access control, service delivery, onboarding, or compliance purposes, offline VC verification with optional face match provides sufficient assurance at dramatically lower compliance cost.</p>
+      </div>
+
+      <div class="callout callout-amber">
+        <div class="callout-title">Question 3 — Do your operations require connectivity at the point of verification?</div>
+        <p>If you operate in remote areas, at field locations, in basements or buildings with poor connectivity, or at high-throughput entry gates where real-time API calls would create latency — offline verification is operationally superior. It processes locally, eliminates CIDR dependency, and scales without network constraints.</p>
+      </div>
+
+      <div class="callout callout-coral">
+        <div class="callout-title">Question 4 — What is your organisation's tolerance for Aadhaar-related data custody?</div>
+        <p>If your organisation has a low appetite for the data privacy risks, compliance obligations, and potential liability associated with storing Aadhaar numbers and biometric-linked KYC data — offline verification is the stronger choice. The Aadhaar number is never collected, minimising your exposure under the Aadhaar Act, DPDP Act 2023, and IT Act 2000. If your sector already requires robust data security infrastructure (as banks do), the incremental burden of eKYC compliance may be acceptable.</p>
+      </div>
+
+      <h3>Quick Decision Summary</h3>
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Condition</th>
+            <th class="ekyc">Use eKYC</th>
+            <th class="offline">Use Offline Verification</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Regulatory mandate for Aadhaar authentication</td>
+            <td class="yes">✓ Yes</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>Biometric-grade assurance required</td>
+            <td class="yes">✓ Yes</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>Private sector entity, no regulatory mandate</td>
+            <td>—</td>
+            <td class="yes">✓ Yes</td>
+          </tr>
+          <tr>
+            <td>No or unreliable internet at verification point</td>
+            <td>—</td>
+            <td class="yes">✓ Yes</td>
+          </tr>
+          <tr>
+            <td>Low compliance budget / early-stage org</td>
+            <td>—</td>
+            <td class="yes">✓ Yes</td>
+          </tr>
+          <tr>
+            <td>Want ANH to control what data is shared</td>
+            <td>—</td>
+            <td class="yes">✓ Yes</td>
+          </tr>
+          <tr>
+            <td>Want to avoid storing Aadhaar numbers</td>
+            <td>—</td>
+            <td class="yes">✓ Yes</td>
+          </tr>
+          <tr>
+            <td>High-volume government benefit disbursement</td>
+            <td class="yes">✓ Yes</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>Field operations, gig economy, access control</td>
+            <td>—</td>
+            <td class="yes">✓ Yes</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ── SECTION 9: CONVERGENCE ── -->
+    <section class="article-section" id="convergence">
+      <div class="section-kicker">Section 09</div>
+      <h2>Convergence and the Future Landscape</h2>
+      <p>The distinction between eKYC and offline verification, while currently sharp, may converge as technology and regulation evolve:</p>
+      <ul>
+        <li><strong>Aadhaar Verifiable Credentials and W3C Standards:</strong> UIDAI's VC framework is designed to align with the W3C Verifiable Credentials Data Model. As India's digital identity ecosystem evolves under the Digital India Act and Account Aggregator framework, VCs may become the lingua franca of identity — usable across eKYC, offline, and future identity architectures without requiring separate integration for each.</li>
+        <li><strong>DPDP Act Rules and Data Minimisation Mandates:</strong> The DPDP Act 2023 implementing Rules (pending notification as of April 2026) are expected to impose stronger data minimisation obligations across all identity verification mechanisms. This may accelerate migration from eKYC to offline verification in sectors where data minimisation requirements make storing full eKYC packets increasingly burdensome.</li>
+        <li><strong>RBI's Account Aggregator and OCEN:</strong> The RBI's Account Aggregator framework has established the principle of consent-based, selective financial data sharing. Alignment of Aadhaar VC-based offline verification with the AA framework could enable seamless KYC+financial data sharing flows that are privacy-preserving by design.</li>
+        <li><strong>ABHA (Ayushman Bharat Health Account):</strong> The National Health Authority's ABHA system links health records to Aadhaar. Offline VC-based identity verification at health facilities could become a primary mechanism for ABHA-linked patient identification — combining identity verification and health record access in a privacy-respecting single interaction.</li>
+      </ul>
+
+      <div class="callout callout-teal">
+        <div class="callout-title">Strategic Implication for Organisations</div>
+        <p>Organisations building identity verification infrastructure today should evaluate whether eKYC is truly required for their use case, or whether offline OVSE registration provides equivalent functional value with significantly lower compliance, cost, and data privacy risk. For new-to-market products, organisations in sectors where eKYC is not mandated, and field-operation-heavy businesses, offline verification is the architecturally superior and legally safer choice as India's data protection landscape strengthens under the DPDP Act 2023.</p>
+      </div>
+    </section>
+
+  </article>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">Contents</div>
+      <ul class="toc-list">
+        <li><a href="#fundamental">01 · Fundamental Distinction</a></li>
+        <li><a href="#comparison">02 · 20-Dimension Comparison</a></li>
+        <li><a href="#privacy">03 · Privacy Architecture</a></li>
+        <li><a href="#compliance">04 · Compliance Burden</a></li>
+        <li><a href="#decision-matrix">05 · Decision Matrix</a></li>
+        <li><a href="#sector-usecases">06 · Sector Use Cases</a></li>
+        <li><a href="#cost-benefit">07 · Cost Comparison</a></li>
+        <li><a href="#decision">08 · Decision Framework</a></li>
+        <li><a href="#convergence">09 · Future Landscape</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">Quick Reference</div>
+      <div class="quick-ref">
+        <div class="qr-badge" style="background:#e6f1fb;">
+          <div class="qr-badge-label" style="color:#1a5cad;">eKYC Cost</div>
+          <div class="qr-badge-val" style="color:#1a5cad;">₹5L–20L<br><span style="font-size:10px;font-weight:400;">licence/year</span></div>
+        </div>
+        <div class="qr-badge" style="background:#e0f2ef;">
+          <div class="qr-badge-label" style="color:#0e7c6b;">OVSE Cost</div>
+          <div class="qr-badge-val" style="color:#0e7c6b;">₹0<br><span style="font-size:10px;font-weight:400;">registration fee</span></div>
+        </div>
+        <div class="qr-badge" style="background:#e6f1fb;">
+          <div class="qr-badge-label" style="color:#1a5cad;">eKYC txn</div>
+          <div class="qr-badge-val" style="color:#1a5cad;">₹3.00<br><span style="font-size:10px;font-weight:400;">per eKYC call</span></div>
+        </div>
+        <div class="qr-badge" style="background:#e0f2ef;">
+          <div class="qr-badge-label" style="color:#0e7c6b;">Offline txn</div>
+          <div class="qr-badge-val" style="color:#0e7c6b;">₹0<br><span style="font-size:10px;font-weight:400;">no UIDAI levy</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">Key Legal Context</div>
+      <ul class="toc-list">
+        <li><a href="#privacy">Puttaswamy (Aadhaar) 2018</a></li>
+        <li><a href="#compliance">Aadhaar Act 2016 + 2019 Amdt</a></li>
+        <li><a href="#compliance">Auth Regulations 2021</a></li>
+        <li><a href="#compliance">Amendment Regulations 2025</a></li>
+        <li><a href="#compliance">DPDP Act 2023</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">Related Articles</div>
+      <a class="sb-link" href="ekyc-uidai-guide.html">
+        eKYC Complete Technical Reference
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 2h8v8M10 2L2 10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="sb-link" href="ekyc-offline-verification.html">
+        Offline Verification Complete Guide
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 2h8v8M10 2L2 10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="sb-link" href="ekyc-trust-chain.html">
+        Trust Chain &amp; Entity Governance
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 2h8v8M10 2L2 10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="sb-link" href="ekyc-fees-connectivity.html">
+        KUA Fees &amp; Connectivity Standards
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 2h8v8M10 2L2 10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </aside>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-links">
+    <a href="index.html">DPDPindia.in</a>
+    <a href="ekyc-kb.html">eKYC Knowledge Base</a>
+    <a href="ekyc-uidai-guide.html">eKYC Process Guide</a>
+    <a href="ekyc-offline-verification.html">Offline Verification Guide</a>
+    <a href="ekyc-vs-offline-comparison.html">eKYC vs Offline</a>
+    <a href="ekyc-trust-chain.html">Trust Chain</a>
+    <a href="https://uidai.gov.in" target="_blank">UIDAI Official</a>
+  </div>
+  <p>eKYC vs Offline Verification Comparison · DPDPindia.in · Independent Policy &amp; Legal Research</p>
+  <div style="background:linear-gradient(135deg,#1B2B3A 0%,#2D1F5E 100%);padding:2.5rem 0;border-top:3px solid #6C3FC5;margin-top:20px;"><div style="max-width:1320px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;"><div><div style="font-family:monospace;font-size:0.56rem;letter-spacing:0.18em;text-transform:uppercase;color:#9B6FE8;margin-bottom:0.5rem;">🤖 AI + Law + Risk</div><div style="font-family:Georgia,serif;font-size:1.1rem;font-weight:700;color:#FDFAF5;margin-bottom:0.3rem;">Explore Our AI Intelligence Hub</div><div style="font-size:0.82rem;font-weight:300;color:rgba(248,244,236,0.5);">DPDP Act mapping · Deepfake threats · EU AI Act · IndiaAI Mission · Risk framework</div></div><a href="ai-hub.html" style="font-family:monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;background:#6C3FC5;color:#fff;padding:14px 28px;text-decoration:none;white-space:nowrap;">Explore AI Hub →</a></div></div>
+</footer>
+
+<script src="site-global.js"></script>
+</body>
+</html>
