@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="site-global.css">
+<title>Monthly Intelligence Briefing — May 2026 | DPDPIndia.in</title>
+<meta name="description" content="May 2026 Monthly Intelligence Briefing: AIDAI launched by FDPPI, India AI Governance Seven Sutras, DPDP compliance countdown, Operation CyHawk 4.0, UIDAI June deadline, EU AI Act 90-day warning, and cybercrime statistics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --parchment:#F8F4EC;--cream:#FDFAF5;--paper:#F2EDE2;--ink:#1A1610;
+  --prussian:#1B2B3A;--slate:#2D3D4E;--saffron:#D4760A;--saffron-lt:#F0A840;
+  --ochre:#B8862C;--chakra-blue:#1B3A6B;--mist:#7A7468;
+  --rule:rgba(26,22,16,0.12);--rule-gold:rgba(212,118,10,0.25);
+  --shadow-sm:0 2px 12px rgba(26,22,16,0.06);--shadow-md:0 8px 40px rgba(26,22,16,0.10);
+  --danger:#C0392B;--danger-lt:rgba(192,57,43,0.08);
+  --green:#1A6B3A;--green-lt:rgba(26,107,58,0.08);
+  --blue-lt:rgba(27,58,107,0.07);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:'Source Serif 4',Georgia,serif;background:var(--cream);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;}
+
+/* MASTHEAD */
+.masthead{background:var(--prussian);padding:10px 0;text-align:center;border-bottom:3px solid var(--saffron);}
+.masthead-text{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.55);}
+.masthead-text span{color:var(--saffron-lt);}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:200;background:var(--cream);border-bottom:1px solid var(--rule);box-shadow:var(--shadow-sm);}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:68px;}
+.nav-brand{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.nav-brand-seal{width:42px;height:42px;flex-shrink:0;}
+.nav-brand-name{display:flex;flex-direction:column;gap:1px;}
+.nav-brand-name strong{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--prussian);}
+.nav-brand-name span{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);}
+.nav-links{display:flex;align-items:center;gap:1.5rem;list-style:none;}
+.nav-links a{font-family:'Source Serif 4',serif;font-size:0.82rem;color:var(--slate);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--saffron);}
+.nav-back{font-family:'JetBrains Mono',monospace!important;font-size:0.65rem!important;letter-spacing:0.1em!important;text-transform:uppercase;background:var(--prussian)!important;color:var(--cream)!important;padding:9px 20px;}
+
+/* BRIEFING HERO */
+.briefing-hero{background:var(--prussian);padding:4rem 2rem 3rem;border-bottom:4px solid var(--saffron);position:relative;overflow:hidden;}
+.briefing-hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,255,255,0.02) 40px);pointer-events:none;}
+.hero-inner{max-width:1100px;margin:0 auto;}
+.hero-kicker{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--saffron-lt);margin-bottom:1rem;display:flex;align-items:center;gap:1rem;}
+.hero-kicker::before{content:'';display:inline-block;width:28px;height:1px;background:var(--saffron);}
+.hero-date{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:var(--parchment);line-height:1.05;margin-bottom:0.75rem;}
+.hero-subtitle{font-family:'Source Serif 4',serif;font-size:1.05rem;font-weight:300;color:rgba(248,244,236,0.65);line-height:1.75;max-width:640px;margin-bottom:2rem;}
+.hero-tags{display:flex;flex-wrap:wrap;gap:0.5rem;}
+.hero-tag{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;background:rgba(212,118,10,0.15);border:1px solid rgba(212,118,10,0.3);color:var(--saffron-lt);padding:5px 12px;}
+
+/* STAT BAR */
+.stat-bar{background:var(--paper);border-bottom:1px solid var(--rule-gold);padding:1rem 2rem;}
+.stat-bar-inner{max-width:1100px;margin:0 auto;display:flex;gap:2.5rem;flex-wrap:wrap;align-items:center;}
+.stat-item{display:flex;flex-direction:column;gap:2px;}
+.stat-num{font-family:'JetBrains Mono',monospace;font-size:1.2rem;font-weight:500;color:var(--saffron);}
+.stat-label{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--mist);}
+.stat-divider{width:1px;height:40px;background:var(--rule-gold);align-self:center;}
+
+/* LAYOUT */
+.main-layout{max-width:1100px;margin:0 auto;padding:3rem 2rem;display:grid;grid-template-columns:1fr 320px;gap:3rem;}
+@media(max-width:900px){.main-layout{grid-template-columns:1fr;}.sidebar{order:-1;}}
+
+/* SECTION HEADERS */
+.section-gap{margin-bottom:3rem;}
+.section-header{display:flex;align-items:center;gap:1rem;margin-bottom:2rem;padding-bottom:0.75rem;border-bottom:1px solid var(--rule);}
+.section-icon{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.section-kicker{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--mist);}
+.section-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--prussian);}
+
+/* FEATURE BANNER */
+.feature-banner{background:linear-gradient(135deg,var(--prussian) 0%,#2A4A5E 100%);border:2px solid var(--saffron);padding:2rem;margin-bottom:2rem;position:relative;overflow:hidden;}
+.feature-banner::before{content:'★ FEATURED STORY';font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.22em;color:var(--saffron-lt);display:block;margin-bottom:0.75rem;}
+.feature-banner::after{content:'';position:absolute;top:-20px;right:-20px;width:120px;height:120px;border-radius:50%;background:rgba(212,118,10,0.08);pointer-events:none;}
+.feature-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:900;color:var(--parchment);line-height:1.3;margin-bottom:0.75rem;}
+.feature-body{font-size:0.88rem;font-weight:300;line-height:1.9;color:rgba(248,244,236,0.75);}
+.feature-body p{margin-bottom:0.6rem;}
+.feature-body p:last-child{margin-bottom:0;}
+.feature-meta{margin-top:1.2rem;padding-top:0.9rem;border-top:1px solid rgba(212,118,10,0.3);display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center;}
+.feature-source{font-family:'JetBrains Mono',monospace;font-size:0.58rem;color:rgba(255,255,255,0.4);}
+.feature-source a{color:var(--saffron-lt);text-decoration:none;}
+.feature-source a:hover{text-decoration:underline;}
+.feature-badge{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;background:var(--saffron);color:#fff;padding:4px 10px;}
+
+/* NEWS CARD */
+.news-card{background:var(--parchment);border:1px solid var(--rule);border-left:3px solid var(--saffron);margin-bottom:1.5rem;padding:1.5rem;transition:box-shadow 0.2s;}
+.news-card:hover{box-shadow:var(--shadow-md);}
+.news-card.critical{border-left-color:var(--danger);}
+.news-card.legal{border-left-color:var(--chakra-blue);}
+.news-card.positive{border-left-color:var(--green);}
+.news-card.global{border-left-color:#8B0000;}
+.card-meta{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.6rem;flex-wrap:wrap;}
+.card-badge{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;padding:3px 8px;}
+.badge-critical{background:var(--danger-lt);color:var(--danger);border:1px solid rgba(192,57,43,0.2);}
+.badge-update{background:rgba(212,118,10,0.1);color:var(--ochre);border:1px solid var(--rule-gold);}
+.badge-judiciary{background:var(--blue-lt);color:var(--chakra-blue);border:1px solid rgba(27,58,107,0.2);}
+.badge-govt{background:var(--green-lt);color:var(--green);border:1px solid rgba(26,107,58,0.2);}
+.badge-global{background:rgba(139,0,0,0.07);color:#8B0000;border:1px solid rgba(139,0,0,0.15);}
+.badge-new{background:rgba(212,118,10,0.2);color:var(--saffron);border:1px solid var(--saffron);font-weight:600;}
+.card-date{font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--mist);}
+.card-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--prussian);line-height:1.35;margin-bottom:0.5rem;}
+.card-body{font-size:0.88rem;font-weight:300;line-height:1.85;color:var(--slate);}
+.card-body p{margin-bottom:0.5rem;}
+.card-body p:last-child{margin-bottom:0;}
+.card-source{margin-top:0.9rem;padding-top:0.75rem;border-top:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:0.58rem;color:var(--mist);}
+.card-source a{color:var(--saffron);text-decoration:none;}
+.card-source a:hover{text-decoration:underline;}
+.card-implications{margin-top:0.75rem;background:rgba(212,118,10,0.05);border:1px solid var(--rule-gold);padding:0.8rem 1rem;}
+.card-implications-label{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.4rem;}
+.card-implications p{font-size:0.82rem;font-weight:400;line-height:1.7;color:var(--ochre);}
+
+/* SIDEBAR */
+.sidebar-card{background:var(--parchment);border:1px solid var(--rule);padding:1.4rem;margin-bottom:1.5rem;}
+.sidebar-card-title{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);margin-bottom:1rem;padding-bottom:0.6rem;border-bottom:1px solid var(--rule-gold);}
+.timeline-item{display:flex;gap:1rem;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--rule);}
+.timeline-item:last-child{margin-bottom:0;border-bottom:none;padding-bottom:0;}
+.timeline-dot{width:8px;height:8px;border-radius:50%;background:var(--saffron);flex-shrink:0;margin-top:5px;}
+.timeline-dot.active{background:var(--green);}
+.timeline-dot.future{background:var(--mist);}
+.timeline-text{font-size:0.82rem;font-weight:300;line-height:1.65;color:var(--slate);}
+.timeline-text strong{font-weight:600;color:var(--prussian);font-size:0.78rem;}
+
+/* SUBSCRIBE */
+.subscribe-card{background:var(--prussian);padding:1.5rem;border-left:3px solid var(--saffron);}
+.subscribe-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--parchment);margin-bottom:0.5rem;}
+.subscribe-body{font-size:0.82rem;font-weight:300;line-height:1.7;color:rgba(248,244,236,0.65);margin-bottom:1rem;}
+.subscribe-form{display:flex;flex-direction:column;gap:0.6rem;}
+.subscribe-input{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:var(--parchment);padding:10px 12px;font-family:'Source Serif 4',serif;font-size:0.85rem;outline:none;}
+.subscribe-input::placeholder{color:rgba(248,244,236,0.35);}
+.subscribe-btn{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;background:var(--saffron);color:var(--cream);border:none;padding:11px 18px;cursor:pointer;transition:background 0.2s;}
+.subscribe-btn:hover{background:var(--saffron-lt);}
+
+/* BACK ISSUES */
+.back-issues-link{display:block;font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--saffron);text-decoration:none;padding:0.35rem 0;border-bottom:1px solid var(--rule);}
+.back-issues-link:last-child{border-bottom:none;}
+.back-issues-link:hover{color:var(--prussian);}
+
+/* FOOTER */
+footer{background:var(--prussian);padding:2.5rem 2rem;border-top:3px solid var(--saffron);}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-brand{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--parchment);}
+.footer-note{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;color:rgba(255,255,255,0.35);max-width:480px;line-height:1.7;}
+.footer-links{display:flex;gap:1.5rem;flex-wrap:wrap;}
+.footer-links a{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;}
+.footer-links a:hover{color:var(--saffron-lt);}
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <div class="masthead-text">DPDPIndia.in · <span>Monthly Intelligence Briefing</span> · May 2026 · India's Data Protection & Cybercrime Monitor</div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <svg class="nav-brand-seal" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="21" cy="21" r="20" stroke="#1B2B3A" stroke-width="1.5"/>
+        <circle cx="21" cy="21" r="16" stroke="#D4760A" stroke-width="0.75" stroke-dasharray="2 2"/>
+        <text x="21" y="17" text-anchor="middle" font-family="serif" font-size="7" fill="#1B2B3A" font-weight="700">DPDP</text>
+        <text x="21" y="25" text-anchor="middle" font-family="serif" font-size="5.5" fill="#D4760A" letter-spacing="1">INDIA</text>
+        <text x="21" y="31" text-anchor="middle" font-family="serif" font-size="4" fill="#7A7468">.in</text>
+      </svg>
+      <div class="nav-brand-name">
+        <strong>DPDPIndia.in</strong>
+        <span>Data · Privacy · Law</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="dpdp-kb.html">DPDP Act</a></li>
+      <li><a href="itact-kb.html">IT Act</a></li>
+      <li><a href="ekyc-kb.html">eKYC / UIDAI</a></li>
+      <li><a href="cybercrime-kb.html">Cyber Crime</a></li>
+      <li><a href="monthly-briefing.html">Newsletter</a></li>
+      <li><a href="index.html" class="nav-back">← Home</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="briefing-hero">
+  <div class="hero-inner">
+    <div class="hero-kicker">Monthly Intelligence Briefing · Issue No. 05</div>
+    <h1 class="hero-date">May 2026</h1>
+    <p class="hero-subtitle">India's data protection and cybercrime landscape in May 2026 — from the landmark AIDAI launch that reshapes how Data Fiduciaries will be audited, to the 90-day countdown to EU AI Act full enforcement and the cyber surge following Operation Sindoor.</p>
+    <div class="hero-tags">
+      <span class="hero-tag">AIDAI Launched</span>
+      <span class="hero-tag">India AI Governance</span>
+      <span class="hero-tag">DPDP Compliance</span>
+      <span class="hero-tag">Operation CyHawk 4.0</span>
+      <span class="hero-tag">UIDAI June Deadline</span>
+      <span class="hero-tag">EU AI Act — 90 Days</span>
+      <span class="hero-tag">Cybercrime 2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- STAT BAR -->
+<div class="stat-bar">
+  <div class="stat-bar-inner">
+    <div class="stat-item">
+      <span class="stat-num">7</span>
+      <span class="stat-label">Stories This Month</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-num">11 Apr</span>
+      <span class="stat-label">AIDAI Launched by FDPPI</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-num">₹519 Cr</span>
+      <span class="stat-label">Traced in Operation CyHawk 4.0</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-num">14 Jun</span>
+      <span class="stat-label">Free Aadhaar Update Deadline</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-num">2 Aug 2026</span>
+      <span class="stat-label">EU AI Act Full Enforcement</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-num">May 2027</span>
+      <span class="stat-label">DPDP Full Compliance Deadline</span>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="main-layout">
+<main>
+
+  <!-- ★ FEATURED STORY: AIDAI -->
+  <div class="feature-banner">
+    <div class="feature-title">AIDAI Launched: FDPPI Establishes India's First Professional Body for Independent Data Auditors — A Watershed Moment for DPDP Act Compliance</div>
+    <div class="feature-body">
+      <p>The Foundation for Data Protection Professionals India (FDPPI) launched the <strong>Association of Independent Data Auditors of India (AIDAI)</strong> on <strong>11 April 2026</strong> at WoodRose Club, JP Nagar, Bengaluru — a milestone in India's data protection ecosystem that directly responds to the imminent enforcement of the DPDP Act 2023.</p>
+      <p>AIDAI operates under the motto <em>"Building Trust through Integrity and Independence"</em> and is currently constituted as a division of FDPPI, with ambitions to become an independent entity. The organisation is led by CEO <strong>Vijayendra Shenoy</strong>, a veteran Information Security specialist, and is governed by a Governance Committee. A follow-up town hall meeting was held on <strong>27 April 2026</strong>, opening membership discussions and explaining the AIDAI accreditation pathway.</p>
+      <p>AIDAI invites professionals — ISO 27001 Lead Auditors, Chartered Accountants, Cost Accountants, Company Secretaries, and qualified Data Protection Officers — to expand their practice into the independent data audit profession. The pathway includes a "Probationary Independent Auditor" stage, where candidates undergo structured training, work as interns alongside accredited DPOs, and eventually qualify for full AIDAI accreditation or certification.</p>
+      <p><strong>Why this matters:</strong> The DPDP Act 2023 and DPDP Rules 2025 will require Data Fiduciaries to demonstrate compliance, and independent data audits are expected to form a core part of the compliance ecosystem under the Data Protection Board of India (DPBI). AIDAI positions itself as the supply-side institution that will create auditors capable of objectively assessing whether organisations meet their obligations under the Act — analogous to what ICAI does for financial audits.</p>
+    </div>
+    <div class="feature-meta">
+      <span class="feature-badge">Landmark Development</span>
+      <div class="feature-source">Sources: <a href="https://fdppi.in/wp/aidai-launched/" target="_blank">FDPPI — AIDAI Launched</a> · <a href="https://aidai.org.in/" target="_blank">aidai.org.in</a> · <a href="https://www.deccanherald.com/india/karnataka/bengaluru/fdppi-launches-association-of-independent-data-auditors-aimed-at-building-capacity-in-data-protection-ecosystem-3964810" target="_blank">Deccan Herald</a> · <a href="https://www.naavi.org/wp/aidai-launched/" target="_blank">Naavi.org</a> · <a href="https://www.naavi.org/wp/townhall-meeting-on-aidai-on-27th-april-2026/" target="_blank">Townhall April 27</a></div>
+    </div>
+  </div>
+
+  <!-- SECTION: DATA PROTECTION -->
+  <div class="section-gap">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--blue-lt);color:var(--chakra-blue);">⚖</div>
+      <div>
+        <div class="section-kicker">Data Protection Law</div>
+        <div class="section-title">DPDP Act & Regulatory Developments</div>
+      </div>
+    </div>
+
+    <!-- Story 1: India AI Governance Guidelines -->
+    <div class="news-card positive">
+      <div class="card-meta">
+        <span class="card-badge badge-govt">Government · MeitY</span>
+        <span class="card-date">February 2026 (India AI Summit)</span>
+      </div>
+      <div class="card-title">India AI Governance Guidelines Unveiled: Seven Sutras Framework — Principle-Based, No Dedicated AI Law for Now</div>
+      <div class="card-body">
+        <p>At the India AI Summit 2026, the Ministry of Electronics and Information Technology (MeitY) unveiled India's long-awaited AI Governance Guidelines — a principle-based "techno-legal" framework built around <strong>Seven Sutras</strong> for safe, trusted, and inclusive AI innovation. The guidelines were developed by a MeitY drafting committee constituted in July 2025, drawing on global frameworks, domestic research, and public feedback.</p>
+        <p>The Seven Sutras are: (1) <em>Trust is the Foundation</em>, (2) <em>People First</em>, (3) <em>Innovation Over Restraint</em>, (4) <em>Fairness and Equity</em>, (5) <em>Accountability</em>, (6) <em>Understandable by Design</em>, and (7) <em>Safety, Resilience and Sustainability</em>. The framework is structured into four parts: the seven sutras, key issues and recommendations, an action plan, and practical guidelines for industry and regulators.</p>
+        <p>Critically, the guidelines conclude that a <strong>separate AI law is not needed</strong> at this stage — favouring voluntary compliance supported by techno-legal tools over immediate heavy-handed regulation. The framework recommends establishing three new national institutions: an AI Governance Group (AIGG), a Technology & Policy Expert Committee (TPEC), and an IndiaAI Safety Institute for standards, testing, and guidance. Published via PIB (PRID 2186639 and 2228315).</p>
+      </div>
+      <div class="card-source">Source: <a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2186639" target="_blank">PIB PRID 2186639</a> · <a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2228315" target="_blank">PIB PRID 2228315</a> · <a href="https://indiaai.gov.in/article/india-ai-governance-guidelines-empowering-ethical-and-responsible-ai" target="_blank">IndiaAI Official</a> · <a href="https://parthias.com/indias-ai-governance-framework-2026-seven-sutras-safety-institutions-and-compute-expansion/" target="_blank">Parth IAS Analysis</a></div>
+      <div class="card-implications">
+        <div class="card-implications-label">Implication for Practitioners</div>
+        <p>The "no separate AI law" stance means that the DPDP Act 2023, IT Act 2000, and IT Rules 2026 (deepfake amendment) remain the primary legal levers for AI governance. Organisations deploying AI in consumer-facing contexts must simultaneously comply with all three instruments. However, the recommended IndiaAI Safety Institute — once constituted — may issue sector-specific AI risk guidance that supplements DPDP Act obligations, particularly around automated decision-making affecting data principals.</p>
+      </div>
+    </div>
+
+    <!-- Story 2: DPDP Compliance Countdown -->
+    <div class="news-card legal">
+      <div class="card-meta">
+        <span class="card-badge badge-update">Compliance Timeline</span>
+        <span class="card-date">November 2025 → May 2027</span>
+      </div>
+      <div class="card-title">DPDP Act Enforcement in Three Phases: Data Protection Board Operational Since November 2025 — Full Compliance Deadline 13 May 2027 with ₹250 Crore Per-Violation Penalties</div>
+      <div class="card-body">
+        <p>India's Digital Personal Data Protection Act 2023, with the DPDP Rules finalised in November 2025, is now rolling out enforcement in a phased structure critical for every organisation handling Indian consumer data.</p>
+        <p><strong>Phase 1 (13 November 2025 — Active Now):</strong> Provisions establishing the Data Protection Board of India (DPBI) became effective. The DPBI is now constituted and operational as the enforcement authority. Data Fiduciaries should already be engaging with the DPBI's framework and documenting their data inventories and consent architecture.</p>
+        <p><strong>Phase 2 (November 2026):</strong> Provisions governing consent managers activate — including registration with the DPBI, obligations of consent managers, and DPBI powers to investigate breaches and impose penalties for registration condition violations. Critically, only India-incorporated entities with a minimum net worth of ₹2 crore will qualify to register as consent managers, excluding foreign platforms such as OneTrust and TrustArc from operating as registered Indian consent managers.</p>
+        <p><strong>Phase 3 (13 May 2027):</strong> All substantive compliance obligations become enforceable — including the 72-hour breach notification duty, data principal rights fulfilment, verifiable parental consent for children's data, automated data deletion workflows, and comprehensive security safeguards. Penalties reach <strong>₹250 crore per violation</strong>. The IT Act's Section 43A SPDI Rules will cease to apply only when the IT Act is simultaneously amended to omit Section 43A — scheduled for May 2027.</p>
+      </div>
+      <div class="card-source">Source: <a href="https://www.lexology.com/library/detail.aspx?g=2073ac40-628f-4112-81f3-fffdfd4b8858" target="_blank">Lexology — DPDP Enforcement</a> · <a href="https://www.snrlaw.in/indias-digital-personal-data-protection-regime-takes-effect/" target="_blank">S&amp;R Associates</a> · <a href="https://secureprivacy.ai/blog/india-dpdp-act-phase-1" target="_blank">SecurePrivacy DPDP Guide</a> · <a href="https://www.amsshardul.com/insight/enforcement-of-the-dpdp-act-and-notification-of-the-dpdp-rules/" target="_blank">AMS Shardul Amarchand</a></div>
+      <div class="card-implications">
+        <div class="card-implications-label">Implication for Practitioners</div>
+        <p>With Phase 3 exactly 12 months away, organisations should be well into their data mapping and consent architecture projects. The Phase 2 consent manager restriction (India-incorporated, ₹2 crore net worth) means multinationals relying on foreign consent management platforms must evaluate local vendor alternatives or build in-house solutions well before November 2026. AIDAI-accredited independent auditors will be the logical choice for conducting DPDP readiness gap assessments ahead of May 2027.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION: CYBERCRIME -->
+  <div class="section-gap">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--danger-lt);color:var(--danger);">⚠</div>
+      <div>
+        <div class="section-kicker">Cybercrime & Law Enforcement</div>
+        <div class="section-title">Cyber Fraud Trends & Operations</div>
+      </div>
+    </div>
+
+    <!-- Story 3: Operation CyHawk 4.0 -->
+    <div class="news-card critical">
+      <div class="card-meta">
+        <span class="card-badge badge-critical">Law Enforcement</span>
+        <span class="card-date">April 2026</span>
+      </div>
+      <div class="card-title">Operation CyHawk 4.0: Delhi Police Dismantles India's Largest Cyber Forensic Network — ₹519 Crore Traced, 1,429 Suspects Arrested Across Multiple States</div>
+      <div class="card-body">
+        <p>Delhi Police's Intelligence Fusion and Strategic Operations (IFSO) unit executed <strong>Operation CyHawk 4.0</strong> — India's largest cyber forensic crackdown to date — tracing ₹519 crore in fraudulent transactions and arresting 1,429 suspects across multiple Indian states. The operation targeted structured cybercrime networks using a combination of digital forensics, financial transaction tracing, and inter-state coordination.</p>
+        <p>Simultaneously, the Union Home Minister confirmed that government agencies have successfully frozen or secured over <strong>₹8,000 crore</strong> out of approximately ₹20,000 crore siphoned by cyber fraudsters — a recovery rate of approximately 40%. The MHA also confirmed that over 9.42 lakh SIM cards and 2,63,348 IMEIs linked to cyber frauds have been blocked under the Telecommunications Act 2023. The I4C (Indian Cyber Crime Coordination Centre) coordinated financial intelligence across layered banking networks to map transaction trails.</p>
+        <p>A parallel international operation in January 2026 by Delhi Police IFSO dismantled a Taiwan-linked SIM-box syndicate: Taiwanese national I-Tsung Chen was arrested at IGI Airport; seven persons total were held; the syndicate routed international calls as domestic Indian numbers using 22 SIM-box devices, approximately 20,000 SIM cards, and over 5,000 compromised IMEIs — enabling ₹100 crore in digital arrest fraud across multiple states. Cases registered under BNS, IT Act 2000, and Telecommunications Act 2023.</p>
+      </div>
+      <div class="card-source">Source: <a href="https://www.buddingforensicexpert.in/2026/04/operation-cyhawk-4-delhi-police-cybercrime-crackdown.html" target="_blank">Operation CyHawk 4.0 Report</a> · <a href="https://the420.in/india-cyber-fraud-crackdown-2026/" target="_blank">The420.in — ₹8,000 Cr Secured</a> · <a href="https://www.theweek.in/news/india/2026/03/28/62-72-lakh-incidents-rs-4725-crore-saved-how-indias-fight-against-cybercrime-evolves.html" target="_blank">The Week — 62.72 Lakh Incidents</a> · <a href="https://www.pib.gov.in/PressNoteDetails.aspx?NoteId=155384&ModuleId=3" target="_blank">PIB — Curbing Cyber Frauds</a></div>
+      <div class="card-implications">
+        <div class="card-implications-label">Implication for Practitioners</div>
+        <p>The SIM-box takedown reinforces the Telecommunications Act 2023 as an active enforcement tool alongside the IT Act. Compliance officers at telecom companies, banks, and fintechs should ensure their KYC and IMEI verification workflows are aligned with DoT's blocking framework. The ₹8,000 crore recovery figure, while significant, means approximately ₹12,000 crore in victim losses remains unrecovered — underscoring the importance of real-time fraud detection as a regulatory expectation under DPDP Act Section 8(5) security safeguards.</p>
+      </div>
+    </div>
+
+    <!-- Story 4: Cybercrime Statistics 2024 -->
+    <div class="news-card critical">
+      <div class="card-meta">
+        <span class="card-badge badge-critical">Official Data · MHA</span>
+        <span class="card-date">2024 Annual Data (Tabled Lok Sabha 2025–26)</span>
+      </div>
+      <div class="card-title">MHA Official Data: 19.18 Lakh Cybercrime Complaints and ₹22,812 Crore Lost in 2024 — Digital Arrest Cases Triple; DoT Spoofed-Call Block Achieves 97% Reduction</div>
+      <div class="card-body">
+        <p>The Ministry of Home Affairs tabled definitive cybercrime statistics for 2024 in the Lok Sabha. Complaints on the National Cybercrime Reporting Platform (NCRP) reached <strong>19.18 lakh</strong> in 2024, up from 10.29 lakh in 2022 — an 86% increase in two years. Total financial losses to cybercrime in 2024 reached <strong>₹22,811.95 crore</strong>. Approximately 85% of all NCRP complaints were financial fraud-related.</p>
+        <p>Digital arrest cases surged to <strong>1,23,672</strong> in 2024 (up from 39,925 in 2022 — a threefold increase). Digital arrest-specific losses in 2024 totalled ₹1,935 crore (versus ₹91 crore in 2022). The 1930 helpline remains the frontline rapid response mechanism, and broader awareness campaigns aim to reduce the shame-delay that prevents timely reporting, particularly in sextortion cases.</p>
+        <p>On the positive side, the Department of Telecommunications' spoofed-call blocking system — activated 17 October 2024 — blocked 1.35 crore fraudulent calls in its first 24 hours. By early 2026, the system achieved a <strong>97% reduction</strong> in spoofed calls, representing a significant victory against one of the primary vectors of digital fraud. Incidents reported on the NCRP have risen from 4.52 lakh in 2021 to over 28 lakh in 2025.</p>
+      </div>
+      <div class="card-source">Source: <a href="https://www.mha.gov.in/MHA1/Par2017/pdfs/par2025-pdfs/LS02122025/452.pdf" target="_blank">MHA Lok Sabha Document</a> · <a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2112244" target="_blank">PIB PRID 2112244</a> · <a href="https://ddnews.gov.in/en/cybercrime-complaints-cross-19-lakh-in-2024-97-drop-in-spoofed-calls-post-new-measures/" target="_blank">DD News</a> · <a href="https://www.insightsonindia.com/2026/02/21/cybercrime-in-india/" target="_blank">Insights on India</a></div>
+      <div class="card-implications">
+        <div class="card-implications-label">Implication for Practitioners</div>
+        <p>The formally documented ₹22,812 crore annual cybercrime loss figure will anchor the DPBI's penalty calibration framework when Phase 3 enforcement activates in May 2027. Financial institutions and fintechs should reference this official MHA data in board-level cybersecurity risk registers — it establishes the macro harm quantum that the DPBI is expected to use when assessing whether an organisation's "reasonable security safeguards" under DPDP Act Section 8(5) were adequate. Report cybercrime immediately on cybercrime.gov.in or helpline <strong>1930</strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION: UIDAI -->
+  <div class="section-gap">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--green-lt);color:var(--green);">🪪</div>
+      <div>
+        <div class="section-kicker">eKYC & Identity</div>
+        <div class="section-title">UIDAI / Aadhaar Updates</div>
+      </div>
+    </div>
+
+    <!-- Story 5: UIDAI June deadline -->
+    <div class="news-card positive">
+      <div class="card-meta">
+        <span class="card-badge badge-govt">UIDAI · Action Required</span>
+        <span class="card-date">Deadline: 14 June 2026</span>
+      </div>
+      <div class="card-title">Free Aadhaar Document Update Extended to 14 June 2026 — ₹50 Fee Resumes After; New HOF Facial Recognition Update via Mobile; Supreme Court PIL on Stricter Regulations Filed</div>
+      <div class="card-body">
+        <p>UIDAI officially extended the free online document upload facility — covering Proof of Identity (PoI) and Proof of Address (PoA) re-submission — until <strong>14 June 2026</strong>. After this date, the standard ₹50 fee for online document uploads resumes. The service is available exclusively via the myAadhaar portal (myaadhaar.uidai.gov.in) and does not apply to Aadhaar Seva Kendras, which follow a separate fee schedule.</p>
+        <p>From <strong>1 March 2026</strong>, UIDAI rolled out a new "Head of Family" (HOF) address update mechanism via facial recognition on mobile devices, reducing dependency on physical centre visits and broadening inclusion for rural and elderly users. Additionally, UIDAI confirmed that 100 entities have been onboarded to use Aadhaar-based offline verification as of 21 April 2026, and tied up with MapmyIndia to display authorised Aadhaar centres on the Mappls app.</p>
+        <p>Separately, a PIL is pending before the Supreme Court (hearing confirmed for May 4, 2026) seeking stricter Aadhaar issuance regulations — specifically that Aadhaar for adolescents and adults should require enhanced verification to prevent misuse, while free Aadhaar issuance continue for children up to 6 years. UIDAI reiterated that all Aadhaar forms — physical card, e-Aadhaar, masked Aadhaar, offline XML, and QR code — are valid identity and address proofs.</p>
+      </div>
+      <div class="card-source">Source: <a href="https://uidai.gov.in/en/media-resources/media/press-releases.html" target="_blank">UIDAI Official</a> · <a href="https://m.dailyhunt.in/news/india/english/kalam+times-epaper-kalamtm/free+aadhaar+update+extended+till+june+2026+stepbystep+guide+for+uidai+users-newsid-n710145353" target="_blank">Dailyhunt — Free Update Extended</a> · <a href="https://www.businesstoday.in/india/story/uidai-shares-big-update-aadhaar-is-a-valid-id-proof-but-not-a-proof-of-527677-2026-04-27" target="_blank">BusinessToday — UIDAI Update</a> · <a href="https://www.india.com/news/india/big-update-for-aadhaar-supreme-court-to-hear-pil-seeking-stricter-regulations-for-issuing-uidai-cards-to-adolescents-adults-chief-justice-suryakant-8400597/" target="_blank">India.com — SC PIL</a></div>
+      <div class="card-implications">
+        <div class="card-implications-label">Implication for Practitioners</div>
+        <p>Data Fiduciaries using Aadhaar-based KYC — banks, telecom operators, fintechs, InsurTech — should push user communications about the 14 June free update deadline via app notifications and SMS. Documenting this communication effort serves as evidence of data accuracy compliance under DPDP Act Section 8(3). The pending Supreme Court PIL on stricter Aadhaar issuance rules may affect KYC refresh workflows if courts impose enhanced verification requirements — compliance teams should monitor the outcome.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION: GLOBAL -->
+  <div class="section-gap">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(139,0,0,0.07);color:#8B0000;">🌐</div>
+      <div>
+        <div class="section-kicker">Global Compliance Watch</div>
+        <div class="section-title">EU AI Act — 90-Day Countdown</div>
+      </div>
+    </div>
+
+    <!-- Story 6: EU AI Act -->
+    <div class="news-card global">
+      <div class="card-meta">
+        <span class="card-badge badge-global">EU Regulation · Urgent</span>
+        <span class="card-date">Full Enforcement: 2 August 2026</span>
+      </div>
+      <div class="card-title">EU AI Act: ~90 Days to Full Enforcement on 2 August 2026 — High-Risk AI Systems, Conformity Assessments, CE Marking, and EU Database Registration Mandatory for Indian Exporters</div>
+      <div class="card-body">
+        <p>The EU AI Act (Regulation (EU) 2024/1689), in force since 1 August 2024, reaches its most significant milestone on <strong>2 August 2026</strong> — when obligations for high-risk AI systems under Annex III become fully applicable, along with transparency obligations under Article 50, mandatory conformity assessments, CE marking requirements, and EU database registration. As of May 2026, there are approximately 90 days remaining to achieve compliance.</p>
+        <p>Annex III high-risk categories include: employment screening, educational assessment, access to essential services, law enforcement, migration controls, administration of justice, and critical infrastructure management. Penalties for prohibited AI uses (social scoring, real-time biometric surveillance in public spaces) reach <strong>€35 million or 7% of global annual turnover</strong> — whichever is higher. Violations of high-risk system requirements incur up to <strong>€15 million or 3% of global annual turnover</strong>. Only 8 of 27 EU Member States had established national AI competent authorities ahead of enforcement.</p>
+        <p>Non-EU providers — including Indian IT services companies, AI product firms, and BPOs — must designate an EU Authorised Representative to handle all regulatory communications and compliance matters with EU national authorities. Indian companies exporting AI-assisted HR tools, recruitment platforms, healthcare diagnostics, or financial scoring to EU clients are likely within Annex III scope.</p>
+      </div>
+      <div class="card-source">Source: <a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/timeline/timeline-implementation-eu-ai-act" target="_blank">EU AI Act Service Desk — Timeline</a> · <a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" target="_blank">European Commission AI Act</a> · <a href="https://www.legalnodes.com/article/eu-ai-act-2026-updates-compliance-requirements-and-business-risks" target="_blank">LegalNodes — Compliance Guide</a></div>
+      <div class="card-implications">
+        <div class="card-implications-label">Implication for Practitioners</div>
+        <p>Indian IT services and AI companies exporting to EU clients in employment, healthcare, education, or government sectors must treat 2 August 2026 as a hard compliance deadline — not a soft target. Immediate actions: (1) map AI systems against Annex III risk categories, (2) commission independent conformity assessments before July, (3) designate an EU Authorised Representative, (4) register high-risk systems in the EU AI database. Combined with the anticipated Indian AI legislation recommended by the Parliamentary Standing Committee, a dual India-EU compliance framework is now a strategic imperative for India's technology export sector.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDITOR'S NOTE -->
+  <div style="background:var(--paper);border:1px solid var(--rule-gold);padding:1.5rem;margin-top:1rem;">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.75rem;">Editor's Note — May 2026</div>
+    <p style="font-size:0.88rem;font-weight:300;line-height:1.9;color:var(--slate);">The AIDAI launch is the defining development of this month — and arguably of 2026 so far for India's data protection ecosystem. For the first time, there is a professional body that explicitly trains and accredits practitioners to independently audit Data Fiduciaries' compliance with the DPDP Act. Combined with the DPBI becoming operational, the three-phase enforcement timeline, and the rapidly approaching EU AI Act deadline, May 2026 marks the point at which DPDP compliance transitions from policy planning to operational reality. If your organisation has not yet initiated its data mapping exercise, Phase 3 enforcement in May 2027 is now twelve months away.</p>
+    <p style="font-size:0.85rem;font-weight:400;line-height:1.8;color:var(--mist);margin-top:0.75rem;font-style:italic;">All stories in this briefing are sourced from publicly available primary sources and linked directly. We do not publish stories without a verifiable source link. If you identify any factual error, please write to us via the contact page.</p>
+  </div>
+
+</main>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+
+  <!-- DPDP Countdown Timeline -->
+  <div class="sidebar-card">
+    <div class="sidebar-card-title">DPDP Enforcement Timeline</div>
+    <div class="timeline-item">
+      <div class="timeline-dot active"></div>
+      <div class="timeline-text"><strong>13 Nov 2025 ✓ Active</strong><br>DPBI constituted &amp; operational. Phase 1 enforcement begins.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot" style="background:var(--saffron);"></div>
+      <div class="timeline-text"><strong>14 Jun 2026</strong><br>UIDAI free Aadhaar update deadline — ₹50 fee applies after this date.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot" style="background:var(--saffron);"></div>
+      <div class="timeline-text"><strong>2 Aug 2026</strong><br>EU AI Act full enforcement — high-risk AI systems, CE marking, Annex III obligations.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot future"></div>
+      <div class="timeline-text"><strong>November 2026</strong><br>Consent manager registration with DPBI opens (India-incorporated, ₹2 Cr net worth minimum).</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot future"></div>
+      <div class="timeline-text"><strong>13 May 2027</strong><br>DPDP Phase 3: Full compliance — 72-hr breach notification, data principal rights, ₹250 Cr per-violation penalties.</div>
+    </div>
+  </div>
+
+  <!-- AIDAI Quick Facts -->
+  <div class="sidebar-card" style="background:var(--prussian);border:1px solid var(--saffron);">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.75rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(212,118,10,0.3);">AIDAI — Quick Facts</div>
+    <div style="font-size:0.82rem;font-weight:300;line-height:1.8;color:rgba(248,244,236,0.75);">
+      <p style="margin-bottom:0.4rem;"><strong style="color:var(--saffron-lt);">Founded:</strong> 11 April 2026, Bengaluru</p>
+      <p style="margin-bottom:0.4rem;"><strong style="color:var(--saffron-lt);">Parent:</strong> FDPPI (Foundation for Data Protection Professionals India)</p>
+      <p style="margin-bottom:0.4rem;"><strong style="color:var(--saffron-lt);">CEO:</strong> Vijayendra Shenoy</p>
+      <p style="margin-bottom:0.4rem;"><strong style="color:var(--saffron-lt);">Motto:</strong> "Building Trust through Integrity and Independence"</p>
+      <p style="margin-bottom:0.4rem;"><strong style="color:var(--saffron-lt);">Membership:</strong> ISO 27001 Auditors, CAs, Cost Accountants, Company Secretaries, DPOs</p>
+      <p style="margin-bottom:0.75rem;"><strong style="color:var(--saffron-lt);">Website:</strong> aidai.org.in</p>
+      <a href="https://fdppi.in/wp/aidai-launched/" target="_blank" style="display:block;padding:8px 14px;background:var(--saffron);color:#fff;font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;text-align:center;">Read FDPPI Announcement →</a>
+    </div>
+  </div>
+
+  <!-- Cybercrime Emergency -->
+  <div class="sidebar-card" style="border-left:3px solid var(--danger);">
+    <div class="sidebar-card-title" style="color:var(--danger);">Cybercrime? Report Immediately</div>
+    <p style="font-size:0.85rem;font-weight:600;color:var(--prussian);margin-bottom:0.4rem;">Helpline: <a href="tel:1930" style="color:var(--danger);text-decoration:none;">1930</a></p>
+    <p style="font-size:0.82rem;font-weight:300;color:var(--slate);line-height:1.7;margin-bottom:0.75rem;">National Cyber Crime Reporting Portal for financial fraud, digital arrest, sextortion, and identity theft.</p>
+    <a href="https://cybercrime.gov.in" target="_blank" style="display:block;padding:8px 14px;background:var(--danger);color:#fff;font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;text-align:center;">cybercrime.gov.in →</a>
+  </div>
+
+  <!-- Subscribe -->
+  <div class="subscribe-card">
+    <div class="subscribe-title">Subscribe to this Briefing</div>
+    <div class="subscribe-body">Get the Monthly Intelligence Briefing in your inbox every month — India's most focused DPDP Act and cybercrime research newsletter.</div>
+    <div class="subscribe-form">
+      <input type="email" class="subscribe-input" placeholder="your@email.com">
+      <button class="subscribe-btn">Subscribe Free →</button>
+    </div>
+  </div>
+
+  <!-- Back Issues -->
+  <div class="sidebar-card" style="background:var(--paper);border:1px solid var(--rule-gold);">
+    <div class="sidebar-card-title">Monthly Newsletter</div>
+    <p style="font-size:0.82rem;font-weight:300;color:var(--mist);line-height:1.7;margin-bottom:0.75rem;">Curated DPDP Act updates, fraud alerts, case law, and compliance insights — published every month.</p>
+    <div style="display:flex;flex-direction:column;gap:0.5rem;">
+      <a href="monthly-briefing-2026-05.html" style="display:block;padding:9px 14px;background:var(--prussian);color:var(--cream);font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;text-align:center;">★ May 2026 Issue (Current) →</a>
+      <a href="monthly-briefing-2026-04.html" style="display:block;padding:9px 14px;border:1px solid var(--rule);color:var(--slate);font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;text-align:center;">April 2026 Issue →</a>
+      <a href="monthly-briefing.html" style="display:block;padding:9px 14px;border:1px solid var(--rule);color:var(--slate);font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;text-align:center;">All Issues Archive →</a>
+    </div>
+  </div>
+
+</aside>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">DPDPIndia.in</div>
+    <p class="footer-note">India's independent research portal on data protection law and cybersecurity. Monthly Intelligence Briefings are research publications and do not constitute legal advice. All stories sourced from publicly available primary sources. &copy; 2026 DPDPIndia.in</p>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="dpdp-kb.html">DPDP Act</a>
+      <a href="itact-kb.html">IT Act</a>
+      <a href="ekyc-kb.html">eKYC</a>
+      <a href="cybercrime-kb.html">Cyber Crime</a>
+      <a href="for-businesses.html">For Business</a>
+      <a href="for-individuals.html">For Individuals</a>
+      <a href="monthly-briefing.html">Monthly Briefings</a>
+      <a href="blog.html">Articles</a>
+      <a href="cyber-fraud-hub.html">🚨 1930</a>
+    </div>
+  </div>
+</footer>
+
+<script src="site-global.js"></script>
+</body>
+</html>
