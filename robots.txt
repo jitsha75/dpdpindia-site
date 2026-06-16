@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Disallow dev/backup files
+Disallow: /backup
+Disallow: /index2.html
+
+# Crawl-delay for polite bots
+Crawl-delay: 10
+
+# Sitemap
+Sitemap: https://www.dpdpindia.in/sitemap.xml
