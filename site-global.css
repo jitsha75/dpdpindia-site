@@ -655,11 +655,21 @@ h3:hover .g-copy-btn,
   box-shadow: 0 0 0 3px var(--g-bg);
 }
 .g-timeline-dot.done { background: var(--g-success); }
-.g-timeline-dot.current { background: var(--g-saffron); animation: pulse 1.5s infinite; }
+.g-timeline-dot.current { background: var(--g-saffron); position: relative; }
+.g-timeline-dot.current::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid rgba(212,118,10,0.45);
+  animation: pulse 1.5s ease-out infinite;
+  will-change: transform, opacity;
+}
 .g-timeline-dot.future { background: #9ca3af; }
 @keyframes pulse {
-  0%, 100% { box-shadow: 0 0 0 3px var(--g-bg), 0 0 0 6px rgba(212,118,10,0.2); }
-  50% { box-shadow: 0 0 0 3px var(--g-bg), 0 0 0 10px rgba(212,118,10,0); }
+  0% { transform: scale(1); opacity: 1; }
+  70% { transform: scale(2); opacity: 0; }
+  100% { transform: scale(1); opacity: 0; }
 }
 .g-timeline-date {
   font-family: var(--g-font-mono);
