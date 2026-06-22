@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap&font-display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap&font-display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap&font-display=swap"></noscript>
+<title>Cyber Forensics in India — Investigation, Chain of Custody &amp; §79A IT Act | DPDPIndia.in</title>
+<meta name="description" content="Complete guide to cyber forensics procedure in India: the 6 phases of digital investigation (identification to court testimony), chain of custody requirements, §79A Examiner of Electronic Evidence, ISO 27037, and admissibility under BSA 2023.">
+<meta name="keywords" content="cyber forensics India, digital forensics India, Section 79A IT Act, chain of custody cyber evidence, cyber investigation procedure India, forensic evidence admissibility, FTK EnCase India, ISO 27037 India, examiner electronic evidence India">
+<meta name="robots" content="index, follow">
+<meta name="author" content="DPDPIndia.in Research Team">
+<link rel="canonical" href="https://www.dpdpindia.in/cybercrime-forensics.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DPDPIndia.in">
+<meta property="og:title" content="Cyber Forensics in India — Investigation Procedure &amp; §79A IT Act | DPDPIndia.in">
+<meta property="og:description" content="Complete guide to cyber forensics procedure in India: 6 investigation phases, chain of custody, §79A Examiners, and evidence admissibility under BSA 2023.">
+<meta property="og:url" content="https://www.dpdpindia.in/cybercrime-forensics.html">
+<meta property="og:image" content="https://www.dpdpindia.in/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_IN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cyber Forensics in India — §79A IT Act | DPDPIndia.in">
+<meta name="twitter:description" content="6 phases of digital investigation, chain of custody, and §79A Examiners — complete forensics guide for Indian practitioners.">
+<meta name="twitter:image" content="https://www.dpdpindia.in/og-default.png">
+<meta name="twitter:site" content="@DPDPIndia">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Cyber Forensics in India — Investigation, Chain of Custody & §79A IT Act","description":"Complete guide to cyber forensics procedure in India: 6 investigation phases, chain of custody, §79A Examiners, and evidence admissibility under BSA 2023.","url":"https://www.dpdpindia.in/cybercrime-forensics.html","publisher":{"@type":"Organization","name":"DPDPIndia.in","url":"https://www.dpdpindia.in"},"dateModified":"2026-06-01"}
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="site-global.css" as="style">
+<link rel="stylesheet" href="site-global.css">
+<style>
+:root{--parchment:#F8F4EC;--cream:#FDFAF5;--paper:#F2EDE2;--ink:#1A1610;--prussian:#1B2B3A;--slate:#2D3D4E;--saffron:#D4760A;--saffron-lt:#F0A840;--mist:#7A7468;--rule:rgba(26,22,16,0.12);--rule-gold:rgba(212,118,10,0.25);--shadow-sm:0 2px 12px rgba(26,22,16,0.06);--shadow-md:0 8px 40px rgba(26,22,16,0.10);--danger:#C0392B;--danger-lt:#FADBD8;--safe:#1A6B3A;--safe-lt:#D5F5E3;--warn:#B8862C;--warn-lt:#FEF9E7;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}
+body{font-family:'Source Serif 4',Georgia,serif;background:var(--cream);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;}
+.masthead{background:var(--prussian);padding:10px 0;text-align:center;border-bottom:3px solid var(--saffron);}
+.masthead-text{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.55);}
+.masthead-text span{color:var(--saffron-lt);}
+nav{position:sticky;top:0;z-index:200;background:var(--cream);border-bottom:1px solid var(--rule);box-shadow:var(--shadow-sm);}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:68px;position:relative;}
+.nav-brand{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.nav-brand-seal{width:42px;height:42px;}
+.nav-brand-name{display:flex;flex-direction:column;gap:1px;}
+.nav-brand-name strong{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--prussian);line-height:1;}
+.nav-brand-name span{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);line-height:1;}
+.nav-links{display:flex;align-items:center;gap:1.5rem;list-style:none;}
+.nav-links a{font-family:'Source Serif 4',serif;font-size:0.82rem;color:var(--slate);text-decoration:none;transition:color 0.2s;position:relative;white-space:nowrap;}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--saffron);transform:scaleX(0);transition:transform 0.25s;transform-origin:left;}
+.nav-links a:hover{color:var(--saffron);}
+.nav-links a:hover::after{transform:scaleX(1);}
+.nav-blog-btn{font-family:'JetBrains Mono',monospace!important;font-size:0.65rem!important;letter-spacing:0.1em!important;text-transform:uppercase;background:var(--prussian)!important;color:var(--cream)!important;padding:9px 20px;border-radius:1px;transition:background 0.2s!important;}
+.nav-blog-btn::after{display:none!important;}
+.nav-blog-btn:hover{background:var(--saffron)!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--prussian);}
+.mobile-menu{display:none;position:absolute;top:68px;left:0;right:0;background:var(--cream);border-bottom:2px solid var(--saffron);box-shadow:var(--shadow-md);z-index:199;}
+.mobile-menu.open{display:block;}
+.mobile-menu ul{list-style:none;padding:1rem 2rem 1.5rem;}
+.mobile-menu ul li a{display:block;font-size:0.95rem;color:var(--slate);text-decoration:none;padding:0.7rem 0;border-bottom:1px solid var(--rule);}
+.page-header{background:var(--prussian);padding:5rem 0 4rem;position:relative;overflow:hidden;}
+.page-header::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--danger),var(--saffron),var(--safe));}
+.page-header::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
+.page{max-width:1320px;margin:0 auto;padding:0 2rem;}
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:1.5rem;font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);position:relative;z-index:1;flex-wrap:wrap;}
+.breadcrumb a{color:rgba(255,255,255,0.4);text-decoration:none;}
+.breadcrumb-sep{color:rgba(255,255,255,0.25);}
+.page-kicker{display:flex;align-items:center;gap:10px;margin-bottom:1.5rem;position:relative;z-index:1;}
+.page-kicker-line{width:32px;height:1px;background:var(--saffron);}
+.page-kicker-text{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--saffron);opacity:0.85;}
+.page-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.4rem);font-weight:700;line-height:1.1;color:var(--parchment);margin-bottom:1rem;position:relative;z-index:1;}
+.page-title em{font-style:italic;color:var(--saffron-lt);}
+.page-deck{font-size:1rem;font-weight:300;line-height:1.85;color:rgba(248,244,236,0.65);max-width:640px;position:relative;z-index:1;}
+.content-layout{display:grid;grid-template-columns:1fr 280px;gap:3rem;padding:4rem 0;}
+@media(max-width:1024px){.content-layout{grid-template-columns:1fr;}.sidebar{order:-1;}}
+.g-section{margin-bottom:3.5rem;}
+.g-section-label{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.75rem;}
+.g-section h2{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:var(--prussian);margin-bottom:1rem;line-height:1.2;}
+.g-section h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--slate);margin:1.5rem 0 0.6rem;}
+.g-section p{font-size:0.97rem;line-height:1.9;color:var(--slate);margin-bottom:1rem;}
+.g-section ul,ol{padding-left:1.4rem;margin-bottom:1rem;}
+.g-section li{font-size:0.95rem;line-height:1.8;color:var(--slate);margin-bottom:0.35rem;}
+.statute-box{background:var(--prussian);color:var(--parchment);border-left:4px solid var(--saffron);padding:1.4rem 1.6rem;margin:1.5rem 0;border-radius:0 4px 4px 0;}
+.statute-box .statute-label{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron-lt);margin-bottom:0.5rem;}
+.statute-box p{font-size:0.88rem;line-height:1.75;color:rgba(248,244,236,0.88);margin:0;}
+.g-table-wrap{overflow-x:auto;margin:1.5rem 0;}
+table{width:100%;border-collapse:collapse;}
+th{background:var(--prussian);color:var(--parchment);font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.75rem 1rem;text-align:left;}
+td{padding:0.75rem 1rem;border-bottom:1px solid var(--rule);font-size:0.88rem;color:var(--slate);vertical-align:top;}
+tr:nth-child(even) td{background:rgba(248,244,236,0.5);}
+.alert-box{background:var(--warn-lt);border-left:4px solid var(--warn);padding:1.2rem 1.4rem;margin:1.5rem 0;border-radius:0 4px 4px 0;}
+.alert-box .alert-label{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--warn);margin-bottom:0.4rem;}
+.alert-box p{font-size:0.9rem;line-height:1.75;color:var(--slate);margin:0;}
+.sidebar-card{background:var(--parchment);border:1px solid var(--rule-gold);padding:1.4rem;margin-bottom:1.5rem;}
+.sidebar-card h3{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);margin-bottom:1rem;}
+.sidebar-card ul{list-style:none;padding:0;}
+.sidebar-card ul li{border-bottom:1px solid var(--rule);padding:0.5rem 0;}
+.sidebar-card ul li:last-child{border-bottom:none;}
+.sidebar-card ul li a{font-size:0.85rem;color:var(--slate);text-decoration:none;transition:color 0.2s;}
+.sidebar-card ul li a:hover{color:var(--saffron);}
+.toc-link{display:block;font-size:0.83rem;color:var(--slate);text-decoration:none;padding:0.4rem 0;border-bottom:1px solid var(--rule);transition:color 0.2s;}
+.toc-link:hover{color:var(--saffron);}
+.toc-link:last-child{border-bottom:none;}
+.tag-strip{display:flex;flex-wrap:wrap;gap:0.5rem;margin:1.5rem 0 2.5rem;}
+.tag{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--paper);color:var(--mist);padding:4px 12px;border:1px solid var(--rule);}
+.phase-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem;margin:1.5rem 0;}
+.phase-card{background:#fff;border:1px solid var(--rule);padding:1.4rem;border-top:3px solid var(--saffron);}
+.phase-card .phase-num{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.5rem;}
+.phase-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--prussian);margin-bottom:0.6rem;}
+.phase-card p{font-size:0.85rem;line-height:1.75;color:var(--slate);margin:0;}
+.phase-card ul{padding-left:1.2rem;margin-top:0.5rem;}
+.phase-card ul li{font-size:0.83rem;line-height:1.7;color:var(--slate);margin-bottom:0.2rem;}
+footer{background:var(--prussian);padding:3rem 0 2rem;border-top:3px solid var(--saffron);}
+.footer-inner{max-width:1320px;margin:0 auto;padding:0 2rem;}
+.footer-brand{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--parchment);margin-bottom:0.5rem;}
+.footer-desc{font-size:0.82rem;color:rgba(248,244,236,0.5);max-width:480px;line-height:1.7;}
+.footer-bottom{margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-copy{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(248,244,236,0.35);}
+.footer-links{display:flex;gap:1.5rem;}
+.footer-links a{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(248,244,236,0.35);text-decoration:none;}
+.footer-links a:hover{color:var(--saffron-lt);}
+@media(max-width:768px){.hamburger{display:flex;}.nav-links{display:none;}.page-header{padding:3rem 0 2.5rem;}}
+</style>
+</head>
+<body>
+
+<div class="masthead"><p class="masthead-text">India's Premier Research Portal — <span>DPDP Act · IT Act · Cybercrime · eKYC</span></p></div>
+<nav>
+<div class="nav-inner">
+  <a href="index.html" class="nav-brand">
+    <svg class="nav-brand-seal" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="21" cy="21" r="20" stroke="#D4760A" stroke-width="1.5"/><circle cx="21" cy="21" r="4" fill="#D4760A"/><line x1="21" y1="1" x2="21" y2="41" stroke="#D4760A" stroke-width="0.8" opacity="0.4"/><line x1="1" y1="21" x2="41" y2="21" stroke="#D4760A" stroke-width="0.8" opacity="0.4"/></svg>
+    <div class="nav-brand-name"><strong>DPDPIndia.in</strong><span>Research Portal</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="dpdp-act.html">DPDP Act</a></li>
+    <li><a href="itact-kb.html">IT Act</a></li>
+    <li><a href="cybercrime-kb.html">Cybercrime</a></li>
+    <li><a href="ekyc-kb.html">eKYC</a></li>
+    <li><a href="ai-hub.html">AI &amp; Law</a></li>
+    <li><a href="blog.html" class="nav-blog-btn">Blog</a></li>
+  </ul>
+  <button class="hamburger" id="hbg"><span></span><span></span><span></span></button>
+</div>
+<div class="mobile-menu" id="mob"><ul>
+  <li><a href="dpdp-act.html">DPDP Act 2023</a></li>
+  <li><a href="itact-kb.html">IT Act 2000</a></li>
+  <li><a href="cybercrime-kb.html">Cybercrime</a></li>
+  <li><a href="ekyc-kb.html">eKYC / Aadhaar</a></li>
+  <li><a href="ai-hub.html">AI &amp; Law</a></li>
+</ul></div>
+</nav>
+
+<header class="page-header">
+<div class="page">
+  <div class="breadcrumb">
+    <a href="index.html">Home</a><span class="breadcrumb-sep">›</span>
+    <a href="cybercrime-kb.html">Cybercrime</a><span class="breadcrumb-sep">›</span>
+    <span>Cyber Forensics</span>
+  </div>
+  <div class="page-kicker"><div class="page-kicker-line"></div><span class="page-kicker-text">IT Act § 79A · ISO 27037</span></div>
+  <h1 class="page-title">Cyber Forensics<br><em>&amp; Digital Investigation</em></h1>
+  <p class="page-deck">The six phases of cyber forensic investigation, chain of custody requirements, §79A Examiner of Electronic Evidence, and the intersection of forensic methodology with BSA 2023 admissibility standards.</p>
+</div>
+</header>
+
+<main class="page">
+<div class="content-layout">
+<article>
+
+<div class="tag-strip">
+  <span class="tag">§79A IT Act</span>
+  <span class="tag">ISO 27037</span>
+  <span class="tag">NIST SP 800-86</span>
+  <span class="tag">Chain of Custody</span>
+  <span class="tag">Digital Forensics</span>
+  <span class="tag">BSA 2023</span>
+</div>
+
+<section class="g-section" id="overview">
+  <div class="g-section-label">Framework</div>
+  <h2>The Dual Master Problem in Cyber Forensics</h2>
+  <p>Indian cyber forensics must simultaneously satisfy two distinct sets of requirements: the <strong>scientific and technical standards</strong> set by NIST SP 800-86 and ISO/IEC 27037:2012, and the <strong>legal admissibility standards</strong> imposed by §63 BSA 2023 (formerly §65B IEA). A forensically sound image is useless in court without a valid §63 certificate; a certificate is meaningless if the acquisition methodology was contaminated.</p>
+  <p>Failures at any phase travel forward — a broken chain of custody at acquisition will undermine the §63 certificate even if the analysis is impeccable. This is why Indian courts increasingly require the §79A certified Examiner of Electronic Evidence to testify as an expert witness, not merely file an affidavit.</p>
+</section>
+
+<section class="g-section" id="phases">
+  <div class="g-section-label">Investigation Procedure</div>
+  <h2>The Six Phases of Cyber Forensic Investigation</h2>
+
+  <div class="phase-grid">
+    <div class="phase-card">
+      <div class="phase-num">Phase 01</div>
+      <h4>Identification</h4>
+      <p>Identify all potential digital evidence sources before any device is touched.</p>
+      <ul>
+        <li>Hard drives, SSDs, USB devices</li>
+        <li>Mobile phones and tablets</li>
+        <li>Cloud accounts, email servers</li>
+        <li>IoT devices, CCTV DVRs</li>
+        <li>Network logs, router configs</li>
+        <li>RAM (for live systems)</li>
+      </ul>
+      <p style="margin-top:0.6rem;font-size:0.82rem;color:var(--mist);">Document all items photographically and by seizure memo before any action.</p>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-num">Phase 02</div>
+      <h4>Preservation</h4>
+      <p>Prevent any alteration of evidence from the moment of seizure.</p>
+      <ul>
+        <li>Live vs dead-box decision: RAM evidence (encryption keys, running processes) may require live acquisition before power-off</li>
+        <li>Seal mobiles in Faraday bag — prevents remote wipe</li>
+        <li>Issue preservation notices to intermediaries under §67C IT Act + Rule 3(1)(g) IT Rules 2011</li>
+        <li>Photograph device state, battery level, network connections</li>
+      </ul>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-num">Phase 03</div>
+      <h4>Acquisition</h4>
+      <p>Create a forensic copy — never work on the original.</p>
+      <ul>
+        <li>Bit-by-bit clone using hardware write-blocker</li>
+        <li>Tools: FTK Imager, EnCase, <code>dd</code> (Linux), CellebrITE (mobile)</li>
+        <li>Hash both source and clone — SHA-256 minimum; MD5 for legacy</li>
+        <li>Document: device model, serial number, examiner name, date/time, hash values</li>
+      </ul>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-num">Phase 04</div>
+      <h4>Analysis</h4>
+      <p>Extract relevant evidence from the forensic image.</p>
+      <ul>
+        <li>File system: FAT32/NTFS/APFS/ext4 — deleted file recovery, slack space carving</li>
+        <li>Metadata: EXIF, MAC times (Modified/Accessed/Created), document properties</li>
+        <li>Browser artifacts: cache, cookies, download history</li>
+        <li>Email headers: SPF/DKIM/DMARC validation, IP tracing</li>
+        <li>Mobile: WhatsApp .crypt12 backups, location data, app databases</li>
+        <li>Memory: Volatility framework — running processes, encryption keys</li>
+      </ul>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-num">Phase 05</div>
+      <h4>Reporting</h4>
+      <p>Produce a court-ready forensic report.</p>
+      <ul>
+        <li>Executive summary for non-technical readers</li>
+        <li>Methodology section (tools, version numbers, settings)</li>
+        <li>Findings with screenshot evidence, file paths, hash values</li>
+        <li>Chain of custody log as appendix</li>
+        <li>Prepare §63 BSA certificate simultaneously</li>
+      </ul>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-num">Phase 06</div>
+      <h4>Court Testimony</h4>
+      <p>Present findings as expert witness under §45 BSA 2023.</p>
+      <ul>
+        <li>§79A certified Examiner carries highest credibility</li>
+        <li>Must be prepared to explain SHA-256 hashing to lay judges</li>
+        <li>Cross-examination focus: write-blocker used? Hash values match? Chain of custody intact?</li>
+        <li>Anti-forensics detection must be documented if present</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="g-section" id="section79a">
+  <div class="g-section-label">Statutory Authority</div>
+  <h2>Section 79A IT Act — Examiner of Electronic Evidence</h2>
+
+  <div class="statute-box">
+    <div class="statute-label">§ 79A IT Act 2000 (inserted by 2008 Amendment)</div>
+    <p>The Central Government may, for the purposes of providing expert opinion on electronic form evidence before any court or other authority, by notification in the Official Gazette, appoint any Department, body or agency of the Central Government or a State Government as an Examiner of Electronic Evidence.</p>
+  </div>
+
+  <p>Examiners notified under §79A include designated labs at CERT-In, CDAC, State Forensic Science Laboratories with digital forensics units, and CBI's Cyber Forensics Lab (CFSL). Their expert reports carry the weight of government-appointed expert opinion under §45 BSA 2023.</p>
+
+  <h3>Significance for Practitioners</h3>
+  <p>A report from a §79A notified examiner carries significantly more weight than a private forensic examiner's opinion in Indian courts. The key practical implication: where the investigating agency has access to a §79A lab, the forensic analysis should be routed there rather than to a private vendor, unless time constraints make it impossible.</p>
+
+  <div class="alert-box">
+    <div class="alert-label">Important Limitation</div>
+    <p>§79A only authorises the government to designate examiners — it does not make their reports automatically conclusive. Defence counsel can still challenge methodology, chain of custody, and specific findings. However, cross-examining a §79A examiner requires demonstrating a specific methodological error, not merely alleging incompetence.</p>
+  </div>
+</section>
+
+<section class="g-section" id="chain-of-custody">
+  <div class="g-section-label">Evidence Integrity</div>
+  <h2>Chain of Custody — Requirements &amp; Documentation</h2>
+  <p>Chain of custody (CoC) is the unbroken, documented record of who had access to evidence, when, and what was done with it. A broken chain is one of the most common grounds for exclusion of digital evidence in Indian courts.</p>
+
+  <div class="g-table-wrap">
+  <table>
+    <thead><tr><th>CoC Element</th><th>What Must Be Documented</th><th>Failure Impact</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Seizure memo</strong></td><td>Date, time, place, officer details, device description, witness signatures</td><td>Doubt over provenance of device</td></tr>
+      <tr><td><strong>Hash at seizure</strong></td><td>SHA-256 of original device/media before any action</td><td>Cannot prove image = original</td></tr>
+      <tr><td><strong>Transfer log</strong></td><td>Every transfer of physical device, by whom, date/time, purpose</td><td>Unexplained possession gap = tampering allegation</td></tr>
+      <tr><td><strong>Storage conditions</strong></td><td>Sealed evidence bag, tamper-evident seal, storage location</td><td>Physical access cannot be ruled out</td></tr>
+      <tr><td><strong>Hash at analysis</strong></td><td>SHA-256 of forensic image before and after analysis</td><td>Analysis may have altered the image</td></tr>
+      <tr><td><strong>Lab access log</strong></td><td>Who entered the lab when the device was present</td><td>Unaccounted access to evidence</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section class="g-section" id="tools">
+  <div class="g-section-label">Technical Reference</div>
+  <h2>Forensic Tools &amp; Standards Used in Indian Courts</h2>
+
+  <h3>Accepted Forensic Tools</h3>
+  <div class="g-table-wrap">
+  <table>
+    <thead><tr><th>Tool</th><th>Use Case</th><th>Court Acceptance</th></tr></thead>
+    <tbody>
+      <tr><td><strong>FTK Imager</strong></td><td>Disk imaging, hash verification</td><td>Widely accepted</td></tr>
+      <tr><td><strong>EnCase</strong></td><td>Full forensic suite — imaging, analysis, reporting</td><td>Widely accepted; used by CBI/Police</td></tr>
+      <tr><td><strong>Cellebrite UFED</strong></td><td>Mobile device extraction</td><td>Standard for mobile forensics</td></tr>
+      <tr><td><strong>Autopsy / Sleuth Kit</strong></td><td>Open-source forensic analysis</td><td>Accepted; less common in prosecution reports</td></tr>
+      <tr><td><strong>Volatility</strong></td><td>RAM / memory forensics</td><td>Emerging acceptance for live acquisition</td></tr>
+      <tr><td><strong>Wireshark</strong></td><td>Network packet analysis</td><td>Accepted for network traffic evidence</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Applicable Standards</h3>
+  <ul>
+    <li><strong>ISO/IEC 27037:2012</strong> — Guidelines for identification, collection, acquisition and preservation of digital evidence. The international benchmark referenced by CERT-In and §79A labs.</li>
+    <li><strong>NIST SP 800-86</strong> — Guide to integrating forensic techniques into incident response. US standard but widely referenced by Indian practitioners.</li>
+    <li><strong>ACPO Good Practice Guide</strong> (UK) — Cited in several Indian High Court judgments on digital evidence methodology.</li>
+    <li><strong>MHA CyPAD Guidelines</strong> — Ministry of Home Affairs guidelines for state police cyber forensic units.</li>
+  </ul>
+</section>
+
+<section class="g-section" id="defence-challenges">
+  <div class="g-section-label">Adversarial Practice</div>
+  <h2>Common Defence Challenges in Cyber Forensics Cases</h2>
+  <ul>
+    <li><strong>No write-blocker used</strong> — most devastating challenge; if proved, the image may have been contaminated at acquisition</li>
+    <li><strong>Hash mismatch</strong> — hash at analysis differs from hash at seizure; implies alteration</li>
+    <li><strong>Time synchronisation errors</strong> — device clock was wrong; timestamps unreliable</li>
+    <li><strong>Anti-forensic tools present</strong> — CCleaner, secure-erase programs on the device suggest evidence was wiped; but recovery of wiped files strengthens prosecution</li>
+    <li><strong>Shared device</strong> — multiple users had access; cannot attribute specific file/activity to accused</li>
+    <li><strong>Chain of custody gap</strong> — device transferred without documentation; access cannot be ruled out</li>
+    <li><strong>§79A examiner not from notified institution</strong> — weight of report reduced to private expert opinion</li>
+    <li><strong>§63 certificate defects</strong> — certificate does not cover the specific record; signed by wrong person; filed after charge framed without court permission</li>
+  </ul>
+</section>
+
+</article>
+
+<aside class="sidebar">
+  <div class="sidebar-card">
+    <h3>On This Page</h3>
+    <a href="#overview" class="toc-link">The Dual Master Problem</a>
+    <a href="#phases" class="toc-link">Six Forensic Phases</a>
+    <a href="#section79a" class="toc-link">§79A IT Act — Examiners</a>
+    <a href="#chain-of-custody" class="toc-link">Chain of Custody</a>
+    <a href="#tools" class="toc-link">Tools &amp; Standards</a>
+    <a href="#defence-challenges" class="toc-link">Defence Challenges</a>
+  </div>
+
+  <div class="sidebar-card">
+    <h3>Related Pages</h3>
+    <ul>
+      <li><a href="cybercrime-electronic-evidence.html">Electronic Evidence — BSA §§61-63</a></li>
+      <li><a href="cybercrime-kb.html">Cybercrime Overview</a></li>
+      <li><a href="itact-sections.html">IT Act Sections Reference</a></li>
+      <li><a href="cybercrime-remedies.html">Cybercrime Remedies</a></li>
+      <li><a href="case-tracker.html">Landmark Case Tracker</a></li>
+    </ul>
+  </div>
+
+  <div class="sidebar-card" style="background:var(--prussian);border-color:rgba(212,118,10,0.4);">
+    <h3 style="color:var(--saffron-lt);">Quick Reference</h3>
+    <p style="font-size:0.8rem;color:rgba(248,244,236,0.75);line-height:1.7;margin-bottom:0.5rem;"><strong style="color:var(--parchment);">Hash algorithm:</strong> SHA-256 minimum; MD5 for legacy</p>
+    <p style="font-size:0.8rem;color:rgba(248,244,236,0.75);line-height:1.7;margin-bottom:0.5rem;"><strong style="color:var(--parchment);">Faraday bag:</strong> Mandatory for mobile devices to prevent remote wipe</p>
+    <p style="font-size:0.8rem;color:rgba(248,244,236,0.75);line-height:1.7;margin-bottom:0.5rem;"><strong style="color:var(--parchment);">Write-blocker:</strong> Never image an original without one</p>
+    <p style="font-size:0.8rem;color:rgba(248,244,236,0.75);line-height:1.7;"><strong style="color:var(--parchment);">§67C:</strong> Preservation notice to intermediaries — send early</p>
+  </div>
+</aside>
+
+</div>
+</main>
+
+<footer>
+<div class="footer-inner">
+  <div class="footer-brand">DPDPIndia.in</div>
+  <p class="footer-desc">India's premier research portal for the Digital Personal Data Protection Act 2023, IT Act 2000, Aadhaar/UIDAI law, and cybercrime law. Research, not legal advice.</p>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 DPDPIndia.in · Research Portal · Not Legal Advice</span>
+    <div class="footer-links"><a href="legal.html">Disclaimer</a><a href="contact.html">Contact</a><a href="sitemap.xml">Sitemap</a></div>
+  </div>
+</div>
+</footer>
+<script defer src="site-global.js"></script>
+<script>const hbg=document.getElementById('hbg'),mob=document.getElementById('mob');if(hbg)hbg.addEventListener('click',()=>{hbg.classList.toggle('open');mob.classList.toggle('open');});</script>
+</body>
+</html>

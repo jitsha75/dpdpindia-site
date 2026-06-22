@@ -486,4 +486,10 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+  <url><loc>https://www.dpdpindia.in/cybercrime-electronic-evidence.html</loc><lastmod>2026-06-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.dpdpindia.in/cybercrime-forensics.html</loc><lastmod>2026-06-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.dpdpindia.in/ai-crypto-vda.html</loc><lastmod>2026-06-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.dpdpindia.in/ai-nft-metaverse.html</loc><lastmod>2026-06-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.dpdpindia.in/ecommerce-contracts.html</loc><lastmod>2026-06-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.dpdpindia.in/cyber-law-quiz.html</loc><lastmod>2026-06-22</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
 </urlset>
