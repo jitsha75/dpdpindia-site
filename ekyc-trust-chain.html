@@ -238,34 +238,7 @@ body{font-family:var(--font-body);background:var(--surface);color:var(--text);fo
 </style>
 </head>
 <body>
-
-<!-- HEADER -->
-<header class="header">
-  <div class="header-inner">
-    <div class="breadcrumb">
-      <a href="index.html">DPDPindia.in</a>
-      <span class="sep">/</span>
-      <a href="ekyc-uidai-guide.html">eKYC Technical Guide</a>
-      <span class="sep">/</span>
-      <span class="cur">Trust Chain &amp; Sub-KUA Appointment</span>
-    </div>
-    <div class="header-badge"><span class="dot"></span>Deep Dive — Entity Architecture</div>
-    <h1>The Aadhaar <span>Trust Chain</span><br>Entity Segregation &amp; Sub-KUA Appointment</h1>
-    <p class="header-sub">Why UIDAI deliberately fragments the eKYC ecosystem into separate legal and technical tiers — and the precise regulatory process for appointing a Sub-KUA under the 2021 Regulations and 2025–26 Circulars.</p>
-    <div class="header-meta">
-      <span class="meta-pill">Auth Regulations 2021</span>
-      <span class="meta-pill">Regulation 14(1)(ga)</span>
-      <span class="meta-pill">Circular 2 of 2025</span>
-      <span class="meta-pill">Circular 1 of 2026</span>
-      <span class="meta-pill">CERT-IN Audit Required</span>
-    </div>
-  </div>
-</header>
-
-<div class="layout">
-
-  <!-- SIDEBAR -->
-  <style>
+<style>
     block at the top of this partial (already self-contained).
   - All links target existing pages — no broken refs.
 
@@ -434,7 +407,55 @@ body{font-family:var(--font-body);background:var(--surface);color:var(--text);fo
   })();
 </script>
 
-<!-- MAIN -->
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <div class="breadcrumb">
+      <a href="index.html">DPDPindia.in</a>
+      <span class="sep">/</span>
+      <a href="ekyc-uidai-guide.html">eKYC Technical Guide</a>
+      <span class="sep">/</span>
+      <span class="cur">Trust Chain &amp; Sub-KUA Appointment</span>
+    </div>
+    <div class="header-badge"><span class="dot"></span>Deep Dive — Entity Architecture</div>
+    <h1>The Aadhaar <span>Trust Chain</span><br>Entity Segregation &amp; Sub-KUA Appointment</h1>
+    <p class="header-sub">Why UIDAI deliberately fragments the eKYC ecosystem into separate legal and technical tiers — and the precise regulatory process for appointing a Sub-KUA under the 2021 Regulations and 2025–26 Circulars.</p>
+    <div class="header-meta">
+      <span class="meta-pill">Auth Regulations 2021</span>
+      <span class="meta-pill">Regulation 14(1)(ga)</span>
+      <span class="meta-pill">Circular 2 of 2025</span>
+      <span class="meta-pill">Circular 1 of 2026</span>
+      <span class="meta-pill">CERT-IN Audit Required</span>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sidebar-nav">
+      <h3>On this page</h3>
+      <a href="#s1"><span class="nav-num">01</span> The Trust Chain model</a>
+      <a href="#s2"><span class="nav-num">02</span> ASA vs AUA vs KUA</a>
+      <a href="#s3"><span class="nav-num">03</span> Why segregate?</a>
+      <a href="#s4"><span class="nav-num">04</span> Sub-KUA appointment</a>
+      <a href="#s5"><span class="nav-num">05</span> Dev companies — when to register</a>
+      <hr>
+      <span class="nav-sep">Navigation</span>
+      <a href="ekyc-uidai-guide.html"><span class="nav-num">←</span> Back to eKYC guide</a>
+      <a href="index.html"><span class="nav-num">⌂</span> DPDPindia.in</a>
+    </div>
+    <div class="sidebar-related">
+      <h4>Key References</h4>
+      <a href="https://uidai.gov.in/en/about-uidai/legal-framework/regulations.html" target="_blank"><span class="link-icon">↗</span> Auth Regulations 2021</a>
+      <a href="https://uidai.gov.in/en/ecosystem/authentication-ecosystem/authentication-requesting-agency.html" target="_blank"><span class="link-icon">↗</span> UIDAI Ecosystem</a>
+      <a href="https://uidai.gov.in/en/ecosystem/authentication-devices-documents/developer-section.html" target="_blank"><span class="link-icon">↗</span> Developer Sandbox</a>
+      <a href="https://uidai.gov.in/aadhaar_dashboard/asa_transactions.php?asacode=3600" target="_blank"><span class="link-icon">↗</span> ASA Live Dashboard</a>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
   <main class="main">
 
     <!-- S1 — TRUST CHAIN MODEL -->

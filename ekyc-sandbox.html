@@ -274,36 +274,7 @@ body{font-family:var(--font-body);background:var(--surface);color:var(--text);fo
 </style>
 </head>
 <body>
-
-<!-- HEADER -->
-<header class="header">
-  <div class="header-inner">
-    <div class="breadcrumb">
-      <a href="index.html">DPDPindia.in</a>
-      <span class="sep">/</span>
-      <a href="ekyc-kb.html">eKYC Knowledge Base</a>
-      <span class="sep">/</span>
-      <span class="cur">Developer Sandbox Guide</span>
-    </div>
-    <div class="header-badge"><span class="dot"></span>Developer Reference</div>
-    <h1>UIDAI Aadhaar <span>Developer Sandbox</span><br>Integration &amp; Testing Guide</h1>
-    <p class="header-sub">
-      A complete reference for connecting to UIDAI's staging environment — from open access PoC testing to registered sandbox integration, configuration parameters, test data, and the path from sandbox to production.
-    </p>
-    <div class="header-meta">
-      <span class="meta-pill">Auth API 2.5</span>
-      <span class="meta-pill">eKYC API 2.5</span>
-      <span class="meta-pill">OTP API 2.5</span>
-      <span class="meta-pill">L0 / L1 RD Services</span>
-      <span class="meta-pill">Public Internet — No Leased Line</span>
-    </div>
-  </div>
-</header>
-
-<div class="layout">
-
-  <!-- SIDEBAR -->
-  <style>
+<style>
     block at the top of this partial (already self-contained).
   - All links target existing pages — no broken refs.
 
@@ -472,7 +443,70 @@ body{font-family:var(--font-body);background:var(--surface);color:var(--text);fo
   })();
 </script>
 
-<!-- MAIN -->
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <div class="breadcrumb">
+      <a href="index.html">DPDPindia.in</a>
+      <span class="sep">/</span>
+      <a href="ekyc-kb.html">eKYC Knowledge Base</a>
+      <span class="sep">/</span>
+      <span class="cur">Developer Sandbox Guide</span>
+    </div>
+    <div class="header-badge"><span class="dot"></span>Developer Reference</div>
+    <h1>UIDAI Aadhaar <span>Developer Sandbox</span><br>Integration &amp; Testing Guide</h1>
+    <p class="header-sub">
+      A complete reference for connecting to UIDAI's staging environment — from open access PoC testing to registered sandbox integration, configuration parameters, test data, and the path from sandbox to production.
+    </p>
+    <div class="header-meta">
+      <span class="meta-pill">Auth API 2.5</span>
+      <span class="meta-pill">eKYC API 2.5</span>
+      <span class="meta-pill">OTP API 2.5</span>
+      <span class="meta-pill">L0 / L1 RD Services</span>
+      <span class="meta-pill">Public Internet — No Leased Line</span>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sidebar-nav">
+      <h3>On this page</h3>
+      <a href="#s1"><span class="nav-num">01</span> Sandbox overview</a>
+      <a href="#s2"><span class="nav-num">02</span> Staging endpoints</a>
+      <a href="#s3"><span class="nav-num">03</span> Access modes</a>
+      <a href="#s4"><span class="nav-num">04</span> Connecting — prerequisites</a>
+      <a href="#s5"><span class="nav-num">05</span> Implementation steps</a>
+      <a href="#s6"><span class="nav-num">06</span> Test data reference</a>
+      <a href="#s7"><span class="nav-num">07</span> Response handling</a>
+      <a href="#s8"><span class="nav-num">08</span> Security best practices</a>
+      <a href="#s9"><span class="nav-num">09</span> Quick-start checklist</a>
+      <a href="#s10"><span class="nav-num">10</span> Essential links</a>
+      <hr>
+      <span class="nav-sep">Knowledge Base</span>
+      <a href="ekyc-kb.html"><span class="nav-num">←</span> Back to eKYC KB</a>
+      <a href="index.html"><span class="nav-num">⌂</span> DPDPindia.in</a>
+    </div>
+    <div class="sidebar-related">
+      <h4>Related Articles</h4>
+      <a href="ekyc-uidai-guide.html"><span class="link-icon">↗</span> eKYC Complete Guide</a>
+      <a href="ekyc-trust-chain.html"><span class="link-icon">↗</span> Trust Chain &amp; Sub-KUA</a>
+    </div>
+    <div class="checklist-box">
+      <h4>Quick-Start Tracker</h4>
+      <label><input type="checkbox"><span>Visit developer portal</span></label>
+      <label><input type="checkbox"><span>Download test data PDF</span></label>
+      <label><input type="checkbox"><span>Get sample client code</span></label>
+      <label><input type="checkbox"><span>Import staging certificates</span></label>
+      <label><input type="checkbox"><span>Fire first Demo Auth</span></label>
+      <label><input type="checkbox"><span>Pass CERT-IN audit</span></label>
+      <label><input type="checkbox"><span>Switch to production keys</span></label>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
   <main class="main">
 
     <!-- S1 — OVERVIEW -->

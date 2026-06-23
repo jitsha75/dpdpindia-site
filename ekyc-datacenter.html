@@ -187,32 +187,7 @@ body{font-family:var(--font-body);background:var(--surface);color:var(--text);fo
 </style>
 </head>
 <body>
-
-<header class="header">
-  <div class="header-inner">
-    <div class="breadcrumb">
-      <a href="index.html">DPDPindia.in</a>
-      <span class="sep">/</span>
-      <a href="ekyc-kb.html">eKYC Knowledge Base</a>
-      <span class="sep">/</span>
-      <span class="cur">Data Centre &amp; CERT-IN Audit Checklist</span>
-    </div>
-    <div class="header-badge"><span class="dot"></span>Article 04 · Compliance Reference</div>
-    <h1>Data Centre &amp; <span>CERT-IN Audit</span><br>Checklist for Sub-KUAs</h1>
-    <p class="header-sub">
-      The complete technical verification checklist used by CERT-IN empanelled auditors under Compliance Checklist v2.0 (May 2025, updated March 2026) — covering physical security, infrastructure hardening, ADV compliance, HSM operations, application security, and governance documentation.
-    </p>
-    <div class="header-meta">
-      <span class="meta-pill">Compliance Checklist v2.0</span>
-      <span class="meta-pill">CERT-IN Empanelled Auditors</span>
-      <span class="meta-pill">FIPS 140-2 Level 3</span>
-      <span class="meta-pill">Updated March 2026</span>
-    </div>
-  </div>
-</header>
-
-<div class="layout">
-  <style>
+<style>
     block at the top of this partial (already self-contained).
   - All links target existing pages — no broken refs.
 
@@ -381,7 +356,60 @@ body{font-family:var(--font-body);background:var(--surface);color:var(--text);fo
   })();
 </script>
 
-<main class="main">
+<header class="header">
+  <div class="header-inner">
+    <div class="breadcrumb">
+      <a href="index.html">DPDPindia.in</a>
+      <span class="sep">/</span>
+      <a href="ekyc-kb.html">eKYC Knowledge Base</a>
+      <span class="sep">/</span>
+      <span class="cur">Data Centre &amp; CERT-IN Audit Checklist</span>
+    </div>
+    <div class="header-badge"><span class="dot"></span>Article 04 · Compliance Reference</div>
+    <h1>Data Centre &amp; <span>CERT-IN Audit</span><br>Checklist for Sub-KUAs</h1>
+    <p class="header-sub">
+      The complete technical verification checklist used by CERT-IN empanelled auditors under Compliance Checklist v2.0 (May 2025, updated March 2026) — covering physical security, infrastructure hardening, ADV compliance, HSM operations, application security, and governance documentation.
+    </p>
+    <div class="header-meta">
+      <span class="meta-pill">Compliance Checklist v2.0</span>
+      <span class="meta-pill">CERT-IN Empanelled Auditors</span>
+      <span class="meta-pill">FIPS 140-2 Level 3</span>
+      <span class="meta-pill">Updated March 2026</span>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+  <nav class="sidebar">
+    <div class="sidebar-nav">
+      <h3>Audit Sections</h3>
+      <a href="#s1"><span class="nav-num">01</span> Physical &amp; environmental</a>
+      <a href="#s2"><span class="nav-num">02</span> Logical &amp; infrastructure</a>
+      <a href="#s3"><span class="nav-num">03</span> Aadhaar Data Vault (ADV)</a>
+      <a href="#s4"><span class="nav-num">04</span> HSM operations</a>
+      <a href="#s5"><span class="nav-num">05</span> Application &amp; API security</a>
+      <a href="#s6"><span class="nav-num">06</span> Governance &amp; documentation</a>
+      <a href="#s7"><span class="nav-num">07</span> Auditor's final output</a>
+      <hr>
+      <span class="nav-sep">Knowledge Base</span>
+      <a href="ekyc-kb.html"><span class="nav-num">←</span> Back to KB</a>
+      <a href="index.html"><span class="nav-num">⌂</span> DPDPindia.in</a>
+    </div>
+    <div class="audit-progress" id="progressBox">
+      <h4>Audit Readiness</h4>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progressFill" style="width:0%"></div></div>
+      <div class="progress-label" id="progressLabel">0 of 24 items checked</div>
+    </div>
+    <div class="sidebar-related">
+      <h4>Related Articles</h4>
+      <a href="ekyc-fees-connectivity.html"><span class="link-icon">↗</span> Fees &amp; Connectivity</a>
+      <a href="ekyc-trust-chain.html"><span class="link-icon">↗</span> Trust Chain &amp; Sub-KUA</a>
+      <a href="ekyc-sandbox.html"><span class="link-icon">↗</span> Developer Sandbox</a>
+      <a href="ekyc-uidai-guide.html"><span class="link-icon">↗</span> Complete eKYC Guide</a>
+    </div>
+  </nav>
+
+  <main class="main">
 
     <!-- Context note -->
     <div class="note-box purple" style="margin-bottom:8px;">

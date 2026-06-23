@@ -216,32 +216,7 @@ body{font-family:var(--font-body);background:var(--surface);color:var(--text);fo
 </style>
 </head>
 <body>
-
-<header class="header">
-  <div class="header-inner">
-    <div class="breadcrumb">
-      <a href="index.html">DPDPindia.in</a>
-      <span class="sep">/</span>
-      <a href="ekyc-kb.html">eKYC Knowledge Base</a>
-      <span class="sep">/</span>
-      <span class="cur">Fees, Relationships &amp; Connectivity</span>
-    </div>
-    <div class="header-badge"><span class="dot"></span>Article 05 · Financial &amp; Technical Reference</div>
-    <h1>KUA–Sub-KUA <span>Fees, Relationships</span><br>&amp; Connectivity Standards</h1>
-    <p class="header-sub">
-      The complete financial and technical framework governing KUA and Sub-KUA relationships as of 2026 — UIDAI's slab-based licence fee structure, per-transaction charges, physical data centre requirements, ADV and HSM obligations, KUA-to-Sub-KUA connectivity standards, and the updated onboarding process.
-    </p>
-    <div class="header-meta">
-      <span class="meta-pill">UIDAI Fee Schedule 2026</span>
-      <span class="meta-pill">Regulation 25</span>
-      <span class="meta-pill">Circular 1 of 2026</span>
-      <span class="meta-pill">Compliance Checklist v2.0</span>
-    </div>
-  </div>
-</header>
-
-<div class="layout">
-  <style>
+<style>
     block at the top of this partial (already self-contained).
   - All links target existing pages — no broken refs.
 
@@ -410,7 +385,68 @@ body{font-family:var(--font-body);background:var(--surface);color:var(--text);fo
   })();
 </script>
 
-<main class="main">
+<header class="header">
+  <div class="header-inner">
+    <div class="breadcrumb">
+      <a href="index.html">DPDPindia.in</a>
+      <span class="sep">/</span>
+      <a href="ekyc-kb.html">eKYC Knowledge Base</a>
+      <span class="sep">/</span>
+      <span class="cur">Fees, Relationships &amp; Connectivity</span>
+    </div>
+    <div class="header-badge"><span class="dot"></span>Article 05 · Financial &amp; Technical Reference</div>
+    <h1>KUA–Sub-KUA <span>Fees, Relationships</span><br>&amp; Connectivity Standards</h1>
+    <p class="header-sub">
+      The complete financial and technical framework governing KUA and Sub-KUA relationships as of 2026 — UIDAI's slab-based licence fee structure, per-transaction charges, physical data centre requirements, ADV and HSM obligations, KUA-to-Sub-KUA connectivity standards, and the updated onboarding process.
+    </p>
+    <div class="header-meta">
+      <span class="meta-pill">UIDAI Fee Schedule 2026</span>
+      <span class="meta-pill">Regulation 25</span>
+      <span class="meta-pill">Circular 1 of 2026</span>
+      <span class="meta-pill">Compliance Checklist v2.0</span>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+  <nav class="sidebar">
+    <div class="sidebar-nav">
+      <h3>On this page</h3>
+      <a href="#s1"><span class="nav-num">01</span> Licence fee structure</a>
+      <a href="#s2"><span class="nav-num">02</span> Transaction fees</a>
+      <a href="#s3"><span class="nav-num">03</span> Physical DC requirements</a>
+      <a href="#s4"><span class="nav-num">04</span> ADV &amp; HSM obligations</a>
+      <a href="#s5"><span class="nav-num">05</span> Connectivity standards</a>
+      <a href="#s6"><span class="nav-num">06</span> Network segregation rules</a>
+      <a href="#s7"><span class="nav-num">07</span> Onboarding process 2026</a>
+      <hr>
+      <span class="nav-sep">Knowledge Base</span>
+      <a href="ekyc-kb.html"><span class="nav-num">←</span> Back to KB</a>
+      <a href="index.html"><span class="nav-num">⌂</span> DPDPindia.in</a>
+    </div>
+    <div class="fee-calc">
+      <h4>Fee Estimator</h4>
+      <label>Entity type</label>
+      <select id="entityType" onchange="calcFee()">
+        <option value="kua_low">KUA / AUA — up to 5L txns/yr</option>
+        <option value="kua_mid">KUA / AUA — 5L–20L txns/yr</option>
+        <option value="kua_high">KUA / AUA — above 20L txns/yr</option>
+        <option value="subkua">Sub-KUA — standard commercial</option>
+        <option value="lite">Govt / LITE code (&lt;1L txns/yr)</option>
+      </select>
+      <label>Expected txns / month</label>
+      <input type="number" id="txnCount" value="10000" oninput="calcFee()" min="0">
+      <div class="fee-result" id="feeResult">—</div>
+    </div>
+    <div class="sidebar-related">
+      <h4>Related Articles</h4>
+      <a href="ekyc-datacenter.html"><span class="link-icon">↗</span> CERT-IN Audit Checklist</a>
+      <a href="ekyc-trust-chain.html"><span class="link-icon">↗</span> Trust Chain &amp; Sub-KUA</a>
+      <a href="ekyc-uidai-guide.html"><span class="link-icon">↗</span> Complete eKYC Guide</a>
+    </div>
+  </nav>
+
+  <main class="main">
 
     <!-- S1 — LICENCE FEES -->
     <section class="section" id="s1">
