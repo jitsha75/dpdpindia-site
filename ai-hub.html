@@ -227,78 +227,175 @@ footer{background:var(--prussian);padding:4rem 0 2rem;border-top:3px solid var(-
 <body>
 
 <!-- MASTHEAD -->
-<div class="masthead">
-  <span class="masthead-text">Independent Research Platform — <span>AI + Law + Risk Intelligence · DPDP Act 2023 · IT Act 2000 · Cyber Fraud</span> — For Informational Use Only</span>
+<!-- NAV -->
+<style>
+    block at the top of this partial (already self-contained).
+  - All links target existing pages — no broken refs.
+
+  PRINCIPLE
+  - Top nav exposes only the two priority pillars (DPDP, Cyber)
+    plus a Knowledge Base drawer for everything else.
+  - 1930 helpline always visible. Search hooks into newsletter
+    input on home — replace with full search later when ready.
+  ================================================================
+-->
+
+<style>
+  /* ----- Scoped nav-v3 styles (self-contained) ----- */
+  .nv3-masthead{background:#1B2B3A;padding:8px 0;text-align:center;border-bottom:2px solid #D4760A;}
+  .nv3-masthead-text{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.55);}
+  .nv3-masthead-text span{color:#F0A840;}
+  .nv3-nav{position:sticky;top:0;z-index:500;background:#FDFAF5;border-bottom:1px solid rgba(26,22,16,0.12);box-shadow:0 2px 12px rgba(26,22,16,0.06);}
+  .nv3-inner{max-width:1240px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;gap:1.5rem;}
+  .nv3-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+  .nv3-seal{width:36px;height:36px;background:#1B2B3A;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#F0A840;font-family:'Playfair Display',serif;font-weight:700;font-size:0.7rem;}
+  .nv3-brand-name strong{display:block;font-family:'Playfair Display',serif;font-size:1.05rem;color:#1A1610;line-height:1;}
+  .nv3-brand-name span{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:#7A7468;}
+  .nv3-menu{display:flex;list-style:none;align-items:center;gap:0.3rem;margin:0;padding:0;}
+  .nv3-item{position:relative;}
+  .nv3-item > a{display:block;font-family:'DM Sans',sans-serif;font-size:0.86rem;font-weight:500;color:#1A1610;padding:10px 14px;border-radius:6px;text-decoration:none;transition:all 0.15s;}
+  .nv3-item > a:hover, .nv3-item.open > a{background:#F2EDE2;color:#1B2B3A;}
+  .nv3-cta{background:#C0392B!important;color:#fff!important;font-weight:600!important;padding:10px 16px!important;border-radius:6px;}
+  .nv3-cta:hover{background:#9c2d22!important;}
+  .nv3-drop{position:absolute;top:100%;left:0;background:#FDFAF5;border:1px solid rgba(26,22,16,0.12);border-top:3px solid #D4760A;box-shadow:0 8px 40px rgba(26,22,16,0.10);min-width:280px;padding:1rem;opacity:0;visibility:hidden;transform:translateY(8px);transition:all 0.2s;}
+  .nv3-item:hover .nv3-drop,.nv3-item.open .nv3-drop{opacity:1;visibility:visible;transform:translateY(0);}
+  .nv3-drop a{display:block;padding:8px 12px;font-family:'DM Sans',sans-serif;font-size:0.83rem;color:#2D3D4E;border-radius:4px;text-decoration:none;}
+  .nv3-drop a:hover{background:#F2EDE2;color:#1B2B3A;}
+  .nv3-drop-label{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#7A7468;padding:8px 12px 4px;}
+  .nv3-drop.nv3-kb{min-width:720px;left:auto;right:0;display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem 1.5rem;padding:1.4rem;}
+  .nv3-drop.nv3-kb h4{font-family:'Playfair Display',serif;font-size:0.95rem;color:#1B2B3A;margin:0 0 0.5rem;padding:0 12px 0.4rem;border-bottom:1px solid rgba(212,118,10,0.25);}
+  .nv3-ham{display:none;background:transparent;border:none;cursor:pointer;width:32px;height:32px;flex-direction:column;justify-content:center;gap:5px;}
+  .nv3-ham span{display:block;width:22px;height:2px;background:#1A1610;}
+  .nv3-mm{display:none;}
+  .nv3-mm.open{display:block;position:fixed;top:64px;left:0;right:0;bottom:0;background:#FDFAF5;z-index:499;padding:1.5rem;overflow-y:auto;}
+  .nv3-mm ul{list-style:none;margin:0;padding:0;}
+  .nv3-mm .mm-label{display:block;font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:#D4760A;margin:1.2rem 0 0.4rem;}
+  .nv3-mm li a{display:block;padding:0.6rem 0;font-family:'DM Sans',sans-serif;font-size:0.95rem;color:#1A1610;border-bottom:1px solid rgba(26,22,16,0.12);text-decoration:none;}
+  @media(max-width:760px){
+    .nv3-menu{display:none;}.nv3-ham{display:flex;}
+  }
+</style>
+
+<div class="nv3-masthead">
+  <div class="nv3-masthead-text">India's Premier <span>DPDP Act &amp; Cyber Crime</span> Research Portal</div>
 </div>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-inner">
-    <a href="index.html" class="nav-brand">
-      <svg class="nav-brand-seal" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="21" cy="21" r="20" fill="#1B2B3A" stroke="#D4760A" stroke-width="1.5"/>
-        <text x="21" y="17" text-anchor="middle" font-family="Playfair Display,serif" font-size="7" font-weight="700" fill="#F0A840" letter-spacing="0.05em">DPDP</text>
-        <text x="21" y="26" text-anchor="middle" font-family="Playfair Display,serif" font-size="5" font-weight="400" fill="rgba(248,244,236,0.6)" letter-spacing="0.05em">INDIA</text>
-        <circle cx="21" cy="21" r="10" stroke="#D4760A" stroke-width="0.75" fill="none" opacity="0.4"/>
-      </svg>
-      <div class="nav-brand-name"><strong>DPDPIndia.in</strong><span>Data Protection Intelligence</span></div>
+<nav class="nv3-nav">
+  <div class="nv3-inner">
+    <a href="index-v3.html" class="nv3-brand">
+      <div class="nv3-seal">DPDP</div>
+      <div class="nv3-brand-name">
+        <strong>DPDPIndia.in</strong>
+        <span>Data Protection · Cyber Crime</span>
+      </div>
     </a>
-    <ul class="nav-menu" id="desktop-nav">
-      <li class="nav-item has-dropdown"><a href="dpdp-kb.html">DPDP Act</a>
-        <div class="nav-dropdown"><div class="nav-dropdown-section">
-          <a href="dpdp-kb.html">DPDP Act Overview</a><a href="dpdp-act.html">Plain Language Guide</a>
-          <a href="dpdp-rights.html">Your Rights</a><a href="dpdp-rules.html">DPDP Rules 2025</a>
-          <a href="dpdp-global.html">DPDP vs GDPR</a></div></div></li>
-      <li class="nav-item has-dropdown"><a href="itact-kb.html">IT Act</a>
-        <div class="nav-dropdown"><div class="nav-dropdown-section">
-          <a href="itact-kb.html">IT Act 2000 Overview</a><a href="itact-sections.html">Key Sections</a>
-          <a href="itact-intermediary.html">Intermediary Liability</a></div></div></li>
-      <li class="nav-item has-dropdown"><a href="cyber-fraud-hub.html">🚨 Cyber Fraud</a>
-        <div class="nav-dropdown"><div class="nav-dropdown-section">
-          <a href="cybercrime-financial.html">Financial Fraud</a><a href="cybercrime-personal.html">Personal Crimes</a>
-          <a href="cybercrime-remedy-guide.html">How to Report</a></div></div></li>
-      <li class="nav-item has-dropdown"><a href="ekyc-kb.html">Aadhaar & eKYC</a>
-        <div class="nav-dropdown"><div class="nav-dropdown-section">
-          <a href="ekyc-kb.html">eKYC Knowledge Base</a><a href="ekyc-uidai-guide.html">UIDAI Framework</a></div></div></li>
-      <li class="nav-item ai-active has-dropdown"><a href="ai-hub.html">🤖 AI Intelligence</a>
-        <div class="nav-dropdown">
-          <div class="nav-dropdown-section"><div class="nav-dropdown-label">Foundation</div>
-            <a href="ai-intro.html">Introduction to AI</a><a href="ai-history.html">History &amp; Evolution</a>
-            <a href="ai-personalities.html">Key Personalities</a><a href="ai-timeline.html">Timeline of AI</a></div>
-          <hr>
-          <div class="nav-dropdown-section"><div class="nav-dropdown-label">AI &amp; Law</div>
-            <a href="ai-privacy.html">AI &amp; Privacy (DPDP)</a><a href="ai-cybercrime.html">AI &amp; Cybercrime</a>
-            <a href="ai-cybersecurity.html">AI &amp; Cybersecurity</a><a href="ai-global-regs.html">Global AI Regulations</a></div>
-          <hr>
-          <div class="nav-dropdown-section"><div class="nav-dropdown-label">AI &amp; Risk</div>
-            <a href="ai-india.html">AI in India</a><a href="ai-risk.html">AI Risk Framework</a>
-            <a href="ai-threats.html">AI Threat Models</a><a href="ai-sectors.html">Sector Use Cases</a></div>
-          <hr>
-          <div class="nav-dropdown-section"><div class="nav-dropdown-label">Reference</div>
-            <a href="ai-future.html">Future of AI</a><a href="ai-glossary.html">AI Glossary</a>
-            <a href="ai-playbook.html">Compliance Playbook</a></div>
-        </div></li>
-      <li class="nav-item has-dropdown"><a href="blog.html">Resources</a>
-        <div class="nav-dropdown"><div class="nav-dropdown-section">
-          <a href="dpdp-kb.html">DPDP Act 2023 KB</a><a href="itact-kb.html">IT Act 2000 KB</a>
-          <a href="cybercrime-kb.html">Cybercrime KB</a><a href="blog.html">All Articles</a></div></div></li>
-      <li class="nav-item"><a href="cyber-fraud-hub.html" class="nav-cta">📞 1930</a></li>
+    <ul class="nv3-menu">
+      <li class="nv3-item">
+        <a href="dpdp-kb.html">DPDP Act ▾</a>
+        <div class="nv3-drop">
+          <div class="nv3-drop-label">Understand</div>
+          <a href="dpdp-act.html">Plain-Language Guide</a>
+          <a href="dpdp-rights.html">Your Rights</a>
+          <a href="dpdp-rules.html">DPDP Rules 2025</a>
+          <a href="dpdp-genesis.html">How the Law Came to Be</a>
+          <div class="nv3-drop-label" style="margin-top:0.5rem;">Comply</div>
+          <a href="for-businesses.html">Business Compliance Kit</a>
+          <a href="dpdp-fiduciary-obligations.html">Fiduciary Obligations</a>
+          <a href="dpdp-exemptions.html">Exemptions</a>
+          <a href="dpdp-adjudication.html">Penalties &amp; Adjudication</a>
+        </div>
+      </li>
+      <li class="nv3-item">
+        <a href="cyber-fraud-hub.html">Cyber Crime ▾</a>
+        <div class="nv3-drop">
+          <div class="nv3-drop-label">Fraud Types</div>
+          <a href="cybercrime-financial.html">Financial / UPI / Digital Arrest</a>
+          <a href="cybercrime-personal.html">Personal &amp; Social Crimes</a>
+          <a href="cybercrime-children.html">Crimes Against Children</a>
+          <div class="nv3-drop-label" style="margin-top:0.5rem;">Take Action</div>
+          <a href="cybercrime-remedy-guide.html">How to Report — Step by Step</a>
+          <a href="cyber-fraud-hub.html">Fraud Alert Hub</a>
+          <a href="cybercrime-electronic-evidence.html">Preserving Evidence</a>
+        </div>
+      </li>
+      <li class="nv3-item">
+        <a href="knowledge-base.html">Knowledge Base ▾</a>
+        <div class="nv3-drop nv3-kb">
+          <div><h4>IT Act 2000</h4>
+            <a href="itact-kb.html">IT Act Overview</a>
+            <a href="itact-sections.html">Key Sections</a>
+            <a href="itact-intermediary.html">Intermediary Liability</a>
+            <a href="itact-certIn.html">CERT-In Directions</a></div>
+          <div><h4>Aadhaar &amp; eKYC</h4>
+            <a href="ekyc-kb.html">eKYC Overview</a>
+            <a href="ekyc-uidai-guide.html">UIDAI Guide</a>
+            <a href="ekyc-offline-verification.html">Offline Verification</a>
+            <a href="ekyc-vs-offline-comparison.html">eKYC vs Offline</a></div>
+          <div><h4>AI &amp; Policy</h4>
+            <a href="ai-hub.html">AI Intelligence Hub</a>
+            <a href="ai-privacy.html">AI &amp; Privacy</a>
+            <a href="ai-cybercrime.html">AI &amp; Cybercrime</a>
+            <a href="ai-global-regs.html">Global AI Regs</a></div>
+          <div><h4>Case Law</h4>
+            <a href="case-tracker.html">Case Tracker</a>
+            <a href="privacy-constitutional.html">Right to Privacy</a>
+            <a href="itact-shreya-singhal.html">Shreya Singhal</a></div>
+          <div><h4>Articles</h4>
+            <a href="blog.html">All Articles</a>
+            <a href="blog-gdpr-vs-dpdp-comparison.html">GDPR vs DPDP</a>
+            <a href="blog-dpdp-consent-frameworks.html">Consent Frameworks</a></div>
+          <div><h4>Newsletter</h4>
+            <a href="monthly-briefing.html">Monthly Briefings</a>
+            <a href="weekly-briefing.html">Weekly Briefings</a>
+            <a href="monthly-briefing-2026-06.html">★ June 2026 — Latest</a></div>
+        </div>
+      </li>
+      <li class="nv3-item"><a href="cyber-fraud-hub.html" class="nv3-cta">🚨 1930 Helpline</a></li>
     </ul>
-    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    <button class="nv3-ham" id="nv3Ham" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
-  <div class="mobile-menu" id="mobileMenu"><ul>
-    <span class="mm-label">🤖 AI Intelligence</span>
-    <li><a href="ai-intro.html">Introduction to AI</a></li>
-    <li><a href="ai-privacy.html">AI &amp; Privacy (DPDP)</a></li>
-    <li><a href="ai-cybercrime.html">AI &amp; Cybercrime</a></li>
-    <li><a href="ai-global-regs.html">Global AI Regulations</a></li>
-    <li><a href="ai-playbook.html">Compliance Playbook</a></li>
-    <span class="mm-label">Other Sections</span>
-    <li><a href="dpdp-kb.html">DPDP Act 2023</a></li>
-    <li><a href="cyber-fraud-hub.html">Cyber Fraud Hub</a></li>
-    <li><a href="index.html">Home</a></li>
-  </ul></div>
+  <div class="nv3-mm" id="nv3Mm">
+    <ul>
+      <span class="mm-label">DPDP Act</span>
+      <li><a href="dpdp-kb.html">DPDP Act Overview</a></li>
+      <li><a href="dpdp-act.html">Plain-Language Guide</a></li>
+      <li><a href="dpdp-rights.html">Your Rights</a></li>
+      <li><a href="dpdp-rules.html">DPDP Rules 2025</a></li>
+      <li><a href="for-businesses.html">Business Compliance</a></li>
+      <span class="mm-label">🚨 Cyber Crime</span>
+      <li><a href="cyber-fraud-hub.html">Fraud Alert Hub</a></li>
+      <li><a href="cybercrime-financial.html">Financial Fraud</a></li>
+      <li><a href="cybercrime-remedy-guide.html">How to Report</a></li>
+      <span class="mm-label">Knowledge Base</span>
+      <li><a href="knowledge-base.html">Master KB Index</a></li>
+      <li><a href="itact-kb.html">IT Act 2000</a></li>
+      <li><a href="ekyc-kb.html">Aadhaar &amp; eKYC</a></li>
+      <li><a href="ai-hub.html">AI Intelligence</a></li>
+      <li><a href="case-tracker.html">Case Tracker</a></li>
+      <li><a href="blog.html">Articles</a></li>
+      <li><a href="monthly-briefing.html">Newsletter</a></li>
+      <span class="mm-label">Other</span>
+      <li><a href="for-individuals.html">For Individuals</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
 </nav>
+
+<script>
+  (function(){
+    var ham = document.getElementById('nv3Ham');
+    var mm = document.getElementById('nv3Mm');
+    if(ham && mm) ham.addEventListener('click', function(){ mm.classList.toggle('open'); });
+    document.querySelectorAll('.nv3-item > a').forEach(function(a){
+      a.addEventListener('click', function(e){
+        if(window.innerWidth <= 760 && a.nextElementSibling){
+          e.preventDefault();
+          a.parentElement.classList.toggle('open');
+        }
+      });
+    });
+  })();
+</script>
 
 <!-- HERO -->
 <section class="hub-hero">

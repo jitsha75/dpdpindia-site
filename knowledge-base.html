@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Knowledge Base — DPDPIndia.in | IT Act, eKYC, AI, Case Law, Articles</title>
+<meta name="description" content="Master knowledge base for India's data protection and cyber-crime ecosystem — IT Act 2000, Aadhaar eKYC, AI policy, case tracker, deep-dive articles and the DPDPIndia newsletter archive.">
+<link rel="canonical" href="https://www.dpdpindia.in/knowledge-base.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:wght@300;400;600&family=JetBrains+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="site-global.css">
+
+<style>
+:root{
+  --parchment:#F8F4EC;--cream:#FDFAF5;--paper:#F2EDE2;--ink:#1A1610;
+  --prussian:#1B2B3A;--slate:#2D3D4E;--saffron:#D4760A;--saffron-lt:#F0A840;
+  --mist:#7A7468;--rule:rgba(26,22,16,0.12);--rule-gold:rgba(212,118,10,0.25);
+  --shadow-sm:0 2px 12px rgba(26,22,16,0.06);--shadow-md:0 8px 40px rgba(26,22,16,0.10);
+  --danger:#C0392B;--max:1240px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Source Serif 4',Georgia,serif;background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.55;}
+a{color:var(--prussian);text-decoration:none;}
+a:hover{color:var(--saffron);}
+
+/* ===== NAV (shared) ===== */
+.masthead{background:var(--prussian);padding:8px 0;text-align:center;border-bottom:2px solid var(--saffron);}
+.masthead-text{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.55);}
+.masthead-text span{color:var(--saffron-lt);}
+.site-nav{position:sticky;top:0;z-index:500;background:var(--cream);border-bottom:1px solid var(--rule);box-shadow:var(--shadow-sm);}
+.nav-inner{max-width:var(--max);margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;gap:1.5rem;}
+.nav-brand{display:flex;align-items:center;gap:12px;}
+.nav-brand-seal{width:36px;height:36px;background:var(--prussian);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--saffron-lt);font-family:'Playfair Display',serif;font-weight:700;font-size:0.7rem;}
+.nav-brand-name strong{display:block;font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--ink);line-height:1;}
+.nav-brand-name span{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mist);}
+.nav-menu{display:flex;list-style:none;align-items:center;gap:0.3rem;}
+.nav-item > a{display:block;font-family:'DM Sans',sans-serif;font-size:0.86rem;font-weight:500;color:var(--ink);padding:10px 14px;border-radius:6px;}
+.nav-item > a:hover, .nav-item.active > a{background:var(--paper);color:var(--prussian);}
+.nav-cta{background:var(--danger)!important;color:#fff!important;font-weight:600!important;}
+.nav-cta:hover{background:#9c2d22!important;}
+.hamburger{display:none;background:transparent;border:none;cursor:pointer;width:32px;height:32px;flex-direction:column;justify-content:center;gap:5px;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--ink);}
+.mobile-menu{display:none;}
+
+/* ===== BREADCRUMB ===== */
+.crumb{max-width:var(--max);margin:0 auto;padding:1rem 1.5rem 0;font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--mist);}
+.crumb a{color:var(--mist);}.crumb a:hover{color:var(--saffron);}
+
+/* ===== KB HERO ===== */
+.kb-hero{padding:2rem 0 1.5rem;}
+.kb-hero-inner{max-width:var(--max);margin:0 auto;padding:0 1.5rem;}
+.kb-hero-kicker{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.5rem;}
+.kb-hero-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:900;color:var(--ink);margin-bottom:0.5rem;letter-spacing:-0.02em;}
+.kb-hero-title em{font-style:italic;color:var(--saffron);font-weight:400;}
+.kb-hero-deck{font-size:1rem;color:var(--slate);font-weight:300;max-width:780px;}
+
+/* ===== SEARCH + FILTERS ===== */
+.kb-controls{background:var(--paper);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:1rem 0;position:sticky;top:64px;z-index:400;backdrop-filter:blur(6px);}
+.kb-controls-inner{max-width:var(--max);margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
+.kb-search{flex:1;min-width:240px;position:relative;}
+.kb-search input{width:100%;padding:0.7rem 1rem 0.7rem 2.4rem;border:1px solid var(--rule);border-radius:6px;background:var(--cream);font-family:'DM Sans',sans-serif;font-size:0.9rem;}
+.kb-search input:focus{outline:none;border-color:var(--saffron);}
+.kb-search svg{position:absolute;left:0.8rem;top:50%;transform:translateY(-50%);color:var(--mist);}
+.kb-filters{display:flex;gap:0.4rem;flex-wrap:wrap;}
+.kb-filter{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;background:var(--cream);border:1px solid var(--rule);padding:0.5rem 0.85rem;border-radius:999px;cursor:pointer;color:var(--slate);transition:all 0.15s;}
+.kb-filter:hover{border-color:var(--saffron);color:var(--saffron);}
+.kb-filter.active{background:var(--prussian);color:var(--cream);border-color:var(--prussian);}
+
+/* ===== KB SECTIONS ===== */
+.kb-section{padding:2.5rem 0 1.5rem;border-bottom:1px solid var(--rule);}
+.kb-section-inner{max-width:var(--max);margin:0 auto;padding:0 1.5rem;}
+.kb-section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.2rem;flex-wrap:wrap;gap:0.5rem;}
+.kb-section-head-left{display:flex;align-items:center;gap:1rem;}
+.kb-section-num{font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.18em;color:var(--saffron);background:rgba(212,118,10,0.08);padding:0.3rem 0.6rem;border-radius:4px;}
+.kb-section-title{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:700;color:var(--prussian);}
+.kb-section-title em{font-style:italic;color:var(--saffron);font-weight:400;}
+.kb-section-count{font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.12em;color:var(--mist);}
+.kb-section-deck{color:var(--slate);font-size:0.93rem;font-weight:300;margin-bottom:1.3rem;max-width:780px;line-height:1.6;}
+
+.kb-card-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0.9rem;}
+.kb-card{display:flex;flex-direction:column;background:var(--cream);border:1px solid var(--rule);border-radius:8px;padding:1rem 1.1rem;transition:all 0.15s;position:relative;min-height:88px;}
+.kb-card:hover{border-color:var(--rule-gold);box-shadow:var(--shadow-sm);transform:translateY(-2px);}
+.kb-card-tag{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.35rem;}
+.kb-card-title{font-family:'Source Serif 4',serif;font-size:0.95rem;font-weight:600;color:var(--ink);line-height:1.3;flex:1;}
+.kb-card-arrow{position:absolute;bottom:0.6rem;right:0.9rem;color:var(--mist);font-size:0.9rem;transition:all 0.15s;}
+.kb-card:hover .kb-card-arrow{color:var(--saffron);transform:translateX(3px);}
+.kb-card.pinned{background:linear-gradient(135deg,#FFF8EC 0%,var(--cream) 100%);border-color:var(--saffron);}
+.kb-card.pinned .kb-card-tag{color:var(--danger);}
+
+/* ===== FOOTER ===== */
+.footer{background:var(--ink);color:rgba(248,244,236,0.65);padding:2.5rem 0 1.5rem;font-family:'DM Sans',sans-serif;font-size:0.83rem;margin-top:2rem;}
+.footer-inner{max-width:var(--max);margin:0 auto;padding:0 1.5rem;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;}
+.footer h4{font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron-lt);margin-bottom:0.8rem;}
+.footer a{color:rgba(248,244,236,0.65);display:block;padding:3px 0;font-size:0.82rem;}
+.footer a:hover{color:var(--saffron-lt);}
+.footer-legal{border-top:1px solid rgba(255,255,255,0.1);max-width:var(--max);margin:1.5rem auto 0;padding:1rem 1.5rem 0;display:flex;justify-content:space-between;font-size:0.74rem;color:rgba(248,244,236,0.4);}
+
+@media(max-width:980px){
+  .kb-card-grid{grid-template-columns:repeat(2,1fr);}
+  .footer-inner{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:760px){
+  .nav-menu{display:none;}.hamburger{display:flex;}
+  .mobile-menu.open{display:block;position:fixed;top:64px;left:0;right:0;bottom:0;background:var(--cream);z-index:499;padding:1.5rem;overflow-y:auto;}
+  .mobile-menu ul{list-style:none;}
+  .mobile-menu .mm-label{display:block;font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);margin:1.2rem 0 0.4rem;}
+  .mobile-menu li a{display:block;padding:0.6rem 0;font-family:'DM Sans',sans-serif;font-size:0.95rem;color:var(--ink);border-bottom:1px solid var(--rule);}
+  .kb-card-grid{grid-template-columns:1fr;}
+  .kb-section-title{font-size:1.3rem;}
+  .footer-inner{grid-template-columns:1fr;}
+  .footer-legal{flex-direction:column;gap:0.5rem;}
+  .kb-controls{position:static;}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== MASTHEAD ===== -->
+<div class="masthead">
+  <div class="masthead-text">India's Premier <span>DPDP Act &amp; Cyber Crime</span> Research Portal · Knowledge Base</div>
+</div>
+
+<!-- ===== NAV ===== -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="index-v3.html" class="nav-brand">
+      <div class="nav-brand-seal">DPDP</div>
+      <div class="nav-brand-name">
+        <strong>DPDPIndia.in</strong>
+        <span>Data Protection · Cyber Crime</span>
+      </div>
+    </a>
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="dpdp-kb.html">DPDP Act</a></li>
+      <li class="nav-item"><a href="cyber-fraud-hub.html">Cyber Crime</a></li>
+      <li class="nav-item active"><a href="knowledge-base.html">Knowledge Base</a></li>
+      <li class="nav-item"><a href="cyber-fraud-hub.html" class="nav-cta">🚨 1930 Helpline</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <span class="mm-label">Pillars</span>
+      <li><a href="dpdp-kb.html">DPDP Act</a></li>
+      <li><a href="cyber-fraud-hub.html">Cyber Crime</a></li>
+      <li><a href="knowledge-base.html">Knowledge Base</a></li>
+      <span class="mm-label">Knowledge Base</span>
+      <li><a href="#itact">IT Act 2000</a></li>
+      <li><a href="#ekyc">Aadhaar &amp; eKYC</a></li>
+      <li><a href="#ai">AI Intelligence</a></li>
+      <li><a href="#cases">Case Tracker</a></li>
+      <li><a href="#articles">Articles</a></li>
+      <li><a href="#newsletter">Newsletter</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== BREADCRUMB ===== -->
+<div class="crumb"><a href="index-v3.html">Home</a> › Knowledge Base</div>
+
+<!-- ===== HERO ===== -->
+<section class="kb-hero">
+  <div class="kb-hero-inner">
+    <div class="kb-hero-kicker">DPDPIndia · Knowledge Base · 90+ research pages</div>
+    <h1 class="kb-hero-title">Everything beyond <em>DPDP &amp; Cyber Crime</em></h1>
+    <p class="kb-hero-deck">Search, filter, and jump into any of the six research libraries that power DPDPIndia. Every link goes straight to source material — no scroll required.</p>
+  </div>
+</section>
+
+<!-- ===== SEARCH + FILTERS ===== -->
+<div class="kb-controls">
+  <div class="kb-controls-inner">
+    <div class="kb-search">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="search" id="kbSearchInput" placeholder="Search across IT Act, eKYC, AI, cases, articles…" aria-label="Search knowledge base">
+    </div>
+    <div class="kb-filters" role="tablist">
+      <button class="kb-filter active" data-filter="all">All</button>
+      <button class="kb-filter" data-filter="itact">IT Act</button>
+      <button class="kb-filter" data-filter="ekyc">eKYC</button>
+      <button class="kb-filter" data-filter="ai">AI</button>
+      <button class="kb-filter" data-filter="cases">Cases</button>
+      <button class="kb-filter" data-filter="articles">Articles</button>
+      <button class="kb-filter" data-filter="newsletter">Newsletter</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 1: IT ACT ===== -->
+<section class="kb-section" data-cat="itact" id="itact">
+  <div class="kb-section-inner">
+    <div class="kb-section-head">
+      <div class="kb-section-head-left">
+        <span class="kb-section-num">KB · 01</span>
+        <h2 class="kb-section-title">IT Act <em>2000</em></h2>
+      </div>
+      <span class="kb-section-count">8 PAGES</span>
+    </div>
+    <p class="kb-section-deck">India's foundational cyber law — covers electronic governance, intermediary liability, CERT-In directions, adjudication, and landmark cases like Shreya Singhal.</p>
+    <div class="kb-card-grid">
+      <a href="itact-kb.html" class="kb-card pinned"><div class="kb-card-tag">★ Pinned · Hub</div><div class="kb-card-title">IT Act 2000 — Overview Hub</div><span class="kb-card-arrow">→</span></a>
+      <a href="itact-sections.html" class="kb-card"><div class="kb-card-tag">Reference</div><div class="kb-card-title">Key Sections of the IT Act</div><span class="kb-card-arrow">→</span></a>
+      <a href="itact-history.html" class="kb-card"><div class="kb-card-tag">Context</div><div class="kb-card-title">History of the IT Act</div><span class="kb-card-arrow">→</span></a>
+      <a href="itact-intermediary.html" class="kb-card"><div class="kb-card-tag">Compliance</div><div class="kb-card-title">Intermediary Liability Rules</div><span class="kb-card-arrow">→</span></a>
+      <a href="itact-certIn.html" class="kb-card"><div class="kb-card-tag">Directions</div><div class="kb-card-title">CERT-In Directions Explained</div><span class="kb-card-arrow">→</span></a>
+      <a href="itact-adjudication.html" class="kb-card"><div class="kb-card-tag">Process</div><div class="kb-card-title">Adjudication under IT Act</div><span class="kb-card-arrow">→</span></a>
+      <a href="itact-egovernance.html" class="kb-card"><div class="kb-card-tag">Public Sector</div><div class="kb-card-title">E-Governance Provisions</div><span class="kb-card-arrow">→</span></a>
+      <a href="itact-shreya-singhal.html" class="kb-card"><div class="kb-card-tag">Case Law</div><div class="kb-card-title">Shreya Singhal v. Union of India</div><span class="kb-card-arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 2: eKYC ===== -->
+<section class="kb-section" data-cat="ekyc" id="ekyc">
+  <div class="kb-section-inner">
+    <div class="kb-section-head">
+      <div class="kb-section-head-left">
+        <span class="kb-section-num">KB · 02</span>
+        <h2 class="kb-section-title">Aadhaar &amp; <em>eKYC</em></h2>
+      </div>
+      <span class="kb-section-count">8 PAGES</span>
+    </div>
+    <p class="kb-section-deck">UIDAI's identity stack — eKYC, offline verification, the trust chain, datacenter architecture, fee structures and sandbox onboarding for fintechs.</p>
+    <div class="kb-card-grid">
+      <a href="ekyc-kb.html" class="kb-card pinned"><div class="kb-card-tag">★ Pinned · Hub</div><div class="kb-card-title">eKYC Overview Hub</div><span class="kb-card-arrow">→</span></a>
+      <a href="ekyc-uidai-guide.html" class="kb-card"><div class="kb-card-tag">Guide</div><div class="kb-card-title">UIDAI Authentication Guide</div><span class="kb-card-arrow">→</span></a>
+      <a href="ekyc-offline-verification.html" class="kb-card"><div class="kb-card-tag">Process</div><div class="kb-card-title">Offline Verification (XML / QR)</div><span class="kb-card-arrow">→</span></a>
+      <a href="ekyc-vs-offline-comparison.html" class="kb-card"><div class="kb-card-tag">Comparative</div><div class="kb-card-title">eKYC vs Offline — Side by Side</div><span class="kb-card-arrow">→</span></a>
+      <a href="ekyc-trust-chain.html" class="kb-card"><div class="kb-card-tag">Architecture</div><div class="kb-card-title">UIDAI Trust Chain</div><span class="kb-card-arrow">→</span></a>
+      <a href="ekyc-datacenter.html" class="kb-card"><div class="kb-card-tag">Infra</div><div class="kb-card-title">UIDAI Datacenter Architecture</div><span class="kb-card-arrow">→</span></a>
+      <a href="ekyc-fees-connectivity.html" class="kb-card"><div class="kb-card-tag">Commercials</div><div class="kb-card-title">eKYC Fees &amp; Connectivity</div><span class="kb-card-arrow">→</span></a>
+      <a href="ekyc-sandbox.html" class="kb-card"><div class="kb-card-tag">Onboarding</div><div class="kb-card-title">UIDAI Sandbox Onboarding</div><span class="kb-card-arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 3: AI ===== -->
+<section class="kb-section" data-cat="ai" id="ai">
+  <div class="kb-section-inner">
+    <div class="kb-section-head">
+      <div class="kb-section-head-left">
+        <span class="kb-section-num">KB · 03</span>
+        <h2 class="kb-section-title">AI <em>Intelligence</em></h2>
+      </div>
+      <span class="kb-section-count">18 PAGES</span>
+    </div>
+    <p class="kb-section-deck">India's AI landscape — foundations, regulations, risk frameworks, threat models, and how AI intersects with DPDP, cybercrime, crypto/VDA and the metaverse.</p>
+    <div class="kb-card-grid">
+      <a href="ai-hub.html" class="kb-card pinned"><div class="kb-card-tag">★ Pinned · Hub</div><div class="kb-card-title">AI Intelligence Hub</div><span class="kb-card-arrow">→</span></a>
+      <a href="ai-intro.html" class="kb-card"><div class="kb-card-tag">Foundation</div><div class="kb-card-title">Introduction to AI</div><span class="kb-card-arrow">→</span></a>
+      <a href="ai-history.html" class="kb-card"><div class="kb-card-tag">Context</div><div class="kb-card-title">History &amp; Evolution of AI</div><span class="kb-card-arrow">→</span></a>
+      <a href="ai-personalities.html" class="kb-card"><div class="kb-card-tag">People</div><div class="kb-card-title">Key AI Personalities</div><span class="kb-card-arrow">→</span></a>
+      <a href="ai-timeline.html" class="kb-card"><div class="kb-card-tag">Timeline</div><div class="kb-card-title">AI Timeline 1950–2026</div><span class="kb-card-arrow">→</span></a>
+      <a href="ai-glossary.html" class="kb-card"><div class="kb-card-tag">Reference</div><div class="kb-card-title">AI Glossary</div><span class="kb-card-arrow">→</span></a>
+      <a href="ai-privacy.html" class="kb-card"><div class="kb-card-tag">Law</div><div class="kb-card-title">AI &amp; Privacy (DPDP-mapped)</div><span class="kb-card-arrow">→</span></a>
+      <a href="ai-cybercrime.html" class="kb-card"><div class="kb-card-tag">Threat</div><div class="kb-card-title">AI &amp; Cybercrime</div><span class="kb-card-arrow">→</span></a>
+      <a href="ai-cybersecurity.html" class="kb-card"><div class="kb-card-tag">Defence</div><div class="kb-card-title">AI in Cybersecurity</div><span class="kb-card-arrow">→</span></a>
+      <a href="ai-global-regs.html" class="kb-card"><div class="kb-card-tag">Policy</div><div class="kb-card-title">Global AI Regulations</div><span class="kb-card-arrow">→</span></a>
+      <a href="ai-india.html" class="kb-card"><div class="kb-card-tag">India</div><div class="kb-card-title">AI in India — Policy &amp; Practice</div><span class="kb-card-arrow">→</span></a>
+      <a href="ai-risk.html" class="kb-card"><div class="kb-card-tag">Risk</div><div class="kb-card-title">AI Risk Framework</div><span class="kb-card-arrow">→</span></a>
+      <a href="ai-threats.html" class="kb-card"><div class="kb-card-tag">Risk</div><div class="kb-card-title">AI Threat Models</div><span class="kb-card-arrow">→</span></a>
+      <a href="ai-playbook.html" class="kb-card"><div class="kb-card-tag">Playbook</div><div class="kb-card-title">AI Compliance Playbook</div><span class="kb-card-arrow">→</span></a>
+      <a href="ai-sectors.html" class="kb-card"><div class="kb-card-tag">Industry</div><div class="kb-card-title">AI by Sector</div><span class="kb-card-arrow">→</span></a>
+      <a href="ai-future.html" class="kb-card"><div class="kb-card-tag">Outlook</div><div class="kb-card-title">Future of AI</div><span class="kb-card-arrow">→</span></a>
+      <a href="ai-crypto-vda.html" class="kb-card"><div class="kb-card-tag">Crypto</div><div class="kb-card-title">AI, Crypto &amp; VDA</div><span class="kb-card-arrow">→</span></a>
+      <a href="ai-nft-metaverse.html" class="kb-card"><div class="kb-card-tag">Web3</div><div class="kb-card-title">AI, NFT &amp; the Metaverse</div><span class="kb-card-arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 4: CASES ===== -->
+<section class="kb-section" data-cat="cases" id="cases">
+  <div class="kb-section-inner">
+    <div class="kb-section-head">
+      <div class="kb-section-head-left">
+        <span class="kb-section-num">KB · 04</span>
+        <h2 class="kb-section-title">Case Law <em>Tracker</em></h2>
+      </div>
+      <span class="kb-section-count">SC · HC · DPB</span>
+    </div>
+    <p class="kb-section-deck">Live tracker of Supreme Court, High Court and Data Protection Board judgments on privacy, data, surveillance and intermediary liability.</p>
+    <div class="kb-card-grid">
+      <a href="case-tracker.html" class="kb-card pinned"><div class="kb-card-tag">★ Pinned · Live</div><div class="kb-card-title">Case Tracker (All Courts)</div><span class="kb-card-arrow">→</span></a>
+      <a href="privacy-constitutional.html" class="kb-card"><div class="kb-card-tag">Landmark</div><div class="kb-card-title">Constitutional Right to Privacy (Puttaswamy)</div><span class="kb-card-arrow">→</span></a>
+      <a href="privacy-surveillance.html" class="kb-card"><div class="kb-card-tag">Surveillance</div><div class="kb-card-title">Surveillance &amp; the Constitution</div><span class="kb-card-arrow">→</span></a>
+      <a href="itact-shreya-singhal.html" class="kb-card"><div class="kb-card-tag">Section 66A</div><div class="kb-card-title">Shreya Singhal v. UoI</div><span class="kb-card-arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 5: ARTICLES ===== -->
+<section class="kb-section" data-cat="articles" id="articles">
+  <div class="kb-section-inner">
+    <div class="kb-section-head">
+      <div class="kb-section-head-left">
+        <span class="kb-section-num">KB · 05</span>
+        <h2 class="kb-section-title">Deep-Dive <em>Articles</em></h2>
+      </div>
+      <span class="kb-section-count">7 FEATURED · 40+ TOTAL</span>
+    </div>
+    <p class="kb-section-deck">Long-form analysis from the DPDPIndia research team — comparative law, enforcement deep-dives, sector mapping and policy critique.</p>
+    <div class="kb-card-grid">
+      <a href="blog.html" class="kb-card pinned"><div class="kb-card-tag">★ All Articles</div><div class="kb-card-title">Browse the Full Article Archive</div><span class="kb-card-arrow">→</span></a>
+      <a href="blog-gdpr-vs-dpdp-comparison.html" class="kb-card"><div class="kb-card-tag">Comparative</div><div class="kb-card-title">GDPR vs DPDP — 10 Hidden Differences</div><span class="kb-card-arrow">→</span></a>
+      <a href="blog-dpdp-consent-frameworks.html" class="kb-card"><div class="kb-card-tag">DPDP</div><div class="kb-card-title">DPDP Consent Frameworks</div><span class="kb-card-arrow">→</span></a>
+      <a href="blog-dpdp-data-fiduciary-vs-processor.html" class="kb-card"><div class="kb-card-tag">DPDP</div><div class="kb-card-title">Data Fiduciary vs Processor</div><span class="kb-card-arrow">→</span></a>
+      <a href="blog-dpdp-dpbi-enforcement.html" class="kb-card"><div class="kb-card-tag">Enforcement</div><div class="kb-card-title">DPBI's First Enforcement Cycle</div><span class="kb-card-arrow">→</span></a>
+      <a href="blog-dpdp-geospatial-data-governance.html" class="kb-card"><div class="kb-card-tag">Geospatial</div><div class="kb-card-title">Geospatial Data Governance under DPDP</div><span class="kb-card-arrow">→</span></a>
+      <a href="blog-gati-shakti-dpdp-compliance.html" class="kb-card"><div class="kb-card-tag">Infra</div><div class="kb-card-title">Gati Shakti &amp; DPDP Compliance</div><span class="kb-card-arrow">→</span></a>
+      <a href="blog-itact-section-66c-identity-theft.html" class="kb-card"><div class="kb-card-tag">IT Act</div><div class="kb-card-title">Section 66C — Identity Theft</div><span class="kb-card-arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 6: NEWSLETTER ===== -->
+<section class="kb-section" data-cat="newsletter" id="newsletter">
+  <div class="kb-section-inner">
+    <div class="kb-section-head">
+      <div class="kb-section-head-left">
+        <span class="kb-section-num">KB · 06</span>
+        <h2 class="kb-section-title">Newsletter <em>Archive</em></h2>
+      </div>
+      <span class="kb-section-count">DAILY · WEEKLY · MONTHLY</span>
+    </div>
+    <p class="kb-section-deck">Briefings curated by the DPDPIndia team — daily news, weekly recap, and monthly deep-dive on DPDP, IT Act and cyber-crime.</p>
+    <div class="kb-card-grid">
+      <a href="monthly-briefing-2026-06.html" class="kb-card pinned"><div class="kb-card-tag">★ Latest · June 2026</div><div class="kb-card-title">Monthly Briefing — June 2026</div><span class="kb-card-arrow">→</span></a>
+      <a href="monthly-briefing-2026-05.html" class="kb-card"><div class="kb-card-tag">Monthly</div><div class="kb-card-title">Monthly Briefing — May 2026</div><span class="kb-card-arrow">→</span></a>
+      <a href="monthly-briefing-2026-04.html" class="kb-card"><div class="kb-card-tag">Monthly</div><div class="kb-card-title">Monthly Briefing — April 2026</div><span class="kb-card-arrow">→</span></a>
+      <a href="monthly-briefing.html" class="kb-card"><div class="kb-card-tag">Archive</div><div class="kb-card-title">All Monthly Editions</div><span class="kb-card-arrow">→</span></a>
+      <a href="weekly-briefing.html" class="kb-card"><div class="kb-card-tag">Weekly</div><div class="kb-card-title">Weekly Briefing Series</div><span class="kb-card-arrow">→</span></a>
+      <a href="weekly-briefing-2026-03-30.html" class="kb-card"><div class="kb-card-tag">Weekly</div><div class="kb-card-title">Weekly — 30 Mar 2026</div><span class="kb-card-arrow">→</span></a>
+      <a href="weekly-briefing-2026-03-24.html" class="kb-card"><div class="kb-card-tag">Weekly</div><div class="kb-card-title">Weekly — 24 Mar 2026</div><span class="kb-card-arrow">→</span></a>
+      <a href="daily-briefing-2026-03-25.html" class="kb-card"><div class="kb-card-tag">Daily</div><div class="kb-card-title">Daily — 25 Mar 2026</div><span class="kb-card-arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <h4>DPDPIndia.in</h4>
+      <p style="font-size:0.82rem;line-height:1.6;color:rgba(248,244,236,0.55);max-width:380px;">India's premier independent research portal on the Digital Personal Data Protection Act 2023, IT Act 2000, Aadhaar eKYC and cyber crime.</p>
+    </div>
+    <div>
+      <h4>Pillars</h4>
+      <a href="dpdp-kb.html">DPDP Act</a>
+      <a href="cyber-fraud-hub.html">Cyber Crime</a>
+      <a href="knowledge-base.html">Knowledge Base</a>
+    </div>
+    <div>
+      <h4>Audience</h4>
+      <a href="for-individuals.html">Individuals</a>
+      <a href="for-businesses.html">Businesses</a>
+      <a href="legal.html">Legal</a>
+    </div>
+    <div>
+      <h4>Reach Us</h4>
+      <a href="contact.html">Contact</a>
+      <a href="monthly-briefing.html">Newsletter</a>
+      <a href="cyber-fraud-hub.html" style="color:#F0A840;">🚨 1930 Helpline</a>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <span>© 2024–2026 DPDPIndia.in · Research &amp; advocacy portal</span>
+    <span>Not legal advice · See <a href="legal.html" style="color:rgba(248,244,236,0.6);text-decoration:underline;">terms</a></span>
+  </div>
+</footer>
+
+<script>
+  // Hamburger
+  const ham = document.getElementById('hamburger');
+  const mm = document.getElementById('mobileMenu');
+  ham?.addEventListener('click', () => mm.classList.toggle('open'));
+
+  // Filters
+  const filters = document.querySelectorAll('.kb-filter');
+  const sections = document.querySelectorAll('.kb-section');
+  filters.forEach(f => f.addEventListener('click', () => {
+    filters.forEach(x => x.classList.remove('active'));
+    f.classList.add('active');
+    const cat = f.dataset.filter;
+    sections.forEach(s => {
+      s.style.display = (cat === 'all' || s.dataset.cat === cat) ? '' : 'none';
+    });
+  }));
+
+  // Live search across visible KB cards
+  const search = document.getElementById('kbSearchInput');
+  search?.addEventListener('input', () => {
+    const q = search.value.trim().toLowerCase();
+    let hadHit = false;
+    sections.forEach(s => {
+      let visibleInSection = 0;
+      s.querySelectorAll('.kb-card').forEach(card => {
+        const text = (card.innerText || '').toLowerCase();
+        const match = !q || text.includes(q);
+        card.style.display = match ? '' : 'none';
+        if (match) visibleInSection++;
+      });
+      const filterActive = document.querySelector('.kb-filter.active').dataset.filter;
+      const catMatch = (filterActive === 'all' || s.dataset.cat === filterActive);
+      s.style.display = (visibleInSection > 0 && catMatch) ? '' : 'none';
+      if (visibleInSection > 0 && catMatch) hadHit = true;
+    });
+  });
+</script>
+
+</body>
+</html>
