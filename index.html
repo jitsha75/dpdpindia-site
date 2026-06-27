@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DPDPIndia.in — India's DPDP Act & Cyber Crime Research Portal</title>
-<meta name="description" content="India's premier research portal on the DPDP Act 2023 and cyber crime. Plain-language explainers, compliance kits, fraud reporting, and a structured knowledge base for IT Act, eKYC, AI policy and case law.">
-<meta name="keywords" content="DPDP Act 2023, cyber crime India, 1930 helpline, data protection India, IT Act, Aadhaar eKYC, DPDP compliance">
+<title>DPDPIndia.in — DPDP Act, Cyber Crime & PSU Data Governance Research Portal</title>
+<meta name="description" content="India's premier research portal on the DPDP Act 2023, cyber crime, and PSU/government data governance. Plain-language explainers, CAG IS Audit + COBIT 2019 guidance, compliance kits, fraud reporting, structured knowledge base for IT Act, eKYC, AI policy and case law.">
+<meta name="keywords" content="DPDP Act 2023, cyber crime India, 1930 helpline, data protection India, IT Act, Aadhaar eKYC, DPDP compliance, PSU data governance, CAG IS Audit COBIT 2019, government data audit India">
 <link rel="canonical" href="https://www.dpdpindia.in/">
-<meta property="og:title" content="DPDPIndia.in — DPDP Act & Cyber Crime Research Portal">
-<meta property="og:description" content="Two pillars, one knowledge base. Find DPDP Act guidance and cyber crime help in under 30 seconds.">
+<meta property="og:title" content="DPDPIndia.in — DPDP Act, Cyber Crime &amp; PSU Data Governance">
+<meta property="og:description" content="Three pillars, one knowledge base. DPDP Act guidance, cyber crime help, and PSU data governance (DPDPA + CAG IS Audit + COBIT 2019) — in under 30 seconds.">
 <meta property="og:image" content="https://www.dpdpindia.in/og-default.png">
 <meta property="og:url" content="https://www.dpdpindia.in/">
 <meta name="twitter:card" content="summary_large_image">
@@ -89,24 +89,29 @@ a:hover{color:var(--saffron);}
 /* ===== DUAL PILLAR CARDS ===== */
 .pillars{padding:3rem 0;}
 .pillars-inner{max-width:var(--max);margin:0 auto;padding:0 1.5rem;}
-.pillars-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
-.pillar-card{background:var(--cream);border:1px solid var(--rule);border-radius:10px;padding:2rem;display:flex;flex-direction:column;transition:all 0.2s;position:relative;overflow:hidden;}
+.pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+.pillar-card{background:var(--cream);border:1px solid var(--rule);border-radius:10px;padding:1.7rem;display:flex;flex-direction:column;transition:all 0.2s;position:relative;overflow:hidden;}
 .pillar-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--saffron);}
 .pillar-card.cyber::before{background:var(--danger);}
+.pillar-card.psu::before{background:var(--indigo);}
 .pillar-card:hover{box-shadow:var(--shadow-md);transform:translateY(-3px);}
 .pillar-kicker{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.5rem;}
 .pillar-card.cyber .pillar-kicker{color:var(--danger);}
-.pillar-title{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:var(--prussian);margin-bottom:0.6rem;line-height:1.15;}
-.pillar-deck{font-size:0.92rem;color:var(--slate);line-height:1.55;margin-bottom:1.2rem;font-weight:300;}
-.pillar-links{display:grid;grid-template-columns:1fr 1fr;gap:0.3rem 1rem;margin-bottom:1.5rem;}
-.pillar-links a{font-family:'DM Sans',sans-serif;font-size:0.85rem;color:var(--slate);padding:6px 0;border-bottom:1px dotted var(--rule);transition:all 0.15s;display:flex;align-items:center;gap:0.4rem;}
+.pillar-card.psu .pillar-kicker{color:var(--indigo);}
+.pillar-title{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;color:var(--prussian);margin-bottom:0.5rem;line-height:1.2;}
+.pillar-deck{font-size:0.88rem;color:var(--slate);line-height:1.55;margin-bottom:1rem;font-weight:300;}
+.pillar-links{display:grid;grid-template-columns:1fr;gap:0.2rem;margin-bottom:1.2rem;}
+.pillar-links a{font-family:'DM Sans',sans-serif;font-size:0.82rem;color:var(--slate);padding:5px 0;border-bottom:1px dotted var(--rule);transition:all 0.15s;display:flex;align-items:center;gap:0.4rem;}
 .pillar-links a::before{content:'›';color:var(--saffron);font-weight:700;}
 .pillar-card.cyber .pillar-links a::before{color:var(--danger);}
+.pillar-card.psu .pillar-links a::before{color:var(--indigo);}
 .pillar-links a:hover{color:var(--prussian);padding-left:4px;}
-.pillar-cta{display:inline-flex;align-items:center;gap:0.5rem;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:600;color:#fff;background:var(--prussian);padding:0.7rem 1.2rem;border-radius:6px;align-self:flex-start;margin-top:auto;transition:all 0.15s;}
+.pillar-cta{display:inline-flex;align-items:center;gap:0.5rem;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:600;color:#fff;background:var(--prussian);padding:0.65rem 1.1rem;border-radius:6px;align-self:flex-start;margin-top:auto;transition:all 0.15s;}
 .pillar-cta:hover{background:var(--saffron);color:#fff;}
 .pillar-card.cyber .pillar-cta{background:var(--danger);}
 .pillar-card.cyber .pillar-cta:hover{background:#9c2d22;}
+.pillar-card.psu .pillar-cta{background:var(--indigo);}
+.pillar-card.psu .pillar-cta:hover{background:var(--saffron);}
 
 /* ===== AUDIENCE STRIP ===== */
 .audience{background:var(--paper);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:2rem 0;}
@@ -167,6 +172,9 @@ a:hover{color:var(--saffron);}
 .footer-legal{border-top:1px solid rgba(255,255,255,0.1);max-width:var(--max);margin:1.5rem auto 0;padding:1rem 1.5rem 0;display:flex;justify-content:space-between;font-size:0.74rem;color:rgba(248,244,236,0.4);}
 
 /* ===== RESPONSIVE ===== */
+@media(max-width:1100px){
+  .pillars-grid{grid-template-columns:1fr;}
+}
 @media(max-width:980px){
   .pillars-grid{grid-template-columns:1fr;}
   .insights-grid{grid-template-columns:1fr;}
@@ -197,7 +205,7 @@ a:hover{color:var(--saffron);}
 
 <!-- ===== MASTHEAD ===== -->
 <div class="masthead">
-  <div class="masthead-text">India's Premier <span>DPDP Act &amp; Cyber Crime</span> Research Portal · Est. 2024</div>
+  <div class="masthead-text">India's Premier <span>DPDP · Cyber Crime · PSU Data Governance</span> Research Portal · Est. 2024</div>
 </div>
 
 <!-- ===== NAV ===== -->
@@ -238,6 +246,19 @@ a:hover{color:var(--saffron);}
           <a href="cybercrime-remedy-guide.html">How to Report — Step by Step</a>
           <a href="cyber-fraud-hub.html">Fraud Alert Hub</a>
           <a href="cybercrime-electronic-evidence.html">Preserving Evidence</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="psu-data-governance.html">For Govt &amp; PSU ▾</a>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-label">Two Pillars</div>
+          <a href="psu-data-governance.html">PSU Governance Hub</a>
+          <a href="psu-privacy-kb.html">Privacy Compliance (DPDPA)</a>
+          <a href="psu-cag-audit-kb.html">CAG Audit &amp; COBIT KB</a>
+          <div class="nav-dropdown-label" style="margin-top:0.5rem;">Implement</div>
+          <a href="psu-data-governance.html#timeline">18-Month Timeline</a>
+          <a href="psu-cag-audit-kb.html#bcpl">BCPL Case Study</a>
+          <a href="contact.html?subject=PSU+Templates">Request Templates</a>
         </div>
       </li>
       <li class="nav-item">
@@ -311,6 +332,11 @@ a:hover{color:var(--saffron);}
       <li><a href="cyber-fraud-hub.html">Fraud Alert Hub</a></li>
       <li><a href="cybercrime-financial.html">Financial Fraud</a></li>
       <li><a href="cybercrime-remedy-guide.html">How to Report</a></li>
+      <span class="mm-label">For Govt &amp; PSU</span>
+      <li><a href="psu-data-governance.html">PSU Governance Hub</a></li>
+      <li><a href="psu-privacy-kb.html">DPDPA for PSUs</a></li>
+      <li><a href="psu-cag-audit-kb.html">CAG Audit &amp; COBIT KB</a></li>
+      <li><a href="contact.html?subject=PSU+Templates">Request Templates</a></li>
       <span class="mm-label">Knowledge Base</span>
       <li><a href="knowledge-base.html">Master KB Index</a></li>
       <li><a href="itact-kb.html">IT Act 2000</a></li>
@@ -330,8 +356,8 @@ a:hover{color:var(--saffron);}
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-kicker">India's Premier Research Portal · DPDP Act 2023 + Cyber Crime</div>
-    <h1 class="hero-title">Two pillars. One <em>knowledge base</em>. Answers in 30 seconds.</h1>
-    <p class="hero-deck">DPDPIndia.in is India's go-to portal for the Digital Personal Data Protection Act and cyber crime. Every page is short, every link gets you closer — no scrolling marathons.</p>
+    <h1 class="hero-title">Three pillars. One <em>knowledge base</em>. Answers in 30 seconds.</h1>
+    <p class="hero-deck">DPDPIndia.in is India's go-to portal for the DPDP Act, cyber crime, and PSU/government data governance — DPDPA + CAG IS Audit + COBIT 2019, board-ready. Every page is short, every link gets you closer.</p>
     <div class="quick-chips">
       <a href="dpdp-act.html" class="quick-chip"><span class="quick-chip-emoji">📘</span> Understand DPDP Act</a>
       <a href="cybercrime-remedy-guide.html" class="quick-chip"><span class="quick-chip-emoji">🚨</span> Report a Cyber Crime</a>
@@ -369,18 +395,30 @@ a:hover{color:var(--saffron);}
       <article class="pillar-card cyber">
         <div class="pillar-kicker">Pillar 02 · Cyber Crime</div>
         <h2 class="pillar-title">Cyber Crime &amp; Fraud Remedies</h2>
-        <p class="pillar-deck">From UPI scams to Digital Arrest, learn the playbook used by fraudsters — and the exact 5-step process to report and recover, including the 1930 helpline.</p>
+        <p class="pillar-deck">From UPI scams to Digital Arrest — the playbook used by fraudsters and the exact 5-step process to report and recover, including the 1930 helpline.</p>
         <div class="pillar-links">
           <a href="cybercrime-financial.html">Financial / UPI Fraud</a>
-          <a href="cybercrime-personal.html">Personal &amp; Social Crimes</a>
           <a href="cybercrime-remedy-guide.html">How to Report (Step-by-Step)</a>
           <a href="cyber-fraud-hub.html">Live Fraud Alerts</a>
           <a href="cybercrime-children.html">Crimes Against Children</a>
           <a href="cybercrime-electronic-evidence.html">Preserve Evidence</a>
-          <a href="cybercrime-forensics.html">Forensic Process</a>
-          <a href="cybercrime-bns2023.html">BNS 2023 &amp; Cyber</a>
         </div>
         <a href="cyber-fraud-hub.html" class="pillar-cta">Open Cyber Crime Hub →</a>
+      </article>
+
+      <!-- PSU DATA GOVERNANCE PILLAR -->
+      <article class="pillar-card psu">
+        <div class="pillar-kicker">Pillar 03 · Govt &amp; PSU</div>
+        <h2 class="pillar-title">Data Governance for PSUs</h2>
+        <p class="pillar-deck">DPDP Act 2023 + CAG IS Audit Manual 2024 (COBIT 2019) as one integrated framework for PSU boards, secretaries and CIOs. The 18-month roadmap to 12 May 2027.</p>
+        <div class="pillar-links">
+          <a href="psu-data-governance.html">PSU Data Governance Hub</a>
+          <a href="psu-privacy-kb.html">DPDPA for PSUs</a>
+          <a href="psu-cag-audit-kb.html">CAG Audit &amp; COBIT KB</a>
+          <a href="psu-data-governance.html#timeline">18-Month Compliance Timeline</a>
+          <a href="psu-cag-audit-kb.html#bcpl">BCPL Case Study</a>
+        </div>
+        <a href="psu-data-governance.html" class="pillar-cta">Open PSU Governance Hub →</a>
       </article>
 
     </div>
@@ -494,6 +532,7 @@ a:hover{color:var(--saffron);}
       <h4>Pillars</h4>
       <a href="dpdp-kb.html">DPDP Act</a>
       <a href="cyber-fraud-hub.html">Cyber Crime</a>
+      <a href="psu-data-governance.html">Govt &amp; PSU Data Governance</a>
       <a href="knowledge-base.html">Knowledge Base</a>
     </div>
     <div>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:wght@600;700&display=swap">
+<title>DPDP Act 2023 for PSUs &amp; Government Departments — Privacy Compliance KB | DPDPIndia.in</title>
+<meta name="description" content="Authoritative DPDP Act 2023 + DPDP Rules 2025 knowledge base for Indian PSUs and government departments. Section 17 carve-out, Significant Data Fiduciary obligations, DPO appointment, Rule 12 algorithmic due diligence, RTI×DPDPA conflict, 18-month compliance roadmap to 12 May 2027.">
+<meta name="keywords" content="DPDP Act PSU India, government department DPDPA, Section 17 exemption PSU, Significant Data Fiduciary government, DPDP Rules 2025 PSU, Rule 12 algorithmic due diligence, RTI DPDP conflict, Section 8(1)(j) amendment, DPO PSU, breach notification DPBI, Consent Manager PSU">
+<meta name="robots" content="index, follow">
+<meta name="author" content="DPDPIndia.in Research Team">
+<link rel="canonical" href="https://www.dpdpindia.in/psu-privacy-kb.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DPDPIndia.in">
+<meta property="og:title" content="DPDP Act 2023 for PSUs &amp; Government Departments — Privacy Compliance KB">
+<meta property="og:description" content="Pillar 1 of the PSU Data Governance hub on DPDPIndia.in — DPDPA applicability, Section 17, SDF obligations, Rule 12, RTI conflict, full 18-month implementation timeline.">
+<meta property="og:url" content="https://www.dpdpindia.in/psu-privacy-kb.html">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"DPDP Act 2023 for PSUs &amp; Government Departments — Privacy Compliance Knowledge Base","description":"Pillar 1 of the PSU Data Governance hub on DPDPIndia.in.","author":{"@type":"Organization","name":"DPDPIndia.in"},"datePublished":"2026-06-27","url":"https://www.dpdpindia.in/psu-privacy-kb.html"}
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="last-updated" content="June 2026 — DPDP Rules 2025">
+<link rel="stylesheet" href="site-global.css">
+<style>
+:root{
+  --navy:#0a1628;--navy2:#132040;
+  --blue:#1a5cad;--amber:#d4900a;--amber-light:#f5c842;
+  --teal:#0e7c6b;--coral:#c2420a;--purple:#5b4bc4;
+  --green:#156c2e;--red:#b91c1c;
+  --surface:#f4f6fb;--surface2:#eaeff8;
+  --text:#0d1b2a;--text2:#3a4a5c;--text3:#6b7e94;
+  --border:#c8d4e8;--border2:#b0c0d8;--white:#ffffff;
+  --font-body:'IBM Plex Sans',sans-serif;
+  --font-display:'Playfair Display',serif;
+  --font-mono:'IBM Plex Mono',monospace;
+  --radius:8px;--radius-lg:12px;
+  --shadow:0 2px 12px rgba(10,22,40,.08);
+  --shadow-md:0 4px 24px rgba(10,22,40,.14);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--surface);color:var(--text);font-size:15px;line-height:1.7;}
+
+.header{background:var(--navy);color:#fff;position:relative;overflow:hidden;}
+.header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px),repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px);}
+.header-inner{position:relative;max-width:960px;margin:0 auto;padding:52px 40px 56px;}
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:24px;font-family:var(--font-mono);font-size:11px;}
+.breadcrumb a{color:rgba(255,255,255,.5);text-decoration:none;}
+.breadcrumb a:hover{color:var(--amber-light);}
+.breadcrumb .sep{color:rgba(255,255,255,.25);}
+.breadcrumb .cur{color:var(--amber-light);}
+.header-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:4px 14px;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:20px;}
+.header-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--amber-light);}
+.header h1{font-family:var(--font-display);font-size:clamp(28px,5vw,42px);font-weight:700;line-height:1.15;color:#fff;margin-bottom:14px;max-width:780px;}
+.header h1 em{font-style:italic;color:var(--amber-light);}
+.header-sub{font-size:15px;color:rgba(255,255,255,.65);max-width:700px;line-height:1.7;margin-bottom:28px;}
+.header-toc{display:flex;flex-wrap:wrap;gap:10px;}
+.header-toc a{font-family:var(--font-mono);font-size:11px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);padding:6px 12px;border-radius:4px;color:rgba(255,255,255,.7);text-decoration:none;letter-spacing:.06em;text-transform:uppercase;}
+.header-toc a:hover{background:var(--amber);color:#fff;border-color:var(--amber);}
+
+.main{max-width:960px;margin:0 auto;padding:40px 40px 60px;}
+.kicker{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin:36px 0 8px;display:flex;align-items:center;gap:10px;}
+.kicker::before{content:'';width:24px;height:1px;background:var(--amber);}
+h2.t{font-family:var(--font-display);font-size:26px;font-weight:700;color:var(--text);margin-bottom:12px;line-height:1.2;}
+h3.s{font-family:var(--font-display);font-size:19px;font-weight:700;color:var(--text);margin:22px 0 10px;}
+p{margin-bottom:14px;color:var(--text2);}
+ul.b{margin:10px 0 14px 22px;color:var(--text2);}
+ul.b li{margin:6px 0;}
+
+.lede{font-size:15.5px;color:var(--text2);margin-bottom:18px;max-width:800px;}
+.answerfirst{background:#fff;border-left:4px solid var(--blue);padding:18px 22px;border-radius:6px;margin:16px 0 22px;font-size:14.5px;color:var(--text);box-shadow:var(--shadow);}
+.answerfirst strong{color:var(--navy);}
+
+.alert{background:#fef3cd;border-left:4px solid var(--amber);padding:16px 20px;border-radius:6px;margin:18px 0;font-size:14px;color:#5b3d0a;}
+.alert strong{color:#854f0b;}
+.alert-red{background:#fef2f2;border-left-color:var(--red);color:#7f1d1d;}
+.alert-red strong{color:#7f1d1d;}
+
+.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius);margin:18px 0;background:var(--white);box-shadow:var(--shadow);}
+table{width:100%;border-collapse:collapse;font-size:13.5px;}
+th{background:var(--navy);color:#fff;text-align:left;padding:12px 16px;font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;}
+td{padding:12px 16px;border-top:1px solid var(--border);color:var(--text2);vertical-align:top;}
+td strong{color:var(--text);}
+td.code{font-family:var(--font-mono);font-size:12px;color:var(--blue);}
+
+.split{background:#fff;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin:18px 0;box-shadow:var(--shadow);}
+.split-head{background:var(--navy);color:#fff;padding:12px 18px;font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;}
+.split-grid{display:grid;grid-template-columns:1fr 1fr;}
+.split-col{padding:18px 22px;}
+.split-col + .split-col{border-left:1px solid var(--border);}
+.split-label{font-family:var(--font-mono);font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;}
+.split-label.before{color:var(--coral);}
+.split-label.after{color:var(--green);}
+.split-text{font-size:13.5px;color:var(--text2);line-height:1.6;}
+
+.penalty-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:18px 0;}
+.pn{background:#fff;border:1px solid var(--border);border-left:4px solid var(--red);border-radius:var(--radius);padding:16px 20px;box-shadow:var(--shadow);}
+.pn-amt{font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--red);line-height:1;}
+.pn-what{font-size:13px;color:var(--text2);margin-top:6px;}
+.pn-ref{font-family:var(--font-mono);font-size:10.5px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-top:8px;}
+
+.cta-band{background:var(--navy);color:#fff;border-radius:var(--radius-lg);padding:28px 34px;margin:40px 0 30px;display:grid;grid-template-columns:2fr 1fr;gap:20px;align-items:center;}
+.cta-band h3{font-family:var(--font-display);font-size:20px;font-weight:700;margin-bottom:6px;color:#fff;}
+.cta-band p{color:rgba(255,255,255,.65);font-size:13.5px;margin:0;}
+.cta-band a{background:var(--amber);color:var(--navy);padding:12px 22px;border-radius:6px;font-family:var(--font-mono);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;text-decoration:none;text-align:center;}
+
+.foot{max-width:960px;margin:30px auto 0;padding:24px 40px 40px;border-top:1px solid var(--border);font-size:12.5px;color:var(--text3);text-align:center;}
+.foot a{color:var(--blue);}
+
+@media(max-width:760px){
+  .split-grid,.penalty-grid{grid-template-columns:1fr;}
+  .split-col + .split-col{border-left:none;border-top:1px solid var(--border);}
+  .cta-band{grid-template-columns:1fr;}
+  .header-inner,.main{padding-left:24px;padding-right:24px;}
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span class="sep">/</span>
+      <a href="psu-data-governance.html">Data Governance for PSUs</a><span class="sep">/</span>
+      <span class="cur">DPDPA Privacy Compliance KB</span>
+    </div>
+    <div class="header-badge"><span class="dot"></span>Pillar 1 · Privacy Compliance</div>
+    <h1>DPDP Act 2023 for <em>PSUs &amp; Government Departments</em></h1>
+    <p class="header-sub">Section-by-section guidance on how the Digital Personal Data Protection Act 2023 and DPDP Rules 2025 apply to public-sector entities. Written for boards, secretaries, DPOs and General Counsel — neutral on tools, anchored on statute.</p>
+    <div class="header-toc">
+      <a href="#applicability">§1 Applicability</a>
+      <a href="#section17">§2 Section 17 Carve-out</a>
+      <a href="#sdf">§3 SDF Classification</a>
+      <a href="#sdf-obligations">§4 SDF Obligations</a>
+      <a href="#rule12">§5 Rule 12 Algorithmic</a>
+      <a href="#timeline">§6 Compliance Timeline</a>
+      <a href="#rti">§7 RTI × DPDPA</a>
+      <a href="#breach">§8 Breach Response</a>
+      <a href="#penalties">§9 Penalties</a>
+    </div>
+  </div>
+</header>
+
+<main class="main">
+
+<!-- §1 -->
+<section id="applicability">
+  <div class="kicker">§1 · Applicability</div>
+  <h2 class="t">Is your PSU a Data Fiduciary? Yes — and that has consequences.</h2>
+
+  <div class="answerfirst"><strong>In one paragraph.</strong> Any public sector undertaking, municipal corporation or government department that <em>determines the purposes and means of processing</em> digital personal data is a <strong>Data Fiduciary</strong> under the DPDP Act 2023. This includes data collected digitally and data collected offline but later digitised. The constitutional baseline is <em>Justice K.S. Puttaswamy v. Union of India</em> (2017) — privacy is a fundamental right under Article 21. The statutory consequence is a strict set of operational obligations with penalties up to ₹250 crore. The state is not insulated; Section 17 carve-outs are functional and narrow, not institutional.</div>
+
+  <h3 class="s">Examples of clearly covered PSU operations</h3>
+  <ul class="b">
+    <li>Public utility billing portals (electricity, water, gas distribution PSUs)</li>
+    <li>Transport and ticketing platforms (IRCTC, state transport, metro, port booking)</li>
+    <li>Banking and NBFC platforms run by PSU banks, NBFCs and state cooperative entities</li>
+    <li>e-Governance citizen-service portals (welfare, licensing, certificate issuance)</li>
+    <li>HR and payroll systems holding employee personal data</li>
+    <li>Vendor onboarding and procurement portals (KYC, PAN, GSTIN data)</li>
+  </ul>
+</section>
+
+<!-- §2 -->
+<section id="section17">
+  <div class="kicker">§2 · Section 17 — The Narrow Carve-out</div>
+  <h2 class="t">Functional exemption, not institutional immunity</h2>
+  <p class="lede">Section 17 of the DPDPA empowers the Central Government to exempt the state from specific provisions — primarily for sovereignty, public order and crime prevention. The exemption is operational, applies workflow by workflow, and must be documented to be defended.</p>
+
+  <div class="alert"><strong>Standing rule for PSU Legal Counsel:</strong> A PSU cannot claim a blanket institutional exemption. Each citizen-facing application must be mapped to determine whether it falls within Section 7 "legitimate uses" or Section 17 exemptions — and which provisions it is exempted <em>from</em>. Default position is full compliance.</div>
+
+  <h3 class="s">Section 17 Function-Mapping Exercise — what your Legal Counsel must produce</h3>
+  <ul class="b">
+    <li><strong>Workflow inventory</strong> — every citizen-facing process, system or scheme listed and classified</li>
+    <li><strong>Section 7 mapping</strong> — which workflows qualify as "legitimate uses" (subsidy delivery, statutory licensing, public health, law enforcement)</li>
+    <li><strong>Section 17 mapping</strong> — which workflows fall within a notified exemption category</li>
+    <li><strong>Provision-level analysis</strong> — exactly which provisions the workflow is exempted from (notice, consent, retention, etc.)</li>
+    <li><strong>Section 17 Exemption Register</strong> — formal document maintained by the DPO, ratified by the Board</li>
+  </ul>
+</section>
+
+<!-- §3 -->
+<section id="sdf">
+  <div class="kicker">§3 · SDF Classification</div>
+  <h2 class="t">Why most PSUs will be Significant Data Fiduciaries</h2>
+  <p class="lede">Section 10 of the DPDPA empowers the Central Government to notify a Data Fiduciary or class of Data Fiduciaries as a <strong>Significant Data Fiduciary (SDF)</strong>. Five statutory factors decide it. PSUs running citizen-facing databases at scale will, in most cases, qualify.</p>
+
+  <h3 class="s">The five Section 10 factors</h3>
+  <ul class="b">
+    <li>Volume and sensitivity of personal data processed</li>
+    <li>Risk of harm to data principals</li>
+    <li>Potential impact on the sovereignty and integrity of India</li>
+    <li>Risk to electoral democracy</li>
+    <li>Use of emerging technologies (AI/ML, biometrics, IoT)</li>
+  </ul>
+</section>
+
+<!-- §4 -->
+<section id="sdf-obligations">
+  <div class="kicker">§4 · SDF Additional Obligations</div>
+  <h2 class="t">Standard Data Fiduciary vs Significant Data Fiduciary</h2>
+  <p class="lede">The SDF additional obligations are not incremental — they are the audit posture. Read this table as a checklist the Board must approve by resolution.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Dimension</th><th>Standard Data Fiduciary</th><th>Significant Data Fiduciary</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Leadership</strong></td><td>Grievance officer with published contact</td><td>India-resident DPO reporting to Board / Audit Committee — point of contact for DPBI</td></tr>
+        <tr><td><strong>Independent Evaluation</strong></td><td>Internal reviews recommended</td><td>External independent data auditor — every 12 months (Rule 13)</td></tr>
+        <tr><td><strong>Impact Assessment</strong></td><td>Risk assessment encouraged</td><td>Comprehensive annual <strong>DPIA</strong> on high-risk processing</td></tr>
+        <tr><td><strong>Algorithmic Oversight</strong></td><td>Standard application validation</td><td><strong>Rule 12 algorithmic due diligence</strong> — see §5</td></tr>
+        <tr><td><strong>Localisation</strong></td><td>Cross-border permitted unless on negative list</td><td>Strict localisation for state-notified categories of personal data and traffic data</td></tr>
+        <tr><td><strong>Board Reporting</strong></td><td>Not statutory</td><td>DPO reports outcomes of DPIA and external audit to the Board / Audit Committee</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="s">Appointing a DPO in a PSU — what the Board resolution should cover</h3>
+  <ul class="b">
+    <li>India-resident individual with documented privacy-law expertise (often paired with CISA/DISA or DPDPA-specific certification)</li>
+    <li>Direct reporting line to the Audit Committee; dotted line to CEO/MD</li>
+    <li>Sufficient seniority and authority — not a junior compliance role</li>
+    <li>Independence from IT operations and procurement</li>
+    <li>Published business contact details on every citizen-facing channel — website, app, transactional portal, signage</li>
+    <li>Annual confidential report to the Board on the state of DPDPA compliance</li>
+  </ul>
+</section>
+
+<!-- §5 -->
+<section id="rule12">
+  <div class="kicker">§5 · Rule 12 — Algorithmic Due Diligence</div>
+  <h2 class="t">A new obligation that catches every PSU running automated decisions</h2>
+
+  <div class="answerfirst"><strong>In one paragraph.</strong> Rule 12 of the DPDP Rules 2025 requires Significant Data Fiduciaries to verify that algorithmic software used to host, display, upload, modify, transmit or share personal data <em>does not pose risks to the rights of data principals</em>. For PSUs, this catches welfare-eligibility scoring, traffic-challan engines, KYC scoring, profiling systems, automated case-disposal engines, and any AI-driven citizen-service workflow. Most existing DPDPA content underplays this; we lead with it because the implementation lift is non-trivial.</div>
+
+  <h3 class="s">Five operational requirements under Rule 12</h3>
+  <ul class="b">
+    <li><strong>Explainability mechanism</strong> — every automated adverse decision must be capable of human-readable explanation, in a language the principal understands</li>
+    <li><strong>Bias detection</strong> — periodic testing on representative datasets, documented in the DPIA</li>
+    <li><strong>Human-in-the-loop</strong> — meaningful review for decisions affecting entitlements, licensing or enforcement; not rubber-stamping</li>
+    <li><strong>Tamper-proof decision logs</strong> — sufficient to support an independent audit of any individual decision</li>
+    <li><strong>Annual DPIA coverage</strong> — Rule 12 obligations integrated into the high-risk processing DPIA</li>
+  </ul>
+</section>
+
+<!-- §6 -->
+<section id="timeline">
+  <div class="kicker">§6 · 18-Month Compliance Timeline</div>
+  <h2 class="t">The statutory clock — 13 November 2025 to 12 May 2027</h2>
+  <p class="lede">DPDP Rules 2025 were notified on 13 November 2025. The 18-month phased compliance window closes on 12 May 2027. These are statutory deadlines, not aspirational targets.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Milestone</th><th>Rule</th><th>Statutory Target</th></tr></thead>
+      <tbody>
+        <tr><td>Retrospective privacy notices for historical data</td><td class="code">Rule 3</td><td>Immediate — continuous deployment through transition</td></tr>
+        <tr><td>Consent Manager registration and interoperability</td><td class="code">Rule 4</td><td>12 months — by November 2026</td></tr>
+        <tr><td>Mandatory technical safeguards (encryption, access, logs)</td><td class="code">Rule 6 / 3rd Schedule</td><td>18 months — by 12 May 2027</td></tr>
+        <tr><td>Operational and security log retention</td><td class="code">Rule 6</td><td>Minimum 12 months tamper-proof</td></tr>
+        <tr><td>Data erasure and deletion controls</td><td class="code">Rule 8</td><td>Automated erasure on purpose completion or withdrawal</td></tr>
+        <tr><td>Children's consent verification</td><td class="code">Rule 10</td><td>Parental/guardian verification protocol</td></tr>
+        <tr><td>SDF additional obligations (DPO, DPIA, audit, Rule 12)</td><td class="code">Rule 13</td><td>Within 12 months of SDF notification</td></tr>
+        <tr><td>Grievance redressal SLA</td><td class="code">Rule 14</td><td>Maximum 90 days statutory</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- §7 -->
+<section id="rti">
+  <div class="kicker">§7 · The RTI × DPDPA Reconfiguration</div>
+  <h2 class="t">Section 8(1)(j) — the amendment most PSUs have not absorbed</h2>
+
+  <div class="answerfirst"><strong>In one paragraph.</strong> The DPDP Act 2023 amends Section 8(1)(j) of the RTI Act 2005, removing the "public interest override" that previously allowed disclosure of personal information of public officials. The amended provision is a near-blanket statutory bar on disclosing personal information — asset declarations, disciplinary records, credentials, performance appraisals. Every PSU Public Information Officer must reconfigure response protocols; failure to do so creates DPDPA exposure on one side and RTI litigation on the other.</div>
+
+  <div class="split">
+    <div class="split-head">RTI Section 8(1)(j) — Before vs After DPDPA</div>
+    <div class="split-grid">
+      <div class="split-col">
+        <div class="split-label before">Before DPDPA (pre-2023)</div>
+        <div class="split-text">Personal information could be withheld unless the larger public interest justified disclosure. The PIO carried a discretionary balancing test — the "public interest override" was workable.</div>
+      </div>
+      <div class="split-col">
+        <div class="split-label after">After DPDPA (post-2023)</div>
+        <div class="split-text">Personal information is statutorily barred from disclosure. The public-interest override is removed. The PIO's residual discretion is narrow and must be exercised in writing, documented and defensible.</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="s">What every PSU PIO must do this quarter</h3>
+  <ul class="b">
+    <li>Update standard RTI response templates to reflect the amended Section 8(1)(j)</li>
+    <li>Train PIOs in the narrower discretion — and the documentation requirements</li>
+    <li>Coordinate with the DPO on borderline disclosure decisions</li>
+    <li>Maintain a decision register of every withholding under Section 8(1)(j) for audit</li>
+  </ul>
+</section>
+
+<!-- §8 -->
+<section id="breach">
+  <div class="kicker">§8 · Breach Response</div>
+  <h2 class="t">72 hours to the DPBI — and the affected individuals</h2>
+  <p class="lede">In the event of a confirmed personal data breach, a PSU must notify both the Data Protection Board of India and the affected individuals within 72 hours, regardless of volume or severity. The CERT-In 6-hour notification obligation runs in parallel for cyber incidents. The two clocks start on awareness, not on confirmation.</p>
+
+  <div class="alert alert-red"><strong>Boards must approve an Incident Response Playbook BEFORE go-live of any new SDF-class system.</strong> Without a tested playbook, the 72-hour clock becomes the moment a PSU starts losing penalty arguments. Tabletop exercises every six months, with the DPO and CISO co-leading.</div>
+
+  <h3 class="s">The breach response chain</h3>
+  <ul class="b">
+    <li><strong>T+0</strong> — Security monitoring team detects anomaly; Incident Response Playbook activated</li>
+    <li><strong>T+1h</strong> — Affected systems isolated; preliminary root-cause analysis</li>
+    <li><strong>T+6h</strong> — CERT-In notification (if cyber incident criteria met)</li>
+    <li><strong>T+24h</strong> — Internal breach report compiled; DPO assesses notification obligation</li>
+    <li><strong>T+48h</strong> — Board / Audit Committee briefed; communications plan approved</li>
+    <li><strong>T+72h</strong> — DPBI notification submitted; affected individuals notified via published channels</li>
+    <li><strong>Post-incident</strong> — Forensic investigation, CAPA, lessons-learned report to the Board</li>
+  </ul>
+</section>
+
+<!-- §9 -->
+<section id="penalties">
+  <div class="kicker">§9 · Penalty Exposure</div>
+  <h2 class="t">Schedule of penalties — what's on the table</h2>
+
+  <div class="penalty-grid">
+    <div class="pn">
+      <div class="pn-amt">₹250 crore</div>
+      <div class="pn-what">Maximum penalty — failure to implement reasonable security safeguards leading to a personal data breach</div>
+      <div class="pn-ref">DPDPA Sec 33 / Schedule</div>
+    </div>
+    <div class="pn">
+      <div class="pn-amt">₹200 crore</div>
+      <div class="pn-what">Maximum penalty — failure to notify a breach to the DPBI or affected data principals</div>
+      <div class="pn-ref">DPDPA Schedule</div>
+    </div>
+    <div class="pn">
+      <div class="pn-amt">₹200 crore</div>
+      <div class="pn-what">Maximum penalty — failure to perform additional obligations as a Significant Data Fiduciary</div>
+      <div class="pn-ref">DPDPA Schedule (SDF)</div>
+    </div>
+    <div class="pn">
+      <div class="pn-amt">₹150 crore</div>
+      <div class="pn-what">Maximum penalty — failure of additional obligations regarding children's personal data</div>
+      <div class="pn-ref">DPDPA Schedule</div>
+    </div>
+    <div class="pn">
+      <div class="pn-amt">₹50 crore</div>
+      <div class="pn-what">Maximum penalty — other breaches of the Act not otherwise specified</div>
+      <div class="pn-ref">DPDPA Schedule</div>
+    </div>
+    <div class="pn">
+      <div class="pn-amt">₹10,000</div>
+      <div class="pn-what">Maximum penalty on a Data Principal — for furnishing false particulars or breach of duties</div>
+      <div class="pn-ref">DPDPA Schedule</div>
+    </div>
+  </div>
+
+  <p style="margin-top:18px;font-size:13.5px;color:var(--text3);">All penalty figures refer to the maximum statutory ceiling. Actual penalties are decided by the DPBI on the facts and circumstances of each matter, after a quasi-judicial proceeding.</p>
+
+  <div class="cta-band">
+    <div>
+      <h3>Need a board-ready DPDPA gap assessment, DPO Charter, RTI response templates or breach playbook?</h3>
+      <p>We share these on request with PSU Boards, Legal Counsel, DPO offices and Internal Audit. Tell us the use case.</p>
+    </div>
+    <a href="contact.html?subject=PSU+Data+Governance+%E2%80%94+DPDPA+Templates">Request Templates →</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  Maintained by DPDPIndia.in Research Team · Last updated June 2026 · Editorial commentary, not legal advice · Read with <a href="legal.html">legal disclaimer</a>.<br>
+  Part of the <a href="psu-data-governance.html">PSU Data Governance hub</a> · See also <a href="psu-cag-audit-kb.html">Pillar 2 — CAG Audit Mandate KB</a>.
+</footer>
+
+</body>
+</html>

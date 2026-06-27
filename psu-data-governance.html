@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:wght@600;700&display=swap">
+<title>Data Governance for PSUs — DPDP Act + CAG/COBIT Audit Implementation Guide | DPDPIndia.in</title>
+<meta name="description" content="Authoritative hub for Indian PSU and government department data governance. Two pillars — DPDP Act 2023 privacy compliance and CAG IS Audit Manual 2024 (COBIT 2019 aligned) — with a board-level 18-month implementation roadmap. Built for PSU Boards, Secretaries, CIOs and Internal Audit.">
+<meta name="keywords" content="PSU data governance India, DPDP Act PSU compliance, CAG IS Audit COBIT, ISO 27001 PSU, COBIT 2019 PSU, Significant Data Fiduciary government, DPDPA Rules 2025 PSU, ICAI DPCAC, Section 17 exemptions, RTI DPDP conflict, BCPL audit, Rule 12 algorithmic due diligence">
+<meta name="robots" content="index, follow">
+<meta name="author" content="DPDPIndia.in Research Team">
+<link rel="canonical" href="https://www.dpdpindia.in/psu-data-governance.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DPDPIndia.in">
+<meta property="og:title" content="Data Governance for PSUs — DPDP Act + CAG/COBIT Audit Implementation Guide">
+<meta property="og:description" content="Authoritative hub for Indian PSU and government department data governance. DPDP Act 2023 + CAG IS Audit Manual 2024 (COBIT 2019) — board-level 18-month implementation roadmap.">
+<meta property="og:url" content="https://www.dpdpindia.in/psu-data-governance.html">
+<meta property="og:image" content="https://www.dpdpindia.in/og-default.png">
+<meta property="og:locale" content="en_IN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Data Governance for PSUs — DPDP Act + CAG/COBIT Audit Implementation Guide">
+<meta name="twitter:description" content="Authoritative PSU data governance hub. DPDP Act 2023 + CAG IS Audit Manual 2024 + COBIT 2019 + ISO 27001/27701 — 18-month board-level roadmap.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Data Governance for PSUs — DPDP Act + CAG/COBIT Audit Implementation Guide",
+  "description": "Authoritative hub for Indian PSU data governance. DPDP Act 2023 statutory obligations + CAG IS Audit Manual 2024 (COBIT 2019) + ISO 27001/27701 + ICAI DPCAC standard. 18-month board-level implementation roadmap.",
+  "url": "https://www.dpdpindia.in/psu-data-governance.html",
+  "publisher": {
+    "@type": "Organization",
+    "name": "DPDPIndia.in",
+    "url": "https://www.dpdpindia.in"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Does the DPDP Act 2023 apply to PSUs and government departments?","acceptedAnswer":{"@type":"Answer","text":"Yes. Any PSU, municipal corporation or government department that determines the purposes and means of processing digital personal data is a Data Fiduciary under the DPDP Act 2023. Section 17 exemptions are functional and narrow — not institutional or absolute. Unexempted commercial operations such as utility billing, transport booking and state banking platforms are fully covered."}},
+    {"@type":"Question","name":"What is the CAG IS Audit Manual 2024 and how does it relate to COBIT 2019?","acceptedAnswer":{"@type":"Answer","text":"The Manual on Information Systems Audit 2024 is the CAG's three-volume practitioner guide for IS audits across PSUs and government departments. It is explicitly aligned with COBIT 2019 governance and management objectives, ISO/IEC 27001:2022 controls and the ISO/IEC 38500 IT governance standard."}},
+    {"@type":"Question","name":"What are the additional obligations for a PSU classified as a Significant Data Fiduciary (SDF)?","acceptedAnswer":{"@type":"Answer","text":"Appoint an India-resident Data Protection Officer reporting to the Board; conduct an annual Data Protection Impact Assessment; engage an external independent data auditor every 12 months; perform algorithmic due diligence under Rule 12; comply with data and traffic localisation directions; and face an additional penalty exposure of up to Rs 150 crore over standard DPDPA penalties."}},
+    {"@type":"Question","name":"What is the DPDP Rules 2025 compliance deadline for PSUs?","acceptedAnswer":{"@type":"Answer","text":"DPDP Rules 2025 were notified on 13 November 2025, starting an 18-month phased compliance clock that ends on 12 May 2027. Consent Manager infrastructure must be operational by November 2026 and all mandatory technical safeguards under Rule 6 by May 2027."}},
+    {"@type":"Question","name":"How does the DPDP Act 2023 affect RTI Act 2005 obligations for PSUs?","acceptedAnswer":{"@type":"Answer","text":"The DPDP Act amends Section 8(1)(j) of the RTI Act, removing the public interest override and establishing a statutory prohibition on disclosure of personal information of public officials — including asset declarations, disciplinary records and credentials. PSUs must reconfigure their RTI response protocols accordingly."}}
+  ]
+}
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="last-updated" content="June 2026 — Aligned to DPDP Rules 2025 and CAG IS Audit Manual 2024">
+<link rel="stylesheet" href="site-global.css">
+<style>
+:root{
+  --navy:#0a1628;--navy2:#132040;
+  --blue:#1a5cad;--amber:#d4900a;--amber-light:#f5c842;
+  --teal:#0e7c6b;--coral:#c2420a;--purple:#5b4bc4;
+  --green:#156c2e;--red:#b91c1c;
+  --surface:#f4f6fb;--surface2:#eaeff8;
+  --text:#0d1b2a;--text2:#3a4a5c;--text3:#6b7e94;
+  --border:#c8d4e8;--border2:#b0c0d8;--white:#ffffff;
+  --font-body:'IBM Plex Sans',sans-serif;
+  --font-display:'Playfair Display',serif;
+  --font-mono:'IBM Plex Mono',monospace;
+  --radius:8px;--radius-lg:12px;
+  --shadow:0 2px 12px rgba(10,22,40,.08);
+  --shadow-md:0 4px 24px rgba(10,22,40,.14);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--surface);color:var(--text);font-size:15px;line-height:1.7;min-height:100vh;}
+
+.header{background:var(--navy);color:#fff;position:relative;overflow:hidden;}
+.header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px),repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px);}
+.header-inner{position:relative;max-width:960px;margin:0 auto;padding:52px 40px 56px;}
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:24px;font-family:var(--font-mono);font-size:11px;}
+.breadcrumb a{color:rgba(255,255,255,.5);text-decoration:none;}
+.breadcrumb a:hover{color:var(--amber-light);}
+.breadcrumb .sep{color:rgba(255,255,255,.25);}
+.breadcrumb .cur{color:var(--amber-light);}
+.header-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:4px 14px;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:20px;}
+.header-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--amber-light);}
+.header h1{font-family:var(--font-display);font-size:clamp(28px,5vw,44px);font-weight:700;line-height:1.12;color:#fff;margin-bottom:16px;max-width:760px;}
+.header h1 em{font-style:italic;color:var(--amber-light);}
+.header-sub{font-size:15px;color:rgba(255,255,255,.65);max-width:680px;line-height:1.7;margin-bottom:32px;}
+.header-stats{display:flex;gap:32px;flex-wrap:wrap;}
+.header-stat-num{font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--amber-light);line-height:1;}
+.header-stat-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:2px;}
+
+.main{max-width:960px;margin:0 auto;padding:40px 40px 60px;}
+.section-kicker{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
+.section-kicker::before{content:'';width:24px;height:1px;background:var(--amber);}
+.section-title{font-family:var(--font-display);font-size:26px;font-weight:700;color:var(--text);margin-bottom:10px;line-height:1.2;}
+.section-lede{font-size:15px;color:var(--text2);margin-bottom:24px;max-width:780px;}
+
+.pillar-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:32px 0 8px;}
+.pillar{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 30px;box-shadow:var(--shadow);position:relative;overflow:hidden;}
+.pillar::before{content:'';position:absolute;top:0;left:0;width:6px;height:100%;}
+.pillar.p1::before{background:var(--blue);}
+.pillar.p2::before{background:var(--amber);}
+.pillar-label{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-bottom:6px;}
+.pillar-name{font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--text);margin-bottom:10px;}
+.pillar-desc{font-size:14px;color:var(--text2);line-height:1.65;margin-bottom:18px;}
+.pillar-bullets{list-style:none;padding:0;margin:0 0 16px;font-size:13.5px;color:var(--text2);}
+.pillar-bullets li{padding:6px 0 6px 22px;position:relative;border-top:1px dashed var(--border);}
+.pillar-bullets li:first-child{border-top:none;}
+.pillar-bullets li::before{content:'▸';position:absolute;left:0;color:var(--amber);font-size:12px;top:8px;}
+.pillar-cta{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:12px;font-weight:600;color:var(--blue);text-decoration:none;border-top:1px solid var(--border);padding-top:14px;width:100%;}
+
+.alert{background:#fef3cd;border-left:4px solid var(--amber);padding:18px 22px;border-radius:6px;margin:24px 0;font-size:14px;color:#5b3d0a;}
+.alert strong{color:#854f0b;}
+
+.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius);margin:20px 0;background:var(--white);}
+table{width:100%;border-collapse:collapse;font-size:13.5px;}
+th{background:var(--navy);color:#fff;text-align:left;padding:12px 16px;font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;}
+td{padding:12px 16px;border-top:1px solid var(--border);color:var(--text2);vertical-align:top;}
+td strong{color:var(--text);}
+
+.framework-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0;}
+.fw-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:18px 18px 16px;}
+.fw-code{font-family:var(--font-mono);font-size:11px;color:var(--amber);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;}
+.fw-title{font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--text);margin-bottom:8px;}
+.fw-desc{font-size:13px;color:var(--text2);line-height:1.6;}
+
+.timeline{margin:24px 0;}
+.tl-phase{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:18px 22px;margin-bottom:12px;display:grid;grid-template-columns:90px 1fr;gap:18px;align-items:start;}
+.tl-num{font-family:var(--font-display);font-size:32px;font-weight:700;color:var(--blue);line-height:1;}
+.tl-months{font-family:var(--font-mono);font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-top:4px;}
+.tl-title{font-family:var(--font-display);font-size:17px;font-weight:700;color:var(--text);margin-bottom:6px;}
+.tl-desc{font-size:13.5px;color:var(--text2);line-height:1.65;margin-bottom:8px;}
+.tl-evidence{font-family:var(--font-mono);font-size:11px;color:var(--text3);background:var(--surface2);padding:6px 10px;border-radius:4px;display:inline-block;}
+
+.case-box{background:linear-gradient(135deg,#fef3cd 0%,#fdf6e3 100%);border:1px solid #f5c842;border-radius:var(--radius-lg);padding:24px 28px;margin:28px 0;}
+.case-label{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#854f0b;margin-bottom:6px;}
+.case-title{font-family:var(--font-display);font-size:18px;font-weight:700;color:#5b3d0a;margin-bottom:10px;}
+.case-text{font-size:14px;color:#5b3d0a;line-height:1.7;}
+.case-text strong{color:#3d2806;}
+
+.dl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0;}
+.dl-card{background:var(--navy);color:#fff;border-radius:var(--radius);padding:20px;text-decoration:none;display:block;transition:transform .2s;}
+.dl-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);}
+.dl-type{font-family:var(--font-mono);font-size:10px;color:var(--amber-light);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;}
+.dl-title{font-family:var(--font-display);font-size:15px;font-weight:700;margin-bottom:6px;}
+.dl-desc{font-size:12.5px;color:rgba(255,255,255,.6);line-height:1.5;}
+
+.newsletter-ribbon{background:var(--navy);border-radius:var(--radius-lg);padding:32px 40px;margin-top:48px;text-align:center;color:#fff;}
+.newsletter-ribbon h3{font-family:var(--font-display);font-size:22px;font-weight:700;margin-bottom:8px;color:#fff;}
+.newsletter-ribbon p{font-size:14px;color:rgba(255,255,255,.65);margin-bottom:20px;}
+.nl-form{display:flex;gap:8px;max-width:480px;margin:0 auto;}
+.nl-form input{flex:1;padding:12px 16px;border-radius:6px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);color:#fff;font-family:var(--font-body);font-size:14px;}
+.nl-form input::placeholder{color:rgba(255,255,255,.4);}
+.nl-form button{padding:12px 24px;border-radius:6px;border:none;background:var(--amber);color:var(--navy);font-family:var(--font-mono);font-weight:600;font-size:13px;cursor:pointer;text-transform:uppercase;letter-spacing:.05em;}
+
+.foot{max-width:960px;margin:40px auto 0;padding:30px 40px;border-top:1px solid var(--border);font-size:12.5px;color:var(--text3);text-align:center;}
+.foot a{color:var(--blue);}
+
+@media(max-width:760px){
+  .pillar-grid,.framework-grid,.dl-grid{grid-template-columns:1fr;}
+  .header-inner,.main{padding-left:24px;padding-right:24px;}
+  .tl-phase{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- Drop in _nav-partial-v3.html here when integrating -->
+
+<header class="header">
+  <div class="header-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span class="sep">/</span>
+      <a href="knowledge-base.html">Knowledge Base</a><span class="sep">/</span>
+      <span class="cur">Data Governance for PSUs</span>
+    </div>
+    <div class="header-badge"><span class="dot"></span>New Pillar · Board-Level Guide</div>
+    <h1>Data Governance for <em>PSUs and Government Departments</em></h1>
+    <p class="header-sub">A unified, board-ready framework that brings together the <strong style="color:#fff;">Digital Personal Data Protection Act, 2023</strong> and the <strong style="color:#fff;">CAG IS Audit Manual 2024</strong> (COBIT 2019 aligned). Designed for PSU Boards, Secretaries, CIOs, CISOs and Internal Audit teams managing the 18-month compliance transition to 12 May 2027.</p>
+    <div class="header-stats">
+      <div>
+        <div class="header-stat-num">₹250 cr</div>
+        <div class="header-stat-label">Max DPDPA penalty per breach</div>
+      </div>
+      <div>
+        <div class="header-stat-num">18 mo</div>
+        <div class="header-stat-label">Phased compliance window (ends 12 May 2027)</div>
+      </div>
+      <div>
+        <div class="header-stat-num">COBIT 2019</div>
+        <div class="header-stat-label">Framework anchoring the CAG IS Audit Manual 2024</div>
+      </div>
+      <div>
+        <div class="header-stat-num">2 Pillars</div>
+        <div class="header-stat-label">Privacy compliance + CAG data audit mandate</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="main">
+
+<!-- =========================  EXECUTIVE SUMMARY  ========================= -->
+<section>
+  <div class="section-kicker">Executive Summary</div>
+  <h2 class="section-title">The regulatory confluence facing every PSU board</h2>
+  <p class="section-lede">Two distinct mandates have converged. The DPDP Act 2023 makes every PSU a Data Fiduciary the moment it processes citizen personal data. The CAG IS Audit Manual 2024, anchored on COBIT 2019 and ISO/IEC 27001:2022, is the lens through which that processing — and the systems that enable it — will be examined. Boards that treat these as separate compliance programmes will pay twice and assure neither. The portal's PSU section is built around the single integrated control set that closes both.</p>
+
+  <div class="alert">
+    <strong>The asymmetry that boards often miss:</strong> Section 17 of the DPDPA grants the state functional exemptions for welfare delivery, licensing and national security — but those carve-outs are <em>narrow and non-institutional</em>. The DPDPA also amends Section 8(1)(j) of the RTI Act 2005, removing the public-interest override and creating a statutory bar on disclosing personal information of public officials. PSUs must defend both fronts simultaneously: lawful processing under DPDPA, and reconfigured RTI response protocols. The Justice K.S. Puttaswamy judgment (2017, 9-judge bench) sits behind both as the constitutional baseline under Article 21.
+  </div>
+</section>
+
+<!-- =========================  TWO PILLARS  ========================= -->
+<section style="margin-top:48px;">
+  <div class="section-kicker">The Two Pillars</div>
+  <h2 class="section-title">One section. Two mandates. One control set.</h2>
+  <p class="section-lede">Click into either pillar for the detailed knowledge base, or jump straight to the converged 18-month implementation roadmap below.</p>
+
+  <div class="pillar-grid">
+    <div class="pillar p1">
+      <div class="pillar-label">Pillar 1 · Statutory</div>
+      <h3 class="pillar-name">Privacy Compliance — DPDP Act 2023</h3>
+      <p class="pillar-desc">Operational obligations on every PSU as a Data Fiduciary, with enhanced duties on Significant Data Fiduciaries. Sectionised by the questions a Board will ask first.</p>
+      <ul class="pillar-bullets">
+        <li>DPDPA applicability — Section 7 legitimate uses &amp; Section 17 exemptions</li>
+        <li>SDF additional obligations — DPO, DPIA, external audit, Rule 12 algorithmic due diligence</li>
+        <li>Consent architecture &amp; Consent Manager registration (Rule 4)</li>
+        <li>Breach response — 72-hr DPBI &amp; CERT-In notification</li>
+        <li>Cross-border localisation directions for state-specified categories</li>
+        <li>RTI×DPDPA — reconfiguring Section 8(1)(j) response workflows</li>
+      </ul>
+      <a class="pillar-cta" href="psu-privacy-kb.html">Open Privacy Compliance KB →</a>
+    </div>
+
+    <div class="pillar p2">
+      <div class="pillar-label">Pillar 2 · Institutional</div>
+      <h3 class="pillar-name">CAG Data Audit Mandate — COBIT Aligned</h3>
+      <p class="pillar-desc">The CAG IS Audit Manual 2024 is the lens through which every public-sector IT system will be examined. Built on COBIT 2019, ISO 27001:2022 and ISO/IEC 38500, with ICAI's DISA/CISA equivalence behind the audit profession.</p>
+      <ul class="pillar-bullets">
+        <li>CAG IS Audit Manual 2024 — three-volume walkthrough</li>
+        <li>COBIT 2019 primer — EDM · APO · BAI · DSS · MEA</li>
+        <li>ISO 27001:2022 ↔ COBIT crosswalk for the 93 Annex A controls</li>
+        <li>ISO 27701 PIMS — DPDPA-aligned privacy extension</li>
+        <li>Systems Under Development (SUD) &amp; SDLC audit checklists</li>
+        <li>ICAI DPCAC standard &amp; DISA-CISA equivalence</li>
+      </ul>
+      <a class="pillar-cta" href="psu-cag-audit-kb.html">Open CAG Audit KB →</a>
+    </div>
+  </div>
+</section>
+
+<!-- =========================  CAG IS AUDIT DOMAIN MAP  ========================= -->
+<section style="margin-top:48px;">
+  <div class="section-kicker">How the Two Map to One Control Set</div>
+  <h2 class="section-title">CAG IS Audit domains aligned to COBIT 2019 + ISO 27001:2022</h2>
+  <p class="section-lede">The CAG Manual is explicit: COBIT 2019 supplies the governance vocabulary, ISO 27001:2022 supplies the control catalogue. A PSU that maps once, audits everywhere.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>CAG IS Audit Domain</th>
+          <th>COBIT 2019 Objective</th>
+          <th>ISO/IEC 27001:2022</th>
+          <th>DPDPA Hook</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Governance Mechanisms</strong><br>Board strategy, risk framework, policies, KPIs</td>
+          <td>EDM01, EDM03, APO01</td>
+          <td>Clause 4, Clause 5</td>
+          <td>Board accountability for DPDPA programme</td>
+        </tr>
+        <tr>
+          <td><strong>General Controls — Security</strong><br>Logical access, authentication, user registration</td>
+          <td>APO13, DSS05</td>
+          <td>Annex A.5, A.8 (User Access)</td>
+          <td>Sec 8 — reasonable security safeguards</td>
+        </tr>
+        <tr>
+          <td><strong>General Controls — Operations</strong><br>Change management, BCP, DR</td>
+          <td>BAI06, DSS04</td>
+          <td>A.8.14, A.8.32</td>
+          <td>Operational continuity for rights requests</td>
+        </tr>
+        <tr>
+          <td><strong>General Controls — Sourcing</strong><br>Third-party contracts &amp; SLAs</td>
+          <td>APO10</td>
+          <td>A.5.19 (Supplier Relationships)</td>
+          <td>DPAs with processors (Sec 8(2))</td>
+        </tr>
+        <tr>
+          <td><strong>Application Controls</strong><br>Input/process/output, master data</td>
+          <td>DSS06</td>
+          <td>A.8.25, A.8.28</td>
+          <td>Accuracy obligation (Sec 8(3))</td>
+        </tr>
+        <tr>
+          <td><strong>Data Management</strong><br>Lifecycle, minimisation, erasure</td>
+          <td>APO14 (Managed Data)</td>
+          <td>A.5.12 (Data Classification)</td>
+          <td>Purpose limitation, storage limitation, Rule 8 erasure</td>
+        </tr>
+        <tr>
+          <td><strong>Compliance Oversight</strong><br>External requirements, attestations</td>
+          <td>MEA03</td>
+          <td>Clause 9.2 (Internal Audit)</td>
+          <td>SDF annual external data audit (Rule 13)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- =========================  SDF OBLIGATIONS  ========================= -->
+<section style="margin-top:48px;">
+  <div class="section-kicker">Why most PSUs will be SDFs</div>
+  <h2 class="section-title">Standard Data Fiduciary vs Significant Data Fiduciary — the gap that matters</h2>
+  <p class="section-lede">Volume, sensitivity, sovereignty risk and use of emerging technologies. PSUs running citizen-facing databases will almost certainly be notified as SDFs under Section 10. The additional obligations are not incremental — they are the audit posture.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Dimension</th><th>Standard Data Fiduciary</th><th>Significant Data Fiduciary</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Leadership</strong></td><td>Grievance officer with published contact</td><td>India-based DPO reporting to Board / Audit Committee</td></tr>
+        <tr><td><strong>Independent Evaluation</strong></td><td>Internal reviews recommended</td><td>External independent data auditor — annual</td></tr>
+        <tr><td><strong>Impact Assessment</strong></td><td>Risk assessment encouraged</td><td>Comprehensive annual DPIA on high-risk processing</td></tr>
+        <tr><td><strong>Algorithmic Oversight</strong></td><td>Standard application validation</td><td><strong>Rule 12 algorithmic due diligence</strong> — explainability, bias detection, human-in-the-loop</td></tr>
+        <tr><td><strong>Localisation</strong></td><td>Cross-border permitted unless on negative list</td><td>Strict localisation for state-notified categories of personal data &amp; traffic data</td></tr>
+        <tr><td><strong>Penalty Exposure</strong></td><td>Up to ₹250 cr (security failure)</td><td>Up to ₹250 cr + additional ₹150 cr (SDF-specific failures)</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- =========================  TIMELINE  ========================= -->
+<section style="margin-top:48px;">
+  <div class="section-kicker">DPDP Rules 2025 — Statutory Clock</div>
+  <h2 class="section-title">The 18-month phased compliance window</h2>
+  <p class="section-lede">DPDP Rules notified 13 November 2025. The clock ends 12 May 2027. These are statutory, not aspirational, milestones.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Milestone</th><th>Rule Reference</th><th>Target</th></tr></thead>
+      <tbody>
+        <tr><td>Retrospective privacy notices for historical data</td><td>Rule 3</td><td>Immediate — continuous deployment</td></tr>
+        <tr><td>Consent Manager infrastructure operational</td><td>Rule 4</td><td>12 months — November 2026</td></tr>
+        <tr><td>Mandatory technical safeguards (encryption, access, logs)</td><td>Rule 6</td><td>18 months — 12 May 2027</td></tr>
+        <tr><td>Operational &amp; security log retention</td><td>Rule 6 / Third Schedule</td><td>Minimum 12 months tamper-proof</td></tr>
+        <tr><td>Automated erasure on purpose completion or withdrawal</td><td>Rule 8</td><td>Within prescribed trigger windows</td></tr>
+        <tr><td>Grievance redressal SLA</td><td>Rule 14</td><td>Maximum 90 days statutory</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- =========================  IMPLEMENTATION ROADMAP SUMMARY  ========================= -->
+<section style="margin-top:48px;">
+  <div class="section-kicker">The Converged Roadmap</div>
+  <h2 class="section-title">18-month PSU implementation — six phases</h2>
+  <p class="section-lede">One roadmap. Both pillars. Each phase carries the documentation that satisfies both the CAG IS Audit Manual and the DPDPA Rules — designed so the same artefact answers both audits.</p>
+
+  <div class="timeline">
+    <div class="tl-phase">
+      <div><div class="tl-num">01</div><div class="tl-months">Months 1–3</div></div>
+      <div>
+        <div class="tl-title">Establish the Unified Governance Framework</div>
+        <div class="tl-desc">Board resolution constituting the Data Governance Committee (chaired board-level; CISO, GC, CDO, IA representation). Section 17 Function Mapping Exercise to register every workflow as exempt or covered. Formal DPO appointment with direct reporting line to the Audit Committee. Published DPO contact across all citizen-facing channels.</div>
+        <div class="tl-evidence">Evidence: Board resolution · Section 17 Exemption Register · DPO publication</div>
+      </div>
+    </div>
+
+    <div class="tl-phase">
+      <div><div class="tl-num">02</div><div class="tl-months">Months 4–6</div></div>
+      <div>
+        <div class="tl-title">Data Discovery and Inventory Mapping</div>
+        <div class="tl-desc">Deploy automated discovery across SAP, Oracle, file systems, cloud. Classify against the 5-tier model with focus on Aadhaar, PAN, biometrics, banking credentials. Compile the master Record of Processing Activities (RoPA). Score every system on Sensitivity × Volume × Control-Gap; remediate above threshold.</div>
+        <div class="tl-evidence">Evidence: Data inventory · Classification policy · Signed RoPA · Risk scoring sheet</div>
+      </div>
+    </div>
+
+    <div class="tl-phase">
+      <div><div class="tl-num">03</div><div class="tl-months">Months 7–9</div></div>
+      <div>
+        <div class="tl-title">SUD &amp; SDLC Controls</div>
+        <div class="tl-desc">For every new project: approved Project Initiation Document and Feasibility Study reviewed by the Data Governance Committee before development. Strict separation of dev / test / production. No real citizen data in non-production — masking or synthetic data only. Input validation and SQL hardening designed in, not bolted on.</div>
+        <div class="tl-evidence">Evidence: PI &amp; FS checklists · SDLC security design · Environment separation report</div>
+      </div>
+    </div>
+
+    <div class="tl-phase">
+      <div><div class="tl-num">04</div><div class="tl-months">Months 10–12</div></div>
+      <div>
+        <div class="tl-title">Consent &amp; Rights Management Operationalisation</div>
+        <div class="tl-desc">Re-engineer every collection point for granular, unbundled consent. No pre-ticked boxes, no bundled terms. In-house consent ledger or registered Consent Manager integration capturing principal ID, notice version, channel and consent state. Self-service Data Principal Rights Portal with 90-day SLA backend routing.</div>
+        <div class="tl-evidence">Evidence: Consent notices · Ledger schema · Rights Portal SLA register</div>
+      </div>
+    </div>
+
+    <div class="tl-phase">
+      <div><div class="tl-num">05</div><div class="tl-months">Months 13–15</div></div>
+      <div>
+        <div class="tl-title">Technical Safeguards &amp; Vendor Controls</div>
+        <div class="tl-desc">AES-256 at rest, TLS 1.3 or higher in transit, full-disk encryption on endpoints, USB write-block on sensitive workstations. RBAC by least privilege, MFA enterprise-wide, tamper-proof log retention ≥ 12 months. Every processor contract upgraded with a binding DPA — purpose limitation, no unauthorised sub-processing, mandatory breach reporting, delete-on-termination.</div>
+        <div class="tl-evidence">Evidence: Encryption architecture · Endpoint reports · Executed DPAs · Supplier risk log</div>
+      </div>
+    </div>
+
+    <div class="tl-phase">
+      <div><div class="tl-num">06</div><div class="tl-months">Months 16–18</div></div>
+      <div>
+        <div class="tl-title">Continuous Compliance &amp; Performance Metrics</div>
+        <div class="tl-desc">Automated Incident Response Playbook with 72-hour DPBI + individual notification path. Annual DPIA for every high-risk system. External independent data auditor engaged annually — opinion to Board and DPBI. COBIT-aligned CSF / KPI / KGI dashboard live, addressing the precise gap CAG flagged at BCPL.</div>
+        <div class="tl-evidence">Evidence: IR manual · DPIA reports · External audit certificate · KPI dashboard</div>
+      </div>
+    </div>
+  </div>
+
+  <p style="margin-top:24px;text-align:center;">
+    <a href="contact.html?subject=PSU+Data+Governance+%E2%80%94+Full+Step-by-Step+Roadmap" style="display:inline-block;background:var(--blue);color:#fff;padding:14px 28px;border-radius:6px;text-decoration:none;font-family:var(--font-mono);font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;">Request the full step-by-step roadmap →</a>
+  </p>
+</section>
+
+<!-- =========================  BCPL CASE BOX  ========================= -->
+<section>
+  <div class="case-box">
+    <div class="case-label">CAG Audit Exhibit · Why this matters</div>
+    <div class="case-title">CAG Report No. 2 of 2024 — Brahmaputra Cracker and Polymer Limited (BCPL)</div>
+    <div class="case-text">
+      The CAG's IS audit of selected CPSEs under the Ministry of Petroleum and Natural Gas examined the SAP ERP implementation at BCPL and recorded three findings every PSU board should treat as a checklist:
+      <strong>(i)</strong> failure to design or measure COBIT-aligned Critical Success Factors, KPIs and Key Goal Indicators;
+      <strong>(ii)</strong> persistence of default usernames with default passwords in active database instances;
+      <strong>(iii)</strong> assignment of multiple critical and conflicting authorisation roles to single users — a failure of segregation of duties.
+      Under the DPDPA, the same control gaps are now penalty-bearing. A board that has not closed them carries both a CAG observation and a potential ₹250 crore exposure.
+    </div>
+  </div>
+</section>
+
+<!-- =========================  INSTITUTIONAL SYNERGY  ========================= -->
+<section style="margin-top:48px;">
+  <div class="section-kicker">Institutional Backing</div>
+  <h2 class="section-title">Why COBIT is the right anchor — official endorsements</h2>
+  <p class="section-lede">PSU procurement teams pushing back on a "global standard for Indian audit" should be shown this. COBIT is not a vendor recommendation; it is institutionally embedded.</p>
+
+  <div class="framework-grid">
+    <div class="fw-card">
+      <div class="fw-code">MeitY · 2024</div>
+      <div class="fw-title">AI Competency Framework</div>
+      <div class="fw-desc">MeitY's <em>Empowering Public Sector Leadership</em> formally recommends COBIT as the primary data governance framework for AI and data-intensive technologies across government departments.</div>
+    </div>
+    <div class="fw-card">
+      <div class="fw-code">ICAI · DPCAC</div>
+      <div class="fw-title">Data Protection Compliance &amp; Audit Standard</div>
+      <div class="fw-desc">ICAI's DPCAC standard for auditing DPDPA compliance is built on ISACA-aligned audit and governance principles — designed so a single audit satisfies both Indian statute and international IS audit benchmarks.</div>
+    </div>
+    <div class="fw-card">
+      <div class="fw-code">RBI</div>
+      <div class="fw-title">DISA–CISA Equivalence</div>
+      <div class="fw-desc">RBI officially recognises ICAI's DISA as equivalent to ISACA's CISA — specialised system and security audits across BFSI may be conducted by DISA-qualified ICAI members; CERT-In's empanelled auditor list reflects the same alignment.</div>
+    </div>
+    <div class="fw-card">
+      <div class="fw-code">NASSCOM × ISACA</div>
+      <div class="fw-title">NSQF Skilling Alignment</div>
+      <div class="fw-desc">CISA, CISM and CRISC formally registered on India's National Qualification Register through NASSCOM-IT/ITeS SSC, integrated into Future Skills Prime under MeitY and MSDE.</div>
+    </div>
+    <div class="fw-card">
+      <div class="fw-code">DSCI × NASSCOM × ISACA</div>
+      <div class="fw-title">Cybersecurity Skills Roadmap</div>
+      <div class="fw-desc">Tripartite MoU producing the long-term Cyber Security Skills Development roadmap, combining ISACA's CSX with DSCI's local forensics and privacy models for PSU and law-enforcement training.</div>
+    </div>
+    <div class="fw-card">
+      <div class="fw-code">CAG · 2024</div>
+      <div class="fw-title">AI Strategy Framework</div>
+      <div class="fw-desc">CAG's AI Strategy Framework operationalises ML across audit planning, execution and reporting — with explicit ethical controls that map onto the DPDPA's Rule 12 algorithmic due diligence regime.</div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================  ALGORITHMIC DUE DILIGENCE  ========================= -->
+<section style="margin-top:48px;">
+  <div class="section-kicker">Next-Generation Governance</div>
+  <h2 class="section-title">Rule 12 — Algorithmic Due Diligence for SDFs</h2>
+  <p class="section-lede">A new obligation that catches every PSU deploying automated decision-making — from welfare eligibility scoring to traffic challan engines. SDFs must verify that any algorithmic system used to host, display, upload, modify, transmit or share personal data does not pose risks to the rights of data principals.</p>
+
+  <ul style="margin:16px 0 0 22px;font-size:14px;color:var(--text2);line-height:1.9;">
+    <li><strong>Explainability mechanism</strong> — every automated adverse decision must be capable of human-readable explanation</li>
+    <li><strong>Bias detection</strong> — periodic testing on representative datasets, documented in the DPIA</li>
+    <li><strong>Human-in-the-loop</strong> — meaningful review for decisions affecting entitlements, licensing or enforcement</li>
+    <li><strong>Tamper-proof decision logs</strong> — sufficient to support an independent audit of any individual decision</li>
+    <li><strong>Annual DPIA coverage</strong> — Rule 12 obligations integrated into the high-risk processing DPIA</li>
+  </ul>
+</section>
+
+<!-- =========================  DOWNLOADS  ========================= -->
+<section style="margin-top:48px;">
+  <div class="section-kicker">For Boards and Implementation Teams</div>
+  <h2 class="section-title">Downloadable templates &amp; checklists</h2>
+  <p class="section-lede">Newsletter subscription unlocks all three. Each is updated quarterly against CAG observations, MeitY notifications and DPBI orders.</p>
+
+  <div class="dl-grid">
+    <a class="dl-card" href="contact.html?subject=PSU+Data+Governance+%E2%80%94+Board+90-Day+Action+Checklist">
+      <div class="dl-type">PDF · 2 pages · On request</div>
+      <div class="dl-title">Board 90-Day Action Checklist</div>
+      <div class="dl-desc">For Directors and Audit Committee Chairs — the decisions a board must take in the first 90 days. Email us to request a copy.</div>
+    </a>
+    <a class="dl-card" href="contact.html?subject=PSU+Data+Governance+%E2%80%94+18-Month+Implementation+Roadmap">
+      <div class="dl-type">PDF · 8 pages · On request</div>
+      <div class="dl-title">18-Month Implementation Roadmap</div>
+      <div class="dl-desc">Phase-by-phase plan for CIO &amp; Secretary teams. Documentation evidence list per phase, mapped to CAG + DPDPA. Email us to request a copy.</div>
+    </a>
+    <a class="dl-card" href="contact.html?subject=PSU+Data+Governance+%E2%80%94+COBIT+Maturity+Self-Assessment">
+      <div class="dl-type">XLSX · interactive · On request</div>
+      <div class="dl-title">COBIT Maturity Self-Assessment</div>
+      <div class="dl-desc">0–5 maturity scoring across EDM, APO, BAI, DSS and MEA — auto-generates a board-ready scorecard. Email us to request a copy.</div>
+    </a>
+  </div>
+</section>
+
+<!-- =========================  AUTHORITIES  ========================= -->
+<section style="margin-top:48px;">
+  <div class="section-kicker">Frameworks &amp; Authorities Referenced</div>
+  <h2 class="section-title">The independent sources this section is built on</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Layer</th><th>Authority</th><th>Reference</th></tr></thead>
+      <tbody>
+        <tr><td>Constitutional</td><td>Article 21 — Right to Privacy</td><td>Justice K.S. Puttaswamy v. Union of India (2017)</td></tr>
+        <tr><td>Statutory · Privacy</td><td>DPDP Act 2023; DPDP Rules 2025</td><td>MeitY Gazette · 13 Nov 2025</td></tr>
+        <tr><td>Statutory · IT</td><td>IT Act 2000; CERT-In Directions 2022</td><td>MeitY · CERT-In</td></tr>
+        <tr><td>Statutory · Audit</td><td>CAG (DPC) Act 1971; Articles 148–151</td><td>Constitution of India</td></tr>
+        <tr><td>Audit Practice</td><td>CAG IS Audit Manual 2024 (Vols I–III)</td><td>cag.gov.in</td></tr>
+        <tr><td>Governance</td><td>COBIT 2019 — EDM/APO/BAI/DSS/MEA + 7 Components</td><td>ISACA</td></tr>
+        <tr><td>Information Security</td><td>ISO/IEC 27001:2022 — 93 Annex A controls</td><td>ISO / BIS</td></tr>
+        <tr><td>Privacy</td><td>ISO/IEC 27701:2019 PIMS extension</td><td>ISO / BIS</td></tr>
+        <tr><td>IT Governance</td><td>ISO/IEC 38500</td><td>ISO / BIS</td></tr>
+        <tr><td>Data Management</td><td>DAMA-DMBOK v2 — 6 quality dimensions</td><td>DAMA International</td></tr>
+        <tr><td>Companies Act</td><td>§143(3)(i) ITGC &amp; IFC</td><td>MCA</td></tr>
+        <tr><td>Professional Equivalence</td><td>ICAI DISA ≡ ISACA CISA; ICAI DPCAC Standard</td><td>ICAI · ISACA · RBI</td></tr>
+        <tr><td>AI Governance</td><td>MeitY AI Competency Framework; CAG AI Strategy Framework</td><td>MeitY · CAG</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- =========================  NEWSLETTER  ========================= -->
+<section class="newsletter-ribbon">
+  <h3>The PSU Data Governance Brief — monthly</h3>
+  <p>CAG observations · MeitY notifications · DPBI orders · ICAI &amp; ISACA updates · ready-to-table board notes.</p>
+  <form class="nl-form" onsubmit="event.preventDefault();window.location.href='contact.html?subject=PSU+Newsletter+Subscription&amp;email='+encodeURIComponent(this.email.value);">
+    <input type="email" name="email" placeholder="your.email@psu.in" required>
+    <button type="submit">Subscribe</button>
+  </form>
+</section>
+
+</main>
+
+<footer class="foot">
+  Maintained by DPDPIndia.in Research Team · Last updated June 2026 · This page is editorial commentary, not legal advice — read with <a href="legal.html">legal disclaimer</a>.
+</footer>
+
+</body>
+</html>
