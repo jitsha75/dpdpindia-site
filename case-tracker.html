@@ -131,6 +131,48 @@ footer{background:var(--prussian);padding:2rem 0;border-top:3px solid var(--saff
   .case-card{padding:1.3rem;}
   .coming-soon-box{padding:1.5rem 1rem;}
 }
+/* === NEWSLETTER CASE-COVERAGE PANEL (Task: monthly briefing ↔ case tracker linking) === */
+.case-card.inv{border-left-color:#8A5A2B;}
+.case-card.inv .case-court{color:#8A5A2B;}
+.nl-month-group{margin-bottom:3rem;}
+.nl-month-group:last-child{margin-bottom:0;}
+.nl-month-head{display:flex;align-items:baseline;gap:0.8rem;margin-bottom:1.3rem;padding-bottom:0.6rem;border-bottom:2px solid var(--rule);}
+.nl-month-head h3{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:var(--prussian);}
+.nl-month-head h3 em{font-style:italic;color:var(--saffron);}
+.nl-month-head .nl-issue-pill{margin-left:auto;}
+.nl-issue-pill{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--prussian);color:var(--cream);padding:7px 14px;text-decoration:none;white-space:nowrap;}
+.nl-issue-pill:hover{background:var(--saffron);}
+.nl-empty-month{background:var(--parchment);border:1px dashed var(--rule);padding:1.4rem 1.6rem;font-size:0.85rem;font-weight:300;color:var(--mist);line-height:1.7;}
+.nl-covered-badge{display:inline-flex;align-items:center;gap:6px;margin-top:0.9rem;padding-top:0.8rem;border-top:1px dashed var(--rule);font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--saffron);text-decoration:none;}
+.nl-covered-badge:hover{color:var(--prussian);}
+.case-sources{margin-top:0.7rem;font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--mist);line-height:1.9;}
+.case-sources a{color:var(--saffron);text-decoration:none;}
+.case-sources a:hover{text-decoration:underline;}
+.nl-layout{display:grid;grid-template-columns:1fr 300px;gap:2.5rem;align-items:start;}
+.nl-sidebar{position:sticky;top:84px;}
+.nl-side-card{background:var(--prussian);padding:1.5rem;margin-bottom:1.3rem;}
+.nl-side-card-title{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--saffron-lt);margin-bottom:1rem;padding-bottom:0.6rem;border-bottom:1px solid rgba(212,118,10,0.3);}
+.nl-side-month{display:flex;align-items:baseline;justify-content:space-between;gap:0.5rem;margin-bottom:1.5rem;}
+.nl-side-month:last-of-type{margin-bottom:0;}
+.nl-side-month-name{font-family:'Playfair Display',serif;font-size:0.98rem;font-weight:700;color:var(--parchment);}
+.nl-count{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.08em;color:rgba(248,244,236,0.5);}
+.nl-case-list{list-style:none;margin:0.5rem 0 0.7rem;padding:0;}
+.nl-case-list li{margin-bottom:0.45rem;}
+.nl-case-list a{display:block;font-size:0.76rem;font-weight:300;color:rgba(248,244,236,0.8);text-decoration:none;line-height:1.5;padding-left:0.7rem;border-left:2px solid rgba(212,118,10,0.4);}
+.nl-case-list a:hover{color:var(--saffron-lt);border-left-color:var(--saffron-lt);}
+.nl-case-list a span{display:block;font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.04em;text-transform:uppercase;color:rgba(248,244,236,0.45);}
+.nl-issue-link{display:block;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.08em;text-transform:uppercase;background:var(--saffron);color:#fff;padding:8px 12px;text-decoration:none;}
+.nl-issue-link:hover{background:var(--saffron-lt);}
+.nl-empty-note{font-size:0.78rem;font-weight:300;color:rgba(248,244,236,0.55);line-height:1.6;margin-bottom:0.7rem;}
+@media(max-width:1000px){
+  .nl-layout{grid-template-columns:1fr;}
+  .nl-sidebar{position:static;order:-1;}
+  .nl-side-card{margin-bottom:1rem;}
+}
+@media(max-width:640px){
+  .nl-month-head{flex-wrap:wrap;}
+  .nl-month-head .nl-issue-pill{margin-left:0;}
+}
 </style>
 </head>
 <body>
@@ -318,6 +360,7 @@ footer{background:var(--prussian);padding:2rem 0;border-top:3px solid var(--saff
       <a href="#sc" style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--saffron);color:#fff;padding:11px 22px;text-decoration:none;">Supreme Court →</a>
       <a href="#hc" style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid rgba(255,255,255,0.25);color:rgba(248,244,236,0.75);padding:11px 22px;text-decoration:none;">High Courts →</a>
       <a href="#trial" style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid rgba(255,255,255,0.25);color:rgba(248,244,236,0.75);padding:11px 22px;text-decoration:none;">First Conviction →</a>
+      <a href="#nl2026" style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid rgba(212,118,10,0.5);background:rgba(212,118,10,0.15);color:var(--saffron-lt);padding:11px 22px;text-decoration:none;">📰 2026 Newsletter Cases →</a>
       <a href="#dpb" style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid rgba(255,255,255,0.25);color:rgba(248,244,236,0.75);padding:11px 22px;text-decoration:none;">DPDPB Status →</a>
     </div>
     <div style="margin-top:2rem;padding:0.9rem 1.2rem;background:rgba(212,118,10,0.12);border:1px solid rgba(212,118,10,0.3);border-left:3px solid var(--saffron);max-width:680px;">
@@ -335,7 +378,7 @@ footer{background:var(--prussian);padding:2rem 0;border-top:3px solid var(--saff
     <p class="sd">Foundational Supreme Court judgements that shaped India's data protection, surveillance law, and digital evidence framework — many forming the direct constitutional and statutory basis for the DPDP Act 2023 and IT Act enforcement.</p>
     <div class="case-grid">
 
-      <div class="case-card sc">
+      <div class="case-card sc" id="case-puttaswamy-privacy">
         <div class="case-court">Supreme Court · 9-Judge Bench · 2017</div>
         <div class="case-name">Justice K.S. Puttaswamy (Retd.) v. Union of India</div>
         <div class="case-issue">Whether the right to privacy is a fundamental right under the Indian Constitution</div>
@@ -346,7 +389,7 @@ footer{background:var(--prussian);padding:2rem 0;border-top:3px solid var(--saff
         <div class="case-takeaway">The constitutional bedrock of the DPDP Act 2023. Every data protection right in the Act flows from this judgement.</div>
       </div>
 
-      <div class="case-card sc">
+      <div class="case-card sc" id="case-puttaswamy-aadhaar">
         <div class="case-court">Supreme Court · 5-Judge Bench · 26 September 2018 · (2019) 1 SCC 1</div>
         <div class="case-name">Justice K.S. Puttaswamy (Retd.) v. Union of India — Aadhaar Case</div>
         <div class="case-issue">Constitutionality of the Aadhaar (Targeted Delivery of Financial and Other Subsidies, Benefits and Services) Act, 2016 and biometric data collection by the state</div>
@@ -357,7 +400,7 @@ footer{background:var(--prussian);padding:2rem 0;border-top:3px solid var(--saff
         <div class="case-takeaway">Private sector cannot mandate Aadhaar for services — this holding directly shapes DPDP Act's prohibition on coercive consent. Sets constitutional limits on biometric data use by state and private actors.</div>
       </div>
 
-      <div class="case-card sc">
+      <div class="case-card sc" id="case-shreya-singhal">
         <div class="case-court">Supreme Court · 24 March 2015 · (2015) 5 SCC 1</div>
         <div class="case-name">Shreya Singhal v. Union of India</div>
         <div class="case-issue">Constitutionality of Section 66A of the IT Act 2000 — criminal liability for online speech; also the scope of intermediary safe harbour under Section 79</div>
@@ -368,7 +411,7 @@ footer{background:var(--prussian);padding:2rem 0;border-top:3px solid var(--saff
         <div class="case-takeaway">Foundational case defining limits of state power over online speech. The Section 79 reading directly governs intermediary liability under the IT Act's safe harbour framework and shapes DPDP Act compliance for platforms.</div>
       </div>
 
-      <div class="case-card sc">
+      <div class="case-card sc" id="case-pucl-telephone-tapping">
         <div class="case-court">Supreme Court · 18 December 1996 · (1997) 1 SCC 301</div>
         <div class="case-name">People's Union for Civil Liberties v. Union of India — Telephone Tapping Case</div>
         <div class="case-issue">Whether state interception of telephone communications without procedural safeguards violates the right to privacy under Article 21</div>
@@ -379,7 +422,7 @@ footer{background:var(--prussian);padding:2rem 0;border-top:3px solid var(--saff
         <div class="case-takeaway">Predates the IT Act but established that surveillance by the state must be procedurally governed. The PUCL guidelines remained the only safeguard for communications surveillance until the IT Act's Section 69 rules were framed. Relevant to any analysis of AI-driven surveillance, CDR analysis, and lawful interception under Indian law.</div>
       </div>
 
-      <div class="case-card sc">
+      <div class="case-card sc" id="case-anvar-pv">
         <div class="case-court">Supreme Court · 3-Judge Bench · 18 September 2014 · (2014) 10 SCC 473</div>
         <div class="case-name">Anvar P.V. v. P.K. Basheer — Electronic Evidence Admissibility</div>
         <div class="case-issue">Whether electronic records can be admitted as secondary evidence without a certificate under Section 65B of the Indian Evidence Act, 1872</div>
@@ -390,7 +433,7 @@ footer{background:var(--prussian);padding:2rem 0;border-top:3px solid var(--saff
         <div class="case-takeaway">Critical for cybercrime prosecutions: every digital printout, screenshot, CCTV recording, or call log submitted in court must be accompanied by a 65B certificate from a responsible official. Failure to obtain this certificate at the investigation stage can collapse a prosecution.</div>
       </div>
 
-      <div class="case-card sc">
+      <div class="case-card sc" id="case-arjun-panditrao">
         <div class="case-court">Supreme Court · 3-Judge Bench · 14 July 2020 · (2020) 7 SCC 1</div>
         <div class="case-name">Arjun Panditrao Khotkar v. Kailash Gorantyal — Electronic Evidence Reaffirmed</div>
         <div class="case-issue">Whether the mandatory Section 65B certificate requirement from Anvar P.V. applies uniformly, and what remedies exist when a party is wrongly denied access to such a certificate</div>
@@ -401,7 +444,7 @@ footer{background:var(--prussian);padding:2rem 0;border-top:3px solid var(--saff
         <div class="case-takeaway">Settled law on electronic evidence in India. Practitioners must secure a 65B certificate at the earliest stage — ideally at seizure. The judgment also clarifies who the "certifier" must be, which matters for cloud-stored data and SaaS platforms subject to DPDP Act obligations.</div>
       </div>
 
-      <div class="case-card sc">
+      <div class="case-card sc" id="case-google-india-visaka">
         <div class="case-court">Supreme Court · 2-Judge Bench · 16 October 2019 · (2020) 4 SCC 162</div>
         <div class="case-name">Google India Pvt. Ltd. v. Visaka Industries — Intermediary Liability After Notice</div>
         <div class="case-issue">Whether Google India can claim absolute immunity as an intermediary under Section 79 of the IT Act when it has actual knowledge of defamatory content posted on its platform and fails to remove it</div>
@@ -424,7 +467,7 @@ footer{background:var(--prussian);padding:2rem 0;border-top:3px solid var(--saff
     <p class="sd">Verified High Court precedents on data protection, cybercrime, and digital rights. Cases are added only after cross-referencing official court records or established legal databases (SCC Online / Manupatra).</p>
     <div class="case-grid">
 
-      <div class="case-card hc">
+      <div class="case-card hc" id="case-whatsapp-privacy-policy">
         <div class="case-court">Delhi High Court · W.P.(C) 7663/2016 · August 2016</div>
         <div class="case-name">Karmanya Singh Sareen & Anr. v. Union of India & Ors. — WhatsApp Privacy Policy</div>
         <div class="case-issue">Whether WhatsApp's September 2016 privacy policy update — permitting data sharing with Facebook — violated Indian users' right to privacy and informational self-determination</div>
@@ -435,7 +478,7 @@ footer{background:var(--prussian);padding:2rem 0;border-top:3px solid var(--saff
         <div class="case-takeaway">Pre-existing data collected under an earlier consent cannot automatically be repurposed under a revised policy — consent must be specific, informed, and cover each purpose of use.</div>
       </div>
 
-      <div class="case-card hc">
+      <div class="case-card hc" id="case-smc-pneumatics">
         <div class="case-court">Delhi High Court · CS(OS) 1279/2001 · 2001</div>
         <div class="case-name">SMC Pneumatics (India) Pvt. Ltd. v. Jogesh Kwatra — Email Defamation</div>
         <div class="case-issue">Whether defamatory statements sent via email to a person's employer and colleagues constitute actionable defamation; and whether Indian courts can grant injunctive relief against online defamation</div>
@@ -446,7 +489,7 @@ footer{background:var(--prussian);padding:2rem 0;border-top:3px solid var(--saff
         <div class="case-takeaway">Emails, messages, and posts carry the same legal weight as printed defamatory matter. The case established that corporate victims of cyber harassment — including defamatory mass emails — can obtain emergency injunctions from Indian courts.</div>
       </div>
 
-      <div class="case-card hc">
+      <div class="case-card hc" id="case-nasscom-phishing">
         <div class="case-court">Delhi High Court · 23 March 2005 · 119 (2005) DLT 596</div>
         <div class="case-name">National Association of Software & Service Companies (NASSCOM) v. Ajay Sood & Ors. — Phishing Defined</div>
         <div class="case-issue">Whether phishing — creating a spoof website and sending fraudulent emails impersonating a legitimate organisation to extract personal data — constitutes an actionable wrong under Indian law</div>
@@ -457,7 +500,7 @@ footer{background:var(--prussian);padding:2rem 0;border-top:3px solid var(--saff
         <div class="case-takeaway">India's first judicial recognition of phishing as a legal wrong — predating specific phishing legislation. This precedent underpins all identity theft and impersonation prosecutions under Section 66D of the IT Act (inserted in 2008 amendments).</div>
       </div>
 
-      <div class="case-card hc">
+      <div class="case-card hc" id="case-avnish-bajaj">
         <div class="case-court">Delhi High Court · 29 May 2008 · 150 (2008) DLT 769</div>
         <div class="case-name">Avnish Bajaj v. State (NCT of Delhi) — The Baazee.com / MMS Case</div>
         <div class="case-issue">Criminal liability of a platform CEO (intermediary) for obscene content listed by a user on the company's e-commerce website; limits of corporate director liability under the IT Act</div>
@@ -468,7 +511,7 @@ footer{background:var(--prussian);padding:2rem 0;border-top:3px solid var(--saff
         <div class="case-takeaway">Directly catalysed the 2008 IT Act amendments introducing the formal safe harbour regime under Section 79. Any CXO of a platform operating in India must ensure the company has an operational content takedown and grievance redressal system — or face personal criminal exposure under Section 85.</div>
       </div>
 
-      <div class="case-card hc">
+      <div class="case-card hc" id="case-sanjay-kumar-bank-fraud">
         <div class="case-court">Punjab & Haryana High Court · CRR 66/2013 · 10 January 2013</div>
         <div class="case-name">Sanjay Kumar v. State of Haryana — Bank IT Fraud via System Manipulation</div>
         <div class="case-issue">Whether a software maintenance vendor who exploits privileged access to a bank's computerised accounting system to fraudulently credit amounts to his own account is guilty under both the IPC and Sections 65–66 of the IT Act</div>
@@ -491,7 +534,7 @@ footer{background:var(--prussian);padding:2rem 0;border-top:3px solid var(--saff
     <p class="sd">Notable lower court decisions that established key precedents in India's cyber law history — even before the High Courts had occasion to rule.</p>
     <div class="case-grid">
 
-      <div class="case-card sc">
+      <div class="case-card sc" id="case-suhas-katti">
         <div class="case-court">Addl. Chief Metropolitan Magistrate · Egmore, Chennai · November 2004</div>
         <div class="case-name">State of Tamil Nadu v. Suhas Katti — First Conviction Under IT Act</div>
         <div class="case-issue">Whether posting obscene and harassing messages about a woman on the internet under a fake identity, and transmitting her contact details to cause unsolicited calls and messages, constitutes an offence under the IT Act 2000</div>
@@ -502,6 +545,243 @@ footer{background:var(--prussian);padding:2rem 0;border-top:3px solid var(--saff
         <div class="case-takeaway">Proved that Indian courts could move swiftly on cyber harassment cases and that the IT Act's Section 67 was workable for online abuse. Predated social media but the principle applies directly to deepfakes, morphed images, and impersonation attacks on platforms — all now covered by IT Act and DPDP Act together.</div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- 2026 NEWSLETTER-TRACKED CASES -->
+<section class="section alt" id="nl2026">
+  <div class="page">
+    <div class="kicker">Newsletter ↔ Case Tracker</div>
+    <h2 class="sh">2026 Case Law <em>Tracked by Month</em></h2>
+    <p class="sd">Every new judgment, order, or court-driven development discussed in our Monthly Briefing is logged here as it happens — grouped by the month it was first reported, colour-coded by court hierarchy (Supreme Court · High Court · Investigation/Trial), and cross-linked back to the full newsletter analysis and original sources. Use the panel alongside to jump straight to any month.</p>
+
+    <div class="nl-layout">
+      <div class="nl-content">
+
+        <!-- JULY 2026 -->
+        <div class="nl-month-group" id="nl-july-2026">
+          <div class="nl-month-head">
+            <h3>★ <em>July 2026</em> Issue — 6 Cases Covered</h3>
+            <a class="nl-issue-pill" href="monthly-briefing-2026-07.html" target="_blank" rel="noopener">Read Full Issue →</a>
+          </div>
+          <div class="case-grid">
+
+            <div class="case-card sc" id="case-2026-pune-bar-association">
+              <div class="case-court">Supreme Court · Compliance Standard · June 2026</div>
+              <div class="case-name">Pune Bar Association v. Union of India</div>
+              <div class="case-issue">Whether a PDF-format privacy policy, without underlying database controls, satisfies the "reasonable security safeguards" standard under Section 8(5) of the DPDP Act 2023.</div>
+              <div class="case-outcome">
+                <div class="case-outcome-label">Outcome</div>
+                <div class="case-outcome-text">The Court held that privacy compliance is an architectural necessity, not a policy disclaimer. "Reasonable" security safeguards under Section 8(5) were read to include cryptographic hashing and tamper-evident logs; a database lacking functional deletion paths or holding un-hashed, bundled data fields is non-compliant regardless of its written policy — exposing the organisation to penalties up to ₹250 crore on a traceable breach.</div>
+              </div>
+              <div class="case-takeaway">DPDP programmes must shift from "policy + notice refresh" to engineering work: verifiable deletion paths, field-level hashing, tamper-evident audit logs, and consent-state traceability in the data layer itself.</div>
+              <div class="case-sources">Sources: <a href="https://amlegals.com/from-privacy-policies-to-system-architecture-the-supreme-courts-new-compliance-standard/" target="_blank">AMLEGALS</a> · <a href="https://khannaandassociates.com/blog/dpdp-act-2023-business-privacy-policy/" target="_blank">Khanna &amp; Associates</a></div>
+              <a class="nl-covered-badge" href="monthly-briefing-2026-07.html#t-privacy-is-architecture-not-a" target="_blank" rel="noopener">📰 Covered in July 2026 Newsletter →</a>
+            </div>
+
+            <div class="case-card hc" id="case-2026-laksh-vir-singh-yadav">
+              <div class="case-court">Delhi High Court · 2026:DHC:4891 · June 2026 · Justice Sachin Datta</div>
+              <div class="case-name">Laksh Vir Singh Yadav v. Union of India &amp; Connected Matters — Right to be Forgotten</div>
+              <div class="case-issue">Whether individuals can compel de-indexing of personal identifiers from online legal databases and search engines where judicial records cause disproportionate reputational harm, despite the DPDP Act not codifying a Right to be Forgotten.</div>
+              <div class="case-outcome">
+                <div class="case-outcome-label">Outcome</div>
+                <div class="case-outcome-text">Resolving over 35 connected petitions, the Court held the Right to be Forgotten is a natural extension of informational privacy under Article 21 (grounded in <a href="#case-puttaswamy-privacy">Puttaswamy</a>). De-indexing — not deletion — is the least-restrictive remedy: search engines must disable name-based retrieval while the underlying record stays public for "open justice." Absolute bars apply to public figures' public conduct, public servants' breach of public trust, and persons convicted of serious crimes or offences against women and children. MeitY must ensure intermediary compliance and file a compliance affidavit.</div>
+              </div>
+              <div class="case-takeaway">For legal databases, search engines, and any "people search" feature — automated name-masking and de-indexing workflows are now a compliance requirement, not a courtesy.</div>
+              <div class="case-sources">Sources: <a href="https://www.verdictum.in/delhi-high-court/laksh-vir-singh-yadav-v-union-of-india-connected-matters-2026dhc4891-1615077" target="_blank">Verdictum</a> · <a href="https://www.scconline.com/blog/post/2026/06/03/del-hc-verdict-on-de-indexing-masking-and-right-to-be-forgotten/" target="_blank">SCC Online</a> · <a href="https://www.thehindu.com/news/national/delhi-hc-recognises-right-to-be-forgotten-directs-search-engines-to-disable-name-based-search-in-court-orders-news/article71048040.ece" target="_blank">The Hindu</a> · <a href="https://ssrana.in/articles/dignity-in-the-digital-age-delhi-high-court-reiterates-the-right-to-be-forgotten/" target="_blank">S.S. Rana</a></div>
+              <a class="nl-covered-badge" href="monthly-briefing-2026-07.html#t-right-to-be-forgotten-is" target="_blank" rel="noopener">📰 Covered in July 2026 Newsletter →</a>
+            </div>
+
+            <div class="case-card hc" id="case-2026-telegram-fz-llc">
+              <div class="case-court">Delhi High Court · W.P.(C) 8259/2026 · 19 June 2026 · Justice Tejas Karia</div>
+              <div class="case-name">Telegram FZ LLC v. Union of India</div>
+              <div class="case-issue">Whether Section 69A of the IT Act permits MeitY to block an entire application — not just specific content — when its own features (message-editing) were repeatedly exploited to fabricate evidence during the NEET-UG 2026 paper-leak crisis.</div>
+              <div class="case-outcome">
+                <div class="case-outcome-label">Outcome</div>
+                <div class="case-outcome-text">The Court upheld MeitY's emergency order — a platform-wide block until 22 June and the message-edit feature disabled until 30 June 2026. Justice Karia held that Section 2(1)(v) of the IT Act ("information" includes "codes, computer programmes and software") permits treating an entire app as a unit of information, making the block proportionate and least-restrictive, with Section 69A safeguards duly followed.</div>
+              </div>
+              <div class="case-takeaway">If a platform's own architecture (edit features, ephemerality, anonymity) can be systematically weaponised, the state can now block the entire platform, not just offending URLs — proactive abuse controls and a documented crisis channel with MeitY are the practical insurance.</div>
+              <div class="case-sources">Sources: <a href="https://lawbeat.in/news-updates/breaking-delhi-high-court-upholds-temporary-telegram-ban-over-neet-leak-section-69a-action-held-proportionate-1603732" target="_blank">LawBeat</a> · <a href="https://theleaflet.in/leaflet-reports/judgment-summary-delhi-hc-upholds-temporary-ban-on-telegram-finds-it-least-restrictive-and-proportionate" target="_blank">The Leaflet</a> · <a href="https://internetfreedom.in/the-delhi-high-court-upholds-the-temporary-ban-on-telegram-app/" target="_blank">Internet Freedom Foundation</a> · <a href="https://delhihighcourt.nic.in/app/showFileJudgment/68719062026CW82592026_124343.pdf" target="_blank">Delhi HC — Full Judgment</a> · <a href="https://www.techpolicy.press/indias-telegram-ban-risks-normalizing-platform-wide-blocking/" target="_blank">TechPolicy.Press</a></div>
+              <a class="nl-covered-badge" href="monthly-briefing-2026-07.html#t-an-entire-app-is-information" target="_blank" rel="noopener">📰 Covered in July 2026 Newsletter →</a>
+            </div>
+
+            <div class="case-card hc" id="case-2026-madras-hc-singapore-worker">
+              <div class="case-court">Madras High Court · Writ Petition · June 2026 · Justice L. Victoria Gowri</div>
+              <div class="case-name">In re: Cyber-Harassment of an Indian Domestic Worker in Singapore — Morphed Images Case</div>
+              <div class="case-issue">Whether the statutory obligation to register an FIR and preserve digital evidence is diluted because the victim — an Indian domestic worker — resides overseas when morphed, obscene images of her are circulated on Instagram.</div>
+              <div class="case-outcome">
+                <div class="case-outcome-label">Outcome</div>
+                <div class="case-outcome-text">The Court ordered immediate FIR registration and preservation of digital evidence, holding that cyber offences affecting a woman's dignity cannot suffer routine administrative delay. It ruled that a victim's overseas residence does not dilute domestic law enforcement's obligations where the accused or consequences of the offence lie within Indian jurisdiction.</div>
+              </div>
+              <div class="case-takeaway">Reinforces the extraterritorial protective reach of Indian cyber law for the diaspora workforce — a template for complaints from Indians working in the Gulf, Singapore and Southeast Asia.</div>
+              <div class="case-sources">Sources: <a href="https://indianexpress.com/article/legal-news/morphed-image-not-harmless-prank-court-orders-police-cyber-harassment-10756438/" target="_blank">The Indian Express</a></div>
+              <a class="nl-covered-badge" href="monthly-briefing-2026-07.html#t-victim-abroad-jurisdiction-intact-madras" target="_blank" rel="noopener">📰 Covered in July 2026 Newsletter →</a>
+            </div>
+
+            <div class="case-card hc" id="case-2026-mp-electronic-records-rules">
+              <div class="case-court">Madhya Pradesh High Court · Rule-Making · June 2026</div>
+              <div class="case-name">In re: Electronic Records Rules, 2026 (Madhya Pradesh)</div>
+              <div class="case-issue">Whether a State High Court can frame procedural rules letting litigants submit digital evidence (WhatsApp chats, photos, video, audio) via a dedicated e-evidence portal without physical seizure of devices — without encroaching on the Union/Concurrent-List evidentiary standards of the Bharatiya Sakshya Adhiniyam and IT Act.</div>
+              <div class="case-outcome">
+                <div class="case-outcome-label">Outcome</div>
+                <div class="case-outcome-text">Madhya Pradesh became the first state to draft comprehensive Electronic Records Rules, 2026, letting litigants submit digital evidence through the NIC E-Evidence system. The framework is confined to procedure — states cannot amend the Section 63 certification standard or the IT Act, since evidence and IT law sit on the Concurrent/Union Lists; High Courts may only frame how evidence is handled, uploaded and presented within their jurisdiction, aligned with the central framework.</div>
+              </div>
+              <div class="case-takeaway">A replicable procedural template for other High Courts to modernise digital-evidence handling without a legislative amendment — reduces phone-seizure friction for complainants and undertrial litigants alike.</div>
+              <div class="case-sources">Sources: <a href="https://www.bhaskarenglish.in/local/mp/news/mp-e-records-rules-court-digital-evidence-madhya-pradesh-138087536.html" target="_blank">Dainik Bhaskar English</a> · <a href="https://www.jagran.com/madhya-pradesh/jabalpur-mp-first-state-for-digital-evidence-rules-no-phone-seizure-40260406.html" target="_blank">Dainik Jagran</a> · <a href="https://vidhilegalpolicy.in/blog/the-evolving-enigma/" target="_blank">Vidhi Legal Policy</a></div>
+              <a class="nl-covered-badge" href="monthly-briefing-2026-07.html#t-mp-becomes-first-state-to" target="_blank" rel="noopener">📰 Covered in July 2026 Newsletter →</a>
+            </div>
+
+            <div class="case-card inv" id="case-2026-bhagwant-mann-forensic-fraud">
+              <div class="case-court">Gurugram Police, Haryana · FIR under BNS 2023 · June 2026</div>
+              <div class="case-name">State of Haryana v. [Cyber Forensic Expert] — "Forensic Fraud" FIR</div>
+              <div class="case-issue">Whether a cyber-forensic expert who fabricates a digital-forensic report — falsely certifying a genuine viral video as "AI-generated" — commits a distinct offence under the BNS, and what this reveals about India's expert-authentication ecosystem.</div>
+              <div class="case-outcome">
+                <div class="case-outcome-label">Outcome</div>
+                <div class="case-outcome-text">Gurugram Police arrested a cyber forensic expert, previously contracted with the National Investigation Agency, for allegedly fabricating a report that falsely certified a viral video of Punjab Chief Minister Bhagwant Mann as AI-generated, booking him under the Bharatiya Nyaya Sanhita, 2023.</div>
+              </div>
+              <div class="case-takeaway">Exposes "forensic fraud" as an emerging regulatory blind spot: the IT Rules 2026 classify deepfakes as "Synthetically Generated Information" subject to swift takedown, but the human expert-verification layer itself remains unregulated — corrupted expert validation can directly alter judicial and public outcomes.</div>
+              <div class="case-sources">Sources: <a href="https://lawbeat.in/articles/when-the-evidence-becomes-the-crime-what-the-bhagwant-mann-case-tells-us-about-forensic-fraud-in-india-1606416" target="_blank">LawBeat — Analysis</a></div>
+              <a class="nl-covered-badge" href="monthly-briefing-2026-07.html#t-when-the-evidence-becomes-the" target="_blank" rel="noopener">📰 Covered in July 2026 Newsletter →</a>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- JUNE 2026 -->
+        <div class="nl-month-group" id="nl-june-2026">
+          <div class="nl-month-head">
+            <h3><em>June 2026</em> Issue — 5 Cases Covered</h3>
+            <a class="nl-issue-pill" href="monthly-briefing-2026-06.html" target="_blank" rel="noopener">Read Full Issue →</a>
+          </div>
+          <div class="case-grid">
+
+            <div class="case-card sc" id="case-2026-dpdp-constitutionality">
+              <div class="case-court">Supreme Court · Article 32 (Consolidated) · Referred to Larger Bench · Ongoing since Feb 2026</div>
+              <div class="case-name">Venkatesh Nayak &amp; Ors. v. Union of India — DPDP Act Constitutionality Challenge</div>
+              <div class="case-issue">Whether Section 44(3) (amending RTI Act §8(1)(j)), Sections 17(1)(c)/17(2) (state exemptions), Section 36 (unbounded government data-demand power), and Rules 17 &amp; 23(2) of the DPDP Rules 2025 unconstitutionally erode RTI transparency and enable a state surveillance apparatus, failing the <a href="#case-puttaswamy-privacy">Puttaswamy</a> proportionality test.</div>
+              <div class="case-outcome">
+                <div class="case-outcome-label">Outcome</div>
+                <div class="case-outcome-text">Consolidated writ petitions by RTI activists Venkatesh Nayak, Geeta Seshu, the National Campaign for People's Right to Information, and the Reporters Collective were heard by a bench of CJI Surya Kant, Justice Joymalya Bagchi and Justice V.M. Pancholi on 16 Feb, 23 March and 13 May 2026. The Court declined to stay Section 44(3) and referred the constitutional questions to a larger bench. FDPPI has filed an intervention petition defending the Act's core framework.</div>
+              </div>
+              <div class="case-takeaway">The single most consequential pending case for Indian data-governance practitioners — its outcome determines how durable every current DPDP compliance investment turns out to be. Track it; don't assume Section 44(3) is settled law.</div>
+              <div class="case-sources">Sources: <a href="https://www.scobserver.in/cases/constitutionality-of-the-digital-personal-data-protection-act-2023/" target="_blank">SC Observer — Case Tracker</a> · <a href="https://www.naavi.org/wp/supreme-court-hearing-on-dpdpa-on-may-13-2026/" target="_blank">Naavi.org</a> · <a href="https://www.hammurabisolomon.in/post/constitutional-challenge-to-the-dpdp-act-and-its-impact-on-the-rti-framework" target="_blank">Hammurabi &amp; Solomon</a> · <a href="https://ssrana.in/articles/supreme-court-set-to-adjudicate-validity-of-indias-digital-personal-data-protection-act-2023/" target="_blank">S.S. Rana</a> · <a href="https://chambers.com/articles/supreme-court-set-to-adjudicate-validity-of-india-s-digital-personal-data-protection-act-2023" target="_blank">Chambers &amp; Partners</a></div>
+              <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+                <a class="nl-covered-badge" href="monthly-briefing-2026-06.html#t-sc-dpdp-constitutionality-crossroads" target="_blank" rel="noopener">📰 Covered in June 2026 Newsletter →</a>
+                <a class="nl-covered-badge" href="monthly-briefing-2026-07.html#t-dpdp-act-constitutionality-remains-before" target="_blank" rel="noopener">📰 Updated in July 2026 Newsletter →</a>
+              </div>
+            </div>
+
+            <div class="case-card sc" id="case-2026-meta-whatsapp-consent">
+              <div class="case-court">Supreme Court · Corporate Liability · Ongoing Appeals · 2026</div>
+              <div class="case-name">Meta Platforms / WhatsApp LLC v. Competition Commission of India &amp; Ors.</div>
+              <div class="case-issue">Whether WhatsApp's 2021 privacy-policy and data-sharing framework with Meta, challenged by the CCI, amounts to an impermissible "take-it-or-leave-it" consent model incompatible with privacy as a fundamental right.</div>
+              <div class="case-outcome">
+                <div class="case-outcome-label">Outcome</div>
+                <div class="case-outcome-text">Hearing parallel appeals by Meta/WhatsApp and the CCI, the Supreme Court issued a sharp rebuke of "take-it-or-leave-it" consent models deployed by global technology monopolies, reaffirming that multinationals operating in India must provide real, uncoerced choice — building on the <a href="#case-puttaswamy-privacy">Puttaswamy</a> foundation.</div>
+              </div>
+              <div class="case-takeaway">Likely to become the foundational corporate-liability precedent for consent-architecture design under the DPDP Act's "free, specific, informed, unconditional and unambiguous" consent standard — audit any "accept all" bundled-consent UX now.</div>
+              <div class="case-sources">Sources: <a href="https://singhanialaw.com/digital-personal-data-protection-rules-2025-privacy-competition-corporate-compliance/" target="_blank">Singhania Law</a> · <a href="https://www.livelaw.in/top-stories/whats-public-data-personal-data-supreme-court-on-challenge-to-dpdp-act-526194" target="_blank">LiveLaw</a></div>
+              <a class="nl-covered-badge" href="monthly-briefing-2026-06.html#t-sc-meta-whatsapp-consent" target="_blank" rel="noopener">📰 Covered in June 2026 Newsletter →</a>
+            </div>
+
+            <div class="case-card hc" id="case-2026-allahabad-shraddha-pathak">
+              <div class="case-court">Allahabad High Court (Division Bench) · 15 May 2026 · Justice J.J. Munir &amp; Justice Tarun Saxena</div>
+              <div class="case-name">Smt. Shraddha Pathak v. State of U.P. &amp; 4 Others</div>
+              <div class="case-issue">Whether a state cyber cell can deactivate a citizen's mobile number on a bogus matrimonial complaint by her husband, without independent verification — and whether damages lie against the State for such automated enforcement.</div>
+              <div class="case-outcome">
+                <div class="case-outcome-label">Outcome</div>
+                <div class="case-outcome-text">The Bench expressed severe displeasure at the "callous handling by State Agencies," ordered restoration of the wife's mobile connection, and issued a formal show-cause notice asking the State to explain why damages should not be awarded for arbitrary deprivation of her digital rights under Article 21.</div>
+              </div>
+              <div class="case-takeaway">Financial liability for arbitrary, unverified digital-enforcement action is now a live judicial risk. Cyber cells should document verification protocols before deactivating SIMs/accounts on a bare complaint, with a rapid grievance pathway for those wrongly affected.</div>
+              <div class="case-sources">Sources: <a href="https://lawbeat.in/news-updates/wife-loses-mobile-number-after-husbands-bogus-complaint-allahabad-high-court-questions-cyber-cell-1597718" target="_blank">Law Beat</a> · <a href="https://www.barandbench.com/news/allahabad-high-court-raps-up-police-for-blocking-womans-phone-number-on-husbands-bogus-complaint" target="_blank">Bar &amp; Bench</a></div>
+              <a class="nl-covered-badge" href="monthly-briefing-2026-06.html#t-hc-allahabad-shraddha-pathak" target="_blank" rel="noopener">📰 Covered in June 2026 Newsletter →</a>
+            </div>
+
+            <div class="case-card hc" id="case-2026-bombay-aadhaar-biometric">
+              <div class="case-court">Bombay High Court (Division Bench) · WP No. 10771 of 2025 · 8 May 2026</div>
+              <div class="case-name">Aadhaar Biometric Mismatch Remedy — Bombay High Court</div>
+              <div class="case-issue">Whether a citizen can be denied government services purely because a centralised Aadhaar authentication system registers a biometric mismatch, with no allegation of fraud, impersonation, or suppression of facts.</div>
+              <div class="case-outcome">
+                <div class="case-outcome-label">Outcome</div>
+                <div class="case-outcome-text">The Court held that citizens cannot be left without an effective remedy simply because of an opaque database error, and that UIDAI and related bodies must maintain robust, accessible human-in-the-loop fallback mechanisms to resolve authentication anomalies — the state cannot hide behind technological determinism.</div>
+              </div>
+              <div class="case-takeaway">Banks, NBFCs, telecom operators and InsurTechs using Aadhaar-based KYC must build an explicit "biometric-failure escalation" path with a documented human-review step and SLA — denying services on erroneous automated biometric processing creates direct DPDP Act penalty exposure.</div>
+              <div class="case-sources">Sources: <a href="https://bombayhighcourt.nic.in/generatenewauth.php?bhcpar=cGF0aD0uL3dyaXRlcmVhZGRhdGEvZGF0YS9qdWRnZW1lbnRzLzIwMjYvJmZuYW1lPTIwMDEwMDEwNzcxMjAyNV8xMy5wZGYmc21mbGFnPU4mcmp1ZGRhdGU9JnVwbG9hZGR0PTA4LzA1LzIwMjYmc3Bhc3NwaHJhc2U9MjIwNTI2MjIxNzEzJm5jaXRhdGlvbj0yMDI2OkJIQy1BUzoyMjA0Mi1EQiZzbWNpdGF0aW9uPSZkaWdjZXJ0ZmxnPU4maW50ZXJmYWNlPU8=" target="_blank">Bombay HC Judgment (PDF)</a></div>
+              <a class="nl-covered-badge" href="monthly-briefing-2026-06.html#t-hc-bombay-aadhaar-biometric" target="_blank" rel="noopener">📰 Covered in June 2026 Newsletter →</a>
+            </div>
+
+            <div class="case-card hc" id="case-2026-delhi-aadhaar-prisoners">
+              <div class="case-court">Delhi High Court · WP(CRL) 673/2024 · 22 May 2026</div>
+              <div class="case-name">In re: Aadhaar Verification of Prisoners &amp; Bail Sureties</div>
+              <div class="case-issue">Whether mandatory Aadhaar-based biometric verification of prisoners, jail visitors, and bail sureties — via a UIDAI-MHA API integration — is being properly implemented across court premises to curb fraudulent sureties.</div>
+              <div class="case-outcome">
+                <div class="case-outcome-label">Outcome</div>
+                <div class="case-outcome-text">The Court reviewed implementation of biometric verification for inmates and mulakat (jail-visit) applicants under the Aadhaar Authentication for Good Governance Rules, 2020, building on a May 2024 Punjab &amp; Haryana HC directive — now expanding real-time Aadhaar authentication of bail sureties nationally to eliminate fabricated identities and asset claims.</div>
+              </div>
+              <div class="case-takeaway">Criminal-law practitioners should prepare clients and sureties for mandatory Aadhaar verification at court premises; UIDAI must guarantee uptime and a clear failure-fallback protocol consistent with the Bombay HC's human-in-the-loop mandate.</div>
+              <div class="case-sources">Sources: <a href="https://delhihighcourt.nic.in/app/showFileJudgment/PMS22052026CRLW6732024_150308.pdf" target="_blank">Delhi HC Order (PDF)</a></div>
+              <a class="nl-covered-badge" href="monthly-briefing-2026-06.html#t-hc-delhi-aadhaar-prisoners" target="_blank" rel="noopener">📰 Covered in June 2026 Newsletter →</a>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- MAY 2026 -->
+        <div class="nl-month-group" id="nl-may-2026">
+          <div class="nl-month-head">
+            <h3><em>May 2026</em> Issue — 0 Cases Covered</h3>
+            <a class="nl-issue-pill" href="monthly-briefing-2026-05.html" target="_blank" rel="noopener">Read Full Issue →</a>
+          </div>
+          <div class="nl-empty-month">No new court judgments were featured in the May 2026 issue — that month's briefing focused on regulatory and policy developments (AIDAI's launch, IndiaAI Governance Guidelines, DPDP Act enforcement kickoff, national cybercrime-crackdown statistics, Aadhaar update extensions, and the EU AI Act timeline). Case coverage resumed the following month with the Allahabad, Bombay and Delhi High Court rulings above.</div>
+        </div>
+
+      </div>
+
+      <aside class="nl-sidebar">
+        <div class="nl-side-card">
+          <div class="nl-side-card-title">Browse by Newsletter Month</div>
+
+          <div class="nl-side-month">
+            <span class="nl-side-month-name">★ July 2026</span>
+            <span class="nl-count">6 cases</span>
+          </div>
+          <ul class="nl-case-list">
+            <li><a href="#case-2026-pune-bar-association">Pune Bar Association v. UOI<span>Supreme Court · Compliance</span></a></li>
+            <li><a href="#case-2026-laksh-vir-singh-yadav">Laksh Vir Singh Yadav v. UOI<span>Delhi HC · Right to be Forgotten</span></a></li>
+            <li><a href="#case-2026-telegram-fz-llc">Telegram FZ LLC v. UOI<span>Delhi HC · Section 69A Block</span></a></li>
+            <li><a href="#case-2026-madras-hc-singapore-worker">Cyber-Harassment, Worker in Singapore<span>Madras HC · Jurisdiction</span></a></li>
+            <li><a href="#case-2026-mp-electronic-records-rules">MP Electronic Records Rules 2026<span>Madhya Pradesh HC · Digital Evidence</span></a></li>
+            <li><a href="#case-2026-bhagwant-mann-forensic-fraud">Bhagwant Mann Forensic-Fraud FIR<span>Gurugram Police · BNS 2023</span></a></li>
+          </ul>
+          <a class="nl-issue-link" href="monthly-briefing-2026-07.html" target="_blank" rel="noopener">Full July Issue →</a>
+
+          <div class="nl-side-month" style="margin-top:1.7rem;">
+            <span class="nl-side-month-name">June 2026</span>
+            <span class="nl-count">5 cases</span>
+          </div>
+          <ul class="nl-case-list">
+            <li><a href="#case-2026-dpdp-constitutionality">DPDP Act Constitutionality Challenge<span>Supreme Court · Larger Bench</span></a></li>
+            <li><a href="#case-2026-meta-whatsapp-consent">Meta/WhatsApp v. CCI &amp; Ors.<span>Supreme Court · Corporate Liability</span></a></li>
+            <li><a href="#case-2026-allahabad-shraddha-pathak">Shraddha Pathak v. State of U.P.<span>Allahabad HC · Digital Rights</span></a></li>
+            <li><a href="#case-2026-bombay-aadhaar-biometric">Aadhaar Biometric Mismatch Remedy<span>Bombay HC · UIDAI</span></a></li>
+            <li><a href="#case-2026-delhi-aadhaar-prisoners">Aadhaar for Prisoners &amp; Sureties<span>Delhi HC · UIDAI-MHA</span></a></li>
+          </ul>
+          <a class="nl-issue-link" href="monthly-briefing-2026-06.html" target="_blank" rel="noopener">Full June Issue →</a>
+
+          <div class="nl-side-month" style="margin-top:1.7rem;">
+            <span class="nl-side-month-name">May 2026</span>
+            <span class="nl-count">0 cases</span>
+          </div>
+          <p class="nl-empty-note">Regulatory &amp; policy focus this month — no new court cases. See April for earlier coverage.</p>
+          <a class="nl-issue-link" href="monthly-briefing-2026-05.html" target="_blank" rel="noopener">Full May Issue →</a>
+        </div>
+
+        <div class="nl-side-card" style="background:var(--parchment);border:1px solid var(--rule);">
+          <div class="nl-side-card-title" style="color:var(--prussian);">How This Works</div>
+          <p style="font-size:0.78rem;font-weight:300;color:var(--slate);line-height:1.7;">Each month's Newsletter reports new judgments as they're handed down. We add a matching card here — with the same sources and court hierarchy — and cross-link both ways, so you can move from headline to full case detail to original source in one click.</p>
+        </div>
+      </aside>
     </div>
   </div>
 </section>
