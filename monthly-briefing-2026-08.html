@@ -259,6 +259,76 @@ footer{background:var(--prussian);padding:2.5rem 2rem;border-top:3px solid var(-
 body.reader-lock{overflow:hidden;}
 </style>
 <noscript><style>.tile-full{display:block!important;}.tile-cta,.grid-hint{display:none!important;}.tile{cursor:default;}</style></noscript>
+
+<style>
+/* ── Responsive refinements (added Aug 2026) — additive only ────────────── */
+
+/* 1. Global overflow safety net: long citations, gazette numbers, URLs */
+body, p, li, .card-body, .card-source, .card-title, .tile-title, .tile-brief,
+.case-issue, .case-outcome-text, .case-takeaway, .case-sources, .case-name,
+.hero-subtitle, .bc-title, .bc-desc, .section-title {
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: auto;
+}
+img, svg, iframe, table { max-width: 100%; height: auto; }
+html, body { overflow-x: hidden; }
+
+/* 2. Tablet — 900px and below (main layout already collapses here) */
+@media (max-width: 900px) {
+  .briefing-hero { padding: 3rem 1.5rem 2.25rem; }
+  .hero-date { font-size: 2.5rem; }
+  .stat-bar { padding: 1rem 1.5rem; }
+  .stat-bar-inner { gap: 1.5rem; }
+}
+
+/* 3. Phone — 680px and below */
+@media (max-width: 680px) {
+  .briefing-hero { padding: 2.25rem 1.1rem 1.75rem; }
+  .hero-date { font-size: 2rem; margin-bottom: 0.5rem; }
+  .hero-subtitle { font-size: 0.95rem; line-height: 1.65; margin-bottom: 1.25rem; }
+  .hero-tags { gap: 0.4rem; }
+  .hero-tag { font-size: 0.6rem; }
+
+  /* dividers wrap badly on a phone — drop them, use a 2-up grid instead */
+  .stat-bar { padding: 0.9rem 1.1rem; }
+  .stat-bar-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem 1rem; }
+  .stat-divider { display: none; }
+  .stat-num { font-size: 1rem; }
+  .stat-label { font-size: 0.6rem; line-height: 1.35; }
+
+  .main-layout { padding-left: 1.1rem; padding-right: 1.1rem; }
+  .news-card, .case-card { padding: 1.1rem; }
+  .tile { padding: 1.1rem; }
+  .tile-title { font-size: 1rem; line-height: 1.3; }
+  .card-title, .case-name { font-size: 1rem; }
+  .card-body, .case-outcome-text { font-size: 0.85rem; line-height: 1.75; }
+  .card-source, .case-sources { font-size: 0.72rem; line-height: 1.6; }
+  .section-title, .bc-title { font-size: 1.15rem; line-height: 1.3; }
+  .sidebar { margin-top: 1.5rem; }
+
+  /* reader overlay: full-height sheet, comfortable close target */
+  .reader-overlay { padding: 0; }
+  .reader-panel { min-height: 100vh; max-width: 100%; }
+  .reader-close { width: 44px; height: 44px; }
+}
+
+/* 4. Small phone — 420px and below */
+@media (max-width: 420px) {
+  .hero-date { font-size: 1.7rem; }
+  .stat-bar-inner { grid-template-columns: 1fr; }
+  .tile-title { font-size: 0.95rem; }
+  .briefing-hero { padding: 2rem 0.9rem 1.5rem; }
+  .main-layout { padding-left: 0.9rem; padding-right: 0.9rem; }
+  .news-card, .case-card, .tile { padding: 0.95rem; }
+}
+
+/* 5. Touch targets — tiles and links must be comfortably tappable */
+@media (hover: none) {
+  .tile { cursor: pointer; }
+  .tile-cta, .nl-covered-badge, .nl-issue-pill, .nl-issue-link { padding-top: 6px; padding-bottom: 6px; display: inline-block; }
+}
+</style>
 </head>
 <body>
 
