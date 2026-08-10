@@ -135,6 +135,63 @@ body{font-family:var(--font-body);background:var(--surface);color:var(--text);fo
 .footer-links a:hover{color:var(--amber-light);}
 @media(max-width:820px){.layout{flex-direction:column;padding:16px;}.sidebar{width:100%;position:static;}.sidebar-nav{display:none;}.header-inner{padding:32px 20px;}.section-body{padding:16px;}}
 </style>
+
+<style>
+/* ── Readability layer (added 9 Aug 2026, from reader feedback) ─────────────
+   Diagnosis: measured contrast was already strong (body #2D3D4E on parchment
+   = 10.13:1, well past WCAG AAA). The strain came from LIGHT WEIGHT + SMALL
+   SIZE, not colour. Fixes below raise weight and size on small screens,
+   restore user font-scaling, and repair the one genuine contrast failure.
+   Desktop layout and type scale are deliberately left unchanged.          */
+
+/* 1. Respect the reader's own font-size preference.
+      html{font-size:16px} silently disabled OS/browser text scaling.
+      100% resolves to the same 16px default, but now honours the setting. */
+html { font-size: 100%; }
+
+/* 2. --mist was the only genuine contrast failure: 4.23:1 on parchment,
+      below the 4.5:1 AA threshold for normal text. Darkened to 6.84:1.   */
+:root { --mist: #5A5449; }
+
+/* 3. Phone and small tablet — the actual complaint.                      */
+@media (max-width: 900px) {
+  /* Body copy: up from 0.88rem/300 to 1rem/400. Weight is the bigger win. */
+  .card-body, .card-body p,
+  .case-outcome-text, .case-issue, .case-takeaway,
+  .tile-brief, .hero-subtitle, .sd, .bc-desc {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.8;
+  }
+  /* Sources and meta: were 0.72rem/300 — far too small to read on a phone */
+  .card-source, .case-sources, .card-implications p, .tile-byline {
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.7;
+  }
+  /* Inline-styled sidebar and callout paragraphs (they carry style attrs,
+     so raise the floor rather than fight specificity)                     */
+  .sidebar-card p, .nl-side-card p { font-size: 0.9rem !important; font-weight: 400 !important; line-height: 1.75 !important; }
+  /* Headings stay serif but gain a little weight for definition          */
+  .tile-title, .card-title, .case-name, .tile-name { font-weight: 700; }
+  /* Long-form reading in the overlay                                      */
+  .reader-body .card-body, .reader-body .card-body p { font-size: 1.02rem; font-weight: 400; line-height: 1.85; }
+}
+
+/* 4. Small phones — hold the size, do not shrink further                  */
+@media (max-width: 420px) {
+  .card-body, .card-body p, .case-outcome-text, .tile-brief { font-size: 1rem; line-height: 1.78; }
+  .card-source, .case-sources { font-size: 0.875rem; }
+}
+
+/* 5. Honour explicit user preferences                                     */
+@media (prefers-contrast: more) {
+  .card-body, .case-outcome-text, .tile-brief, .card-source, .case-sources { color: #1A1610; font-weight: 400; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+</style>
 </head>
 <body>
 <!--

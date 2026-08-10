@@ -302,8 +302,8 @@ html, body { overflow-x: hidden; }
   .tile { padding: 1.1rem; }
   .tile-title { font-size: 1rem; line-height: 1.3; }
   .card-title, .case-name { font-size: 1rem; }
-  .card-body, .case-outcome-text { font-size: 0.85rem; line-height: 1.75; }
-  .card-source, .case-sources { font-size: 0.72rem; line-height: 1.6; }
+  .card-body, .case-outcome-text { line-height: 1.8; }
+  .card-source, .case-sources { line-height: 1.7; }
   .section-title, .bc-title { font-size: 1.15rem; line-height: 1.3; }
   .sidebar { margin-top: 1.5rem; }
 
@@ -327,6 +327,63 @@ html, body { overflow-x: hidden; }
 @media (hover: none) {
   .tile { cursor: pointer; }
   .tile-cta, .nl-covered-badge, .nl-issue-pill, .nl-issue-link { padding-top: 6px; padding-bottom: 6px; display: inline-block; }
+}
+</style>
+
+<style>
+/* ── Readability layer (added 9 Aug 2026, from reader feedback) ─────────────
+   Diagnosis: measured contrast was already strong (body #2D3D4E on parchment
+   = 10.13:1, well past WCAG AAA). The strain came from LIGHT WEIGHT + SMALL
+   SIZE, not colour. Fixes below raise weight and size on small screens,
+   restore user font-scaling, and repair the one genuine contrast failure.
+   Desktop layout and type scale are deliberately left unchanged.          */
+
+/* 1. Respect the reader's own font-size preference.
+      html{font-size:16px} silently disabled OS/browser text scaling.
+      100% resolves to the same 16px default, but now honours the setting. */
+html { font-size: 100%; }
+
+/* 2. --mist was the only genuine contrast failure: 4.23:1 on parchment,
+      below the 4.5:1 AA threshold for normal text. Darkened to 6.84:1.   */
+:root { --mist: #5A5449; }
+
+/* 3. Phone and small tablet — the actual complaint.                      */
+@media (max-width: 900px) {
+  /* Body copy: up from 0.88rem/300 to 1rem/400. Weight is the bigger win. */
+  .card-body, .card-body p,
+  .case-outcome-text, .case-issue, .case-takeaway,
+  .tile-brief, .hero-subtitle, .sd, .bc-desc {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.8;
+  }
+  /* Sources and meta: were 0.72rem/300 — far too small to read on a phone */
+  .card-source, .case-sources, .card-implications p, .tile-byline {
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.7;
+  }
+  /* Inline-styled sidebar and callout paragraphs (they carry style attrs,
+     so raise the floor rather than fight specificity)                     */
+  .sidebar-card p, .nl-side-card p { font-size: 0.9rem !important; font-weight: 400 !important; line-height: 1.75 !important; }
+  /* Headings stay serif but gain a little weight for definition          */
+  .tile-title, .card-title, .case-name, .tile-name { font-weight: 700; }
+  /* Long-form reading in the overlay                                      */
+  .reader-body .card-body, .reader-body .card-body p { font-size: 1.02rem; font-weight: 400; line-height: 1.85; }
+}
+
+/* 4. Small phones — hold the size, do not shrink further                  */
+@media (max-width: 420px) {
+  .card-body, .card-body p, .case-outcome-text, .tile-brief { font-size: 1rem; line-height: 1.78; }
+  .card-source, .case-sources { font-size: 0.875rem; }
+}
+
+/* 5. Honour explicit user preferences                                     */
+@media (prefers-contrast: more) {
+  .card-body, .case-outcome-text, .tile-brief, .card-source, .case-sources { color: #1A1610; font-weight: 400; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
 }
 </style>
 </head>
@@ -602,7 +659,7 @@ html, body { overflow-x: hidden; }
         <p><strong>A closing thought.</strong> On the developer's own account, the systems never tried to escape and never tried to exfiltrate themselves. They were competently doing what they had been asked to do, and in three cases what they had been asked to do took them inside somebody else's production infrastructure. Indian law is well equipped for the malicious actor and reasonably equipped for the careless one. It has no vocabulary at all for the diligent one whose diligence is the problem.</p>
       </div>
       <div class="card-source">Sources: <a href="https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals" target="_blank">Anthropic — Investigating Three Real-World Incidents</a> · <a href="https://techcrunch.com/2026/07/30/anthropic-says-its-own-ai-models-breached-three-companies-during-security-tests/" target="_blank">TechCrunch</a> · <a href="https://www.csoonline.com/article/4205612/openai-anthropic-ai-agents-resorted-to-deception-in-new-cybersecurity-incidents.html" target="_blank">CSO Online — UK AISI Findings</a> · <a href="https://www.maheshwariandco.com/blog/ai-liability-india-agency-causation-explained/" target="_blank">AI Liability in India — Agency &amp; Causation</a> · <a href="https://www.prashantmali.com/cyber-law-blog-india/ai-laws-and-regulations-in-india-as-of-2026" target="_blank">Adv. (Dr.) Prashant Mali — AI Laws in India 2026</a> · <a href="https://www.saikrishnaassociates.com/decoding-the-india-ai-governance-guidelines/" target="_blank">Decoding the India AI Governance Guidelines</a> · <a href="https://community.nasscom.in/communities/public-policy/analysis-rbis-draft-guidance-regulatory-principles-model-risk-management" target="_blank">Nasscom — RBI Model Risk Management Draft</a></div>
-      <div style="background:var(--paper);border:1px solid var(--rule-gold);border-left:3px solid var(--saffron);padding:1.1rem 1.2rem;margin:0 0 1.1rem;"><div style="font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.6rem;">Corrections, Dissent and Version History</div><p style="font-size:0.82rem;font-weight:300;line-height:1.8;color:var(--slate);margin-bottom:0.5rem;"><strong>Version 1.0 — published 8 August 2026.</strong> No amendments to date. Material changes to the analysis or corrections of fact will be recorded here with the date, so that readers can see what changed and when.</p><p style="font-size:0.82rem;font-weight:300;line-height:1.8;color:var(--slate);margin-bottom:0.5rem;">We would rather be corrected than be wrong. If you hold a differing view — as a practitioner, an academic, a regulator or an organisation named in this article — we will publish it. Considered dissents run alongside the piece under your name; corrections of fact are made in the text and flagged. Write to us via the <a href="contact.html">contact page</a>.</p></div>
+      <div style="background:var(--paper);border:1px solid var(--rule-gold);border-left:3px solid var(--saffron);padding:1.1rem 1.2rem;margin:0 0 1.1rem;"><div style="font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.6rem;">Corrections, Dissent and Version History</div><p style="font-size:0.82rem;font-weight:300;line-height:1.8;color:var(--slate);margin-bottom:0.5rem;"><strong>Version 1.1 — updated 9 August 2026.</strong> <em>Correction (9 August 2026):</em> the Bank of Baroda story originally stated that Section 43A of the IT Act stands repealed and that an affected customer has no statutory private remedy. That was wrong. Section 44(2) of the DPDP Act, which omits Section 43A, commences on 13 May 2027 and is not yet in force; Section 43A and the SPDI Rules, 2011 continue to operate today. The passage has been rewritten and the correction is recorded here rather than made silently. <strong>Version 1.0 — published 8 August 2026.</strong> Material changes to the analysis or corrections of fact are recorded here with the date, so that readers can see what changed and when.</p><p style="font-size:0.82rem;font-weight:300;line-height:1.8;color:var(--slate);margin-bottom:0.5rem;">We would rather be corrected than be wrong. If you hold a differing view — as a practitioner, an academic, a regulator or an organisation named in this article — we will publish it. Considered dissents run alongside the piece under your name; corrections of fact are made in the text and flagged. Write to us via the <a href="contact.html">contact page</a>.</p></div>
       <div class="card-implications">
         <div class="card-implications-label">Implication for Practitioners</div>
         <p>Three artefacts convert this from an academic problem into a defensible position: a contractual clause allocating harm caused by autonomous action that neither party instructed; attribution-grade logging that records which principal's instruction the agent was executing; and a board-minuted governance framework with a working override. The first two protect the company. The third protects the directors under Section 85. <em>This analysis is argument, not settled law — the Section 66 and Section 85 positions are contestable and should be tested with counsel before being relied upon.</em></p>
@@ -765,15 +822,16 @@ html, body { overflow-x: hidden; }
       <div class="card-body">
         <p>On 24 July 2026 a ransomware and data-extortion group calling itself TripleX listed Bank of Baroda on its dark-web leak site. On 27 July the bank confirmed a cybersecurity incident. Reporting describes roughly 1 TB of data comprising customer KYC forms, Aadhaar and PAN details, loan files and internal audit documents drawn from several branches, including corporate banking information.</p>
         <p>The bank attributed the breach to a <strong>single compromised employee email account</strong>, said it detected and contained the incident immediately, and stated that core banking systems were neither accessed nor affected. The group released the entire cache free rather than holding it for ransom, framing that on its leak page as a response to the bank's password practices.</p>
-        <p><strong>The remedy gap is the story, and almost nobody has written it.</strong> The DPDP Act repealed Section 43A of the IT Act — which was the private civil compensation route for negligent handling of sensitive personal data. In its place the DPDP Act provides regulator-imposed penalties of up to ₹250 crore for failure of reasonable security safeguards. But those penalties are payable to the State, not to the affected individual; and in any event <strong>the substantive security and breach-notification obligations do not commence until 13 May 2027</strong>, and the Data Protection Board that would impose them <a href="#t-a-regulator-that-does-not-exist">has no members</a>.</p>
-        <p>An Indian customer whose Aadhaar and PAN were published in July 2026 therefore has <em>no statutory private remedy at all</em>: the old one is repealed, the new one is not yet in force, and the new one would not have compensated them regardless. What remains is a common-law action in negligence, and the RBI's customer-liability framework for unauthorised electronic transactions — which addresses financial loss, not identity exposure.</p>
+        <p><strong>The remedy question is the story — and it runs opposite to what most commentary assumes.</strong> It is widely said that the DPDP Act repealed Section 43A of the IT Act, the private civil compensation route for negligent handling of sensitive personal data. It has not, <em>yet</em>. Section 44(2) of the DPDP Act, which omits Section 43A, was <strong>not</strong> among the provisions brought into force on 13 November 2025. It sits in the third commencement phase and takes effect on <strong>13 May 2027</strong>, alongside Sections 3 to 17.</p>
+        <p><strong>So Section 43A and the SPDI Rules, 2011 are in force today.</strong> A Bank of Baroda customer whose Aadhaar and PAN were published in July 2026 does have a statutory private remedy: compensation under Section 43A, adjudicated by the Adjudicating Officer under Section 46 of the IT Act, with no statutory ceiling on the award. That is a materially better remedy for the individual than what replaces it — DPDP penalties of up to ₹250 crore are payable to the Consolidated Fund, not to the person whose data was exposed.</p>
+        <p>Read properly, the sequencing looks deliberate rather than accidental. Section 43A is extinguished on precisely the day the DPDP Act&rsquo;s security and breach-notification obligations commence. Parliament left no window in which a data subject is without a route. The practitioner point for the next nine months is therefore the reverse of the usual advice: <strong>Section 43A is the live cause of action, and it is being overlooked</strong> — including, on our first reading, by us.</p>
         <p>Set against that, the obligation that <em>did</em> apply: CERT-In's six-hour incident reporting direction. Whether it was met, and what was reported, is the question to put to the bank.</p>
         <p>The timing is uncomfortable. The <a href="#t-rbi-releases-draft-guidance-on-data">RBI's Draft Data Governance Guidance</a> was released on 15 July, asking regulated entities to govern data as a critical organisational asset. Nine days later a public sector bank lost a terabyte of it to a compromised mailbox.</p>
       </div>
       <div class="card-source">Sources: <a href="https://therecord.media/india-bank-of-baroda-reports-cybersecurity-incident" target="_blank">The Record — Bank of Baroda Confirms Incident</a> · <a href="https://cyberpeace.org/resources/blogs/the-bank-of-baroda-data-breach-what-we-know-what-we-dont-and-what-comes-next" target="_blank">CyberPeace — What We Know, What We Don't</a> · <a href="https://www.naavi.org/wp/" target="_blank">Naavi.org — Commentary</a></div>
       <div class="card-implications">
         <div class="card-implications-label">Implication for Practitioners</div>
-        <p>Two practical consequences. For banks: a single compromised mailbox reaching KYC repositories indicates the mailbox had standing access to bulk personal data — audit for that pattern now, because it is the most common root cause and the cheapest to fix. For general counsel: until 13 May 2027 your customers' primary route against you is negligence, not statute, and the absence of a functioning Data Protection Board does not reduce your exposure — it merely moves it into the civil courts.</p>
+        <p>For general counsel, the exposure is the opposite of what is commonly assumed. Until 13 May 2027 the live statutory route against you is <strong>Section 43A of the IT Act read with the SPDI Rules, 2011</strong> — compensation before the Adjudicating Officer under Section 46, with no statutory ceiling. That claim does not depend on the Data Protection Board being constituted, and it is widely mis-stated as having been repealed. For banks operationally: a single compromised mailbox reaching KYC repositories means that mailbox had standing access to bulk personal data — audit for that pattern now, because it is the most common root cause and the cheapest to fix.</p>
       </div>
     </div></div>
   </article>
