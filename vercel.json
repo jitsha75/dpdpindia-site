@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/weekly-briefing.html",
+      "destination": "/monthly-briefing.html",
+      "permanent": true
+    }
+  ]
+}
