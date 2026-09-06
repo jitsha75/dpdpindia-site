@@ -10,7 +10,7 @@ function getResend() {
   return cachedResend;
 }
 
-const FROM = process.env.NEWSLETTER_FROM || 'DPDPIndia.in <newsletter@dpdpindia.in>';
+const FROM = process.env.NEWSLETTER_FROM || 'DPDPIndia.in <newsletter@mail.dpdpindia.in>';
 const SITE_URL = process.env.SITE_URL || 'https://www.dpdpindia.in';
 
 const wrap = (bodyHtml) => `
