@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Subscription — DPDPIndia.in</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:wght@400;600&family=JetBrains+Mono:wght@500;600&family=DM+Sans:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --parchment:#F8F4EC; --cream:#FDFAF5; --paper:#F2EDE2; --ink:#1A1610;
+  --prussian:#1B2B3A; --slate:#2D3D4E; --saffron:#D4760A; --saffron-lt:#F0A840;
+  --ochre:#B8862C; --mist:#5A5449; --rule:rgba(26,22,16,0.12); --rule-gold:rgba(212,118,10,0.25);
+  --success:#1A6B3A; --danger:#C0392B;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  min-height:100vh;background:linear-gradient(135deg,var(--parchment) 0%,var(--paper) 100%);
+  font-family:'Source Serif 4',serif;color:var(--slate);
+  display:flex;align-items:center;justify-content:center;padding:2rem;
+}
+.card{
+  max-width:520px;width:100%;background:var(--cream);border:1px solid var(--rule);
+  border-left:5px solid var(--saffron);border-radius:12px;padding:2.6rem 2.4rem;
+  box-shadow:0 8px 30px rgba(26,22,16,0.08);text-align:center;
+}
+.icon{font-size:2.4rem;margin-bottom:1rem;}
+.kicker{
+  font-family:'JetBrains Mono',monospace;font-weight:600;font-size:0.62rem;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--saffron);margin-bottom:0.8rem;
+}
+h1{font-family:'Playfair Display',serif;font-weight:900;font-size:1.6rem;color:var(--ink);line-height:1.25;margin-bottom:0.9rem;}
+p{font-size:1rem;line-height:1.65;color:var(--slate);margin-bottom:1.6rem;}
+.actions{display:flex;gap:0.7rem;justify-content:center;flex-wrap:wrap;}
+a.btn{
+  display:inline-flex;align-items:center;gap:0.4rem;font-family:'DM Sans',sans-serif;font-weight:700;
+  font-size:0.88rem;text-decoration:none;padding:0.75rem 1.3rem;border-radius:8px;transition:all 0.15s;
+}
+a.btn-primary{background:var(--prussian);color:#fff;}
+a.btn-primary:hover{background:var(--saffron);}
+a.btn-secondary{background:transparent;color:var(--slate);border:1px solid var(--rule);}
+a.btn-secondary:hover{border-color:var(--saffron);color:var(--prussian);}
+</style>
+</head>
+<body>
+<div class="card" id="card">
+  <div class="icon" id="icon">⏳</div>
+  <div class="kicker">DPDPIndia.in · Monthly Briefing</div>
+  <h1 id="heading">One moment…</h1>
+  <p id="message">Loading your subscription status.</p>
+  <div class="actions">
+    <a class="btn btn-primary" href="/monthly-briefing.html">Read the Latest Issue →</a>
+    <a class="btn btn-secondary" href="/">Homepage</a>
+  </div>
+</div>
+
+<script>
+(function(){
+  var params = new URLSearchParams(location.search);
+  var state = params.get('state') || 'error';
+  var reason = params.get('reason') || '';
+
+  var states = {
+    pending: {
+      icon: '📬',
+      heading: 'Almost there — check your inbox',
+      message: "We've sent a confirmation link to your email. Click it to start receiving the Monthly Briefing. If you don't see it in a minute or two, check your spam folder."
+    },
+    confirmed: {
+      icon: '✅',
+      heading: "You're subscribed",
+      message: "You'll get the Monthly Intelligence Briefing in your inbox the day each new issue goes live. Thanks for reading."
+    },
+    already: {
+      icon: '✅',
+      heading: "You're already subscribed",
+      message: "This email is already confirmed on our list — no action needed. You'll get the next issue automatically."
+    },
+    unsubscribed: {
+      icon: '👋',
+      heading: "You've been unsubscribed",
+      message: "You won't receive any further issues. If this was a mistake, you can subscribe again any time from the homepage."
+    },
+    error: {
+      icon: '⚠️',
+      heading: 'Something went wrong',
+      message: reasonMessage(reason)
+    }
+  };
+
+  function reasonMessage(r){
+    if (r === 'invalid_email') return "That doesn't look like a valid email address — please go back and try again.";
+    if (r === 'invalid_token' || r === 'missing_token') return 'This link is invalid or has expired. Please subscribe again from the homepage.';
+    if (r === 'email_failed') return "We saved your details but couldn't send the confirmation email just now. Please try again in a few minutes, or contact us if this keeps happening.";
+    return "We couldn't complete this request. Please try again, or contact us if this keeps happening.";
+  }
+
+  var s = states[state] || states.error;
+  document.getElementById('icon').textContent = s.icon;
+  document.getElementById('heading').textContent = s.heading;
+  document.getElementById('message').textContent = s.message;
+  document.title = s.heading + ' — DPDPIndia.in';
+})();
+</script>
+</body>
+</html>

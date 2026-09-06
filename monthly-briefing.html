@@ -714,7 +714,7 @@ html { font-size: 100%; }
         <p class="sub-deck">Join legal professionals, compliance officers, and policy practitioners who receive DPDPIndia.in's Monthly Intelligence Briefing — free, open, no paywalls. Delivered monthly covering everything that moved in India's data protection landscape that month.</p>
       </div>
       <div>
-        <form class="sub-form" action="https://formspree.io/f/mlgodzbr" method="POST">
+        <form class="sub-form" action="/api/subscribe" method="POST">
           <div class="sub-row">
             <input type="text" name="name" class="sub-input" placeholder="Your name" required>
             <input type="email" name="email" class="sub-input" placeholder="your@email.com" required>
@@ -729,8 +729,7 @@ html { font-size: 100%; }
             <option>Researcher / Academic</option>
             <option>Individual / Citizen</option>
           </select>
-          <input type="hidden" name="_subject" value="Monthly Briefing Subscription — DPDPIndia.in">
-          <input type="hidden" name="_next" value="https://dpdpindia.in/monthly-briefing.html">
+          <input type="hidden" name="source" value="archive">
           <button type="submit" class="sub-btn">Subscribe to Monthly Briefing →</button>
           <p class="sub-note">Published monthly · Free forever · Unsubscribe any time · No spam</p>
         </form>

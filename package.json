@@ -1,0 +1,11 @@
+{
+  "name": "dpdpindia-site",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "DPDPIndia.in — static site + subscription engine serverless functions",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.4",
+    "resend": "^4.0.1"
+  }
+}
