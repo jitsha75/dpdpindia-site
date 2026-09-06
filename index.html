@@ -163,20 +163,20 @@ a:hover{color:var(--saffron);}
 .newsletter-form button{background:var(--prussian);color:#fff;border:none;padding:0.85rem 1.4rem;border-radius:6px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:0.88rem;cursor:pointer;transition:background 0.15s;}
 .newsletter-form button:hover{background:var(--saffron);}
 
-/* ===== LATEST NEWSLETTER PROMO (added Sep 2026) ===== */
-.nl-promo{background:linear-gradient(135deg,var(--prussian) 0%,#142230 100%);border-bottom:3px solid var(--saffron);}
-.nl-promo-inner{max-width:var(--max);margin:0 auto;padding:1.6rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;text-decoration:none;transition:background 0.2s;}
-.nl-promo-inner:hover{background:rgba(212,118,10,0.07);}
+/* ===== LATEST NEWSLETTER PROMO (light standard, Sep 2026) ===== */
+.nl-promo{background:var(--paper);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:1.8rem 0;}
+.nl-promo-inner{max-width:var(--max);margin:0 auto;padding:1.6rem 1.8rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;text-decoration:none;transition:all 0.2s;background:var(--cream);border:1px solid var(--rule);border-left:5px solid var(--saffron);border-radius:10px;box-shadow:var(--shadow-sm);}
+.nl-promo-inner:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);border-color:var(--rule-gold);}
 .nl-promo-text{flex:1;min-width:0;}
-.nl-promo-kicker{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--saffron-lt);margin-bottom:0.5rem;}
-.nl-promo-title{font-family:'Playfair Display',serif;font-size:1.32rem;font-weight:700;line-height:1.28;color:#fff;margin-bottom:0.5rem;}
-.nl-promo-deck{font-size:0.88rem;font-weight:300;line-height:1.6;color:rgba(248,244,236,0.75);max-width:660px;margin-bottom:0.8rem;}
+.nl-promo-kicker{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.5rem;}
+.nl-promo-title{font-family:'Playfair Display',serif;font-size:1.32rem;font-weight:700;line-height:1.28;color:var(--prussian);margin-bottom:0.5rem;}
+.nl-promo-deck{font-size:0.88rem;font-weight:300;line-height:1.6;color:var(--slate);max-width:660px;margin-bottom:0.8rem;}
 .nl-promo-tags{display:flex;flex-wrap:wrap;gap:0.5rem;}
-.nl-promo-tags span{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.08em;text-transform:uppercase;background:rgba(212,118,10,0.15);border:1px solid rgba(212,118,10,0.3);color:var(--saffron-lt);padding:4px 10px;border-radius:999px;white-space:nowrap;}
+.nl-promo-tags span{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.08em;text-transform:uppercase;background:var(--parchment);border:1px solid var(--rule-gold);color:var(--ochre);padding:4px 10px;border-radius:999px;white-space:nowrap;}
 .nl-promo-cta{flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;gap:0.5rem;text-align:right;}
-.nl-promo-cta-btn{display:inline-flex;align-items:center;gap:0.5rem;font-family:'DM Sans',sans-serif;font-size:0.92rem;font-weight:700;color:var(--prussian);background:var(--saffron-lt);padding:0.8rem 1.4rem;border-radius:8px;white-space:nowrap;transition:all 0.15s;}
-.nl-promo-inner:hover .nl-promo-cta-btn{background:#fff;transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.25);}
-.nl-promo-cta-meta{font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:rgba(248,244,236,0.5);letter-spacing:0.05em;white-space:nowrap;}
+.nl-promo-cta-btn{display:inline-flex;align-items:center;gap:0.5rem;font-family:'DM Sans',sans-serif;font-size:0.92rem;font-weight:700;color:#fff;background:var(--prussian);padding:0.8rem 1.4rem;border-radius:8px;white-space:nowrap;transition:all 0.15s;}
+.nl-promo-inner:hover .nl-promo-cta-btn{background:var(--saffron);}
+.nl-promo-cta-meta{font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:var(--mist);letter-spacing:0.05em;white-space:nowrap;}
 
 /* ===== FOOTER ===== */
 .footer{background:var(--ink);color:rgba(248,244,236,0.65);padding:2.5rem 0 1.5rem;font-family:'DM Sans',sans-serif;font-size:0.83rem;}
