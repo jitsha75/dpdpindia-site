@@ -617,10 +617,12 @@ html { font-size: 100%; }
 <!-- ===== NEWSLETTER ===== -->
 <section class="newsletter">
   <div class="newsletter-inner">
-    <h2 class="newsletter-title">Get the weekly briefing</h2>
-    <p class="newsletter-deck">A 5-minute Monday email on DPDP Act updates, cyber fraud alerts, regulatory moves and key case law. Free. No spam.</p>
-    <form class="newsletter-form" onsubmit="event.preventDefault();alert('Thanks — subscription confirmed for '+this.email.value);this.reset();">
+    <h2 class="newsletter-title">Get the Monthly Briefing</h2>
+    <p class="newsletter-deck">One issue a month — DPDP Act updates, cyber fraud alerts, regulatory moves and key case law, with primary sources. Free. No spam.</p>
+    <form class="newsletter-form" action="https://formspree.io/f/mlgodzbr" method="POST">
       <input id="siteSearch" name="email" type="email" required placeholder="your@email.in">
+      <input type="hidden" name="_subject" value="Monthly Briefing Subscription — Homepage — DPDPIndia.in">
+      <input type="hidden" name="_next" value="https://dpdpindia.in/monthly-briefing.html">
       <button type="submit">Subscribe →</button>
     </form>
   </div>
