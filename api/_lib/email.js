@@ -35,12 +35,19 @@ export async function sendConfirmationEmail({ to, name, confirmUrl }) {
     </p>
     <p style="font-size:13px;line-height:1.6;color:#5A5449;">If you didn't request this, you can safely ignore this email — you won't be subscribed unless you click the button above.</p>
   `);
-  return resend.emails.send({
+  const { data, error } = await resend.emails.send({
     from: FROM,
     to,
     subject: 'Confirm your subscription to DPDPIndia.in',
     html,
   });
+  // Resend's SDK resolves with { data, error } instead of throwing on
+  // API-level rejections (unverified domain, invalid from-address, etc).
+  // Without this check a rejected send looks identical to a successful
+  // one to every caller, which is exactly what happened during testing —
+  // the endpoint reported success while Resend silently dropped the email.
+  if (error) throw new Error(`Resend rejected confirmation email: ${error.message || JSON.stringify(error)}`);
+  return data;
 }
 
 export async function sendWelcomeEmail({ to, name, unsubscribeUrl }) {
@@ -52,12 +59,14 @@ export async function sendWelcomeEmail({ to, name, unsubscribeUrl }) {
     <p style="font-size:15px;line-height:1.6;">In the meantime, read the latest issue: <a href="${SITE_URL}/monthly-briefing.html" style="color:#D4760A;">dpdpindia.in/monthly-briefing.html</a></p>
     <p style="font-size:12px;line-height:1.6;color:#8a8378;margin-top:24px;"><a href="${unsubscribeUrl}" style="color:#8a8378;">Unsubscribe</a> any time — no questions asked.</p>
   `);
-  return resend.emails.send({
+  const { data, error } = await resend.emails.send({
     from: FROM,
     to,
     subject: "You're subscribed — DPDPIndia.in Monthly Briefing",
     html,
   });
+  if (error) throw new Error(`Resend rejected welcome email: ${error.message || JSON.stringify(error)}`);
+  return data;
 }
 
 export async function sendIssueEmail({ to, name, issueTitle, issueUrl, issueDeck, unsubscribeUrl }) {
@@ -73,10 +82,12 @@ export async function sendIssueEmail({ to, name, issueTitle, issueUrl, issueDeck
     </p>
     <p style="font-size:12px;line-height:1.6;color:#8a8378;margin-top:24px;"><a href="${unsubscribeUrl}" style="color:#8a8378;">Unsubscribe</a> any time — no questions asked.</p>
   `);
-  return resend.emails.send({
+  const { data, error } = await resend.emails.send({
     from: FROM,
     to,
     subject: `📰 ${issueTitle}`,
     html,
   });
+  if (error) throw new Error(`Resend rejected issue email: ${error.message || JSON.stringify(error)}`);
+  return data;
 }
