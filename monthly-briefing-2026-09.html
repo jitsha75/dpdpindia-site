@@ -85,6 +85,25 @@ nav{position:sticky;top:0;z-index:200;background:var(--cream);border-bottom:1px 
 .nav-links a:hover{color:var(--saffron);}
 .nav-back{font-family:'JetBrains Mono',monospace!important;font-size:0.65rem!important;letter-spacing:0.1em!important;text-transform:uppercase;background:var(--prussian)!important;color:var(--cream)!important;padding:9px 20px;}
 
+/* JUMP NAV (added Sep 2026 — quick navigation across a long issue) */
+.jump-nav{position:sticky;top:68px;z-index:150;background:var(--cream);border-bottom:1px solid var(--rule);box-shadow:var(--shadow-sm);}
+.jump-nav-inner{max-width:1100px;margin:0 auto;padding:0.55rem 2rem;display:flex;align-items:center;gap:0.8rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin;}
+.jump-nav-label{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--mist);flex-shrink:0;}
+.jump-nav-links{display:flex;gap:0.4rem;flex-wrap:nowrap;}
+.jump-link{font-family:'DM Sans',sans-serif;font-size:0.76rem;font-weight:600;color:var(--slate);background:var(--parchment);border:1px solid var(--rule);padding:0.35rem 0.8rem;border-radius:999px;white-space:nowrap;transition:all 0.15s;text-decoration:none;flex-shrink:0;}
+.jump-link:hover{border-color:var(--saffron);color:var(--prussian);}
+.jump-link.active{background:var(--saffron);border-color:var(--saffron);color:#fff;}
+.section-block,#sec-lead-story{scroll-margin-top:120px;}
+
+/* BACK TO TOP */
+.back-to-top{position:fixed;right:1.5rem;bottom:1.5rem;width:46px;height:46px;border-radius:50%;background:var(--prussian);color:var(--cream);border:none;display:flex;align-items:center;justify-content:center;font-size:1.1rem;cursor:pointer;box-shadow:var(--shadow-md);opacity:0;visibility:hidden;transform:translateY(10px);transition:all 0.25s;z-index:180;}
+.back-to-top.show{opacity:1;visibility:visible;transform:translateY(0);}
+.back-to-top:hover{background:var(--saffron);}
+@media(max-width:760px){
+  .jump-nav-inner{padding:0.5rem 1.1rem;}
+  .back-to-top{right:1rem;bottom:1rem;width:42px;height:42px;}
+}
+
 /* BRIEFING HERO (light standard, Sep 2026) */
 .briefing-hero{background:linear-gradient(180deg,var(--parchment) 0%,var(--paper) 100%);padding:4rem 2rem 3rem;border-bottom:4px solid var(--saffron);position:relative;overflow:hidden;}
 .briefing-hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(26,22,16,0.025) 40px);pointer-events:none;}
@@ -629,6 +648,25 @@ p[style*="font-weight:400"], p[style*="font-weight:300"] {
   </div>
 </div>
 
+<!-- JUMP NAV -->
+<nav class="jump-nav" aria-label="Jump to section">
+  <div class="jump-nav-inner">
+    <span class="jump-nav-label">In This Issue</span>
+    <div class="jump-nav-links">
+      <a href="#sec-lead-story" class="jump-link" data-jump>Lead Story</a>
+      <a href="#sec-mule-accounts" class="jump-link" data-jump>Mule Accounts</a>
+      <a href="#sec-constitutional-courts" class="jump-link" data-jump>Constitutional Courts</a>
+      <a href="#sec-platform-governance" class="jump-link" data-jump>Platform Governance</a>
+      <a href="#sec-ckyc-ekyc" class="jump-link" data-jump>CKYC &amp; eKYC</a>
+      <a href="#sec-data-governance" class="jump-link" data-jump>Data Governance</a>
+      <a href="#sec-global-regs" class="jump-link" data-jump>Global Regs</a>
+      <a href="#sec-major-incidents" class="jump-link" data-jump>Major Incidents</a>
+      <a href="#sec-ai-emerging-tech" class="jump-link" data-jump>AI &amp; Emerging Tech</a>
+      <a href="#sec-dpdp-implementation" class="jump-link" data-jump>Implementation</a>
+    </div>
+  </div>
+</nav>
+
 <!-- MAIN LAYOUT -->
 <div class="main-layout">
 <main>
@@ -648,7 +686,7 @@ p[style*="font-weight:400"], p[style*="font-weight:300"] {
 <p class="grid-hint">🖱 Tap any tile to open the full story. Press <kbd>Esc</kbd> or tap outside to return to the grid.</p>
 
 <!-- FEATURE: LEAD STORY -->
-<div class="tile-grid">
+<div class="tile-grid" id="sec-lead-story">
   <article class="tile feature-tile" id="t-bank-freeze-divide" tabindex="0" role="button" aria-haspopup="dialog">
     <div class="tile-meta"><span class="tile-badge feature-badge-t">★ Lead Investigation</span></div>
     <h2 class="tile-title">The Great Bank-Freeze Divide — And Why the Supreme Court Just Ordered RBI to End It</h2>
@@ -681,7 +719,7 @@ p[style*="font-weight:400"], p[style*="font-weight:300"] {
 </div>
 
 <!-- SECTION: MULE ACCOUNTS ON THE GROUND -->
-<div class="section-block">
+<div class="section-block" id="sec-mule-accounts">
   <div class="section-header">
     <div class="section-icon" style="background:var(--danger-lt);color:var(--danger);">🕵</div>
     <div><div class="section-kicker">Enforcement · August 2026</div><div class="section-title">Mule Accounts — Enforcement Reaches Scale</div></div>
@@ -755,7 +793,7 @@ p[style*="font-weight:400"], p[style*="font-weight:300"] {
 </div>
 
 <!-- SECTION: DPDP & CONSTITUTIONAL COURTS -->
-<div class="section-block">
+<div class="section-block" id="sec-constitutional-courts">
   <div class="section-header">
     <div class="section-icon" style="background:var(--blue-lt);color:var(--chakra-blue);">⚖</div>
     <div><div class="section-kicker">Constitutional Law · August 2026</div><div class="section-title">DPDP &amp; Constitutional Courts</div></div>
@@ -783,7 +821,7 @@ p[style*="font-weight:400"], p[style*="font-weight:300"] {
 </div>
 
 <!-- SECTION: PLATFORM GOVERNANCE & IT ACT -->
-<div class="section-block">
+<div class="section-block" id="sec-platform-governance">
   <div class="section-header">
     <div class="section-icon" style="background:var(--green-lt);color:var(--green);">📜</div>
     <div><div class="section-kicker">IT Act · Intermediary Liability</div><div class="section-title">Platform Governance</div></div>
@@ -828,7 +866,7 @@ p[style*="font-weight:400"], p[style*="font-weight:300"] {
 </div>
 
 <!-- SECTION: CKYC & EKYC -->
-<div class="section-block">
+<div class="section-block" id="sec-ckyc-ekyc">
   <div class="section-header">
     <div class="section-icon" style="background:var(--blue-lt);color:var(--chakra-blue);">🪪</div>
     <div><div class="section-kicker">UIDAI · BFSI eKYC · August 2026</div><div class="section-title">CKYC &amp; eKYC</div></div>
@@ -856,7 +894,7 @@ p[style*="font-weight:400"], p[style*="font-weight:300"] {
 </div>
 
 <!-- SECTION: DATA GOVERNANCE -->
-<div class="section-block">
+<div class="section-block" id="sec-data-governance">
   <div class="section-header">
     <div class="section-icon" style="background:var(--green-lt);color:var(--green);">🗂</div>
     <div><div class="section-kicker">India &amp; the World · August 2026</div><div class="section-title">Data Governance — India and the World</div></div>
@@ -924,7 +962,7 @@ p[style*="font-weight:400"], p[style*="font-weight:300"] {
 </div>
 
 <!-- SECTION: GLOBAL REGULATORY ROUNDUP -->
-<div class="section-block">
+<div class="section-block" id="sec-global-regs">
   <div class="section-header">
     <div class="section-icon" style="background:rgba(139,0,0,0.07);color:#8B0000;">🌐</div>
     <div><div class="section-kicker">Comparative Regulation · August 2026</div><div class="section-title">Global Regulatory Roundup</div></div>
@@ -978,7 +1016,7 @@ p[style*="font-weight:400"], p[style*="font-weight:300"] {
 </div>
 
 <!-- SECTION: MAJOR CYBERCRIME INCIDENTS -->
-<div class="section-block">
+<div class="section-block" id="sec-major-incidents">
   <div class="section-header">
     <div class="section-icon" style="background:var(--danger-lt);color:var(--danger);">💻</div>
     <div><div class="section-kicker">Global Cybercrime · August 2026</div><div class="section-title">Major Incidents</div></div>
@@ -1043,7 +1081,7 @@ p[style*="font-weight:400"], p[style*="font-weight:300"] {
 </div>
 
 <!-- SECTION: AI & EMERGING TECHNOLOGY -->
-<div class="section-block">
+<div class="section-block" id="sec-ai-emerging-tech">
   <div class="section-header">
     <div class="section-icon" style="background:rgba(212,118,10,0.12);color:var(--saffron);">🤖</div>
     <div><div class="section-kicker">AI Governance &amp; Security · August 2026</div><div class="section-title">AI &amp; Emerging Technology</div></div>
@@ -1150,7 +1188,7 @@ p[style*="font-weight:400"], p[style*="font-weight:300"] {
 </div>
 
 <!-- SECTION: DPDP IMPLEMENTATION WATCH -->
-<div class="section-block">
+<div class="section-block" id="sec-dpdp-implementation">
   <div class="section-header">
     <div class="section-icon" style="background:var(--blue-lt);color:var(--chakra-blue);">🛡</div>
     <div><div class="section-kicker">Implementation Watch</div><div class="section-title">DPDP Implementation</div></div>
@@ -1341,6 +1379,7 @@ p[style*="font-weight:400"], p[style*="font-weight:300"] {
 <div class="reader-overlay" id="readerOverlay" role="dialog" aria-modal="true" aria-label="Full story reader">
   <div class="reader-panel"><button class="reader-close" id="readerClose" aria-label="Close reader">✕</button><div class="reader-body" id="readerBody"></div></div>
 </div>
+<button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 <script>
 (function(){
   var ov=document.getElementById('readerOverlay'),bd=document.getElementById('readerBody'),cl=document.getElementById('readerClose');
@@ -1356,6 +1395,27 @@ p[style*="font-weight:400"], p[style*="font-weight:300"] {
   function openFromHash(){ if(!location.hash)return; var t=null; try{t=document.querySelector(location.hash);}catch(e){} if(t&&t.classList.contains('tile')) openTile(t); }
   window.addEventListener('hashchange',openFromHash);
   openFromHash();
+
+  /* Jump-nav active state + back-to-top (added Sep 2026) */
+  var jumpLinks=Array.prototype.slice.call(document.querySelectorAll('.jump-link[data-jump]'));
+  var jumpTargets=jumpLinks.map(function(a){ try{return document.querySelector(a.getAttribute('href'));}catch(e){return null;} });
+  var backBtn=document.getElementById('backToTop');
+
+  function setActiveJump(id){
+    jumpLinks.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href')==='#'+id); });
+  }
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting && entry.target.id) setActiveJump(entry.target.id);
+      });
+    },{rootMargin:'-130px 0px -70% 0px',threshold:0});
+    jumpTargets.forEach(function(t){ if(t) io.observe(t); });
+  }
+  window.addEventListener('scroll',function(){
+    if(backBtn) backBtn.classList.toggle('show', window.scrollY>900);
+  },{passive:true});
+  if(backBtn){ backBtn.addEventListener('click',function(){ window.scrollTo({top:0,behavior:'smooth'}); }); }
 })();
 </script>
 </body>
