@@ -379,7 +379,6 @@ html { font-size: 100%; }
             <a href="blog-dpdp-consent-frameworks.html">Consent Frameworks</a></div>
           <div><h4>Newsletter</h4>
             <a href="monthly-briefing.html">Monthly Briefings</a>
-            <a href="weekly-briefing.html">Weekly Briefings</a>
             <a href="monthly-briefing-2026-09.html">★ September 2026 — Latest</a>
             <a href="monthly-briefing-2026-08.html">August 2026</a>
             <a href="monthly-briefing-2026-07.html">July 2026</a></div>
@@ -902,10 +901,11 @@ html { font-size: 100%; }
   <div class="subscribe-card">
     <div class="subscribe-title">Subscribe to this Briefing</div>
     <div class="subscribe-body">Get the Monthly Intelligence Briefing in your inbox every month — India's most focused DPDP Act, cyber law, and e-governance research newsletter.</div>
-    <div class="subscribe-form">
-      <input type="email" class="subscribe-input" placeholder="your@email.com">
-      <button class="subscribe-btn">Subscribe Free →</button>
-    </div>
+    <form class="subscribe-form" action="/api/subscribe" method="POST">
+      <input type="email" name="email" class="subscribe-input" placeholder="your@email.com" required>
+      <input type="hidden" name="source" value="archive">
+      <button type="submit" class="subscribe-btn">Subscribe Free →</button>
+    </form>
   </div>
 
   <!-- Back Issues -->

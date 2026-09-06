@@ -606,8 +606,9 @@ html { font-size: 100%; }
 <section class="newsletter-ribbon">
   <h3>The PSU Data Governance Brief — monthly</h3>
   <p>CAG observations · MeitY notifications · DPBI orders · ICAI &amp; ISACA updates · ready-to-table board notes.</p>
-  <form class="nl-form" onsubmit="event.preventDefault();window.location.href='contact.html?subject=PSU+Newsletter+Subscription&amp;email='+encodeURIComponent(this.email.value);">
+  <form class="nl-form" action="/api/subscribe" method="POST">
     <input type="email" name="email" placeholder="your.email@psu.in" required>
+    <input type="hidden" name="source" value="psu">
     <button type="submit">Subscribe</button>
   </form>
 </section>
