@@ -163,6 +163,21 @@ a:hover{color:var(--saffron);}
 .newsletter-form button{background:var(--prussian);color:#fff;border:none;padding:0.85rem 1.4rem;border-radius:6px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:0.88rem;cursor:pointer;transition:background 0.15s;}
 .newsletter-form button:hover{background:var(--saffron);}
 
+/* ===== LATEST NEWSLETTER PROMO (added Sep 2026) ===== */
+.nl-promo{background:linear-gradient(135deg,var(--prussian) 0%,#142230 100%);border-bottom:3px solid var(--saffron);}
+.nl-promo-inner{max-width:var(--max);margin:0 auto;padding:1.6rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;text-decoration:none;transition:background 0.2s;}
+.nl-promo-inner:hover{background:rgba(212,118,10,0.07);}
+.nl-promo-text{flex:1;min-width:0;}
+.nl-promo-kicker{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--saffron-lt);margin-bottom:0.5rem;}
+.nl-promo-title{font-family:'Playfair Display',serif;font-size:1.32rem;font-weight:700;line-height:1.28;color:#fff;margin-bottom:0.5rem;}
+.nl-promo-deck{font-size:0.88rem;font-weight:300;line-height:1.6;color:rgba(248,244,236,0.75);max-width:660px;margin-bottom:0.8rem;}
+.nl-promo-tags{display:flex;flex-wrap:wrap;gap:0.5rem;}
+.nl-promo-tags span{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.08em;text-transform:uppercase;background:rgba(212,118,10,0.15);border:1px solid rgba(212,118,10,0.3);color:var(--saffron-lt);padding:4px 10px;border-radius:999px;white-space:nowrap;}
+.nl-promo-cta{flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;gap:0.5rem;text-align:right;}
+.nl-promo-cta-btn{display:inline-flex;align-items:center;gap:0.5rem;font-family:'DM Sans',sans-serif;font-size:0.92rem;font-weight:700;color:var(--prussian);background:var(--saffron-lt);padding:0.8rem 1.4rem;border-radius:8px;white-space:nowrap;transition:all 0.15s;}
+.nl-promo-inner:hover .nl-promo-cta-btn{background:#fff;transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.25);}
+.nl-promo-cta-meta{font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:rgba(248,244,236,0.5);letter-spacing:0.05em;white-space:nowrap;}
+
 /* ===== FOOTER ===== */
 .footer{background:var(--ink);color:rgba(248,244,236,0.65);padding:2.5rem 0 1.5rem;font-family:'DM Sans',sans-serif;font-size:0.83rem;}
 .footer-inner{max-width:var(--max);margin:0 auto;padding:0 1.5rem;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;}
@@ -181,6 +196,8 @@ a:hover{color:var(--saffron);}
   .kb-band-inner{grid-template-columns:1fr;}
   .audience-inner{grid-template-columns:1fr;gap:0.7rem;}
   .footer-inner{grid-template-columns:1fr 1fr;}
+  .nl-promo-inner{flex-direction:column;align-items:flex-start;gap:1rem;padding:1.4rem 1.5rem;}
+  .nl-promo-cta{align-items:flex-start;text-align:left;flex-direction:row;align-items:center;}
 }
 @media(max-width:760px){
   .nav-menu{display:none;}
@@ -198,6 +215,12 @@ a:hover{color:var(--saffron);}
   .newsletter-form{flex-direction:column;}
   .footer-inner{grid-template-columns:1fr;}
   .footer-legal{flex-direction:column;gap:0.5rem;}
+  .nl-promo-inner{padding:1.2rem 1.2rem;}
+  .nl-promo-title{font-size:1.1rem;}
+  .nl-promo-deck{font-size:0.84rem;}
+  .nl-promo-cta{width:100%;flex-direction:column;align-items:stretch;}
+  .nl-promo-cta-btn{justify-content:center;}
+  .nl-promo-cta-meta{text-align:center;}
 }
 </style>
 
@@ -428,6 +451,28 @@ html { font-size: 100%; }
   </div>
 </section>
 
+<!-- ===== LATEST NEWSLETTER PROMO ===== -->
+<section class="nl-promo">
+  <a href="monthly-briefing-2026-09.html" class="nl-promo-inner">
+    <div class="nl-promo-text">
+      <div class="nl-promo-kicker">📰 Latest Monthly Briefing · Issue No. 09 · September 2026</div>
+      <h2 class="nl-promo-title">Five High Courts, Five Rules on Freezing a Bank Account — Then the Supreme Court Ordered One National Answer</h2>
+      <p class="nl-promo-deck">The August 2026 review: 31 stories, including AI models taking 19 unsanctioned real-world actions in UK regulator testing, CKYC 2.0 going live, the DPDP-vs-RTI clash reaching a three-judge bench, and breaches at McKesson, Manchester Airports Group and ReliaQuest.</p>
+      <div class="nl-promo-tags">
+        <span>★ The Great Bank-Freeze Divide</span>
+        <span>SC Orders RBI's Mule-Account SOP</span>
+        <span>19 Unsanctioned AI Actions</span>
+        <span>CKYC 2.0 Live</span>
+        <span>DPDP-RTI: Three Judges, Not Five?</span>
+      </div>
+    </div>
+    <div class="nl-promo-cta">
+      <span class="nl-promo-cta-btn">Read the Full Briefing →</span>
+      <span class="nl-promo-cta-meta">31 stories · Free · No signup required</span>
+    </div>
+  </a>
+</section>
+
 <!-- ===== TWO PILLAR CARDS ===== -->
 <section class="pillars">
   <div class="pillars-inner">
@@ -512,10 +557,10 @@ html { font-size: 100%; }
       <a href="blog.html" class="section-link">All Articles →</a>
     </div>
     <div class="insights-grid">
-      <a href="monthly-briefing-2026-09.html" class="insight-card">
-        <div class="insight-tag">★ Newsletter · September 2026</div>
-        <h3 class="insight-title">Monthly Briefing: Five High Courts, Five Rules on Freezing an Account — the August 2026 review</h3>
-        <div class="insight-meta">31 STORIES · NEWSLETTER</div>
+      <a href="blog-dpdp-consent-frameworks.html" class="insight-card">
+        <div class="insight-tag">Guide · Consent</div>
+        <h3 class="insight-title">Consent Frameworks Under the DPDP Act: What Compliance Really Looks Like</h3>
+        <div class="insight-meta">DEEP DIVE · COMPLIANCE</div>
       </a>
       <a href="blog-dpdp-dpbi-enforcement.html" class="insight-card">
         <div class="insight-tag">Analysis · Enforcement</div>
