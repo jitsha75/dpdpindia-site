@@ -177,6 +177,19 @@ a:hover{color:var(--saffron);}
 .nl-promo-cta-btn{display:inline-flex;align-items:center;gap:0.5rem;font-family:'DM Sans',sans-serif;font-size:0.92rem;font-weight:700;color:#fff;background:var(--prussian);padding:0.8rem 1.4rem;border-radius:8px;white-space:nowrap;transition:all 0.15s;}
 .nl-promo-inner:hover .nl-promo-cta-btn{background:var(--saffron);}
 .nl-promo-cta-meta{font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:var(--mist);letter-spacing:0.05em;white-space:nowrap;}
+.article-promo{background:var(--paper);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:1.8rem 0;}
+.article-promo-inner{max-width:var(--max);margin:0 auto;padding:1.6rem 1.8rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;text-decoration:none;transition:all 0.2s;background:var(--cream);border:1px solid var(--rule);border-left:5px solid var(--prussian);border-radius:10px;box-shadow:var(--shadow-sm);}
+.article-promo-inner:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);border-color:var(--saffron);}
+.article-promo-text{flex:1;min-width:0;}
+.article-promo-kicker{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--prussian);margin-bottom:0.5rem;}
+.article-promo-title{font-family:'Playfair Display',serif;font-size:1.32rem;font-weight:700;line-height:1.28;color:var(--prussian);margin-bottom:0.5rem;}
+.article-promo-deck{font-size:0.88rem;font-weight:300;line-height:1.6;color:var(--slate);max-width:660px;margin-bottom:0.8rem;}
+.article-promo-tags{display:flex;flex-wrap:wrap;gap:0.5rem;}
+.article-promo-tags span{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.08em;text-transform:uppercase;background:var(--parchment);border:1px solid var(--rule-gold);color:var(--ochre);padding:4px 10px;border-radius:999px;white-space:nowrap;}
+.article-promo-cta{flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;gap:0.5rem;text-align:right;}
+.article-promo-cta-btn{display:inline-flex;align-items:center;gap:0.5rem;font-family:'DM Sans',sans-serif;font-size:0.92rem;font-weight:700;color:#fff;background:var(--saffron);padding:0.8rem 1.4rem;border-radius:8px;white-space:nowrap;transition:all 0.15s;}
+.article-promo-inner:hover .article-promo-cta-btn{background:var(--prussian);}
+.article-promo-cta-meta{font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:var(--mist);letter-spacing:0.05em;white-space:nowrap;}
 
 /* ===== FOOTER ===== */
 .footer{background:var(--ink);color:rgba(248,244,236,0.65);padding:2.5rem 0 1.5rem;font-family:'DM Sans',sans-serif;font-size:0.83rem;}
@@ -198,6 +211,8 @@ a:hover{color:var(--saffron);}
   .footer-inner{grid-template-columns:1fr 1fr;}
   .nl-promo-inner{flex-direction:column;align-items:flex-start;gap:1rem;padding:1.4rem 1.5rem;}
   .nl-promo-cta{align-items:flex-start;text-align:left;flex-direction:row;align-items:center;}
+  .article-promo-inner{flex-direction:column;align-items:flex-start;gap:1rem;padding:1.4rem 1.5rem;}
+  .article-promo-cta{align-items:flex-start;text-align:left;flex-direction:row;align-items:center;}
 }
 @media(max-width:760px){
   .nav-menu{display:none;}
@@ -221,6 +236,12 @@ a:hover{color:var(--saffron);}
   .nl-promo-cta{width:100%;flex-direction:column;align-items:stretch;}
   .nl-promo-cta-btn{justify-content:center;}
   .nl-promo-cta-meta{text-align:center;}
+  .article-promo-inner{padding:1.2rem 1.2rem;}
+  .article-promo-title{font-size:1.1rem;}
+  .article-promo-deck{font-size:0.84rem;}
+  .article-promo-cta{width:100%;flex-direction:column;align-items:stretch;}
+  .article-promo-cta-btn{justify-content:center;}
+  .article-promo-cta-meta{text-align:center;}
 }
 </style>
 
@@ -549,6 +570,27 @@ html { font-size: 100%; }
       <div class="audience-text"><strong>Legal / Researcher</strong><span>Case law, deep analysis</span></div>
     </a>
   </div>
+</section>
+
+<!-- ===== LATEST ARTICLE PROMO ===== -->
+<section class="article-promo">
+  <a href="blog-public-data-governance-officers.html" class="article-promo-inner">
+    <div class="article-promo-text">
+      <div class="article-promo-kicker">📄 Latest Article · DPDP Act · Public Data Governance</div>
+      <h2 class="article-promo-title">Your Database Is a National Asset: A Public Officer's Guide to Data Governance</h2>
+      <p class="article-promo-deck">Leaked public databases fuel a ₹52,976-crore fraud economy; well-governed ones power policy, research and India's AI ambitions — a seven-step playbook for public officers as CAG modernises its audit standards and full DPDP compliance comes due by May 2027.</p>
+      <div class="article-promo-tags">
+        <span>DPDP Act 2023</span>
+        <span>Data Governance</span>
+        <span>PSU &amp; Government</span>
+        <span>NDGFP · IDMO</span>
+      </div>
+    </div>
+    <div class="article-promo-cta">
+      <span class="article-promo-cta-btn">Read Full Analysis →</span>
+      <span class="article-promo-cta-meta">7 min read · 4 July 2026</span>
+    </div>
+  </a>
 </section>
 
 <!-- ===== LATEST INSIGHTS ===== -->
