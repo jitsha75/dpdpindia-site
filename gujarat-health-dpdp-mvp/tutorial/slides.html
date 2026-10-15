@@ -1,0 +1,124 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Tutorial slides</title>
+<style>
+  *{box-sizing:border-box} html,body{margin:0;background:#fff}
+  body{font-family:Calibri,Carlito,Arial,sans-serif;color:#404040;width:1920px;height:1080px;overflow:hidden}
+  .slide{display:none;width:1920px;height:1080px;padding:90px 120px;position:relative}
+  .slide.on{display:block}
+  h1{color:#002060;font-size:64px;margin:0 0 18px;font-weight:700;line-height:1.1}
+  h2{color:#002060;font-size:62px;margin:0 0 56px;font-weight:700}
+  .sub{font-size:30px;color:#404040;max-width:1500px;line-height:1.35}
+  .muted{color:#808080} .gold{color:#C59B27}
+  .foot{position:absolute;left:120px;right:120px;bottom:50px;font-size:20px;color:#808080;display:flex;justify-content:space-between;border-top:1px solid #D9D9D9;padding-top:14px}
+  .cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:50px}
+  .case b{display:block;color:#002060;font-size:36px;margin-bottom:10px}
+  .case{font-size:29px;line-height:1.42}
+  .case .yr{color:#C59B27;font-weight:700;font-size:22px;margin-bottom:6px}
+  .big{display:flex;gap:90px;margin-top:110px}
+  .big div{font-size:27px;color:#404040} .big b{display:block;color:#002060;font-size:76px;line-height:1.05}
+  .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:60px 44px}
+  .st{border-top:3px solid #002060;padding-top:16px}
+  .st .n{display:inline-block;width:46px;height:46px;border-radius:50%;background:#002060;color:#fff;font-weight:700;font-size:24px;text-align:center;line-height:46px;margin-right:12px}
+  .st .t{font-size:36px;font-weight:700;color:#002060;vertical-align:middle}
+  .st p{font-size:27px;margin:16px 0 8px;line-height:1.38} .st .o{font-size:22px;color:#808080}
+  .loop{margin-top:60px;font-size:28px}
+  table{border-collapse:collapse;width:100%;font-size:28px}
+  th{background:#002060;color:#fff;text-align:left;padding:16px 18px;font-size:25px}
+  td{padding:16px 18px;border-bottom:1px solid #D9D9D9;vertical-align:top}
+  tr:nth-child(even) td{background:#F5F7FA}
+  .two{display:grid;grid-template-columns:1.1fr 1fr;gap:70px}
+  .kv{font-size:31px;line-height:1.75} .kv b{color:#002060}
+  code{font-family:Consolas,'DejaVu Sans Mono',monospace;background:#F5F7FA;border:1px solid #D9D9D9;padding:2px 10px;border-radius:3px;font-size:28px;color:#002060}
+  ol.tips{font-size:38px;line-height:1.5;padding-left:44px} ol.tips li{margin-bottom:36px}
+</style></head><body>
+
+<section class="slide" id="s01">
+  <div style="margin-top:170px">
+    <div class="gold" style="font-size:28px;font-weight:700;margin-bottom:18px">PRESENTER TUTORIAL</div>
+    <h1 style="font-size:78px">DPDP Compliance Platform</h1>
+    <div class="sub" style="font-size:38px;color:#002060">Health &amp; Family Welfare Department, Government of Gujarat</div>
+    <div class="sub" style="margin-top:40px">How the workflow fits together, and how to present each screen to officials</div>
+  </div>
+  <div class="foot"><span>MVP demo &middot; all patient data is synthetic</span><span>Runs locally on a laptop in Docker</span></div>
+</section>
+
+<section class="slide" id="s02">
+  <h2>Why this matters now</h2>
+  <div class="cols">
+    <div class="case"><div class="yr">NOVEMBER 2024</div><b>Camp to cath lab</b>A free village camp led to angioplasties and two deaths at Khyati Hospital. Camp screening data was used to recruit PMJAY patients.</div>
+    <div class="case"><div class="yr">DECEMBER 2024</div><b>Fake Ayushman cards</b>A contracted firm's portal login was allegedly sold; about 1,200&ndash;1,500 fake cards were made.</div>
+    <div class="case"><div class="yr">FEBRUARY 2025</div><b>Maternity ward CCTV</b>A Rajkot hospital's CCTV server was hacked and videos of women patients were sold online.</div>
+  </div>
+  <div class="big"><div><b>13 May 2027</b>Substantive DPDP Rules apply</div><div><b>&#8377;250 cr</b>Maximum penalty; the Act binds the State</div><div><b>1.20 cr</b>PMJAY-MA families</div><div><b>4.77 cr</b>ABHA numbers</div></div>
+  <div class="foot"><span>Sources cited on the platform's Issues &amp; regulations page</span><span>2</span></div>
+</section>
+
+<section class="slide" id="s03">
+  <h2>The end-to-end workflow</h2>
+  <div class="flow">
+    <div class="st"><span class="n">1</span><span class="t">Discover</span><p>Find every system, share and vendor holding patient data</p><div class="o">Analyst, HMIS cell, CDHOs</div></div>
+    <div class="st"><span class="n">2</span><span class="t">Declare</span><p>Purpose, legal basis (s.7 or consent) and retention per system</p><div class="o">Scheme owners; DPO approves</div></div>
+    <div class="st"><span class="n">3</span><span class="t">Inform</span><p>Notices in Gujarati, Hindi, English; consent where required</p><div class="o">IEC cell, facility stewards</div></div>
+    <div class="st"><span class="n">4</span><span class="t">Control vendors</span><p>Contract scope monitored; notices drafted and approved</p><div class="o">Contracts + DPO</div></div>
+    <div class="st"><span class="n">5</span><span class="t">Serve rights</span><p>Access, correction, erasure, grievance within timelines</p><div class="o">Rights cell, officers</div></div>
+    <div class="st"><span class="n">6</span><span class="t">Respond</span><p>Breach triage; Board report in 72 h; CERT-In in 6 h</p><div class="o">CDHO first responder; DPO</div></div>
+    <div class="st"><span class="n">7</span><span class="t">Retain &amp; erase</span><p>Keep what the law requires; erase the rest with proof</p><div class="o">System owners; DPO approves</div></div>
+    <div class="st"><span class="n">8</span><span class="t">Prove</span><p>Tamper-evident ledger for the Board, CAG and courts</p><div class="o">Internal audit</div></div>
+  </div>
+  <div class="loop">Every action in steps 1&ndash;7 writes evidence to step 8. The cycle repeats as systems, vendors and schemes change.</div>
+  <div class="foot"><span>Each screen in the platform maps to one step</span><span>3</span></div>
+</section>
+
+<section class="slide" id="s04">
+  <h2>Who does what in the demo</h2>
+  <table>
+    <tr><th style="width:30%">Persona (switch with "Acting as")</th><th style="width:34%">Role</th><th>Shows in the demo</th></tr>
+    <tr><td><b>Dr. Hetal Desai</b></td><td>State Data Protection Officer</td><td>Approves deletions, notices and breach reports</td></tr>
+    <tr><td><b>Ketan Patel</b></td><td>Privacy analyst, HMIS cell</td><td>Scans systems, assesses breaches</td></tr>
+    <tr><td><b>Dr. Mahesh Vaghela</b></td><td>CDHO Mehsana, district nodal officer</td><td>Reports field incidents</td></tr>
+    <tr><td><b>Nirali Shah</b> / <b>Bhavna, Imran, Rakesh</b></td><td>Rights cell manager / rights officers</td><td>Assign, work and review patient requests</td></tr>
+    <tr><td><b>Pooja Trivedi</b></td><td>Contracts (GMSCL / NHM)</td><td>Drafts notices to vendors</td></tr>
+    <tr><td><b>S. K. Joshi</b></td><td>Internal audit (read-only)</td><td>Verifies the ledger</td></tr>
+    <tr><td><b>Vendor admins</b></td><td>108, TeCHO+, card agency, lab, CCTV</td><td>See only their own tasks and notices</td></tr>
+  </table>
+  <div class="loop"><b style="color:#002060">Principle:</b> the person who prepares an action is never the person who approves it.</div>
+  <div class="foot"><span>Separation of duties is enforced by the server, not by the screen</span><span>4</span></div>
+</section>
+
+<section class="slide" id="s05">
+  <h2>Running the demo</h2>
+  <div class="two">
+    <div class="kv">
+      <p><b>Start</b> &nbsp;<code>./start.sh</code></p>
+      <p><b>Open</b> &nbsp;<code>http://localhost:8090</code></p>
+      <p><b>Decryption password</b> &nbsp;<code>Gujarat@2026</code></p>
+      <p><b>Identity code (OTP)</b> &nbsp;<code>246810</code></p>
+      <p><b>Fresh story</b> &nbsp;<code>./start.sh --reset</code></p>
+      <p><b>After the meeting</b> &nbsp;<code>./stop.sh --quit-docker</code></p>
+    </div>
+    <div>
+      <table>
+        <tr><th>Minutes</th><th>Agenda</th></tr>
+        <tr><td>0&ndash;5</td><td>Gujarat cases, deadline, the 8-step workflow</td></tr>
+        <tr><td>5&ndash;25</td><td>Live screens: discover, protect, rights, consent, vendors, breach</td></tr>
+        <tr><td>25&ndash;30</td><td>Governance page: obligations, operating model, first steps</td></tr>
+      </table>
+      <p class="muted" style="font-size:22px;margin-top:20px">Run it once the day before with internet on, then <code>./save-images.sh</code> so it starts offline at the venue.</p>
+    </div>
+  </div>
+  <div class="foot"><span>Laptop: Docker Desktop or OrbStack, ~1 GB RAM while running</span><span>5</span></div>
+</section>
+
+<section class="slide" id="s99">
+  <h2>Presenting well</h2>
+  <ol class="tips">
+    <li>Lead with Gujarat's own cases and the 13 May 2027 deadline; keep features in the background.</li>
+    <li>Let an official drive one action: decrypt a record, or approve a deletion as the DPO.</li>
+    <li>End on Governance &amp; roadmap with a concrete first step: name the State DPO and the district nodal officers.</li>
+  </ol>
+  <p class="sub muted" style="margin-top:50px">All patient data in the demo is synthetic. Vendor names marked "(demo)" stand for categories of processor.</p>
+  <div class="foot"><span>DPDP Compliance Platform &middot; Gujarat Health edition</span><span>Thank you</span></div>
+</section>
+
+<script>const id = new URLSearchParams(location.search).get('s') || 's01'; document.getElementById(id).classList.add('on');</script>
+</body></html>
