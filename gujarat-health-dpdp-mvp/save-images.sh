@@ -6,6 +6,7 @@ cd "$(dirname "$0")" || exit 1
 command -v docker >/dev/null 2>&1 || { echo "Docker is not installed" >&2; exit 1; }
 docker info >/dev/null 2>&1 || { echo "Docker is not running - open Docker Desktop first" >&2; exit 1; }
 export DB_PASSWORD="${DB_PASSWORD:-x}" TENANT_KEY="${TENANT_KEY:-x}" LEDGER_KEY="${LEDGER_KEY:-x}"
+CODE_HASH="$({ find app tests -type f ! -name '*.pyc' ! -path '*/__pycache__/*' | LC_ALL=C sort | while read -r f; do printf '%s\n' "$f"; cat "$f"; done; cat docker-compose.yml; } | { if command -v shasum >/dev/null 2>&1; then shasum -a 256; else sha256sum; fi; } | cut -c1-16)"; export CODE_HASH
 echo "==> Building / pulling images..."
 docker compose build || exit 1
 docker pull postgres:16-alpine || exit 1

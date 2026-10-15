@@ -155,6 +155,7 @@ with TestClient(main.app) as c:
     check("ending the session revokes the grant", c.post("/api/auth/step-up/end", headers={"X-User": "u_agent_gu", "X-Reveal": gr}).json()["ended"] and
           c.get(f"/api/hmis/patients/{pg['id']}/reveal", headers={"X-User": "u_agent_gu", "X-Reveal": gr}).status_code == 401)
     ex = call("get", "/api/hmis/export.csv").text
+    check("vendor accounts cannot open the patient registry", call("get", "/api/hmis/patients", "u_p_108").status_code == 403)
     check("CSV export is masked", "9898123456" not in ex and "XXXXXX3456" in ex)
     for _ in range(3):
         call("post", "/api/auth/step-up", "u_agent_en", json={"password": "bad", "purpose": "treatment", "reason": "lockout check run"})

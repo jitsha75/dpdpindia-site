@@ -51,6 +51,8 @@ async def lifespan(app):
     db.init_schema()
     with tx() as t:
         seeded = db.get_setting(t, "seeded")
+        if seeded:      # database created by an older version: give officer personas their step-up password
+            t.run("update ops.users set pin_hash=%s where pin_hash is null and role<>'processor'", (pii.hash_password(pii.DEMO_PASSWORD),))
     if not seeded and os.environ.get("AUTO_SEED", "true").lower() == "true":
         t0 = time.time()
         print("Seeding synthetic Gujarat Health demo (facilities, 10,000 patients, processors) ...", flush=True)
@@ -282,7 +284,8 @@ def taxonomy():
 
 # ---------------------------------------------------------------- source system explorer (the State HMIS - simulated)
 @app.get("/api/hmis/patients")
-def hmis_patients(q: str = "", offset: int = 0, limit: int = 25):
+def hmis_patients(q: str = "", offset: int = 0, limit: int = 25, user=Depends(current_user)):
+    pii.no_vendors(user)
     with tx() as t:
         where, pr = "", []
         if q.strip():
@@ -325,7 +328,8 @@ def step_up_end(user=Depends(current_user), x_reveal: str | None = Header(defaul
 
 
 @app.get("/api/hmis/stats")
-def hmis_stats():
+def hmis_stats(user=Depends(current_user)):
+    pii.no_vendors(user)
     with tx() as t:
         return {"patients": t.val("select count(*) from hmis_src.patients"), "admissions": t.val("select count(*) from hmis_src.admissions"),
                 "notes": t.val("select count(*) from hmis_src.helpline_notes"), "claims": t.val("select count(*) from hmis_src.pmjay_claims"),
@@ -334,7 +338,8 @@ def hmis_stats():
 
 
 @app.get("/api/hmis/export.csv")
-def hmis_export():
+def hmis_export(user=Depends(current_user)):
+    pii.no_vendors(user)
     """The synthetic patient dataset, masked. Bulk unmasked export is deliberately not offered."""
     def gen():
         with tx() as t:

@@ -232,7 +232,7 @@ route('crm', 'Source HMIS', async el => {
   const st = await api('/hmis/stats');
   el.innerHTML = pageHead('Source HMIS — synthetic patients', 'The simulated State hospital management information system that the platform scans. All data is generated; identifiers pass real checksums (Aadhaar Verhoeff) or formats (ABHA, UHID) but belong to nobody.',
     `<a class="btn" href="/api/hmis/export.csv">Download (masked) CSV</a>`) + `
-  <div class="callout info small"><b>Masked by default.</b> Mobile, email, address, date of birth, ABHA and Aadhaar leave the server masked. To see one patient's details, press <b>Unmask</b>: you re-enter your password and state a purpose, access lasts 5 minutes, and every record you open is written to the ledger against that patient (Rule 6(1)(a)-(c)). Aadhaar is never shown in full. Bulk unmasked export is not offered.</div>
+  <div class="callout info small"><b>Masked by default.</b> Mobile, email, address, date of birth, ABHA and Aadhaar leave the server masked. To see one patient's details, click a masked value (&#128274;) or <b>Decrypt</b>: you enter the decryption password and state a purpose, access lasts 5 minutes, and every record you open is written to the ledger against that patient (Rule 6(1)(a)-(c)). Aadhaar is never shown in full. Bulk unmasked export is not offered.</div>
   <div class="grid g5">${kpi(num(st.patients), 'Patients')}${kpi(num(st.admissions), 'IPD admissions')}${kpi(num(st.claims), 'PMJAY-MA claims')}${kpi(num(st.minors), 'Minors (under 18)', { cls: 'warn' })}${kpi(num(st.erased), 'Erased so far', { cls: st.erased ? 'ok' : '' })}</div>
   <div class="card" style="margin-top:14px"><div class="filters"><input id="crm-q" class="fill" placeholder="Search name, mobile, district or UHID (e.g. Savitaben, 98981, Dahod, GJ21-)" data-enter="crm-go"><button class="pri" data-act="crm-go">Search</button></div><div id="crm-t"></div></div>`;
   window._crm = { q: '', off: 0 }; await crmLoad();
@@ -242,15 +242,16 @@ async function crmLoad() {
   $('#crm-t').innerHTML = `<div class="row" style="margin-bottom:6px"><span class="small muted">${num(r.total)} match(es), showing ${r.rows.length ? off + 1 : 0}&ndash;${off + r.rows.length}</span><span class="fill"></span>
     <button class="sm" data-act="crm-page" data-d="-1" ${off ? '' : 'disabled'}>Previous</button><button class="sm" data-act="crm-page" data-d="1" ${off + LIM < r.total ? '' : 'disabled'}>Next</button></div>` +
     table([{ h: 'ID' }, { h: 'UHID' }, { h: 'Name' }, { h: 'Mobile' }, { h: 'Email' }, { h: 'DOB' }, { h: 'Address' }, { h: 'ABHA' }, { h: 'Aadhaar' }, { h: 'Scheme' }, { h: 'IPD', cls: 'right' }, { h: '' }],
-      r.rows.map(c => `<tr id="pt-${c.id}"><td>${c.id}</td><td class="mono">${esc(c.uhid || '')}</td><td><b>${esc(c.full_name)}</b></td><td class="mono" data-f="mobile">${esc(c.mobile || '')}</td><td class="mono" data-f="email">${esc(c.email || '')}</td><td class="mono" data-f="dob">${esc(c.dob || '')}</td><td class="small" data-f="address">${esc(c.address || '')}</td><td class="mono" data-f="abha">${esc(c.abha || '')}</td><td class="mono">${esc(c.aadhaar || '')}</td><td>${esc(c.scheme || '')}</td><td class="right">${c.admissions}</td>
-       <td class="nowrap"><button class="sm" data-act="pt-reveal" data-id="${c.id}" ${['dpo', 'dsr_manager', 'agent', 'app_owner', 'district_nodal'].includes(ME.role) ? '' : 'disabled title="Your role has no need to see unmasked patient data"'}>Unmask</button> <a class="btn sm" href="#/principal/patient_id/${c.id}">360&deg;</a></td></tr>`), { empty: 'No patients match.' });
+      r.rows.map(c => `<tr id="pt-${c.id}"><td>${c.id}</td><td class="mono">${esc(c.uhid || '')}</td><td><b>${esc(c.full_name)}</b></td>${['mobile', 'email', 'dob', 'address', 'abha'].map(f => `<td class="${f === 'address' ? 'small' : 'mono'}" data-f="${f}">${c[f] ? `<a href="#" class="masked" data-act="pt-reveal" data-id="${c.id}" title="Click to decrypt (password required)">${esc(c[f])} &#128274;</a>` : ''}</td>`).join('')}<td class="mono">${esc(c.aadhaar || '')}</td><td>${esc(c.scheme || '')}</td><td class="right">${c.admissions}</td>
+       <td class="nowrap"><button class="sm" data-act="pt-reveal" data-id="${c.id}" data-btn="1" ${['dpo', 'dsr_manager', 'agent', 'app_owner', 'district_nodal'].includes(ME.role) ? '' : 'disabled title="Your role has no need to see unmasked patient data"'}>Decrypt</button> <a class="btn sm" href="#/principal/patient_id/${c.id}">360&deg;</a></td></tr>`), { empty: 'No patients match.' });
 }
 on('pt-reveal', async el => {
+  if (!['dpo', 'dsr_manager', 'agent', 'app_owner', 'district_nodal'].includes(ME.role)) throw new Error(`${ME.title} has no need to see decrypted patient data.`);
   if (!(await ensureGrant())) return;
   const r = await api('/hmis/patients/' + el.dataset.id + '/reveal'), row = $('#pt-' + el.dataset.id); if (!row) return;
   ['mobile', 'email', 'dob', 'address', 'abha'].forEach(f => { const td = row.querySelector(`[data-f="${f}"]`); if (td) td.innerHTML = r[f] ? `<mark class="rev">${esc(r[f])}</mark>` : ''; });
-  el.outerHTML = `<span class="small muted" title="ledger hash ${esc(r.logged_as.hash)}">logged #${r.logged_as.seq}</span>`;
-  toast(`Unmasked ${r.full_name}; recorded in the ledger as event #${r.logged_as.seq}`, 'ok');
+  const b = row.querySelector('[data-btn]'); if (b) b.outerHTML = `<span class="small muted" title="ledger hash ${esc(r.logged_as.hash)}">logged #${r.logged_as.seq}</span>`;
+  toast(`Decrypted ${r.full_name} for this session; recorded in the ledger as event #${r.logged_as.seq}`, 'ok');
 });
 on('crm-go', () => { window._crm = { q: $('#crm-q').value, off: 0 }; return crmLoad(); });
 on('crm-page', el => { window._crm.off = Math.max(0, window._crm.off + 25 * +el.dataset.d); return crmLoad(); });

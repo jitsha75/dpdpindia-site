@@ -151,7 +151,7 @@ function drawReveal() {
   const el = $('#reveal-pill'); if (!el) return;
   if (!revealActive()) { const was = !!REVEAL; REVEAL = null; el.innerHTML = ''; if (was) { toast('Unmasked access ended - data is masked again'); if (location.hash.startsWith('#/crm')) refresh(); } return; }
   const s = Math.max(0, Math.round((new Date(REVEAL.exp) - Date.now()) / 1000));
-  el.innerHTML = `<div class="on" title="${esc(REVEAL.purpose)}">Unmasked access &middot; ${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')} <button class="sm" data-act="reveal-end">End</button></div>`;
+  el.innerHTML = `<div class="on" title="${esc(REVEAL.purpose)}">Decryption active &middot; ${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')} <button class="sm" data-act="reveal-end">End</button></div>`;
 }
 setInterval(drawReveal, 1000);
 on('reveal-end', async () => { await api('/auth/step-up/end', { method: 'POST', body: {} }); REVEAL = null; drawReveal(); toast('Unmasked access ended', 'ok'); refresh(); });
@@ -160,15 +160,15 @@ async function ensureGrant() {
   const info = await api('/auth/step-up');
   if (!info.allowed) throw new Error(`${ME.title} has no need to see unmasked patient data. Unmasking is limited to the DPO, rights cell, rights officers, the HMIS owner and district nodal officers.`);
   return new Promise(resolve => modal({
-    title: 'Step-up authentication to see unmasked data',
-    html: `<p class="small">Mobile, email, address and date of birth are masked by default. To unmask a record, confirm who you are and why. Access lasts <b>${info.minutes} minutes</b>, is bound to you, and <b>every record you open is written to the ledger</b> against the patient. Aadhaar is never shown in full.</p>
+    title: 'Decryption password required',
+    html: `<p class="small">Mobile, email, address, date of birth and ABHA are masked by default. To decrypt a record, confirm who you are and why. Access lasts <b>${info.minutes} minutes</b>, is bound to you, and <b>every record you open is written to the ledger</b> against the patient. Aadhaar is never shown in full.</p>
       <label>Purpose</label><select name="purpose" style="width:100%">${Object.entries(info.purposes).map(([k, v]) => `<option value="${k}">${esc(v)}</option>`).join('')}</select>
       <label>Reason (written to the ledger)</label><input name="reason" style="width:100%" placeholder="e.g. Patient called 104 to update mobile; verifying identity">
-      <label>Your password</label><input name="password" type="password" style="width:100%" autocomplete="current-password">
+      <label>Decryption password</label><input name="password" type="password" style="width:100%" autocomplete="current-password">
       <div class="small muted" style="margin-top:6px">${esc(info.demo_hint)}. Three wrong attempts lock step-up for 5 minutes.</div>`,
-    actions: [{ label: 'Cancel', fn: () => resolve(false) }, { label: 'Authenticate', cls: 'pri', fn: async () => {
+    actions: [{ label: 'Cancel', fn: () => resolve(false) }, { label: 'Decrypt', cls: 'pri', fn: async () => {
       const v = vals($('#modalbody'));
-      try { const g = await api('/auth/step-up', { body: v }); REVEAL = { grant: g.grant, exp: g.expires_at, purpose: g.purpose }; drawReveal(); toast('Authenticated for ' + g.minutes + ' minutes - each record you unmask is logged', 'ok'); resolve(true); }
+      try { const g = await api('/auth/step-up', { body: v }); REVEAL = { grant: g.grant, exp: g.expires_at, purpose: g.purpose }; drawReveal(); toast('Decryption active for ' + g.minutes + ' minutes - each record you open is logged', 'ok'); resolve(true); }
       catch (e) { toast(e.message, 'err'); return false; }
     } }]
   }));

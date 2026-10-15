@@ -29,6 +29,10 @@ It uses port 8090 and its own container, image and volume names (`gj-health-dpdp
 | `./stop.sh --clean` | Does everything `--purge` does, and also removes the images and the build cache. |
 | `./save-images.sh` | Run it once while online. It saves the images to `images/gj-health-dpdp-images.tar.gz`, and `start.sh` loads that bundle automatically, so the demo then starts with **no internet**. |
 
+## Updating to a newer copy of the code
+
+Unzip the new copy, then run `./start.sh` as usual. The script fingerprints the code and **rebuilds the image automatically when the code has changed**, which needs internet for that build. Add `--reset` if you also want fresh demo data. If the screen still looks old, press Cmd+Shift+R in the browser to bypass its cache.
+
 ## What is specific to Gujarat Health
 
 | Area | What you can show |
@@ -43,8 +47,10 @@ It uses port 8090 and its own container, image and volume names (`gj-health-dpdp
 
 ## Masking and step-up authentication
 
+* **Vendor accounts are kept out entirely.** Processor personas cannot open the patient registry or its export, only their own tasks in the processor portal.
+
 * **Masked by default, on the server.** Mobile, email, address, date of birth and ABHA leave the API already masked (e.g. `XXXXXX3456`, `sa***@mail.example.com`, `XX-XX-1985`, `[masked], Anand 388001`), in every screen, the access-package preview, DSR task results and the CSV export. Hiding values with CSS would not be enough: the browser would still receive them.
-* **Unmask one record at a time** (Source HMIS → *Unmask*, or *Unmask* in an access package). The officer re-enters their password and records a purpose and a reason. Access then lasts **5 minutes**, is bound to that officer, and a timer in the header lets them end it early. Switching persona ends it.
+* **Decrypt one record at a time.** Click any masked value (🔒) or *Decrypt* in Source HMIS, or *Decrypt* in an access package. The officer enters the decryption password and records a purpose and a reason. Access then lasts **5 minutes**, is bound to that officer, and a timer in the header lets them end it early. Switching persona ends it.
 * **Only roles with a need can unmask:** DPO, rights cell, rights officers, HMIS owner and district nodal officer. The analyst, contracts, audit and vendor personas are refused, and the refusal is logged.
 * **Everything is evidenced.** Each unmasked record, grant, failed attempt and refusal is written to the immutable ledger against the patient's token. *Patient 360* shows "who has seen this patient's unmasked data".
 * **Lockout:** step-up locks for 5 minutes after 3 wrong passwords.

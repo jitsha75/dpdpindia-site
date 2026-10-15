@@ -118,6 +118,14 @@ export PORT
 
 # ---------------------------------------------------------------- 3. images (load from images/ when offline, otherwise build)
 have_img() { docker image inspect "$1" >/dev/null 2>&1; }
+# Fingerprint of the application code. The image carries it as a label, so a newer copy of the code is always rebuilt
+# (otherwise an old image would keep running after you unzip an update).
+code_hash() {
+  { find app tests -type f ! -name '*.pyc' ! -path '*/__pycache__/*' | LC_ALL=C sort | while read -r f; do printf '%s\n' "$f"; cat "$f"; done; cat docker-compose.yml; } |
+    { if command -v shasum >/dev/null 2>&1; then shasum -a 256; else sha256sum; fi; } | cut -c1-16
+}
+CODE_HASH="$(code_hash)"; export CODE_HASH
+img_hash() { docker image inspect -f '{{ index .Config.Labels "org.gjh.code-hash" }}' "$APP_IMAGE" 2>/dev/null; }
 need_images() { ! have_img "$APP_IMAGE" || ! have_img "$DB_IMAGE"; }
 
 if [ $RESET -eq 1 ]; then
@@ -134,13 +142,18 @@ if [ $REBUILD -eq 0 ] && need_images; then
   fi
 fi
 
+if [ $REBUILD -eq 0 ] && have_img "$APP_IMAGE" && [ "$(img_hash)" != "$CODE_HASH" ]; then
+  say "The code has changed since the image was built (image $(img_hash | cut -c1-8), code ${CODE_HASH:0:8}) - rebuilding it"
+  REBUILD=1
+fi
+
 if [ $REBUILD -eq 1 ] || need_images; then
-  say "Building the application image (first time only; needs internet once to fetch ~150 MB of base images)..."
+  say "Building the application image (needs internet the first time to fetch ~150 MB of base images)..."
   if ! $DC build; then
     die "Image build failed. If you are offline, run ./save-images.sh once on a connection and copy the images/ folder, or connect to the internet and retry."
   fi
 fi
-ok "Images ready: $APP_IMAGE, $DB_IMAGE"
+ok "Images ready: $APP_IMAGE (code ${CODE_HASH:0:8}), $DB_IMAGE"
 
 # ---------------------------------------------------------------- 4. start
 say "Starting containers..."

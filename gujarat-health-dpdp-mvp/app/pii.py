@@ -99,6 +99,12 @@ def mask_text(text, reveal=False):
     return "".join(out)
 
 
+def no_vendors(user):
+    """Processors work only through the vendor portal; they never browse the Department's patient registry."""
+    if user["role"] == "processor":
+        raise HTTPException(403, "Vendor (processor) accounts cannot open the Department's patient registry. They see only their own tasks in the processor portal.")
+
+
 # ------------------------------------------------------------------ step-up authentication
 def hash_password(pw, salt=None):
     salt = salt or secrets.token_hex(8)
