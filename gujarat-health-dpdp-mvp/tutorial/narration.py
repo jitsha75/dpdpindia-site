@@ -1,5 +1,7 @@
 """Narration for the presenter tutorial video. Each segment: (image id, on-screen caption, narration text).
-Images starting with s are slides (slides.html), images starting with b are screenshots captured by capture.js."""
+Images starting with s are slides (slides.html), images starting with b are screenshots captured by capture.cjs."""
+
+import re
 
 SEGMENTS = [
     # ---------------------------------------------------------------- Part 1: the workflow
@@ -118,20 +120,16 @@ SEGMENTS = [
      "And end on the governance page, with a concrete first step: naming the State D P O and the district nodal officers. Remember that all data in this demo is synthetic. Thank you, and good luck with the presentation."),
 ]
 
-# pronunciation fixes for the voice (subtitles keep the written form)
-SAY = [("DPDP", "D P D P"), ("PMJAY-MA", "P M Jay M A"), ("ABHA", "Aabha"), ("C D H O", "C D H O"), ("CERT-In", "Cert In"), ("ASHA", "Aasha"),
-       ("ANM", "A N M"), ("PCPNDT", "P C P N D T"), ("PPP", "P P P"), ("HIV", "H I V"), ("SMS", "S M S"), ("ACS", "A C S"), ("ISA", "I S A"),
-       ("Rakesh", "Raakesh"), ("Hetal", "Hetaal"), ("Savitaben", "Saveeta ben"), ("Rameshbhai", "Ramesh bhai"), ("Bhavna", "Bhaavna"),
-       ("Vaghela", "Vaghela"), ("Ketan", "Ketan"), ("Pooja", "Pooja"), ("Trivedi", "Trivedi"), ("Gujarati", "Gujaraati"), ("Ayushman", "Aayushmaan"),
-       ("Khyati", "Khyaati"), ("Rajkot", "Raajkot"), ("Mehsana", "Mehsaana"), ("crore", "crore"), ("lakh", "laakh")]
-
-
-YEARS = {"2024": "twenty twenty-four", "2025": "twenty twenty-five", "2026": "twenty twenty-six", "2027": "twenty twenty-seven"}
+# pronunciation fixes for the voice (subtitles keep the written form); checked by transcribing the audio back
+SAY = [(r"\bDPDP\b", "D P D P"), (r"\bPMJAY-MA\b", "PM-JAY M-A"), (r"\bPMJAY\b", "PM-JAY"), (r"\bABHA\b", "Ah-bha"), (r"\bAadhaar\b", "Aadhar"),
+       (r"\bCERT-In\b", "Cert In"), (r"\bASHA\b", "Aasha"), (r"\bANM\b", "A N M"), (r"\bPCPNDT\b", "P C P N D T"), (r"\bPPP\b", "P P P"),
+       (r"\bHIV\b", "H I V"), (r"\bSMS\b", "S M S"), (r"\bGujarat\b", "Goojaraat"), (r"\bChaudhary\b", "Chowdhury"), (r"\bRameshbhai\b", "Ramesh bhai"),
+       (r"\bSavitaben\b", "Saveeta ben"), (r"\bBhavna\b", "Bhaavna"), (r"\bHetal\b", "Hetaal"), (r"\bKhyati\b", "Khyaati"), (r"\bAyushman\b", "Aayushmaan"),
+       (r"\bMehsana\b", "Mehsaana"), (r"\b2024\b", "twenty twenty-four"), (r"\b2025\b", "twenty twenty-five"), (r"\b2026\b", "twenty twenty-six"),
+       (r"\b2027\b", "twenty twenty-seven")]
 
 
 def speakable(text):
     for a, b in SAY:
-        text = text.replace(a, b)
-    for y, w in YEARS.items():
-        text = text.replace(y, w)
-    return text.replace("Namaste", "Namastay")
+        text = re.sub(a, b, text)
+    return text
