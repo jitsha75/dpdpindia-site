@@ -10,3 +10,11 @@ PPTX_SKILL=<path to the pptx skill> node build_deck.cjs shots Gujarat_Health_DPD
 ```
 
 The theme uses navy (002060) and gold (C59B27) in Calibri. Change colours in `THEME` and the text in each slide block.
+
+## Integrated Health Data Platform deck
+
+`build_platform_deck.cjs` builds a 23-slide pitch from the functional specification v0.9, covering the data lake, DPDP compliance, contract management and applications. It needs the same screenshots plus `architecture.png`, which is Figure 1 of the specification.
+
+```bash
+PPTX_SKILL=<path to the pptx skill> node build_platform_deck.cjs shots Gujarat_Health_Data_Platform_Pitch.pptx
+```
