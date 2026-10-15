@@ -22,8 +22,8 @@ def capture(t: Tx, token, purpose_id, notice_id, language, channel, evidence=Non
     if pur["legal_basis"] != "consent":
         raise ValueError(f"Purpose '{pur['name']}' does not rely on consent (basis: {pur['legal_basis'].replace('_', ' ')} - {pur['basis_note']}). No consent artefact is required.")
     notice = t.one("select * from ops.notices where id=%s", (notice_id,)) if notice_id else \
-        t.one("select * from ops.notices where purpose_id=%s and language=%s order by id desc limit 1", (purpose_id, language)) or \
-        t.one("select * from ops.notices where purpose_id=%s order by id desc limit 1", (purpose_id,))
+        t.one("select * from ops.notices where purpose_id=%s and language=%s order by (coalesce(channel,'portal')='portal') desc, id desc limit 1", (purpose_id, language)) or \
+        t.one("select * from ops.notices where purpose_id=%s order by (coalesce(channel,'portal')='portal') desc, id desc limit 1", (purpose_id,))
     if not notice:
         raise ValueError("no notice published for this purpose")
     existing = t.one("select id from ops.consents where token=%s and purpose_id=%s and status='active'", (token, purpose_id))

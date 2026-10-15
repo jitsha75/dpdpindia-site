@@ -45,6 +45,30 @@ Unzip the new copy, then run `./start.sh` as usual. The script fingerprints the 
 | **Processors** | 108 PPP operator, TeCHO+ IT partner, PMJAY-MA card agency, PPP lab, CCTV AMC and the State Data Centre. NHA is shown as a separate fiduciary. The live violations are: an enrolment operator reading 9,600 Aadhaar records against an 800/day baseline, the lab touching HIV results, the CCTV stream going to an overseas relay, and the 108 agreement lapsed. |
 | **Breach** | A camp screening list forwarded to a WhatsApp group, reported by CDHO Mehsana. It runs on a 72-hour Board clock (Rule 7) with a CERT-In 6-hour reminder, and the patient notice goes out via the ASHA/ANM network in Gujarati. |
 
+## Consent notice engine
+
+*Rights & consent → Consent notice engine.* Pick a purpose from the registry, then tick the languages (Gujarati, Hindi, English) and channels:
+
+* **Portal / kiosk:** the full notice, an unticked consent box, and accept / decline buttons of equal weight.
+* **WhatsApp:** a template body of 1,024 characters or less, quick replies of 20 characters or less, and a link to the full notice.
+* **SMS:** a short notice with a link and YES / STOP replies. The engine computes the encoding and segment count (Gujarati and Hindi come out at 2–3 Unicode segments) and adds a DLT template note.
+* **Voice / IVR (104):** a numbered script with DTMF keys (1 agree, 2 decline, 9 repeat), an estimated duration and a call-recording note.
+
+Every artefact runs through Rule 3 checks: standalone notice, itemised data, specific purpose, means to withdraw, rights, complaint to the Board, language under s.5(3), consent optional, and a guardian line for minors. Channel limits are checked too.
+It can then be **published** as a hashed, versioned notice recorded in the ledger. *Test a patient reply* turns an SMS "YES", a WhatsApp button tap or DTMF 1 into a consent artefact tied to that exact notice version.
+
+A consent purpose produces a consent request. A legitimate-use purpose (s.7) produces an information notice, because State schemes are still expected to give notice under the Second Schedule.
+Other Eighth Schedule languages are listed as needing a vetted translation, because the engine never machine-translates a legal notice.
+
+## Processor portal and contract notices
+
+* **Every vendor persona has pending work:**
+  * deletion tasks for the 108 operator, the TeCHO+ partner, the PPP lab and the card agency (the card agency's task is overdue);
+  * notices to answer for the card agency and the CCTV vendor.
+* **Vendors can read and reply to notices** in the portal. The reply goes to the Department and into its ledger. A vendor can only see and answer its own notices.
+* **Processors & contracts** shows notices at every stage: awaiting DPO approval, sent and awaiting the vendor, and answered. Click a notice to read it, along with who drafted it, who approved it and the vendor's reply.
+* **"Draft notice" works on every open violation,** including new ones raised with *Simulate access*. It hands over to the Contracts officer (Pooja Trivedi) to draft, and *Approve & send* hands over to the DPO, so drafter and approver are always different people.
+
 ## Masking and step-up authentication
 
 * **Vendor accounts are kept out entirely.** Processor personas cannot open the patient registry or its export, only their own tasks in the processor portal.
@@ -100,7 +124,7 @@ App container ≈ 90 MB, database ≈ 170–290 MB; limits are 512 MB and 640 MB
 * *Containers are emulated / slow* — Docker Desktop → Settings → General → use the Apple-silicon engine, or use OrbStack.
 * *Started but page says "not ready"* — the first start is loading data; it refreshes itself. Logs: `docker compose logs -f app`.
 * *Lost `.env` but the database remains* — `./start.sh --reset`.
-* *Self-test* — `docker compose exec app python /srv/tests/smoke_test.py` runs 97 checks over every workflow, including the Gujarat views and masking / step-up (it changes demo data; use *Reset demo data* afterwards).
+* *Self-test* — `docker compose exec app python /srv/tests/smoke_test.py` runs 114 checks over every workflow, including the Gujarat views, masking / step-up, vendor portal, notices and the consent notice engine (it changes demo data; use *Reset demo data* afterwards).
 
 ## Architecture
 

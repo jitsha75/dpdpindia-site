@@ -107,3 +107,13 @@ svg text{font-family:Calibri,Arial,sans-serif}
 a.masked{color:var(--char);text-decoration:none;border-bottom:1px dashed var(--muted);cursor:pointer} a.masked:hover{background:var(--gold-bg)}
 mark.rev{background:#fff1c2;padding:0 3px;border-radius:3px}
 @media print{#top,#side,#toasts{display:none}#main{margin:0}}
+.ce-portal{border:1px solid var(--line);border-radius:8px;padding:12px;background:#fff;font-size:13px}
+.ce-check{display:flex;gap:6px;align-items:flex-start;color:var(--char);font-size:13px;margin-top:10px}
+.ce-wa{background:#efeae2;border-radius:10px;padding:12px;max-width:420px}
+.ce-wa-b{background:#fff;border-radius:8px;padding:9px 11px;font-size:13px;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+.ce-wa-f{color:#8696a0;font-size:11.5px;margin-top:6px}
+.ce-wa-btns div{background:#fff;border-radius:8px;margin-top:4px;padding:7px;text-align:center;color:#027eb5;font-weight:600;font-size:13px}
+.ce-sms{background:#f2f2f7;border-radius:14px;padding:12px;max-width:380px}
+.ce-sms-h{font-size:11px;color:var(--muted);font-weight:700;margin-bottom:4px}
+.ce-sms-b{background:#e5e5ea;border-radius:14px;padding:9px 12px;font-size:13px}
+.ce-voice{font-family:Consolas,Menlo,monospace;font-size:12.5px;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:10px;line-height:1.6}

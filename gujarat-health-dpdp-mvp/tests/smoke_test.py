@@ -166,6 +166,40 @@ with TestClient(main.app) as c:
     check("access package masked on screen without step-up", pk["masked"] and "9824456780" not in str(pk), pk.get("masked"))
     check("DSR detail does not leak compiled data", "9824456780" not in call("get", f"/api/dsr/{acc['id']}").text)
 
+    # ---- processor portal, contract notices
+    for u in ["u_p_108", "u_p_techo", "u_p_card", "u_p_lab", "u_p_cctv"]:
+        pt = call("get", "/api/portal/tasks", u).json()
+        pending = len([k for k in pt["tasks"] if k["status"] != "done"]) + len([n for n in pt["notices"] if n["status"] == "sent"])
+        check(f"vendor {u} has pending work in the portal", pending >= 1, pending)
+    pr2 = call("get", "/api/processors").json()
+    ns = [n for v in pr2["violations"] for n in v["notices"]]
+    check("seeded notices at several stages", {"sent", "responded", "pending_approval"} <= {n["status"] for n in ns}, sorted({n["status"] for n in ns}))
+    cc = call("get", "/api/portal/tasks", "u_p_cctv").json()
+    sent = next(n for n in cc["notices"] if n["status"] == "sent")
+    check("vendor cannot answer another vendor's notice", call("post", f"/api/portal/notices/{sent['id']}/respond", "u_p_lab", json={"response": "This is a reply from the wrong vendor account"}).status_code == 400)
+    check("vendor answers its notice in the portal", call("post", f"/api/portal/notices/{sent['id']}/respond", "u_p_cctv", json={"response": "P2P relay disabled on all DVRs; NOC VPN only; logs attached."}).status_code == 200)
+    nv = call("post", "/api/processors/simulate", json={"entity_id": 2, "element": "aadhaar", "country": "IN", "volume": 5}).json()
+    newv = next(v for v in call("get", "/api/processors").json()["violations"] if v["entity"].startswith("Arogya108") and not v["notices"])
+    nn = call("post", f"/api/violations/{newv['id']}/notice", "u_proc", json={"kind": "information_request"})
+    check("draft notice on a new violation", nv["violations_raised"] >= 1 and nn.status_code == 200, nn.text[:100])
+    check("DPO approves the new notice", call("post", f"/api/notices-issued/{nn.json()['notice']}/decide", "u_dpo", json={"approve": True}).status_code == 200)
+
+    # ---- consent notice engine
+    pid = next(p["id"] for p in call("get", "/api/consent-engine/meta").json()["purposes"] if p["code"] == "AWARE")
+    g = call("post", "/api/consent-engine/generate", json={"purpose_id": pid, "languages": ["gu", "hi", "en"], "channels": ["portal", "whatsapp", "sms", "voice"]}).json()
+    check("engine builds 12 notices (3 languages x 4 channels)", len(g["artefacts"]) == 12)
+    check("every generated notice passes its Rule 3 and channel checks", all(c["ok"] for a in g["artefacts"] for c in a["checks"]),
+          [(a["language"], a["channel"], [c["check"] for c in a["checks"] if not c["ok"]]) for a in g["artefacts"] if not all(c["ok"] for c in a["checks"])])
+    smsg = next(a for a in g["artefacts"] if a["language"] == "gu" and a["channel"] == "sms")
+    check("Gujarati SMS is Unicode within 3 segments", smsg["stats"]["encoding"].startswith("Unicode") and smsg["stats"]["segments"] <= 3, smsg["stats"])
+    pb = call("post", "/api/consent-engine/publish", "u_dpo", json={"purpose_id": pid, "language": "gu", "channel": "whatsapp"})
+    check("publish a WhatsApp notice version", pb.status_code == 200 and pb.json().get("sha256"), pb.text[:100])
+    sr = call("post", "/api/consent-engine/simulate", "u_dpo", json={"purpose_id": pid, "language": "gu", "channel": "whatsapp", "patient_id": 77, "answer": True})
+    check("patient WhatsApp reply becomes a consent artefact tied to that notice", sr.status_code in (200, 400), sr.text[:120])
+    pm = next(p["id"] for p in call("get", "/api/consent-engine/meta").json()["purposes"] if p["code"] == "PMJAY")
+    gp = call("post", "/api/consent-engine/generate", json={"purpose_id": pm, "languages": ["gu"], "channels": ["voice"]}).json()["artefacts"][0]
+    check("legitimate-use purpose yields an information notice, not a consent ask", not gp["consent"] and "1" in gp["meta"]["dtmf"])
+
     # ---- Gujarat views
     fs = call("get", "/api/gujarat/facilities").json()
     check("34 districts in the field-unit view", len(fs["districts"]) == 34, len(fs["districts"]))

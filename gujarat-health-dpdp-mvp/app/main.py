@@ -16,6 +16,7 @@ from fastapi.staticfiles import StaticFiles
 import bench
 import breach
 import consent
+import consent_engine
 import db
 import dsr
 import lake
@@ -426,6 +427,36 @@ def withdraw_consent(cid: int, user=Depends(current_user)):
         return consent.withdraw(t, cid, ("user", user["id"]))
 
 
+@app.get("/api/consent-engine/meta")
+def ce_meta():
+    with tx() as t:
+        pur = t.all("select id, code, name, legal_basis from ops.purposes order by id")
+    for p in pur:
+        p["available"] = p["code"] in consent_engine.PURPOSE_TEXT
+    return {"languages": consent_engine.LANGS, "channels": consent_engine.CHANNELS, "purposes": pur, "eighth_schedule": consent_engine.EIGHTH_SCHEDULE}
+
+
+@app.post("/api/consent-engine/generate")
+def ce_generate(body: dict = Body(...)):
+    with tx() as t:
+        return consent_engine.generate(t, int(body["purpose_id"]), body.get("languages"), body.get("channels"))
+
+
+@app.post("/api/consent-engine/publish")
+def ce_publish(body: dict = Body(...), user=Depends(current_user)):
+    require(user, "consent")
+    with tx() as t:
+        return consent_engine.publish(t, int(body["purpose_id"]), body["language"], body["channel"], user)
+
+
+@app.post("/api/consent-engine/simulate")
+def ce_simulate(body: dict = Body(...), user=Depends(current_user)):
+    require(user, "consent")
+    with tx() as t:
+        return consent_engine.simulate_response(t, int(body["purpose_id"]), body["language"], body["channel"], int(body.get("patient_id", 1)),
+                                                bool(body.get("answer", True)), user)
+
+
 @app.get("/api/consent/reconciliation")
 def reconciliation():
     with tx() as t:
@@ -572,8 +603,15 @@ def portal(user=Depends(current_user)):
     require(user, "portal")
     with tx() as t:
         ent = t.one("select * from ops.entities where id=%s", (user["entity_id"],))
-        return {"entity": ent, "tasks": dsr.portal_tasks(t, user["entity_id"]),
+        return {"entity": ent, "tasks": dsr.portal_tasks(t, user["entity_id"]), **processors.portal_view(t, user["entity_id"]),
                 "contract": t.one("select contract_ref,scope_elements,allowed_countries,term_end,exclusions from ops.links where to_id=%s order by id limit 1", (user["entity_id"],))}
+
+
+@app.post("/api/portal/notices/{nid}/respond")
+def portal_respond(nid: int, body: dict = Body(...), user=Depends(current_user)):
+    require(user, "portal")
+    with tx() as t:
+        return processors.respond_notice(t, nid, user, body.get("response"))
 
 
 @app.post("/api/portal/tasks/{tid}/complete")

@@ -97,7 +97,7 @@ const NAV = [
   ['Overview', [['home', 'Overview'], ['demo', 'Guided demo script']]],
   ['Gujarat Health', [['gujarat', 'Issues & regulations'], ['fieldunits', 'Field units & data flows'], ['governance', 'Governance & roadmap']]],
   ['Discover & govern', [['discovery', 'Discovery & scans'], ['inventory', 'Inventory & SQL'], ['principal', 'Patient 360'], ['crm', 'Source HMIS (10,000)']]],
-  ['Rights & consent', [['consent', 'Consent & purposes'], ['dsr', 'Rights requests (DSR)']]],
+  ['Rights & consent', [['consent', 'Consent & purposes'], ['notice-engine', 'Consent notice engine'], ['dsr', 'Rights requests (DSR)']]],
   ['Third parties', [['processors', 'Processors & contracts'], ['portal', 'Processor portal']]],
   ['Incidents & evidence', [['breach', 'Breach management'], ['ledger', 'Immutable ledger']]],
   ['Platform', [['quality', 'Detector quality'], ['about', 'Scope & roadmap']]],
@@ -146,6 +146,10 @@ async function boot() {
 }
 
 /* ---------- step-up authentication for unmasked access (Rule 6(1)(a)-(c)) ---------- */
+async function becomePersona(id) {   // switch persona without re-rendering (used to hand an action to the right role)
+  if (REVEAL) { try { await api('/auth/step-up/end', { method: 'POST', body: {} }); } catch (x) { } REVEAL = null; drawReveal(); }
+  store.set('user', id); ME = await api('/me'); $('#persona').value = id; $('#actas-title').textContent = ME.title; toast('Now acting as ' + ME.name + ' - ' + ME.title); loadBadges();
+}
 function revealActive() { return !!(REVEAL && new Date(REVEAL.exp) > Date.now()); }
 function drawReveal() {
   const el = $('#reveal-pill'); if (!el) return;

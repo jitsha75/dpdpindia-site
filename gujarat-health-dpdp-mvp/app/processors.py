@@ -154,6 +154,32 @@ def decide_notice(t: Tx, nid, approve, user):
     return st
 
 
+def respond_notice(t: Tx, nid, user, text):
+    """A processor answers a notice through the vendor portal (only notices about its own violations)."""
+    n = t.one("""select n.*, v.entity_id from ops.contract_notices n join ops.violations v on v.id=n.violation_id where n.id=%s""", (nid,))
+    if not n or n["entity_id"] != user["entity_id"]:
+        raise ValueError("notice not found in your scope")
+    if n["status"] != "sent":
+        raise ValueError("this notice is not awaiting your response")
+    if len((text or "").strip()) < 15:
+        raise ValueError("Give the cause, the data affected and the corrective action (a few sentences).")
+    t.run("update ops.contract_notices set status='responded', response=%s, responded_by=%s, responded_at=%s where id=%s",
+          (text.strip(), user["id"], ledger.now(), nid))
+    ledger.append(t, "processor.notice_responded", "processor", ("processor", user["id"]), object_ref=f"notice#{nid}",
+                  details={"violation": n["violation_id"], "kind": n["kind"]})
+    return {"status": "responded"}
+
+
+def portal_view(t: Tx, entity_id):
+    notices = t.all("""select n.id, n.kind, n.body, n.status, n.created_at, n.decided_at, n.due_at, n.response, n.responded_at,
+                       v.rule, v.severity, v.detail, l.contract_ref from ops.contract_notices n join ops.violations v on v.id=n.violation_id
+                       join ops.links l on l.id=v.link_id where v.entity_id=%s and n.status in ('sent','responded') order by n.id desc""", (entity_id,))
+    for n in notices:
+        n["kind_label"] = NOTICE_KINDS.get(n["kind"], n["kind"])
+    findings = t.all("select id, rule, severity, detail, status, first_seen from ops.violations where entity_id=%s order by id desc", (entity_id,))
+    return {"notices": notices, "findings": findings}
+
+
 def mark_cured(t: Tx, vid, user):
     t.run("update ops.violations set status='cured', last_seen=%s where id=%s", (ledger.now(), vid))
     ledger.append(t, "processor.cure_confirmed", "processor", ("user", user["id"]), object_ref=f"violation#{vid}", details={})

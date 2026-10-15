@@ -26,12 +26,14 @@ route('processors', 'Processors & contracts', async el => {
     `<button data-act="proc-eval">Re-evaluate all events</button>`) + `
   <div class="card"><h2>Entity graph</h2>${graphSvg(p.graph)}<div class="small muted">Navy = our organisation &middot; gold = processor &middot; grey = other party &middot; red line = open violation on that contract.</div></div>
   <div class="card"><h2>Violations ${p.violations.filter(v => v.status === 'open').length ? badge(p.violations.filter(v => v.status === 'open').length + ' open', 'bad') : badge('none open', 'ok')}</h2>
-   ${(canDraft || canAppr) ? '' : personaNote('Procurement (Neha Kulkarni) drafts contract notices; the DPO approves them &mdash; a different person.')}
+   ${(() => { const ns = p.violations.flatMap(v => v.notices); const c = s => ns.filter(n => n.status === s).length;
+      return `<div class="row" style="margin-bottom:8px">${badge(c('pending_approval') + ' awaiting DPO approval', 'warn')} ${badge(c('sent') + ' sent, awaiting vendor reply', 'info')} ${badge(c('responded') + ' answered by vendor', 'ok')}
+      <span class="small muted">Contracts (Pooja Trivedi) drafts notices; the DPO (Dr. Hetal Desai) approves and sends them &mdash; always two different people. Buttons switch persona for you.</span></div>`; })()}
    ${table([{ h: '' }, { h: 'Processor / rule' }, { h: 'Detail' }, { h: 'Evidence (ledger)' }, { h: 'Notices' }, { h: '' }], p.violations.map(v => `<tr><td>${sevBadge(v.severity)}</td><td><b>${esc(v.entity)}</b><div class="small">${esc(v.rule)}</div><div class="small muted">${esc(v.contract_ref)}</div></td>
      <td class="small">${esc(v.detail)}</td><td class="hash">event #${v.evidence.ledger_seq ?? '-'}<br>${short(v.evidence.ledger_hash, 14)}</td>
-     <td>${v.notices.map(n => `<div class="small"><b>${esc(p.kinds[n.kind] || n.kind)}</b> ${badge(n.status.replace('_', ' '), n.status === 'sent' ? 'ok' : n.status === 'pending_approval' ? 'warn' : 'bad')}
-        <a href="#" data-act="notice-view" data-v="${v.id}" data-n="${n.id}">read</a>${n.status === 'pending_approval' && canAppr ? ` <button class="sm pri" data-act="notice-dec" data-id="${n.id}" data-ok="1">Approve &amp; send</button>` : ''}</div>`).join('') || '<span class="muted small">none</span>'}</td>
-     <td class="nowrap">${v.status === 'open' ? `<button class="sm" data-act="notice-new" data-id="${v.id}" ${canDraft ? '' : 'disabled title="Procurement persona drafts notices"'}>Draft notice</button> <button class="sm" data-act="v-cure" data-id="${v.id}" ${canAppr ? '' : 'disabled'}>Mark cured</button>` : badge(v.status, 'ok')}</td></tr>`), { empty: 'No violations.' })}</div>
+     <td>${v.notices.map(n => `<div class="small" style="margin-bottom:4px"><a href="#" data-act="notice-view" data-v="${v.id}" data-n="${n.id}"><b>${esc(p.kinds[n.kind] || n.kind)}</b></a> ${badge({ pending_approval: 'awaiting DPO', sent: 'sent - reply due ' + dd(n.due_at), responded: 'vendor replied', rejected: 'rejected' }[n.status] || n.status, { sent: 'info', pending_approval: 'warn', responded: 'ok' }[n.status] || 'bad')}
+        ${n.status === 'pending_approval' ? ` <button class="sm pri" data-act="notice-dec" data-id="${n.id}">Approve &amp; send</button>` : ''}</div>`).join('') || '<span class="muted small">none yet</span>'}</td>
+     <td class="nowrap">${v.status !== 'cured' ? `<button class="sm" data-act="notice-new" data-id="${v.id}" data-entity="${esc(v.entity)}" data-rule="${esc(v.rule)}">Draft notice</button> <button class="sm" data-act="v-cure" data-id="${v.id}" ${canAppr ? '' : 'disabled title="DPO confirms cure"'}>Mark cured</button>` : badge('cured', 'ok')}</td></tr>`), { empty: 'No violations.' })}</div>
   <div class="grid g2">
    <div class="card"><h2>Simulate an access event <span class="tag">${badge('demo control', 'gold')}</span></h2><div class="small muted" style="margin-bottom:6px">Pretend a vendor just touched data. The rules engine checks it against the contract in real time.</div>
     <div id="sim"><div class="grid g2"><div><label>Processor</label><select name="entity_id">${procs.map(n => `<option value="${n.id}">${esc(n.name)}</option>`).join('')}</select></div>
@@ -54,12 +56,15 @@ on('sim-go', async () => {
   const v = vals($('#sim')); const r = await api('/processors/simulate', { body: { ...v, entity_id: +v.entity_id, volume: +v.volume, sub_processor: v.sub_processor || null } });
   toast(r.violations_raised ? `${r.violations_raised} violation(s) raised - scroll up to see them with evidence` : 'Within the contract: no violation', r.violations_raised ? 'err' : 'ok'); loadBadges(); refresh();
 });
-on('notice-new', el => modal({
-  title: 'Draft a contract notice', html: `<label>Notice type</label><select name="kind">${Object.entries(window._proc.kinds).map(([k, v]) => `<option value="${k}" ${k === 'cure_notice' ? 'selected' : ''}>${esc(v)}</option>`).join('')}</select><p class="small muted" style="margin-top:8px">The text is generated from the violation and the ledger evidence. It must be approved by the DPO before it is sent.</p>`,
-  actions: [{ label: 'Cancel' }, { label: 'Draft', cls: 'pri', fn: async () => { await api('/violations/' + el.dataset.id + '/notice', { body: vals($('#modalbody')) }); toast('Drafted - awaiting DPO approval', 'ok'); refresh(); } }]
-}));
-on('notice-view', el => { const v = window._proc.violations.find(x => x.id === +el.dataset.v), n = v.notices.find(x => x.id === +el.dataset.n); modal({ title: window._proc.kinds[n.kind] || 'Notice', html: `<pre>${esc(n.body)}</pre><div class="small muted">Drafted by ${esc(n.drafted_by)} &middot; reply due ${dd(n.due_at)}</div>` }); });
-on('notice-dec', async el => { await api('/notices-issued/' + el.dataset.id + '/decide', { body: { approve: true } }); toast('Approved and sent (recorded in the ledger)', 'ok'); refresh(); });
+on('notice-new', async el => { if (ME.role !== 'procurement') await becomePersona('u_proc'); modal({
+  title: 'Draft a contract notice to ' + (el.dataset.entity || 'the processor'), html: `<p class="small"><b>Finding:</b> ${esc(el.dataset.rule || '')}</p><label>Notice type</label><select name="kind">${Object.entries(window._proc.kinds).map(([k, v]) => `<option value="${k}" ${k === 'cure_notice' ? 'selected' : ''}>${esc(v)}</option>`).join('')}</select><p class="small muted" style="margin-top:8px">The text is generated from the violation and the ledger evidence. It must be approved by the DPO before it is sent.</p>`,
+  actions: [{ label: 'Cancel', fn: () => refresh() }, { label: 'Draft', cls: 'pri', fn: async () => { await api('/violations/' + el.dataset.id + '/notice', { body: vals($('#modalbody')) }); toast('Drafted by ' + ME.name + ' - now awaiting DPO approval', 'ok'); refresh(); } }]
+}); });
+const uname = id => (USERS.find(u => u.id === id) || {}).name || id || '-';
+on('notice-view', el => { const v = window._proc.violations.find(x => x.id === +el.dataset.v), n = v.notices.find(x => x.id === +el.dataset.n); modal({ title: (window._proc.kinds[n.kind] || 'Notice') + ' - ' + v.entity, wide: true,
+  html: `<div class="row" style="margin-bottom:6px">${badge(n.status.replace('_', ' '), n.status === 'responded' ? 'ok' : n.status === 'sent' ? 'info' : 'warn')} <span class="small muted">Drafted by ${esc(uname(n.drafted_by))} on ${dt(n.created_at)}${n.approved_by ? ' &middot; approved and sent by ' + esc(uname(n.approved_by)) + ' on ' + dt(n.decided_at) : ' &middot; not yet approved'} &middot; reply due ${dd(n.due_at)}</span></div>
+   <pre>${esc(n.body)}</pre>${n.response ? `<h3>Vendor's reply (${dt(n.responded_at)})</h3><div class="callout ok">${esc(n.response)}</div>` : n.status === 'sent' ? '<div class="callout info small">Waiting for the vendor to reply through the processor portal.</div>' : ''}` }); });
+on('notice-dec', async el => { if (!can('approve_notice')) await becomePersona('u_dpo'); await api('/notices-issued/' + el.dataset.id + '/decide', { body: { approve: true } }); toast('Approved by ' + ME.name + ' and sent to the vendor (recorded in the ledger)', 'ok'); refresh(); });
 on('v-cure', async el => { await api('/violations/' + el.dataset.id + '/cure', { method: 'POST', body: {} }); toast('Marked as cured', 'ok'); loadBadges(); refresh(); });
 
 /* ---------------------------------------------------------------- Processor portal */
@@ -70,6 +75,11 @@ route('portal', 'Processor portal', async el => {
   }
   const d = await api('/portal/tasks');
   el.innerHTML = pageHead('Processor portal — ' + d.entity.name, `Registered office contact ${esc(d.entity.contact)} &middot; DPO ${esc(d.entity.dpo || '-')} &middot; ${esc(d.entity.services)}`) + `
+   ${(() => { const open = d.tasks.filter(k => k.status !== 'done').length, due = d.notices.filter(n => n.status === 'sent').length;
+      return `<div class="grid g4">${kpi(open, 'Instructions to complete', { cls: open ? 'warn' : 'ok' })}${kpi(due, 'Notices awaiting your reply', { cls: due ? 'bad' : 'ok' })}${kpi(d.findings.filter(f => f.status !== 'cured').length, 'Open findings against you', { cls: 'warn' })}${kpi(esc(d.contract ? d.contract.contract_ref : '-'), 'Your contract')}</div>`; })()}
+   <div class="card" style="margin-top:14px"><h2>Notices from the Department</h2>${d.notices.length ? table([{ h: 'Notice' }, { h: 'Finding' }, { h: 'Received' }, { h: 'Status' }, { h: '' }], d.notices.map(n => `<tr><td><b>${esc(n.kind_label)}</b><div class="small muted">${esc(n.contract_ref)}</div></td><td class="small">${sevBadge(n.severity)} ${esc(n.rule)}</td>
+       <td class="nowrap">${dt(n.decided_at)}<div class="small muted">reply due ${dd(n.due_at)}</div></td><td>${n.status === 'responded' ? badge('replied ' + dd(n.responded_at), 'ok') : badge('awaiting your reply', new Date(n.due_at) < new Date() ? 'bad' : 'warn')}</td>
+       <td><button class="sm ${n.status === 'sent' ? 'pri' : ''}" data-act="pn-open" data-id="${n.id}">${n.status === 'sent' ? 'Read &amp; reply' : 'Read'}</button></td></tr>`)) : '<div class="empty">No notices.</div>'}</div>
    <div class="grid g21"><div class="card"><h2>Instructions from the data fiduciary</h2>${d.tasks.length ? table([{ h: 'Request' }, { h: 'Instruction' }, { h: 'Due' }, { h: 'Status' }, { h: '' }], d.tasks.map(k => `<tr><td>${esc(k.ref)}<div class="small muted">${typeLabel(k.rtype)}</div></td><td>${esc(k.title)}<div class="small muted">${k.pointers.length} location(s) &middot; ${k.pointers.slice(0, 2).map(esc).join(', ')}</div></td>
        <td class="nowrap">${dd(k.due_at)}${new Date(k.due_at) < new Date() && k.status !== 'done' ? ' ' + badge('overdue', 'bad') : ''}</td><td>${badge(k.status, k.status === 'done' ? 'ok' : 'warn')}${k.evidence ? '<div class="small muted">' + esc(k.evidence) + '</div>' : ''}</td>
        <td>${k.status !== 'done' ? `<button class="sm pri" data-act="portal-done" data-id="${k.id}" data-title="${esc(k.title)}">Confirm completion</button>` : ''}</td></tr>`)) : '<div class="empty">No instructions outstanding.</div>'}</div>
@@ -77,6 +87,13 @@ route('portal', 'Processor portal', async el => {
      <div class="small" style="margin-top:6px"><b>Countries:</b> ${d.contract.allowed_countries.join(', ')}</div><div class="small callout" style="margin-top:8px">${esc(d.contract.exclusions || '')}</div></div></div>`;
 });
 on('persona-portal', el => { setPersona(el.dataset.id); });
+on('pn-open', async el => {
+  const d = await api('/portal/tasks'), n = d.notices.find(x => x.id === +el.dataset.id);
+  modal({ title: n.kind_label + ' - ' + n.contract_ref, wide: true, html: `<pre>${esc(n.body)}</pre>` + (n.status === 'sent'
+      ? `<label>Your reply: cause, data affected, corrective action (sent to the Department and recorded in its ledger)</label><textarea name="response" rows="4" placeholder="e.g. Operator ID GJENR117 was shared between two kiosks; it has been disabled, named IDs issued, and the 9,600 records were viewed only for card printing."></textarea>`
+      : `<h3>Your reply (${dt(n.responded_at)})</h3><div class="callout ok">${esc(n.response)}</div>`),
+    actions: n.status === 'sent' ? [{ label: 'Cancel' }, { label: 'Send reply', cls: 'pri', fn: async () => { await api('/portal/notices/' + n.id + '/respond', { body: vals($('#modalbody')) }); toast('Reply sent to the Department', 'ok'); refresh(); } }] : [{ label: 'Close' }] });
+});
 on('portal-done', el => modal({
   title: 'Confirm completion', html: `<p>${esc(el.dataset.title)}</p><p class="small muted">On confirmation the platform erases the listed records in your repository, re-scans them to verify, and notifies the fiduciary. Your evidence reference is stored with the task.</p><label>Evidence reference (job ID, ticket, log extract)</label><input name="evidence" style="width:100%" placeholder="e.g. Deletion job DEL-88412 executed 11 Oct">`,
   actions: [{ label: 'Cancel' }, { label: 'Confirm and delete', cls: 'pri', fn: async () => { const r = await api('/portal/tasks/' + el.dataset.id + '/complete', { body: vals($('#modalbody')) }); toast('Completed. ' + ((r.erased || []).length) + ' record(s) erased; verification ' + (r.verification && r.verification.verified ? 'passed' : 'flagged'), 'ok'); refresh(); } }]

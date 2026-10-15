@@ -120,6 +120,13 @@ CREATE TABLE IF NOT EXISTS ops.contract_notices(
 CREATE TABLE IF NOT EXISTS ops.evidence_sources(
   id serial PRIMARY KEY, entity_id int, source text, connected boolean);
 
+ALTER TABLE ops.contract_notices ADD COLUMN IF NOT EXISTS response text;
+ALTER TABLE ops.contract_notices ADD COLUMN IF NOT EXISTS responded_by text;
+ALTER TABLE ops.contract_notices ADD COLUMN IF NOT EXISTS responded_at timestamptz;
+ALTER TABLE ops.notices ADD COLUMN IF NOT EXISTS channel text DEFAULT 'portal';
+ALTER TABLE ops.notices ADD COLUMN IF NOT EXISTS sha256 text;
+ALTER TABLE ops.notices ADD COLUMN IF NOT EXISTS meta jsonb DEFAULT '{}'::jsonb;
+
 -- ---------------------------------------------------------------- breach
 CREATE TABLE IF NOT EXISTS ops.breaches(
   id serial PRIMARY KEY, ref text UNIQUE, title text, source text, status text DEFAULT 'open', nature text, datastore_id int,

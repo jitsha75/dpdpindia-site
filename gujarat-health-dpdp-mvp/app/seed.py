@@ -334,7 +334,9 @@ def _files(t: Tx, r, people, today):
     # --- TeCHO+ field exports (processor-held): ANC register and immunisation due list
     anc = [["mother_name", "mobile", "dob", "abha", "village", "lmp", "risk_finding"]]
     women = [p for p in people[4:] if p["full_name"].split()[0] in FIRST_F and 19 <= (today - p["dob"]).days // 365 <= 40]
-    for p in r.sample(women, min(len(women), 700)):
+    anc_people = r.sample(women, min(len(women), 700))
+    STORY["anc"] = anc_people
+    for p in anc_people:
         anc.append([p["full_name"], p["mobile"], p["dob"].isoformat(), p["abha"] or "", p["district"], (today - timedelta(days=r.randint(30, 250))).isoformat(),
                     r.choice(["Normal", "Normal", "Severe anaemia (Hb 6.8)", "High-risk pregnancy - hypertension", "Sickle cell trait"])])
     _write("techo/anc_register_export_oct2026.csv", _csv(anc))
@@ -359,7 +361,9 @@ def _files(t: Tx, r, people, today):
 
     # --- 108 emergency call records (PPP-operated)
     cl = [["call_time", "caller_mobile", "patient_name", "pickup_location", "complaint", "handed_over_to"]]
-    for p in r.sample(people[4:], 500):
+    ems_people = r.sample(people[4:], 500)
+    STORY["ems"] = ems_people
+    for p in ems_people:
         cl.append([(today - timedelta(days=r.randint(0, 30), minutes=r.randint(0, 1440))).isoformat(), p["mobile"], p["full_name"], p["address"],
                    r.choice(["Chest pain", "Labour pain - pregnancy", "Road traffic accident", "Snake bite", "Breathlessness - asthma", "Fever with convulsions"]),
                    f"District Hospital, {p['district']}"])
@@ -378,6 +382,7 @@ def _files(t: Tx, r, people, today):
     # --- PPP lab report outbox (processor-held) incl. ICTC results that must not be here
     lab = [["msisdn", "patient_name", "dob", "test", "result"]]
     lp = [ram, irf] + r.sample(people[4:], 600)
+    STORY["lab"] = lp[2:]
     for p in lp:
         test, res = r.choice([("HbA1c", "8.4% - diabetic range"), ("Haemoglobin", "6.9 g/dL - severe anaemia"), ("Serum creatinine", "4.1 mg/dL - CKD"),
                               ("Sickle cell solubility", "Positive - sickle cell"), ("Sputum CBNAAT", "MTB detected - tuberculosis"), ("Lipid profile", "Within normal limits")])
@@ -563,9 +568,46 @@ def _history(t: Tx, r, people, real_now, today):
             dsr.run_task(t, k["id"], t.one("select * from ops.users where role='agent' and id=(select assigned_to from ops.dsr_requests where id=%s)", (c["id"],)))
     events.append((real_now - timedelta(days=12), story_access))
 
+    # pending instructions for every processor that holds patient data (vendor portal)
+    def processor_requests(t):
+        used = {p["id"] for p in people[:5]}
+        for key, rtype, lang, note in [("ems", "erasure", "gu", "૧૦૮ કૉલ રેકોર્ડમાંથી મારી વિગતો કાઢી નાખો (please delete my details from the 108 call records)"),
+                                       ("anc", "erasure", "gu", "મારી ગર્ભાવસ્થા પૂર્ણ થઈ છે; ANC યાદીમાંથી મારી વિગતો દૂર કરો (pregnancy over; remove me from the ANC list)"),
+                                       ("lab", "erasure", "en", "Please delete my lab reports from the SMS outbox - I have collected them.")]:
+            p = next(x for x in STORY[key] if x["id"] not in used and x["id"] not in STORY["sms"] and x["id"] not in STORY["enrol_ids"])
+            used.add(p["id"])
+            c = dsr.create_request(t, rtype, lang, "portal", "mobile", p["mobile"], p["full_name"], note, ("user", "portal"))
+            dsr.verify(t, c["id"], dsr.OTP, ("user", "portal"))
+            dsr.triage(t, c["id"], ("system", "dsr-engine"))
+            dsr.locate(t, c["id"], ("system", "dsr-engine"))
+            dsr.assign(t, c["id"], ("system", "dsr-engine"))
+    events.append((real_now - timedelta(days=3, hours=4), processor_requests))
+
     def access_events_and_violations(t):
         _access_events(t, r, real_now)
         processors.evaluate_all(t)
+        # contract notices at different stages: sent and awaiting the vendor, answered by the vendor, awaiting DPO approval
+        proc_user = t.one("select * from ops.users where id='u_proc'")
+        dpo = t.one("select * from ops.users where id='u_dpo'")
+        vio = {(v["entity_id"], v["rule"]): v["id"] for v in t.all("select id, entity_id, rule from ops.violations")}
+        plan = [((4, "Excessive volume against baseline"), "cure_notice", True, None),
+                ((9, "Undeclared sub-processor"), "information_request", True,
+                 "The relay was a P2P cloud-viewing feature enabled by default on six DVRs at district hospitals. It has been disabled on all units, "
+                 "remote access now runs only through our NOC VPN in Ahmedabad, and no footage was exported. Firmware logs attached; we request a joint audit."),
+                ((9, "Access from a non-permitted country"), "suspension_request", True, None),
+                ((8, "Access outside contract scope (data element)"), "information_request", False, None)]
+        for key, kind, approve, response in plan:
+            vid = vio.get(key)
+            if not vid:
+                continue
+            ledger.set_clock(ledger.now() + timedelta(minutes=20))
+            nid = processors.draft_notice(t, vid, kind, proc_user)
+            if approve:
+                ledger.set_clock(ledger.now() + timedelta(minutes=35))
+                processors.decide_notice(t, nid, True, dpo)
+            if response:
+                ledger.set_clock(ledger.now() + timedelta(hours=3))
+                processors.respond_notice(t, nid, t.one("select * from ops.users where id='u_p_cctv'"), response)
     events.append((real_now - timedelta(days=1, hours=2), access_events_and_violations))
 
     events.append((real_now - timedelta(days=1), lambda t: [lake.scan_datastore(t, d["id"], "system", "scheduled re-scan") for d in t.all("select id from lake.datastores order by id")]))
