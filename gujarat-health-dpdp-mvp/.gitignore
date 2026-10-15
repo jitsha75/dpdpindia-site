@@ -1,0 +1,6 @@
+.env
+.env.tmp
+.runtime_started_by_start_sh
+images/
+__pycache__/
+*.pyc

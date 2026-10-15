@@ -1,0 +1,66 @@
+# DPDP Privacy Platform - Gujarat Health & Family Welfare edition (2 containers). Start with ./start.sh, stop with ./stop.sh
+name: gj-health-dpdp
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: gjh-dpdp-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: dpdp            # superuser: the ledger tamper demo needs to bypass triggers, like a rogue DBA would
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD is not set - run ./start.sh, which creates .env}
+      POSTGRES_DB: dpdp
+    command:
+      - postgres
+      - -c
+      - shared_buffers=128MB
+      - -c
+      - effective_cache_size=384MB
+      - -c
+      - work_mem=16MB
+      - -c
+      - maintenance_work_mem=64MB
+      - -c
+      - max_connections=30
+      - -c
+      - synchronous_commit=off        # demo data only; faster seeding
+      - -c
+      - max_wal_size=1GB
+      - -c
+      - timezone=UTC
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    shm_size: 128m
+    mem_limit: 640m
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dpdp -d dpdp"]
+      interval: 5s
+      timeout: 4s
+      retries: 20
+
+  app:
+    build:
+      context: .
+      dockerfile: app/Dockerfile
+    image: gj-health-dpdp-app:1.0
+    container_name: gjh-dpdp-app
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://dpdp:${DB_PASSWORD:?}@db:5432/dpdp
+      DATA_DIR: /data
+      TENANT_KEY: ${TENANT_KEY:?TENANT_KEY is not set - run ./start.sh, which creates .env}
+      LEDGER_KEY: ${LEDGER_KEY:?LEDGER_KEY is not set - run ./start.sh, which creates .env}
+      SEED_CUSTOMERS: ${SEED_CUSTOMERS:-10000}
+      AUTO_SEED: "true"
+    ports:
+      - "127.0.0.1:${PORT:-8090}:8000"   # reachable from this Mac only
+    volumes:
+      - appdata:/data
+    mem_limit: 512m
+
+volumes:
+  pgdata:
+  appdata:
