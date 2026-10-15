@@ -174,6 +174,8 @@ def _org(t: Tx, today):
              ("u_p_cctv", "WardWatch admin", "processor", "Processor portal - CCTV vendor", [], [], "WardWatch", 0, 9)]
     for u in users:
         t.run("insert into ops.users(id,name,role,title,languages,skills,team,capacity,entity_id) values(%s,%s,%s,%s,%s,%s,%s,%s,%s)", u)
+    import pii
+    pii.seed_passwords(t)
     for ty, d, hard, note in [("access", 15, False, "internal target"), ("correction", 15, False, "internal target"), ("completion", 15, False, "internal target"),
                               ("update", 15, False, "internal target"), ("erasure", 15, False, "internal target"), ("consent_withdrawal", 3, False, "internal target"),
                               ("grievance", 90, True, "outer limit for responding to grievances (Rule 14(3)) - legal to confirm"), ("nomination", 30, False, "internal target")]:

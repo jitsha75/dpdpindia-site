@@ -136,6 +136,35 @@ with TestClient(main.app) as c:
     sc = call("post", "/api/datastores/1/scan", "u_analyst"); check("re-scan HMIS", sc.status_code == 200, sc.text[:100] + " ms=" + str(sc.json().get("ms")))
     check("HMIS patients page", call("get", "/api/hmis/patients?q=savitaben").json()["total"] >= 1)
 
+    # ---- masking and step-up authentication
+    pg = call("get", "/api/hmis/patients?q=savitaben").json()["rows"][0]
+    check("patient list is masked by default", pg["mobile"].startswith("XXXXXX") and "***@" in (pg["email"] or "***@") and pg["dob"].startswith("XX-XX-"), (pg["mobile"], pg["email"], pg["dob"]))
+    check("reveal without step-up refused", call("get", f"/api/hmis/patients/{pg['id']}/reveal", "u_agent_gu").status_code == 401)
+    check("analyst role cannot step up", call("post", "/api/auth/step-up", "u_analyst", json={"password": "Gujarat@2026", "purpose": "treatment", "reason": "checking a record"}).status_code == 403)
+    check("wrong password rejected", call("post", "/api/auth/step-up", "u_agent_gu", json={"password": "nope", "purpose": "rights_request", "reason": "verify caller identity"}).status_code == 401)
+    check("reason is mandatory", call("post", "/api/auth/step-up", "u_agent_gu", json={"password": "Gujarat@2026", "purpose": "rights_request", "reason": ""}).status_code == 400)
+    g = call("post", "/api/auth/step-up", "u_agent_gu", json={"password": "Gujarat@2026", "purpose": "rights_request", "reason": "Patient called 104 to update her mobile"})
+    check("step-up grants a short window", g.status_code == 200 and g.json()["minutes"] == 5, g.text[:120])
+    gr = g.json()["grant"]
+    rv = c.get(f"/api/hmis/patients/{pg['id']}/reveal", headers={"X-User": "u_agent_gu", "X-Reveal": gr})
+    check("reveal shows the full mobile", rv.status_code == 200 and rv.json()["mobile"] == "9898123456", rv.text[:120])
+    check("Aadhaar stays masked even after reveal", rv.json()["aadhaar"].startswith("XXXX XXXX"), rv.json()["aadhaar"])
+    check("grant is bound to the officer", c.get(f"/api/hmis/patients/{pg['id']}/reveal", headers={"X-User": "u_agent_en", "X-Reveal": gr}).status_code == 401)
+    lk3 = call("get", "/api/lake/principal?type=patient_id&value=" + str(pg["id"])).json()
+    check("reveal appears in the patient's access log", any(a["actor_id"] == "u_agent_gu" for a in lk3["access_log"]), len(lk3["access_log"]))
+    check("ending the session revokes the grant", c.post("/api/auth/step-up/end", headers={"X-User": "u_agent_gu", "X-Reveal": gr}).json()["ended"] and
+          c.get(f"/api/hmis/patients/{pg['id']}/reveal", headers={"X-User": "u_agent_gu", "X-Reveal": gr}).status_code == 401)
+    ex = call("get", "/api/hmis/export.csv").text
+    check("CSV export is masked", "9898123456" not in ex and "XXXXXX3456" in ex)
+    for _ in range(3):
+        call("post", "/api/auth/step-up", "u_agent_en", json={"password": "bad", "purpose": "treatment", "reason": "lockout check run"})
+    check("three failures lock step-up", call("post", "/api/auth/step-up", "u_agent_en", json={"password": "Gujarat@2026", "purpose": "treatment", "reason": "lockout check run"}).status_code == 423)
+    reqs = call("get", "/api/dsr").json()["requests"]
+    acc = next(r for r in reqs if r["type"] == "access" and r["status"] == "open")
+    pk = call("get", f"/api/dsr/{acc['id']}/access-package").json()
+    check("access package masked on screen without step-up", pk["masked"] and "9824456780" not in str(pk), pk.get("masked"))
+    check("DSR detail does not leak compiled data", "9824456780" not in call("get", f"/api/dsr/{acc['id']}").text)
+
     # ---- Gujarat views
     fs = call("get", "/api/gujarat/facilities").json()
     check("34 districts in the field-unit view", len(fs["districts"]) == 34, len(fs["districts"]))

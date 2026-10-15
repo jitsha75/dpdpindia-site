@@ -8,7 +8,7 @@ import time
 from contextlib import asynccontextmanager
 from pathlib import Path
 
-from fastapi import Body, Depends, FastAPI, HTTPException, Query
+from fastapi import Body, Depends, FastAPI, Header, HTTPException, Query
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import HTMLResponse, JSONResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
@@ -20,6 +20,7 @@ import db
 import dsr
 import lake
 import gujarat
+import pii
 import ledger
 import processors
 import seed as seedmod
@@ -243,8 +244,9 @@ def principal(type: str = "email", value: str = ""):
                         where c.token=%s order by c.id""", (canon,))
         reqs = t.all("select id,ref,type,status,stage,created_at from ops.dsr_requests where canonical_token=%s order by id desc", (canon,))
         n_ev = t.val("select count(*) from ledger.events where principal_token=%s", (canon,))
+        viewed = pii.access_log(t, canon)
         return {"found": bool(locs), "token": token, "canonical": canon, "label": lake.label(t, canon), "linked_identifiers": len(lake.tokens_of(t, canon)),
-                "systems": list(systems.values()), "locations": len(locs), "consents": cons, "requests": reqs, "ledger_events": n_ev}
+                "systems": list(systems.values()), "locations": len(locs), "consents": cons, "requests": reqs, "ledger_events": n_ev, "access_log": viewed}
 
 
 @app.post("/api/detect")
@@ -288,12 +290,38 @@ def hmis_patients(q: str = "", offset: int = 0, limit: int = 25):
             pr = [f"%{q}%"] * 5
         total = t.val(f"select count(*) from hmis_src.patients {where}", pr)
         rows = t.all(f"select * from hmis_src.patients {where} order by id offset %s limit %s", pr + [max(0, offset), min(limit, 100)])
+        out = []
         for r in rows:
-            r["abha_masked"] = mask("abha", r["abha"]) if r["abha"] else None
-            r["aadhaar_masked"] = mask("aadhaar", r["aadhaar"]) if r["aadhaar"] else None
             r["admissions"] = t.val("select count(*) from hmis_src.admissions where patient_id=%s", (r["id"],))
-            r.pop("abha"); r.pop("aadhaar")
-        return {"total": total, "rows": rows}
+            out.append(pii.mask_row(r))          # masked by default (Rule 6(1)(a)); unmask per record after step-up
+        return {"total": total, "rows": out, "masked": True}
+
+
+@app.get("/api/hmis/patients/{pid}/reveal")
+def hmis_reveal(pid: int, user=Depends(current_user), x_reveal: str | None = Header(default=None)):
+    with tx() as t:
+        return pii.reveal_patient(t, user, x_reveal, pid)
+
+
+@app.get("/api/auth/step-up")
+def step_up_info(user=Depends(current_user), x_reveal: str | None = Header(default=None)):
+    with tx() as t:
+        g = pii.active_grant(t, user, x_reveal)
+    return {"purposes": pii.PURPOSES, "allowed": user["role"] in pii.REVEAL_ROLES, "minutes": pii.GRANT_MINUTES,
+            "active": {"expires_at": g["expires_at"].isoformat(), "purpose": pii.PURPOSES.get(g["purpose"]), "reveals": g["reveals"]} if g else None,
+            "demo_hint": "Demo password for every officer persona: " + pii.DEMO_PASSWORD}
+
+
+@app.post("/api/auth/step-up")
+def step_up(body: dict = Body(...), user=Depends(current_user)):
+    with tx() as t:
+        return pii.step_up(t, user, body.get("password"), body.get("purpose"), body.get("reason"))
+
+
+@app.post("/api/auth/step-up/end")
+def step_up_end(user=Depends(current_user), x_reveal: str | None = Header(default=None)):
+    with tx() as t:
+        return pii.revoke(t, user, x_reveal)
 
 
 @app.get("/api/hmis/stats")
@@ -307,7 +335,7 @@ def hmis_stats():
 
 @app.get("/api/hmis/export.csv")
 def hmis_export():
-    """The full synthetic patient dataset (all values are generated) - handy for 'bring your own sample' trials."""
+    """The synthetic patient dataset, masked. Bulk unmasked export is deliberately not offered."""
     def gen():
         with tx() as t:
             rows = t.all("select id,uhid,full_name,email,mobile,dob,abha,aadhaar,address,district,preferred_language,scheme from hmis_src.patients order by id")
@@ -316,9 +344,9 @@ def hmis_export():
         w.writerow(["id", "uhid", "full_name", "email", "mobile", "dob", "abha", "aadhaar", "address", "district", "language", "scheme"])
         yield b.getvalue(); b.seek(0); b.truncate()
         for r in rows:
-            w.writerow(list(r.values()))
+            w.writerow(list(pii.mask_row(r).values()))
             yield b.getvalue(); b.seek(0); b.truncate()
-    return StreamingResponse(gen(), media_type="text/csv", headers={"Content-Disposition": "attachment; filename=synthetic_patients.csv"})
+    return StreamingResponse(gen(), media_type="text/csv", headers={"Content-Disposition": "attachment; filename=synthetic_patients_masked.csv"})
 
 
 # ---------------------------------------------------------------- Gujarat: field units, data flows, obligations, research brief
@@ -419,7 +447,7 @@ def dsr_create(body: dict = Body(...), user=Depends(current_user)):
 @app.get("/api/dsr/{rid}")
 def dsr_detail(rid: int):
     with tx() as t:
-        return dsr.detail(t, rid)
+        return pii.mask_detail(dsr.detail(t, rid))
 
 
 @app.post("/api/dsr/{rid}/advance")
@@ -448,7 +476,7 @@ def dsr_advance(rid: int, body: dict = Body(default={}), user=Depends(current_us
             dsr.respond_and_close(t, rid, user)
         else:
             raise ValueError("request is closed")
-        return dsr.detail(t, rid)
+        return pii.mask_detail(dsr.detail(t, rid))
 
 
 @app.post("/api/dsr/{rid}/pause")
@@ -471,7 +499,7 @@ def dsr_resume(rid: int, user=Depends(current_user)):
 def task_run(tid: int, body: dict = Body(default={}), user=Depends(current_user)):
     require(user, "work_dsr")
     with tx() as t:
-        return dsr.run_task(t, tid, user, body)
+        return pii.mask_detail(dsr.run_task(t, tid, user, body))
 
 
 @app.post("/api/dsr/tasks/{tid}/request-approval")
@@ -496,10 +524,20 @@ def approvals():
 
 
 @app.get("/api/dsr/{rid}/access-package")
-def access_pkg(rid: int, user=Depends(current_user)):
+def access_pkg(rid: int, user=Depends(current_user), x_reveal: str | None = Header(default=None)):
+    """Masked on screen by default. With an active step-up grant the officer sees what will be sent to the patient (Aadhaar stays masked)."""
     require(user, "work_dsr")
     with tx() as t:
-        return dsr.access_package(t, rid, user)
+        pkg = dsr.access_package(t, rid, user)
+        g = pii.active_grant(t, user, x_reveal)
+        pkg["systems"] = [pii.mask_section(s, reveal=bool(g)) for s in pkg["systems"]]
+        pkg["masked"] = not g
+        if g:
+            r = dsr._get(t, rid)
+            t.run("update ops.reveal_grants set reveals=reveals+1 where id=%s", (g["id"],))
+            ledger.append(t, "pii.revealed", "access", ("user", user["id"]), object_ref=r["ref"], principal=r["canonical_token"],
+                          details={"fields": ["access package"], "purpose": g["purpose"], "grant": g["id"], "what": "access package"}, reason=g["reason"])
+        return pkg
 
 
 @app.get("/api/dsr/{rid}/certificate", response_class=HTMLResponse)

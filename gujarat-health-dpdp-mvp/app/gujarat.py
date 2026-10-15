@@ -263,6 +263,8 @@ def obligations(t: Tx):
                    sum(case when (readiness->>'shared_login')::boolean then 1 else 0 end) shared, sum(case when readiness->>'cctv'='default password' then 1 else 0 end) cctv
                    from ops.facilities where level not in ('HQ','DIR','DIST','MC')""")
     lv = t.one("select ok from ledger.verifications order by id desc limit 1")
+    rev = t.one("""select count(*) filter (where action='pii.revealed') reveals, count(*) filter (where action='auth.step_up_failed') failed,
+                   count(*) filter (where action='auth.step_up_refused') refused from ledger.events where grp='access'""")
 
     def item(code, ref, title, owner, status, evidence, route):
         return {"code": code, "ref": ref, "title": title, "owner": owner, "status": status, "evidence": evidence, "route": route}
@@ -295,6 +297,9 @@ def obligations(t: Tx):
              "partial" if fac and fac["notice"] < fac["n"] else "met", f"Displayed at {fac['notice'] if fac else 0} of {fac['n'] if fac else 0} facilities, sub-centres included (synthetic readiness data).", "fieldunits"),
         item("OB-13", "s.10; Rule 13", "If notified as a Significant Data Fiduciary: annual DPIA and audit, India-resident DPO", "ACS (Health)",
              "watch", "Not notified yet. Volume and sensitivity (1.2 crore PMJAY-MA families, 4.77 crore ABHA) make notification plausible - plan the DPIA now.", "governance"),
+        item("OB-15", "s.8(5); Rule 6(1)(a)-(c)", "Identifiers masked by default; unmasking only by role, after step-up, with purpose, and logged", "State DPO + HMIS cell",
+             "met", f"Mobile, email, address, DOB and ABHA are masked in every screen and export; Aadhaar is never shown in full. {rev['reveals']} unmasked view(s) logged; "
+                    f"{rev['failed']} failed and {rev['refused']} refused step-up attempt(s) on record.", "crm"),
         item("OB-14", "Accountability (s.8(1)); BSA 2023 s.63", "Tamper-evident record of every decision for the Board, CAG and courts", "DPO, internal audit",
              "met" if lv and lv["ok"] else "gap", "Ledger verified." if lv and lv["ok"] else "Ledger not verified or verification failed.", "ledger"),
     ]

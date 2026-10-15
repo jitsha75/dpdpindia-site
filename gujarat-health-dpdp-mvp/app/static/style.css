@@ -103,4 +103,6 @@ mark.hit{background:#fcd9d6}
 #modal .foot{display:flex;gap:8px;justify-content:flex-end;margin-top:14px}
 #busy{position:fixed;left:0;top:54px;height:3px;background:var(--gold);width:0;z-index:30;transition:width .25s}
 svg text{font-family:Calibri,Arial,sans-serif}
+#reveal-pill .on{display:flex;align-items:center;gap:8px;background:var(--gold-bg);border:1px solid var(--gold);color:#7a5c00;border-radius:14px;padding:3px 6px 3px 12px;font-size:12px;font-weight:600}
+mark.rev{background:#fff1c2;padding:0 3px;border-radius:3px}
 @media print{#top,#side,#toasts{display:none}#main{margin:0}}

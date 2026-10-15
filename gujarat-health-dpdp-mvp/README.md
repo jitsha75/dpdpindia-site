@@ -41,6 +41,17 @@ It uses port 8090 and its own container, image and volume names (`gj-health-dpdp
 | **Processors** | 108 PPP operator, TeCHO+ IT partner, PMJAY-MA card agency, PPP lab, CCTV AMC and the State Data Centre. NHA is shown as a separate fiduciary. The live violations are: an enrolment operator reading 9,600 Aadhaar records against an 800/day baseline, the lab touching HIV results, the CCTV stream going to an overseas relay, and the 108 agreement lapsed. |
 | **Breach** | A camp screening list forwarded to a WhatsApp group, reported by CDHO Mehsana. It runs on a 72-hour Board clock (Rule 7) with a CERT-In 6-hour reminder, and the patient notice goes out via the ASHA/ANM network in Gujarati. |
 
+## Masking and step-up authentication
+
+* **Masked by default, on the server.** Mobile, email, address, date of birth and ABHA leave the API already masked (e.g. `XXXXXX3456`, `sa***@mail.example.com`, `XX-XX-1985`, `[masked], Anand 388001`), in every screen, the access-package preview, DSR task results and the CSV export. Hiding values with CSS would not be enough: the browser would still receive them.
+* **Unmask one record at a time** (Source HMIS → *Unmask*, or *Unmask* in an access package). The officer re-enters their password and records a purpose and a reason. Access then lasts **5 minutes**, is bound to that officer, and a timer in the header lets them end it early. Switching persona ends it.
+* **Only roles with a need can unmask:** DPO, rights cell, rights officers, HMIS owner and district nodal officer. The analyst, contracts, audit and vendor personas are refused, and the refusal is logged.
+* **Everything is evidenced.** Each unmasked record, grant, failed attempt and refusal is written to the immutable ledger against the patient's token. *Patient 360* shows "who has seen this patient's unmasked data".
+* **Lockout:** step-up locks for 5 minutes after 3 wrong passwords.
+* **Aadhaar is never shown in full,** even after step-up; only the last 4 digits appear. Bulk unmasked export is not offered.
+* **Demo password** for every officer persona: **`Gujarat@2026`**. Change it with `DEMO_STEPUP_PASSWORD` in `.env`. Passwords are stored as salted PBKDF2 hashes. In production this step becomes SSO with MFA (e.g. an OTP to the officer's registered mobile).
+* Maps to DPDP Rules 2025, Rule 6(1)(a)-(c) (masking, access control, access logs) and obligation OB-15 on the Governance page.
+
 ## Demo cast (switch with the "Acting as" menu, top right)
 
 | Persona | Used for |
@@ -83,7 +94,7 @@ App container ≈ 90 MB, database ≈ 170–290 MB; limits are 512 MB and 640 MB
 * *Containers are emulated / slow* — Docker Desktop → Settings → General → use the Apple-silicon engine, or use OrbStack.
 * *Started but page says "not ready"* — the first start is loading data; it refreshes itself. Logs: `docker compose logs -f app`.
 * *Lost `.env` but the database remains* — `./start.sh --reset`.
-* *Self-test* — `docker compose exec app python /srv/tests/smoke_test.py` runs 82 checks over every workflow, including the Gujarat views (it changes demo data; use *Reset demo data* afterwards).
+* *Self-test* — `docker compose exec app python /srv/tests/smoke_test.py` runs 97 checks over every workflow, including the Gujarat views and masking / step-up (it changes demo data; use *Reset demo data* afterwards).
 
 ## Architecture
 

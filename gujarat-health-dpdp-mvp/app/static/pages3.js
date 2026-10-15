@@ -69,7 +69,7 @@ route('portal', 'Processor portal', async el => {
      <div class="row">${USERS.filter(u => u.role === 'processor').map(u => `<button class="pri" data-act="persona-portal" data-id="${u.id}">${esc(u.name)}</button>`).join('')}</div>`; return;
   }
   const d = await api('/portal/tasks');
-  el.innerHTML = pageHead('Processor portal &mdash; ' + d.entity.name, `Registered office contact ${esc(d.entity.contact)} &middot; DPO ${esc(d.entity.dpo || '-')} &middot; ${esc(d.entity.services)}`) + `
+  el.innerHTML = pageHead('Processor portal — ' + d.entity.name, `Registered office contact ${esc(d.entity.contact)} &middot; DPO ${esc(d.entity.dpo || '-')} &middot; ${esc(d.entity.services)}`) + `
    <div class="grid g21"><div class="card"><h2>Instructions from the data fiduciary</h2>${d.tasks.length ? table([{ h: 'Request' }, { h: 'Instruction' }, { h: 'Due' }, { h: 'Status' }, { h: '' }], d.tasks.map(k => `<tr><td>${esc(k.ref)}<div class="small muted">${typeLabel(k.rtype)}</div></td><td>${esc(k.title)}<div class="small muted">${k.pointers.length} location(s) &middot; ${k.pointers.slice(0, 2).map(esc).join(', ')}</div></td>
        <td class="nowrap">${dd(k.due_at)}${new Date(k.due_at) < new Date() && k.status !== 'done' ? ' ' + badge('overdue', 'bad') : ''}</td><td>${badge(k.status, k.status === 'done' ? 'ok' : 'warn')}${k.evidence ? '<div class="small muted">' + esc(k.evidence) + '</div>' : ''}</td>
        <td>${k.status !== 'done' ? `<button class="sm pri" data-act="portal-done" data-id="${k.id}" data-title="${esc(k.title)}">Confirm completion</button>` : ''}</td></tr>`)) : '<div class="empty">No instructions outstanding.</div>'}</div>

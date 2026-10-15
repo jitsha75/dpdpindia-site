@@ -55,6 +55,7 @@ services:
       LEDGER_KEY: ${LEDGER_KEY:?LEDGER_KEY is not set - run ./start.sh, which creates .env}
       SEED_CUSTOMERS: ${SEED_CUSTOMERS:-10000}
       AUTO_SEED: "true"
+      DEMO_STEPUP_PASSWORD: ${DEMO_STEPUP_PASSWORD:-Gujarat@2026}
     ports:
       - "127.0.0.1:${PORT:-8090}:8000"   # reachable from this Mac only
     volumes:

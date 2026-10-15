@@ -11,6 +11,7 @@ const ago = ts => { if (!ts) return '-'; const s = (Date.now() - new Date(ts)) /
 const short = (h, n = 10) => h ? esc(String(h).slice(0, n)) + '&hellip;' : '-';
 
 let ME = null, USERS = [];
+let REVEAL = null;   // step-up grant: kept in memory only, never in browser storage
 const store = { get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch (e) { } } };
 
 /* ---------- API ---------- */
@@ -18,6 +19,7 @@ let inflight = 0;
 function busy(d) { inflight += d; const b = $('#busy'); if (b) b.style.width = inflight > 0 ? '70%' : '0'; }
 async function api(path, opt = {}) {
   const o = { method: opt.method || (opt.body !== undefined ? 'POST' : 'GET'), headers: { 'X-User': store.get('user') || 'u_dpo' } };
+  if (revealActive()) o.headers['X-Reveal'] = REVEAL.grant;
   if (opt.body !== undefined) { o.headers['Content-Type'] = 'application/json'; o.body = JSON.stringify(opt.body); }
   busy(1);
   try {
@@ -136,9 +138,38 @@ async function boot() {
     const roleName = { dpo: 'State Data Protection Officer', analyst: 'Privacy analyst', district_nodal: 'District nodal officer (CDHO)', dsr_manager: 'Rights cell manager', agent: 'Rights officers', app_owner: 'Application owner', procurement: 'Procurement / vendor management', auditor: 'Auditor (read-only)', processor: 'Processors (external portal)' };
     $('#persona').innerHTML = order.map(r => { const us = USERS.filter(u => u.role === r); return us.length ? `<optgroup label="${roleName[r]}">${us.map(u => `<option value="${u.id}" ${u.id === ME.id ? 'selected' : ''}>${esc(u.name)}</option>`).join('')}</optgroup>` : ''; }).join('');
     $('#actas-title').textContent = ME.title;
-    $('#persona').onchange = async e => { store.set('user', e.target.value); ME = await api('/me'); $('#actas-title').textContent = ME.title; toast('Now acting as ' + ME.name + ' - ' + ME.title); loadBadges(); renderRoute(); };
+    $('#persona').onchange = async e => { if (REVEAL) { try { await api('/auth/step-up/end', { method: 'POST', body: {} }); } catch (x) { } } REVEAL = null; drawReveal(); store.set('user', e.target.value); ME = await api('/me'); $('#actas-title').textContent = ME.title; toast('Now acting as ' + ME.name + ' - ' + ME.title); loadBadges(); renderRoute(); };
     $('#modal').addEventListener('mousedown', e => { if (e.target.id === 'modal') closeModal(); });
     loadBadges(); setInterval(loadBadges, 60000);
     if (!location.hash) location.hash = '#/home'; else renderRoute();
   } catch (e) { $('#main').innerHTML = `<div class="callout bad"><b>The platform is not ready yet.</b> ${esc(e.message)} &mdash; if you just started it, wait a few seconds (the first start loads 10,000 synthetic patients and ~8,500 facilities) and refresh.</div>`; setTimeout(boot, 4000); }
+}
+
+/* ---------- step-up authentication for unmasked access (Rule 6(1)(a)-(c)) ---------- */
+function revealActive() { return !!(REVEAL && new Date(REVEAL.exp) > Date.now()); }
+function drawReveal() {
+  const el = $('#reveal-pill'); if (!el) return;
+  if (!revealActive()) { const was = !!REVEAL; REVEAL = null; el.innerHTML = ''; if (was) { toast('Unmasked access ended - data is masked again'); if (location.hash.startsWith('#/crm')) refresh(); } return; }
+  const s = Math.max(0, Math.round((new Date(REVEAL.exp) - Date.now()) / 1000));
+  el.innerHTML = `<div class="on" title="${esc(REVEAL.purpose)}">Unmasked access &middot; ${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')} <button class="sm" data-act="reveal-end">End</button></div>`;
+}
+setInterval(drawReveal, 1000);
+on('reveal-end', async () => { await api('/auth/step-up/end', { method: 'POST', body: {} }); REVEAL = null; drawReveal(); toast('Unmasked access ended', 'ok'); refresh(); });
+async function ensureGrant() {
+  if (revealActive()) return true;
+  const info = await api('/auth/step-up');
+  if (!info.allowed) throw new Error(`${ME.title} has no need to see unmasked patient data. Unmasking is limited to the DPO, rights cell, rights officers, the HMIS owner and district nodal officers.`);
+  return new Promise(resolve => modal({
+    title: 'Step-up authentication to see unmasked data',
+    html: `<p class="small">Mobile, email, address and date of birth are masked by default. To unmask a record, confirm who you are and why. Access lasts <b>${info.minutes} minutes</b>, is bound to you, and <b>every record you open is written to the ledger</b> against the patient. Aadhaar is never shown in full.</p>
+      <label>Purpose</label><select name="purpose" style="width:100%">${Object.entries(info.purposes).map(([k, v]) => `<option value="${k}">${esc(v)}</option>`).join('')}</select>
+      <label>Reason (written to the ledger)</label><input name="reason" style="width:100%" placeholder="e.g. Patient called 104 to update mobile; verifying identity">
+      <label>Your password</label><input name="password" type="password" style="width:100%" autocomplete="current-password">
+      <div class="small muted" style="margin-top:6px">${esc(info.demo_hint)}. Three wrong attempts lock step-up for 5 minutes.</div>`,
+    actions: [{ label: 'Cancel', fn: () => resolve(false) }, { label: 'Authenticate', cls: 'pri', fn: async () => {
+      const v = vals($('#modalbody'));
+      try { const g = await api('/auth/step-up', { body: v }); REVEAL = { grant: g.grant, exp: g.expires_at, purpose: g.purpose }; drawReveal(); toast('Authenticated for ' + g.minutes + ' minutes - each record you unmask is logged', 'ok'); resolve(true); }
+      catch (e) { toast(e.message, 'err'); return false; }
+    } }]
+  }));
 }

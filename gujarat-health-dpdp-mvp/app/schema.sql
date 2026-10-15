@@ -39,6 +39,14 @@ CREATE TABLE IF NOT EXISTS ops.notices(
   id serial PRIMARY KEY, purpose_id int REFERENCES ops.purposes(id), version text, language text, title text, body text,
   published_at timestamptz DEFAULT now());
 
+-- step-up authentication for unmasked access (Rule 6(1)(a)-(c): masking, access control, access logs)
+ALTER TABLE ops.users ADD COLUMN IF NOT EXISTS pin_hash text;
+ALTER TABLE ops.users ADD COLUMN IF NOT EXISTS failed_auth int DEFAULT 0;
+ALTER TABLE ops.users ADD COLUMN IF NOT EXISTS locked_until timestamptz;
+CREATE TABLE IF NOT EXISTS ops.reveal_grants(
+  id serial PRIMARY KEY, token_hash text UNIQUE, user_id text, purpose text, reason text,
+  created_at timestamptz DEFAULT now(), expires_at timestamptz, revoked boolean DEFAULT false, reveals int DEFAULT 0);
+
 -- ---------------------------------------------------------------- PI data lake
 CREATE TABLE IF NOT EXISTS lake.datastores(
   id serial PRIMARY KEY, name text, kind text, uri text, owner text, entity_id int REFERENCES ops.entities(id),
