@@ -1,0 +1,986 @@
+[
+ {
+  "id": "DL-01",
+  "title": "Metadata-driven ingestion framework: adding a source is a configuration entry, not a new build. Every run is logged, timed and audited.",
+  "priority": "M",
+  "basis": "LP",
+  "module": "A"
+ },
+ {
+  "id": "DL-02",
+  "title": "Three ingestion modes on one framework: batch (full and watermark-based incremental), change data capture (database-to-database, near real time) and event streaming (Kafka, MQTT).",
+  "priority": "M",
+  "basis": "LP",
+  "module": "A"
+ },
+ {
+  "id": "DL-03",
+  "title": "Adapters for relational and NoSQL databases, files (CSV, Excel, PDF, Parquet, JSON, images, video, voice), REST / SDK feeds, SFTP shares and streams. Day-one Gujarat sources: hospital HMIS, TeCHO+ exports, PMJAY-MA enrolment files, 108 call logs, PPP lab outbox, drug logistics, HRMS / IFMS extracts, CCTV and IoT feeds.",
+  "priority": "M",
+  "basis": "LP",
+  "module": "A"
+ },
+ {
+  "id": "DL-04",
+  "title": "Source-side least privilege: connectors use read-only service accounts; write access is a separate profile, off by default and enabled per action by an administrator.",
+  "priority": "M",
+  "basis": "DM",
+  "module": "A"
+ },
+ {
+  "id": "DL-05",
+  "title": "Offline ingestion for air-gapped or restricted facilities: signed, encrypted transfer bundles with manifest, checksum verification and reconciliation of counts.",
+  "priority": "S",
+  "basis": "N",
+  "module": "A"
+ },
+ {
+  "id": "DL-06",
+  "title": "Medallion layers. Bronze: immutable raw copy of every source record. Silver: de-duplicated, standardised, entity-matched. Gold: agreed business definitions that every consumer reads. Promotion between layers is rule-driven with data-quality gates.",
+  "priority": "M",
+  "basis": "LP",
+  "module": "A"
+ },
+ {
+  "id": "DL-07",
+  "title": "Open table formats (Parquet with Delta Lake or Apache Iceberg) on an S3-compatible open-source object store; ACID transactions, schema evolution and time travel.",
+  "priority": "M",
+  "basis": "LP",
+  "module": "A"
+ },
+ {
+  "id": "DL-08",
+  "title": "Capacity up to 5 PB of structured and unstructured data with horizontal scale-out and no re-platforming. Phase 1 sizing to be fixed at design stage from source volumes.",
+  "priority": "M",
+  "basis": "LP",
+  "module": "A"
+ },
+ {
+  "id": "DL-09",
+  "title": "One engine for streaming and historical workloads; streaming-to-insight latency below 60 seconds for streaming sources.",
+  "priority": "M",
+  "basis": "LP",
+  "module": "A"
+ },
+ {
+  "id": "DL-10",
+  "title": "Data types supported: spatial and non-spatial, flat files, engineering data, images, video and voice.",
+  "priority": "M",
+  "basis": "LP",
+  "module": "A"
+ },
+ {
+  "id": "DL-11",
+  "title": "Data quality: rule library (completeness, validity, uniqueness, referential integrity), quarantine of failed records, scorecard per source and per facility.",
+  "priority": "M",
+  "basis": "LP",
+  "module": "A"
+ },
+ {
+  "id": "DL-12",
+  "title": "Master data management with golden records for Facility (mapped to the national facility registry), Beneficiary (token-based), Drug / Item, Vendor and Staff; match-and-merge with steward review.",
+  "priority": "M",
+  "basis": "LP",
+  "module": "A"
+ },
+ {
+  "id": "DL-13",
+  "title": "Data catalogue, business glossary and data dictionary with Gujarati and English labels; every dataset has a named owner and steward and carries DPDP classification tags.",
+  "priority": "M",
+  "basis": "LP",
+  "module": "A"
+ },
+ {
+  "id": "DL-14",
+  "title": "Column-level lineage from source to Gold to API or report, with impact analysis before any change.",
+  "priority": "M",
+  "basis": "LP",
+  "module": "A"
+ },
+ {
+  "id": "DL-15",
+  "title": "Knowledge graph and natural-language 'talk to your data', restricted to the user's role; every answer cites its tables and lineage.",
+  "priority": "S",
+  "basis": "LP",
+  "module": "A"
+ },
+ {
+  "id": "DL-16",
+  "title": "Intelligent APIs move and shape data between Bronze, Silver and Gold: parameterised, rule-driven, callable on schedule or event, each invocation logged with input and output counts.",
+  "priority": "M",
+  "basis": "LP",
+  "module": "A"
+ },
+ {
+  "id": "DL-17",
+  "title": "Transactional database layer (PostgreSQL-class, ACID) that holds master and workflow-owned data. The lake owns master data and pushes it to applications; applications transact against governed data. Per the platform roadmap this layer is designed in and is switched on in Phase 2.",
+  "priority": "M",
+  "basis": "LP",
+  "module": "A"
+ },
+ {
+  "id": "DL-18",
+  "title": "Write-back governance: only through approved, versioned mappings; four-eyes approval for each new target; rollback; reconciliation report after every push.",
+  "priority": "M",
+  "basis": "N",
+  "module": "A"
+ },
+ {
+  "id": "DL-19",
+  "title": "Publish any Gold table or view as an internal or external REST endpoint without code: filters, pagination, rate limits, versioning, OpenAPI documentation, sandbox.",
+  "priority": "M",
+  "basis": "LP",
+  "module": "A"
+ },
+ {
+  "id": "DL-20",
+  "title": "Tokenisation is integral: consumers receive scoped, expiring tokens (OAuth2 / JWT) bound to dataset, columns and purpose; personal identifiers leave the lake only as tokens or masked values; issue needs approval; revocation and rotation are immediate.",
+  "priority": "M",
+  "basis": "LP",
+  "module": "A"
+ },
+ {
+  "id": "DL-21",
+  "title": "Every API call is metered and logged (caller, dataset, rows, purpose, time). Volume is compared with a per-consumer baseline and anomalies raise an alert, for example a processor reading 9,600 records against an 800 per day baseline.",
+  "priority": "M",
+  "basis": "DM",
+  "module": "A"
+ },
+ {
+  "id": "DL-22",
+  "title": "100% auditability: create, read, update and delete on every managed table are captured at the database and lake layer, independent of application logging, in tamper-evident form.",
+  "priority": "M",
+  "basis": "LP",
+  "module": "A"
+ },
+ {
+  "id": "DL-23",
+  "title": "All usage tracked: user, role, query, API call, agent action, dataset, purpose, rows and duration; usage dashboard by office and system. Logs are kept for at least one year, configurable up to eight years for contract and finance records.",
+  "priority": "M",
+  "basis": "LP",
+  "module": "A"
+ },
+ {
+  "id": "DL-24",
+  "title": "Encryption at rest (AES-256) and in transit (TLS 1.2 or higher); per-domain keys in an HSM-backed key vault; field-level encryption for identifiers.",
+  "priority": "M",
+  "basis": "LP",
+  "module": "A"
+ },
+ {
+  "id": "DL-25",
+  "title": "Role- and attribute-based access with row and column security; SSO over OIDC / SAML with MFA; separation of duties enforced.",
+  "priority": "M",
+  "basis": "LP",
+  "module": "A"
+ },
+ {
+  "id": "DL-26",
+  "title": "Server-side masking by default and step-up unmasking as specified in DP-31.",
+  "priority": "M",
+  "basis": "DM",
+  "module": "A"
+ },
+ {
+  "id": "DL-27",
+  "title": "Real-time hardware tracking: collectors for servers, storage, network, State Data Centre nodes, DVR / NVR, cold-chain loggers and biomedical equipment (SNMP, MQTT, IoT gateway). Health, uptime, temperature and utilisation with thresholds and alerts; each asset linked to a facility and a contract.",
+  "priority": "S",
+  "basis": "LP",
+  "module": "A"
+ },
+ {
+  "id": "DL-28",
+  "title": "Telemetry is stored in the lake as a stream and exposed to the Contract module to compute uptime SLAs (CMC / AMC, CCTV AMC, data-centre services).",
+  "priority": "S",
+  "basis": "N",
+  "module": "A"
+ },
+ {
+  "id": "DL-29",
+  "title": "Native agent framework: an agent runs with the invoking user's permissions and only on governed Gold data. Every prompt, tool call and output is logged; any write action needs human approval.",
+  "priority": "M",
+  "basis": "LP",
+  "module": "A"
+ },
+ {
+  "id": "DL-30",
+  "title": "Self-hosted open-weight models only; no call to an external model API; runs air-gapped on GPU or CPU nodes. The licence of each model is verified for government use before adoption.",
+  "priority": "M",
+  "basis": "LP",
+  "module": "A"
+ },
+ {
+  "id": "DL-31",
+  "title": "Reference agents: reconciliation (match records across systems and flag exceptions), forecasting, reporting (plain-language question to executive-ready answer) and exception alerts for senior officers; optional WhatsApp channel.",
+  "priority": "S",
+  "basis": "LP",
+  "module": "A"
+ },
+ {
+  "id": "DL-32",
+  "title": "Fully air-gapped installation: no outbound internet at runtime; offline package registry, signed container images, offline updates, internal certificate authority and time source.",
+  "priority": "M",
+  "basis": "LP",
+  "module": "A"
+ },
+ {
+  "id": "DL-33",
+  "title": "Runs on-premises, in the State Data Centre or on a MeitY-empanelled cloud from the same Kubernetes artefacts; no hyperscaler-proprietary service dependency.",
+  "priority": "M",
+  "basis": "LP",
+  "module": "A"
+ },
+ {
+  "id": "DL-34",
+  "title": "India residency: data, backups, keys, logs and support access stay in India; vendor support only through a Department-controlled jump host with session recording.",
+  "priority": "M",
+  "basis": "LP",
+  "module": "A"
+ },
+ {
+  "id": "DL-35",
+  "title": "Open-source discipline: only OSI-approved licences; software bill of materials delivered at each release; platform-owned code available to the Department under escrow terms.",
+  "priority": "M",
+  "basis": "N",
+  "module": "A"
+ },
+ {
+  "id": "DP-01",
+  "title": "Role and entity model: Department as Data Fiduciary; NHA / ABDM as a separate fiduciary; empanelled private hospitals as independent fiduciaries; processors registered. Operating model: State DPO with a Data Governance Cell, CDHO as District Nodal Officer, a data steward at each facility level from State HQ to sub-centre.",
+  "priority": "M",
+  "basis": "DM",
+  "module": "B"
+ },
+ {
+  "id": "DP-02",
+  "title": "Obligations register of at least 14 items (OB-01 to OB-15 in the MVP), each with legal reference, owner, status, evidence and a link to the screen that fixes it. Status is computed from live platform data, so it moves as issues are closed.",
+  "priority": "M",
+  "basis": "DM",
+  "module": "B"
+ },
+ {
+  "id": "DP-03",
+  "title": "Data-flow register (13 flows in the MVP: household survey, OPD / IPD, ABHA linking, PMJAY-MA card and claims, 108, free diagnostics, surveillance, CCTV, health camps, research, awareness SMS, HR) with purpose, s.7 limb, recipient, data elements, highest sensitivity tier, live violations and lapsed agreements.",
+  "priority": "M",
+  "basis": "DM",
+  "module": "B"
+ },
+ {
+  "id": "DP-04",
+  "title": "Readiness by district and by unit: notice displayed, shared logins, CCTV on default passwords, staff trained; drill-down from State to individual facility.",
+  "priority": "M",
+  "basis": "DM",
+  "module": "B"
+ },
+ {
+  "id": "DP-05",
+  "title": "Executive dashboard for the Additional Chief Secretary and State DPO; exportable reports for the Board, CAG and internal audit.",
+  "priority": "M",
+  "basis": "DM",
+  "module": "B"
+ },
+ {
+  "id": "DP-06",
+  "title": "Incremental scanning of structured systems (HMIS, TeCHO+) and unstructured stores (file shares, camp sheets, SMS lists, research extracts, CCTV shares). The privacy inventory holds metadata only (location, field, element type, counts, confidence, hashes, masked samples); content stays at source.",
+  "priority": "M",
+  "basis": "DM",
+  "module": "B"
+ },
+ {
+  "id": "DP-07",
+  "title": "Indian identifier detectors with checksum validation: Aadhaar (Verhoeff), ABHA, UHID, PMJAY-MA card, PAN, UPI, IFSC, bank account, mobile, voter ID, passport, driving licence; Gujarati and Devanagari digits recognised.",
+  "priority": "M",
+  "basis": "DM",
+  "module": "B"
+ },
+ {
+  "id": "DP-08",
+  "title": "Health terms detected in English, Hindi and Gujarati. Specially protected data (HIV / ART-ICTC, mental illness, MTP and sex determination) forms its own category with stricter handling.",
+  "priority": "M",
+  "basis": "DM",
+  "module": "B"
+ },
+ {
+  "id": "DP-09",
+  "title": "Sensitivity tiers; children's-data flag; credential findings such as DVR default passwords and shared logins.",
+  "priority": "M",
+  "basis": "DM",
+  "module": "B"
+ },
+ {
+  "id": "DP-10",
+  "title": "Scanned and handwritten material read through OCR (AP-03) in Gujarati, Hindi and English.",
+  "priority": "S",
+  "basis": "N",
+  "module": "B"
+ },
+ {
+  "id": "DP-11",
+  "title": "Detector quality measured as precision and recall on a sample of the Department's own data before go-live; false-positive review and custom elements supported.",
+  "priority": "M",
+  "basis": "N",
+  "module": "B"
+ },
+ {
+  "id": "DP-12",
+  "title": "Data principal index built on per-tenant keyed hashes (HMAC) of identifiers, so 'everything about this person' can be found without storing identifiers in the clear; records are resolved at source.",
+  "priority": "M",
+  "basis": "DM",
+  "module": "B"
+ },
+ {
+  "id": "DP-13",
+  "title": "Patient 360: every system where a person appears, the purpose for each, consents held, open requests, and a list of who has viewed their unmasked data.",
+  "priority": "M",
+  "basis": "DM",
+  "module": "B"
+ },
+ {
+  "id": "DP-14",
+  "title": "Tokenisation is shared with the Data Lake (DL-20); erasure uses crypto-shredding of the identity key.",
+  "priority": "M",
+  "basis": "DM",
+  "module": "B"
+ },
+ {
+  "id": "DP-15",
+  "title": "Purpose registry: each purpose has a legal basis (consent, or s.7 legitimate use: (b) State benefit or service, (f) medical emergency, (g) epidemic or public-health threat, (i) employment), retention rule, systems and data elements.",
+  "priority": "M",
+  "basis": "DM",
+  "module": "B"
+ },
+ {
+  "id": "DP-16",
+  "title": "Consent notice engine in Gujarati, Hindi and English, with Rule 3 checks on every notice: standalone, itemised data, specific purpose, means to withdraw, rights, complaint to the Board, language under s.5(3), consent optional, guardian line for minors. Legitimate-use purposes generate an information notice, not a consent request.",
+  "priority": "M",
+  "basis": "DM",
+  "module": "B"
+ },
+ {
+  "id": "DP-17",
+  "title": "Channel packaging with limit checks. Portal / kiosk: unticked box, accept and decline of equal weight. WhatsApp: body up to 1,024 characters, quick replies up to 20. SMS: encoding and segment count (Gujarati and Hindi use 2 to 3 Unicode segments) and DLT template note. IVR (104): numbered script, DTMF 1 agree, 2 decline, 9 repeat, call-recording note.",
+  "priority": "M",
+  "basis": "DM",
+  "module": "B"
+ },
+ {
+  "id": "DP-18",
+  "title": "A legal notice is never machine-translated. Other Eighth Schedule languages are enabled only through a vetted-translation workflow with sign-off.",
+  "priority": "M",
+  "basis": "DM",
+  "module": "B"
+ },
+ {
+  "id": "DP-19",
+  "title": "Notices are published as hashed, versioned artefacts in the ledger. A reply (SMS YES, WhatsApp button, DTMF 1) becomes a consent artefact bound to that exact notice version.",
+  "priority": "M",
+  "basis": "DM",
+  "module": "B"
+ },
+ {
+  "id": "DP-20",
+  "title": "Withdrawal stops processing and opens a task in every system holding the data; consent-versus-data reconciliation shows data still held after withdrawal.",
+  "priority": "M",
+  "basis": "DM",
+  "module": "B"
+ },
+ {
+  "id": "DP-21",
+  "title": "Interface to ABDM and other consent managers (DPDP Rules, Rule 4) for consents held outside the Department.",
+  "priority": "S",
+  "basis": "N",
+  "module": "B"
+ },
+ {
+  "id": "DP-22",
+  "title": "Children: treatment exemption only (Rule 12, Fourth Schedule); verifiable parental consent for anything else, including awareness SMS lists.",
+  "priority": "M",
+  "basis": "DM",
+  "module": "B"
+ },
+ {
+  "id": "DP-23",
+  "title": "Request lifecycle: intake in Gujarati, Hindi or English, identity verification, triage, locate through the index, assign by rules engine, fulfil, four-eyes review, respond. SLA clocks and escalation. Production identity verification uses a real OTP gateway (the MVP uses a stand-in).",
+  "priority": "M",
+  "basis": "DM",
+  "module": "B"
+ },
+ {
+  "id": "DP-24",
+  "title": "Erasure needs DPO approval and the requester cannot approve. Retention holds block erasure: patient admitted, medico-legal case, PMJAY-MA claim under audit, indoor record within the retention period (periods set by counsel). Post-erasure re-scan; erasure certificate.",
+  "priority": "M",
+  "basis": "DM",
+  "module": "B"
+ },
+ {
+  "id": "DP-25",
+  "title": "Access package with third-party redaction; corrections raised as tasks for the source-system owner.",
+  "priority": "M",
+  "basis": "DM",
+  "module": "B"
+ },
+ {
+  "id": "DP-26",
+  "title": "DPO contact and grievance channel published on every portal and as a notice at every facility (s.8(9), (10); Rule 9), with escalation to the Board.",
+  "priority": "M",
+  "basis": "DM",
+  "module": "B"
+ },
+ {
+  "id": "DP-27",
+  "title": "Processor register and entity graph: 108 operator, TeCHO+ IT partner, card enrolment agency, PPP lab, CCTV AMC and State Data Centre, with contract scope (data elements, purposes, country, term, volume baseline, sub-processors). Contract data is read from Module C.",
+  "priority": "M",
+  "basis": "DM",
+  "module": "B"
+ },
+ {
+  "id": "DP-28",
+  "title": "Scope-check rules raise violations with ledger evidence: undeclared data element, overseas transfer, lapsed term, volume above baseline, undeclared sub-processor, overdue deletion task.",
+  "priority": "M",
+  "basis": "DM",
+  "module": "B"
+ },
+ {
+  "id": "DP-29",
+  "title": "Notice to a processor: drafted by the Contracts officer, approved and sent by the DPO (always different people). Vendors answer in a portal that shows only their own notices and tasks; replies enter the ledger.",
+  "priority": "M",
+  "basis": "DM",
+  "module": "B"
+ },
+ {
+  "id": "DP-30",
+  "title": "Processor accounts can never open the patient registry or its export, only their own tasks in the processor portal.",
+  "priority": "M",
+  "basis": "DM",
+  "module": "B"
+ },
+ {
+  "id": "DP-31",
+  "title": "Masking and step-up. Mobile, email, address, date of birth and ABHA are masked in the API response itself, not in the browser. Unmasking is one record at a time, needs a password or MFA step-up, a purpose and a reason, lasts 5 minutes, and is limited to named roles (DPO, rights cell, rights officers, HMIS owner, district nodal officer). Three wrong attempts lock for 5 minutes. Aadhaar shows only the last four digits. No bulk unmasked export. Every grant, refusal and failure is logged against the patient token (Rule 6(1)(a)-(c)).",
+  "priority": "M",
+  "basis": "DM",
+  "module": "B"
+ },
+ {
+  "id": "DP-32",
+  "title": "Access and processing logs retained for at least one year (Rule 6).",
+  "priority": "M",
+  "basis": "DM",
+  "module": "B"
+ },
+ {
+  "id": "DP-33",
+  "title": "Breach workflow: field report (for example a camp list forwarded to a WhatsApp group), assessment, affected count from the lake, 72-hour clock for the detailed report to the Board (Rule 7), CERT-In 6-hour reminder, patient notice in Gujarati through the ASHA / ANM network, sign-off by a person other than the drafter, evidence pack.",
+  "priority": "M",
+  "basis": "DM",
+  "module": "B"
+ },
+ {
+  "id": "DP-34",
+  "title": "Immutable ledger: hash-chained (SHA-256), Merkle-sealed, signed events; the verifier names the first altered event; per-person evidence bundle with inclusion proofs; certificate under s.63 of the Bharatiya Sakshya Adhiniyam. Production needs HSM signing and an external timestamp authority (stand-ins in the MVP).",
+  "priority": "M",
+  "basis": "DM",
+  "module": "B"
+ },
+ {
+  "id": "DP-35",
+  "title": "Significant Data Fiduciary readiness (Rule 13, if notified): annual DPIA and audit workflow, India-resident DPO.",
+  "priority": "S",
+  "basis": "DM",
+  "module": "B"
+ },
+ {
+  "id": "DP-36",
+  "title": "Retention scheduler and records of processing and cross-border transfers.",
+  "priority": "M",
+  "basis": "DM",
+  "module": "B"
+ },
+ {
+  "id": "DP-37",
+  "title": "Regulatory map (DPDP Act and Rules, IT Act, CERT-In directions, HIV Act, Mental Healthcare Act, PCPNDT, MTP, Clinical Establishments Act) with content updates under change control.",
+  "priority": "S",
+  "basis": "DM",
+  "module": "B"
+ },
+ {
+  "id": "DP-38",
+  "title": "Research datasets are de-identified before use (s.17(2)(b), Rule 16 and Second Schedule standards).",
+  "priority": "S",
+  "basis": "DM",
+  "module": "B"
+ },
+ {
+  "id": "CM-01",
+  "title": "Organisation and contract types: GMSCL (drugs, consumables, equipment, rate contracts); NHM (PPP services such as 108 and diagnostics, IT services); SHA (hospital empanelment agreements); GMERS and medical colleges (equipment CMC / AMC); Commissionerate (works, services, manpower). Each unit runs its own pipeline on a shared template, with one head-office view.",
+  "priority": "M",
+  "basis": "TM",
+  "module": "C"
+ },
+ {
+  "id": "CM-02",
+  "title": "Workflow Recommendation Engine: Mandatory steps (locked, backed by statute), Recommended steps (pre-selected; switched off only with a recorded justification) and Optional steps. The Competent Authority approves each workflow template before it goes live. Facts change the rules; for example a centrally sponsored or externally funded tender makes the standstill period and defect-liability tracker mandatory. Rule packs for GFR, CVC guidelines and Government of Gujarat purchase rules are configured after the Department confirms them.",
+  "priority": "M",
+  "basis": "TM",
+  "module": "C"
+ },
+ {
+  "id": "CM-03",
+  "title": "Vendor Master: GST, PAN, drug and manufacturing licences, GMP and quality certificates, MSE / Startup status, Make-in-India class; one-click blacklist and debarment check before any bidder is accepted; debarment register published.",
+  "priority": "M",
+  "basis": "TM",
+  "module": "C"
+ },
+ {
+  "id": "CM-04",
+  "title": "Requisition and approval: indents from facilities and programmes, method suggestion, EMD computed with MSE / Startup exemptions, multi-stage authenticated approval by delegation of financial powers.",
+  "priority": "M",
+  "basis": "TM",
+  "module": "C"
+ },
+ {
+  "id": "CM-05",
+  "title": "Indents are pre-filled from the forecasting application (AP-02) using stock in hand and consumption from the lake; the officer can override with a reason.",
+  "priority": "S",
+  "basis": "N",
+  "module": "C"
+ },
+ {
+  "id": "CM-06",
+  "title": "Tender drafting from the clause library, with technical, financial and legal vetting before publication. The NIT / e-RFP reference is a structured, searchable field. Publication stays on the State e-procurement portal or GeM; the platform imports and exports the record and does not replace the portal.",
+  "priority": "M",
+  "basis": "TM",
+  "module": "C"
+ },
+ {
+  "id": "CM-07",
+  "title": "Pre-bid: conference scheduling and minutes; bidder queries de-duplicated and allocated; Legal escalation for anything affecting eligibility, scope or price; corrigendum rounds with bid-due-date extension; freeze for evaluation.",
+  "priority": "M",
+  "basis": "TM",
+  "module": "C"
+ },
+ {
+  "id": "CM-08",
+  "title": "Bid evaluation: technical qualification, rejection reasons, MSE and Make-in-India preferences, lowest evaluated bidder, comparative statement. Health specifics: item-wise L1, rate-contract empanelment of more than one supplier by matching rules, and sample or quality qualification (NABL test results) attached to the bid.",
+  "priority": "M",
+  "basis": "TM",
+  "module": "C"
+ },
+ {
+  "id": "CM-09",
+  "title": "The platform drafts the comparative statement, qualified and rejected lists and committee recommendation using the self-hosted model, each watermarked with an evidence certificate. The committee decides; there is no automated award.",
+  "priority": "M",
+  "basis": "TM",
+  "module": "C"
+ },
+ {
+  "id": "CM-10",
+  "title": "Award: LOI, acceptance, performance bank guarantee capture and validation, stamping and signing; bank-guarantee validity tracked.",
+  "priority": "M",
+  "basis": "TM",
+  "module": "C"
+ },
+ {
+  "id": "CM-11",
+  "title": "Template and clause library, versioned, in Gujarati and English: rate contract, supply order, equipment supply-install-CMC, PPP service agreement, IT services, empanelment agreement, manpower, civil works.",
+  "priority": "M",
+  "basis": "TM",
+  "module": "C"
+ },
+ {
+  "id": "CM-12",
+  "title": "DPDP clause pack. A contract flagged 'processes personal data' must carry the data-processing clauses (purpose, data elements, sub-processors, India-only processing, security, breach notice timelines, deletion on exit, audit rights) and cannot reach Signed until the processor is registered in Module B with its declared scope.",
+  "priority": "M",
+  "basis": "N",
+  "module": "C"
+ },
+ {
+  "id": "CM-13",
+  "title": "Stamp-duty engine for Gujarat and e-stamp certificate attachment.",
+  "priority": "M",
+  "basis": "TM",
+  "module": "C"
+ },
+ {
+  "id": "CM-14",
+  "title": "Execution by Aadhaar eSign or DSC through CCA-licensed providers; multi-party signing order; signer identity logs. Air-gapped sites use DSC token signing, because Aadhaar eSign needs an online service provider.",
+  "priority": "M",
+  "basis": "TM",
+  "module": "C"
+ },
+ {
+  "id": "CM-15",
+  "title": "Evidence engine: signer identity, timestamps, device and IP, consent logs; signature validation report; s.63 BSA certificate generated automatically; document hash recorded in the platform ledger. A public blockchain is not used.",
+  "priority": "M",
+  "basis": "TM",
+  "module": "C"
+ },
+ {
+  "id": "CM-16",
+  "title": "Contract Lifecycle Dashboard: LOI, PBG, Stamping, Signed, In Progress, Variation, DLP, Closed, each with current state, next milestone and PBG / DLP dates. Portfolio view: active contracts, total value, guarantees expiring, overdue milestones. Handles multi-year PPP terms on the same pipeline.",
+  "priority": "M",
+  "basis": "TM",
+  "module": "C"
+ },
+ {
+  "id": "CM-17",
+  "title": "Rate contracts and supply orders: validity, ceiling rates, quantity commitments; supply orders by facility; delivery schedule; goods-received acceptance by the facility on mobile; shortfall and liquidated-damage computation (rates configurable); risk-purchase trigger.",
+  "priority": "M",
+  "basis": "N",
+  "module": "C"
+ },
+ {
+  "id": "CM-18",
+  "title": "Quality and compliance: batch tracking, not-of-standard-quality and test-failure handling, recall, debarment workflow, all feeding a vendor performance score.",
+  "priority": "S",
+  "basis": "N",
+  "module": "C"
+ },
+ {
+  "id": "CM-19",
+  "title": "Obligation tracking: milestones, renewals, PBG and insurance expiry, warranty and CMC / AMC schedules, with alerts at 90, 60 and 30 days.",
+  "priority": "M",
+  "basis": "TM",
+  "module": "C"
+ },
+ {
+  "id": "CM-20",
+  "title": "SLA contracts: KPIs measured automatically from lake data, for example 108 response time from call logs, diagnostics turnaround from LIMS, equipment and CCTV uptime from telemetry (DL-27); penalty computed and shown to the approving officer.",
+  "priority": "M",
+  "basis": "N",
+  "module": "C"
+ },
+ {
+  "id": "CM-21",
+  "title": "Variation, amendment and extension workflow with delegation checks and a full version history.",
+  "priority": "M",
+  "basis": "TM",
+  "module": "C"
+ },
+ {
+  "id": "CM-22",
+  "title": "Payment triggers from milestones and goods-received notes, with deductions for liquidated damages and penalties; hand-off to IFMS and reconciliation of paid against due. Payments themselves are not processed here.",
+  "priority": "M",
+  "basis": "N",
+  "module": "C"
+ },
+ {
+  "id": "CM-23",
+  "title": "Disputes and claims: notices, arbitration, hearing dates, outcomes.",
+  "priority": "S",
+  "basis": "TM",
+  "module": "C"
+ },
+ {
+  "id": "CM-24",
+  "title": "Vendor portal: vendors see their own contracts, upload invoices, delivery documents and guarantees, and answer notices.",
+  "priority": "S",
+  "basis": "N",
+  "module": "C"
+ },
+ {
+  "id": "CM-25",
+  "title": "Digitisation of legacy contracts through OCR (AP-03) with human verification of extracted terms.",
+  "priority": "S",
+  "basis": "N",
+  "module": "C"
+ },
+ {
+  "id": "CM-26",
+  "title": "MIS and transparency: RTI-ready disclosure export, debarment register, 100% transaction extract for CAG, ITGC / COBIT-aligned evidence pack, data dictionary.",
+  "priority": "M",
+  "basis": "TM",
+  "module": "C"
+ },
+ {
+  "id": "CM-27",
+  "title": "Retention schedule on every vendor, bidder and contract record; standard data-processing agreement wherever a vendor processes data for the platform.",
+  "priority": "M",
+  "basis": "TM",
+  "module": "C"
+ },
+ {
+  "id": "CM-28",
+  "title": "Every action is written to the shared hash-chained ledger; one click verifies the chain and pinpoints any altered record.",
+  "priority": "M",
+  "basis": "TM",
+  "module": "C"
+ },
+ {
+  "id": "CM-29",
+  "title": "'Ask the Platform': plain-language questions over tenders, contracts and decisions, answered only from ingested records with visible citations, scoped to the user's role and withheld when the records cannot support an answer. Self-hosted model.",
+  "priority": "S",
+  "basis": "TM",
+  "module": "C"
+ },
+ {
+  "id": "CM-30",
+  "title": "Staff-transfer continuity: decisions, rationale and correspondence stay attached to the contract record.",
+  "priority": "S",
+  "basis": "TM",
+  "module": "C"
+ },
+ {
+  "id": "CM-31",
+  "title": "Optional geo-tagging of facilities, works and assets on an open GIS stack (PostGIS, GeoServer).",
+  "priority": "O",
+  "basis": "TM",
+  "module": "C"
+ },
+ {
+  "id": "AP-01",
+  "title": "Beneficiary 360 (consumer data platform). Identity resolution with fuzzy matching across HMIS, TeCHO+, PMJAY-MA, U-WIN and 108 (Gujarati and English name variants, date of birth, mobile, tokens) producing one golden beneficiary record. Consent and purpose are overlaid on every record. Outreach lists (awareness, recall, immunisation) are built only from people with a valid purpose, and exclude withdrawn consents. Analytics sees tokens, not raw identifiers.",
+  "priority": "M",
+  "basis": "LP",
+  "module": "D"
+ },
+ {
+  "id": "AP-02",
+  "title": "Demand and supply forecasting. Time-series models by item and facility for drugs, consumables and vaccines using consumption history, seasonality and surveillance signals (IHIP); stock-out and expiry-risk alerts; reorder proposals for CM-05; accuracy tracked (error by item class); explainable drivers; human override.",
+  "priority": "M",
+  "basis": "LP",
+  "module": "D"
+ },
+ {
+  "id": "AP-03",
+  "title": "OCR and document intelligence. Pipeline of discover, scan, extract, convert, insert with a validation queue and confidence thresholds; Gujarati, Hindi and English; targets of at least 98% field accuracy on printed forms and a separately agreed target for handwriting, measured on a Department sample. Used for legacy registers, lab reports, challans, invoices and contracts.",
+  "priority": "M",
+  "basis": "LP",
+  "module": "D"
+ },
+ {
+  "id": "AP-04",
+  "title": "Image comparison. Pairwise comparison and object detection for goods inspection against a reference, works progress (before and after) and asset condition; side-by-side review with reviewer sign-off. Not a diagnostic device. No face recognition and no analytics on CCTV in intimate areas such as labour rooms and wards.",
+  "priority": "S",
+  "basis": "LP",
+  "module": "D"
+ },
+ {
+  "id": "AP-05",
+  "title": "Embedded analytics on Gold data (open-source BI): State, district and facility dashboards; exception reporting for senior officers; self-service for trained analysts within their data permissions.",
+  "priority": "M",
+  "basis": "LP",
+  "module": "D"
+ },
+ {
+  "id": "IN-01",
+  "title": "Contract to processor: Processor record, scope and baselines created in Module B; DPDP monitoring starts against that scope.",
+  "trigger": "A contract flagged as processing personal data is signed.",
+  "priority": "M",
+  "basis": "N",
+  "module": "Integration"
+ },
+ {
+  "id": "IN-02",
+  "title": "Violation to notice to contract: Contracts officer drafts, DPO approves, vendor answers in portal. Uncured or repeated violations lower the vendor score and open a compliance review on the contract.",
+  "trigger": "Module B finds a scope violation or lapsed agreement.",
+  "priority": "M",
+  "basis": "N",
+  "module": "Integration"
+ },
+ {
+  "id": "IN-03",
+  "title": "Contract end to erasure: Deletion and return tasks go to the processor; certificates are collected and recorded in the ledger.",
+  "trigger": "Contract expires, is terminated or lapses (alerts at 90, 60, 30 days).",
+  "priority": "M",
+  "basis": "N",
+  "module": "Integration"
+ },
+ {
+  "id": "IN-04",
+  "title": "Lake classification to access policy: Masking, access and API-token policies in the Data Lake change automatically; the privacy inventory is held as a governed zone of the lake.",
+  "trigger": "A dataset is classified or re-classified in Module B.",
+  "priority": "M",
+  "basis": "N",
+  "module": "Integration"
+ },
+ {
+  "id": "IN-05",
+  "title": "Lake data to SLA: SLA KPIs and penalties are computed in Module C and shown to the approving officer.",
+  "trigger": "Call logs, LIMS records or telemetry arrive in Gold.",
+  "priority": "M",
+  "basis": "N",
+  "module": "Integration"
+ },
+ {
+  "id": "IN-06",
+  "title": "Forecast to indent to supply: Indent proposed, approved, tendered or drawn from rate contract; supply order; goods-received note updates the lake; forecast refreshes.",
+  "trigger": "Forecast shows stock-out risk.",
+  "priority": "M",
+  "basis": "N",
+  "module": "Integration"
+ },
+ {
+  "id": "IN-07",
+  "title": "Scan to structured data: OCR extracts fields into Bronze; validated data moves to Silver and Gold; DPDP discovery scans the output.",
+  "trigger": "Legacy register, challan or contract is scanned.",
+  "priority": "M",
+  "basis": "N",
+  "module": "Integration"
+ },
+ {
+  "id": "IN-08",
+  "title": "Withdrawal to suppression: Suppression flags in Silver and Gold; API tokens for that purpose are limited; outreach lists refreshed; holding systems get erasure tasks.",
+  "trigger": "A consent is withdrawn.",
+  "priority": "M",
+  "basis": "N",
+  "module": "Integration"
+ },
+ {
+  "id": "IN-09",
+  "title": "Anomaly to breach: Breach case opened with 72-hour clock; affected count from the privacy inventory; notice to the processor under IN-02.",
+  "trigger": "Usage tracking detects unusual access or volume.",
+  "priority": "M",
+  "basis": "N",
+  "module": "Integration"
+ },
+ {
+  "id": "IN-10",
+  "title": "One audit trail: Written to the one ledger; one verifier and one evidence bundle serve the DPO, CAG, internal audit and a court.",
+  "trigger": "Any action in any module.",
+  "priority": "M",
+  "basis": "N",
+  "module": "Integration"
+ },
+ {
+  "id": "NF-01",
+  "title": "Performance: Gold-table API p95 under 500 ms; dashboards open in under 5 s; at least 2,000 concurrent named users in Phase 1, scalable.",
+  "priority": "M",
+  "basis": "N",
+  "module": "Platform"
+ },
+ {
+  "id": "NF-02",
+  "title": "Availability of 99.5% (portals and API 99.9% in the HA design); RPO 15 minutes or less; RTO 4 hours or less; disaster-recovery site in India.",
+  "priority": "M",
+  "basis": "N",
+  "module": "Platform"
+ },
+ {
+  "id": "NF-03",
+  "title": "Security: ISO/IEC 27001-aligned controls, CERT-In guidelines, VAPT by a CERT-In empanelled auditor before go-live and annually, secure SDLC, tenant and domain isolation.",
+  "priority": "M",
+  "basis": "N",
+  "module": "Platform"
+ },
+ {
+  "id": "NF-04",
+  "title": "Citizen-facing screens meet GIGW 3.0 and WCAG 2.1 AA; Gujarati, Hindi and English in Unicode; mobile-responsive.",
+  "priority": "M",
+  "basis": "N",
+  "module": "Platform"
+ },
+ {
+  "id": "NF-05",
+  "title": "Interoperability with ABDM, HL7 FHIR and open standards (OIDC, SAML, REST / OpenAPI, SFTP, MQTT).",
+  "priority": "S",
+  "basis": "N",
+  "module": "Platform"
+ },
+ {
+  "id": "NF-06",
+  "title": "Backups encrypted and tested quarterly; restore of a single table or contract record to a point in time.",
+  "priority": "M",
+  "basis": "LP",
+  "module": "Platform"
+ },
+ {
+  "id": "NF-07",
+  "title": "Observability: metrics, logs and traces for every service; health page for operators.",
+  "priority": "M",
+  "basis": "LP",
+  "module": "Platform"
+ },
+ {
+  "id": "NF-08",
+  "title": "Residency: no data, key, backup, log or support session leaves India.",
+  "priority": "M",
+  "basis": "LP",
+  "module": "Platform"
+ },
+ {
+  "id": "NF-09",
+  "title": "Retention periods are configuration, set with the Department and counsel, and are enforced by the retention scheduler.",
+  "priority": "M",
+  "basis": "DM",
+  "module": "Platform"
+ },
+ {
+  "id": "NF-10",
+  "title": "Training, documentation and handover for State, district and facility roles; train-the-trainer for nodal officers.",
+  "priority": "M",
+  "basis": "N",
+  "module": "Platform"
+ },
+ {
+  "id": "NF-11",
+  "title": "Commercial model: fixed subscription by capacity band; no charge per query, API call, row or GB processed within the band; a change of band only by pre-agreed steps.",
+  "priority": "M",
+  "basis": "LP",
+  "module": "Platform"
+ },
+ {
+  "id": "AC-01",
+  "title": "Alter one ledger event in a test copy; the verifier names that event and the chain fails.",
+  "refs": "DP-34, CM-28",
+  "priority": "M",
+  "basis": "N",
+  "module": "Acceptance"
+ },
+ {
+  "id": "AC-02",
+  "title": "Install and run the full stack in a network with no internet route; ingest, query, API, rights request and contract execution all succeed.",
+  "refs": "DL-32",
+  "priority": "M",
+  "basis": "N",
+  "module": "Acceptance"
+ },
+ {
+  "id": "AC-03",
+  "title": "A rights request in Gujarati is received, verified, assigned, fulfilled, reviewed and answered within SLA; the requester cannot approve a deletion.",
+  "refs": "DP-23, DP-24",
+  "priority": "M",
+  "basis": "N",
+  "module": "Acceptance"
+ },
+ {
+  "id": "AC-04",
+  "title": "A simulated breach starts the 72-hour and 6-hour clocks and produces the Board and patient notices and the evidence pack.",
+  "refs": "DP-33",
+  "priority": "M",
+  "basis": "N",
+  "module": "Acceptance"
+ },
+ {
+  "id": "AC-05",
+  "title": "A contract tagged as personal-data processing cannot be signed until the processor is registered with scope.",
+  "refs": "CM-12",
+  "priority": "M",
+  "basis": "N",
+  "module": "Acceptance"
+ },
+ {
+  "id": "AC-06",
+  "title": "A masked value cannot be read by a refused role; an unmasked grant expires after 5 minutes and is visible in Patient 360.",
+  "refs": "DP-31",
+  "priority": "M",
+  "basis": "N",
+  "module": "Acceptance"
+ },
+ {
+  "id": "AC-07",
+  "title": "An API token with narrow scope cannot read outside its columns; revocation takes effect immediately; the call is logged.",
+  "refs": "DL-20, DL-21",
+  "priority": "M",
+  "basis": "N",
+  "module": "Acceptance"
+ },
+ {
+  "id": "AC-08",
+  "title": "OCR accuracy of at least 98% on the agreed printed-form sample; detector precision and recall reported.",
+  "refs": "AP-03, DP-11",
+  "priority": "M",
+  "basis": "N",
+  "module": "Acceptance"
+ }
+]

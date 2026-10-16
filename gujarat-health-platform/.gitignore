@@ -1,0 +1,8 @@
+.env
+images/
+frontend/node_modules/
+frontend/dist/
+**/__pycache__/
+services/wheels/*.whl
+services/dpdp-compliance-service/wheels/*.whl
+backups/
