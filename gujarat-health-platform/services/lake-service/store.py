@@ -49,9 +49,12 @@ def conn():
 def q(sql, params=None, c=None):
     """Run a query and return a list of dicts."""
     if c is not None:
-        with c.cursor(cursor_factory=psycopg2.extras.RealDictCursor) as cur:
+        with c.cursor() as cur:
             cur.execute(sql, params)
-            return [dict(r) for r in cur.fetchall()] if cur.description else []
+            if not cur.description:
+                return []
+            cols = [d[0] for d in cur.description]
+            return [dict(zip(cols, r)) for r in cur.fetchall()]
     with conn() as cc:
         return q(sql, params, cc)
 

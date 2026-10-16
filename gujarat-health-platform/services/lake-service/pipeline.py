@@ -291,7 +291,8 @@ def build_silver(ds, params, c_promo_id):
         sk = (b["source_code"], fac)
         st = stats.setdefault(sk, [0, 0])
         st[0] += 1
-        row = {"key": key, "data": data, "plain": p, "district": district, "facility_id": fac, "source_code": b["source_code"]}
+        row = {"key": key, "data": data, "plain": p, "district": district, "facility_id": fac, "source_code": b["source_code"],
+               "hash": "s1:" + b["sha256"]}
         if failed and key not in released:
             st[1] += 1
             row["failed"] = failed
@@ -310,7 +311,7 @@ def write_version(c, layer, ds, rows, promotion_id, note=""):
     newrows, retire, keys = [], [], set()
     for r in rows:
         keys.add(r["key"])
-        rh = sha(jdump(r["data"]) + (hmac_hex("signing", jdump(r["plain"])) if r.get("plain") else ""))
+        rh = r.get("hash") or sha(jdump(r["data"]) + (hmac_hex("signing", jdump(r["plain"])) if r.get("plain") else ""))
         old = existing.get(r["key"])
         if old and old[1] == rh:
             continue
@@ -337,7 +338,7 @@ def write_version(c, layer, ds, rows, promotion_id, note=""):
 
 
 def current(layer, ds, with_plain=False):
-    rows = q("SELECT record_key, data, enc, district, facility_id, source_code FROM ds_rows WHERE layer=%s AND dataset=%s AND vto IS NULL ORDER BY id",
+    rows = q("SELECT record_key, data, enc, district, facility_id, source_code, row_hash FROM ds_rows WHERE layer=%s AND dataset=%s AND vto IS NULL ORDER BY id",
              (layer, ds))
     if with_plain:
         for r in rows:
@@ -677,7 +678,7 @@ def g_consumption(c):
     for r in current("silver", "consumption"):
         d = dict(r["data"])
         d["value_rs"] = round(d["qty"] * price.get(d["item_code"], 0), 2)
-        out.append({"key": r["record_key"], "data": d, "district": r["district"], "facility_id": r["facility_id"]})
+        out.append({"key": r["record_key"], "data": d, "district": r["district"], "facility_id": r["facility_id"], "hash": "g1:" + r["row_hash"]})
     return out
 
 
@@ -690,7 +691,7 @@ def g_stock(c):
         exp = dt.date.fromisoformat(d["expiry"])
         d["stockout_risk"] = "high" if mc < 0.5 else ("medium" if mc < 1 else "low")
         d["expiry_risk"] = "high" if (exp - asof).days < 90 and mc > (exp - asof).days / 30 else "low"
-        out.append({"key": r["record_key"], "data": d, "district": r["district"], "facility_id": r["facility_id"]})
+        out.append({"key": r["record_key"], "data": d, "district": r["district"], "facility_id": r["facility_id"], "hash": "g1:" + r["row_hash"]})
     return out
 
 
@@ -701,7 +702,7 @@ def g_ems(c):
         d["sla_min"] = 20 if d.get("urban") else 30
         d["sla_met"] = d["response_min"] <= d["sla_min"]
         d["channel"] = "stream" if r["source_code"] == "ems108_live" else "batch"
-        out.append({"key": r["record_key"], "data": d, "district": r["district"]})
+        out.append({"key": r["record_key"], "data": d, "district": r["district"], "hash": "g1:" + r["row_hash"]})
     return out
 
 
@@ -711,12 +712,13 @@ def g_lab(c):
         d = dict(r["data"])
         d["sla_hours"] = 24
         d["sla_met"] = d["tat_hours"] <= 24
-        out.append({"key": r["record_key"], "data": d, "district": r["district"]})
+        out.append({"key": r["record_key"], "data": d, "district": r["district"], "hash": "g1:" + r["row_hash"]})
     return out
 
 
 def g_ihip(c):
-    return [{"key": r["record_key"], "data": r["data"], "district": r["district"]} for r in current("silver", "ihip_signals")]
+    return [{"key": r["record_key"], "data": r["data"], "district": r["district"], "hash": "g1:" + r["row_hash"]}
+            for r in current("silver", "ihip_signals")]
 
 
 def g_assets(c):

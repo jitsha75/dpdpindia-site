@@ -1,5 +1,11 @@
 """
-models.py — dispute-management-service (v2.0)
+models.py — dispute-management-service (Gujarat Health Integrated Data Platform, CM-23)
+
+Gujarat additions: notice reference and date, forum (MSEFC / arbitral tribunal / competent authority),
+claim and award amounts, outcome, next hearing, and the opposing party's representative and counsel (personal
+data: masked in every response, revealed for one dispute only with a step-up token). Hearings get their own table.
+
+Original notes (v2.0):
 FRD reference: FRD v4 Section 5.6 — notice, ADR, arbitration case tracking
 
 This replaces the pre-v2.0 stub (POST /disputes / GET /disputes/{id} both
@@ -24,7 +30,7 @@ Design notes:
     or via arbitration) — see main.py ALLOWED_TRANSITIONS for the permitted
     graph, enforced server-side on every transition.
 """
-from sqlalchemy import Column, Integer, String, Text, Boolean, DateTime
+from sqlalchemy import Column, Integer, String, Text, Boolean, DateTime, Float
 
 from common import Base, utcnow
 
@@ -51,6 +57,36 @@ class Dispute(Base):
 
     created_at = Column(DateTime(timezone=True), nullable=False, default=utcnow)
     updated_at = Column(DateTime(timezone=True), nullable=False, default=utcnow, onupdate=utcnow)
+
+    # ---- Gujarat health additions (CM-23) ----
+    vendor_code = Column(String(16), nullable=True)
+    agency = Column(String(16), nullable=True)
+    notice_ref = Column(String(64), nullable=True)
+    notice_date = Column(DateTime(timezone=True), nullable=True)
+    forum = Column(String(128), nullable=True)
+    claim_amount = Column(Float, nullable=True)
+    award_amount = Column(Float, nullable=True)
+    outcome = Column(Text, nullable=True)
+    next_hearing = Column(DateTime(timezone=True), nullable=True)
+    arbitrator = Column(String(128), nullable=True)            # public office holder / tribunal, not masked
+    party_name = Column(String(128), nullable=True)            # vendor representative (personal data)
+    party_designation = Column(String(128), nullable=True)
+    party_mobile = Column(String(16), nullable=True)
+    party_email = Column(String(128), nullable=True)
+    counsel_name = Column(String(128), nullable=True)          # personal data
+
+
+class Hearing(Base):
+    """CM-23 hearing dates and outcomes."""
+    __tablename__ = "dispute_hearings"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    dispute_id = Column(Integer, nullable=False, index=True)
+    hearing_date = Column(DateTime(timezone=True), nullable=False)
+    forum = Column(String(128), nullable=True)
+    purpose = Column(String(256), nullable=True)
+    outcome = Column(Text, nullable=True)
+    status = Column(String(16), nullable=False, default="scheduled")   # scheduled | held | adjourned
 
 
 class DisputeEvent(Base):

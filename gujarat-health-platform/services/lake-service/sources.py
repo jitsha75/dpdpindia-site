@@ -280,8 +280,9 @@ GENERATORS = {
 }
 
 
+@lru_cache(maxsize=32)
 def extract(generator: str):
-    """Full extract of a source: list of (record_key, watermark, raw)."""
+    """Full extract of a source: list of (record_key, watermark, raw). Cached; callers must not mutate."""
     if generator.startswith("source_records:"):
         return gen_source_records(generator.split(":", 1)[1])
     fn = GENERATORS.get(generator)
@@ -323,7 +324,7 @@ def fresh_rows(generator: str, run_seq: int, now: dt.datetime):
                                   "title": title, "size_bytes": size, "captured_at": wm,
                                   "uri": f"s3://ghip-lake/bronze/media/{f['id']}/{oid}", "sha256": hashlib.sha256(oid.encode()).hexdigest()}))
     elif generator.startswith("source_records:"):
-        base = gen_source_records(generator.split(":", 1)[1])
+        base = extract(generator)
         for i in range(6):
             k, _, r = base[(run_seq * 37 + i * 101) % len(base)]
             out.append((k, wm, dict(r, updated_at=wm)))            # re-exported records (unchanged content)
@@ -335,14 +336,14 @@ def cdc_changes(generator: str, run_seq: int, now: dt.datetime):
     rng = gjref._rng("cdc", generator, run_seq)
     out = []
     if generator == "stock":
-        base = gen_stock()
+        base = extract("stock")
         for _ in range(120):
             k, _, r = base[rng.randrange(len(base))]
             if r["on_hand"] < 0 or r["facility_id"] == "GJ-CHC-99X":
                 continue
             out.append((k, None, dict(r, on_hand=max(0, r["on_hand"] + rng.randint(-200, 400)))))
     elif generator.startswith("source_records:"):
-        base = gen_source_records(generator.split(":", 1)[1])
+        base = extract(generator)
         for _ in range(15):
             k, _, r = base[rng.randrange(len(base))]
             out.append((k, None, dict(r, district=rng.choice(gjref.DISTRICTS) if rng.random() < 0.3 else r["district"],
@@ -378,5 +379,5 @@ def stream_events(generator: str, run_seq: int, now: dt.datetime):
 
 
 def clear_caches():
-    for f in (_facilities, _source_records, _staff, _consumption):
+    for f in (_facilities, _source_records, _staff, _consumption, extract):
         f.cache_clear()
