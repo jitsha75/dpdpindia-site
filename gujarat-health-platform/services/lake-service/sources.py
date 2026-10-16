@@ -37,7 +37,7 @@ SOURCES = [
      "NHM Gujarat - immunisation cell", "NHM data steward", "source_records:U-WIN", "updated_at", "source_records", "non-spatial"),
     ("ems108_patient_register", "108 patient hand-over register", "108", "sftp", "batch_incremental", "daily 04:00 IST",
      "NHM Gujarat - 108 PPP cell", "108 PPP data steward", "source_records:108", "updated_at", "source_records", "flat-file"),
-    ("ems108_calls", "108 emergency call logs", "108 CAD", "sftp", "batch_incremental", "daily 04:00 IST",
+    ("ems108_call_logs", "108 emergency call logs", "108 CAD", "sftp", "batch_incremental", "daily 04:00 IST",
      "NHM Gujarat - 108 PPP cell", "108 PPP data steward", "ems108_calls", "date", "ems108_calls", "flat-file"),
     ("ems108_live", "108 live dispatch event stream", "108 CAD", "kafka", "stream", "continuous (topic ems108.dispatch)",
      "NHM Gujarat - 108 PPP cell", "108 PPP data steward", "ems108_live", None, "ems108_calls", "non-spatial"),

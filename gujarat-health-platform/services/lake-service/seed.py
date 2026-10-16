@@ -176,7 +176,8 @@ def build_catalogue(c):
     for ds, (layer, en, gu, owner, steward, cls, tags, desc) in CATALOGUE.items():
         rows.append((ds, layer, en, gu, desc, owner, steward, jdump(sorted(set(tags + [cls]))), cls))
     for s in q("SELECT code, name, owner, steward, silver_dataset FROM sources", c=c):
-        cls = "sensitive_health" if s["silver_dataset"] in SENSITIVE_DS else ("personal" if s["silver_dataset"] in ("media_objects",) else "internal")
+        cls = "sensitive_health" if s["silver_dataset"] == "source_records" else (
+            "personal" if s["silver_dataset"] in ("media_objects", "staff") else "internal")
         if s["code"] == "pmjay_enrolment":
             cls = "special_category"
         rows.append((s["code"], "bronze", s["name"] + " (raw)", "કાચો ડેટા: " + s["name"], "Immutable raw copy; identifiers encrypted",
@@ -280,7 +281,9 @@ def seed_history():
             for d in (3, 1):
                 later.append((s["code"], now - dt.timedelta(days=d), None))
             later.append((s["code"], now - dt.timedelta(hours=2), None))
-    P.promote(None, "all", "schedule", "scheduler")                     # version 1 of every Silver / Gold dataset
+    for sds in P.SILVER_ORDER:                                          # version 1 (the 51k-row consumption set waits for v2)
+        if sds != "consumption":
+            P.promote(sds, "all", "schedule", "scheduler")
     for code, at, extra in sorted(later, key=lambda x: x[1]):
         if extra == "fail":
             P.run_source(code, "schedule", "scheduler", at,

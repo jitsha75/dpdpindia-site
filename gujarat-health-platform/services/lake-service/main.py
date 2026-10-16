@@ -137,10 +137,8 @@ _pf_cache = {}
 
 def personal_fields(ds) -> dict:
     if ds not in _pf_cache:
-        f = {r["col"]: r["personal_kind"] for r in q("SELECT col, personal_kind FROM dictionary WHERE dataset=%s AND personal_kind IS NOT NULL", (ds,))}
-        for p in q("SELECT elements FROM policies WHERE dataset=%s ORDER BY id", (ds,)):
-            for el in p["elements"] or []:
-                f[el] = SEED.PERSONAL_COLS.get(el, "mobile" if "mobile" in el or "phone" in el else "name")
+        f = {r["col"]: r["k"] for r in q("""SELECT col, coalesce(policy_kind, personal_kind) k FROM dictionary
+                                             WHERE dataset=%s AND coalesce(policy_kind, personal_kind) IS NOT NULL""", (ds,))}
         if ds in SEED.SENSITIVE_DS:
             for k in ("name", "mobile", "dob", "abha", "aadhaar"):
                 f.setdefault(k, SEED.PERSONAL_COLS[k])
@@ -823,7 +821,7 @@ def impact(node: str, depth: int = 8):
     affected = sorted(seen - start)
     consumers = sorted({n for n in affected if n.split(":", 1)[0] in ("api", "app", "report")})
     gold_cols = sorted({n for n in affected if n.startswith("gold:")})
-    wb = [dict(m) for m in q("SELECT code, version, target_service, status FROM writeback_mappings WHERE status IN ('approved','pending_approval')")
+    wb = [dict(m) for m in q("SELECT code, version, dataset, target_service, status FROM writeback_mappings WHERE status IN ('approved','pending_approval')")
           if any(g.startswith(f"gold:{m['dataset']}.") for g in gold_cols)] if gold_cols else []
     return {"node": node, "affected_nodes": len(affected), "gold_columns": gold_cols[:200], "consumers": consumers,
             "writeback_mappings": wb, "risk": "high" if len(consumers) >= 3 else ("medium" if consumers else "low"),
@@ -1055,7 +1053,9 @@ def keys():
         out.append({"key_id": key_id(d), "domain": d, "purpose": desc, "algorithm": "Fernet (AES-128-CBC + HMAC-SHA256)" if d != "signing" else "HMAC-SHA256",
                     "source": key_source(d), "rotated_at": KEY_ROTATED_AT, "hsm_backed": False,
                     "production": "AES-256 keys in an HSM-backed vault, per domain, rotation by policy"})
-    plain = q1("""SELECT count(*) n FROM bronze WHERE payload ?| array['first','last','mobile','dob','abha','aadhaar','name']""")["n"]
+    plain = q1("""SELECT count(*) n FROM bronze b JOIN sources s ON s.code=b.source_code
+                  WHERE (s.silver_dataset IN ('source_records','staff') OR s.silver_dataset IS NULL)
+                  AND b.payload ?| array['first','last','mobile','dob','abha','aadhaar','name','phone','email','address']""")["n"]
     enc = q1("SELECT count(*) n FROM bronze WHERE enc IS NOT NULL")["n"]
     return {"vault": "key-vault stub (demo): metadata only, key material never returned", "keys": out,
             "bronze_rows_with_encrypted_identifiers": enc, "bronze_rows_with_plain_identifiers": plain,
@@ -1073,11 +1073,12 @@ def classify(body: dict = Body(...), c: dict = Depends(claims)):
     with conn() as cc:
         ex("UPDATE catalogue SET classification=%s, tags = (SELECT jsonb_agg(DISTINCT t) FROM jsonb_array_elements(tags || %s) t), updated_at=now() WHERE dataset=%s",
            (tier, jdump([tier]), ds), cc)
+        ex("UPDATE dictionary SET policy_kind=NULL WHERE dataset=%s AND policy_kind IS NOT NULL", (ds,), cc)
         for el in els:
             kind = SEED.PERSONAL_COLS.get(el, "mobile" if "mobile" in el or "phone" in el else "name")
-            ex("""INSERT INTO dictionary(dataset, col, dtype, label_en, label_gu, description, personal_kind, classification)
-                  VALUES (%s,%s,'text',%s,%s,'set by classification policy',%s,%s)
-                  ON CONFLICT (dataset, col) DO UPDATE SET personal_kind=EXCLUDED.personal_kind, classification=EXCLUDED.classification""",
+            ex("""INSERT INTO dictionary(dataset, col, dtype, label_en, label_gu, description, policy_kind, classification)
+                  VALUES (%s,%s,'text',%s,%s,'added by classification policy',%s,%s)
+                  ON CONFLICT (dataset, col) DO UPDATE SET policy_kind=EXCLUDED.policy_kind, classification=EXCLUDED.classification""",
                (ds, el, el, el, kind, tier), cc)
         ex("INSERT INTO policies(dataset, tier, elements, actor) VALUES (%s,%s,%s,%s)", (ds, tier, jdump(els), actor(c) if c else "data-governance-service"), cc)
     _pf_cache.pop(ds, None)

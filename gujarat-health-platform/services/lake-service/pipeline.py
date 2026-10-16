@@ -439,16 +439,16 @@ def g_facility(c):
     for k, d in by.items():
         if k.startswith("GJ-"):
             continue
-        for ck in canon:
-            cd = by[ck]
-            if cd["district"] != d["district"] or cd["level"] != d["level"]:
-                continue
-            j = jacc(toks(d["name"]), toks(cd["name"]))
-            if j >= 0.99:
-                auto.append((ck, k, "same name after abbreviation expansion, same district and level"))
-            elif j >= 0.2:
-                review.append((ck, k, round(j, 2), {"rule": "same district and level, similar name", "jaccard": round(j, 2),
-                                                     "names": [cd["name"], d["name"]]}))
+        cands = [(jacc(toks(d["name"]), toks(by[ck]["name"])), ck) for ck in canon
+                 if by[ck]["district"] == d["district"] and by[ck]["level"] == d["level"]]
+        if not cands:
+            continue
+        j, ck = max(cands)
+        if j >= 0.99:
+            auto.append((ck, k, "same name after abbreviation expansion, same district and level"))
+        elif j >= 0.2:
+            review.append((ck, k, round(j, 2), {"rule": "same district and level, similar name", "jaccard": round(j, 2),
+                                                 "names": [by[ck]["name"], d["name"]]}))
     clusters, reviews = resolve(c, "facility", list(by), auto, review)
     out, goldens, gid_of = [], [], {}
     seq = {}

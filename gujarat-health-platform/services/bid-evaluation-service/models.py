@@ -1,6 +1,7 @@
 """
-models.py — bid-evaluation-service
-FRD reference: FRD v4 Section 5.4
+models.py — bid-evaluation-service (Module C: CM-08 evaluation, CM-09 AI-drafted deliverables, CM-10 award)
+FRD reference: FRD v4 Section 5.4; spec section 6.3.
+Columns added for the Gujarat health build are nullable and are added to older databases on startup.
 """
 from sqlalchemy import Boolean, Column, DateTime, Float, ForeignKey, Integer, String, Text
 from sqlalchemy.orm import relationship
@@ -66,6 +67,13 @@ class Tender(Base):
     qcbs_technical_weight = Column(Float, nullable=True)
     qcbs_financial_weight = Column(Float, nullable=True)
 
+    # ---- Gujarat health additions (CM-08) ----
+    agency = Column(String(16), nullable=True)
+    nit_ref = Column(String(64), nullable=True, index=True)
+    evaluation_basis = Column(String(24), nullable=True)      # item_wise_l1 | L1 | QCBS
+    rc_max_suppliers = Column(Integer, nullable=True)         # parallel suppliers per item under L1 matching
+    stage = Column(String(32), nullable=True)                 # eligibility | technical_evaluation | financial | committee | awarded
+
     bids = relationship("Bid", back_populates="tender", cascade="all, delete-orphan")
 
 
@@ -123,6 +131,15 @@ class Bid(Base):
     presentation_panelists = Column(String(256), nullable=True)
     presented_at = Column(DateTime(timezone=True), nullable=True)
 
+    # ---- Gujarat health additions ----
+    vendor_code = Column(String(32), nullable=True)
+    item_rates_json = Column(Text, nullable=True)        # {item_code: unit rate} - sealed until financial opening
+    nabl_results_json = Column(Text, nullable=True)      # [{item_code, batch, lab, report_no, result, tested_on}]
+    debarment_check_json = Column(Text, nullable=True)   # one-click check made at bid acceptance (CM-03)
+    signatory_name = Column(String(128), nullable=True)  # personal: masked in every response
+    signatory_mobile = Column(String(16), nullable=True)
+    signatory_email = Column(String(128), nullable=True)
+
     tender = relationship("Tender", back_populates="bids")
 
 
@@ -173,6 +190,24 @@ class Award(Base):
     created_by = Column(String(128), nullable=False, default="system")
     created_at = Column(DateTime(timezone=True), nullable=False, default=utcnow)
 
+    # ---- CM-10 additions: LOI, acceptance, PBG, stamping and signing ----
+    vendor_code = Column(String(32), nullable=True)
+    committee_ref = Column(String(128), nullable=True)     # committee decision reference (no automated award)
+    items_json = Column(Text, nullable=True)               # item-wise scope for rate-contract awards
+    loi_ref = Column(String(64), nullable=True)
+    loi_accepted = Column(Boolean, nullable=True, default=False)
+    loi_accepted_date = Column(DateTime(timezone=True), nullable=True)
+    pbg_amount = Column(Float, nullable=True)
+    pbg_bank = Column(String(128), nullable=True)
+    pbg_number = Column(String(64), nullable=True)
+    pbg_valid_until = Column(DateTime(timezone=True), nullable=True)
+    pbg_verified = Column(Boolean, nullable=True, default=False)
+    pbg_verified_at = Column(DateTime(timezone=True), nullable=True)
+    stamp_duty = Column(Float, nullable=True)
+    estamp_ref = Column(String(64), nullable=True)
+    signing_status = Column(String(24), nullable=True)     # pending | handed_off | signed
+    signing_ref = Column(String(64), nullable=True)
+
 
 class NegotiationLog(Base):
     """Enforces the post-tender-negotiation guardrail (CVC circular 4/3/07):
@@ -188,4 +223,51 @@ class NegotiationLog(Base):
     justification = Column(Text, nullable=False, default="")
     allowed = Column(Boolean, nullable=False, default=False)
     actor = Column(String(128), nullable=False, default="system")
+    created_at = Column(DateTime(timezone=True), nullable=False, default=utcnow)
+
+
+class TenderItem(Base):
+    """Item lines of an item-wise tender (CM-08: item-wise L1 across items)."""
+    __tablename__ = "tender_items"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    tender_id = Column(Integer, ForeignKey("tenders.id"), nullable=False, index=True)
+    item_code = Column(String(16), nullable=False)
+    name = Column(String(128), nullable=False)
+    unit = Column(String(32), nullable=True)
+    qty = Column(Float, nullable=False, default=0.0)
+    estimated_rate = Column(Float, nullable=True)
+
+
+class RCEmpanelment(Base):
+    """Rate-contract empanelment by L1 matching: the L1 rate is offered to the next-ranked bidders."""
+    __tablename__ = "rc_empanelment"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    tender_id = Column(Integer, ForeignKey("tenders.id"), nullable=False, index=True)
+    item_code = Column(String(16), nullable=False)
+    bid_id = Column(Integer, nullable=False)
+    vendor = Column(String(256), nullable=False)
+    vendor_code = Column(String(32), nullable=True)
+    rank = Column(Integer, nullable=False)
+    quoted_rate = Column(Float, nullable=False)
+    offered_rate = Column(Float, nullable=False)
+    status = Column(String(16), nullable=False, default="offered")   # l1 | offered | accepted | declined
+    responded_at = Column(DateTime(timezone=True), nullable=True)
+    created_at = Column(DateTime(timezone=True), nullable=False, default=utcnow)
+
+
+class AiDraftRecord(Base):
+    """CM-09: each AI-drafted deliverable requested for a tender, with its watermark and evidence certificate."""
+    __tablename__ = "ai_draft_records"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    tender_id = Column(Integer, nullable=False, index=True)
+    kind = Column(String(64), nullable=False)
+    watermark_hash = Column(String(64), nullable=True)
+    model_version = Column(String(128), nullable=True)
+    evidence_certificate_json = Column(Text, nullable=True)
+    content = Column(Text, nullable=True)
+    committee_decision = Column(String(32), nullable=True, default="pending")   # pending | adopted | modified | rejected
+    created_by = Column(String(128), nullable=True)
     created_at = Column(DateTime(timezone=True), nullable=False, default=utcnow)

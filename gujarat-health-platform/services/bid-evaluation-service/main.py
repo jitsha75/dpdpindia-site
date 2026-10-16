@@ -1,6 +1,21 @@
 """
-bid-evaluation-service
-FRD reference: FRD v4 Section 5.4
+bid-evaluation-service (port 8006) - Module C: CM-08 bid evaluation, CM-09 AI-drafted deliverables, CM-10 award.
+Gujarat Health Integrated Data Platform (synthetic demo data).
+FRD reference: FRD v4 Section 5.4; spec section 6.3.
+
+Gujarat health additions (all on top of the existing two-envelope L1 / QCBS workflow, which is unchanged):
+  - CM-08 item-wise L1 across the items of a drug / consumable tender (GET /tenders/{id}/item-wise-l1);
+    sample / quality qualification: NABL test results are attached to each bid per item, and a bidder
+    is qualified for an item only on a "pass" report; rate-contract empanelment of more than one supplier
+    by L1 matching (POST /tenders/{id}/rc-matching, POST /rc-offers/{id}/respond); every bidder is checked
+    against the vendor master's debarment register before the bid is accepted (POST /tenders/{id}/bids).
+  - CM-09 the comparative statement, qualified / rejected lists and committee recommendation are drafted by
+    the self-hosted model through ai-usecase-service, each watermarked with an evidence certificate from
+    audit-trail-service (POST /tenders/{id}/ai-deliverables). The committee decides: there is no automated
+    award; awards are only created by a committee member (POST /tenders/{id}/award, /rc-award).
+  - CM-10 LOI, acceptance, performance bank guarantee capture and bank verification, validity tracking
+    (GET /pbg/tracker), stamping and signing hand-off (POST /awards/{id}/...).
+  - Bidder signatory name / mobile / e-mail are masked; GET /bids/{id}/reveal after step-up.
 
 Technical and financial bid evaluation: L1 (lowest-price, for goods/works)
 and QCBS (Quality & Cost Based Selection, for consultancy) computation, MSE
@@ -78,16 +93,30 @@ from fastapi import Depends, FastAPI, Header, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
-from common import Base, SessionLocal, audit_log, decode_token, get_db, init_db, ollama_generate, utcnow
+from datetime import timedelta
+
+from sqlalchemy import inspect, text
+
+import gjref
+from common import (Base, SessionLocal, audit_log, decode_token, get_db, init_db, ollama_generate, utcnow, engine,
+                    install_usage_tracking, claims as claims_dep, require_roles, mask_name, mask_mobile, mask_email,
+                    check_reveal, get_json, post_json, sha256_hex)
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("bid-evaluation-service")
 
-from models import Award, Bid, Evaluation, NegotiationLog, Tender  # noqa: E402  (needs Base from common first)
+from models import (Award, Bid, Evaluation, NegotiationLog, Tender, TenderItem, RCEmpanelment,  # noqa: E402
+                    AiDraftRecord)
 
 SERVICE_NAME = "bid-evaluation-service"
 AI_USECASE_URL = os.getenv("AI_USECASE_URL", "http://ai-usecase-service:8024")
 TENDERPUB_URL = os.getenv("TENDERPUB_URL", "http://tender-publishing-service:8004")
+VENDOR_URL = os.getenv("VENDOR_URL") or gjref.url("vendor-master-service")
+TBC = "illustrative - to be confirmed by the Department"
+RC_L1_SHARE = 0.6        # share of quantity to the L1 supplier under parallel rate contracts (illustrative)
+PBG_RATE = 0.03          # performance security (illustrative)
+STAMP_RATE = 0.001       # e-stamp duty on the agreement value (illustrative; Gujarat Stamp Act schedule to be confirmed)
+AWARD_ROLES = ("TenderCommittee", "ProcurementOfficer")
 
 # --------------------------------------------------------------------------
 # Evaluation policy constants.
@@ -114,12 +143,16 @@ ELIGIBILITY_CHECKLIST_TEMPLATE = [
     "Similar assignment / work experience certificate(s)",
     "Self-declaration of no current debarment or blacklisting",
     "Power of Attorney / authorized signatory proof",
+    "Valid drug licence (Form 20B/21B) or manufacturing licence (Form 25/28), where drugs are quoted",
+    "Valid WHO-GMP / quality certificate for quoted products",
+    "Samples submitted for NABL testing, where required",
 ]
 
 app = FastAPI(
     title="bid-evaluation-service",
     description="Technical and financial bid evaluation (L1/QCBS, MSE & Make-in-India preference, negotiation guardrail)",
 )
+install_usage_tracking(app)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -149,6 +182,12 @@ class BidCreate(BaseModel):
     class_local: str = ""
     blacklisted: bool = False
     technical_proposal_summary: str | None = None  # the bidder's technical proposal, evaluated in stage 2
+    # Gujarat health additions
+    vendor_code: str | None = None
+    item_rates: dict[str, float] | None = None
+    signatory_name: str | None = None
+    signatory_mobile: str | None = None
+    signatory_email: str | None = None
 
 
 class NegotiateRequest(BaseModel):
@@ -208,71 +247,71 @@ class AwardCreateIn(BaseModel):
 # --------------------------------------------------------------------------
 # Startup
 # --------------------------------------------------------------------------
-L1_DEMO_TITLE = "Supply & Installation of Networking Equipment — State Data Centre"
-QCBS_DEMO_TITLE = "Selection of Consultant for GIS-Based Asset Management System — KMDA Engineering Directorate"
+L1_DEMO_TITLE = "Supply & installation of networking equipment — State Data Centre (Health)"
+QCBS_DEMO_TITLE = "Selection of consultant: GIS-based health facility asset register — Commissionerate of Health"
+DRUG_RC_NIT = "GMSCL/DRG/RC/2026-27/014"
+GMERS_NIT = "GMERS/EQP/CMC/2026-27/006"
+AS_OF = datetime.fromisoformat(gjref.AS_OF).replace(tzinfo=timezone.utc)
 
 QCBS_DEMO_SCOPE_OF_WORK = (
-    "KMDA proposes to engage a consultant to design, develop and implement a GIS-based Asset Management "
-    "System covering underground drainage, water supply and road infrastructure assets across its "
-    "jurisdiction. Scope includes: (a) field-level digitization of asset inventory using GPS/GNSS survey "
-    "and integration with KMDA's existing GIS base layers; (b) development of a web-based asset "
-    "management application with role-based access, work-order and maintenance-history tracking, and "
-    "dashboards for the Engineering Directorate; (c) integration with KMDA's existing e-Governance and "
-    "financial systems for asset-linked budgeting; (d) capacity building and hands-on training for KMDA "
-    "engineering staff; (e) a 12-month post-go-live operations & maintenance support period. Deliverables "
-    "are phased over 18 months with defined milestones for survey completion, application UAT, staff "
-    "training completion and go-live."
+    "The Commissionerate of Health, Gujarat proposes to engage a consultant to design, develop and implement a GIS-based "
+    "asset register of public health facilities (district hospitals, CHCs, PHCs and Ayushman Arogya Mandirs). Scope: "
+    "(a) field digitisation of buildings, biomedical equipment and cold-chain points using GPS survey, integrated with the "
+    "State GIS base layers; (b) a web application with role-based access, maintenance history and dashboards for the "
+    "Commissionerate; (c) integration with the data lake's facility master and the equipment telemetry feed; "
+    "(d) training of district engineering staff; (e) 12 months of operations support after go-live. Deliverables are "
+    "phased over 18 months (survey completion, UAT, training, go-live)."
 )
 
 
+def _signatory(seed_key: str) -> tuple[str, str, str]:
+    rng = gjref._rng("signatory", seed_key)
+    fn, ln = rng.choice(gjref.FIRST), rng.choice(gjref.LAST)
+    return f"{fn} {ln}", f"9{rng.randint(100000000, 999999999)}", f"{fn.lower()}.{ln.lower()}@bidder.example.in"
+
+
 def _seed_demo_tender(db) -> None:
-    """Idempotent (gated on this tender's own title, not "any tender exists"
-    — see _seed_qcbs_pipeline_demo docstring for why that distinction
-    matters). Seeds one L1 goods tender with a mix of MSE / Class-I bids,
-    already carried all the way through the staged workflow (eligibility,
-    technical evaluation, presentation, publish, financial opening) so
-    /tenders/{id}/evaluate is demoable immediately — this is the "a previous
-    evaluation cycle already ran, come see the result" example, contrasted
-    with the QCBS tender below which is left mid-pipeline on purpose."""
+    """Idempotent by title. An L1 goods tender carried through every stage, so /evaluate is demoable at once."""
     if db.query(Tender).filter(Tender.title == L1_DEMO_TITLE).first():
         return
     now = utcnow()
     tender = Tender(
         title=L1_DEMO_TITLE, category="goods", method="L1", estimated_value=5_200_000.0, status="published",
-        technical_qualifying_score=60.0,  # this RFP's own fixed cutoff (lower than the 70 default) — see below
-        evaluation_terms_locked=True, evaluation_terms_set_by="system (seed)", evaluation_terms_set_at=now,
-        technical_published=True, technical_published_at=now,
-        financial_opened=True, financial_opened_at=now,
+        technical_qualifying_score=60.0, evaluation_terms_locked=True, evaluation_terms_set_by="system (seed)",
+        evaluation_terms_set_at=now, technical_published=True, technical_published_at=now,
+        financial_opened=True, financial_opened_at=now, agency="COMM", nit_ref="COMM/IT/OT/2026-27/004",
+        evaluation_basis="L1", stage="financial",
     )
     db.add(tender)
     db.flush()
 
     def _seed_bid(vendor, score, price, mse_flag, mse_category, class_local, cleared):
-        checklist = [{"item": i, "status": "pass", "remark": None} for i in ELIGIBILITY_CHECKLIST_TEMPLATE]
+        checklist = [{"item": i, "status": "pass" if "drug" not in i.lower() and "NABL" not in i else "not_applicable",
+                      "remark": None} for i in ELIGIBILITY_CHECKLIST_TEMPLATE]
+        nm, mob, mail = _signatory(vendor)
         bid = Bid(
-            tender_id=tender.id, vendor=vendor, price=price, mse_flag=mse_flag,
-            mse_category=mse_category, class_local=class_local,
-            eligibility_status="eligible", eligibility_checklist_json=json.dumps(checklist),
+            tender_id=tender.id, vendor=vendor, price=price, mse_flag=mse_flag, mse_category=mse_category,
+            class_local=class_local, eligibility_status="eligible", eligibility_checklist_json=json.dumps(checklist),
             eligibility_remark="All eligibility documents in order (seed data).",
             eligibility_reviewed_by="Procurement Officer (seed)", eligibility_reviewed_at=now,
             committee_technical_score=score,
-            committee_technical_report=f"Technical proposal reviewed against the tender specifications; scored {score}/100 (seed data — prior evaluation cycle).",
+            committee_technical_report=f"Technical proposal reviewed against the specifications; scored {score}/100 (seed data).",
             committee_evaluated_by="Technical Evaluation Committee (seed)", committee_evaluated_at=now,
-            technical_cleared=cleared,
+            technical_cleared=cleared, signatory_name=nm, signatory_mobile=mob, signatory_email=mail,
         )
         if cleared:
             bid.presentation_score = score
             bid.presentation_notes = "Presentation held; no material change to the written proposal score (seed data)."
             bid.presentation_panelists = "Technical Evaluation Committee (seed)"
             bid.presented_at = now
-            bid.technical_score = score  # published (see Bid.technical_score docstring)
+            bid.technical_score = score
         return bid
 
     bids = [
-        _seed_bid("Alpha Systems Pvt Ltd", 78, 4_850_000.0, False, "", "Class-II", True),
-        _seed_bid("Bharat MSE Technologies", 72, 4_950_000.0, True, "Women-owned", "Class-II", True),
-        _seed_bid("Chandra Local Manufacturers", 68, 5_100_000.0, False, "", "Class-I", True),
-        _seed_bid("Delta Traders", 55, 4_700_000.0, False, "", "", False),
+        _seed_bid("Alpha Systems (demo)", 78, 4_850_000.0, False, "", "Class-II", True),
+        _seed_bid("Sabarmati MSE Technologies (demo)", 72, 4_950_000.0, True, "Women", "Class-II", True),
+        _seed_bid("Chandra Local Manufacturers (demo)", 68, 5_100_000.0, False, "", "Class-I", True),
+        _seed_bid("Delta Traders (demo)", 55, 4_700_000.0, False, "", "", False),
     ]
     db.add_all(bids)
     db.commit()
@@ -280,100 +319,242 @@ def _seed_demo_tender(db) -> None:
 
 
 def _seed_qcbs_pipeline_demo(db) -> None:
-    """Idempotent, gated on THIS tender's own title — deliberately NOT on
-    "any tender already exists" the way the old single-tender seed check
-    used to be. That blanket gate would silently stop this tender from ever
-    being seeded on any deployment that already has the L1 demo tender
-    (i.e. every existing running instance) — the same class of "seed logic
-    quietly never runs again" reliability bug this session already had to
-    fix once for tender-publishing-service's knowledge-base sync. A plain
-    container rebuild must be enough to pick up new seed data.
-
-    Seeds one consultancy/QCBS tender with 3 bidders carrying full
-    eligibility-checklist and technical-proposal input data, but otherwise
-    LEFT AT THE START of the staged workflow (module docstring) — no
-    eligibility verdicts, AI/committee scores, presentations, or opened
-    prices — so the full pipeline (eligibility scrutiny -> AI-assisted
-    technical evaluation -> committee score -> presentations -> publish ->
-    financial bid opening -> QCBS computation -> award) can be walked
-    through live as a demo, on a tender that genuinely calls for QCBS (a
-    specialist consultancy assignment) rather than reusing the L1 goods
-    tender above."""
+    """Idempotent by title. A QCBS consultancy tender left at the START of the staged workflow, to walk through live."""
     if db.query(Tender).filter(Tender.title == QCBS_DEMO_TITLE).first():
         return
     tender = Tender(
         title=QCBS_DEMO_TITLE, category="consultancy", method="QCBS", estimated_value=45_000_000.0,
         status="published", scope_of_work=QCBS_DEMO_SCOPE_OF_WORK,
         qcbs_technical_weight=QCBS_TECHNICAL_WEIGHT, qcbs_financial_weight=QCBS_FINANCIAL_WEIGHT,
-        technical_qualifying_score=TECH_QUALIFY_THRESHOLD,
+        technical_qualifying_score=TECH_QUALIFY_THRESHOLD, agency="COMM", nit_ref="COMM/SRV/RFP/2026-27/007",
+        evaluation_basis="QCBS", stage="eligibility",
     )
     db.add(tender)
     db.flush()
-    bids = [
-        Bid(
-            tender_id=tender.id, vendor="GeoSpatial Systems India Pvt Ltd", price=43_000_000.0,
-            mse_flag=False, mse_category="", class_local="Class-II",
-            technical_proposal_summary=(
-                "GeoSpatial Systems proposes a phased GIS asset-management rollout beginning with a "
-                "GNSS-based field survey (sub-metre accuracy) of all drainage, water-supply and road "
-                "assets, integrated directly into KMDA's existing GIS base layers via a PostGIS-backed "
-                "asset registry. Our team has delivered comparable asset-digitization and O&M "
-                "dashboarding platforms for two metropolitan development authorities, covering over "
-                "15,000 assets each, and includes three GISP-certified geospatial engineers and a "
-                "dedicated training lead. The proposed application supports role-based work-order "
-                "tracking, budget-linked maintenance history, and API integration with KMDA's "
-                "e-Governance stack, with a documented 18-month milestone plan (survey completion, UAT, "
-                "staff training, go-live) and a 12-month post-go-live O&M support commitment with "
-                "defined SLA response times."
-            ),
-        ),
-        Bid(
-            tender_id=tender.id, vendor="Bharat Digital Infra Solutions", price=41_200_000.0,
-            mse_flag=True, mse_category="General", class_local="Class-II",
-            technical_proposal_summary=(
-                "Bharat Digital Infra Solutions will undertake asset digitization and development of a "
-                "web-based asset management portal for KMDA, using standard GIS and database tools. We "
-                "have prior experience building municipal record-management systems for two ULBs in "
-                "West Bengal, and our team includes GIS analysts and application developers capable of "
-                "delivering the required modules. We propose a training program for KMDA staff and will "
-                "provide support during the initial rollout period, with the detailed survey "
-                "methodology and integration approach to be finalized in consultation with KMDA's "
-                "Engineering Directorate during project inception."
-            ),
-        ),
-        Bid(
-            tender_id=tender.id, vendor="Prantik Geomatics & Engineering LLP", price=38_500_000.0,
-            mse_flag=False, mse_category="", class_local="Class-I",
-            technical_proposal_summary=(
-                "Prantik Geomatics has carried out topographic and utility-mapping surveys within "
-                "KMDA's jurisdiction over the past four years, including drainage-network mapping for "
-                "two divisions, and is well placed to execute the field survey component of this "
-                "assignment using our existing base-map familiarity. Our proposal covers asset "
-                "inventory collection and basic GIS layer preparation; for the web-application "
-                "development and system integration components we intend to engage a technology "
-                "sub-consultant, whose detailed methodology and past project references will be "
-                "furnished during the technical presentation."
-            ),
-        ),
+    proposals = [
+        ("GeoSpatial Systems India (demo)", 43_000_000.0, False, "", "Class-II",
+         "Phased rollout starting with a GNSS field survey (sub-metre accuracy) of all facility buildings, biomedical "
+         "equipment and cold-chain points, loaded into a PostGIS asset registry integrated with the State GIS base layers "
+         "and the data lake's facility master. Comparable registers delivered for two state health departments (over 15,000 "
+         "assets each); three GISP-certified engineers and a training lead; documented 18-month milestone plan and 12 months "
+         "of operations support with SLA response times."),
+        ("Sabarmati Digital Infra (demo)", 41_200_000.0, True, "General", "Class-II",
+         "Asset digitisation and a web-based asset portal using standard GIS and database tools. Prior experience with "
+         "record-management systems for two municipal corporations in Gujarat. Training for district staff and support during "
+         "rollout; survey methodology and integration approach to be finalised during inception."),
+        ("Saurashtra Geomatics LLP (demo)", 38_500_000.0, False, "", "Class-I",
+         "Topographic and utility surveys for district hospitals in Saurashtra over four years; well placed to run the field "
+         "survey. Application development and integration will be sub-contracted to a technology partner whose methodology "
+         "will be presented at the technical presentation."),
     ]
-    db.add_all(bids)
+    for vendor, price, mse, cat, cls, summary in proposals:
+        nm, mob, mail = _signatory(vendor)
+        db.add(Bid(tender_id=tender.id, vendor=vendor, price=price, mse_flag=mse, mse_category=cat, class_local=cls,
+                   technical_proposal_summary=summary, signatory_name=nm, signatory_mobile=mob, signatory_email=mail))
     db.commit()
-    logger.info("[%s] seeded QCBS pipeline demo tender #%s with %s bids", SERVICE_NAME, tender.id, len(bids))
+    logger.info("[%s] seeded QCBS pipeline demo tender #%s", SERVICE_NAME, tender.id)
+
+
+# item, qty, {vendor_code: rate}
+DRUG_RC_ITEMS = [
+    ("DRG-001", 1_500_000, {"V-SUN": 3.95, "V-KAV": 4.05, "V-NAR": 4.10, "V-XYZ": 3.60}),
+    ("DRG-002", 1_500_000, {"V-SUN": 17.90, "V-KAV": 17.20, "V-NAR": 16.80, "V-XYZ": 15.90}),
+    ("DRG-005", 2_000_000, {"V-SUN": 2.55, "V-KAV": 2.42, "V-NAR": 2.50, "V-XYZ": 2.20}),
+    ("DRG-008", 600_000, {"V-SUN": 29.50, "V-KAV": 30.40, "V-NAR": 31.20, "V-XYZ": 27.00}),
+]
+NABL_FAIL = {("V-NAR", "DRG-002"): "Not of standard quality: dissolution test failed"}
+
+
+def _seed_drug_rc(db) -> None:
+    """A completed GMSCL drug rate-contract tender: item-wise L1, NABL results, L1 matching with 2 suppliers per item,
+    committee awards, LOI accepted, PBG captured, stamping / signing hand-off."""
+    if db.query(Tender).filter(Tender.nit_ref == DRUG_RC_NIT).first():
+        return
+    opened = AS_OF - timedelta(days=40)
+    tender = Tender(title="Rate contract (2026-28): analgesics, antibiotics and ORS", category="goods", method="L1",
+                    estimated_value=64_000_000.0, status="awarded", agency="GMSCL", nit_ref=DRUG_RC_NIT,
+                    evaluation_basis="item_wise_l1", rc_max_suppliers=2, stage="awarded", source_tender_id=None,
+                    technical_qualifying_score=60.0, evaluation_terms_locked=True, evaluation_terms_set_by="procure",
+                    evaluation_terms_set_at=opened - timedelta(days=30), technical_published=True,
+                    technical_published_at=opened - timedelta(days=3), financial_opened=True, financial_opened_at=opened,
+                    created_at=opened - timedelta(days=45))
+    db.add(tender)
+    db.flush()
+    for code, qty, _rates in DRUG_RC_ITEMS:
+        ref = gjref.ITEM_BY_CODE[code]
+        db.add(TenderItem(tender_id=tender.id, item_code=code, name=ref[1], unit=ref[3], qty=qty, estimated_rate=ref[4]))
+    bids = {}
+    for vcode in ("V-SUN", "V-KAV", "V-NAR", "V-XYZ"):
+        v = gjref.VENDOR_BY_CODE[vcode]
+        rates = {code: r[vcode] for code, _q, r in DRUG_RC_ITEMS}
+        total = round(sum(q * r[vcode] for _c, q, r in DRUG_RC_ITEMS), 2)
+        nm, mob, mail = _signatory(vcode)
+        debarred = vcode in gjref.DEBARRED
+        nabl = [] if debarred else [
+            {"item_code": code, "batch": f"S{gjref._rng('batch', vcode, code).randint(10000, 99999)}",
+             "lab": "NABL-accredited drug testing laboratory, Vadodara (demo)",
+             "report_no": f"NABL/DT/2026/{gjref._rng('rep', vcode, code).randint(1000, 9999)}",
+             "result": "fail" if (vcode, code) in NABL_FAIL else "pass",
+             "remark": NABL_FAIL.get((vcode, code), "Standard quality"),
+             "tested_on": (opened - timedelta(days=10)).date().isoformat()} for code, _q, _r in DRUG_RC_ITEMS]
+        checklist = [{"item": i, "status": "fail" if debarred and "debarment" in i else "pass", "remark": None}
+                     for i in ELIGIBILITY_CHECKLIST_TEMPLATE]
+        b = Bid(tender_id=tender.id, vendor=v[1], vendor_code=vcode, price=total, mse_flag=v[5], class_local=v[7] or "",
+                mse_category="General" if v[5] else "", blacklisted=debarred,
+                eligibility_status="ineligible" if debarred else "eligible",
+                eligibility_checklist_json=json.dumps(checklist),
+                eligibility_remark=("Rejected at bid acceptance: on the published debarment register "
+                                    "(GMSCL/QA/DEB/2025/07)") if debarred else "All documents in order; licences and WHO-GMP valid.",
+                eligibility_reviewed_by="procure", eligibility_reviewed_at=opened - timedelta(days=20),
+                committee_technical_score=None if debarred else 75.0,
+                committee_technical_report=None if debarred else "Technical bid responsive; samples drawn for NABL testing.",
+                committee_evaluated_by=None if debarred else "evaluator",
+                committee_evaluated_at=None if debarred else opened - timedelta(days=5),
+                technical_cleared=not debarred, technical_score=0.0 if debarred else 75.0,
+                item_rates_json=json.dumps(rates), nabl_results_json=json.dumps(nabl),
+                debarment_check_json=json.dumps({"result": "debarred" if debarred else "clear", "source": "vendor-master-service",
+                                                 "checked_at": (opened - timedelta(days=25)).isoformat()}),
+                signatory_name=nm, signatory_mobile=mob, signatory_email=mail, created_at=opened - timedelta(days=26))
+        db.add(b)
+        db.flush()
+        bids[vcode] = b
+    # L1 matching: L1 + next-ranked offers (V-NAR declines DRG-005, next-ranked V-SUN accepts)
+    matched = {"DRG-001": [("V-SUN", "l1"), ("V-KAV", "accepted"), ("V-NAR", None)],
+               "DRG-002": [("V-KAV", "l1"), ("V-SUN", "accepted")],
+               "DRG-005": [("V-KAV", "l1"), ("V-NAR", "declined"), ("V-SUN", "accepted")],
+               "DRG-008": [("V-SUN", "l1"), ("V-KAV", "accepted"), ("V-NAR", None)]}
+    l1_rate = {}
+    for code, _q, rates in DRUG_RC_ITEMS:
+        rank = 0
+        for vcode, status in matched[code]:
+            rank += 1
+            if status is None:
+                continue
+            if status == "l1":
+                l1_rate[code] = rates[vcode]
+            db.add(RCEmpanelment(tender_id=tender.id, item_code=code, bid_id=bids[vcode].id, vendor=bids[vcode].vendor,
+                                 vendor_code=vcode, rank=rank, quoted_rate=rates[vcode], offered_rate=l1_rate[code],
+                                 status=status, responded_at=opened + timedelta(days=4), created_at=opened + timedelta(days=2)))
+    results = _item_wise(db, tender)
+    db.add(Evaluation(tender_id=tender.id, method="L1", awardee_vendor="V-SUN, V-KAV (rate contract)",
+                      awardee_price=0.0, l1_vendor="item-wise", l1_price=0.0,
+                      results_json=json.dumps({"item_wise": results, "basis": "item_wise_l1"}, default=str),
+                      evaluated_by="evaluator", created_at=opened + timedelta(days=1)))
+    db.flush()
+    ev = db.query(Evaluation).filter(Evaluation.tender_id == tender.id).first()
+    for k, vcode in enumerate(("V-SUN", "V-KAV")):
+        scope = []
+        value = 0.0
+        for code, qty, _r in DRUG_RC_ITEMS:
+            role = next((st for vc, st in matched[code] if vc == vcode), None)
+            if role in ("l1", "accepted"):
+                share = RC_L1_SHARE if role == "l1" else 1 - RC_L1_SHARE
+                scope.append({"item_code": code, "role": "L1" if role == "l1" else "L1-matched", "rate": l1_rate[code],
+                              "share": share, "qty": round(qty * share)})
+                value += qty * share * l1_rate[code]
+        value = round(value, 2)
+        award_date = opened + timedelta(days=8)
+        db.add(Award(evaluation_id=ev.id, tender_id=tender.id, awardee_vendor=bids[vcode].vendor, vendor_code=vcode,
+                     awarded_price=value, basis="rc_item_wise_l1_matching", is_override=False,
+                     award_date=award_date, committee_ref="TC/GMSCL/2026/41 (demo)", items_json=json.dumps(scope),
+                     loi_issued=True, loi_issued_date=award_date + timedelta(days=1),
+                     loi_ref=f"GMSCL/LOI/2026-27/{140 + k}", loi_accepted=True, loi_accepted_date=award_date + timedelta(days=4),
+                     pbg_amount=round(value * PBG_RATE, 2), pbg_bank=("State Bank of India, Gandhinagar (demo)" if k == 0
+                                                                      else "Bank of Baroda, Vadodara (demo)"),
+                     pbg_number=f"PBG/{2026}/{gjref._rng('pbg', vcode).randint(100000, 999999)}",
+                     pbg_valid_until=datetime(2028, 5, 30, tzinfo=timezone.utc), pbg_verified=(k == 0),
+                     pbg_verified_at=award_date + timedelta(days=7) if k == 0 else None,
+                     stamp_duty=round(value * STAMP_RATE, 2) if k == 0 else None,
+                     estamp_ref=f"IN-GJ{gjref._rng('estamp', vcode).randint(10 ** 9, 10 ** 10 - 1)}" if k == 0 else None,
+                     signing_status="handed_off" if k == 0 else "pending",
+                     signing_ref="contract-management-service: RC-GMSCL-2026-01 (e-sign)" if k == 0 else None,
+                     created_by="committee", created_at=award_date))
+    wm = sha256_hex(DRUG_RC_NIT, "comparative_statement", "seed")
+    db.add(AiDraftRecord(tender_id=tender.id, kind="comparative_statement", watermark_hash=wm, model_version="fallback-template",
+                         evidence_certificate_json=json.dumps({"issued": False, "note": "issued when the draft is regenerated "
+                                                                                        "with audit-trail-service running"}),
+                         content="AI-ASSISTED DRAFT - item-wise comparative statement (see item-wise L1).",
+                         committee_decision="modified", created_by="evaluator", created_at=opened + timedelta(days=2)))
+    db.commit()
+    logger.info("[%s] seeded completed drug rate-contract tender %s", SERVICE_NAME, DRUG_RC_NIT)
+
+
+def _seed_gmers(db) -> None:
+    """GMERS equipment tender in technical evaluation (eligibility done, AI / committee scoring in progress)."""
+    if db.query(Tender).filter(Tender.nit_ref == GMERS_NIT).first():
+        return
+    started = AS_OF - timedelta(days=12)
+    tender = Tender(title="Ventilators and multipara monitors: supply, installation and 5-year CMC", category="goods",
+                    method="L1", estimated_value=21_500_000.0, status="published", agency="GMERS", nit_ref=GMERS_NIT,
+                    evaluation_basis="L1", stage="technical_evaluation", technical_qualifying_score=70.0,
+                    evaluation_terms_locked=True, evaluation_terms_set_by="procure", evaluation_terms_set_at=started,
+                    scope_of_work="30 ICU ventilators (invasive and non-invasive) and 60 multipara monitors for GMERS "
+                                  "medical colleges, with installation, training and a 5-year CMC at 95% uptime.",
+                    created_at=started - timedelta(days=30))
+    db.add(tender)
+    db.flush()
+    rows = [
+        ("MedEquip India (demo)", "V-MED", 20_400_000.0, False, "Class-II", "eligible", 81.0, 78.0, True,
+         "Offers ICU ventilators with invasive and non-invasive modes, CE and CDSCO-licensed, 5-year CMC with 95% uptime "
+         "and on-site engineers in Ahmedabad and Vadodara."),
+        ("Pranav Biomedical (demo)", None, 19_800_000.0, True, "Class-I", "eligible", 72.0, None, False,
+         "Make-in-India ventilators (Class-I), non-invasive mode via optional module; service network through dealers."),
+        ("Lifeline Medisystems (demo)", None, 21_100_000.0, False, "Class-II", "pending", None, None, False,
+         "Imported ventilators and monitors; CMC through an authorised service partner."),
+    ]
+    for vendor, code, price, mse, cls, elig, ai, committee, cleared, proposal in rows:
+        nm, mob, mail = _signatory(vendor)
+        checklist = [{"item": i, "status": "pass" if elig == "eligible" else "pending", "remark": None}
+                     for i in ELIGIBILITY_CHECKLIST_TEMPLATE]
+        db.add(Bid(tender_id=tender.id, vendor=vendor, vendor_code=code, price=price, mse_flag=mse, class_local=cls,
+                   mse_category="General" if mse else "", eligibility_status=elig, eligibility_checklist_json=json.dumps(checklist),
+                   eligibility_remark="Documents verified." if elig == "eligible" else None,
+                   eligibility_reviewed_by="procure" if elig == "eligible" else None,
+                   eligibility_reviewed_at=started if elig == "eligible" else None,
+                   technical_proposal_summary=proposal, ai_technical_score=ai,
+                   ai_technical_rationale=("Advisory: proposal addresses invasive and non-invasive modes and CMC uptime."
+                                           if ai else None), ai_scored_at=started + timedelta(days=2) if ai else None,
+                   committee_technical_score=committee,
+                   committee_technical_report="Meets the specification; CMC network adequate." if committee else None,
+                   committee_evaluated_by="evaluator" if committee else None,
+                   committee_evaluated_at=started + timedelta(days=4) if committee else None, technical_cleared=cleared,
+                   debarment_check_json=json.dumps({"result": "clear" if code else "not_found", "source": "vendor-master-service"}),
+                   signatory_name=nm, signatory_mobile=mob, signatory_email=mail, created_at=started - timedelta(days=2)))
+    db.commit()
+    logger.info("[%s] seeded GMERS tender %s in technical evaluation", SERVICE_NAME, GMERS_NIT)
+
+
+def _migrate():
+    insp = inspect(engine)
+    for m in (Tender, Bid, Evaluation, Award, NegotiationLog, TenderItem, RCEmpanelment, AiDraftRecord):
+        t = m.__table__
+        if not insp.has_table(t.name):
+            continue
+        have = {c["name"] for c in insp.get_columns(t.name)}
+        with engine.begin() as conn:
+            for col in t.columns:
+                if col.name not in have:
+                    conn.execute(text(f'ALTER TABLE {t.name} ADD COLUMN IF NOT EXISTS "{col.name}" '
+                                      f'{col.type.compile(dialect=engine.dialect)}'))
 
 
 @app.on_event("startup")
 def on_startup():
     try:
         init_db(Base)
+        _migrate()
         db = SessionLocal()
         try:
-            _seed_demo_tender(db)
-            _seed_qcbs_pipeline_demo(db)
+            for fn in (_seed_drug_rc, _seed_gmers, _seed_demo_tender, _seed_qcbs_pipeline_demo):
+                try:
+                    fn(db)
+                except Exception:  # noqa: BLE001
+                    db.rollback()
+                    logger.warning("[%s] seed %s failed (non-fatal)", SERVICE_NAME, fn.__name__, exc_info=True)
         finally:
             db.close()
     except Exception as e:  # noqa: BLE001 — startup must never crash
         logger.warning("[%s] startup init/seed failed (non-fatal): %s", SERVICE_NAME, e)
-
 
 # --------------------------------------------------------------------------
 # Evaluation helpers (pure functions over ORM rows — no AI involved)
@@ -540,7 +721,33 @@ def _bid_out(b: Bid, tender: Tender | None = None) -> dict:
         "presented_at": _iso(b.presented_at),
         # stage 4 — published (final) technical score, used by L1/QCBS computation
         "technical_score": b.technical_score,
+        # Gujarat health additions
+        "vendor_code": b.vendor_code,
+        "item_rates": None if sealed else _loads(b.item_rates_json, {}),
+        "nabl_results": _loads(b.nabl_results_json, []),
+        "sample_status": _sample_status(b),
+        "debarment_check": _loads(b.debarment_check_json, None),
+        "signatory_name": mask_name(b.signatory_name) if b.signatory_name else None,
+        "signatory_mobile": mask_mobile(b.signatory_mobile) if b.signatory_mobile else None,
+        "signatory_email": mask_email(b.signatory_email) if b.signatory_email else None,
+        "masked": True, "reveal": f"/api/bid-evaluation-service/bids/{b.id}/reveal",
     }
+
+
+def _loads(v, default):
+    try:
+        return json.loads(v) if v else default
+    except Exception:  # noqa: BLE001
+        return default
+
+
+def _sample_status(b: Bid) -> str:
+    res = _loads(b.nabl_results_json, [])
+    if not res:
+        return "not_tested"
+    if any(r.get("result") == "fail" for r in res):
+        return "fail_some"
+    return "pass"
 
 
 def _derive_method(category: str) -> str:
@@ -556,7 +763,8 @@ def health():
     return {
         "service": SERVICE_NAME,
         "status": "ok",
-        "frd_reference": "FRD v4 Section 5.4",
+        "module": "C",
+        "frd_reference": "FRD v4 Section 5.4; spec CM-08, CM-09, CM-10",
         "time": datetime.now(timezone.utc).isoformat(),
     }
 
@@ -573,7 +781,8 @@ def list_tenders(db=Depends(get_db)):
         "tenders": [
             {"id": t.id, "title": t.title, "category": t.category, "method": t.method,
              "estimated_value": t.estimated_value, "status": t.status, "bid_count": len(t.bids),
-             "source_tender_id": t.source_tender_id}
+             "source_tender_id": t.source_tender_id, "agency": t.agency, "nit_ref": t.nit_ref,
+             "evaluation_basis": t.evaluation_basis or t.method, "stage": t.stage}
             for t in tenders
         ],
     }
@@ -606,6 +815,7 @@ def list_publishable_tenders(authorization: str | None = Header(None), db=Depend
     what the frontend offers when starting a new evaluation, so the officer
     picks a real tender instead of retyping one (v2.0)."""
     already_linked = {t.source_tender_id for t in db.query(Tender).filter(Tender.source_tender_id.isnot(None)).all()}
+    linked_nits = {t.nit_ref for t in db.query(Tender).filter(Tender.nit_ref.isnot(None)).all()}
     try:
         headers = {"Authorization": authorization} if authorization else {}
         r = httpx.get(f"{TENDERPUB_URL}/tenders", headers=headers, timeout=10.0)
@@ -618,7 +828,8 @@ def list_publishable_tenders(authorization: str | None = Header(None), db=Depend
         raise HTTPException(status_code=502, detail="could not reach tender-publishing-service")
     return {
         "service": SERVICE_NAME,
-        "tenders": [t for t in published if t.get("id") not in already_linked and t.get("status") != "draft"],
+        "tenders": [t for t in published if t.get("id") not in already_linked and t.get("status") != "draft"
+                    and t.get("nit_ref") not in linked_nits],
     }
 
 
@@ -656,6 +867,9 @@ def create_tender_from_published(published_tender_id: int, authorization: str | 
         estimated_value=published.get("estimated_value") or 0.0,
         status="published",
         source_tender_id=published_tender_id,
+        agency=published.get("agency"), nit_ref=published.get("nit_ref"),
+        evaluation_basis="item_wise_l1" if (published.get("contract_family") == "Rate contract") else _derive_method(category),
+        rc_max_suppliers=2 if published.get("contract_family") == "Rate contract" else None, stage="eligibility",
     )
     db.add(tender)
     db.commit()
@@ -686,6 +900,11 @@ def _tender_out(tender: Tender, include_bids: bool = True) -> dict:
         "technical_published_at": _iso(tender.technical_published_at),
         "financial_opened": tender.financial_opened,
         "financial_opened_at": _iso(tender.financial_opened_at),
+        # Gujarat health additions
+        "agency": tender.agency, "nit_ref": tender.nit_ref, "evaluation_basis": tender.evaluation_basis or tender.method,
+        "rc_max_suppliers": tender.rc_max_suppliers, "stage": tender.stage,
+        "items": [{"item_code": i.item_code, "name": i.name, "unit": i.unit, "qty": i.qty, "estimated_rate": i.estimated_rate}
+                  for i in _items(tender)],
     }
     if include_bids:
         d["bids"] = [_bid_out(b, tender) for b in tender.bids]
@@ -713,12 +932,40 @@ def add_bid(tender_id: int, payload: BidCreate, authorization: str | None = Head
     tender = db.query(Tender).filter(Tender.id == tender_id).first()
     if not tender:
         raise HTTPException(status_code=404, detail="tender not found")
-    bid = Bid(tender_id=tender_id, **payload.model_dump())
+    claims = decode_token(authorization or "")
+    # CM-03: one-click blacklist / debarment check before the bidder is accepted
+    params = {"context": tender.nit_ref or f"evaluation-tender-{tender_id}"}
+    if payload.vendor_code:
+        params["code"] = payload.vendor_code
+    params["name"] = payload.vendor
+    from urllib.parse import urlencode
+    chk = get_json(f"{VENDOR_URL}/vendors/check?{urlencode(params)}", timeout=4.0,
+                   token=authorization or "")
+    if chk and chk.get("debarred"):
+        audit_log("bid_rejected_debarred", "bid", entity_id=f"{tender_id}:{payload.vendor}", actor=claims.get("sub", "system"),
+                  detail={"reasons": chk.get("reasons")})
+        raise HTTPException(status_code=409, detail={"message": "bidder is on the debarment register and cannot be accepted",
+                                                     "check": chk})
+    data = payload.model_dump()
+    rates = data.pop("item_rates", None)
+    bid = Bid(tender_id=tender_id, **data)
+    if rates:
+        bid.item_rates_json = json.dumps(rates)
+        if not bid.price:
+            items = {i.item_code: i.qty for i in _items(tender)}
+            bid.price = round(sum(items.get(k, 0) * v for k, v in rates.items()), 2)
+    if chk and not payload.vendor_code and chk.get("code"):
+        bid.vendor_code = chk.get("code")
+    if chk and chk.get("mse_flag") is not None and chk.get("found"):
+        bid.mse_flag = bid.mse_flag or bool(chk.get("mse_flag"))
+    bid.debarment_check_json = json.dumps({"result": (chk or {}).get("result", "not_reachable"),
+                                           "source": "vendor-master-service", "checked_at": utcnow().isoformat(),
+                                           "reasons": (chk or {}).get("reasons", []),
+                                           "note": None if chk else "vendor-master-service not reachable; check again before award"})
     db.add(bid)
     db.commit()
-    claims = decode_token(authorization or "")
     audit_log("submit_bid", "bid", entity_id=f"{tender_id}:{bid.id}", actor=claims.get("sub", "system"),
-              detail={"vendor": bid.vendor})
+              detail={"vendor": bid.vendor, "debarment_check": (chk or {}).get("result", "not_reachable")})
     return {"service": SERVICE_NAME, "tender_id": tender_id, "bid": _bid_out(bid, tender)}
 
 
@@ -1266,6 +1513,14 @@ def _award_out(a: Award) -> dict:
         "loi_issued_date": a.loi_issued_date.isoformat() if a.loi_issued_date else None,
         "contracted": a.contracted, "contract_id": a.contract_id,
         "created_by": a.created_by, "created_at": a.created_at.isoformat() if a.created_at else None,
+        # CM-10 additions
+        "vendor_code": a.vendor_code, "committee_ref": a.committee_ref, "items": _loads(a.items_json, []),
+        "loi_ref": a.loi_ref, "loi_accepted": bool(a.loi_accepted), "loi_accepted_date": _iso(a.loi_accepted_date),
+        "pbg_amount": a.pbg_amount, "pbg_bank": a.pbg_bank, "pbg_number": a.pbg_number,
+        "pbg_valid_until": _iso(a.pbg_valid_until), "pbg_verified": bool(a.pbg_verified), "pbg_verified_at": _iso(a.pbg_verified_at),
+        "pbg_days_left": (a.pbg_valid_until - utcnow()).days if a.pbg_valid_until else None,
+        "stamp_duty": a.stamp_duty, "estamp_ref": a.estamp_ref, "signing_status": a.signing_status or "pending",
+        "signing_ref": a.signing_ref,
     }
 
 
@@ -1302,6 +1557,7 @@ def create_award(tender_id: int, payload: AwardCreateIn | None = None,
 
     claims = decode_token(authorization or "")
     actor = claims.get("sub", "system")
+    require_roles(claims, *AWARD_ROLES)   # CM-09: the committee decides; there is no automated award
 
     override_vendor = (payload.awardee_vendor or "").strip() if payload else ""
     is_override = bool(override_vendor and override_vendor != recommended_vendor)
@@ -1325,6 +1581,7 @@ def create_award(tender_id: int, payload: AwardCreateIn | None = None,
         evaluation_id=evaluation.id, tender_id=tender_id,
         awardee_vendor=awardee_vendor, awarded_price=awardee_price,
         basis=basis, is_override=is_override, override_reason=override_reason, created_by=actor,
+        signing_status="pending",
     )
     db.add(award)
     db.commit()
@@ -1354,6 +1611,7 @@ def issue_loi(award_id: int, authorization: str | None = Header(None), db=Depend
         raise HTTPException(status_code=409, detail="LOI already issued for this award")
     award.loi_issued = True
     award.loi_issued_date = datetime.now(timezone.utc)
+    award.loi_ref = award.loi_ref or f"{(award.tender.nit_ref if False else 'LOI')}/{award.tender_id}/{award.id}"
     db.commit()
     db.refresh(award)
     claims = decode_token(authorization or "")
@@ -1402,6 +1660,4 @@ def mark_contracted(award_id: int, body: MarkContractedRequest, authorization: s
     return _award_out(award)
 
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8006)
+@@TAIL@@

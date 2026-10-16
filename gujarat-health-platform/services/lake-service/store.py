@@ -245,7 +245,7 @@ CREATE TABLE IF NOT EXISTS catalogue (
 
 CREATE TABLE IF NOT EXISTS dictionary (
   dataset text, col text, dtype text, label_en text, label_gu text, description text, personal_kind text,
-  classification text, PRIMARY KEY(dataset, col));
+  classification text, policy_kind text, PRIMARY KEY(dataset, col));
 
 CREATE TABLE IF NOT EXISTS glossary (
   term text PRIMARY KEY, term_gu text, definition text, definition_gu text, datasets jsonb);
@@ -349,6 +349,9 @@ END $$;
 
 CREATE OR REPLACE FUNCTION bronze_immutable() RETURNS trigger LANGUAGE plpgsql AS $$
 BEGIN RAISE EXCEPTION 'bronze is immutable (append-only raw layer): % refused', TG_OP; END $$;
+
+CREATE OR REPLACE FUNCTION db_audit_append_only() RETURNS trigger LANGUAGE plpgsql AS $$
+BEGIN RAISE EXCEPTION 'db_audit is append-only: % refused', TG_OP; END $$;
 """
 
 ROW_AUDITED = ["sources", "mdm_golden", "mdm_review", "catalogue", "dictionary", "writeback_mappings", "writeback_runs",
@@ -373,5 +376,7 @@ def install_schema():
                 ex(f"DROP TRIGGER IF EXISTS trg_audit_{t}_{op.lower()} ON {t}", c=c)
                 ex(f"CREATE TRIGGER trg_audit_{t}_{op.lower()} AFTER {op} ON {t} REFERENCING {ref} "
                    f"FOR EACH STATEMENT EXECUTE FUNCTION {fn}()", c=c)
+        ex("DROP TRIGGER IF EXISTS trg_db_audit_append_only ON db_audit", c=c)
+        ex("CREATE TRIGGER trg_db_audit_append_only BEFORE UPDATE OR DELETE ON db_audit FOR EACH ROW EXECUTE FUNCTION db_audit_append_only()", c=c)
         ex("DROP TRIGGER IF EXISTS trg_bronze_immutable ON bronze", c=c)
         ex("CREATE TRIGGER trg_bronze_immutable BEFORE UPDATE OR DELETE ON bronze FOR EACH ROW EXECUTE FUNCTION bronze_immutable()", c=c)
