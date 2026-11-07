@@ -15,7 +15,7 @@ const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
  *   curl -X POST https://www.dpdpindia.in/api/send-campaign \
  *     -H "x-admin-secret: <CAMPAIGN_SECRET>" \
  *     -H "content-type: application/json" \
- *     -d '{"issueTitle":"...", "issueUrl":"https://www.dpdpindia.in/monthly-briefing-2026-10.html", "issueDeck":"..."}'
+ *     -d '{"issueTitle":"...", "issueUrl":"https://www.dpdpindia.in/monthly-briefing-2026-11.html", "issueDeck":"..."}'
  *
  * Note: Resend's free tier caps at 100 emails/day, 3,000/month. Once the
  * confirmed subscriber count regularly exceeds ~100, a single campaign send
