@@ -443,6 +443,7 @@ p[style*="font-weight:400"], p[style*="font-weight:300"] {
 }
 </style>
 
+<link rel="stylesheet" href="reading-ux.css">
 </head>
 <body>
 
@@ -677,7 +678,18 @@ p[style*="font-weight:400"], p[style*="font-weight:300"] {
 <!-- MAIN LAYOUT -->
 <div class="main-layout">
 <main>
+<!-- ux:panel:start -->
+<section class="ux-top" id="ux-top" aria-labelledby="ux-top-h">
+  <div class="ux-kicker">Read in 60 seconds</div>
+  <h2 id="ux-top-h">The five things that matter this month</h2>
+  <ol class="ux-top-list"><li><a class="ux-top-link" href="#t-who-is-reading-the-file"><span class="ux-top-sec">Focus story</span><span class="ux-top-title">Who Is Reading the File? AI, Gmail and Google Earth in Government Work</span><span class="ux-top-brief">A national advisory says AI agents reached live Indian systems and read records that no one noticed being read. The harder question is which AI tools officials themselves use on government files.</span></a></li><li><a class="ux-top-link" href="#t-dpdp-13-november"><span class="ux-top-sec">DPDP dates</span><span class="ux-top-title">What Switches On 13 November: Consent Managers, a Board With No Announced Members, and the Removal of Difficulties Order</span><span class="ux-top-brief">Only Rule 4 starts on 13 November. The Board that consent managers must register with has no announced members, and the main duties still begin on 13 May 2027.</span></a></li><li><a class="ux-top-link" href="#t-courts-tracker"><span class="ux-top-sec">Courts</span><span class="ux-top-title">Courts Tracker: the DNPA Challenge to the DPDP Act, Digital Arrest, Children's Social Media and the Sahyog Portal</span><span class="ux-top-brief">The Supreme Court issued notice on the news publishers' challenge on 27 October; the next hearing is 17 November.</span></a></li><li><a class="ux-top-link" href="#t-freeze-rules-converge"><span class="ux-top-sec">Banking</span><span class="ux-top-title">Frozen or Held? RBI's Draft Debit-Hold Rules and Three October High Court Rulings Point the Same Way</span><span class="ux-top-brief">Hold the disputed sum, give notice and reasons, set a time limit. The RBI draft and the Kerala, Rajasthan and Punjab &amp; Haryana courts converge.</span></a></li><li><a class="ux-top-link" href="#t-sbi-au-leaks"><span class="ux-top-sec">Incidents</span><span class="ux-top-title">SBI Confirms 3,897 Customer Records on the Dark Web; AU Small Finance Bank Probes a Salesforce-Platform Leak</span><span class="ux-top-brief">IFF says it found no customer notice from SBI, and no law requires one before May 2027. AU's ScarlettGroup claim is unverified.</span></a></li></ol>
+  <div class="ux-dates"><div class="ux-dates-title">Dates to diarise &middot; <a href="#t-november-watchlist" style="color:inherit;">full watchlist</a></div><ul><li><b>13 Nov</b>DPDP Rule 4 (consent managers) takes effect</li><li><b>17 Nov</b>Supreme Court next hears the DNPA challenge to the DPDP Act</li><li><b>7 Dec</b>Supreme Court lists the children&rsquo;s social-media PIL; UP AI Stack bids close</li><li><b>10 Dec</b>Delhi High Court next hears the Kriti Sanon suit</li><li><b>13 May 2027</b>DPDP Act&rsquo;s main duties begin</li></ul></div>
+  <div class="ux-top-actions"><button type="button" class="ux-btn" data-ux-deck>Swipe through all 30 stories</button><a class="ux-btn ghost" href="#sec-focus" data-ux-go="sec-focus">Browse by section &rarr;</a><a class="ux-btn ghost" href="#ux-all" data-ux-go="all">Read everything</a></div>
+  <p class="ux-continue" id="ux-continue" hidden></p>
+</section>
+<!-- ux:panel:end -->
 <!-- EDITOR'S NOTE -->
+<details class="ux-note" id="ux-note"><summary>Editor's Note &mdash; the full overview, about 3 minutes</summary>
 <div style="background:var(--paper);border:1px solid var(--rule-gold);border-left:3px solid var(--saffron);padding:1.5rem;margin-bottom:1.5rem;">
   <div style="font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.75rem;">Editor's Note — The October 2026 Review</div>
   <p style="font-size:1.05rem;font-weight:400;line-height:1.9;color:var(--slate);">This issue follows three threads. The first is who reads the file: CERT-In reports that AI agents reached live Indian systems and read records without anyone noticing, and the harder question is which AI tools officials themselves use on government files. The second is the DPDP calendar: on 13 November only the consent-manager rule starts, the Board that consent managers must register with has no announced members, and the Supreme Court has begun to hear a press-freedom challenge to the Act. The third is October's incidents, which were large and mostly about suppliers, old devices and signing systems.</p>
@@ -689,6 +701,7 @@ p[style*="font-weight:400"], p[style*="font-weight:300"] {
   <p style="font-size:1.05rem;font-weight:400;line-height:1.9;color:var(--slate);margin-top:0.75rem;"><strong>AI governance and industry.</strong> <a href="#t-ai-law-three">India's promised AI consultation paper, the EU's delayed rules and a New York chatbot law</a>; the <a href="#t-ecb-ai-cyber-letter">ECB's deadline for bank action plans</a>; <a href="#t-consulting-it-services">TCS and Deloitte</a>; and <a href="#t-dsci-guide-and-campaign">DSCI's liability guide for agentic AI</a>. <a href="#sec-voices">Voices</a> lists seven dated statements, each attributed.</p>
   <p style="font-size:0.92rem;font-weight:400;line-height:1.8;color:var(--saffron);margin-top:0.75rem;"><strong>A note on method.</strong> This briefing is compiled from public sources, each linked beside the item that relies on it. Statutory text is cited to the Gazette or the Act and Rules on MeitY's site; regulator text to the regulator's own page; court decisions to the legal-news report or order; and news items name the outlet that reported them. Claims made only by an attacker, a vendor or a company are attributed to that party. Our own analysis is marked "Our view". Items marked "reported" are attributed to the outlet or person who reported them and are not independently verified by us. Where sources give different figures or dates, we say so. This is research, not legal advice. Send corrections to the Grievance Officer: see our <a href="legal.html#research-disclaimer" style="color:inherit;text-decoration:underline;">editorial standards</a>.</p>
 </div>
+</details><!-- /ux-note -->
 
 <p class="grid-hint">🖱 Tap any tile to open the full story. Press <kbd>Esc</kbd> or tap outside to return to the grid.</p>
 
@@ -1270,5 +1283,6 @@ p[style*="font-weight:400"], p[style*="font-weight:300"] {
   if(backBtn){ backBtn.addEventListener('click',function(){ window.scrollTo({top:0,behavior:'smooth'}); }); }
 })();
 </script>
+<script src="reading-ux.js" defer></script>
 </body>
 </html>

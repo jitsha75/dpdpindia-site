@@ -1,0 +1,118 @@
+/* reading-ux.css — tabbed reading layer for monthly briefings (Nov 2026).
+   Progressive enhancement: without JS the page is the normal long scroll.
+   All story text stays in the DOM; tabs only toggle display. */
+
+/* ---------- 60-second panel ---------- */
+.ux-top{background:var(--paper);border:1px solid var(--rule-gold);border-top:3px solid var(--saffron);padding:1.4rem 1.5rem 1.2rem;margin-bottom:1.5rem;}
+.ux-kicker{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);}
+.ux-top h2{font-family:'Playfair Display',serif;font-size:1.45rem;line-height:1.25;color:var(--prussian);margin:0.3rem 0 1rem;font-weight:700;}
+.ux-top-list{list-style:none;margin:0;padding:0;counter-reset:uxn;display:grid;gap:0.7rem;}
+.ux-top-list li{counter-increment:uxn;position:relative;}
+.ux-top-link{display:block;text-decoration:none;color:inherit;background:var(--cream);border:1px solid var(--rule);border-left:3px solid var(--saffron);padding:0.8rem 1rem 0.8rem 3rem;position:relative;min-height:44px;transition:box-shadow .15s,border-color .15s;}
+.ux-top-link:hover,.ux-top-link:focus-visible{border-color:var(--saffron);box-shadow:var(--shadow-sm,0 2px 8px rgba(0,0,0,.08));}
+.ux-top-link::before{content:counter(uxn);position:absolute;left:0.85rem;top:0.75rem;font-family:'Playfair Display',serif;font-size:1.5rem;line-height:1;color:var(--saffron);font-weight:700;}
+.ux-top-sec{display:block;font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--mist);margin-bottom:0.2rem;}
+.ux-top-title{display:block;font-family:'Playfair Display',serif;font-size:1.02rem;line-height:1.35;color:var(--prussian);font-weight:700;}
+.ux-top-brief{display:block;font-size:0.9rem;line-height:1.6;color:var(--slate);margin-top:0.3rem;}
+.ux-dates{margin-top:1.1rem;border-top:1px solid var(--rule-gold);padding-top:0.9rem;}
+.ux-dates-title{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--mist);margin-bottom:0.5rem;}
+.ux-dates ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.5rem;}
+.ux-dates li{background:var(--cream);border:1px solid var(--rule);padding:0.55rem 0.75rem;font-size:0.85rem;line-height:1.5;color:var(--slate);}
+.ux-dates li b{display:block;font-family:'JetBrains Mono',monospace;font-size:0.72rem;letter-spacing:0.06em;color:var(--saffron);}
+.ux-top-actions{display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:1.1rem;align-items:center;}
+.ux-btn{font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:600;min-height:44px;padding:0.55rem 1.1rem;border:1px solid var(--prussian);background:var(--prussian);color:var(--cream);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;border-radius:2px;}
+.ux-btn:hover,.ux-btn:focus-visible{background:var(--saffron);border-color:var(--saffron);color:#fff;}
+.ux-btn.ghost{background:transparent;color:var(--prussian);}
+.ux-btn.ghost:hover,.ux-btn.ghost:focus-visible{background:var(--prussian);color:var(--cream);border-color:var(--prussian);}
+.ux-continue{margin-top:0.8rem;font-size:0.88rem;color:var(--slate);}
+.ux-continue a{color:var(--saffron);font-weight:600;}
+.ux-continue[hidden]{display:none;}
+
+/* ---------- Editor's note as a collapsible ---------- */
+.ux-note{margin-bottom:1.5rem;border:1px solid var(--rule-gold);border-left:3px solid var(--saffron);background:var(--paper);}
+.ux-note>summary{cursor:pointer;list-style:none;padding:0.9rem 1.2rem;min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:1rem;font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--saffron);}
+.ux-note>summary::-webkit-details-marker{display:none;}
+.ux-note>summary::after{content:'Read ▾';color:var(--prussian);font-weight:600;}
+.ux-note[open]>summary::after{content:'Hide ▴';}
+.ux-note>div{border:0!important;border-top:1px solid var(--rule-gold)!important;margin:0!important;}
+
+/* ---------- Hero tags: collapse long list ---------- */
+.ux-tags-toggle{font:inherit;font-size:0.7rem;cursor:pointer;min-height:36px;background:transparent;border:1px dashed var(--saffron-lt,#F0A840);color:inherit;padding:0.25rem 0.8rem;border-radius:999px;}
+.ux-ready .hero-tags.ux-collapsed .hero-tag:nth-of-type(n+5){display:none;}
+
+/* ---------- Tabs (re-skin of the jump-nav) ---------- */
+.ux-ready .jump-nav-label{display:none;}
+.ux-ready .jump-link{min-height:40px;display:inline-flex;align-items:center;gap:0.4rem;}
+.ux-count{font-family:'JetBrains Mono',monospace;font-size:0.6rem;line-height:1;background:rgba(26,22,16,0.1);border-radius:999px;padding:0.18rem 0.42rem;}
+.ux-ready .jump-link.ux-sel{background:var(--saffron);border-color:var(--saffron);color:#fff;}
+.ux-ready .jump-link.ux-sel .ux-count{background:rgba(255,255,255,0.28);}
+.ux-ready .jump-link.active:not(.ux-sel){background:var(--parchment);border-color:var(--rule);color:var(--slate);}
+
+/* ---------- View switching ---------- */
+.ux-ready .section-block{display:none;}
+.ux-ready .section-block.ux-on{display:block;}
+.ux-ready:not([data-ux-view="top"]) #ux-top{display:none;}
+.ux-ready[data-ux-view="top"] .grid-hint{display:none;}
+.ux-ready[data-ux-view^="sec-"] .ux-note{display:none;}
+.ux-next{display:none;margin:1.5rem 0 0.5rem;gap:0.6rem;flex-wrap:wrap;}
+.ux-ready[data-ux-view^="sec-"] .section-block.ux-on .ux-next{display:flex;}
+
+/* ---------- Reading progress ---------- */
+.ux-progress{position:fixed;left:0;top:0;height:3px;width:0;background:var(--saffron);z-index:10000;pointer-events:none;transition:width .1s linear;}
+
+/* ---------- Sidebar accordions (all widths) ---------- */
+.sidebar-card-title .ux-chev{display:none;}
+.ux-ready .sidebar-card.ux-acc>.sidebar-card-title{cursor:pointer;display:flex;align-items:center;justify-content:space-between;min-height:44px;margin-bottom:0;}
+.ux-ready .sidebar-card.ux-acc>.sidebar-card-title .ux-chev{display:inline;margin-left:0.6rem;transition:transform .15s;}
+.ux-ready .sidebar-card.ux-acc.ux-open>.sidebar-card-title .ux-chev{transform:rotate(180deg);}
+.ux-ready .sidebar-card.ux-acc.ux-open>.sidebar-card-title{margin-bottom:0.6rem;}
+.ux-ready .sidebar-card.ux-acc:not(.ux-open)>.sidebar-card-title{border-bottom:0;padding-bottom:0;}
+@media(max-width:900px){.ux-ready .main-layout{gap:1.2rem;}}
+.ux-ready .sidebar-card.ux-acc:not(.ux-open)>*:not(.sidebar-card-title){display:none;}
+@media(max-width:900px){
+  .ux-ready[data-ux-view^="sec-"] .sidebar-card:not(.ux-keep){display:none;}
+}
+
+/* ---------- Hero summary clamp (phones) ---------- */
+.ux-more{display:none;}
+@media(max-width:760px){
+  .ux-ready .hero-subtitle.ux-clamp{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+  .ux-ready .ux-more{display:inline-block;font:inherit;font-size:0.8rem;font-weight:600;min-height:44px;background:none;border:0;color:var(--saffron);cursor:pointer;padding:0;text-decoration:underline;}
+}
+
+/* ---------- Phones: compact stat strip ---------- */
+@media(max-width:760px){
+  .ux-ready .jump-link{min-height:44px;}
+  .ux-ready .stat-bar-inner{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto;gap:1.2rem;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;}
+  .ux-ready .stat-item{flex:0 0 62%;scroll-snap-align:start;}
+  .ux-top{padding:1.1rem 1rem 1rem;}
+  .ux-top h2{font-size:1.25rem;}
+}
+
+/* ---------- Story deck ---------- */
+.ux-deck{position:fixed;inset:0;z-index:9000;background:var(--cream);display:none;flex-direction:column;}
+.ux-deck.open{display:flex;}
+body.ux-deck-lock{overflow:hidden;}
+.ux-deck-bar{display:flex;align-items:center;gap:0.8rem;padding:0.6rem 1rem;border-bottom:1px solid var(--rule);background:var(--paper);}
+.ux-deck-count{font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.08em;color:var(--slate);flex:1;}
+.ux-deck-close{min-width:44px;min-height:44px;border:1px solid var(--rule);background:var(--cream);font-size:1.1rem;cursor:pointer;color:var(--prussian);}
+.ux-deck-prog{height:3px;background:var(--rule);}
+.ux-deck-prog i{display:block;height:100%;width:0;background:var(--saffron);transition:width .2s;}
+.ux-deck-stage{flex:1;overflow-y:auto;padding:1.4rem 1.2rem;display:flex;flex-direction:column;justify-content:center;max-width:720px;width:100%;margin:0 auto;touch-action:pan-y;}
+.ux-deck-sec{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--saffron);}
+.ux-deck-meta{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.08em;color:var(--mist);margin-top:0.35rem;}
+.ux-deck-title{font-family:'Playfair Display',serif;font-size:1.5rem;line-height:1.3;color:var(--prussian);margin:0.9rem 0 0.8rem;font-weight:700;}
+.ux-deck-brief{font-size:1.05rem;line-height:1.75;color:var(--slate);}
+.ux-deck-read{margin-top:1.4rem;align-self:flex-start;}
+.ux-deck-nav{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;padding:0.8rem 1rem calc(0.8rem + env(safe-area-inset-bottom));border-top:1px solid var(--rule);background:var(--paper);}
+.ux-deck-nav .ux-btn{justify-content:center;}
+.ux-deck-nav .ux-btn[disabled]{opacity:0.4;cursor:default;}
+.ux-deck-hint{font-size:0.72rem;color:var(--mist);text-align:center;padding:0.3rem 0 0;}
+
+/* print: show everything */
+@media print{
+  .ux-ready .section-block{display:block!important;}
+  .ux-top,.ux-next,.ux-deck,.ux-progress,.ux-tags-toggle{display:none!important;}
+  .ux-note>summary{display:none;}
+}
+@media(prefers-reduced-motion:reduce){.ux-deck-prog i,.ux-progress{transition:none;}}
